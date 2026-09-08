@@ -1,0 +1,35 @@
+name: Atlas briefing checks
+on:
+  push:
+    paths:
+      - 'jumper - construtor-de-sites/_jumper-sites-system/Quiz/Briefings/**'
+      - 'jumper - construtor-de-sites/_jumper-sites-system/scripts/atlas-briefing.mjs'
+      - 'jumper - construtor-de-sites/_jumper-sites-system/scripts/tests/**'
+      - '.github/workflows/atlas-briefing.yml'
+  pull_request:
+    paths:
+      - 'jumper - construtor-de-sites/_jumper-sites-system/Quiz/Briefings/**'
+      - 'jumper - construtor-de-sites/_jumper-sites-system/scripts/atlas-briefing.mjs'
+      - 'jumper - construtor-de-sites/_jumper-sites-system/scripts/tests/**'
+      - '.github/workflows/atlas-briefing.yml'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            jumper - construtor-de-sites/_jumper-sites-system/Quiz/Briefings
+            jumper - construtor-de-sites/_jumper-sites-system/scripts
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Syntax and regression checks (no Notion credentials)
+        working-directory: jumper - construtor-de-sites
+        run: |
+          node --check _jumper-sites-system/Quiz/Briefings/quiz.js
+          node --check _jumper-sites-system/Quiz/Briefings/notion-client.mjs
+          node --check _jumper-sites-system/scripts/atlas-briefing.mjs
+          node --test _jumper-sites-system/scripts/tests/atlas-briefing.test.mjs
