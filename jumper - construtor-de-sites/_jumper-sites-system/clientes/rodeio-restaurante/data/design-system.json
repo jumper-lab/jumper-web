@@ -1,0 +1,54 @@
+{
+  "schema_version": "3.0.0",
+  "stage": "initial_design_system",
+  "client_name": "Rodeio Restaurante",
+  "personality": "A",
+  "model": "M4",
+  "client_truth": {
+    "personality": "A",
+    "voice_tone": "casual-amistoso",
+    "visual_references": "",
+    "avoid_site": "",
+    "primary_color": "Laranja do logo",
+    "secondary_or_forbidden_colors": "Cores de apoio branco, marrom",
+    "forbidden_words_or_themes": "“O melhor”, “a melhor”, “o melhor restaurante”\n“Excelência”, “excelência gastronômica”\nSuperlativos e promessas absolutas\nLinguagem exagerada ou grandiosa demais\nComunicação focada em preço, desconto ou promoção como principal argumento\nComparações diretas com concorrentes\nPromessas que não possam ser comprovadas",
+    "visual_preference": "equilibrado",
+    "animation_preference": "discreta"
+  },
+  "source": "briefing/briefing-payload.json",
+  "colors": {
+    "orange": "#BB4B20",
+    "paper": "#FAF7F0",
+    "brown": "#30231C",
+    "white": "#FFFFFF"
+  },
+  "color_status": "Interpretação provisória: laranja informado no briefing, manual inacessível; não apresentar hex como especificação oficial.",
+  "typography": {
+    "display": "Bodoni Moda 500, com itálico pontual",
+    "body": "DM Sans 400/500/600",
+    "rationale": "Bodoni remete à presença tipográfica de um restaurante de longa história; DM Sans mantém reservas e endereços claros."
+  },
+  "visual_feeling": "Acolhimento adulto, memória familiar e arquitetura contemporânea.",
+  "hero": "Fachada real dos Jardins e mensagem Um clássico que se renova, desde 1958; reserva em destaque.",
+  "sections": [
+    "A casa",
+    "Clássicos à mesa",
+    "Dois endereços",
+    "História desde 1958",
+    "Reservas e eventos"
+  ],
+  "components": [
+    "Menu editorial",
+    "Links com seta",
+    "Seleção de unidade",
+    "Galeria de fotos reais"
+  ],
+  "motion": "150–350ms em hover e menu; sem rolagem sequestrada ou autoplay.",
+  "risks": [
+    "Manual da marca indisponível",
+    "Pasta de logos vazia; marca branca obtida no site oficial",
+    "Horários do briefing divergem do site legado",
+    "Mudança em 2026 sem endereço novo explícito"
+  ],
+  "next_decisions": "Definir DS final com fotos reais e preservar horários do briefing até revisão comercial. Usuário escolheu prosseguir sem pausas."
+}

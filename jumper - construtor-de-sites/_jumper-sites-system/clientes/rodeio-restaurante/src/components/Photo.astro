@@ -1,0 +1,12 @@
+---
+import { Image } from 'astro:assets';
+import {photos, type PhotoName} from '../lib/photos';
+interface Props {name:PhotoName; alt:string; class?:string; eager?:boolean;sizes?:string;}
+const {name,alt,class:className='',eager=false,sizes='(max-width: 759px) 100vw, 55vw'}=Astro.props;
+const photo=photos[name];
+---
+<div class="photo-viewport"><Image data-photo-entrance src={photo} alt={alt} class={className} widths={[320,480,640,768,960,1200,1600,1920,photo.width].filter((w,i,a)=>w<=photo.width && a.indexOf(w)===i)} sizes={sizes} format="avif" quality={60} loading={eager?'eager':'lazy'} fetchpriority={eager?'high':'low'} decoding="async" /></div>
+
+<style>
+.photo-viewport { display: block; width: 100%; overflow: clip; overflow-anchor: none; }
+</style>

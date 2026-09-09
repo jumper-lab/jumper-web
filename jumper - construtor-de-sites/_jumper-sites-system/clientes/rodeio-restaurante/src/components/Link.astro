@@ -1,0 +1,6 @@
+---
+import Arrow from './Arrow.astro';
+interface Props {href:string; primary?:boolean; light?:boolean; class?:string;}
+const {href,primary=false,light=false,class:className=''}=Astro.props;
+---
+<a href={href} class:list={['action',primary?'button':'text-link',{'light':light},className]}><slot/><Arrow/></a>

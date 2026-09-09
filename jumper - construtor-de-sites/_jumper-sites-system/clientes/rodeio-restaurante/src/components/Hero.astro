@@ -1,0 +1,13 @@
+---
+import HeroPhoto from './HeroPhoto.astro';
+import {type PhotoName} from '../lib/photos';
+import Link from './Link.astro';
+import HeroScroll from './HeroScroll.astro';
+interface Props {eyebrow:string;title:string;accent?:string;description:string;photo:PhotoName;alt:string;caption:string;cta?:string;href?:string;secondary?:string;secondaryHref?:string;home?:boolean;scrollHref?:string;}
+const {eyebrow,title,accent,description,photo,alt,caption,cta='Reservar uma mesa',href='/reservas/',secondary,secondaryHref,home=false,scrollHref='#proxima-secao'}=Astro.props;
+---
+<section class:list={['hero','hero-photo',{'hero-home':home}]}>
+ <div class="hero-copy"><p class="eyebrow"><span class="marker"></span>{eyebrow}</p><h1>{home ? <><span class="hero-title-line"><span>{title}</span></span>{accent&&<span class="hero-title-line"><em>{accent}</em></span>}</> : <>{title}{accent&&<><br/><em>{accent}</em></>}</>}</h1><p class="hero-description">{description}</p><div class="hero-actions"><Link href={href} primary>{cta}</Link>{secondary&&secondaryHref&&<Link href={secondaryHref}>{secondary}</Link>}</div><div class="hero-note"><span class="year">1958</span><span>O tempo passa.<br/>A essência fica.</span></div></div>
+ <figure class="hero-figure"><HeroPhoto name={photo} alt={alt}/><figcaption><span>{caption}</span><span class:list={{"home-photo-date":home}}>{photo==='historia'?'Desde 1958.':'Rodeio, hoje.'}</span></figcaption></figure>
+ <HeroScroll href={home?'#a-mesa':scrollHref} label="Explorar"/>
+</section>

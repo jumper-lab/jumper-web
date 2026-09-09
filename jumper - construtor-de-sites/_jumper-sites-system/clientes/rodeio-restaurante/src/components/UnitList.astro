@@ -1,0 +1,11 @@
+---
+import content from '../../data/content.json';
+import Photo from './Photo.astro';
+interface Props {directory?:boolean;}
+const {directory=false}=Astro.props;
+import Link from './Link.astro';
+import '../styles/houses.css';
+---
+<div class="houses-list">
+{content.units.map((unit,i)=><article class="house-row"><a class="house-photo" href={`/restaurantes/${unit.slug}/`}><Photo name={directory ? (unit.slug==='jardins'?'jardinsDirectory':'iguatemiDirectory') : (unit.image as 'jardins'|'iguatemi')} alt={`Salão do Rodeio ${unit.name}, com mesas postas e acabamento em madeira`} sizes="(max-width:759px) calc(100vw - 48px), 53vw"/></a><div class="house-info"><p class="eyebrow">0{i+1} / São Paulo</p><h3>{unit.name}</h3><p class="house-address">{unit.address}<br/>{unit.district}</p><div class="house-actions"><Link href={`/restaurantes/${unit.slug}/`}>Conhecer a casa</Link><Link href={`/reservas/?unidade=${unit.slug}`}>Reservar no {unit.name}</Link></div></div></article>)}
+</div>

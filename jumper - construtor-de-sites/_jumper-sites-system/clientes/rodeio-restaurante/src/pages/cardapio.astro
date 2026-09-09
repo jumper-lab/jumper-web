@@ -1,0 +1,18 @@
+---
+import GalleryPhoto from '../components/GalleryPhoto.astro';
+import Layout from '../layouts/Layout.astro';import Hero from '../components/Hero.astro';import Photo from '../components/Photo.astro';import Link from '../components/Link.astro';import content from '../../data/content.json';
+import '../styles/interiors.css';
+---
+<Layout title="Cardápio — os clássicos da casa" description="Descubra a gastronomia do Rodeio, da picanha fatiada ao arroz Biro-Biro. Consulte o cardápio da casa e planeje seu próximo almoço ou jantar."><Hero eyebrow="Carnes · cozinha · encontros" title="Clássicos" accent="por uma razão." description="A picanha fatiada. O arroz Rodeio. Sabores que fazem parte da casa e das histórias de quem volta." photo="cardapioHero" alt="Carne e arroz servidos à mesa no Rodeio" caption="Gastronomia Rodeio" cta="Ver cardápio completo" href={content.menu_url} secondary="Reservar uma mesa" secondaryHref="/reservas/"/>
+<section id="proxima-secao" class="wrap interior-section menu-service" aria-labelledby="menu-service-title">
+  <figure class="menu-service-photo"><Photo name="livroCardapio" sizes="(max-width:759px) 85vw, 42vw" alt="Detalhe do cardápio impresso do Rodeio à mesa"/><figcaption>Os sabores da casa, à sua escolha.</figcaption></figure>
+  <div class="menu-service-copy"><p class="eyebrow">À maneira do Rodeio</p><h2 id="menu-service-title">O cuidado está<br/><em>em servir.</em></h2><p>A picanha fatiada e o arroz Rodeio, o tradicional Biro-Biro, são clássicos que nasceram ao longo da trajetória do restaurante.</p>
+    <ul class="menu-signatures"><li><span>Picanha fatiada</span><small>Clássico da casa</small></li><li><span>Arroz Rodeio</span><small>O Biro-Biro</small></li></ul>
+    <div class="menu-access"><p>Consulte as opções e os preços no cardápio da casa.</p><Link href={content.menu_url} primary>Ver cardápio completo</Link></div>
+  </div>
+</section>
+<section class="menu-photographs interior-section"><div class="wrap">
+  <div class="interior-section-heading"><div><p class="eyebrow">Da cozinha à sua mesa</p><h2>Um convite<br/><em>a ficar.</em></h2></div><p>Conheça a gastronomia e o serviço do Rodeio em detalhes. Selecione uma foto para ampliar.</p></div>
+  <div class="gallery-grid menu-gallery"><GalleryPhoto name="carneDetalhe" alt="Detalhe de um prato de carne do Rodeio" caption="Carnes à mesa"/><GalleryPhoto name="sobremesaServico" alt="Sobremesa do Rodeio sendo finalizada em uma taça" caption="Para encerrar o encontro"/></div>
+</div></section>
+</Layout>

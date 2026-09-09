@@ -1,0 +1,5 @@
+---
+interface Props {href?:string;label?:string;}
+const {href='#proxima-secao',label='Explorar'}=Astro.props;
+---
+<a class="hero-scroll" href={href} aria-label={`${label} — descer para a próxima seção`}><span>{label}</span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v15M5 12l7 7 7-7" stroke="currentColor" stroke-width="1.4"/></svg></a>

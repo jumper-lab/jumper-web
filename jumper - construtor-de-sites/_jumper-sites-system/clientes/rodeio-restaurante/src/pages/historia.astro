@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';import Hero from '../components/Hero.astro';import Photo from '../components/Photo.astro';import Link from '../components/Link.astro';
+const milestones=[{year:'1958',title:'Tudo começa na Haddock Lobo.',text:'O Rodeio começa sua história quando os Jardins ainda davam seus primeiros passos como um dos endereços mais importantes de São Paulo.'},{year:'1959',title:'Uma história de família.',text:'A família Macedo assume o restaurante. Roberto Macedo, então jovem administrador, passa a conduzir a casa. Com o tempo, o Rodeio cresce, incorpora vinhos e carnes especiais e transforma sua maneira de servir.'},{year:'1986',title:'A próxima geração, à mesa.',text:'Silvia Macedo começa a trabalhar ao lado do pai. Com o tempo, torna-se parte fundamental da condução do restaurante, dando continuidade à trajetória da família.'},{year:'2026',title:'Um clássico que se renova.',text:'Quase sete décadas depois, o Rodeio continua na Haddock Lobo. A história ganha um novo endereço, a poucos metros de onde tudo começou, mantendo a essência que acompanha a casa desde 1958.'}];
+import '../styles/interiors.css';
+---
+<Layout title="Nossa história — desde 1958" description="Da Haddock Lobo à história da família Macedo: conheça a trajetória do Rodeio, seus clássicos à mesa e os encontros que começaram em 1958."><Hero eyebrow="Nossa história · São Paulo" title="A mesa muda." accent="A história fica." description="Desde 1958, o Rodeio faz parte das histórias de São Paulo. E de quem escolhe estar à nossa mesa." photo="historiaHero" alt="Luz de abajur e poltrona no ambiente contemporâneo do Rodeio Jardins" caption="O acolhimento da casa · Jardins"/>
+<section id="proxima-secao" class="wrap interior-section history-chapter" aria-labelledby="history-chapter-title">
+  <div class="history-chapter-heading">
+    <p class="eyebrow">1958 — hoje</p>
+    <h2 id="history-chapter-title">Uma casa.<br/><em>Muitas histórias.</em></h2>
+    <p>Ao longo das décadas, o Rodeio incorporou novos serviços, vinhos e carnes especiais. O acolhimento continuou a fazer parte da casa.</p>
+    <span class="history-date-note">Haddock Lobo, São Paulo</span>
+  </div>
+  <div class="history-timeline">
+    {milestones.map(m=><article class="timeline-item history-milestone"><span class="timeline-date">{m.year}</span><div><h3>{m.title}</h3><p>{m.text}</p></div></article>)}
+  </div>
+</section>
+<section class="history-taste interior-section">
+  <div class="wrap history-taste-grid">
+    <figure><Photo name="origem" sizes="(max-width:759px) 74vw, 30vw" alt="Registro de acervo da antiga entrada do Rodeio e seu letreiro"/><figcaption>Fotografia preservada no acervo do Rodeio.</figcaption></figure>
+    <div class="history-taste-copy"><p class="eyebrow">Clássicos que nasceram aqui</p><h2>A história<br/>também tem <em>sabor.</em></h2><p>Foi nessa trajetória que nasceram a picanha fatiada e o arroz Rodeio, o tradicional Biro-Biro. Sabores que continuam presentes em cada novo encontro.</p><Link href="/cardapio/">Conhecer os clássicos da casa</Link></div>
+  </div>
+</section>
+</Layout>

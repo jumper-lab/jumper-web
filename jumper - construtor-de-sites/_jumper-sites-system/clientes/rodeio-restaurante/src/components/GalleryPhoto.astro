@@ -1,0 +1,13 @@
+---
+import {getImage} from 'astro:assets';
+import Photo from './Photo.astro';
+import {photos, type PhotoName} from '../lib/photos';
+interface Props {name:PhotoName; alt:string; caption:string;sizes?:string;}
+const {name,alt,caption,sizes="(max-width:370px) 85vw, (max-width:759px) 44vw, 46vw"}=Astro.props;
+const source=photos[name];
+const full=await getImage({src:source,width:source.width,format:'avif',quality:60});
+---
+<a class="gallery-item" data-gallery href={full.src} aria-haspopup="dialog">
+ <Photo name={name} alt={alt} sizes={sizes}/>
+ <span>{caption}<span aria-hidden="true">↗</span></span>
+</a>

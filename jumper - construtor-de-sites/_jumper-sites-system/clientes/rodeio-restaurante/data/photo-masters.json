@@ -1,0 +1,374 @@
+[
+  {
+    "key": "iguatemiMesa",
+    "source": "briefing/entrada/originais/iguatemi-mesa.jpg",
+    "original": [
+      5760,
+      3840
+    ],
+    "master": [
+      2560,
+      1707
+    ]
+  },
+  {
+    "key": "fachada",
+    "source": "briefing/entrada/originais/fachada.jpg",
+    "original": [
+      5472,
+      3648
+    ],
+    "master": [
+      2560,
+      1707
+    ]
+  },
+  {
+    "key": "jardins",
+    "source": "briefing/entrada/originais/jardins.jpg",
+    "original": [
+      5472,
+      3648
+    ],
+    "master": [
+      2560,
+      1707
+    ]
+  },
+  {
+    "key": "iguatemi",
+    "source": "briefing/entrada/originais/iguatemi.jpg",
+    "original": [
+      8688,
+      5792
+    ],
+    "master": [
+      2560,
+      1707
+    ]
+  },
+  {
+    "key": "mesa",
+    "source": "briefing/entrada/originais/mesa.jpg",
+    "original": [
+      5472,
+      3648
+    ],
+    "master": [
+      2560,
+      1707
+    ]
+  },
+  {
+    "key": "picanha",
+    "source": "briefing/entrada/originais/picanha.jpg",
+    "original": [
+      3840,
+      5760
+    ],
+    "master": [
+      2560,
+      3840
+    ]
+  },
+  {
+    "key": "servico",
+    "source": "briefing/entrada/originais/servico.jpg",
+    "original": [
+      5792,
+      8688
+    ],
+    "master": [
+      2560,
+      3840
+    ]
+  },
+  {
+    "key": "sobremesa",
+    "source": "briefing/entrada/originais/sobremesa.jpg",
+    "original": [
+      3660,
+      5491
+    ],
+    "master": [
+      2560,
+      3840
+    ]
+  },
+  {
+    "key": "historia",
+    "source": "briefing/entrada/originais/historia.jpg",
+    "original": [
+      980,
+      766
+    ],
+    "master": [
+      980,
+      766
+    ]
+  },
+  {
+    "key": "origem",
+    "source": "briefing/entrada/originais/origem.jpg",
+    "original": [
+      636,
+      831
+    ],
+    "master": [
+      636,
+      831
+    ]
+  },
+  {
+    "key": "bar",
+    "source": "briefing/entrada/originais/bar.jpg",
+    "original": [
+      5373,
+      3582
+    ],
+    "master": [
+      2560,
+      1707
+    ]
+  },
+  {
+    "key": "reservas",
+    "source": "briefing/entrada/originais/reservas.jpg",
+    "original": [
+      5388,
+      3592
+    ],
+    "master": [
+      2560,
+      1707
+    ]
+  },
+  {
+    "key": "jardinsHero",
+    "source": "briefing/entrada/originais/jardinsHero.jpg",
+    "original": [
+      5472,
+      3648
+    ],
+    "master": [
+      2560,
+      1707
+    ]
+  },
+  {
+    "key": "historiaHero",
+    "source": "briefing/entrada/originais/historiaHero.jpg",
+    "original": [
+      5472,
+      3648
+    ],
+    "master": [
+      2560,
+      1707
+    ]
+  },
+  {
+    "key": "cardapioHero",
+    "source": "briefing/entrada/originais/cardapioHero.jpg",
+    "original": [
+      5792,
+      8688
+    ],
+    "master": [
+      2560,
+      3840
+    ]
+  },
+  {
+    "key": "livroCardapio",
+    "source": "briefing/entrada/originais/livroCardapio.jpg",
+    "original": [
+      3840,
+      5760
+    ],
+    "master": [
+      2560,
+      3840
+    ]
+  },
+  {
+    "key": "carneDetalhe",
+    "source": "briefing/entrada/originais/carneDetalhe.jpg",
+    "original": [
+      3840,
+      5760
+    ],
+    "master": [
+      2560,
+      3840
+    ]
+  },
+  {
+    "key": "sobremesaServico",
+    "source": "briefing/entrada/originais/sobremesaServico.jpg",
+    "original": [
+      3840,
+      5760
+    ],
+    "master": [
+      2560,
+      3840
+    ]
+  },
+  {
+    "key": "mesaDetalhe",
+    "source": "briefing/entrada/originais/mesaDetalhe.jpg",
+    "original": [
+      3648,
+      5472
+    ],
+    "master": [
+      2560,
+      3840
+    ]
+  },
+  {
+    "key": "jardinsDirectory",
+    "source": "briefing/entrada/originais/jardinsDirectory.jpg",
+    "original": [
+      5472,
+      3648
+    ],
+    "master": [
+      2560,
+      1707
+    ]
+  },
+  {
+    "key": "iguatemiDirectory",
+    "source": "briefing/entrada/originais/iguatemiDirectory.jpg",
+    "original": [
+      5760,
+      3840
+    ],
+    "master": [
+      2560,
+      1707
+    ]
+  },
+  {
+    "key": "jardinsGallery",
+    "source": "briefing/entrada/originais/jardinsGallery.jpg",
+    "original": [
+      5472,
+      3648
+    ],
+    "master": [
+      2560,
+      1707
+    ]
+  },
+  {
+    "key": "jardinsSala",
+    "source": "briefing/entrada/originais/jardinsSala.jpg",
+    "original": [
+      5472,
+      3648
+    ],
+    "master": [
+      2560,
+      1707
+    ]
+  },
+  {
+    "key": "iguatemiHero",
+    "source": "briefing/entrada/originais/iguatemiHero.jpg",
+    "original": [
+      5760,
+      3840
+    ],
+    "master": [
+      2560,
+      1707
+    ]
+  },
+  {
+    "key": "iguatemiAcervo",
+    "source": "briefing/entrada/originais/iguatemiAcervo.jpg",
+    "original": [
+      8688,
+      5792
+    ],
+    "master": [
+      2560,
+      1707
+    ]
+  },
+  {
+    "key": "reservasHero",
+    "source": "briefing/entrada/originais/reservasHero.jpg",
+    "original": [
+      5350,
+      3567
+    ],
+    "master": [
+      2560,
+      1707
+    ]
+  },
+  {
+    "key": "jardinsJanela",
+    "source": "briefing/entrada/originais/jardinsJanela.jpg",
+    "original": [
+      3648,
+      5472
+    ],
+    "master": [
+      2560,
+      3840
+    ]
+  },
+  {
+    "key": "jardinsMesaDois",
+    "source": "briefing/entrada/originais/jardinsMesaDois.jpg",
+    "original": [
+      3427,
+      5140
+    ],
+    "master": [
+      2560,
+      3840
+    ]
+  },
+  {
+    "key": "jardinsMesaNoite",
+    "source": "briefing/entrada/originais/jardinsMesaNoite.jpg",
+    "original": [
+      3648,
+      5472
+    ],
+    "master": [
+      2560,
+      3840
+    ]
+  },
+  {
+    "key": "jardinsPassagem",
+    "source": "briefing/entrada/originais/jardinsPassagem.jpg",
+    "original": [
+      3397,
+      5095
+    ],
+    "master": [
+      2560,
+      3840
+    ]
+  },
+  {
+    "key": "jardinsLounge",
+    "source": "briefing/entrada/originais/jardinsLounge.jpg",
+    "original": [
+      5323,
+      3549
+    ],
+    "master": [
+      2560,
+      1707
+    ]
+  }
+]
