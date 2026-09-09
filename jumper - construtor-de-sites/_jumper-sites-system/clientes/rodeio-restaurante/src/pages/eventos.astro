@@ -1,0 +1,20 @@
+---
+import Layout from '../layouts/Layout.astro';import Hero from '../components/Hero.astro';import Link from '../components/Link.astro';import content from '../../data/content.json';
+import Photo from '../components/Photo.astro';
+import '../styles/interiors.css';
+---
+<Layout title="Eventos — encontros para guardar" description="Planeje seu encontro, celebração ou evento de negócios no Rodeio. Conheça as casas dos Jardins e Iguatemi e fale com a equipe pelo canal oficial."><Hero eyebrow="Eventos · Jardins e Iguatemi" title="Alguns encontros" accent="ficam na história." description="Uma celebração em família. Um encontro de negócios. Uma ocasião que merece ser vivida à mesa." photo="mesa" alt="Mesa posta no Rodeio Jardins, com taças e iluminação intimista" caption="À mesa no Rodeio" cta="Solicitar orçamento" href={content.events_url}/>
+<section id="proxima-secao" class="wrap interior-section event-conversation" aria-labelledby="event-conversation-title">
+  <figure class="event-conversation-photo"><Photo name="bar" sizes="(max-width:759px) 85vw, 42vw" alt="Bar do Rodeio Jardins, com bancada e iluminação quente"/><figcaption>Rodeio Jardins · o ambiente faz parte do encontro.</figcaption></figure>
+  <div class="event-conversation-copy"><p class="eyebrow">O encontro começa na conversa</p><h2 id="event-conversation-title">Vamos planejar<br/><em>seu encontro.</em></h2><p>Conte à equipe a ocasião, a data, a unidade de sua preferência e o número de convidados. Use o formulário de eventos para consultar disponibilidade e solicitar um orçamento.</p><div class="event-contact-actions"><Link href={content.events_url} primary>Solicitar orçamento</Link><Link href="tel:+551134741333">Ligar para o Rodeio</Link></div></div>
+</section>
+<section class="event-occasions interior-section"><div class="wrap">
+  <div class="interior-section-heading"><div><p class="eyebrow">Jardins · Iguatemi</p><h2>Cada encontro,<br/><em>uma ocasião.</em></h2></div><p>Reuniões de negócios, encontros em família e celebrações: converse com a equipe sobre o que você está planejando.</p></div>
+  <div class="occasion-list">
+    <article class="event-detail occasion"><span class="occasion-number" aria-hidden="true">01</span><h3>Encontros<br/><em>em família</em></h3><p>Uma mesa para reunir as pessoas que fazem parte da sua história.</p></article>
+    <article class="event-detail occasion"><span class="occasion-number" aria-hidden="true">02</span><h3>Negócios<br/><em>à mesa</em></h3><p>O restaurante como ponto de encontro para uma conversa que pede tempo e atenção.</p></article>
+    <article class="event-detail occasion"><span class="occasion-number" aria-hidden="true">03</span><h3>Ocasiões<br/><em>especiais</em></h3><p>Aniversários e outras celebrações merecem ser pensados com cuidado. Consulte a equipe sobre as possibilidades para a sua ocasião.</p></article>
+  </div>
+  <div class="occasion-action"><span>O primeiro passo é contar a sua ideia.</span><Link href={content.events_url}>Solicitar orçamento</Link></div>
+</div></section>
+</Layout>

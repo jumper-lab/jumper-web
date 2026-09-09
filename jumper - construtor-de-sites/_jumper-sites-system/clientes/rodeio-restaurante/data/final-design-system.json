@@ -1,0 +1,277 @@
+{
+  "schema_version": "3.0.0",
+  "stage": "final_design_system",
+  "design_system_name": "Rodeio — A mesa atravessa o tempo",
+  "client_truth": {
+    "name": "Rodeio Restaurante",
+    "model": "M4",
+    "personality": "A",
+    "since": "1958",
+    "business": "Restaurante em São Paulo; Jardins e Iguatemi",
+    "positioning": {
+      "short_description": "Um clássico que se renova, desde 1958",
+      "differentiator": "Uma tradição construída ao longo de mais de seis décadas, que une carnes, cozinha e acolhimento em uma experiência contemporânea.",
+      "must_have_message": "O Rodeio mantém sua essência enquanto acompanha o tempo. Uma história que começou em 1958 e segue presente em cada detalhe.",
+      "client_voice_quote": "“É aquele lugar que faz parte das minhas histórias e continua sendo uma escolha especial.”",
+      "story": "Em 1958, o Rodeio começava sua história na Rua Haddock Lobo, quando os Jardins ainda davam seus primeiros passos como um dos endereços mais importantes de São Paulo.\nUm ano depois, a família Macedo assumiu o restaurante. Roberto Macedo, então jovem administrador, passou a conduzir a casa e, ao longo dos anos, transformou sua identidade. O Rodeio cresceu, ganhou novos serviços, incorporou vinhos e carnes especiais e ajudou a criar uma nova maneira de viver uma churrascaria em São Paulo.\nFoi também nessa trajetória que nasceram alguns dos grandes clássicos da casa, como a picanha fatiada e o arroz Rodeio, o tradicional Biro-Biro.\nA história seguiu dentro da família. Em 1986, Silvia Macedo começou a trabalhar ao lado do pai e, com o tempo, tornou-se parte fundamental da condução do restaurante.\nQuase sete décadas depois, o Rodeio continua na Haddock Lobo. Em 2026, a história ganha um novo endereço, a poucos metros de onde tudo começou.\n"
+    },
+    "voice": "Casual e amistoso, adulto, sem superlativos.",
+    "colors_requested": "Laranja do logo, branco e marrom",
+    "forbidden": "“O melhor”, “a melhor”, “o melhor restaurante”\n“Excelência”, “excelência gastronômica”\nSuperlativos e promessas absolutas\nLinguagem exagerada ou grandiosa demais\nComunicação focada em preço, desconto ou promoção como principal argumento\nComparações diretas com concorrentes\nPromessas que não possam ser comprovadas",
+    "source": "briefing/briefing-payload.json"
+  },
+  "visual_thesis": "A fachada contemporânea da Haddock Lobo abre uma casa de memória: fotografia de ponta a ponta, títulos de cardápio impresso e capítulos com escalas próprias aproximam o Rodeio de 1958 da mesa de hoje.",
+  "signature_element": {
+    "name": "A casa e a mesa",
+    "appearances": [
+      "Fachada imersiva na abertura",
+      "Filetes e legendas de acervo no capítulo da história",
+      "Numeração e identificação editorial das duas casas",
+      "Marca central no cabeçalho e convite de fechamento"
+    ]
+  },
+  "wow_moment": "A fachada real ocupa toda a abertura da home, enquanto a mensagem em creme e o cabeçalho com marca central criam presença imediata; a sequência passa do serviço à mesa à gastronomia em marrom profundo.",
+  "repertoire_used": [
+    {
+      "source": "01-1-padaria-artesanal-warm.json",
+      "principle": "História familiar com datas reais humaniza sem precisar de slogans afetivos.",
+      "rejected": "Blobs, grid de três cards e cores impostas."
+    },
+    {
+      "source": "01-2-clinica-pediatrica-friendly.json",
+      "principle": "Reduzir ansiedade com ações e informação prática clara.",
+      "rejected": "Infantilização, ilustrações e paleta azul."
+    },
+    {
+      "source": "01-3-floricultura-delicada.json",
+      "principle": "Imagem e texto mudam de escala para criar ritmo.",
+      "rejected": "Arcos, flores, rosa, jade e composição do exemplo."
+    }
+  ],
+  "anti_generic_decisions": [
+    "Não usar bois, fogo ou estética western pelo nome Rodeio.",
+    "Não usar grade universal de três cards.",
+    "Não inserir avaliações, preços, prêmios ou depoimentos não recebidos.",
+    "Não copiar textos legados com excelência ou o melhor.",
+    "Fotografia real sem IA quando o acervo resolve.",
+    "Menu com links diretos por intenção, sem megamenu de colunas vazias."
+  ],
+  "tokens": {
+    "colors": {
+      "orange": "#BB4B20",
+      "paper": "#FAF7F0",
+      "brown": "#30231C",
+      "muted": "#716156",
+      "white": "#FFFFFF",
+      "line": "#D7CEC1",
+      "cream": "#EFE7DA"
+    },
+    "contrast_verification": {
+      "brown_on_paper": "14.19:1",
+      "brown_on_cream": "12.38:1",
+      "muted_on_paper": "5.53:1",
+      "orange_on_paper": "4.74:1",
+      "white_on_orange": "5.07:1",
+      "paper_on_brown": "14.19:1",
+      "white_on_brown": "15.19:1",
+      "muted_on_cream": "4.83:1",
+      "line_on_brown": "9.75:1"
+    },
+    "typography": {
+      "display": {
+        "family": "Bodoni Moda",
+        "weight": 500,
+        "h1": "Desktop: clamp(40px,min(6vw,9vh),100px); mobile 36–60px; paisagem baixa 30–40px.",
+        "line_height": 1.03,
+        "tracking": "-.035em",
+        "rationale": "Contraste de hastes evoca cardápio impresso e longa trajetória; dimensão evita fragilidade."
+      },
+      "body": {
+        "family": "DM Sans",
+        "weights": [
+          400,
+          500,
+          600
+        ],
+        "size": "1rem",
+        "line_height": 1.7,
+        "max_line": "62ch",
+        "rationale": "Sans de leitura clara para endereços, horários e conversão."
+      },
+      "hosting": "WOFF2 latin auto-hospedadas; três arquivos."
+    },
+    "spacing": {
+      "xs": 8,
+      "sm": 16,
+      "md": 24,
+      "lg": 40,
+      "xl": 64,
+      "section": 96,
+      "section_large": 128
+    },
+    "radius": {
+      "default": 0,
+      "button": 0,
+      "dialog": 4
+    },
+    "shadow": "Somente separação do diálogo",
+    "motion": {
+      "text": "720ms; stagger85ms limitado340ms",
+      "image": "1000ms opacity .25→1 após decode, sem deslocamento",
+      "menu": "380ms; galeria fade350ms",
+      "pages": "saída220ms, entrada480ms",
+      "easing": "cubic-bezier(.22,.7,.2,1)",
+      "reduced": "Sem animações/rolagem suave; mudança dinâmica cancela animações ativas."
+    }
+  },
+  "hero_direction": {
+    "home": "Fachada real de ponta a ponta abaixo do cabeçalho; leitura sobre camada escura à esquerda, título claro com itálico, reserva em laranja, legenda factual e descida discreta na base. Altura total exata de 100vh.",
+    "message": "Um clássico que se renova, desde 1958.",
+    "primary_cta": "Reservar uma mesa",
+    "secondary_cta": "Conhecer o cardápio",
+    "crop": "Home: recortes de entrega centralizados preservam a fachada e o letreiro no portrait; CSS cover se adapta à proporção exata. Desktop mantém a foto inteira com cobertura. A posição e a nitidez são conferidas em screenshots reais.",
+    "viewport_coverage": {
+      "mobile": "100vw de largura útil × 100vh, incluindo cabeçalho fixo; sem largura máxima.",
+      "tablet": "100vw de largura útil × 100vh, incluindo cabeçalho fixo; sem largura máxima.",
+      "desktop": "100vw de largura útil × 100vh, incluindo cabeçalho fixo; sem largura máxima.",
+      "wide": "100vw de largura útil × 100vh, incluindo cabeçalho fixo; sem largura máxima."
+    },
+    "next_section": "Abertura editorial integrada à seção #a-mesa, sem faixa ou bordas isoladas. Link À mesa discreto no rodapé do hero.",
+    "interiors": "Fotografia real de ponta a ponta, cobrindo 100% da largura e 100vh, atrás do cabeçalho fixo. Texto sobre camada escura, sem moldura ou coluna de foto. Descida discreta em todas as páginas para a próxima seção real."
+  },
+  "navigation_direction": {
+    "desktop": "Marca centralizada entre dois grupos de links; reserva explícita na extremidade direita. Cabeçalho de aparência editorial, com ritmo e distribuição equilibrados.",
+    "mobile": "Marca, reserva e Menu; painel marrom com grandes links em creme, índices discretos e assinatura da casa, topo sticky, Escape e foco contido.",
+    "scroll": "Cabeçalho fixo:96px a partir1200px,80px abaixo1200px e64px em alturas até550px; sem blur. Compensação de âncoras usa altura real.",
+    "current": "aria-current e sublinhado no link atual"
+  },
+  "media_direction": {
+    "primary": "Acervo real do Drive com inventário e originais em briefing/entrada; derivados WebP no pipeline Astro.",
+    "ai": "Não necessária nesta entrega. Se faltar mídia futura, IA apenas provisória identificada; nunca inventar instalações.",
+    "pexels": "Somente fallback autorizado quando foto real e IA não resolverem; não utilizado.",
+    "video": "Sem vídeo no briefing; não acrescentar autoplay.",
+    "fallback": "Cor sólida de fundo com dimensões reservadas; imagem com alt honesto.",
+    "brand": "Logo branco oficial com tratamento CSS escuro em fundo claro; laranja interpretado do briefing, manual inacessível.",
+    "unique_photography": "Cada posição editorial utiliza uma fotografia distinta do acervo. Heros exclusivos por página, sem repetir em galeria ou chamadas da home. História usa luz e ambiente contemporâneo no hero, preservando imagens antigas apenas no conteúdo. Foto da fachada continua exclusiva da home."
+  },
+  "section_system": [
+    {
+      "name": "hero",
+      "anatomy": "Fachada imersiva e texto sobreposto à esquerda"
+    },
+    {
+      "name": "experiência",
+      "anatomy": "Título editorial à esquerda, serviço à direita, manifesto integrado na mesma composição"
+    },
+    {
+      "name": "gastronomia",
+      "anatomy": "02 no topo esquerdo; título e introdução em cabeçalho compartilhado; duas fotografias abaixo com topo/base e legendas alinhados. Mobile linear."
+    },
+    {
+      "name": "casas",
+      "anatomy": "Duas unidades em linhas alternadas com fotografia e informações em blocos laterais"
+    },
+    {
+      "name": "memória",
+      "anatomy": "Acervo grande à esquerda, data e narrativa em papel à direita"
+    },
+    {
+      "name": "evento",
+      "anatomy": "Fotografia intimista em faixa lateral e convite de reserva"
+    },
+    {
+      "name": "footer",
+      "anatomy": "Fechamento marrom, assinatura serifada e contatos organizados"
+    }
+  ],
+  "component_language": {
+    "buttons": "Retangulares; laranja e branco para ação principal; secundários sublinhados; hover marrom; active deslocamento 1px; foco com outline duplo.",
+    "galleries": "Links abrem AVIF de resolução original sob demanda em dialog; carregamento/erro explícitos e link Abrir fotografia. Escape retorna foco; Ctrl/Cmd-clique e navegação sem JS preservados.",
+    "reservation": "Unidade por URL com botões aria-pressed; iframe sob demanda, requestId e timer limpos, timeout permite tentar novamente e alternativa oficial sempre visível. Não confirmar reserva pelo evento load.",
+    "events": "Levar ao formulário oficial existente; não simular envio nem inventar caixa de e-mail.",
+    "map": "Link direto para rotas; mapa embutido carregado apenas por clique.",
+    "menu": "Cardápio de pratos conhecidos e acesso ao menu oficial completo; não inventar ingredientes ou preços."
+  },
+  "responsive_rules": {
+    "320": "Home imersiva, reserva no cabeçalho e ações completas no hero de 100vh. Conteúdo abaixo da dobra em coluna, fotografias com escalas intencionais.",
+    "390": "Home mantém fachada visível no topo e título/ações na metade inferior; seta discreta na base.",
+    "768": "Home imersiva; páginas internas com texto e fotografia empilhados.",
+    "1024": "Menu compacto e reserva integral; fotografia do hero em tela inteira, texto sobreposto e descida acessível.",
+    "1440+": "Marca central entre grupos de navegação, home imersiva, heros internos com fotografia emoldurada.; fotografia do hero em tela inteira, texto sobreposto e descida acessível.",
+    "paisagem": "Cabeçalho64px e escala proporcional à altura; fotografia do hero em tela inteira, texto sobreposto e descida acessível.",
+    "zoom_extremo": "Até 599px e altura de 480px: região de texto rolável com espaço útil para o CTA, mantendo 100vh. Foco verificado em 360×225 e 390×320. Exceção aos heros sem rolagem interna."
+  },
+  "empty_space_review": "Verificar transição hero/seção, fotos verticais, base de galeria e final do formulário de reserva em 320/768/1024/1440+. Vazio só para separar decisões; ajustar alturas fixas se parecer buraco.",
+  "accessibility_floor": {
+    "target": "WCAG 2.2 AA nos critérios aplicáveis, combinando axe, teclado e reflow; não implica certificação.",
+    "contrast": "Pares calculados em tokens.contrast_verification",
+    "focus": "Outline visível, skip link, dialogs nativos com foco contido e Escape",
+    "touch": "44px mínimo",
+    "images": "Alt, dimensões, srcset e lazy abaixo da dobra",
+    "semantics": "1 h1 por página, h2/h3 sequenciais, lang pt-BR"
+  },
+  "performance_floor": {
+    "media": "Derivados AVIF quality60 diretamente de matrizes lossless, preservadas fora do artefato público. Heros com picture e recortes9:16/4:5/16:9, sem ampliar fotos de acervo histórico na primeira dobra. Loading eager/high apenas no hero; lazy/low no conteúdo.",
+    "fonts": "Três WOFF2 locais em src/assets/fonts, com fingerprint gerado no build e preload compatível. Cache immutable preparado para /_astro/.",
+    "js": "JS apenas para navegação, dialog, mapa e iframe. Astro estático, nenhum framework cliente.",
+    "integrations": "Tagme e Google Maps apenas por intenção explícita",
+    "image_revision": "Gerar AVIF diretamente de matrizes lossless recuperadas dos JPEGs originais; recortes portrait e landscape separados no hero, sizes alinhado à área coberta, prioridade alta apenas no hero e lazy nas demais fotos. Medir Lighthouse sem remover noindex para inflar SEO."
+  },
+  "quality_gate": [
+    "Fotos carregadas e crop verificado",
+    "Sem overflow ou texto cortado em 320/768/1024/1440+",
+    "Dois passes reais de browser",
+    "Build e gate executável verdes",
+    "Nenhuma promessa de reserva confirmada pelo site; transação no fornecedor",
+    "Limitações de marca/endereço/horário registradas",
+    "Verificação da versão atual em todas páginas e breakpoints; auditoria visual dupla e métricas atuais."
+  ],
+  "boldness_budget": [
+    "Fachada imersiva com mensagem em creme",
+    "Marca central na navegação",
+    "Gastronomia em fundo marrom profundo",
+    "Casas em linhas alternadas",
+    "Acervo histórico e data em papel"
+  ],
+  "global_reference_repertoire": [
+    {
+      "url": "https://gruporubaiyat.com/pt",
+      "role": "Comparação pontual de qualidade após a implementação, não molde.",
+      "observed": "Hero gastronômico em tela cheia, navegação de reservas explícita e distinção de casas.",
+      "principle": "Acesso a reservas e reconhecimento da experiência precisam sobreviver à mídia dominante.",
+      "rodeio_decision": "Manter a fachada real pedida no briefing e o título editorial, sem importar fundo em vídeo, paleta, copy ou layout.",
+      "evidence": "data/visual-review/benchmark-rubaiyat.png"
+    }
+  ],
+  "motion_direction": {
+    "concept": "Ritmo de serviço à mesa: elementos entram em sequência e permanecem estáveis.",
+    "elements": "Textos preservam entrada sequenciada. Fotografias fazem dissolução de opacidade de 25% a 100% em 1000ms após decode, sem deslocar molduras ou blocos. Zoom de hover nas unidades limitado a 1,015; galeria abre só com fade.",
+    "pages": "Transição nativa de documentos, fade e deslocamento vertical discreto; cabeçalho preservado. Navegação padrão em browsers sem suporte.",
+    "accessibility": "prefers-reduced-motion desativa movimento; conteúdo nunca depende de CSS oculto para aparecer."
+  },
+  "revision_direction": {
+    "date": "2026-09-08",
+    "scope": "Redesenho visual local solicitado após revisão técnica; não publicar nesta etapa.",
+    "preserved": [
+      "Fotografias e fatos do briefing",
+      "Paleta e famílias tipográficas",
+      "100vh incluindo cabeçalho",
+      "Entradas de texto aprovadas",
+      "Funcionalidades e noindex"
+    ],
+    "improvements": [
+      "Home imersiva e mudança perceptível de composição",
+      "Marca central e menu de navegação mais refinado",
+      "Diagramação específica para cada página",
+      "Alternância de escalas, fundos e hierarquias",
+      "Revisões visuais reais e validação responsiva"
+    ]
+  },
+  "restaurant_galleries": {
+    "jardins": 15,
+    "iguatemi": 5,
+    "source": "Pastas específicas das unidades no Drive do briefing",
+    "layout": "Grade uniforme3colunas desktop,2tablet,1mobile; ampliação com navegação e contador",
+    "exception": "Galeria completa pode repetir fotos editoriais da respectiva unidade, por pedido explícito."
+  }
+}

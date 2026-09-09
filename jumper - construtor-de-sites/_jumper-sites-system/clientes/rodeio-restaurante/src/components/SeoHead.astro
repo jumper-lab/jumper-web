@@ -1,0 +1,109 @@
+---
+/** Metadata and stable identities for the brand and the restaurant on this page. */
+export interface Organization {
+  id: string;
+  name: string;
+  url: string;
+  logo: string;
+  telephone?: string;
+  sameAs?: string[];
+}
+
+export interface Restaurant {
+  id: string;
+  name: string;
+  url: string;
+  street: string;
+  city: string;
+  region: string;
+  postalCode: string;
+  country: string;
+  reservationUrl: string;
+}
+
+export interface Props {
+  title: string;
+  description: string; // >= 20 chars, unica por pagina (o gate reprova duplicada/curta)
+  canonical: string | URL;
+  ogImage: string | URL; // absoluta de preferencia
+  locale?: string;
+  siteName?: string;
+  ogType?: "website" | "article";
+  favicon?: string;
+  organization: Organization;
+  restaurant?: Restaurant;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage,
+  locale = "pt_BR",
+  siteName,
+  ogType = "website",
+  favicon = "/favicon.svg",
+  organization,
+  restaurant,
+  noindex = false,
+} = Astro.props;
+
+const canonicalStr = canonical.toString();
+const ogImageStr = ogImage.toString();
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": organization.id,
+      name: organization.name,
+      url: organization.url,
+      logo: organization.logo,
+      ...(organization.telephone && { telephone: organization.telephone }),
+      ...(organization.sameAs && { sameAs: organization.sameAs }),
+    },
+    ...(restaurant ? [{
+      "@type": "Restaurant",
+      "@id": restaurant.id,
+      name: restaurant.name,
+      url: restaurant.url,
+      parentOrganization: { "@id": organization.id },
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: restaurant.street,
+        addressLocality: restaurant.city,
+        addressRegion: restaurant.region,
+        postalCode: restaurant.postalCode,
+        addressCountry: restaurant.country,
+      },
+      acceptsReservations: restaurant.reservationUrl,
+    }] : []),
+  ],
+};
+const jsonLdText = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalStr} />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<meta property="og:type" content={ogType} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalStr} />
+<meta property="og:image" content={ogImageStr} />
+<meta property="og:locale" content={locale} />
+{siteName && <meta property="og:site_name" content={siteName} />}
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageStr} />
+
+<link rel="icon" href={favicon} />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<script is:inline type="application/ld+json" set:html={jsonLdText} />

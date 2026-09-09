@@ -1,0 +1,24 @@
+---
+import { getImage } from 'astro:assets';
+import Photo from './Photo.astro';
+import { photos } from '../lib/photos';
+interface Props { alt: string; }
+const { alt } = Astro.props;
+// Deliver only the visible portrait area; transform once from the real source.
+const portrait = async (widths: number[], ratio: number) => {
+  const images = await Promise.all(widths.map(width => getImage({
+    src: photos.fachada, width, height: Math.round(width / ratio),
+    fit: 'cover', position: 'centre', format: 'avif', quality: 55,
+  })));
+  return images.map((image, index) => `${image.src} ${widths[index]}w`).join(', ');
+};
+const [phone, tablet] = await Promise.all([
+  portrait([320,480,640,768], 3/5),
+  portrait([480,640,768,1024], 4/5),
+]);
+---
+<picture>
+  <source media="(max-width:599px) and (orientation:portrait)" srcset={phone} sizes="max(100vw, 60vh)" width="768" height="1280" type="image/avif"/>
+  <source media="(min-width:600px) and (max-width:1199px) and (orientation:portrait)" srcset={tablet} sizes="max(100vw, 80vh)" width="1024" height="1280" type="image/avif"/>
+  <Photo name="fachada" alt={alt} eager sizes="max(100vw, 150vh)"/>
+</picture>

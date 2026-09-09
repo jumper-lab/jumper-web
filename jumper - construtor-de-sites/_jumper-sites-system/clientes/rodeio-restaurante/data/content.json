@@ -1,0 +1,111 @@
+{
+  "schema_version": "3.0.0",
+  "client": {
+    "name": "Rodeio Restaurante",
+    "slug": "rodeio-restaurante",
+    "segment": "Restaurante",
+    "contact": {
+      "responsible": "Roberta",
+      "whatsapp": "",
+      "email": "",
+      "phone": "(11) 3474-1333"
+    },
+    "social": {
+      "instagram": "@rodeiorestaurante",
+      "facebook": "",
+      "linkedin": ""
+    },
+    "founded_year": "1958",
+    "document": "",
+    "short_description": "Um clássico que se renova, desde 1958"
+  },
+  "positioning": {
+    "short_description": "Um clássico que se renova, desde 1958",
+    "differentiator": "Uma tradição construída ao longo de mais de seis décadas, que une carnes, cozinha e acolhimento em uma experiência contemporânea.",
+    "must_have_message": "O Rodeio mantém sua essência enquanto acompanha o tempo. Uma história que começou em 1958 e segue presente em cada detalhe.",
+    "client_voice_quote": "“É aquele lugar que faz parte das minhas histórias e continua sendo uma escolha especial.”",
+    "story": "Em 1958, o Rodeio começava sua história na Rua Haddock Lobo, quando os Jardins ainda davam seus primeiros passos como um dos endereços mais importantes de São Paulo.\nUm ano depois, a família Macedo assumiu o restaurante. Roberto Macedo, então jovem administrador, passou a conduzir a casa e, ao longo dos anos, transformou sua identidade. O Rodeio cresceu, ganhou novos serviços, incorporou vinhos e carnes especiais e ajudou a criar uma nova maneira de viver uma churrascaria em São Paulo.\nFoi também nessa trajetória que nasceram alguns dos grandes clássicos da casa, como a picanha fatiada e o arroz Rodeio, o tradicional Biro-Biro.\nA história seguiu dentro da família. Em 1986, Silvia Macedo começou a trabalhar ao lado do pai e, com o tempo, tornou-se parte fundamental da condução do restaurante.\nQuase sete décadas depois, o Rodeio continua na Haddock Lobo. Em 2026, a história ganha um novo endereço, a poucos metros de onde tudo começou.\n"
+  },
+  "audience": {
+    "target": "Adultos de maior poder aquisitivo que valorizam gastronomia, carnes, ambiente e atendimento, e procuram o Rodeio para refeições especiais, encontros, negócios ou celebrações.\nPessoas que circulam e residem em regiões de perfil premium de São Paulo, especialmente Jardins, Pinheiros, Itaim, Vila Olímpia, Jardim Paulistano e arredores das unidades.\nQuerem encontrar um restaurante confiável para uma ocasião em que comida, ambiente e experiência precisam estar à altura do momento.\nNível de decisão médio a alto. O cliente costuma considerar localização, cardápio, ambiente, reputação e ocasião antes de decidir.",
+    "not_for": "Não é uma proposta focada em preço, promoções ou refeições rápidas. O Rodeio também não busca competir por volume ou oferecer uma experiência informal e casual.",
+    "typical_problem": "“Quero escolher um restaurante especial e preciso ter certeza de que será uma boa experiência.”",
+    "typical_result": "Ele transforma uma refeição em uma experiência completa, com a segurança de estar em um restaurante tradicional e reconhecido."
+  },
+  "blog": {
+    "enabled": false,
+    "reason": "Briefing explicitamente sem blog; não ativado apenas pelo rótulo M4."
+  },
+  "services": [
+    {
+      "name": "Gastronomia"
+    },
+    {
+      "name": "Reservas Jardins e Iguatemi"
+    },
+    {
+      "name": "Eventos"
+    }
+  ],
+  "hours": [
+    "Segunda a quinta: 12h às 15h30 · 18h às 23h",
+    "Sexta e sábado: 12h às 22h",
+    "Domingos e feriados: 12h às 20h"
+  ],
+  "units": [
+    {
+      "slug": "jardins",
+      "name": "Jardins",
+      "address": "Rua Haddock Lobo, 1448",
+      "district": "Cerqueira César, São Paulo — SP",
+      "zip": "01414-002",
+      "image": "jardins",
+      "reservation": "https://rodeiosp.com.br/reservas/jardins/",
+      "widget": "https://reservation-widget.tagme.com.br/reservation/schedule/56c778030896b3cd13c609e5/reservationWidget",
+      "map": "https://share.google/ieCesdCBfaoqhE5d4",
+      "intro": "Na Rua Haddock Lobo, a casa acompanha a trajetória do Rodeio desde 1958. Um endereço ligado à história da família Macedo e de São Paulo."
+    },
+    {
+      "slug": "iguatemi",
+      "name": "Iguatemi",
+      "address": "Av. Brigadeiro Faria Lima, 2232",
+      "district": "Jardim Paulistano, São Paulo — SP",
+      "zip": "01451-000",
+      "image": "iguatemi",
+      "reservation": "https://rodeiosp.com.br/reservas/iguatemi/",
+      "widget": "https://reservation-widget.tagme.com.br/reservation/schedule/56c778010896b3cd13c609d2/reservationWidget",
+      "map": "https://share.google/SoX3qamTaF1qtEKIs",
+      "intro": "Na Avenida Brigadeiro Faria Lima, o Rodeio Iguatemi reúne carnes, cozinha e acolhimento para almoços, encontros de negócios e celebrações."
+    }
+  ],
+  "menu_url": "https://livemenu.app/menu/56c778030896b3cd13c609e5",
+  "events_url": "https://rodeiosp.com.br/eventos/",
+  "cta": {
+    "source": "Agendar atendimento",
+    "resolved": "Reservar uma mesa",
+    "rationale": "Verbo específico para intenção explícita de reservas no briefing."
+  },
+  "sources": [
+    {
+      "url": "https://rodeiosp.com.br",
+      "use": "Marca branca, favicon e link do cardápio; não copiar layout ou copy legada."
+    },
+    {
+      "url": "https://rodeiosp.com.br/reservas/jardins/",
+      "use": "URL de integração de reservas Tagme"
+    },
+    {
+      "url": "https://rodeiosp.com.br/reservas/iguatemi/",
+      "use": "URL de integração de reservas Tagme"
+    },
+    {
+      "url": "https://rodeiosp.com.br/eventos/",
+      "use": "Canal oficial de orçamento; formulário externo existente."
+    }
+  ],
+  "publication_notes": [
+    "Horários preservados do briefing, diferentes do site antigo; validar por unidade antes do lançamento.",
+    "Endereços preservados literalmente do briefing; validar a referência da mudança em 2026.",
+    "Sem inventar cardápio completo, preços, avaliações ou informações de contato."
+  ]
+}

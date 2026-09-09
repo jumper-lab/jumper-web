@@ -1,0 +1,19 @@
+---
+import {getImage} from 'astro:assets';
+import {photos, type PhotoName} from '../lib/photos';
+interface Props {name:PhotoName;alt:string;}
+const {name,alt}=Astro.props;
+const source=photos[name];
+const crop=async(widths:number[],ratio:number)=>{
+ const images=await Promise.all(widths.map(width=>getImage({src:source,width,height:Math.round(width/ratio),fit:'cover',position:'centre',format:'avif',quality:60})));
+ return {src:images[0].src,srcset:images.map((image,i)=>`${image.src} ${widths[i]}w`).join(', ')};
+};
+const [phone,tablet,desktop]=await Promise.all([
+ crop([360,540,720,900],9/16),crop([640,840,1080],4/5),crop([960,1440,1920,2560],16/9)
+]);
+---
+<picture>
+ <source media="(max-width:599px) and (orientation:portrait)" srcset={phone.srcset} sizes="max(100vw, 56.25vh)" width="900" height="1600" type="image/avif"/>
+ <source media="(min-width:600px) and (max-width:1199px) and (orientation:portrait)" srcset={tablet.srcset} sizes="max(100vw, 80vh)" width="1080" height="1350" type="image/avif"/>
+ <img src={desktop.src} srcset={desktop.srcset} sizes="max(100vw, 177.78vh)" width="2560" height="1440" alt={alt} loading="eager" fetchpriority="high" decoding="async"/>
+</picture>

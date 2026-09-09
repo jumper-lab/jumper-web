@@ -1,0 +1,144 @@
+{
+  "id": "jumper-studio-site-factory-briefing",
+  "source": "jumper.studio",
+  "channel": "site-publico",
+  "created_at": "2026-09-08T20:14:36.196Z",
+  "client": {
+    "name": "Rodeio Restaurante",
+    "slug": "rodeio-restaurante",
+    "segment": "Restaurante",
+    "contact": {
+      "responsible": "Roberta",
+      "whatsapp": "",
+      "email": "",
+      "phone": "(11) 3474-1333"
+    },
+    "social": {
+      "instagram": "@rodeiorestaurante",
+      "facebook": "",
+      "linkedin": ""
+    },
+    "founded_year": "1958",
+    "document": ""
+  },
+  "project_scope": {
+    "model": "M4",
+    "model_confirmation": false,
+    "business_nature": "A",
+    "secondary_page": null,
+    "has_blog": false,
+    "use_pexels_as_placeholder": false,
+    "pexels_mode": "fallback"
+  },
+  "location": {
+    "city_coverage": "São Paulo",
+    "address": "Rua Haddock Lobo, 1448 - Cerqueira César, São Paulo - SP, 01414-002\nAv. Brig. Faria Lima, 2232 - Jardim Paulistano, São Paulo - SP, 01451-000",
+    "show_address": "",
+    "google_business": "https://share.google/ieCesdCBfaoqhE5d4 / https://share.google/SoX3qamTaF1qtEKIs",
+    "business_hours": "Segunda a quinta: 12h às 15h30 | 18h às 23h\nSexta e sábado: 12h às 22h\nDomingos e feriados: 12h às 20h",
+    "service_area": ""
+  },
+  "content": {
+    "positioning": {
+      "short_description": "Um clássico que se renova, desde 1958",
+      "differentiator": "Uma tradição construída ao longo de mais de seis décadas, que une carnes, cozinha e acolhimento em uma experiência contemporânea.",
+      "must_have_message": "O Rodeio mantém sua essência enquanto acompanha o tempo. Uma história que começou em 1958 e segue presente em cada detalhe.",
+      "client_voice_quote": "“É aquele lugar que faz parte das minhas histórias e continua sendo uma escolha especial.”",
+      "story": "Em 1958, o Rodeio começava sua história na Rua Haddock Lobo, quando os Jardins ainda davam seus primeiros passos como um dos endereços mais importantes de São Paulo.\nUm ano depois, a família Macedo assumiu o restaurante. Roberto Macedo, então jovem administrador, passou a conduzir a casa e, ao longo dos anos, transformou sua identidade. O Rodeio cresceu, ganhou novos serviços, incorporou vinhos e carnes especiais e ajudou a criar uma nova maneira de viver uma churrascaria em São Paulo.\nFoi também nessa trajetória que nasceram alguns dos grandes clássicos da casa, como a picanha fatiada e o arroz Rodeio, o tradicional Biro-Biro.\nA história seguiu dentro da família. Em 1986, Silvia Macedo começou a trabalhar ao lado do pai e, com o tempo, tornou-se parte fundamental da condução do restaurante.\nQuase sete décadas depois, o Rodeio continua na Haddock Lobo. Em 2026, a história ganha um novo endereço, a poucos metros de onde tudo começou.\n"
+    },
+    "audience": {
+      "target": "Adultos de maior poder aquisitivo que valorizam gastronomia, carnes, ambiente e atendimento, e procuram o Rodeio para refeições especiais, encontros, negócios ou celebrações.\nPessoas que circulam e residem em regiões de perfil premium de São Paulo, especialmente Jardins, Pinheiros, Itaim, Vila Olímpia, Jardim Paulistano e arredores das unidades.\nQuerem encontrar um restaurante confiável para uma ocasião em que comida, ambiente e experiência precisam estar à altura do momento.\nNível de decisão médio a alto. O cliente costuma considerar localização, cardápio, ambiente, reputação e ocasião antes de decidir.",
+      "not_for": "Não é uma proposta focada em preço, promoções ou refeições rápidas. O Rodeio também não busca competir por volume ou oferecer uma experiência informal e casual.",
+      "typical_problem": "“Quero escolher um restaurante especial e preciso ter certeza de que será uma boa experiência.”",
+      "typical_result": "Ele transforma uma refeição em uma experiência completa, com a segurança de estar em um restaurante tradicional e reconhecido."
+    },
+    "conversion": {
+      "main_goal": "institucional",
+      "primary_cta": "Agendar atendimento",
+      "priority_offer": "Apresentar a história e a identidade do Rodeio, valorizar sua gastronomia e seus espaços, gerar desejo pela experiência e facilitar a conversão em reservas e eventos.",
+      "appointment_link": "Fazer mesma aba para reserva https://rodeiosp.com.br/reservas/jardins/"
+    },
+    "services": {
+      "items_raw": "",
+      "pricing_mode": "",
+      "promotion": ""
+    },
+    "portfolio": {
+      "mode": "",
+      "categories_raw": "",
+      "minimum_items": "",
+      "pricing_mode": "",
+      "items_description": ""
+    },
+    "team": {
+      "enabled": "sem-destaque",
+      "members_raw": ""
+    },
+    "social_proof": {
+      "testimonials_raw": "",
+      "testimonials_permission": "",
+      "stats_raw": "",
+      "google_rating": "",
+      "credentials_raw": ""
+    },
+    "blog": {
+      "enabled": false,
+      "mode": "",
+      "frequency": "",
+      "initial_posts_raw": "",
+      "admin_login_path": null,
+      "posts_storage": null,
+      "uploads_path": null
+    }
+  },
+  "creative_direction": {
+    "personality": "A",
+    "voice_tone": "casual-amistoso",
+    "visual_references": "",
+    "avoid_site": "",
+    "primary_color": "Laranja do logo",
+    "secondary_or_forbidden_colors": "Cores de apoio branco, marrom",
+    "forbidden_words_or_themes": "“O melhor”, “a melhor”, “o melhor restaurante”\n“Excelência”, “excelência gastronômica”\nSuperlativos e promessas absolutas\nLinguagem exagerada ou grandiosa demais\nComunicação focada em preço, desconto ou promoção como principal argumento\nComparações diretas com concorrentes\nPromessas que não possam ser comprovadas",
+    "visual_preference": "equilibrado",
+    "animation_preference": "discreta"
+  },
+  "assets": {
+    "materials_folder": "https://drive.google.com/drive/u/0/folders/1D08zxezyppHc-kjNO_4SeE00JTKLS-Cn",
+    "brand_manual_link": "https://docs.google.com/document/d/1pPXer6OQrtSOh0hgnVIg4C7uqvcpDO45/edit?usp=drive_link&ouid=112230861793286454721&rtpof=true&sd=true",
+    "logo_link": "https://drive.google.com/drive/u/0/folders/1JVPr5FSO_x1q6tuu4UGUy2OBkT4-5bUA",
+    "hero_image_link": "https://drive.google.com/file/d/1i8q7sduT8SWH_GbCdmBi7DccCfnhw28F/view?usp=drive_link",
+    "owner_photos_folder": "",
+    "location_photos_folder": "",
+    "team_photos_folder": "",
+    "services_photos_folder": "",
+    "gallery_folder": "",
+    "partner_logos_folder": "",
+    "video_url": "",
+    "missing_notes": "",
+    "uploaded_files": {},
+    "additional_images": []
+  },
+  "domain": {
+    "status": "nao-sei",
+    "current": "",
+    "registrar": "",
+    "desired": ""
+  },
+  "integrations": {
+    "selected": [],
+    "pixel_ids_raw": "",
+    "crm_current": "reservas jardins https://rodeiosp.com.br/reservas/jardins/\nreservas iguatemi https://rodeiosp.com.br/reservas/iguatemi/"
+  },
+  "operations": {
+    "deadline": "15-dias",
+    "pending_to_start": "",
+    "best_contact_time": "9h à 18h",
+    "final_notes": ""
+  },
+  "site_factory_target": {
+    "client_folder": "_jumper-sites-system/clientes/rodeio-restaurante/",
+    "raw_entry_folder": "_jumper-sites-system/clientes/rodeio-restaurante/briefing/entrada/",
+    "expected_normalized_briefing": "_jumper-sites-system/clientes/rodeio-restaurante/briefing/briefing-normalizado.md"
+  }
+}
+

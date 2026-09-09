@@ -1,0 +1,618 @@
+{
+  "schema_version": "3.0.0",
+  "stage": "visual_quality_audit",
+  "client": "Rodeio Restaurante",
+  "status": "visual_review_complete_with_performance_limits",
+  "date": "2026-09-08",
+  "scope": "Redesenho local de home, menu e diagramação de todas as páginas. A publicação Vercel anterior não foi alterada.",
+  "source_sha256": "a34b07ca26dafad267f4fccd971ac1b4c8a51542c1bd1108aa52247cfec2d5ca",
+  "urls": {
+    "local": "http://localhost:4321",
+    "published_previous": "https://rodeio-restaurante.vercel.app"
+  },
+  "briefing_review": {
+    "report": "data/visual-review/revision-briefing-findings.json",
+    "alignment": "História, clássicos, público, duas unidades, fotos reais, reservas e ausência de blog conferidos. Sem preços, depoimentos, ingredientes ou promessas inventados.",
+    "commercial_values": "Preservados dados do briefing; divergências oficiais registradas por unidade.",
+    "metadata": "Organization estável para marca e Restaurant por unidade; telefone geral apenas na marca, sem horários incertos em schema."
+  },
+  "first_fold": {
+    "five_second_test": {
+      "result": "passed_editorial_review",
+      "evidence": "Restaurante, São Paulo, desde 1958 e reserva reconhecíveis sobre a fachada real. Leitura protegida por camada escura. Avaliação editorial, sem pesquisa com usuários."
+    },
+    "print_test": {
+      "result": "passed_with_note",
+      "evidence": "A fachada contemporânea do briefing, a mensagem de continuidade e a tipografia de cardápio estabelecem identidade. Limite: a arquitetura isolada não identifica gastronomia; eyebrow e sequência de serviço/pratos dão o contexto."
+    },
+    "competitor_test": {
+      "result": "passed_for_presentation",
+      "reference": "https://gruporubaiyat.com/pt",
+      "evidence": "Referência visual previamente registrada: acesso claro a reservas e mídia dominante. Revisão preserva solução própria do Rodeio; não houve novo ranking de concorrentes ou teste de conversão nesta rodada.",
+      "screenshot": "data/visual-review/benchmark-rubaiyat.png"
+    },
+    "viewport_coverage": "100% largura útil e 100vh incluindo header, em todas as dez páginas e nove tamanhos principais. Hero sem rolagem interna nesses cenários.",
+    "empty_space": "Home sem faixa solta; abertura da experiência integrada ao texto e serviço. Convites duplicados removidos das internas. Imagens variam de escala; espaço do widget tem função antes/depois do carregamento."
+  },
+  "visual_checks": {
+    "photography": "Fotografias gerais AVIF quality60. Portrait da home usa recortes3:5 e4:5 em quality55, gerados diretamente da origem. Enquadramento revisto em seis viewports; detalhe e legibilidade conferidos também em390px/DPR1,75. A imagem do teste mobile passou de296.566 para110257bytes (−62,8%).",
+    "hierarchy": "Home imersiva; heros internos com título proporcional e fotografia emoldurada. Cronologia, cardápio, ocasiões e dados práticos têm diagramação própria.",
+    "navigation": "Marca central entre dois grupos no desktop, reserva visível em320px, menu marrom com topo sticky e foco acessível.",
+    "rhythm": "Experiência em papel, gastronomia marrom, casas alternadas, memória em creme e ocasião fotográfica. Footer assume o fechamento comercial sem repetição.",
+    "whitespace": "Screenshots reais inspecionados em mobile, tablet, desktop e paisagem; sem assets ausentes ou vazios de grid."
+  },
+  "functional_checks": {
+    "report": "data/visual-review/revision/redesign-final/report.json",
+    "groups": [
+      {
+        "name": "Landscape menu: close remains visible, focus cycle, Escape",
+        "passed": true
+      },
+      {
+        "name": "Gallery: high resolution, clear error, focus return",
+        "passed": true
+      },
+      {
+        "name": "Reservations: unit switching and timeout fallback without submission",
+        "passed": true
+      },
+      {
+        "name": "Map and direct fallback",
+        "passed": true
+      },
+      {
+        "name": "Internal links and metadata",
+        "passed": true
+      },
+      {
+        "name": "No JavaScript: mobile navigation, gallery and reservations work as links",
+        "passed": true
+      },
+      {
+        "name": "Footer reservation CTA preserves the current unit and reservation anchor",
+        "passed": true
+      },
+      {
+        "name": "Header transition widths 1199, 1200 and 1350 keep all controls separate",
+        "passed": true
+      },
+      {
+        "name": "Normal motion remains, reduced motion cancels, history works",
+        "passed": true
+      }
+    ],
+    "pass_count": 9,
+    "failures": [],
+    "no_real_submissions": true,
+    "external_provider_limit": "Teste verifica carregamento, unidade e alternativas, sem concluir reservas/orçamentos ou garantir disponibilidade do fornecedor.",
+    "gallery": "Resolução original sob demanda; load/error, fallback, Escape e retorno de foco.",
+    "reservation": "requestId, timer limpo, aria-busy, retry em timeout, seleção por URL e fallback sempre disponível.",
+    "motion": "Textos aprovados preservados. Fotos ancoradas com dissolve; preferência reduzida cancela animações; história do navegador funciona."
+  },
+  "accessibility_checks": {
+    "target": "WCAG 2.2 AA nos critérios aplicáveis",
+    "automated": "Axe WCAG 2 A/AA, 2.1 AA e 2.2 AA: zero violações detectadas em 320 e 1440 para dez páginas na rodada final.",
+    "manual": "Teclado, Escape, foco contido/retornado, fechar em menu rolado, navegação sem JavaScript, legibilidade e contraste revisados.",
+    "touch": "À mesa e controles principais com 44px; links textuais comuns avaliados com critérios de espaçamento.",
+    "zoom": "Equivalência de reflow em 720×450 e oito testes extras de foco em 360×225/390×320; não declarar teste de todas combinações de dispositivo/leitor de tela.",
+    "limitations": "Sem certificação formal nem teste com usuários/leitores de tela externos."
+  },
+  "deep_review_passes": [
+    {
+      "pass": "before_redesign",
+      "evidence": "data/visual-review/redesign/audit-before-redesign.json",
+      "review": "Revisão anterior concentrou-se em correções técnicas; usuário pediu mudança visual mais profunda."
+    },
+    {
+      "pass": 1,
+      "evidence": "data/visual-review/revision/redesign-pass1/report.json; data/visual-review/redesign/interiors-pass1/; data/visual-review/revision-design/redesign/review.md",
+      "review": "90 combinações,7 fluxos,8 extremos aprovados. Home e corpos de todas as páginas observados em screenshots; auditor independente inspecionou320/768 ehomeem oito tamanhos. Apontados espaço entre palavras, duplicidade de convites e nitidez da fachada portrait; corrigidos."
+    },
+    {
+      "pass": 2,
+      "evidence": "data/visual-review/revision/redesign-final/report.json",
+      "review": "Após corrigir espaço entre palavras, repetição de convites e estilos obsoletos, 90 combinações passaram novamente; 20 verificações axe sem violações e nove grupos funcionais aprovados. Root reviu capturas finais, incluindo Eventos320, home e transição do cabeçalho em1200px. Reservas do rodapé preservam unidade e âncora."
+    },
+    {
+      "pass": 3,
+      "evidence": "data/visual-review/redesign/portrait-delivery/report.json; data/visual-review/redesign/portrait-delivery/",
+      "review": "Medição detectou desperdício da fachada larga em portrait. Pipeline passou a entregar recortes AVIF da mesma foto, sem compressão intermediária; seis viewports suplementares conferidos. Root observou390/768 com nitidez e composição preservadas. Nenhuma nova alteração de texto, interação ou dimensão do hero. A compressão final55 foi comparada visualmente em alta densidade; manteve a leitura da fachada. O servidor de desenvolvimento extra foi encerrado antes da última medição para reduzir disputa de CPU."
+    }
+  ],
+  "performance_checks": {
+    "tool": "Lighthouse13.4.1",
+    "environment": {
+      "lighthouse": "13.4.1",
+      "mobile": "Lighthouse default mobile, simulated Slow4G, CPU4x, new Chrome profile per sample",
+      "desktop": "Lighthouse desktop preset",
+      "samples": {
+        "homeMobile": 3,
+        "homeDesktop": 1,
+        "restaurantesMobile": 3
+      },
+      "conditions": "Sequential Lighthouse runs after all task browsers/build/check processes and extra development server were stopped. Preview4321 remained available. All samples retained, including variable first-run results. Machine was not isolated from unrelated workloads; an after-run CPU snapshot showed several busy Chrome renderers and WindowServer, with no processes closed."
+    },
+    "report": "data/visual-review/redesign-performance/summaryfinal.json",
+    "home_mobile": {
+      "samples": 3,
+      "performanceMedian": 94,
+      "performanceRange": [
+        87,
+        96
+      ],
+      "lcpMedianMs": 2749.1507,
+      "lcpRangeMs": [
+        2705.4398,
+        2809.1624
+      ],
+      "tbtMedianMs": 155,
+      "tbtRangeMs": [
+        61,
+        388.0000000000001
+      ],
+      "transferMedianBytes": 406479,
+      "clsValues": [
+        0,
+        0,
+        0
+      ]
+    },
+    "home_desktop": {
+      "performance": 100,
+      "accessibility": 100,
+      "best_practices": 100,
+      "seo": 69,
+      "lcp_ms": 666.1115,
+      "cls": 0
+    },
+    "restaurantes_mobile": {
+      "samples": 3,
+      "performanceMedian": 80,
+      "performanceRange": [
+        61,
+        91
+      ],
+      "lcpMedianMs": 2157.8741,
+      "lcpRangeMs": [
+        1861.955,
+        3680.1618
+      ],
+      "tbtMedianMs": 674,
+      "tbtRangeMs": [
+        362,
+        1759.5
+      ],
+      "transferMedianBytes": 244413,
+      "clsValues": [
+        0,
+        0,
+        0.00001321402555987799
+      ]
+    },
+    "all_measured_accessibility": 100,
+    "all_measured_best_practices": 100,
+    "seo": 69,
+    "comparisons": {
+      "beforeEntireRevision": {
+        "performance": 95,
+        "lcpMs": 2792.3596,
+        "bytes": 438951
+      },
+      "beforeVisualRedesign": {
+        "count": 3,
+        "performanceMedian": 98,
+        "lcpMedianMs": 2413.2947,
+        "lcpRangeMs": [
+          2407.4836000000005,
+          2414.1259
+        ],
+        "tbtMedianMs": 20,
+        "transferMedianBytes": 339131
+      },
+      "visualRedesignBeforePortrait": {
+        "samples": 3,
+        "performanceMedian": 91,
+        "performanceRange": [
+          87,
+          94
+        ],
+        "lcpMedianMs": 3353.5366000000004,
+        "lcpRangeMs": [
+          3046.7349999999997,
+          3720.3255
+        ],
+        "tbtMedianMs": 137,
+        "tbtRangeMs": [
+          35,
+          179
+        ],
+        "transferMedianBytes": 592616,
+        "clsValues": [
+          0,
+          0,
+          0
+        ]
+      },
+      "portraitQuality60": {
+        "samples": 3,
+        "performanceMedian": 93,
+        "performanceRange": [
+          77,
+          96
+        ],
+        "lcpMedianMs": 2934.6902,
+        "lcpRangeMs": [
+          2726.4453000000003,
+          2940.9469
+        ],
+        "tbtMedianMs": 144,
+        "tbtRangeMs": [
+          21,
+          742
+        ],
+        "transferMedianBytes": 430002,
+        "clsValues": [
+          0,
+          0,
+          0
+        ]
+      },
+      "finalQuality55": {
+        "samples": 3,
+        "performanceMedian": 94,
+        "performanceRange": [
+          87,
+          96
+        ],
+        "lcpMedianMs": 2749.1507,
+        "lcpRangeMs": [
+          2705.4398,
+          2809.1624
+        ],
+        "tbtMedianMs": 155,
+        "tbtRangeMs": [
+          61,
+          388.0000000000001
+        ],
+        "transferMedianBytes": 406479,
+        "clsValues": [
+          0,
+          0,
+          0
+        ]
+      },
+      "transferReductionFromPreCropPercent": 31.409378079565855,
+      "transferChangeFromBeforeRedesignPercent": 19.858992542704733
+    },
+    "limits": {
+      "allTestedMobilePagesPerformanceGreen": false,
+      "restaurantsPerformanceTargetMet": false,
+      "restaurantsPerformanceNote": "Median80, range61–91; score target90 not achieved consistently in measured local conditions. All samples retained despite strong variability and observed concurrent machine workload.",
+      "lcpTargetMs": 2500,
+      "lcpTargetMet": false,
+      "seo": "69 solely because noindex and robots Disallow are intentionally preserved. Not all four categories are green.",
+      "field": "No CrUX/INP field measurement. PageSpeed Insights API previously returned429; no online PageSpeed score is claimed.",
+      "quality": "Portrait image remains768x1280 from same real source, quality55; root inspected final screenshot atDPR1.75. Additional compression deliberately not pursued after visual quality review.",
+      "accessibility": "Lighthouse100 is automated evidence and not a guarantee of full manual accessibility compliance.",
+      "variability": "Cold-load samples vary; report all values and medians rather than selecting the best run. After-run host-load-observation.json records concurrent host activity without attributing definitive causality to individual samples."
+    },
+    "cpu_investigation": "Os renderers ocupados pertenciam ao Chrome habitual já aberto antes desta revisão; não eram instâncias temporárias identificadas de Playwright/Lighthouse. Nenhuma aba, URL ou processo do usuário foi alterado."
+  },
+  "known_issues": [
+    "Endereço Jardins: briefing 1448 versus página oficial 1498. Confirmar número vigente e mudança de 2026; mantido briefing, sem inferência comercial.",
+    "Horários e contato: briefing tem horários globais e 3474-1333; Iguatemi oficial informa outros horários e 2348-1111. Confirmar por unidade antes de lançamento definitivo.",
+    "Manual e logo originais não estavam disponíveis na ingestão. Laranja atual é interpretação documentada, e marca veio do site oficial; conformidade de marca depende do material.",
+    "A versão revisada existe somente localmente. Vercel ainda mostra a publicação anterior, sem os novos ajustes nem política de cache; próximo deploy exige autorização específica.",
+    "SEO permanece 69 por noindex intencional. A API PageSpeed retornou429 na revisão anterior; esta rodada usa Lighthouse de laboratório, sem INP/CrUX ou garantia de campo.",
+    "Em viewports extremos de zoom, 100vh exige rolagem interna do texto. CTA acessível por foco foi verificado, mas não há garantia de toda combinação de navegador e tecnologia assistiva.",
+    "Reservas, mapas, cardápio e eventos dependem de serviços externos. Erros de terceiros podem ocorrer; links alternativos existem e nenhum formulário real foi submetido.",
+    "Acervo histórico tem resolução inferior às fotografias contemporâneas; os heros internos usam essa imagem real sem fabricar um acervo de maior definição.",
+    "Meta de desempenho global ainda não atingida nas medições locais: home mobile mediana94 e LCP2,749s (meta2,5s); Restaurantes mobile mediana80, faixa61–91, com TBT bastante variável. Atividade concorrente foi observada no Chrome habitual, mas não prova a causa de cada resultado. Revalidar em ambiente sem concorrência antes de afirmar PageSpeed todo verde; não descartar amostras ruins."
+  ],
+  "final_recommendation": "Redesenho visual concluído e validado localmente. Home, menu e todas as páginas estão prontos para avaliação visual. Desempenho mobile exige nova validação em ambiente sem concorrência e possível otimização adicional; não declarar todas as categorias verdes. Não publicar sem autorização específica. Confirmar dados comerciais e marca antes de habilitar indexação.",
+  "validation": {
+    "astro_check": "39 arquivos; zero erros, avisos e hints na versão final",
+    "build": "10 páginas; última compilação contém os recortes portrait em qualidade55 e prioridades de imagem explícitas",
+    "layout_and_functions": "Duas rodadas de90 combinações; nove grupos funcionais finais aprovados; oito casos extremos e seis verificações suplementares de recorte",
+    "client_gate": "APROVADO na versão final",
+    "publication_artifact_check": "10 páginas e116 arquivos; semURLs locais/arquivos internos no artefato, origemVercelcorreta, noindex preservado. Nenhum arquivo de publicação foi criado ou alterado pelo modo --check."
+  },
+  "design_changes": {
+    "home": [
+      "Fachada imersiva em vez de divisão texto/foto",
+      "Experiência diretamente integrada à foto do serviço",
+      "Gastronomia em fundo marrom e duas escalas fotográficas",
+      "Casas em linhas alternadas, com informações laterais",
+      "Memória com acervo em papel e evento com fotografia própria"
+    ],
+    "navigation": [
+      "Marca centralizada no desktop",
+      "Menu móvel marrom com índices e fechar acessível",
+      "Reserva preservada em320px",
+      "Rodapé com CTA contextual e sem convites duplicados"
+    ],
+    "pages": {
+      "404": "Mensagem e ações proporcionais",
+      "historia": "Coluna narrativa e cronologia com acervo",
+      "cardapio": "Serviço, clássicos e galeria assimétrica",
+      "restaurantes": "Unidades em linhas alternadas e diretório editorial",
+      "jardins_iguatemi": "Endereço, horários, reserva, mapa e galeria agrupados",
+      "eventos": "Ambiente, contato e ocasiões em linhas tipográficas",
+      "reservas": "Unidades e disponibilidade em duas etapas, sem cartão pesado",
+      "privacidade": "Índice navegável e artigos"
+    }
+  },
+  "viewport_matrix": {
+    "routes": [
+      "/",
+      "/historia/",
+      "/cardapio/",
+      "/restaurantes/",
+      "/restaurantes/jardins/",
+      "/restaurantes/iguatemi/",
+      "/eventos/",
+      "/reservas/",
+      "/privacidade/",
+      "/404.html"
+    ],
+    "sizes": [
+      "320×568",
+      "390×844",
+      "768×1024",
+      "1024×768",
+      "1440×900",
+      "1920×1080",
+      "1440×650",
+      "844×390",
+      "720×450"
+    ],
+    "combinations_per_pass": 90,
+    "hero_dimension_max_deviation_px": 0,
+    "page_overflows": 0,
+    "automated_axe_cases": 20,
+    "violations": 0,
+    "extra_header_widths": [
+      1199,
+      1200,
+      1350
+    ]
+  },
+  "fullscreen_hero_revision": {
+    "date": "2026-09-09",
+    "change": "Fotos em largura útil integral e 100vh; texto sobreposto; descida em todas as páginas.",
+    "evidence": "data/visual-review/redesign/fullscreen-heroes.json",
+    "scenarios": 60,
+    "failures": 0,
+    "visual_review": "Capturas de desktop e celular revisadas para História, Cardápio, Restaurantes e Eventos; tamanhos 320/390/768/1024/1440 e paisagem 844.",
+    "known_issues": [
+      "Métricas de desempenho anteriores não reexecutadas após esta mudança.",
+      "Fotografias usam object-fit cover: recorte varia por proporção; nitidez máxima limitada pelo acervo."
+    ],
+    "deployment": "Não publicado"
+  },
+  "cuisine_revision": {
+    "date": "2026-09-09",
+    "layout": "Foto principal e coluna editorial agrupada, com sobremesa compacta; mobile sequencial.",
+    "menu": "Bodoni Moda 13–15px",
+    "validation": "Build aprovado; seis viewports sem overflow, capturas desktop/tablet/mobile inspecionadas.",
+    "known_issues": [
+      "A fotografia de carne não está identificada por corte no acervo; a legenda permanece genérica."
+    ],
+    "deployed": false
+  },
+  "photo_refresh": {
+    "date": "2026-09-09",
+    "method": "Lighthouse 13.4.1 local; mobile Slow 4G/CPU 4x padrão e desktop preset oficial. Uma amostra por interna; duas mobile da home e uma desktop. Nenhuma nota PageSpeed Insights online ou CrUX alegada.",
+    "runs": [
+      {
+        "file": "lighthouse-cardapio-1788924889677.json",
+        "url": "http://127.0.0.1:4321/cardapio/",
+        "formFactor": "mobile",
+        "scores": {
+          "performance": 98,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 69
+        },
+        "lcpMs": 2409.0978999999998,
+        "tbtMs": 0,
+        "cls": 0,
+        "bytes": 284854
+      },
+      {
+        "file": "lighthouse-desktop-home-1788925044316.json",
+        "url": "http://127.0.0.1:4321/",
+        "formFactor": "desktop",
+        "scores": {
+          "performance": 100,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 69
+        },
+        "lcpMs": 734.5447999999999,
+        "tbtMs": 0,
+        "cls": 0,
+        "bytes": 610454
+      },
+      {
+        "file": "lighthouse-eventos-1788924916945.json",
+        "url": "http://127.0.0.1:4321/eventos/",
+        "formFactor": "mobile",
+        "scores": {
+          "performance": 100,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 69
+        },
+        "lcpMs": 1891.5371,
+        "tbtMs": 23,
+        "cls": 0,
+        "bytes": 189661
+      },
+      {
+        "file": "lighthouse-historia-1788924883463.json",
+        "url": "http://127.0.0.1:4321/historia/",
+        "formFactor": "mobile",
+        "scores": {
+          "performance": 100,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 69
+        },
+        "lcpMs": 1883.6095,
+        "tbtMs": 0,
+        "cls": 0,
+        "bytes": 231271
+      },
+      {
+        "file": "lighthouse-home-1788924877298.json",
+        "url": "http://127.0.0.1:4321/",
+        "formFactor": "mobile",
+        "scores": {
+          "performance": 94,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 69
+        },
+        "lcpMs": 3158.1063999999997,
+        "tbtMs": 0,
+        "cls": 0,
+        "bytes": 509708
+      },
+      {
+        "file": "lighthouse-home-mobile-repeat-1788924968762.json",
+        "url": "http://127.0.0.1:4321/",
+        "formFactor": "mobile",
+        "scores": {
+          "performance": 94,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 69
+        },
+        "lcpMs": 3157.1799,
+        "tbtMs": 0,
+        "cls": 0,
+        "bytes": 509708
+      },
+      {
+        "file": "lighthouse-reservas-1788924924871.json",
+        "url": "http://127.0.0.1:4321/reservas/",
+        "formFactor": "mobile",
+        "scores": {
+          "performance": 98,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 69
+        },
+        "lcpMs": 2263.5724,
+        "tbtMs": 59,
+        "cls": 0,
+        "bytes": 230921
+      },
+      {
+        "file": "lighthouse-restaurantes-1788924896184.json",
+        "url": "http://127.0.0.1:4321/restaurantes/",
+        "formFactor": "mobile",
+        "scores": {
+          "performance": 98,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 69
+        },
+        "lcpMs": 2489.2397,
+        "tbtMs": 0,
+        "cls": 0,
+        "bytes": 310180
+      },
+      {
+        "file": "lighthouse-restaurantesiguatemi-1788924909744.json",
+        "url": "http://127.0.0.1:4321/restaurantes/iguatemi/",
+        "formFactor": "mobile",
+        "scores": {
+          "performance": 98,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 69
+        },
+        "lcpMs": 2338.3752999999997,
+        "tbtMs": 0,
+        "cls": 0,
+        "bytes": 262899
+      },
+      {
+        "file": "lighthouse-restaurantesjardins-1788924902950.json",
+        "url": "http://127.0.0.1:4321/restaurantes/jardins/",
+        "formFactor": "mobile",
+        "scores": {
+          "performance": 99,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 69
+        },
+        "lcpMs": 2180.8523,
+        "tbtMs": 0,
+        "cls": 0,
+        "bytes": 210861
+      }
+    ],
+    "uniquePhotographs": 26,
+    "responsiveCases": 48,
+    "performanceGreenInAllMeasuredRuns": true,
+    "allFourCategoriesGreen": false,
+    "limits": [
+      "SEO 69 porque noindex/robots Disallow do preview permanecem preservados.",
+      "LCP mobile da home em aproximadamente 3,2s, acima de 2,5s, apesar da nota de desempenho 94.",
+      "Resultados de laboratório variam por ambiente e não garantem métricas reais de campo.",
+      "Fotografias de acervo histórico continuam limitadas pela resolução original e ficaram fora dos heros."
+    ],
+    "validation": {
+      "build": "10 páginas, 261 arquivos",
+      "astro_check": "45 arquivos, zero erros/avisos/hints",
+      "client_gate": "APROVADO",
+      "photo_repetition": "26 posições e 26 arquivos de origem únicos, verificados no HTML renderizado",
+      "responsive": "48 casos sem overflow ou perda das dimensões do hero",
+      "delivery": "Somente derivados AVIF nas referências editoriais; matrizes lossless em briefing/entrada/matrizes, excluídas do artefato se não referenciadas",
+      "deployed": false
+    }
+  },
+  "cuisine_alignment_revision": {
+    "date": "2026-09-09",
+    "markers": "01, 02 e 03 no mesmo eixo esquerdo, em seis larguras",
+    "desktop_images": "Topo e base idênticos, delta0px, em768/1024/1440/1819",
+    "mobile": "Sequência linear em320/390, sem overflow",
+    "visual_review": "Capturas inspecionadas em1819/768/390",
+    "evidence": "data/visual-review/redesign/cuisine-alignment.json",
+    "build": "aprovado",
+    "known_issues": [
+      "Lighthouse não repetido após alterar o tamanho visual da sobremesa."
+    ],
+    "deployed": false
+  },
+  "restaurant_galleries": {
+    "date": "2026-09-09",
+    "coverage": {
+      "jardins": "15/15",
+      "iguatemi": "5/5"
+    },
+    "validation": "Todas as20fotos percorridas em320/768/1440px; contadores, anterior/próxima, loop, teclas, Escape e retorno do foco aprovados. Sem overflow. Regressão de Cardápio aprovada.",
+    "evidence": "data/visual-review/restaurant-galleries/report.json",
+    "astro_check": "47 arquivos; zero erros/avisos/hints",
+    "known_issues": [
+      "Galeria completa repete intencionalmente fotos usadas nos heros e chamadas, conforme novo pedido.",
+      "Miniaturas têm recorte4:3; ampliação mostra o enquadramento integral.",
+      "Lighthouse não repetido nesta rodada."
+    ],
+    "deployed": false
+  },
+  "text_review": {
+    "date": "2026-09-09",
+    "report": "data/text-review.json",
+    "changes": 43,
+    "validation": "data/visual-review/text-review/report.json",
+    "briefing_fidelity": "História, mensagem obrigatória e dados fornecidos preservados; segunda leitura factual independente.",
+    "known_issues": [
+      "Dados comerciais conflitantes ainda aguardam confirmação: número de Jardins, horários por unidade e telefone geral.",
+      "Sem nova validação do conteúdo dos serviços externos de cardápio, reservas ou eventos."
+    ]
+  }
+}
