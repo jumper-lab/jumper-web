@@ -2,5 +2,7 @@
 import Arrow from './Arrow.astro';
 interface Props {href:string; primary?:boolean; light?:boolean; class?:string;}
 const {href,primary=false,light=false,class:className=''}=Astro.props;
+const base=import.meta.env.BASE_URL.replace(/\/$/,'');
+const resolvedHref=href.startsWith('/')?`${base}${href}`:href;
 ---
-<a href={href} class:list={['action',primary?'button':'text-link',{'light':light},className]}><slot/><Arrow/></a>
+<a href={resolvedHref} class:list={['action',primary?'button':'text-link',{'light':light},className]}><slot/><Arrow/></a>

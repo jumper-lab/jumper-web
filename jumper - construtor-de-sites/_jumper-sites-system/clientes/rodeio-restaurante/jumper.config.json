@@ -6,8 +6,10 @@
   "model": "M4",
   "personality": "A",
   "engine": "ds-autoral",
-  "site_url": "https://rodeio-restaurante.vercel.app",
-  "production_domain": null,
+  "site_url": "https://rodeio.jumper.dev.br/site",
+  "production_domain": "rodeio.jumper.dev.br",
+  "base_path": "/site",
+  "hosting": "cloudflare-workers-static-assets",
   "preview_mode": true,
   "blog_enabled": false,
   "gate_budget": {
@@ -15,5 +17,5 @@
     "max_image_kb": 400,
     "max_font_files": 8
   },
-  "approval_context": "Em 08/09/2026, o usuário autorizou execução até conclusão do site M4/A, solicitou ajustes e depois publicação na Vercel. A versão publicada em https://rodeio-restaurante.vercel.app permanece sem indexação para revisão. O pedido atual autoriza auditoria, melhorias e validação locais; uma nova publicação ou mudança de indexação depende de autorização específica. Domínio próprio definitivo ainda não informado."
+  "approval_context": "Em 09/09/2026, o usuário definiu https://rodeio.jumper.dev.br/site como endereço de desenvolvimento e solicitou hospedagem direta no Cloudflare, sem Vercel no caminho. A indexação continua desativada até autorização específica."
 }

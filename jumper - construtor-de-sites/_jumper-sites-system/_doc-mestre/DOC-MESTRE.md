@@ -37,6 +37,16 @@ _jumper-sites-system/
 13. Atualizar `README.md`.
 14. Rodar validação/build.
 
+## Domínio de Desenvolvimento Jumper
+
+- Todo cliente publicado para desenvolvimento pela infraestrutura Jumper recebe `https://[slug].jumper.dev.br/site`.
+- A hospedagem desse endereço acontece diretamente no Cloudflare Workers com assets estáticos. Vercel não participa como origem, proxy ou intermediário.
+- O build usa base `/site`; links, imagens, scripts, canonical, Open Graph e sitemap devem conservar esse prefixo.
+- A raiz `https://[slug].jumper.dev.br/` redireciona para `/site/`. O domínio raiz `jumper.dev.br` fica reservado para a própria Jumper.
+- Se o cliente fornecer e aprovar um domínio próprio para produção, ele é configurado separadamente do endereço de desenvolvimento.
+- Antes de concluir o deploy, registre a URL completa em `jumper.config.json` e valide DNS, HTTPS, redirecionamento, canonical, Open Graph, sitemap, robots, assets e navegação interna.
+- URLs `*.vercel.app` não fazem parte do fluxo padrão. Use Vercel somente quando a pessoa solicitar explicitamente.
+
 ## Arquivos Obrigatórios Por Cliente
 
 ```txt
@@ -173,7 +183,7 @@ O site precisa atingir padrão premium de especificidade, confiança, desejo, co
 
 O site só está pronto quando todas estas afirmações são verdadeiras:
 
-- build verde e doctor passando;
+- build verde, doctor passando e **gate aprovado** (`npm run gate -- [slug]`) — o gate é lei executável, não promessa: clichês de copy, `<img>` sem alt ou sem dimensões, vídeo sem poster, motion sem `prefers-reduced-motion`, hero sem altura de viewport, fontes de CDN externo, mídia acima do orçamento, SEO técnico incompleto no `dist/` e auditoria sem ressalva substantiva REPROVAM;
 - zero scroll horizontal e zero texto cortado ou sobreposto de 320px a desktop largo;
 - todos os links, CTAs e formulários funcionam;
 - nenhum dado inventado; todo provisório está marcado e documentado no README;
@@ -186,17 +196,37 @@ O site só está pronto quando todas estas afirmações são verdadeiras:
 - blog validado nos 7 passos, quando ativo;
 - auditoria honesta gerada e README do cliente atualizado.
 
+## Piso Funcional Por Modelo (M1–M4)
+
+O site é ferramenta, não folheto. Cada modelo tem um piso de funcionalidade que resolve a vida do negócio local. Modelo maior soma ao piso do anterior. **Regra de ouro:** toda funcionalidade que pesa (mapa, chat, player, terceiros) entra sob demanda — carregada por interação, `loading="lazy"`, ou embed adiado — para nunca sabotar a nota AAA+.
+
+- **M1 — presença essencial:** CTA de conversão direto (WhatsApp com mensagem pré-preenchida ou telefone clicável), localização com endereço e link de rotas, horário de funcionamento, dados estruturados `LocalBusiness`. É o mínimo para o "teste dos 5 segundos" virar ação.
+- **M2 — soma:** formulário de contato que envia e confirma (com estados de erro/sucesso), galeria real do negócio, prova social verdadeira (avaliações/depoimentos, nunca inventados), status "aberto agora" quando fizer sentido.
+- **M3 — soma:** catálogo/cardápio/serviços navegável, agendamento ou reserva (nativo ou via integração), mapa interativo carregado sob demanda, múltiplas páginas com navegação madura.
+- **M4 — soma:** blog/novidades editável (Blog Autônomo Jumper), área administrativa, e recursos de app quando o briefing pedir (PWA/instalável, multilíngue). Aqui o site é uma plataforma, não uma página.
+
+Nada nesta lista justifica peso: um mapa que derruba o LCP ou um chat de terceiro que trava a interação REPROVAM. Funcionalidade premium é a que aparece quando é útil e some do caminho crítico quando não é.
+
 ## Comandos
 
 ```bash
 npm install
 npm run doctor
 npm run build
+npm run gate -- [slug]
 ```
 
-`npm run doctor` verifica a estrutura mínima.
+`npm run doctor` verifica a estrutura mínima do sistema (prontidão, com avisos).
 
 `npm run build` roda a validação principal do sistema.
+
+`npm run gate -- [slug]` é o gate de entrega por cliente: valida leis executáveis no código-fonte e no `dist/` e REPROVA com exit 1 quando alguma é violada. Sem gate verde, o cliente não está pronto para entrega. Rode o build do cliente antes (o gate lê o `dist/`).
+
+Orçamento de mídia configurável por cliente em `jumper.config.json`:
+
+```json
+"gate_budget": { "max_video_mb": 5, "max_image_kb": 400, "max_font_files": 8 }
+```
 
 O build do site de um cliente deve ser rodado dentro da pasta desse cliente.
 
