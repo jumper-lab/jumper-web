@@ -1,0 +1,25 @@
+{
+  "url": "https://rodeio.jumper.dev.br/site",
+  "provider": "cloudflare-workers-static-assets",
+  "worker": "rodeio-site-preview",
+  "versionId": "8addcd19-b494-423c-bc3f-151dd7f4d987",
+  "status": "READY",
+  "indexing": "noindex",
+  "results": [
+    { "route": "/site/", "status": 200 },
+    { "route": "/site/historia/", "status": 200 },
+    { "route": "/site/cardapio/", "status": 200 },
+    { "route": "/site/restaurantes/", "status": 200 },
+    { "route": "/site/restaurantes/jardins/", "status": 200 },
+    { "route": "/site/restaurantes/iguatemi/", "status": 200 },
+    { "route": "/site/eventos/", "status": 200 },
+    { "route": "/site/reservas/", "status": 200 },
+    { "route": "/site/privacidade/", "status": 200 },
+    { "route": "/site/robots.txt", "status": 200 },
+    { "route": "/site/sitemap-index.xml", "status": 200 }
+  ],
+  "rootRedirect": { "from": "/", "to": "/site/", "status": 302 },
+  "notFoundStatus": 404,
+  "heroAndScroll": "passed",
+  "date": "2026-09-09T15:18:49.000Z"
+}

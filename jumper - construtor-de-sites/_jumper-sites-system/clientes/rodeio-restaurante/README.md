@@ -62,7 +62,7 @@ Validação atual: 48 combinações de página/viewport; 26 fotos distintas conf
 
 Preview: http://127.0.0.1:4321/?revisao=fotos
 
-Site Astro 7 estático, modelo M4 e personalidade A. O redesenho visual de 08/09/2026 está concluído **localmente**, com limites de desempenho registrados abaixo. A publicação anterior continua em https://rodeio-restaurante.vercel.app; estas últimas melhorias ainda não foram publicadas.
+Site Astro 7 estático, modelo M4 e personalidade A. O redesenho visual de 08/09/2026 está publicado para desenvolvimento em https://rodeio.jumper.dev.br/site, diretamente no Cloudflare.
 
 ## Abrir e desenvolver
 
@@ -72,7 +72,7 @@ Use Node 24 e execute na pasta deste cliente:
 
 ```sh
 npm ci
-SITE_URL=https://rodeio-restaurante.vercel.app npm run build
+SITE_URL=https://rodeio.jumper.dev.br BASE_PATH=/site npm run build
 npm run preview
 ```
 
@@ -116,11 +116,11 @@ Validações finais: Astro check: 39 arquivos sem erros/avisos/hints; build: 10 
 
 ```sh
 npm run check
-SITE_URL=https://rodeio-restaurante.vercel.app npm run build
+SITE_URL=https://rodeio.jumper.dev.br BASE_PATH=/site npm run build
 node scripts/verify-revision.mjs redesign-final
 node scripts/verify-extreme-reflow.mjs redesign-pass1
 node ../../scripts/client-gate.mjs rodeio-restaurante
-SITE_URL=https://rodeio-restaurante.vercel.app node scripts/prepare-vercel.mjs --check
+npx wrangler deploy --dry-run
 ```
 
 Os testes usam Playwright e Google Chrome instalado. O preview precisa estar rodando. A verificação simula demora/erro de terceiros, sem reservar ou enviar orçamento. Em ambiente com sandbox, iniciar Chrome pode exigir autorização do ambiente.
@@ -160,21 +160,18 @@ Cardápio completo: https://livemenu.app/menu/56c778030896b3cd13c609e5. Eventos:
 
 Em viewports extremos equivalentes a zoom elevado (360×225 e 390×320), o hero de altura fixa usa rolagem interna de texto; o CTA foi verificado por foco de teclado. Nos nove viewports principais testados não há rolagem interna. Compatibilidade de transições depende do navegador, com navegação convencional como fallback.
 
-## Vercel
+## Cloudflare
 
-Publicação anterior: https://rodeio-restaurante.vercel.app. Equipe: `jumper-studios-projects-2fd4229e`. Projeto: `rodeio-restaurante`. Deploy registrado: `dpl_2u36m2i9kg8QZfwhRqnDdsBPcpXN`.
+Endereço de desenvolvimento: https://rodeio.jumper.dev.br/site. O Worker `rodeio-site-preview` serve os assets estáticos diretamente pelo Cloudflare; a raiz do subdomínio redireciona para `/site/`. A Vercel não participa do tráfego.
 
-Nenhum novo deploy foi realizado durante esta revisão. Cache immutable em `/_astro/`, `nosniff` e Referrer-Policy estão preparados em `vercel.json`; só entram no site público no próximo deploy. A integração automática com GitHub não foi conectada no deploy anterior.
-
-Após autorização específica para publicar:
+Para compilar e publicar:
 
 ```sh
-SITE_URL=https://rodeio-restaurante.vercel.app npm run build
-SITE_URL=https://rodeio-restaurante.vercel.app node scripts/prepare-vercel.mjs
-npx vercel deploy --prebuilt --prod --yes --scope jumper-studios-projects-2fd4229e
+npm run build:cloudflare
+npx wrangler deploy
 ```
 
-O preparador valida origem, metadata, fingerprint, ausência de URLs locais/arquivos internos e copia somente `dist/` para `.vercel/output/static/`. Mantém 404 e a política de indexação do build. Nunca enviar briefing, originais, credenciais, scripts internos ou node_modules para a hospedagem.
+O build usa `SITE_URL=https://rodeio.jumper.dev.br` e `BASE_PATH=/site`. O Worker remove o prefixo apenas para localizar os arquivos em `dist/`; URLs públicas, canonical, Open Graph e navegação mantêm `/site`. Nunca enviar briefing, originais, credenciais, scripts internos ou `node_modules` para a hospedagem.
 
 ## Ajuste de hero — 09/09/2026
 Fotografias da home e de todas as internas agora preenchem a largura útil inteira e 100vh, atrás do cabeçalho fixo. Texto sobreposto com contraste escuro; removidas as molduras e a divisão em colunas. Link discreto de descida em todas as 10 páginas, com alvo real (rodapé na 404). Privacidade e 404 preservam abertura tipográfica. Validação: 60 combinações de página/viewport, sem overflow, sobreposição de CTA ou rolagem interna nos tamanhos verificados; todas as âncoras clicadas. Astro check: 40 arquivos, zero diagnósticos; build aprovado. As métricas Lighthouse anteriores são históricas e não representam esta nova composição. Recortes de fotografias inteiras e limite de resolução do acervo permanecem sujeitos à proporção da tela. Versão local, sem deploy.

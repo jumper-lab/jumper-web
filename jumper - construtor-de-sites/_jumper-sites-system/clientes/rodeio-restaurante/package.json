@@ -8,6 +8,8 @@
     "build": "astro build",
     "preview": "astro preview --host 127.0.0.1",
     "check": "astro check",
+    "build:cloudflare": "SITE_URL=https://rodeio.jumper.dev.br BASE_PATH=/site astro build",
+    "deploy:cloudflare": "npm run build:cloudflare && wrangler deploy",
     "postbuild": "node scripts/prune-unused-photo-masters.mjs"
   },
   "dependencies": {

@@ -10,56 +10,59 @@ import dmSans from '../assets/fonts/dm-sans.woff2?url';
 interface Props {title:string;description:string;}
 const {title,description}=Astro.props;
 const path=Astro.url.pathname;
+const base=import.meta.env.BASE_URL.replace(/\/$/,'');
+const internal=(href:string)=>href.startsWith('/')?`${base}${href}`:href;
+const routePath=base&&path.startsWith(base)?path.slice(base.length)||'/':path;
 const nav=[['Nossa história','/historia/'],['Cardápio','/cardapio/'],['Restaurantes','/restaurantes/'],['Eventos','/eventos/']];
 const site=Astro.site??new URL('http://localhost:4321');
 const isPreview=import.meta.env.PUBLIC_LIVE_SITE!=='true';
 const organization = {
-  id: new URL('/#organization', site).href,
+  id: new URL(internal('/#organization'), site).href,
   name: content.client.name,
-  url: new URL('/', site).href,
-  logo: new URL('/logos/logo-sem-simbolo.png', site).href,
+  url: new URL(internal('/'), site).href,
+  logo: new URL(internal('/logos/logo-sem-simbolo.png'), site).href,
   telephone: '+55' + content.client.contact.phone.replace(/\D/g, ''),
   sameAs: ['https://www.instagram.com/rodeiorestaurante/'],
 };
-const currentUnit = content.units.find(unit => path.replace(/\/$/, '') === `/restaurantes/${unit.slug}`);
+const currentUnit = content.units.find(unit => routePath.replace(/\/$/, '') === `/restaurantes/${unit.slug}`);
 // Keep the visible briefing address; unit hours and phone remain commercially unconfirmed.
 const restaurant = currentUnit ? {
-  id: new URL(`/restaurantes/${currentUnit.slug}/#restaurant`, site).href,
+  id: new URL(internal(`/restaurantes/${currentUnit.slug}/#restaurant`), site).href,
   name: `Rodeio ${currentUnit.name}`,
-  url: new URL(`/restaurantes/${currentUnit.slug}/`, site).href,
+  url: new URL(internal(`/restaurantes/${currentUnit.slug}/`), site).href,
   street: currentUnit.address,
   city: 'São Paulo',
   region: 'SP',
   postalCode: currentUnit.zip,
   country: 'BR',
-  reservationUrl: new URL(`/reservas/?unidade=${currentUnit.slug}`, site).href,
+  reservationUrl: new URL(internal(`/reservas/?unidade=${currentUnit.slug}`), site).href,
 } : undefined;
 ---
 <!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="theme-color" content="#FAF7F0"/>
-<SeoHead title={title+' | Rodeio Restaurante'} description={description} canonical={new URL(path,site)} ogImage={new URL('/og.jpg',site)} favicon="/logos/logo-sem-simbolo.svg" siteName="Rodeio Restaurante" noindex={isPreview} organization={organization} restaurant={restaurant}/>
+<SeoHead title={title+' | Rodeio Restaurante'} description={description} canonical={new URL(path,site)} ogImage={new URL(internal('/og.jpg'),site)} favicon="/logos/logo-sem-simbolo.svg" siteName="Rodeio Restaurante" noindex={isPreview} organization={organization} restaurant={restaurant}/>
 <link rel="preload" href={bodoniNormal} as="font" type="font/woff2" crossorigin/>
 <link rel="preload" href={bodoniItalic} as="font" type="font/woff2" crossorigin/><link rel="preload" href={dmSans} as="font" type="font/woff2" crossorigin/></head><body>
 <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
-<header class:list={['site-header', {'header-home': path === '/'}]}>
- <div class="header-left"><span class="header-location">São Paulo<span>Desde 1958</span></span><nav class="desktop-nav" aria-label="História e gastronomia">{nav.slice(0,2).map(([name,href])=><a href={href} aria-current={path.startsWith(href)?'page':undefined}>{name}</a>)}</nav></div>
- <a class="brand header-brand" href="/"><img src="/logos/logo-sem-simbolo.png" alt="Rodeio — desde 1958" width="756" height="212"/></a>
- <div class="header-right"><nav class="desktop-nav" aria-label="Restaurantes e eventos">{nav.slice(2).map(([name,href])=><a href={href} aria-current={path.startsWith(href)?'page':undefined}>{name}</a>)}</nav><a class="header-reserve" href="/reservas/">Reservar uma mesa<Arrow/></a><button class="menu-toggle" data-open-menu aria-haspopup="dialog" aria-controls="navigation-dialog" aria-expanded="false"><span>Menu</span><span class="menu-lines" aria-hidden="true"></span></button><noscript><a class="no-script-menu" href="#site-navigation">Menu</a></noscript></div>
+<header class:list={['site-header', {'header-home': routePath === '/'}]}>
+ <div class="header-left"><span class="header-location">São Paulo<span>Desde 1958</span></span><nav class="desktop-nav" aria-label="História e gastronomia">{nav.slice(0,2).map(([name,href])=><a href={internal(href)} aria-current={routePath.startsWith(href)?'page':undefined}>{name}</a>)}</nav></div>
+ <a class="brand header-brand" href={internal('/')}><img src={internal('/logos/logo-sem-simbolo.png')} alt="Rodeio — desde 1958" width="756" height="212"/></a>
+ <div class="header-right"><nav class="desktop-nav" aria-label="Restaurantes e eventos">{nav.slice(2).map(([name,href])=><a href={internal(href)} aria-current={routePath.startsWith(href)?'page':undefined}>{name}</a>)}</nav><a class="header-reserve" href={internal('/reservas/')}>Reservar uma mesa<Arrow/></a><button class="menu-toggle" data-open-menu aria-haspopup="dialog" aria-controls="navigation-dialog" aria-expanded="false"><span>Menu</span><span class="menu-lines" aria-hidden="true"></span></button><noscript><a class="no-script-menu" href="#site-navigation">Menu</a></noscript></div>
 </header>
 <dialog id="navigation-dialog" class="navigation-dialog" aria-labelledby="menu-title">
  <div class="dialog-top"><span id="menu-title" class="eyebrow">Rodeio · desde 1958</span><button class="close-dialog" data-close-menu>Fechar <span aria-hidden="true">×</span></button></div>
- <nav aria-label="Navegação móvel"><a href="/" aria-current={path==='/'?'page':undefined}><span class="menu-index" aria-hidden="true">01</span><span class="menu-label">Início</span><Arrow/></a>{nav.map(([name,href],index)=><a href={href} aria-current={path.startsWith(href)?'page':undefined}><span class="menu-index" aria-hidden="true">{String(index+2).padStart(2,'0')}</span><span class="menu-label">{name}</span><Arrow/></a>)}<a href="/reservas/" class="menu-reservation" aria-current={path.startsWith('/reservas/')?'page':undefined}><span class="menu-index" aria-hidden="true">06</span><span class="menu-label">Reservar uma mesa</span><Arrow/></a></nav>
+ <nav aria-label="Navegação móvel"><a href={internal('/')} aria-current={routePath==='/'?'page':undefined}><span class="menu-index" aria-hidden="true">01</span><span class="menu-label">Início</span><Arrow/></a>{nav.map(([name,href],index)=><a href={internal(href)} aria-current={routePath.startsWith(href)?'page':undefined}><span class="menu-index" aria-hidden="true">{String(index+2).padStart(2,'0')}</span><span class="menu-label">{name}</span><Arrow/></a>)}<a href={internal('/reservas/')} class="menu-reservation" aria-current={routePath.startsWith('/reservas/')?'page':undefined}><span class="menu-index" aria-hidden="true">06</span><span class="menu-label">Reservar uma mesa</span><Arrow/></a></nav>
  <div class="menu-contact"><p class="menu-signature">Um clássico<br/><em>que se renova.</em></p><div><span>São Paulo, à mesa desde 1958.</span><a href="tel:+551134741333">(11) 3474-1333</a></div></div>
 </dialog>
 <main id="conteudo" tabindex="-1"><slot/></main>
 <footer id="rodape" class="site-footer">
- <noscript><nav class="no-script-nav" id="site-navigation" aria-label="Navegação do site"><a href="/">Início</a>{nav.map(([name,href])=><a href={href}>{name}</a>)}<a href="/reservas/">Reservas</a></nav></noscript>
- <div class="footer-invitation"><div><p class="eyebrow">Rodeio · São Paulo · desde 1958</p><h2>Nos encontramos<br/><em>à mesa.</em></h2></div><a class="footer-reserve" href={currentUnit ? `/reservas/?unidade=${currentUnit.slug}` : path.startsWith("/reservas/") ? "#escolher-unidade" : "/reservas/"}><span>{currentUnit ? `Reservar no ${currentUnit.name}` : path.startsWith("/reservas/") ? "Escolher a unidade" : "Reservar uma mesa"}</span><Arrow/></a></div>
+ <noscript><nav class="no-script-nav" id="site-navigation" aria-label="Navegação do site"><a href={internal('/')}>Início</a>{nav.map(([name,href])=><a href={internal(href)}>{name}</a>)}<a href={internal('/reservas/')}>Reservas</a></nav></noscript>
+ <div class="footer-invitation"><div><p class="eyebrow">Rodeio · São Paulo · desde 1958</p><h2>Nos encontramos<br/><em>à mesa.</em></h2></div><a class="footer-reserve" href={currentUnit ? internal(`/reservas/?unidade=${currentUnit.slug}`) : routePath.startsWith("/reservas/") ? "#escolher-unidade" : internal("/reservas/")}><span>{currentUnit ? `Reservar no ${currentUnit.name}` : routePath.startsWith("/reservas/") ? "Escolher a unidade" : "Reservar uma mesa"}</span><Arrow/></a></div>
  <div class="footer-top footer-details">
-  {content.units.map((unit,index)=><div class="footer-unit"><p class="eyebrow">0{index+1} / Nossas casas</p><h3><a href={'/restaurantes/'+unit.slug+'/'}>{unit.name}</a></h3><p>{unit.address}<br/>{unit.district}</p><a class="footer-unit-reserve" href={'/reservas/?unidade='+unit.slug}>Reservar no {unit.name}<Arrow/></a></div>)}
-  <div class="footer-contact"><p class="eyebrow">Vamos conversar</p><a href="tel:+551134741333">(11) 3474-1333</a><a href="https://www.instagram.com/rodeiorestaurante/">@rodeiorestaurante<Arrow/></a><a href="/eventos/">Planejar um evento<Arrow/></a></div>
+  {content.units.map((unit,index)=><div class="footer-unit"><p class="eyebrow">0{index+1} / Nossas casas</p><h3><a href={internal('/restaurantes/'+unit.slug+'/')}>{unit.name}</a></h3><p>{unit.address}<br/>{unit.district}</p><a class="footer-unit-reserve" href={internal('/reservas/?unidade='+unit.slug)}>Reservar no {unit.name}<Arrow/></a></div>)}
+  <div class="footer-contact"><p class="eyebrow">Vamos conversar</p><a href="tel:+551134741333">(11) 3474-1333</a><a href="https://www.instagram.com/rodeiorestaurante/">@rodeiorestaurante<Arrow/></a><a href={internal('/eventos/')}>Planejar um evento<Arrow/></a></div>
  </div>
- <div class="footer-signoff"><a class="brand footer-brand" href="/"><img src="/logos/logo-sem-simbolo-branca.png" alt="Rodeio — desde 1958" width="756" height="212"/><span>Um clássico que se renova.</span></a><p>O tempo passa.<br/><span>A essência fica.</span></p></div>
- <div class="footer-bottom"><span>© {new Date().getFullYear()} Rodeio Restaurante</span><span>Jardins · Iguatemi · São Paulo</span><a href="/privacidade/">Privacidade</a></div>
+ <div class="footer-signoff"><a class="brand footer-brand" href={internal('/')}><img src={internal('/logos/logo-sem-simbolo-branca.png')} alt="Rodeio — desde 1958" width="756" height="212"/><span>Um clássico que se renova.</span></a><p>O tempo passa.<br/><span>A essência fica.</span></p></div>
+ <div class="footer-bottom"><span>© {new Date().getFullYear()} Rodeio Restaurante</span><span>Jardins · Iguatemi · São Paulo</span><a href={internal('/privacidade/')}>Privacidade</a></div>
 </footer>
 <dialog class="gallery-dialog" id="gallery-dialog" aria-label="Fotografia do Rodeio"><button class="close-dialog" data-close-gallery>Fechar <span aria-hidden="true">×</span></button><p id="gallery-status" role="status"></p><div class="gallery-stage" aria-busy="false"><img hidden id="gallery-image" width="1200" height="630" alt=""/></div><p id="gallery-caption"></p><div class="gallery-controls"><button type="button" data-gallery-prev aria-label="Fotografia anterior">← Anterior</button><span id="gallery-count" aria-live="polite"></span><button type="button" data-gallery-next aria-label="Próxima fotografia">Próxima →</button></div><a class="text-link" id="gallery-original" href="/">Abrir foto em página inteira</a></dialog>
 <noscript><style>.menu-toggle,[data-map],#load-reservation,.unit-options{display:none!important}</style></noscript>

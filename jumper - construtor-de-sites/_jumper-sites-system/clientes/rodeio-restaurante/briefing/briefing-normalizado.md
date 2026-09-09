@@ -115,7 +115,7 @@ Promessas que não possam ser comprovadas
 
 Esta seção atualiza o estado de conferência sem modificar as respostas originais ou o payload bruto. O checklist de importação acima é histórico.
 
-- **Escopo executado e autorizado:** M4, personalidade A; o usuário escolheu prosseguir até a etapa final e depois solicitou ajustes e publicação na Vercel. O pedido atual autoriza revisão e melhorias locais; uma nova publicação depende de autorização específica.
+- **Escopo executado e autorizado:** M4, personalidade A; o usuário escolheu prosseguir até a etapa final, solicitou os ajustes e definiu o Cloudflare como hospedagem do endereço de desenvolvimento. A publicação atual foi autorizada e concluída diretamente no Cloudflare.
 - **CTA editorial resolvido:** “Reservar uma mesa”, correspondente à intenção de reservas e eventos do briefing. Preservar navegação na mesma aba.
 - **Telefone recebido no payload:** (11) 3474-1333, sem distinção de unidade. WhatsApp e e-mail continuam não informados.
 - **Instagram recebido:** @rodeiorestaurante.
@@ -124,7 +124,7 @@ Esta seção atualiza o estado de conferência sem modificar as respostas origin
 - **Canais complementares verificados:** [cardápio Live Menu](https://livemenu.app/menu/56c778030896b3cd13c609e5) e [formulário oficial de eventos](https://rodeiosp.com.br/eventos/). Nenhum preço, ingrediente, capacidade ou promessa foi inferido desses links.
 - **Assets já inspecionados:** fotografias reais recebidas, incluindo o arquivo indicado para o hero, têm rastreabilidade em `entrada/asset-selection.json`. Não foi necessário usar IA nem Pexels. A ingestão registrou manual com erro 404 e pasta de logo vazia; foi usada a marca do site oficial. O laranja permanece uma interpretação documentada, sem certificação do manual.
 - **Blog:** desativado expressamente; manter sem blog e sem área administrativa.
-- **Versão publicada para revisão:** https://rodeio-restaurante.vercel.app, com indexação desativada. Domínio próprio definitivo continua não informado.
+- **Versão publicada para revisão:** https://rodeio.jumper.dev.br/site, servida diretamente pelo Cloudflare e com indexação desativada.
 
 ### Divergências comerciais que exigem confirmação do cliente
 

@@ -33,6 +33,14 @@ ARQUIVOS OBRIGATÓRIOS DO FLUXO V3
 8. data/visual-quality-audit.json
 9. README.md
 
+DOMÍNIO E HOSPEDAGEM DE DESENVOLVIMENTO
+- O endereço padrão de cada cliente é `https://[slug].jumper.dev.br/site`; `jumper.dev.br` fica reservado para a Jumper.
+- Hospede o build diretamente no Cloudflare Workers com assets estáticos. Não use Vercel como origem ou intermediário.
+- Configure base `/site`, mantenha links e assets internos sob o prefixo e redirecione a raiz do subdomínio para `/site/`.
+- Se houver domínio próprio aprovado para produção, configure-o separadamente.
+- Grave a URL completa em `jumper.config.json`, use `SITE_URL=https://[slug].jumper.dev.br` e `BASE_PATH=/site` no build e valide DNS, HTTPS, canonical, Open Graph, sitemap, robots, assets e navegação interna.
+- Use Vercel somente quando a pessoa solicitar explicitamente; `*.vercel.app` não integra o fluxo padrão.
+
 Artefatos intermediários de planejamento separado não fazem parte do fluxo v3. Se existirem em um cliente legado, use apenas como contexto opcional. Não gere novos.
 
 REGRA CLEAN-ROOM
@@ -116,6 +124,7 @@ Esta lista é piso, não teto: qualquer padrão que você reconheça como "cara 
 ────────────────────────────────────────
 FASE 1 — ENTENDER O CLIENTE
 Leia:
+- `_doc-mestre/LICOES.md` — o loop de aprendizado do sistema (princípios transferíveis de entregas passadas; repertório de ofício, nunca molde);
 - `clientes/[slug]/briefing/briefing-normalizado.md`, se existir;
 - `clientes/[slug]/data/design-system.json`;
 - `clientes/[slug]/data/content.json`;
@@ -200,10 +209,14 @@ Regras de direção:
 - Se uma seção não sustenta a experiência premium, redesenhe composição, hierarquia, ritmo ou função — não a decore.
 - O site cabe e respira de 320px a desktop largo, sem scroll horizontal. Responsivo significa recompor, não só empilhar: revise cada seção em cada faixa.
 
-Piso técnico (não negociável):
+Piso técnico (não negociável) — use os primitivos de `_jumper-sites-system/_infra/` como fonte canônica (copie e preencha com os dados reais do cliente; NUNCA copie visual, só infraestrutura):
+- SEO/head: copie `_infra/seo/SeoHead.astro` — cobre title/meta/OG/canonical/favicon e JSON-LD LocalBusiness.
+- Motion: cole `_infra/motion/reduced-motion.css` no fim do CSS global.
+- Fontes: siga `_infra/fonts/README.md` (self-host, nunca CDN).
+- Mídia pesada: rode `_infra/media/optimize-media.mjs <pasta>` para caber no orçamento.
 - HTML semântico: header/nav/main/section/footer, um único h1 por página, ordem de headings sem saltos, landmarks corretos, `lang="pt-BR"`.
 - Imagens via pipeline do Astro (astro:assets / <Image>): formatos modernos, srcset, dimensões declaradas (zero layout shift), lazy loading abaixo da dobra, mídia do hero com carregamento prioritário.
-- Fontes com preconnect/preload e `font-display: swap`; carregue só os pesos que o DS final usa.
+- Fontes SEMPRE self-hosted (ex.: @fontsource ou woff2 local em public/fonts/), com preload do peso principal e `font-display: swap`; carregue só os pesos que o DS final usa. Fontes de CDN externo (Google Fonts, Typekit etc.) são reprovadas pelo gate: são render-blocking e impedem nota máxima de performance.
 - Todo texto alternativo escrito de verdade, descrevendo a imagem no contexto do cliente.
 - Estados completos: hover, focus-visible, active, disabled e erro de formulário — desenhados, não herdados do browser.
 - SEO base: title e meta description únicos por página, Open Graph com imagem, favicon, e sitemap quando multi-página. Página 404 desenhada quando multi-página.
@@ -214,7 +227,7 @@ Blog/novidades:
 Se `content.blog.enabled = true` ou o briefing pedir blog editável, implemente o Blog Autônomo Jumper conforme a seção de blog em `_doc-mestre/DOC-MESTRE.md`, incluindo modo server, adapter Node, rotas, segurança de senha e os 7 passos de validação.
 
 FASE 5 — REVISAR CONTRA PADRÃO PREMIUM
-Revisar significa olhar, não relembrar. Rode o build e o preview do cliente; se houver ferramenta de browser ou screenshot disponível no ambiente, capture as páginas principais em 320, 768, 1024 e 1440+ e examine as capturas. Se não houver, audite o HTML gerado em dist/ e o CSS, seção por seção, simulando cada viewport com rigor.
+Revisar significa olhar, não relembrar. Rode o build e o preview do cliente. Rode também o teste headless de responsividade: `npm run viewport -- --url <preview> --slug [slug]` (ou `--dist dist/` para clientes estáticos). Ele mede, em 320/390/768/1024/1280/1440/1920, scroll horizontal, dominância do hero (≥90% de um eixo) e alvos de toque <44px, e salva screenshots em `data/visual-review/`. Exit 0 = aprovado; exit 1 = corrija e rode de novo; exit 2 = Playwright ausente, a responsividade fica NÃO VERIFICADA (instale com `npx playwright install chromium` — não trate "não verificado" como aprovado). Examine as capturas geradas seção por seção; se nenhuma ferramenta de browser existir, audite o HTML/CSS do dist/ simulando cada viewport com rigor.
 
 Passe 1 — Impacto e direção:
 1. Primeira dobra isolada: teste dos 5 segundos e teste do print.
@@ -226,7 +239,7 @@ Passe 1 — Impacto e direção:
 Passe 2 — Responsividade e acabamento:
 6. Cada viewport: hero domina a primeira dobra em largura, altura ou ambos; sem scroll horizontal, sem texto cortado ou sobreposto, sem imagem esmagada, touch targets adequados, menu mobile impecável.
 7. Estados: percorra hovers, focos, formulários com erro, links — tudo responde e tudo leva a algum lugar.
-8. Performance e acessibilidade: peso de mídia, contraste dos pares realmente usados, foco visível, motion reduzido.
+8. Performance e acessibilidade: rode `npm run measure -- --url <preview>` (e `--desktop`) — Lighthouse com cortes AAA+ (Performance/A11y/BP/SEO); exit 2 = Chrome/Lighthouse ausente, performance NÃO VERIFICADA (não trate como aprovada). Contraste dos pares realmente usados (rode `npm run contrast -- [slug]` — recalcula cada par do DS com WCAG real e reprova número inventado ou abaixo de AA). Peso de mídia, foco visível, motion reduzido.
 
 Corrija tudo que estiver sem direção visual, desalinhado, cortado, sobreposto, lento, incoerente com o DS ou sem função. Depois repita os dois passes do zero — a segunda revisão encontra o que a primeira normalizou. Se o resultado ainda não atingir padrão premium de especificidade, confiança, desejo, conversão, responsividade e acabamento, revise uma terceira vez.
 
@@ -247,11 +260,15 @@ Gere `data/visual-quality-audit.json` com avaliação honesta, no formato que o 
 
 Atualize `README.md` do cliente com: como rodar, como fazer build, o que é mídia provisória e como trocar, dados pendentes do cliente, e instruções do blog quando houver.
 
-Rode validação coerente: build do cliente, doctor e/ou checks existentes. Build precisa terminar verde.
+Rode validação coerente: build do cliente, doctor e o gate de entrega (`npm run gate -- [slug]` na raiz do repositório, depois do build do cliente). Build e gate precisam terminar verdes. O gate valida leis executáveis — clichês de copy, <img> sem alt/dimensões, vídeo sem poster/playsinline, motion sem prefers-reduced-motion, hero sem altura de viewport, fontes de CDN externo, mídia acima do orçamento, SEO técnico do dist/ (sitemap, robots, meta description única, og:image, favicon, 404), contraste WCAG recalculado, assinatura/wow ancorada no cliente e auditoria sem ressalva substantiva. Gate reprovado = site não pronto; corrija e rode de novo, não contorne.
+
+Feche o loop de aprendizado: acrescente a `_doc-mestre/LICOES.md` os princípios transferíveis desta entrega (armadilhas, padrões aprovados, decisões vencedoras) — nunca pixels ou soluções copiáveis.
+
+Prepare a apresentação: rode `npm run present -- [slug] --url <site publicado>` para gerar `data/presentation/index.html` (reveal com deep-link ao hero e a grade responsiva de screenshots), material da reunião com o cliente.
 
 DEFINIÇÃO DE PRONTO
 O site só está pronto quando todas estas afirmações são verdadeiras:
-- build verde e doctor passando;
+- build verde, doctor passando e gate de entrega aprovado (npm run gate -- [slug]);
 - zero scroll horizontal e zero texto cortado ou sobreposto de 320px a desktop largo;
 - todos os links, CTAs e formulários funcionam;
 - nenhum dado inventado; todo provisório está marcado e documentado;

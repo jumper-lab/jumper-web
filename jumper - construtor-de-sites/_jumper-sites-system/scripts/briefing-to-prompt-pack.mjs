@@ -452,12 +452,15 @@ const generated = submissionRows.map((row, index) => {
       name: clientName,
       segment: firstValueByHints(entry, ['segmento principal', 'segmento']) ?? null,
       city: firstValueByHints(entry, ['cidade', 'cidade bairros', 'cidade de atuacao']) ?? null,
-      primary_domain: null,
+      primary_domain: `${slug}.jumper.dev.br`,
+      development_url: `https://${slug}.jumper.dev.br/site`,
     },
     site: {
       engine: 'ds-autoral',
       model: meta.model,
       secondary_page: meta.secondaryPage,
+      hosting: 'cloudflare-workers-static-assets',
+      base_path: '/site',
     },
   }, null, 2) + '\n');
 

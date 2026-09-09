@@ -51,6 +51,8 @@ const {
 
 const canonicalStr = canonical.toString();
 const ogImageStr = ogImage.toString();
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const resolvedFavicon = favicon.startsWith('/') ? `${base}${favicon}` : favicon;
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -103,7 +105,7 @@ const jsonLdText = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImageStr} />
 
-<link rel="icon" href={favicon} />
-<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="icon" href={resolvedFavicon} />
+<link rel="apple-touch-icon" href={`${base}/apple-touch-icon.png`} />
 
 <script is:inline type="application/ld+json" set:html={jsonLdText} />
