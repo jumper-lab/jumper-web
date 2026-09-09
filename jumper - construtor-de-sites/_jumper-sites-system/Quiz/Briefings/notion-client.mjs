@@ -1,6 +1,15 @@
 const NOTION_VERSION = "2022-06-28";
 
 export async function createNotionBriefingPage(payload, config = {}) {
+  if (!payload || typeof payload !== "object" || Array.isArray(payload) ||
+      typeof payload.client?.name !== "string" || !payload.client.name.trim() ||
+      !["M1", "M2", "M3", "M4"].includes(payload.project_scope?.model) ||
+      !payload.created_at || !Number.isFinite(Date.parse(payload.created_at))) {
+    const error = new Error("Confira nome do negócio, modelo e data de envio do briefing.");
+    error.code = "invalid_briefing";
+    error.status = 400;
+    throw error;
+  }
   const notionToken = config.notionToken || process.env.NOTION_TOKEN || "";
   const databaseId = config.databaseId || process.env.NOTION_DATABASE_ID || "370db609496880e28cbfce7472169134";
 
@@ -16,6 +25,13 @@ export async function createNotionBriefingPage(payload, config = {}) {
     properties: mapPayloadToNotionProperties(payload),
     children: buildImportBlocks(payload),
   };
+
+  if (notionPayload.children.length > 100 || Buffer.byteLength(JSON.stringify(notionPayload)) > 450000) {
+    const error = new Error("Briefing muito extenso. Envie os materiais por link de pasta e reduza os textos.");
+    error.code = "briefing_too_large";
+    error.status = 413;
+    throw error;
+  }
 
   const notionResponse = await fetch("https://api.notion.com/v1/pages", {
     method: "POST",

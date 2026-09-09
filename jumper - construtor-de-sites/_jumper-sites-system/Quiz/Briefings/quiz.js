@@ -827,7 +827,11 @@ function updateStateFromForm() {
 
   Object.keys(initialState).forEach((key) => {
     if (Array.isArray(initialState[key])) {
-      next[key] = formData.getAll(key).map(String);
+      // A step only renders its own controls. Preserve selections from other steps;
+      // an unchecked group on this step must still be allowed to become empty.
+      if ([...form.elements].some((control) => control.name === key)) {
+        next[key] = formData.getAll(key).map(String);
+      }
     } else if (key !== "uploadedFiles" && formData.has(key)) {
       const value = formData.get(key);
       next[key] = typeof value === "string" ? value : "";
@@ -1026,7 +1030,7 @@ async function submitBriefing() {
 
     submitStatus = {
       type: "success",
-      message: `Briefing salvo em ${data.local?.briefing_folder || "clientes/[slug]/briefing/"}.`,
+      message: "Briefing recebido pela Jumper. Nossa equipe irá conferir os dados e os materiais para dar continuidade ao projeto.",
     };
     console.info("Briefing salvo", data);
   } catch (error) {
