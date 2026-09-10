@@ -464,6 +464,8 @@ const generated = submissionRows.map((row, index) => {
       base_path: `/${slug}`,
       hub: {
         worker: 'jumper-hoster',
+        single_worker_policy: true,
+        standalone_client_worker_allowed: false,
         registry: 'jumper-hoster.registry.json',
         dashboard_url: 'https://site.jumper.dev.br/',
         registration_required: true,

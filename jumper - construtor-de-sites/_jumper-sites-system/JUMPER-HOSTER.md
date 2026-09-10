@@ -18,6 +18,8 @@ Todo site concluído pelo construtor deve ser publicado neste Worker. Uma entreg
 4. a rota pública `/<slug>/` e suas páginas internas respondem sem a senha do painel;
 5. links, imagens, fontes, vídeos, canonical, Open Graph, sitemap e robots foram verificados no endereço do hub.
 
+O `jumper-hoster` é o único Worker de hospedagem do construtor. Não crie um Worker separado por cliente. Domínios oficiais, quando gerenciados pela Jumper, devem ser adicionados como rotas do `jumper-hoster`, que seleciona os arquivos corretos pelo domínio ou pelo slug.
+
 O registro e o painel devem permanecer sincronizados. O painel é gerado a partir do registro central e agrupa todas as versões pelo cliente. O campo `officialSite` pode ser `null` enquanto o cliente não tiver site em produção. A preparação do pacote falha se uma versão registrada não tiver arquivo inicial publicado ou se suas URLs não seguirem o padrão definido.
 
 ## Projetos atuais
