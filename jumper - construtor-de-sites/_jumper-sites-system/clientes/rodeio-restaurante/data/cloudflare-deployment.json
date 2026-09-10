@@ -2,7 +2,7 @@
   "url": "https://site.jumper.dev.br/rodeio",
   "provider": "cloudflare-workers-static-assets",
   "worker": "jumper-hoster",
-  "versionId": "43360f11-c45d-41c9-9cf2-8fff9ffa9b6c",
+  "versionId": "7e82511c-e475-4ca1-93d7-5a72f04c13bd",
   "status": "READY",
   "indexing": "noindex",
   "results": [
@@ -108,7 +108,24 @@
       "izigym",
       "casabelie",
       "casabelie-2"
-    ]
+    ],
+    "clients": [
+      "rodeio",
+      "izigym",
+      "casabelie"
+    ],
+    "developmentSites": [
+      "rodeio",
+      "izigym",
+      "casabelie",
+      "casabelie-2"
+    ],
+    "officialSites": [
+      "https://rodeiosp.com.br/",
+      "https://www.izigym.com.br/",
+      "https://casabelie.com.br/"
+    ],
+    "registrySchemaVersion": "2.0.0"
   },
   "notFoundStatus": 404,
   "heroAndScroll": "passed",
@@ -124,7 +141,7 @@
       "marge.ns.cloudflare.com"
     ]
   },
-  "date": "2026-09-10T09:29:00.000Z",
+  "date": "2026-09-10T10:07:00.000Z",
   "access": {
     "dashboard": "password",
     "clientSites": "public",

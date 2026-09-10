@@ -454,6 +454,7 @@ const generated = submissionRows.map((row, index) => {
       city: firstValueByHints(entry, ['cidade', 'cidade bairros', 'cidade de atuacao']) ?? null,
       primary_domain: 'site.jumper.dev.br',
       development_url: `https://site.jumper.dev.br/${slug}/`,
+      official_url: null,
     },
     site: {
       engine: 'ds-autoral',
@@ -466,6 +467,8 @@ const generated = submissionRows.map((row, index) => {
         registry: 'jumper-hoster.registry.json',
         dashboard_url: 'https://site.jumper.dev.br/',
         registration_required: true,
+        group_versions_by_client: true,
+        official_url_required_when_available: true,
         client_route_requires_password: false,
       },
     },

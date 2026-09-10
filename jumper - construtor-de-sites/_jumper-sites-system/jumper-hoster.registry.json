@@ -1,33 +1,43 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "2.0.0",
   "worker": "jumper-hoster",
   "dashboardUrl": "https://site.jumper.dev.br/",
   "dashboardAccess": "jumper-password",
   "clientRoutesAccess": "public",
-  "sites": [
+  "clients": [
     {
-      "slug": "rodeio",
+      "id": "rodeio",
       "name": "Rodeio",
       "category": "Restaurante",
-      "url": "https://site.jumper.dev.br/rodeio/"
+      "description": "Site institucional com história, cardápio, restaurantes, eventos e reservas.",
+      "accent": "#0787e8",
+      "developmentSites": [
+        { "slug": "rodeio", "label": "Site em desenvolvimento", "url": "https://site.jumper.dev.br/rodeio/" }
+      ],
+      "officialSite": { "label": "Site oficial", "url": "https://rodeiosp.com.br/" }
     },
     {
-      "slug": "izigym",
+      "id": "izigym",
       "name": "IZI Gym",
       "category": "Fitness",
-      "url": "https://site.jumper.dev.br/izigym/"
+      "description": "Academia em Alto de Pinheiros com planos, estrutura, galeria e informações da unidade.",
+      "accent": "#e52c12",
+      "developmentSites": [
+        { "slug": "izigym", "label": "Site em desenvolvimento", "url": "https://site.jumper.dev.br/izigym/" }
+      ],
+      "officialSite": { "label": "Site oficial", "url": "https://www.izigym.com.br/" }
     },
     {
-      "slug": "casabelie",
+      "id": "casabelie",
       "name": "Casa Beliê",
       "category": "Eventos",
-      "url": "https://site.jumper.dev.br/casabelie/"
-    },
-    {
-      "slug": "casabelie-2",
-      "name": "Casa Beliê 2",
-      "category": "Eventos",
-      "url": "https://site.jumper.dev.br/casabelie-2/"
+      "description": "Casa de festas em Laranjeiras com duas propostas em avaliação e site oficial em produção.",
+      "accent": "#8063a8",
+      "developmentSites": [
+        { "slug": "casabelie", "label": "Desenvolvimento · versão 1", "url": "https://site.jumper.dev.br/casabelie/" },
+        { "slug": "casabelie-2", "label": "Desenvolvimento · versão 2", "url": "https://site.jumper.dev.br/casabelie-2/" }
+      ],
+      "officialSite": { "label": "Site oficial", "url": "https://casabelie.com.br/" }
     }
   ]
 }
