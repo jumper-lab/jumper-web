@@ -22,7 +22,7 @@ O registro e o painel devem permanecer sincronizados. O painel é gerado a parti
 
 ## Projetos atuais
 
-- Rodeio: desenvolvimento em `/rodeio/`; nenhum site oficial confirmado
+- Rodeio: desenvolvimento em `/rodeio/` e oficial em `https://rodeiosp.com.br/`
 - IZI Gym: desenvolvimento em `/izigym/` e oficial em `https://www.izigym.com.br/`, ambos servidos pelo `jumper-hoster`
 - Casa Beliê: desenvolvimentos em `/casabelie/` e `/casabelie-2/`, e oficial em `https://casabelie.com.br/`
 

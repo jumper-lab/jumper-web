@@ -18,7 +18,10 @@
           "url": "https://site.jumper.dev.br/rodeio/"
         }
       ],
-      "officialSite": null
+      "officialSite": {
+        "label": "Site oficial",
+        "url": "https://rodeiosp.com.br/"
+      }
     },
     {
       "id": "izigym",
