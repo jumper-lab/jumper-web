@@ -14,6 +14,14 @@
     {
       "pattern": "site.jumper.dev.br",
       "custom_domain": true
+    },
+    {
+      "pattern": "izigym.com.br",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.izigym.com.br",
+      "custom_domain": true
     }
   ]
 }

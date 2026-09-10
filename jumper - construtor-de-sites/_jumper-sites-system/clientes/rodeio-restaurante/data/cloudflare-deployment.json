@@ -2,7 +2,7 @@
   "url": "https://site.jumper.dev.br/rodeio",
   "provider": "cloudflare-workers-static-assets",
   "worker": "jumper-hoster",
-  "versionId": "e94c4403-d2dc-459c-99c2-10b923b49a97",
+  "versionId": "c0470750-d5af-41a3-b0aa-faac98f641ed",
   "status": "READY",
   "indexing": "noindex",
   "results": [
@@ -140,15 +140,29 @@
       "marge.ns.cloudflare.com"
     ]
   },
-  "date": "2026-09-10T10:32:00.000Z",
+  "date": "2026-09-10T10:38:00.000Z",
   "access": {
     "dashboard": "password",
     "clientSites": "public",
     "sessionHours": 12
   },
   "migrationSources": {
-    "izigym": "Vercel production dpl_6iVzKY6PyjrBRuVzsDA1kfttyxMD",
+    "izigym": {
+      "previousProvider": "Vercel",
+      "previousDeployment": "dpl_6iVzKY6PyjrBRuVzsDA1kfttyxMD",
+      "sourceRepository": "https://github.com/jumper-lab/izigym",
+      "sourceCommit": "ccbb564"
+    },
     "casabelie": "Vercel production dpl_2WmSNKtRWW4C9S14y9Yuw671KXij",
     "casabelie-2": "Vercel production dpl_Ci3DrqUKHE7e9uP9UxCHNNNHY4i2"
+  },
+  "officialDeployments": {
+    "izigym": {
+      "canonicalUrl": "https://www.izigym.com.br/",
+      "apexRedirect": "https://izigym.com.br/ -> https://www.izigym.com.br/",
+      "provider": "cloudflare-workers-static-assets",
+      "worker": "jumper-hoster",
+      "indexing": "index"
+    }
   }
 }

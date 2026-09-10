@@ -9,6 +9,8 @@ const clientTarget = join(target, 'rodeio');
 const fontsTarget = join(target, 'fonts');
 const iziSource = join(projectRoot, 'cloudflare', 'snapshots', 'izigym');
 const iziTarget = join(target, 'izigym');
+const iziOfficialSource = join(projectRoot, 'cloudflare', 'snapshots', 'izigym-official');
+const iziOfficialTarget = join(target, '_official', 'izigym');
 const belieSource = resolve(projectRoot, '../casa-belie/public');
 const beliePages = join(projectRoot, 'cloudflare', 'snapshots', 'casa-belie');
 const belieTarget = join(target, 'casabelie');
@@ -36,6 +38,11 @@ await mkdir(clientTarget, { recursive: true });
 await cp(source, clientTarget, { recursive: true });
 await cp(join(projectRoot, 'cloudflare', 'fonts'), fontsTarget, { recursive: true });
 await cp(iziSource, iziTarget, { recursive: true });
+await cp(iziOfficialSource, iziOfficialTarget, { recursive: true });
+await writeFile(
+  join(iziOfficialTarget, 'index.shell'),
+  await readFile(join(iziOfficialTarget, 'index.html')),
+);
 await rewriteTree(iziTarget, [
   ['/cdn-cgi/', '/izigym/cdn-cgi/'],
   ['/assets/', '/izigym/assets/'],
@@ -85,4 +92,4 @@ if (dashboard === dashboardTemplate) throw new Error('O marcador de cards não f
 await writeFile(join(target, 'index.html'), dashboard);
 await writeFile(join(target, 'robots.txt'), 'User-agent: *\nDisallow: /\n');
 
-console.log(`Jumper Hoster preparado: ${registry.clients.length} clientes e ${registry.clients.reduce((total, client) => total + client.developmentSites.length, 0)} sites em desenvolvimento.`);
+console.log(`Jumper Hoster preparado: ${registry.clients.length} clientes, ${registry.clients.reduce((total, client) => total + client.developmentSites.length, 0)} sites em desenvolvimento e IZI Gym oficial.`);
