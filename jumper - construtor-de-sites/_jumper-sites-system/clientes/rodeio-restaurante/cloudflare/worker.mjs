@@ -1,6 +1,9 @@
 const SITE_PREFIX = '/rodeio';
 const LEGACY_PREFIX = '/site';
 const PUBLIC_SITES = ['/rodeio', '/izigym', '/casabelie', '/casabelie-2'];
+const IZI_OFFICIAL_HOST = 'www.izigym.com.br';
+const IZI_OFFICIAL_APEX = 'izigym.com.br';
+const IZI_OFFICIAL_ROOT = '/_official/izigym';
 const LOGIN_PATH = '/__jumper/login';
 const LOGOUT_PATH = '/__jumper/logout';
 const COOKIE_NAME = 'jumper_hoster_session';
@@ -77,6 +80,37 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const password = env.JUMPER_HOSTER_PASSWORD;
+
+    if (url.hostname === IZI_OFFICIAL_APEX) {
+      url.hostname = IZI_OFFICIAL_HOST;
+      return Response.redirect(url, 308);
+    }
+
+    if (url.hostname === IZI_OFFICIAL_HOST) {
+      if (url.pathname.startsWith('/_official/')) return new Response('Not Found', { status: 404 });
+      if (url.pathname.startsWith('/cdn-cgi/image/')) {
+        const imagePath = url.pathname.match(/\/images\/[^?]+$/)?.[0];
+        if (imagePath) {
+          const imageUrl = new URL(`${IZI_OFFICIAL_ROOT}${imagePath}`, url);
+          return env.ASSETS.fetch(new Request(imageUrl, request));
+        }
+      }
+
+      const assetPath = url.pathname === '/' ? '/index.shell' : url.pathname;
+      const assetUrl = new URL(`${IZI_OFFICIAL_ROOT}${assetPath}`, url);
+      let response = await env.ASSETS.fetch(new Request(assetUrl, request));
+      if (response.status === 404 && request.headers.get('Accept')?.includes('text/html')) {
+        response = await env.ASSETS.fetch(new Request(new URL(`${IZI_OFFICIAL_ROOT}/index.shell`, url), request));
+      }
+      const headers = new Headers(response.headers);
+      headers.delete('X-Robots-Tag');
+      if (assetPath === '/index.shell' || (response.status === 200 && request.headers.get('Accept')?.includes('text/html'))) {
+        headers.set('Content-Type', 'text/html; charset=utf-8');
+      }
+      return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
+    }
+
+    if (url.pathname.startsWith('/_official/')) return new Response('Not Found', { status: 404 });
 
     if (url.pathname.startsWith('/fonts/')) return env.ASSETS.fetch(request);
 
