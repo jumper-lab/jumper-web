@@ -34,11 +34,13 @@ ARQUIVOS OBRIGATÓRIOS DO FLUXO V3
 9. README.md
 
 DOMÍNIO E HOSPEDAGEM DE DESENVOLVIMENTO
-- O endereço padrão de cada cliente é `https://[slug].jumper.dev.br/site`; `jumper.dev.br` fica reservado para a Jumper.
-- Hospede o build diretamente no Cloudflare Workers com assets estáticos. Não use Vercel como origem ou intermediário.
-- Configure base `/site`, mantenha links e assets internos sob o prefixo e redirecione a raiz do subdomínio para `/site/`.
+- O endereço padrão de cada cliente é `https://site.jumper.dev.br/[slug]`; `jumper.dev.br` fica reservado para a Jumper.
+- Hospede o build diretamente no Cloudflare Worker `jumper-hoster` com assets estáticos. Não use Vercel como origem ou intermediário.
+- Todo site concluído deve ser registrado em `jumper-hoster.registry.json`, aparecer como card no hub `https://site.jumper.dev.br/` e abrir publicamente em `https://site.jumper.dev.br/[slug]/`. Não encerre a entrega se registro, card e rota não estiverem sincronizados.
+- A senha protege somente o painel raiz do hub. Não aplique a senha às rotas públicas dos clientes em `/<slug>/`.
+- Configure base `/[slug]` e mantenha links e assets internos sob esse prefixo.
 - Se houver domínio próprio aprovado para produção, configure-o separadamente.
-- Grave a URL completa em `jumper.config.json`, use `SITE_URL=https://[slug].jumper.dev.br` e `BASE_PATH=/site` no build e valide DNS, HTTPS, canonical, Open Graph, sitemap, robots, assets e navegação interna.
+- Grave a URL completa em `jumper.config.json`, use `SITE_URL=https://site.jumper.dev.br` e `BASE_PATH=/[slug]` no build e valide DNS, HTTPS, card do hub, rota pública, canonical, Open Graph, sitemap, robots, assets e navegação interna.
 - Use Vercel somente quando a pessoa solicitar explicitamente; `*.vercel.app` não integra o fluxo padrão.
 
 Artefatos intermediários de planejamento separado não fazem parte do fluxo v3. Se existirem em um cliente legado, use apenas como contexto opcional. Não gere novos.

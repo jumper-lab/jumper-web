@@ -1,5 +1,6 @@
 node_modules/
 dist/
+hoster-dist/
 .astro/
 .env
 .DS_Store

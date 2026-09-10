@@ -8,10 +8,24 @@
   "language": "pt-BR",
   "status": "site_built_review",
   "blog_enabled": true,
-  "media_priority": ["official_instagram_real", "ai_generated_for_brand", "pexels_last_resort"],
+  "media_priority": [
+    "official_instagram_real",
+    "ai_generated_for_brand",
+    "pexels_last_resort"
+  ],
   "media_notes": "Decisão do usuário em 10/07/2026: NÃO usar imagens do site WordPress (genéricas) NEM Pexels (não representam o cliente). O site agora usa fotos REAIS do Instagram @casabelie, baixadas e recortadas (faixas de texto do Instagram removidas). Pendente: confirmar autorização de imagem e crédito dos fotógrafos antes de publicar.",
   "ai_images_as_primary": false,
   "ai_images_condition": "usar quando Instagram tratado e Pexels curado não resolverem a função",
   "pexels_mode": "curated_allowed",
-  "notes": "Segunda versão do site Casa Beliê. Clean-room build: nenhum layout, CSS, componente ou decisão visual da pasta casa-belie (versão de outra IA) pode ser consultado ou reaproveitado. Fonte criativa: apenas este briefing, DSs-base da personalidade A como repertório e docs oficiais do sistema."
+  "notes": "Segunda versão do site Casa Beliê. Clean-room build: nenhum layout, CSS, componente ou decisão visual da pasta casa-belie (versão de outra IA) pode ser consultado ou reaproveitado. Fonte criativa: apenas este briefing, DSs-base da personalidade A como repertório e docs oficiais do sistema.",
+  "site_url": "https://site.jumper.dev.br/casabelie-2/",
+  "production_domain": "site.jumper.dev.br",
+  "base_path": "/casabelie-2",
+  "hosting": "cloudflare-workers-static-assets",
+  "jumper_hoster": {
+    "worker": "jumper-hoster",
+    "registered": true,
+    "dashboard_url": "https://site.jumper.dev.br/",
+    "client_route_requires_password": false
+  }
 }

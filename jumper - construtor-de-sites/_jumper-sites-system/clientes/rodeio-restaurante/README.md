@@ -62,7 +62,7 @@ Validação atual: 48 combinações de página/viewport; 26 fotos distintas conf
 
 Preview: http://127.0.0.1:4321/?revisao=fotos
 
-Site Astro 7 estático, modelo M4 e personalidade A. O redesenho visual de 08/09/2026 está publicado para desenvolvimento em https://rodeio.jumper.dev.br/site, diretamente no Cloudflare.
+Site Astro 7 estático, modelo M4 e personalidade A. O redesenho visual de 08/09/2026 está publicado para desenvolvimento em https://site.jumper.dev.br/rodeio, diretamente no Cloudflare.
 
 ## Abrir e desenvolver
 
@@ -72,7 +72,7 @@ Use Node 24 e execute na pasta deste cliente:
 
 ```sh
 npm ci
-SITE_URL=https://rodeio.jumper.dev.br BASE_PATH=/site npm run build
+SITE_URL=https://site.jumper.dev.br BASE_PATH=/rodeio npm run build
 npm run preview
 ```
 
@@ -116,7 +116,7 @@ Validações finais: Astro check: 39 arquivos sem erros/avisos/hints; build: 10 
 
 ```sh
 npm run check
-SITE_URL=https://rodeio.jumper.dev.br BASE_PATH=/site npm run build
+SITE_URL=https://site.jumper.dev.br BASE_PATH=/rodeio npm run build
 node scripts/verify-revision.mjs redesign-final
 node scripts/verify-extreme-reflow.mjs redesign-pass1
 node ../../scripts/client-gate.mjs rodeio-restaurante
@@ -162,7 +162,7 @@ Em viewports extremos equivalentes a zoom elevado (360×225 e 390×320), o hero 
 
 ## Cloudflare
 
-Endereço de desenvolvimento: https://rodeio.jumper.dev.br/site. O Worker `rodeio-site-preview` serve os assets estáticos diretamente pelo Cloudflare; a raiz do subdomínio redireciona para `/site/`. A Vercel não participa do tráfego.
+Endereço de desenvolvimento: https://site.jumper.dev.br/rodeio. O Worker `jumper-hoster` serve os assets estáticos diretamente pelo Cloudflare; a raiz do domínio exibe o painel de projetos da Jumper e o Rodeio fica isolado em `/rodeio/`. A Vercel não participa do tráfego.
 
 Para compilar e publicar:
 
@@ -171,7 +171,7 @@ npm run build:cloudflare
 npx wrangler deploy
 ```
 
-O build usa `SITE_URL=https://rodeio.jumper.dev.br` e `BASE_PATH=/site`. O Worker remove o prefixo apenas para localizar os arquivos em `dist/`; URLs públicas, canonical, Open Graph e navegação mantêm `/site`. Nunca enviar briefing, originais, credenciais, scripts internos ou `node_modules` para a hospedagem.
+O build usa `SITE_URL=https://site.jumper.dev.br` e `BASE_PATH=/rodeio`. O Worker remove o prefixo apenas para localizar os arquivos em `dist/`; URLs públicas, canonical, Open Graph e navegação mantêm `/rodeio`. Nunca enviar briefing, originais, credenciais, scripts internos ou `node_modules` para a hospedagem.
 
 ## Ajuste de hero — 09/09/2026
 Fotografias da home e de todas as internas agora preenchem a largura útil inteira e 100vh, atrás do cabeçalho fixo. Texto sobreposto com contraste escuro; removidas as molduras e a divisão em colunas. Link discreto de descida em todas as 10 páginas, com alvo real (rodapé na 404). Privacidade e 404 preservam abertura tipográfica. Validação: 60 combinações de página/viewport, sem overflow, sobreposição de CTA ou rolagem interna nos tamanhos verificados; todas as âncoras clicadas. Astro check: 40 arquivos, zero diagnósticos; build aprovado. As métricas Lighthouse anteriores são históricas e não representam esta nova composição. Recortes de fotografias inteiras e limite de resolução do acervo permanecem sujeitos à proporção da tela. Versão local, sem deploy.
