@@ -43,6 +43,7 @@ _jumper-sites-system/
 - Todo cliente publicado para desenvolvimento pela infraestrutura Jumper recebe `https://site.jumper.dev.br/[slug]`.
 - A hospedagem desse endereço acontece diretamente no Cloudflare Worker `jumper-hoster` com assets estáticos. Vercel não participa como origem, proxy ou intermediário.
 - Todo site concluído pelo construtor deve entrar no registro `jumper-hoster.registry.json`, ser agrupado no card do respectivo cliente no hub `https://site.jumper.dev.br/` e ser servido no namespace público `/<slug>/`. O card deve separar os links de desenvolvimento do endereço oficial do cliente, quando existir. A entrega não está concluída enquanto registro, card e rota não estiverem sincronizados.
+- Use somente o Worker central `jumper-hoster` para hospedagem. Não crie Workers individuais por cliente; domínios oficiais devem ser roteados para o Worker central quando a Jumper for responsável pela hospedagem.
 - O painel raiz pode exigir autenticação da equipe Jumper. As rotas públicas dos clientes em `/<slug>/` não devem herdar essa senha.
 - O build usa base `/[slug]`; links, imagens, scripts, canonical, Open Graph e sitemap devem conservar esse prefixo.
 - O domínio raiz `jumper.dev.br` fica reservado para a própria Jumper.

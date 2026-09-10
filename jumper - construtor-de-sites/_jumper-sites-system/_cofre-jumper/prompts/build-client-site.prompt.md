@@ -37,6 +37,7 @@ DOMÍNIO E HOSPEDAGEM DE DESENVOLVIMENTO
 - O endereço padrão de cada cliente é `https://site.jumper.dev.br/[slug]`; `jumper.dev.br` fica reservado para a Jumper.
 - Hospede o build diretamente no Cloudflare Worker `jumper-hoster` com assets estáticos. Não use Vercel como origem ou intermediário.
 - Todo site concluído deve ser registrado em `jumper-hoster.registry.json`, aparecer no card do respectivo cliente no hub `https://site.jumper.dev.br/` e abrir publicamente em `https://site.jumper.dev.br/[slug]/`. O card agrupa as versões em desenvolvimento e exibe separadamente o site oficial, quando existir. Não encerre a entrega se registro, card e rota não estiverem sincronizados.
+- Publique todos os clientes no Worker central `jumper-hoster`. Não crie um Worker individual por cliente. Quando a Jumper hospedar o domínio oficial, adicione esse domínio ao roteamento do Worker central.
 - A senha protege somente o painel raiz do hub. Não aplique a senha às rotas públicas dos clientes em `/<slug>/`.
 - Configure base `/[slug]` e mantenha links e assets internos sob esse prefixo.
 - Se houver domínio próprio aprovado para produção, configure-o separadamente.
