@@ -36,15 +36,18 @@ _jumper-sites-system/
 12. Criar `data/visual-quality-audit.json`.
 13. Atualizar `README.md`.
 14. Rodar validação/build.
+15. Registrar o site no `jumper-hoster.registry.json`, adicioná-lo ao hub e publicar em `https://site.jumper.dev.br/[slug]/`.
 
 ## Domínio de Desenvolvimento Jumper
 
-- Todo cliente publicado para desenvolvimento pela infraestrutura Jumper recebe `https://[slug].jumper.dev.br/site`.
-- A hospedagem desse endereço acontece diretamente no Cloudflare Workers com assets estáticos. Vercel não participa como origem, proxy ou intermediário.
-- O build usa base `/site`; links, imagens, scripts, canonical, Open Graph e sitemap devem conservar esse prefixo.
-- A raiz `https://[slug].jumper.dev.br/` redireciona para `/site/`. O domínio raiz `jumper.dev.br` fica reservado para a própria Jumper.
+- Todo cliente publicado para desenvolvimento pela infraestrutura Jumper recebe `https://site.jumper.dev.br/[slug]`.
+- A hospedagem desse endereço acontece diretamente no Cloudflare Worker `jumper-hoster` com assets estáticos. Vercel não participa como origem, proxy ou intermediário.
+- Todo site concluído pelo construtor deve entrar no registro `jumper-hoster.registry.json`, ter um card no hub `https://site.jumper.dev.br/` e ser servido no namespace público `/<slug>/`. A entrega não está concluída enquanto esses três pontos não estiverem sincronizados.
+- O painel raiz pode exigir autenticação da equipe Jumper. As rotas públicas dos clientes em `/<slug>/` não devem herdar essa senha.
+- O build usa base `/[slug]`; links, imagens, scripts, canonical, Open Graph e sitemap devem conservar esse prefixo.
+- O domínio raiz `jumper.dev.br` fica reservado para a própria Jumper.
 - Se o cliente fornecer e aprovar um domínio próprio para produção, ele é configurado separadamente do endereço de desenvolvimento.
-- Antes de concluir o deploy, registre a URL completa em `jumper.config.json` e valide DNS, HTTPS, redirecionamento, canonical, Open Graph, sitemap, robots, assets e navegação interna.
+- Antes de concluir o deploy, registre a URL completa em `jumper.config.json` e valide DNS, HTTPS, card do hub, rota pública, redirecionamento, canonical, Open Graph, sitemap, robots, assets e navegação interna.
 - URLs `*.vercel.app` não fazem parte do fluxo padrão. Use Vercel somente quando a pessoa solicitar explicitamente.
 
 ## Arquivos Obrigatórios Por Cliente

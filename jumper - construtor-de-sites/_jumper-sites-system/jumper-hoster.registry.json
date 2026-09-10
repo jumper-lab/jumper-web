@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "1.0.0",
+  "worker": "jumper-hoster",
+  "dashboardUrl": "https://site.jumper.dev.br/",
+  "dashboardAccess": "jumper-password",
+  "clientRoutesAccess": "public",
+  "sites": [
+    {
+      "slug": "rodeio",
+      "name": "Rodeio",
+      "category": "Restaurante",
+      "url": "https://site.jumper.dev.br/rodeio/"
+    },
+    {
+      "slug": "izigym",
+      "name": "IZI Gym",
+      "category": "Fitness",
+      "url": "https://site.jumper.dev.br/izigym/"
+    },
+    {
+      "slug": "casabelie",
+      "name": "Casa Beliê",
+      "category": "Eventos",
+      "url": "https://site.jumper.dev.br/casabelie/"
+    },
+    {
+      "slug": "casabelie-2",
+      "name": "Casa Beliê 2",
+      "category": "Eventos",
+      "url": "https://site.jumper.dev.br/casabelie-2/"
+    }
+  ]
+}

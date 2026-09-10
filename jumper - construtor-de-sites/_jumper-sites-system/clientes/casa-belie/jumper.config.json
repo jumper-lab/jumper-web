@@ -8,8 +8,22 @@
   "language": "pt-BR",
   "status": "site_built_preview",
   "blog_enabled": true,
-  "media_priority": ["official_instagram", "ai_generated_for_brand", "pexels_last_resort"],
+  "media_priority": [
+    "official_instagram",
+    "ai_generated_for_brand",
+    "pexels_last_resort"
+  ],
   "ai_images_as_primary": true,
   "ai_images_condition": "usar somente quando o Instagram oficial não tiver imagem adequada para a função",
-  "pexels_mode": "last_resort"
+  "pexels_mode": "last_resort",
+  "site_url": "https://site.jumper.dev.br/casabelie/",
+  "production_domain": "site.jumper.dev.br",
+  "base_path": "/casabelie",
+  "hosting": "cloudflare-workers-static-assets",
+  "jumper_hoster": {
+    "worker": "jumper-hoster",
+    "registered": true,
+    "dashboard_url": "https://site.jumper.dev.br/",
+    "client_route_requires_password": false
+  }
 }

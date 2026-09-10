@@ -6,9 +6,9 @@
   "model": "M4",
   "personality": "A",
   "engine": "ds-autoral",
-  "site_url": "https://rodeio.jumper.dev.br/site",
-  "production_domain": "rodeio.jumper.dev.br",
-  "base_path": "/site",
+  "site_url": "https://site.jumper.dev.br/rodeio/",
+  "production_domain": "site.jumper.dev.br",
+  "base_path": "/rodeio",
   "hosting": "cloudflare-workers-static-assets",
   "preview_mode": true,
   "blog_enabled": false,
@@ -17,5 +17,11 @@
     "max_image_kb": 400,
     "max_font_files": 8
   },
-  "approval_context": "Em 09/09/2026, o usuário definiu https://rodeio.jumper.dev.br/site como endereço de desenvolvimento e solicitou hospedagem direta no Cloudflare, sem Vercel no caminho. A indexação continua desativada até autorização específica."
+  "approval_context": "Em 10/09/2026, o usuário solicitou que o Rodeio fosse publicado pelo Worker jumper-hoster. O domínio confirmado diretamente no Worker é site.jumper.dev.br e o endereço é https://site.jumper.dev.br/rodeio, sem Vercel no caminho. A indexação continua desativada até autorização específica.",
+  "jumper_hoster": {
+    "worker": "jumper-hoster",
+    "registered": true,
+    "dashboard_url": "https://site.jumper.dev.br/",
+    "client_route_requires_password": false
+  }
 }

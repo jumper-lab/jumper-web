@@ -124,7 +124,7 @@ Esta seção atualiza o estado de conferência sem modificar as respostas origin
 - **Canais complementares verificados:** [cardápio Live Menu](https://livemenu.app/menu/56c778030896b3cd13c609e5) e [formulário oficial de eventos](https://rodeiosp.com.br/eventos/). Nenhum preço, ingrediente, capacidade ou promessa foi inferido desses links.
 - **Assets já inspecionados:** fotografias reais recebidas, incluindo o arquivo indicado para o hero, têm rastreabilidade em `entrada/asset-selection.json`. Não foi necessário usar IA nem Pexels. A ingestão registrou manual com erro 404 e pasta de logo vazia; foi usada a marca do site oficial. O laranja permanece uma interpretação documentada, sem certificação do manual.
 - **Blog:** desativado expressamente; manter sem blog e sem área administrativa.
-- **Versão publicada para revisão:** https://rodeio.jumper.dev.br/site, servida diretamente pelo Cloudflare e com indexação desativada.
+- **Versão publicada para revisão:** https://site.jumper.dev.br/rodeio, servida diretamente pelo Cloudflare e com indexação desativada.
 
 ### Divergências comerciais que exigem confirmação do cliente
 
