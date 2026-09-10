@@ -58,7 +58,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).hr
     if ('IntersectionObserver' in window) {
       const io = new IntersectionObserver((es) => es.forEach((e) => {
         if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-      }), { threshold: 0.01, rootMargin: '0px 0px 20% 0px' });
+      }), { threshold: 0.08, rootMargin: '0px 0px -7% 0px' });
       animated.forEach((el) => io.observe(el));
     } else {
       animated.forEach((el) => el.classList.add('in'));

@@ -236,7 +236,8 @@ const avaliacoes = [
   .hero-home{align-items:center}
   .hero-page .bg{position:absolute;inset:0;z-index:-1}
   .hero-page .bg picture{display:contents}
-  .hero-page .bg img{width:100%;height:100%;object-fit:cover}
+  .hero-page .bg img{width:100%;height:100%;object-fit:cover;animation:hero-scale 1.5s var(--ease) both}
+  @media(max-width:700px){.hero-page .bg img{animation:none}}
   .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;opacity:0;transition:opacity .7s var(--ease)}
   .hero-video.ready{opacity:1}
   @media (prefers-reduced-motion: reduce){.hero-video{display:none}}
@@ -245,8 +246,20 @@ const avaliacoes = [
     linear-gradient(to top, rgba(45,36,55,.52) 0%, rgba(45,36,55,.20) 46%, rgba(45,36,55,.04) 78%, rgba(45,36,55,0) 100%)}
   .hero-inner{width:100%;padding-top:110px;padding-bottom:clamp(40px,7vh,80px);color:#fff;
     display:flex;flex-direction:column;align-items:center;text-align:center}
+  .hero-inner>.kicker,.hero-inner h1,.hero-inner>p,.hero-inner .actions{animation:hero-rise .82s var(--ease) both}
+  .hero-inner h1{animation-delay:.08s}
+  .hero-inner>p{animation-delay:.16s}
+  .hero-inner .actions{animation-delay:.24s}
+  .hero-inner .confia{animation-delay:.32s}
+  .hero-inner .u-giz path{stroke-dashoffset:640;animation:hero-draw .9s var(--ease) .62s both}
   .hero-inner h1{font-family:"Fraunces Hero","Fraunces",Georgia,serif;font-size:clamp(2.6rem,6.6vw,5rem);margin:16px auto 16px;font-weight:370;letter-spacing:.01em;text-shadow:0 2px 24px rgba(45,36,55,.4)}
-  @media(max-width:560px){.hero-inner h1{font-size:clamp(1.9rem,9vw,3.1rem)}}
+  @media(max-width:560px){
+    .hero-inner{padding-top:96px;padding-bottom:32px}
+    .hero-inner h1{font-size:clamp(1.65rem,8.3vw,3.1rem);max-width:100%}
+    .hero-inner p{font-size:1rem;margin-bottom:20px}
+    .actions{gap:10px}
+    .confia{margin-top:18px!important;line-height:1.45}
+  }
   .hero-inner h1 .line{display:block;overflow:hidden;padding:0 .12em .24em;margin-bottom:-.24em}
   .hero-inner h1 .line>span{display:inline-block}
   .hero-inner p{max-width:54ch;font-size:1.1rem;color:rgba(255,255,255,.93);margin:0 auto 28px;text-shadow:0 1px 12px rgba(45,36,55,.35)}
@@ -259,6 +272,8 @@ const avaliacoes = [
   .nota{position:absolute;right:clamp(24px,6vw,90px);bottom:30vh;color:#fff;display:none;flex-direction:column;gap:2px}
   @media(min-width:1000px){.nota{display:flex}}
   .nota .hand{font-size:1.5rem;transform:rotate(-4deg)}
+  .nota{animation:hero-rise .9s var(--ease) .42s both}
+  @media(prefers-reduced-motion:reduce){.hero-page .bg img,.hero-inner>.kicker,.hero-inner h1,.hero-inner>p,.hero-inner .actions,.nota{animation:none}.hero-inner .u-giz path{animation:none;stroke-dashoffset:0}}
 
   /* MANIFESTO */
   .manifesto{background:var(--areia)}
@@ -355,6 +370,16 @@ const avaliacoes = [
   .post h3{font-size:1.2rem;margin:8px 0 10px}
   .post p{color:var(--ink-suave);font-size:.93rem;margin-bottom:14px}
   .ler{color:var(--lav-prof);font-weight:800;font-size:.9rem}
+  @media(max-height:520px) and (orientation:landscape){
+    .hero-home{min-height:100svh}
+    .hero-inner{padding-top:76px;padding-bottom:18px}
+    .hero-inner>.kicker{font-size:.66rem}
+    .hero-inner h1{font-size:clamp(2rem,6.4vw,2.75rem);margin:8px auto}
+    .hero-inner p{font-size:.92rem;line-height:1.45;margin-bottom:12px;max-width:66ch}
+    .hero-inner .actions{gap:10px}
+    .hero-inner .actions .btn{min-height:42px;padding:10px 20px}
+    .hero-inner .confia{display:none}
+  }
 </style>
 
 <script>

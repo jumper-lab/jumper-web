@@ -75,6 +75,11 @@ import Star from '../components/Star.astro';
   aside a{color:var(--lav-prof);font-weight:800;text-decoration:none}
   aside a:hover{text-decoration:underline}
   aside .nota-hand{color:var(--verde);transform:rotate(-2deg);margin-top:10px}
+  @media(max-width:560px){
+    form{padding:24px 20px}
+    form .btn{width:100%}
+    aside{overflow-wrap:anywhere}
+  }
 </style>
 
 <script>

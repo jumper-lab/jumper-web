@@ -40,7 +40,7 @@ h2{font-size:clamp(1.9rem,3.6vw,2.7rem);max-width:24ch;margin:14px 0 12px}
 /* Botões */
 .btn{position:relative;display:inline-flex;align-items:center;gap:10px;background:var(--lav-prof);color:var(--papel);
   padding:16px 32px;border-radius:999px;font-weight:800;font-size:1rem;text-decoration:none;border:0;cursor:pointer;
-  transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+  max-width:100%;justify-content:center;text-align:center;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
 .btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px -10px rgba(106,84,151,.55)}
 .btn:active{transform:scale(.97)}
 .btn .arr{transition:transform .3s var(--ease)}
@@ -54,15 +54,26 @@ h2{font-size:clamp(1.9rem,3.6vw,2.7rem);max-width:24ch;margin:14px 0 12px}
 .btn.ghost.dark{color:var(--lav-prof);box-shadow:inset 0 0 0 1.5px var(--lav-brand)}
 .btn.ghost.dark:hover{background:var(--lav-veu)}
 
-/* Reveal */
-.reveal{opacity:1;transform:none}
-.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
-.reveal.in{opacity:1;transform:none}
+/* Entradas leves: somente propriedades compostas, sem provocar reflow. */
+.reveal{opacity:1;translate:none;scale:1}
+.js .reveal{opacity:0;translate:0 34px;scale:.985;transition:opacity .72s var(--ease),translate .82s var(--ease),scale .82s var(--ease)}
+.reveal.in{opacity:1;translate:none;scale:1}
+
+/* Grupos ganham ritmo próprio depois que o bloco entra na área visível. */
+.js :is(.ambs,.mural,.lazer-lista).reveal > *{opacity:0;translate:0 20px;transition:opacity .55s var(--ease),translate .7s var(--ease)}
+:is(.ambs,.mural,.lazer-lista).reveal.in > *{opacity:1;translate:none}
+:is(.ambs,.mural,.lazer-lista).reveal.in > *:nth-child(2){transition-delay:.05s}
+:is(.ambs,.mural,.lazer-lista).reveal.in > *:nth-child(3){transition-delay:.1s}
+:is(.ambs,.mural,.lazer-lista).reveal.in > *:nth-child(4){transition-delay:.15s}
+:is(.ambs,.mural,.lazer-lista).reveal.in > *:nth-child(5){transition-delay:.2s}
+:is(.ambs,.mural,.lazer-lista).reveal.in > *:nth-child(n+6){transition-delay:.25s}
 
 /* Polaroid (muro de memórias) */
 .polaroid{background:#fff;padding:14px 14px 50px;box-shadow:0 18px 40px -18px rgba(58,52,64,.35);position:relative;
-  transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
-.polaroid:hover{transform:rotate(0deg) translateY(-6px)!important;box-shadow:0 26px 52px -20px rgba(58,52,64,.4)}
+  translate:0 0;scale:1;transition:translate .82s var(--ease),scale .82s var(--ease),box-shadow .82s var(--ease)}
+@media(hover:hover){
+  .polaroid:hover{translate:0 -5px;scale:1.012;box-shadow:0 25px 50px -20px rgba(58,52,64,.4)}
+}
 .polaroid picture{display:block}
 .polaroid img{width:100%;object-fit:cover}
 .polaroid .cap{position:absolute;left:0;right:0;bottom:10px;text-align:center;font-family:Caveat,cursive;font-weight:600;font-size:1.35rem;color:var(--ink-suave)}
@@ -88,6 +99,11 @@ h2{font-size:clamp(1.9rem,3.6vw,2.7rem);max-width:24ch;margin:14px 0 12px}
 .marquee .st{color:var(--lav-brand);font-style:normal}
 @keyframes mq{to{transform:translateX(-50%)}}
 
+/* Primeira dobra: movimento visível desde o primeiro frame, sem esconder o LCP. */
+@keyframes hero-rise{from{transform:translate3d(0,24px,0)}to{transform:translate3d(0,0,0)}}
+@keyframes hero-scale{from{transform:scale(1.045)}to{transform:scale(1)}}
+@keyframes hero-draw{from{stroke-dashoffset:640}to{stroke-dashoffset:0}}
+
 /* Form */
 .field{display:flex;flex-direction:column;gap:6px;margin-bottom:18px}
 .field label{font-weight:800;font-size:.9rem}
@@ -97,9 +113,22 @@ h2{font-size:clamp(1.9rem,3.6vw,2.7rem);max-width:24ch;margin:14px 0 12px}
 .field.invalid .err{display:block}
 .field.invalid input,.field.invalid textarea,.field.invalid select{border-color:#B3372E}
 
+/* Ritmo e áreas de toque para telas compactas. */
+@media(max-width:640px){
+  :root{--section-y:56px}
+  body{font-size:1rem}
+  .btn{min-height:48px;padding:14px 22px}
+  .kicker{line-height:1.45}
+  h2{font-size:clamp(1.85rem,9vw,2.35rem)}
+}
+@media(max-width:360px){
+  :root{--gutter:18px;--section-y:48px}
+}
+
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation-duration:.15s!important;animation-delay:0s!important;transition-duration:.15s!important}
-  .reveal{opacity:1;transform:none}
+  .reveal{opacity:1;translate:none;scale:1}
+  :is(.ambs,.mural,.lazer-lista).reveal > *{opacity:1;translate:none}
   .marquee .track{animation:none}
   .u-giz path,.draw path,.btn svg.scribble path{stroke-dashoffset:0!important;animation:none!important}
 }

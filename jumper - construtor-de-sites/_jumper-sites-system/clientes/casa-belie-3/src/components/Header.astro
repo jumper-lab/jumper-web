@@ -40,7 +40,8 @@ const current = Astro.url.pathname;
 
 <style>
   header{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;justify-content:space-between;
-    padding:18px var(--gutter);transition:background .3s var(--ease),box-shadow .3s var(--ease),padding .3s var(--ease)}
+    padding:18px var(--gutter);transition:background .3s var(--ease),box-shadow .3s var(--ease),padding .3s var(--ease);animation:header-enter .72s var(--ease) both}
+  @keyframes header-enter{from{transform:translate3d(0,-18px,0)}to{transform:translate3d(0,0,0)}}
   header.solid{background:rgba(253,250,244,.94);backdrop-filter:blur(8px);box-shadow:0 1px 0 rgba(58,52,64,.08);padding-top:12px;padding-bottom:12px}
   header:not(.solid){background:linear-gradient(to bottom,rgba(27,22,31,.42),rgba(27,22,31,0))}
   header.menu-open{background:rgba(253,250,244,.98);box-shadow:0 1px 0 rgba(58,52,64,.08)}
@@ -57,8 +58,16 @@ const current = Astro.url.pathname;
   nav{display:flex;align-items:center;gap:clamp(14px,2.5vw,32px)}
   nav a{text-decoration:none;font-weight:600;font-size:.95rem;color:#fff;position:relative;transition:color .3s}
   header.solid nav a{color:var(--ink)}
-  nav a:not(.cta)::after{content:"";position:absolute;left:0;bottom:-5px;height:2px;width:0;background:currentColor;border-radius:2px;transition:width .35s var(--ease)}
-  nav a:not(.cta):hover::after,nav a:not(.cta)[aria-current="page"]::after{width:100%}
+  header > nav a:not(.cta){z-index:0;padding:5px 8px;margin:-5px -8px}
+  header > nav a:not(.cta)::before,header > nav a:not(.cta)::after{content:"";position:absolute;pointer-events:none;inset:-2px -6px -3px;border:1.4px solid currentColor;border-radius:48% 52% 46% 54% / 56% 43% 57% 44%;opacity:0;transform:scale(.78) rotate(-2deg);transition:opacity .3s ease,transform .5s var(--ease)}
+  header > nav a:not(.cta)::after{inset:0 -8px -5px -5px;border-width:1px;border-radius:53% 47% 55% 45% / 44% 57% 43% 56%;transform:scale(.8) rotate(1.5deg)}
+  header > nav a:not(.cta):is(:focus-visible,[aria-current="page"])::before{opacity:.72;transform:scale(1) rotate(-2deg)}
+  header > nav a:not(.cta):is(:focus-visible,[aria-current="page"])::after{opacity:.3;transform:scale(1) rotate(1.5deg)}
+  header > nav a:not(.cta):focus-visible{outline:none}
+  @media(hover:hover){
+    header > nav a:not(.cta):hover::before{opacity:.72;transform:scale(1) rotate(-2deg)}
+    header > nav a:not(.cta):hover::after{opacity:.3;transform:scale(1) rotate(1.5deg)}
+  }
   nav .cta{background:var(--papel);color:var(--lav-prof);padding:11px 22px;border-radius:999px;font-weight:800;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
   nav .cta:hover{transform:translateY(-2px);box-shadow:0 8px 20px -6px rgba(0,0,0,.35)}
   header.solid nav .cta{background:var(--lav-prof);color:var(--papel)}
@@ -67,16 +76,23 @@ const current = Astro.url.pathname;
   #menu-btn span{width:26px;height:2.5px;border-radius:2px;background:#fff;transition:background .3s,transform .3s var(--ease)}
   header.solid #menu-btn span{background:var(--ink)}
   header.menu-open #menu-btn span{background:var(--ink)}
+  header.menu-open #menu-btn span:first-child{transform:translateY(4.25px) rotate(45deg)}
+  header.menu-open #menu-btn span:last-child{transform:translateY(-4.25px) rotate(-45deg)}
   @media(max-width:960px){
     nav{display:none}
     #menu-btn{display:flex}
   }
+  @media(prefers-reduced-motion:reduce){
+    header{animation:none}
+    header > nav a:not(.cta)::before,header > nav a:not(.cta)::after{transition:none}
+  }
 
-  #menu-mobile{position:fixed;inset:0;z-index:49;background:var(--papel);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;padding:80px var(--gutter) 48px}
+  #menu-mobile{position:fixed;inset:0;z-index:49;background:var(--papel);display:flex;flex-direction:column;justify-content:flex-start;align-items:center;gap:8px;padding:clamp(92px,15vh,124px) var(--gutter) max(32px,env(safe-area-inset-bottom));overflow-y:auto}
   #menu-mobile[hidden]{display:none}
-  #menu-mobile nav{display:flex;flex-direction:column;align-items:center;gap:18px;margin-bottom:40px}
-  #menu-mobile nav a{font-family:"Fraunces",serif;font-size:1.9rem;color:var(--ink);text-decoration:none}
+  #menu-mobile nav{display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:24px}
+  #menu-mobile nav a{font-family:"Fraunces",serif;font-size:clamp(1.5rem,6vw,1.9rem);color:var(--ink);text-decoration:none;min-height:44px;display:flex;align-items:center}
   #menu-mobile nav a:hover{color:var(--lav-prof)}
+  @media(min-height:700px){#menu-mobile{justify-content:center;padding-top:88px}}
 </style>
 
 <script>

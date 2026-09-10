@@ -102,6 +102,15 @@ export const prerender = false;
   .editor-acoes{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
   .btn.perigo{background:#B3372E}
   .mini{font-size:.83rem;color:var(--ink-suave)}
+  @media(max-width:560px){
+    .admin{padding:24px 14px}
+    .tela{padding:26px 20px;border-radius:20px}
+    .acoes{width:100%}
+    .acoes .btn{flex:1;padding-inline:14px}
+    #lista li{align-items:flex-start;padding:14px}
+    #lista .d{overflow-wrap:anywhere}
+    .editor-acoes .btn{flex:1 1 auto}
+  }
 </style>
 
 <script>
