@@ -7,7 +7,6 @@
   "personality": "A",
   "engine": "ds-autoral",
   "site_url": "https://site.jumper.dev.br/rodeio/",
-  "official_site_url": "https://rodeiosp.com.br/",
   "production_domain": "site.jumper.dev.br",
   "base_path": "/rodeio",
   "hosting": "cloudflare-workers-static-assets",
