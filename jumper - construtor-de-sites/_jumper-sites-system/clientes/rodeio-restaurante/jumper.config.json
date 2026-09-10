@@ -23,5 +23,6 @@
     "registered": true,
     "dashboard_url": "https://site.jumper.dev.br/",
     "client_route_requires_password": false
-  }
+  },
+  "official_site_url": "https://rodeiosp.com.br/"
 }
