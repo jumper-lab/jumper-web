@@ -6,7 +6,7 @@
     <meta name="robots" content="noindex, nofollow">
     <meta name="theme-color" content="#ffffff">
     <title>Sites — Jumper Studio</title>
-    <meta name="description" content="Sites em desenvolvimento criados pela Jumper Studio.">
+    <meta name="description" content="Sites em desenvolvimento e sites oficiais dos clientes da Jumper Studio.">
     <style>
       @font-face{font-family:Saans;src:url('/fonts/Saans-TRIAL-Light.woff2') format('woff2');font-weight:300;font-display:swap}
       @font-face{font-family:Saans;src:url('/fonts/Saans-TRIAL-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
@@ -27,15 +27,18 @@
       h1{font-family:Greed,Impact,sans-serif;font-size:clamp(44px,4.25vw,58px);font-weight:900;line-height:.94;letter-spacing:-.025em;text-transform:uppercase;margin:0;max-width:760px}
       .lead{font-size:17px;font-weight:300;line-height:1.45;color:var(--muted);margin:14px 0 0}
       .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:42px}
-      .card{min-height:202px;border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;text-decoration:none;background:#fff;transition:transform .28s cubic-bezier(.22,.8,.24,1),border-color .28s ease,box-shadow .28s ease}
+      .card{min-height:260px;border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;background:#fff;transition:transform .28s cubic-bezier(.22,.8,.24,1),border-color .28s ease,box-shadow .28s ease}
       .card:hover,.card:focus-visible{transform:translateY(-4px);border-color:#bcbcbc;box-shadow:0 15px 35px rgba(0,0,0,.055);outline:none}
       .tag{display:flex;align-items:center;gap:8px;color:var(--project,var(--blue));font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase}
       .tag:before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;flex:none}
       h2{font-size:20px;font-weight:700;line-height:1.1;letter-spacing:-.025em;margin:14px 0 8px}
       .description{font-size:14px;font-weight:300;line-height:1.35;color:var(--muted);margin:0;max-width:270px}
-      .open{display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:22px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+      .links{display:grid;gap:8px;margin-top:auto;padding-top:22px}
+      .open{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #e7e7e7;padding:11px 0 2px;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:color .2s ease}
+      .open.official{color:var(--project,var(--blue))}
+      .open:hover,.open:focus-visible{color:var(--project,var(--blue));outline:none}
       .arrow{font-size:17px;line-height:.8;transition:transform .25s ease}
-      .card:hover .arrow,.card:focus-visible .arrow{transform:translateX(4px)}
+      .open:hover .arrow,.open:focus-visible .arrow{transform:translateX(4px)}
       footer{padding-top:24px;padding-bottom:20px;justify-content:flex-start}
       @media(max-width:800px){main{padding-top:54px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
       @media(max-width:560px){header,footer{padding-left:24px;padding-right:24px}.by{display:none}.top-right{gap:0}main{width:calc(100% - 48px);padding:46px 0 64px}h1{font-size:42px}.lead{font-size:16px}.grid{grid-template-columns:1fr;margin-top:32px}.card{min-height:190px}.footer-copy{font-size:9px}}
@@ -52,32 +55,9 @@
     </header>
     <main>
       <h1>Os sites criados pela Jumper.</h1>
-      <p class="lead">Um construtor, vários projetos. Escolha um abaixo.</p>
+      <p class="lead">Acesse, por cliente, as versões em desenvolvimento e os sites oficiais.</p>
       <section class="grid" aria-label="Sites disponíveis">
-        <a class="card" href="/rodeio/">
-          <span class="tag">Restaurante</span>
-          <h2>Rodeio</h2>
-          <p class="description">Site institucional com história, cardápio, restaurantes, eventos e reservas.</p>
-          <span class="open">Abrir <span class="arrow" aria-hidden="true">→</span></span>
-        </a>
-        <a class="card" href="/izigym/" style="--project:#e52c12">
-          <span class="tag">Fitness</span>
-          <h2>IZI Gym</h2>
-          <p class="description">Academia em Alto de Pinheiros com planos, estrutura, galeria e informações da unidade.</p>
-          <span class="open">Abrir <span class="arrow" aria-hidden="true">→</span></span>
-        </a>
-        <a class="card" href="/casabelie/" style="--project:#8063a8">
-          <span class="tag">Eventos</span>
-          <h2>Casa Beliê</h2>
-          <p class="description">Casa de festas em Laranjeiras com quintal, experiências, galeria, novidades e contato.</p>
-          <span class="open">Abrir <span class="arrow" aria-hidden="true">→</span></span>
-        </a>
-        <a class="card" href="/casabelie-2/" style="--project:#b7789d">
-          <span class="tag">Eventos</span>
-          <h2>Casa Beliê 2</h2>
-          <p class="description">Segunda proposta do site da Casa Beliê, com festas, espaço, novidades e contato.</p>
-          <span class="open">Abrir <span class="arrow" aria-hidden="true">→</span></span>
-        </a>
+        <!-- JUMPER_CLIENT_CARDS -->
       </section>
     </main>
     <footer><span class="footer-copy">Sites · Jumper Studio</span></footer>

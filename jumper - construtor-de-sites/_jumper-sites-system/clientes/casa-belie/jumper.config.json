@@ -17,6 +17,7 @@
   "ai_images_condition": "usar somente quando o Instagram oficial não tiver imagem adequada para a função",
   "pexels_mode": "last_resort",
   "site_url": "https://site.jumper.dev.br/casabelie/",
+  "official_site_url": "https://casabelie.com.br/",
   "production_domain": "site.jumper.dev.br",
   "base_path": "/casabelie",
   "hosting": "cloudflare-workers-static-assets",

@@ -19,6 +19,7 @@
   "pexels_mode": "curated_allowed",
   "notes": "Segunda versão do site Casa Beliê. Clean-room build: nenhum layout, CSS, componente ou decisão visual da pasta casa-belie (versão de outra IA) pode ser consultado ou reaproveitado. Fonte criativa: apenas este briefing, DSs-base da personalidade A como repertório e docs oficiais do sistema.",
   "site_url": "https://site.jumper.dev.br/casabelie-2/",
+  "official_site_url": "https://casabelie.com.br/",
   "production_domain": "site.jumper.dev.br",
   "base_path": "/casabelie-2",
   "hosting": "cloudflare-workers-static-assets",

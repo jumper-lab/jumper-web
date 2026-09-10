@@ -53,15 +53,36 @@ await cp(
 await cp(belie2Source, belie2Target, { recursive: true });
 await cp(belie2Pages, belie2Target, { recursive: true });
 
-const dashboard = await readFile(join(projectRoot, 'cloudflare', 'dashboard.html'), 'utf8');
+const dashboardTemplate = await readFile(join(projectRoot, 'cloudflare', 'dashboard.html'), 'utf8');
 const registry = JSON.parse(await readFile(resolve(projectRoot, '../../jumper-hoster.registry.json'), 'utf8'));
-for (const site of registry.sites) {
-  if (!dashboard.includes(`href="/${site.slug}/"`)) {
-    throw new Error(`O site ${site.slug} está no registro, mas não possui card no hub.`);
+
+const escapeHtml = (value) => String(value)
+  .replaceAll('&', '&amp;')
+  .replaceAll('<', '&lt;')
+  .replaceAll('>', '&gt;')
+  .replaceAll('"', '&quot;')
+  .replaceAll("'", '&#039;');
+
+const cards = [];
+for (const client of registry.clients) {
+  const links = [];
+  for (const site of client.developmentSites) {
+    if (site.url !== `https://site.jumper.dev.br/${site.slug}/`) {
+      throw new Error(`A URL de desenvolvimento de ${site.slug} não corresponde ao slug registrado.`);
+    }
+    await readFile(join(target, site.slug, 'index.html'));
+    links.push(`<a class="open" href="/${escapeHtml(site.slug)}/"><span>${escapeHtml(site.label)}</span><span class="arrow" aria-hidden="true">→</span></a>`);
   }
-  await readFile(join(target, site.slug, 'index.html'));
+  if (client.officialSite) {
+    const officialUrl = new URL(client.officialSite.url);
+    if (officialUrl.protocol !== 'https:') throw new Error(`O site oficial de ${client.name} precisa usar HTTPS.`);
+    links.push(`<a class="open official" href="${escapeHtml(officialUrl.href)}" target="_blank" rel="noopener"><span>${escapeHtml(client.officialSite.label)}</span><span class="arrow" aria-hidden="true">↗</span></a>`);
+  }
+  cards.push(`<article class="card" style="--project:${escapeHtml(client.accent)}"><span class="tag">${escapeHtml(client.category)}</span><h2>${escapeHtml(client.name)}</h2><p class="description">${escapeHtml(client.description)}</p><div class="links">${links.join('')}</div></article>`);
 }
+const dashboard = dashboardTemplate.replace('<!-- JUMPER_CLIENT_CARDS -->', cards.join('\n'));
+if (dashboard === dashboardTemplate) throw new Error('O marcador de cards não foi encontrado no template do hub.');
 await writeFile(join(target, 'index.html'), dashboard);
 await writeFile(join(target, 'robots.txt'), 'User-agent: *\nDisallow: /\n');
 
-console.log('Jumper Hoster preparado: Rodeio, IZI Gym e duas versões da Casa Beliê.');
+console.log(`Jumper Hoster preparado: ${registry.clients.length} clientes e ${registry.clients.reduce((total, client) => total + client.developmentSites.length, 0)} sites em desenvolvimento.`);
