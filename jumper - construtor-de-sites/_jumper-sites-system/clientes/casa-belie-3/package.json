@@ -1,0 +1,17 @@
+{
+  "name": "casa-belie-3",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "build:cloudflare": "SITE_URL=https://site.jumper.dev.br BASE_PATH=/casabelie-3 BELIE_LOCAL_PRODUCTION=1 astro build && node scripts/export-hoster.mjs",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/node": "^9.0.0",
+    "@astrojs/vercel": "^9.0.5",
+    "astro": "^5.0.0"
+  }
+}

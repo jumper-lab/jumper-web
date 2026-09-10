@@ -1,0 +1,51 @@
+---
+import Base from '../../layouts/Base.astro';
+import HeroInterno from '../../components/HeroInterno.astro';
+import CtaFinal from '../../components/CtaFinal.astro';
+import { getPublishedPosts } from '../../lib/blogStore.js';
+import { withBase } from '../../lib/paths.js';
+
+const posts = await getPublishedPosts();
+---
+<Base title="Novidades da Casa Beliê" description="Oficinas, temporadas, bastidores e ideias de festa afetiva — as novidades da casa." overHero>
+  <HeroInterno kicker="Novidades" headline="O que anda acontecendo na casa." strokeWord="acontecendo" sub="Oficinas, temporadas, bastidores e ideias de festa afetiva." surface="var(--brisa)" starColor="#3D5A34" image="/images/hero-blog-hq-2400.webp" imageMedium="/images/hero-blog-hq-1600.webp" imageSmall="/images/hero-blog-hq-mobile-768.webp" imageAvif="/images/hero-blog-hq-2400.avif" imageMediumAvif="/images/hero-blog-hq-1600.avif" imageSmallAvif="/images/hero-blog-hq-mobile-768.avif" imageAlt="Campinho da Casa Beliê com uma bola pronta para brincar" imagePosition="50% 60%" imageWidth={2400} imageHeight={1350} />
+
+  <section>
+    <div class="shell">
+      {posts.length > 0 ? (
+        <div class="posts">
+          {posts.map((p, i) => (
+            <a class="post reveal" href={withBase(`/blog/${p.slug}/`)} style={`transition-delay:${i * 0.07}s`}>
+              <span class="data hand">{p.dateLabel}</span>
+              <h2>{p.title}</h2>
+              <p>{p.excerpt}</p>
+              <span class="ler">Ler novidade →</span>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="vazio reveal">
+          <p class="serif">As primeiras novidades estão no forno.</p>
+          <span class="nota-hand" aria-hidden="true">volta logo :)</span>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <CtaFinal />
+</Base>
+
+<style>
+  .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  @media(max-width:900px){.posts{grid-template-columns:1fr}}
+  .post{background:#fff;border-radius:18px;padding:28px;text-decoration:none;border:1px solid rgba(58,52,64,.06);
+    transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+  .post:hover{transform:translateY(-4px);box-shadow:0 16px 32px -16px rgba(58,52,64,.25)}
+  .post .data{color:var(--mata);font-size:1.2rem}
+  .post h2{font-size:1.25rem;margin:8px 0 10px}
+  .post p{color:var(--ink-suave);font-size:.94rem;margin-bottom:14px}
+  .ler{color:var(--lav-prof);font-weight:800;font-size:.9rem}
+  .vazio{text-align:center;padding:40px 0}
+  .vazio .serif{font-size:1.6rem;margin-bottom:10px}
+  .vazio .nota-hand{color:var(--verde);font-size:1.5rem}
+</style>

@@ -17,6 +17,9 @@ const belieTarget = join(target, 'casabelie');
 const belie2Source = resolve(projectRoot, '../casa-belie-2/public');
 const belie2Pages = join(projectRoot, 'cloudflare', 'snapshots', 'casa-belie-2');
 const belie2Target = join(target, 'casabelie-2');
+const belie3Source = resolve(projectRoot, '../casa-belie-3/public');
+const belie3Pages = join(projectRoot, 'cloudflare', 'snapshots', 'casa-belie-3');
+const belie3Target = join(target, 'casabelie-3');
 
 const textExtensions = new Set(['.html', '.css', '.js', '.mjs', '.xml', '.txt', '.webmanifest']);
 
@@ -59,6 +62,8 @@ await cp(
 );
 await cp(belie2Source, belie2Target, { recursive: true });
 await cp(belie2Pages, belie2Target, { recursive: true });
+await cp(belie3Source, belie3Target, { recursive: true });
+await cp(belie3Pages, belie3Target, { recursive: true });
 
 const dashboardTemplate = await readFile(join(projectRoot, 'cloudflare', 'dashboard.html'), 'utf8');
 const registry = JSON.parse(await readFile(resolve(projectRoot, '../../jumper-hoster.registry.json'), 'utf8'));

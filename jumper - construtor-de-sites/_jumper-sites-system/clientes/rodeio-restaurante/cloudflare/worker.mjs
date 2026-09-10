@@ -1,6 +1,6 @@
 const SITE_PREFIX = '/rodeio';
 const LEGACY_PREFIX = '/site';
-const PUBLIC_SITES = ['/rodeio', '/izigym', '/casabelie', '/casabelie-2'];
+const PUBLIC_SITES = ['/rodeio', '/izigym', '/casabelie', '/casabelie-2', '/casabelie-3'];
 const IZI_OFFICIAL_HOST = 'www.izigym.com.br';
 const IZI_OFFICIAL_APEX = 'izigym.com.br';
 const IZI_OFFICIAL_ROOT = '/_official/izigym';

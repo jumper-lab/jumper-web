@@ -46,7 +46,7 @@
       "id": "casabelie",
       "name": "Casa Beliê",
       "category": "Eventos",
-      "description": "Casa de festas em Laranjeiras com duas propostas em avaliação e site oficial em produção.",
+      "description": "Casa de festas em Laranjeiras com três propostas em avaliação e site oficial em produção.",
       "accent": "#8063a8",
       "developmentSites": [
         {
@@ -58,6 +58,11 @@
           "slug": "casabelie-2",
           "label": "Desenvolvimento · versão 2",
           "url": "https://site.jumper.dev.br/casabelie-2/"
+        },
+        {
+          "slug": "casabelie-3",
+          "label": "Desenvolvimento · versão 3",
+          "url": "https://site.jumper.dev.br/casabelie-3/"
         }
       ],
       "officialSite": {

@@ -1,0 +1,80 @@
+---
+// Primeira dobra das páginas internas: dominante (>=62svh), superfície alternada,
+// headline com palavra sublinhada pelo Traço Beliê.
+import Star from './Star.astro';
+import { withBase } from '../lib/paths.js';
+
+const {
+  kicker,
+  headline,
+  strokeWord,
+  sub = '',
+  surface = 'var(--lav-veu)',
+  starColor = '#6A5497',
+  image = '',
+  imageMedium = '',
+  imageSmall = '',
+  imageAvif = '',
+  imageMediumAvif = '',
+  imageSmallAvif = '',
+  imageAlt = '',
+  imagePosition = '50% 50%',
+  imageWidth = 1600,
+  imageHeight = 900,
+} = Astro.props;
+const [before, after] = headline.split(strokeWord);
+---
+<div class:list={['hero-page hero-int', { 'with-image': image }]} style={`background:${image ? '#2D2731' : surface};--hero-position:${imagePosition}`}>
+  {image && (
+    <picture class="media">
+      {imageSmallAvif && <source media="(max-width: 700px)" type="image/avif" srcset={withBase(imageSmallAvif)} />}
+      {imageSmall && <source media="(max-width: 700px)" srcset={withBase(imageSmall)} />}
+      {imageAvif && (
+        <source
+          type="image/avif"
+          srcset={imageMediumAvif ? `${withBase(imageMediumAvif)} 1600w, ${withBase(imageAvif)} 2400w` : withBase(imageAvif)}
+          sizes="100vw"
+        />
+      )}
+      <img
+        src={withBase(image)}
+        srcset={imageMedium ? `${withBase(imageMedium)} 1600w, ${withBase(image)} 2400w` : undefined}
+        sizes="100vw"
+        alt={imageAlt}
+        width={imageWidth}
+        height={imageHeight}
+        loading="eager"
+        fetchpriority="high"
+        decoding="sync"
+      />
+    </picture>
+  )}
+  {image && <span class="shade" aria-hidden="true"></span>}
+  <div class="shell inner">
+    <span class="kicker k-lav"><Star color={image ? '#F7E8C9' : starColor} /> {kicker}</span>
+    <h1>
+      {before}<span class="u-giz">{strokeWord}<svg viewBox="0 0 320 24" preserveAspectRatio="none" aria-hidden="true"><path d="M6 15 C 50 8, 95 19, 150 12 S 250 9, 314 14" /></svg></span>{after}
+    </h1>
+    {sub && <p class="lead">{sub}</p>}
+  </div>
+</div>
+
+<style>
+  .media,.shade{position:absolute;inset:0}
+  .media{z-index:-2}
+  .media img{width:100%;height:100%;object-fit:cover;object-position:var(--hero-position)}
+  .shade{z-index:-1;background:
+    linear-gradient(to bottom,rgba(31,25,35,.52) 0%,rgba(31,25,35,.08) 34%,rgba(31,25,35,0) 55%),
+    linear-gradient(90deg,rgba(31,25,35,.8) 0%,rgba(31,25,35,.58) 48%,rgba(31,25,35,.28) 78%,rgba(31,25,35,.36) 100%)}
+  .inner{position:relative;width:100%;padding-top:140px;padding-bottom:clamp(40px,7vh,80px)}
+  h1{font-size:clamp(2.3rem,5.4vw,3.9rem);max-width:18ch;margin:16px 0 14px}
+  .lead{font-size:1.1rem}
+  .with-image .inner,.with-image .kicker,.with-image .lead{color:#fff}
+  .with-image h1{text-shadow:0 2px 24px rgba(20,16,24,.38)}
+  .with-image .lead{text-shadow:0 1px 14px rgba(20,16,24,.44)}
+  .with-image :global(.u-giz path){stroke:var(--manteiga)}
+  @media(max-width:700px){
+    .shade{background:linear-gradient(180deg,rgba(31,25,35,.38) 0%,rgba(31,25,35,.7) 72%,rgba(31,25,35,.78) 100%)}
+    .media img{object-position:var(--hero-position)}
+  }
+</style>

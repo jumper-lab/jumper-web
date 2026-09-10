@@ -1,0 +1,32 @@
+{
+  "schema_version": "3.0.0",
+  "client_name": "Casa Beliê",
+  "slug": "casa-belie-3",
+  "model": "M4",
+  "engine": "ds-autoral",
+  "personality": "A",
+  "language": "pt-BR",
+  "status": "site_built_review",
+  "blog_enabled": true,
+  "media_priority": [
+    "official_instagram_real",
+    "ai_generated_for_brand",
+    "pexels_last_resort"
+  ],
+  "media_notes": "Decisão do usuário em 10/07/2026: NÃO usar imagens do site WordPress (genéricas) NEM Pexels (não representam o cliente). O site agora usa fotos REAIS do Instagram @casabelie, baixadas e recortadas (faixas de texto do Instagram removidas). Pendente: confirmar autorização de imagem e crédito dos fotógrafos antes de publicar.",
+  "ai_images_as_primary": false,
+  "ai_images_condition": "usar quando Instagram tratado e Pexels curado não resolverem a função",
+  "pexels_mode": "curated_allowed",
+  "notes": "Terceira versão do site Casa Beliê, criada a partir da versão 2 e atualizada com o briefing Site Beliê recebido em 10/09/2026. Mantém a direção visual e as fotos reais da versão 2, com nova arquitetura de conteúdo para eventos, buffet, recreação, decoração, avaliações e contato.",
+  "site_url": "https://site.jumper.dev.br/casabelie-3/",
+  "official_site_url": "https://casabelie.com.br/",
+  "production_domain": "site.jumper.dev.br",
+  "base_path": "/casabelie-3",
+  "hosting": "cloudflare-workers-static-assets",
+  "jumper_hoster": {
+    "worker": "jumper-hoster",
+    "registered": true,
+    "dashboard_url": "https://site.jumper.dev.br/",
+    "client_route_requires_password": false
+  }
+}

@@ -1,0 +1,29 @@
+---
+// Seção de conversão final — manteiga, headline serif, CTA WhatsApp com círculo de giz.
+const {
+  headline = 'Vamos abrir a casa para a sua festa?',
+  sub = 'Conte a data, o tipo de evento e o tamanho da turma. A gente monta o orçamento com carinho.',
+  nota = 'respondemos em horário comercial :)',
+} = Astro.props;
+---
+<section class="cta-final">
+  <div class="shell">
+    <h2 class="reveal">{headline}</h2>
+    <p class="lead reveal">{sub}</p>
+    <p class="acao reveal">
+      <a class="btn" href="https://wa.me/5521996694990?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20festas%20na%20Casa%20Beli%C3%AA%20:)" target="_blank" rel="noopener" data-evt="whatsapp">
+        Pedir orçamento no WhatsApp <span class="arr">→</span>
+        <svg class="scribble" viewBox="0 0 240 74" preserveAspectRatio="none" aria-hidden="true"><path d="M18 37 C 14 12, 80 6, 122 8 C 180 10, 232 16, 228 38 C 224 62, 160 68, 110 66 C 60 64, 20 58, 22 40" /></svg>
+      </a>
+      <span class="nota-hand" aria-hidden="true">{nota}</span>
+    </p>
+  </div>
+</section>
+
+<style>
+  .cta-final{background:var(--manteiga);text-align:center}
+  h2{margin-left:auto;margin-right:auto}
+  .lead{margin:0 auto 30px}
+  .acao{display:flex;flex-direction:column;align-items:center;gap:16px}
+  .nota-hand{color:var(--ink-suave);transform:rotate(-2deg)}
+</style>
