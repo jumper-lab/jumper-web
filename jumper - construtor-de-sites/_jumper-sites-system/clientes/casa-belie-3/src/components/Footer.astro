@@ -1,0 +1,60 @@
+---
+// Rodapé verde-mata — tagline, contato, mini-nav e linha de SEO local.
+import { withBase } from '../lib/paths.js';
+---
+<footer>
+  <div class="shell grid">
+    <div class="col-marca">
+      <img src={withBase('/images/logo-belie-white-96.webp')} alt="Casa Beliê" width="96" height="96" loading="lazy" />
+      <p class="serif tagline">Um belo lugar para celebrar o que realmente importa.</p>
+      <span class="nota-hand" aria-hidden="true">até logo ♡</span>
+    </div>
+    <div>
+      <h3>Onde fica</h3>
+      <p>Rua General Glicério, 131<br/>Laranjeiras, Rio de Janeiro/RJ</p>
+      <p class="mini">Atendimento por agendamento.</p>
+    </div>
+    <div>
+      <h3>Fale com a gente</h3>
+      <p><a href="https://wa.me/5521996694990?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20festas%20na%20Casa%20Beli%C3%AA%20:)" target="_blank" rel="noopener">WhatsApp (21) 99669-4990</a></p>
+      <p><a href="mailto:contato@casabelie.com.br">contato@casabelie.com.br</a></p>
+      <p><a href="https://www.instagram.com/casabelie/" target="_blank" rel="noopener">@casabelie no Instagram</a></p>
+    </div>
+    <nav aria-label="Mapa do site">
+      <h3>Navegue</h3>
+      <a href={withBase('/sobre/')}>A casa</a>
+      <a href={withBase('/festas/')}>Festas</a>
+      <a href={withBase('/espaco/')}>Espaço</a>
+      <a href={withBase('/blog/')}>Novidades</a>
+      <a href={withBase('/contato/')}>Contato</a>
+    </nav>
+  </div>
+  <div class="shell base">
+    <p>Casa de festas em Laranjeiras, Zona Sul do Rio de Janeiro — eventos infantis, escolares, teens e celebrações adultas.</p>
+    <p>© {new Date().getFullYear()} Casa Beliê</p>
+  </div>
+</footer>
+
+<style>
+  footer{background:var(--mata);color:var(--papel);padding-top:var(--section-y)}
+  .grid{display:grid;grid-template-columns:1.3fr 1fr 1fr .8fr;gap:clamp(28px,4vw,56px);padding-bottom:48px}
+  @media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}}
+  .col-marca img{height:56px;width:auto;margin-bottom:16px}
+  .tagline{font-size:1.3rem;max-width:22ch;margin-bottom:12px}
+  .nota-hand{color:var(--manteiga);transform:rotate(-3deg)}
+  h3{font-size:1.05rem;margin-bottom:12px;color:var(--manteiga)}
+  p{color:rgba(253,250,244,.85);font-size:.95rem;margin-bottom:8px}
+  .mini{font-size:.83rem;color:rgba(253,250,244,.82)}
+  a{color:rgba(253,250,244,.9);text-decoration:none;display:inline-block;padding:2px 0}
+  a:hover{color:#fff;text-decoration:underline}
+  nav a{display:block;margin-bottom:8px}
+  .base{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid rgba(253,250,244,.15);padding-top:20px;padding-bottom:24px}
+  .base p{font-size:.8rem;color:rgba(253,250,244,.76);margin:0}
+  @media(max-width:560px){
+    .grid{gap:24px}
+    a{min-height:44px;display:inline-flex;align-items:center;padding:8px 0}
+    nav a{margin-bottom:0}
+    .base{gap:10px}
+  }
+</style>

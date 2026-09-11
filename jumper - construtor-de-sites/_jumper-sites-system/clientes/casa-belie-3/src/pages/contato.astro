@@ -1,0 +1,122 @@
+---
+import Base from '../layouts/Base.astro';
+import HeroInterno from '../components/HeroInterno.astro';
+import Star from '../components/Star.astro';
+---
+<Base title="Contato — Casa Beliê, Laranjeiras RJ" description="Peça um orçamento para a festa: WhatsApp, e-mail e como chegar na Rua General Glicério, 131, Laranjeiras." overHero>
+  <HeroInterno kicker="Contato" headline="Bate na porta que a gente abre." strokeWord="abre" sub="Conte a festa que você imagina e a gente responde com um orçamento feito com carinho." surface="var(--manteiga)" starColor="#D98E6A" image="/images/hero-contato-hq-2400.webp" imageMedium="/images/hero-contato-hq-1600.webp" imageSmall="/images/hero-contato-hq-mobile-768.webp" imageAvif="/images/hero-contato-hq-2400.avif" imageMediumAvif="/images/hero-contato-hq-1600.avif" imageSmallAvif="/images/hero-contato-hq-mobile-768.avif" imageAlt="Fachada completa da Casa Beliê em Laranjeiras" imagePosition="50% 52%" imageWidth={2400} imageHeight={1350} />
+
+  <section>
+    <div class="shell grid">
+      <form id="form-orcamento" class="reveal" novalidate>
+        <div class="field">
+          <label for="nome">Seu nome</label>
+          <input id="nome" name="nome" type="text" required autocomplete="name" aria-describedby="nome-err" />
+          <span class="err" id="nome-err" role="alert">Conta pra gente o seu nome :)</span>
+        </div>
+        <div class="field">
+          <label for="telefone">Telefone</label>
+          <input id="telefone" name="telefone" type="tel" required autocomplete="tel" inputmode="tel" placeholder="(21) 9…" aria-describedby="telefone-err" />
+          <span class="err" id="telefone-err" role="alert">Digite um telefone com DDD.</span>
+        </div>
+        <div class="linha">
+          <div class="field">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" required autocomplete="email" placeholder="voce@email.com" aria-describedby="email-err" />
+            <span class="err" id="email-err" role="alert">Digite um e-mail válido.</span>
+          </div>
+          <div class="field">
+            <label for="evento">Tipo de evento</label>
+            <select id="evento" name="evento" required aria-describedby="evento-err">
+              <option value="">Selecione</option>
+              <option>Escolar</option>
+              <option>Infantil</option>
+              <option>Teen</option>
+              <option>Adulto / confraternização</option>
+              <option>Mini celebração</option>
+            </select>
+            <span class="err" id="evento-err" role="alert">Escolha o tipo de evento.</span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="observacoes">Observações</label>
+          <textarea id="observacoes" name="observacoes" rows="5" placeholder="Data desejada, número de convidados, tema e o que não pode faltar…"></textarea>
+        </div>
+        <button class="btn" type="submit" data-evt="whatsapp-form">
+          Enviar e continuar no WhatsApp <span class="arr">→</span>
+          <svg class="scribble" viewBox="0 0 240 74" preserveAspectRatio="none" aria-hidden="true"><path d="M18 37 C 14 12, 80 6, 122 8 C 180 10, 232 16, 228 38 C 224 62, 160 68, 110 66 C 60 64, 20 58, 22 40" /></svg>
+        </button>
+        <p class="mini">Ao enviar, o WhatsApp abre com a sua mensagem pronta — é só apertar enviar por lá.</p>
+      </form>
+
+      <aside class="reveal" style="transition-delay:.12s">
+        <span class="kicker k-lav"><Star /> Outros caminhos</span>
+        <h2>Prefere direto?</h2>
+        <p><strong>WhatsApp:</strong> <a href="https://wa.me/5521996694990?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20festas%20na%20Casa%20Beli%C3%AA%20:)" target="_blank" rel="noopener" data-evt="whatsapp">(21) 99669-4990</a></p>
+        <p><strong>E-mail:</strong> <a href="mailto:contato@casabelie.com.br">contato@casabelie.com.br</a></p>
+        <p><strong>Instagram:</strong> <a href="https://www.instagram.com/casabelie/" target="_blank" rel="noopener">@casabelie</a></p>
+        <p><strong>Onde fica:</strong> Rua General Glicério, 131 — Laranjeiras, Rio de Janeiro/RJ</p>
+        <p><strong>Melhor horário:</strong> horário comercial, segunda a sexta.</p>
+        <span class="nota-hand" aria-hidden="true">respondemos com calma e carinho</span>
+      </aside>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(32px,5vw,80px);align-items:start}
+  @media(max-width:880px){.grid{grid-template-columns:1fr}}
+  form{background:#fff;border-radius:22px;padding:clamp(24px,3vw,40px);border:1px solid rgba(58,52,64,.07)}
+  .linha{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:560px){.linha{grid-template-columns:1fr}}
+  .mini{font-size:.83rem;color:var(--ink-suave);margin-top:14px}
+  aside h2{margin-bottom:18px}
+  aside p{margin-bottom:12px}
+  aside a{color:var(--lav-prof);font-weight:800;text-decoration:none}
+  aside a:hover{text-decoration:underline}
+  aside .nota-hand{color:var(--verde);transform:rotate(-2deg);margin-top:10px}
+  @media(max-width:560px){
+    form{padding:24px 20px}
+    form .btn{width:100%}
+    aside{overflow-wrap:anywhere}
+  }
+</style>
+
+<script>
+  const form = document.getElementById('form-orcamento');
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let ok = true;
+    for (const id of ['nome', 'telefone', 'email', 'evento']) {
+      const field = document.getElementById(id);
+      const wrap = field.closest('.field');
+      const valid = id === 'email'
+        ? field.validity.valid
+        : id === 'telefone'
+          ? field.value.replace(/\D/g, '').length >= 10
+          : field.value.trim().length > 1;
+      wrap.classList.toggle('invalid', !valid);
+      field.setAttribute('aria-invalid', String(!valid));
+      if (!valid) ok = false;
+    }
+    if (!ok) {
+      form.querySelector('[aria-invalid="true"]')?.focus();
+      return;
+    }
+    const v = (id) => document.getElementById(id).value.trim();
+    const linhas = [
+      `Olá! Me chamo ${v('nome')} e quero um orçamento na Casa Beliê :)`,
+      `Tipo de evento: ${v('evento')}`,
+      v('observacoes') && `Observações: ${v('observacoes')}`,
+      `Meu telefone: ${v('telefone')}`,
+      `Meu e-mail: ${v('email')}`,
+    ].filter(Boolean);
+    window.open(`https://wa.me/5521996694990?text=${encodeURIComponent(linhas.join('\n'))}`, '_blank', 'noopener');
+  });
+  form?.querySelectorAll('input, select, textarea').forEach((field) => {
+    field.addEventListener('input', () => {
+      field.closest('.field')?.classList.remove('invalid');
+      field.removeAttribute('aria-invalid');
+    });
+  });
+</script>

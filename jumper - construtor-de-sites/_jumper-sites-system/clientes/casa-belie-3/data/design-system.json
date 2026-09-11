@@ -1,0 +1,134 @@
+{
+  "schema_version": "3.0.0",
+  "stage": "initial",
+  "client": "Casa Beliê",
+  "slug": "casa-belie-3",
+  "generated_from": "briefing/briefing-normalizado.md",
+  "personality": "A",
+  "model": "M4",
+
+  "client_truth": {
+    "what": "Casa de festas infantil de ~800 m² em Laranjeiras, RJ, com quintal verde, luz natural, área molhada, tanque de areia, muro de pintura e festa completa (espaço + buffet + decoração afetiva + recreação + equipe).",
+    "for_whom": "Famílias da Zona Sul do RJ (Laranjeiras, Flamengo, Botafogo, Catete, Cosme Velho) sensíveis à estética, à experiência das crianças e à praticidade de um pacote bem cuidado.",
+    "why_trust": "Fundadoras com trajetória: Isabela (Madame Girafa, festas afetivas desde 2014) e Cecília (Vila Pindorama, Icaraí). Casa real, festas reais publicadas, portfolio fotográfico profissional.",
+    "core_message": "Infância livre, quintal verde, luz natural, brincar de verdade sem telas, decoração lúdica/afetiva — 'um belo lugar para viver o que realmente importa'.",
+    "not": "Não é buffet genérico, não é parque indoor e não usa estética de balada infantil neon. Sem mascotes e sem foco em preço.",
+    "conversion": "Gerar WhatsApp com CTA 'Pedir orçamento'. Sem preços públicos."
+  },
+
+  "visual_thesis": "A Casa Beliê tem literalmente um muro de pintura onde as crianças deixam marcas. O site repete esse gesto: uma casa editorial calma — luz quente, tipografia serifada de livro de história, muito ar — onde a infância rabiscou por cima: sublinhados de giz de cera desenhados à mão em lavanda e verde, anotações manuscritas na margem como um álbum de família, fotos presas no muro de memórias. A tensão entre 'casa bonita de revista' e 'traço de criança de verdade' é a Beliê: beleza sem excesso, brincar sem telas. Falsificável: um buffet genérico não tem muro de pintura nem álbum — tem cards e balões.",
+
+  "signature_element": {
+    "name": "Traço Beliê (o muro de pintura no site)",
+    "what": "Traços de giz de cera/pincel desenhados à mão em SVG — sublinhado ondulado sob a palavra-chave da headline, estrelinhas e sóis rabiscados pontuando kickers, círculo de giz que se desenha ao redor do CTA no hover, e o 'muro de memórias': fotos presas com fita, levemente giradas, com legendas manuscritas.",
+    "where": ["sublinhado animado da headline do hero (se desenha ao carregar)", "marcadores rabiscados de kicker/seção", "hover do CTA principal (círculo de giz se desenha)", "muro de memórias na galeria (fita + rotação + legenda manuscrita)", "numerais de serviço com rabisco atrás"],
+    "why": "Enraizado no briefing: muro de pintura, tanque de areia, brincar de verdade, memórias afetivas. Nenhum concorrente de buffet tem isso; arcos e pastéis qualquer um tem."
+  },
+
+  "mood": {
+    "keywords": ["álbum de família", "muro de pintura", "livro de história", "quintal ensolarado", "traço de criança", "editorial com afeto"],
+    "feeling": "Folhear o álbum de uma festa linda no quintal: papel quente, fotos com fita, a letra da mãe na margem e um rabisco de giz que alguma criança fez escondido.",
+    "voice": "Casual e amistoso, primeira pessoa da casa. Frases curtas, sensoriais. As anotações manuscritas falam como bilhete de mãe; o corpo fala como anfitriã."
+  },
+
+  "color": {
+    "philosophy": "Mais clara e mais viva que a média 'pastel morto'. Lavanda da marca em destaque real (é a cor da logo), verde folha com seiva, manteiga de sol, terracota de tinta fresca. Fundo é papel quente, não branco de clínica. Proibido: neon, primárias saturadas, preto pesado, gradientes digitais, excesso de rosa/roxo.",
+    "tokens": {
+      "lavanda-brand": "#B9A5D8",
+      "lavanda-profunda": "#6A5497",
+      "lavanda-veu": "#F1ECF8",
+      "verde-folha": "#5F8A50",
+      "verde-mata": "#3D5A34",
+      "verde-brisa": "#EAF2E3",
+      "papel": "#FDFAF4",
+      "areia": "#F3EAD9",
+      "manteiga": "#F7E8C9",
+      "terracota": "#D98E6A",
+      "pessego": "#F5D3BE",
+      "ceu": "#A8C6DA",
+      "ink": "#3A3440",
+      "ink-suave": "#6E6577"
+    },
+    "roles": {
+      "background": "papel",
+      "surface_alt": "areia / lavanda-veu / verde-brisa / manteiga (alternância, nunca duas vizinhas iguais)",
+      "text": "ink sobre claros; papel sobre lavanda-profunda/verde-mata",
+      "brand": "lavanda-brand para momentos de marca (nunca texto pequeno)",
+      "cta": "lavanda-profunda com texto papel; hover ganha círculo de giz terracota",
+      "tracos": "traços de giz alternam lavanda-brand, verde-folha e terracota"
+    },
+    "contrast_notes": "Verificar numericamente no DS final: ink/papel, ink/areia, ink/lavanda-veu, ink/verde-brisa, ink/manteiga, papel/lavanda-profunda, papel/verde-mata. lavanda-brand, ceu e pessego nunca como texto."
+  },
+
+  "typography": {
+    "philosophy": "Três vozes: o livro (display serifado quente, de história infantil ilustrada para adultos), a anfitriã (corpo humanista redondo e legível) e o bilhete (manuscrita, só nas margens — legendas, anotações, voz da casa). A infância entra pela manuscrita e pelos traços, nunca por fonte cartoon.",
+    "display": {
+      "family": "Fraunces",
+      "fallback": "Georgia, serif",
+      "why": "Serifa quente e generosa com sabor de livro de história — acolhedora sem ser infantil, editorial sem frieza.",
+      "usage": "Headlines, numerais de seção, destaques."
+    },
+    "body": {
+      "family": "Nunito Sans",
+      "fallback": "system-ui, sans-serif",
+      "why": "Humanista redonda, amistosa, excelente em corpo pequeno — o 'casual e amistoso' do briefing.",
+      "usage": "Texto corrido, navegação, botões, formulários."
+    },
+    "handwritten": {
+      "family": "Caveat",
+      "fallback": "cursive",
+      "why": "A letra do álbum de família. Uso disciplinado: legendas de foto, anotações de margem, a frase na voz da casa. Nunca em texto funcional.",
+      "usage": "Legendas do muro de memórias, anotações apontando elementos, citação das fundadoras."
+    },
+    "scale_direction": "Display clamp ~2.6rem→5rem no hero, line-height 1.05; corpo 1.0625rem/1.65; Caveat 1.3–1.6rem. Largura de linha máxima 62ch."
+  },
+
+  "media_direction": {
+    "priority": ["Instagram oficial: fotos baixadas e tratadas (crop, luz, cor) como mídia principal", "Pexels com curadoria estética rigorosa", "imagem gerada por IA sob medida quando as duas anteriores não resolverem"],
+    "excluded": "Imagens do site WordPress atual (casabelie.com.br/wp-content) — decisão do usuário: muito genéricas.",
+    "pexels_curation_rules": "Só entra foto que pareceria do álbum da Beliê: luz natural, quintal/casa, paleta suave (pastéis, madeira, verde), festa afetiva. Reprovado: balões primários saturados, brinquedo de plástico colorido, mesas de buffet genérico, estúdio artificial.",
+    "pexels_approved": {
+      "hero": "pexels 10032939 — festa no quintal ao lado de casa de madeira, bandeirinhas, luz natural",
+      "manifesto": "pexels 10032949 — mesa de festa posta no jardim, bolo chegando, família",
+      "gallery": ["pexels 10037060 — crianças correndo no quintal com cabana e mesa baixa", "pexels 17637171 — mesa de doces pastel sobre madeira", "pexels 34453927 — criança no balanço do quintal ensolarado"]
+    },
+    "instagram_workflow": "Selecionar posts do @casabelie (espaço, decoração, detalhes), baixar em alta, tratar (equilíbrio de branco quente, leve dessaturação de exageros) e salvar em src/assets/. Fotos com crianças identificáveis só com autorização.",
+    "treatment": "No muro de memórias, fotos entram como do álbum: borda de papel, fita adesiva, rotação sutil (-2° a 2°), legenda manuscrita. No hero e seções imersivas, full-bleed com scrim fotográfico quente.",
+    "alt_text": "Todos os alts escritos do zero, descritivos e locais."
+  },
+
+  "structure_direction": {
+    "pages": ["Home", "Sobre (a casa e as fundadoras)", "Festas & Serviços", "Espaço & Galeria", "Novidades (blog)", "Contato"],
+    "hero": "100svh em todos os viewports (min-height:100svh, fallback 100vh), foto real em full-bleed com scrim quente, headline Fraunces com sublinhado de giz que se desenha ao carregar, anotação manuscrita apontando o quintal, CTA 'Pedir orçamento' + âncora 'Conhecer a casa'. Header transparente sobre o hero.",
+    "first_fold_message": "O que é (casa de festas em Laranjeiras) + para quem (famílias que querem brincar de verdade) + por que confiar (casa real, quintal verde) + o que fazer (pedir orçamento).",
+    "sections_rhythm": "Hero imersivo → faixa-marquee de palavras da casa (quintal verde ✳ sem telas ✳ brincar livre) → manifesto com foto de álbum → a casa/ambientes → festas (lista editorial numerada, sem 3 cards) → muro de memórias → fundadoras → prova social → novidades → contato com mapa.",
+    "blog": "Blog Autônomo Jumper: /admin/ com senha, /blog/, APIs internas, data/blog-posts.json, Astro modo server + adapter Node."
+  },
+
+  "motion": {
+    "preference": "discreta (briefing) — discreta não significa ausente",
+    "spec": {
+      "hero": "Headline revela linha a linha (stagger 90ms, translateY, 700ms cubic-bezier(.22,1,.36,1)); o sublinhado de giz se desenha via stroke-dashoffset em 900ms após a headline; foto com zoom lento 1.06→1 em 2.4s.",
+      "tracos": "Todos os traços SVG (sublinhados, círculos, estrelas) se desenham quando entram no viewport — stroke-dashoffset, nunca fade simples.",
+      "scroll": "Seções revelam com fade + translateY 20px via IntersectionObserver com stagger; o muro de memórias endireita levemente as fotos no hover.",
+      "marquee": "Faixa de palavras desliza contínua e lenta (~40s por loop), pausa no hover.",
+      "hover": "CTA ganha círculo de giz que se desenha ao redor; links com sublinhado que cresce; fotos do muro endireitam e elevam.",
+      "header": "Transparente sobre o hero, ganha fundo papel e sombra fina após 40px (300ms).",
+      "reduced_motion": "prefers-reduced-motion desliga transform/zoom/marquee/desenho e mantém fades de 150ms; traços aparecem completos."
+    }
+  },
+
+  "risks": [
+    "Traço de giz em excesso vira poluição — orçamento de ousadia: hero, 1 marcador por seção, CTA e muro de memórias. Nada mais.",
+    "Caveat em texto funcional infantiliza — manuscrita só em margem/legenda/citação.",
+    "Excesso de lilás/roxo é proibido; lavanda-brand é momento de marca, não fundo universal.",
+    "Dados sensíveis não confirmados: WhatsApp, e-mail, endereço 131, horário, '1.000 avaliações' — provisórios.",
+    "Fotos com crianças identificáveis exigem autorização."
+  ],
+
+  "next_decisions": [
+    "Ler os 3 DSs-base da personalidade A como repertório e resolver o final-design-system.json.",
+    "Selecionar e tratar fotos do @casabelie para substituir a curadoria Pexels onde houver foto real melhor.",
+    "Definir wireframe M4 página a página no final-site-build-prompt.md."
+  ]
+}

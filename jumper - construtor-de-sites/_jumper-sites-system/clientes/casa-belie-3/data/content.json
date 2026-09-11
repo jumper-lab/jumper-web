@@ -1,0 +1,347 @@
+{
+  "schema_version": "3.0.0",
+  "client": "Casa Beliê",
+  "slug": "casa-belie-3",
+  "language": "pt-BR",
+  "voice": "Casual e amistoso, primeira pessoa da casa. Frases curtas, sensoriais. Anotações manuscritas = bilhete de mãe; corpo = anfitriã.",
+  "conversion": {
+    "primary_cta": "Pedir orçamento",
+    "whatsapp": "+55 21 99669-4990",
+    "whatsapp_link": "https://wa.me/5521996694990",
+    "whatsapp_message": "Olá! Quero saber mais sobre festas na Casa Beliê :)",
+    "provisional": false,
+    "provisional_note": "Número informado no briefing da versão 3 e confirmado no perfil público do Google em 10/09/2026."
+  },
+  "global": {
+    "nav": [
+      {
+        "label": "A casa",
+        "href": "/sobre/"
+      },
+      {
+        "label": "Festas",
+        "href": "/festas/"
+      },
+      {
+        "label": "Espaço",
+        "href": "/espaco/"
+      },
+      {
+        "label": "Novidades",
+        "href": "/blog/"
+      },
+      {
+        "label": "Contato",
+        "href": "/contato/"
+      }
+    ],
+    "footer": {
+      "tagline": "Um belo lugar para celebrar o que realmente importa.",
+      "address": "Rua General Glicério, 131 — Laranjeiras, Rio de Janeiro/RJ",
+      "address_provisional": true,
+      "instagram": "https://www.instagram.com/casabelie/",
+      "email": "contato@casabelie.com.br",
+      "email_provisional": false,
+      "hours": "Atendimento por agendamento",
+      "seo_line": "Casa de festas infantil em Laranjeiras, Zona Sul do Rio de Janeiro — festas afetivas, sem telas, com quintal verde e luz natural."
+    }
+  },
+  "pages": {
+    "home": {
+      "seo": {
+        "title": "Casa Beliê — Casa de festas infantil em Laranjeiras, RJ",
+        "description": "Festas infantis afetivas e sem telas numa casa de 800 m² com quintal verde e luz natural, no coração de Laranjeiras. Espaço, buffet, decoração, recreação e equipe."
+      },
+      "hero": {
+        "kicker": "Casa de festas infantil · Laranjeiras, RJ",
+        "headline": "Onde a festa é brincar de verdade.",
+        "headline_stroke_word": "brincar de verdade",
+        "sub": "Uma casa de 800 m² no coração de Laranjeiras: quintal verde, luz natural, tanque de areia, muro de pintura e zero telas. A festa completa para a sua família só viver o que importa.",
+        "cta_primary": "Pedir orçamento",
+        "cta_secondary": "Conhecer a casa",
+        "hand_note": "o quintal fica bem aqui"
+      },
+      "marquee": [
+        "quintal verde",
+        "luz natural",
+        "sem telas",
+        "brincar livre",
+        "decoração afetiva",
+        "festa completa"
+      ],
+      "manifesto": {
+        "quote": "Aqui, cada encontro é recebido como quem abre a própria casa: com beleza, simplicidade e afeto, para que as crianças brinquem de verdade e as famílias vivam o que importa.",
+        "caption": "— Isabela & Cecília, fundadoras · Madame Girafa e Vila Pindorama",
+        "photo_caption": "a mesa posta no quintal ♡"
+      },
+      "casa": {
+        "kicker": "A casa",
+        "headline": "800 m² de cantinhos para explorar.",
+        "sub": "Numa rua bucólica de Laranjeiras, uma casa de dois andares onde tudo foi pensado para o brincar livre — e para os adultos ficarem tranquilos.",
+        "ambientes": [
+          {
+            "nome": "Quintal verde",
+            "desc": "Grama, sombra e espaço de correr. O coração da Beliê fica ao ar livre.",
+            "nota_manuscrita": "descalços, sempre"
+          },
+          {
+            "nome": "Tanque de areia",
+            "desc": "Mãos na areia, baldinhos e castelos — a brincadeira mais antiga do mundo.",
+            "nota_manuscrita": null
+          },
+          {
+            "nome": "Muro de pintura",
+            "desc": "Um muro inteiro para pintar de verdade, com tinta e pincel. Pode sujar.",
+            "nota_manuscrita": "pode sujar!"
+          },
+          {
+            "nome": "Área molhada",
+            "desc": "A prainha da casa para os dias quentes de verão carioca.",
+            "nota_manuscrita": null
+          },
+          {
+            "nome": "Vila & casinha",
+            "desc": "Um mundinho em escala de criança para inventar histórias.",
+            "nota_manuscrita": null
+          },
+          {
+            "nome": "Espaço baby & sensorial",
+            "desc": "Cantinho seguro e macio para os pequenininhos da festa.",
+            "nota_manuscrita": null
+          }
+        ]
+      },
+      "festas_resumo": {
+        "kicker": "Festas & experiências",
+        "headline": "A festa inteira resolvida, do brigadeiro à recreação.",
+        "items_ref": "ver pages.festas.servicos (exibir 3 primeiros com link para página)"
+      },
+      "muro_memorias": {
+        "kicker": "O muro de memórias",
+        "headline": "Cada festa deixa uma marca na casa.",
+        "sub": "Festas reais, famílias reais. As fotos abaixo são provisórias e serão substituídas por registros autorizados das festas da Beliê.",
+        "provisional": true
+      },
+      "fundadoras": {
+        "kicker": "Quem abre a porta",
+        "headline": "Duas mães de casas que já fizeram muita festa.",
+        "bios": [
+          {
+            "nome": "Isabela",
+            "bio": "Fundadora da Madame Girafa, referência em festas afetivas e personalizadas no Rio de Janeiro desde 2014.",
+            "foto": "pendente — solicitar autorizada"
+          },
+          {
+            "nome": "Cecília",
+            "bio": "Sócia da Vila Pindorama, casa de festas em Icaraí reconhecida pela proposta lúdica e acolhedora.",
+            "foto": "pendente — solicitar autorizada"
+          }
+        ]
+      },
+      "prova_social": {
+        "kicker": "Famílias que viveram",
+        "headline": "O que fica quando a festa acaba.",
+        "depoimentos": [],
+        "depoimentos_nota": "NÃO PUBLICAR depoimentos inventados. Bloco entra vazio/oculto até o cliente enviar 3–6 depoimentos autorizados. Não citar '1.000 avaliações' sem confirmação.",
+        "numeros_permitidos": [
+          {
+            "numero": "800 m²",
+            "legenda": "de casa e quintal"
+          },
+          {
+            "numero": "0",
+            "legenda": "telas na festa"
+          },
+          {
+            "numero": "2",
+            "legenda": "fundadoras com anos de festa na bagagem"
+          }
+        ]
+      },
+      "cta_final": {
+        "headline": "Vamos abrir a casa para a sua festa?",
+        "sub": "Conte a data, a idade e o tamanho da turma. A gente monta o orçamento com carinho.",
+        "cta": "Pedir orçamento no WhatsApp",
+        "hand_note": "respondemos em horário comercial :)"
+      }
+    },
+    "sobre": {
+      "seo": {
+        "title": "Sobre a Casa Beliê — nossa história em Laranjeiras",
+        "description": "Como nasceu a Casa Beliê: beleza e simplicidade juntas, num espaço de infância livre criado por Isabela (Madame Girafa) e Cecília (Vila Pindorama)."
+      },
+      "hero": {
+        "kicker": "Sobre a Beliê",
+        "headline": "Beleza e simplicidade andam juntas aqui.",
+        "stroke_word": "juntas"
+      },
+      "historia": "A Casa Beliê nasceu do desejo de oferecer um espaço onde beleza e simplicidade andam juntas. Em vez de festas excessivas e hiperestimulantes, criamos encontros com propósito: estética minimalista, afeto, brincar livre e ausência de telas. A casa ocupa um endereço no coração de Laranjeiras, numa rua bucólica e de fácil acesso — com quintal verde, luz natural, área molhada, tanque de areia, muro de pintura e muitos cantinhos para explorar.",
+      "manifesto_sem_telas": {
+        "headline": "Por que não tem tela na Beliê?",
+        "texto": "Porque criança envolvida em brincadeira de verdade não sente falta. O que a gente oferece no lugar: areia, tinta, água, grama, fantasia e tempo livre — os brinquedos que criam memória."
+      },
+      "fundadoras_completo": true,
+      "estrutura": "Casa de dois andares e cerca de 800 m², com ambientes lúdicos, acolhedores e climatizados, além de quintal verde para brincar com autonomia e segurança."
+    },
+    "festas": {
+      "seo": {
+        "title": "Festas na Casa Beliê — pacote completo em Laranjeiras",
+        "description": "Festa infantil completa: espaço, buffet, decoração afetiva, recreação e equipe. Também festas escolares, eventos familiares e oficinas."
+      },
+      "hero": {
+        "kicker": "Festas & experiências",
+        "headline": "A festa inteira, resolvida com afeto.",
+        "stroke_word": "resolvida"
+      },
+      "servicos": [
+        {
+          "num": "01",
+          "nome": "Escolar",
+          "duracao": "3 horas",
+          "desc": "Festa após o horário escolar, com buffet, decoração e programação mais enxutos. Indicada a partir de 7 anos."
+        },
+        {
+          "num": "02",
+          "nome": "Infantil",
+          "duracao": "4 horas",
+          "desc": "Formato completo, com buffet, muitas atividades e decoração mais elaborada."
+        },
+        {
+          "num": "03",
+          "nome": "Teen",
+          "duracao": "4 horas",
+          "desc": "Buffet, sala de jogos, baladinha, música, dança e decoração moderna."
+        },
+        {
+          "num": "04",
+          "nome": "Adulto, confraternizações e mini celebrações",
+          "desc": "Buffet completo, decoração sofisticada e música ambiente, com DJ, pista e diversão infantil opcionais."
+        }
+      ],
+      "como_funciona": [
+        {
+          "passo": "1",
+          "titulo": "Você conta a festa",
+          "desc": "Data, idade, tamanho da turma e o jeito da criança."
+        },
+        {
+          "passo": "2",
+          "titulo": "A gente desenha junto",
+          "desc": "Tema, decoração afetiva, cardápio e brincadeiras — tudo com a sua cara."
+        },
+        {
+          "passo": "3",
+          "titulo": "Só viver",
+          "desc": "No dia, a equipe cuida de tudo. Sua família só aproveita."
+        }
+      ],
+      "precos_nota": "Sem preços públicos — orçamento personalizado via WhatsApp."
+    },
+    "espaco": {
+      "seo": {
+        "title": "O espaço da Casa Beliê — quintal verde e luz natural",
+        "description": "Conheça os ambientes da casa: quintal, tanque de areia, muro de pintura, área molhada, vila, espaço baby e salões de luz natural."
+      },
+      "hero": {
+        "kicker": "Espaço & galeria",
+        "headline": "Uma casa feita de cantinhos.",
+        "stroke_word": "cantinhos"
+      },
+      "galeria_categorias": [
+        "Quintal e casa",
+        "Festas reais",
+        "Decoração afetiva",
+        "Brincar livre",
+        "Espaço baby e sensorial",
+        "Área molhada",
+        "Oficinas e novidades"
+      ],
+      "galeria_nota": "Mínimo 24 imagens na versão final: 8 espaço, 8 festas reais, 4 detalhes/decor, 4 brincadeiras. Provisórias = curadoria Pexels aprovada no DS; substituir por fotos do @casabelie tratadas e autorizadas.",
+      "mapa": {
+        "mostrar": true,
+        "endereco": "Rua General Glicério, 131 — Laranjeiras, Rio de Janeiro/RJ",
+        "provisional": true
+      }
+    },
+    "blog": {
+      "seo": {
+        "title": "Novidades da Casa Beliê",
+        "description": "Oficinas, temporadas, bastidores e ideias de festa afetiva — as novidades da casa."
+      },
+      "hero": {
+        "kicker": "Novidades",
+        "headline": "O que anda acontecendo na casa.",
+        "stroke_word": "acontecendo"
+      },
+      "enabled": true,
+      "frequency": "2 posts/mês",
+      "posts_iniciais": [
+        {
+          "titulo": "Como escolher uma casa de festas infantil em Laranjeiras sem abrir mão do brincar livre",
+          "status": "draft"
+        },
+        {
+          "titulo": "Por que a Casa Beliê não tem telas: o valor das brincadeiras que criam memórias",
+          "status": "draft"
+        },
+        {
+          "titulo": "Festa afetiva, quintal verde e luz natural: ideias para uma celebração mais bonita, leve e verdadeira",
+          "status": "draft"
+        }
+      ]
+    },
+    "contato": {
+      "seo": {
+        "title": "Contato — Casa Beliê, Laranjeiras RJ",
+        "description": "Peça um orçamento para a festa: WhatsApp, e-mail e como chegar na Rua General Glicério, 131, Laranjeiras."
+      },
+      "hero": {
+        "kicker": "Contato",
+        "headline": "Bate na porta que a gente abre.",
+        "stroke_word": "abre"
+      },
+      "form": {
+        "fields": [
+          "nome",
+          "whatsapp",
+          "data desejada",
+          "idade do aniversariante",
+          "nº aproximado de convidados",
+          "mensagem"
+        ],
+        "submit": "Enviar e continuar no WhatsApp",
+        "destino": "whatsapp + e-mail"
+      },
+      "melhor_horario": "Horário comercial, segunda a sexta.",
+      "endereco_bloco": {
+        "titulo": "Onde fica",
+        "texto": "Rua General Glicério, 131 — Laranjeiras, Rio de Janeiro/RJ. Rua bucólica, fácil acesso pela Zona Sul.",
+        "provisional": true
+      }
+    }
+  },
+  "seo_local_keywords": [
+    "casa de festas infantil em Laranjeiras",
+    "festa infantil Zona Sul RJ",
+    "festa infantil sem telas RJ",
+    "quintal verde para festa infantil"
+  ],
+  "forbidden": [
+    "melhor do Rio (sem prova)",
+    "superlativos não comprovados",
+    "1.000 avaliações no Google (não confirmado)",
+    "endereço 391",
+    "reconhecda (erro do site antigo)",
+    "Liberdade parar criar (erro do site antigo)",
+    "Bem-vindo ao nosso site",
+    "Saiba mais como CTA"
+  ],
+  "integrations_planned": [
+    "GA4",
+    "Meta Pixel",
+    "Google Ads",
+    "eventos: clique WhatsApp, envio formulário, clique mapa",
+    "newsletter",
+    "Google Maps embed"
+  ]
+}

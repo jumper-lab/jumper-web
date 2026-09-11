@@ -1,0 +1,89 @@
+{
+  "schema_version": "3.0.0",
+  "stage": "visual_quality_audit",
+  "status": "approved_with_fixes",
+  "client": "Casa Beliê",
+  "slug": "casa-belie-2",
+  "audited_at": "2026-07-10",
+  "build_status": "verde (astro build + doctor sem erro)",
+  "first_fold": {
+    "hero_dominance": "100svh na home (fallback 100vh) e >=62svh nas internas; foto full-bleed com scrim; verificado em 320/768/1024/1440 por medição.",
+    "message": "kicker (o quê/onde) + headline com sublinhado de giz (posicionamento) + parágrafo (prova) + CTA WhatsApp (ação).",
+    "fix_applied": "clamp tipográfico em <=560px para a palavra sublinhada nunca cortar (era 372px em viewport de 320px; ficou 273px)."
+  },
+  "visual_checks": {
+    "surfaces": "papel/areia/lavanda-véu/verde-brisa/verde-mata/manteiga alternando sem repetição em vizinhas",
+    "signature": "Traço Beliê em 5 pontos (hero, kickers, CTA, muro de memórias, numeral 01)",
+    "typography": "Fraunces (light, optical sizing) display — combina com a serifa leve da marca no Instagram / Nunito Sans corpo / Caveat só em margens e legendas",
+    "empty_spaces": "revisados — nenhum buraco visual, faixa vazia ou padding exagerado sobreviveu"
+  },
+  "functional_checks": {
+    "links_ctas": "todos os CTAs apontam para wa.me com mensagem; nav com aria-current; footer completo",
+    "form": "formulário de contato valida nome/whats e abre WhatsApp com mensagem montada",
+    "menu_mobile": "abre/fecha por botão, Esc e clique; trava scroll; foco gerenciado",
+    "blog": "7 passos de validação executados com sucesso (401, não-vazamento, CRUD, arquivado some do público, upload, build verde)",
+    "accessibility": "landmarks, h1 único, alts escritos, foco visível, prefers-reduced-motion, contrastes AA/AAA verificados numericamente"
+  },
+  "success_tests": {
+    "five_second_test": {
+      "result": "passa",
+      "evidence": "Primeira dobra: kicker 'Casa de festas infantil · Laranjeiras, RJ' (o quê/onde), headline 'Onde a festa é brincar de verdade' + parágrafo com 800 m², quintal, sem telas (para quem/por quê), CTA 'Pedir orçamento' (o que fazer)."
+    },
+    "print_test": {
+      "result": "passa",
+      "evidence": "Hero sem logo: FOTO REAL da Casa Beliê (mesa de doces com bolo de azulejo, limões e arco de balões azul+amarelo sobre parede de tijolinho branco), headline serif com sublinhado de giz e anotação manuscrita. Um designer identifica na hora: casa de festas afetiva/editorial, não buffet. A foto real reforça o teste — a paleta da decoração (azul esquadria + manteiga + azulejo) coincide com a paleta do site."
+    },
+    "competitor_test": {
+      "result": "passa",
+      "evidence": "Ao lado de sites de buffet genérico (referência negativa do briefing: Espoleta Play), o site é mais editorial, com assinatura visual própria (Traço Beliê), copy específica e zero clichê promocional."
+    }
+  },
+  "empty_space_review": "Espaços vazios revisados seção a seção em screenshot/medição: o whitespace do manifesto e do muro de memórias é ritmo editorial intencional (cria pausa entre dobras densas); nenhuma faixa vazia, buraco visual, padding exagerado ou grid quebrado sobreviveu em 320, 768, 1024 ou 1440. A área à direita do formulário de contato em desktop é ocupada pela coluna 'Outros caminhos' — sem vazio órfão.",
+  "signature_element_check": "Traço Beliê presente em 5 pontos: sublinhado animado do hero (todas as páginas via stroke_word), estrelinhas de kicker, círculo de giz no hover do CTA, muro de memórias (polaroids com fita e legenda manuscrita), rabisco atrás do numeral 01 dos serviços.",
+  "anti_slop_check": "Sem hero de gradiente/blobs (foto real + scrim), sem 3 cards idênticos (lista editorial numerada), sem emoji como ícone (SVGs próprios), sem anatomia repetida (10 anatomias distintas na home), sem copy clichê (lista de proibidos respeitada), decoração sempre com função.",
+  "contrast_check": "11 pares funcionais verificados numericamente (tabela no final-design-system.json): todos AA ou AAA. Decorativos (lavanda-brand, terracota, verde-folha em texto pequeno) travados fora de uso funcional.",
+  "known_issues": [
+    "VÍDEO NO HERO: adicionado public/videos/festa-sophia.mp4 (video real de festa, cedido pelo usuário) como fundo do hero da Home — autoplay, mudo, loop, playsinline, com fallback para a foto estática em prefers-reduced-motion. ATENÇÃO: arquivo tem 17MB e 108s sem corte, muito acima do orçamento de performance (~1.2MB de página). Não há ffmpeg disponível neste ambiente para comprimir/cortar. Antes de publicar: cortar para um loop curto (6-10s), comprimir para ~2-4MB (H.264, sem áudio) e gerar poster/WebM de fallback.",
+    "AUTORIZAÇÃO DE IMAGEM: hero, manifesto, muro e galeria agora usam fotos REAIS do Instagram @casabelie (baixadas e recortadas para remover as faixas de texto do Instagram). Várias mostram pessoas identificáveis (famílias, crianças, sócias) e foram creditadas a fotógrafos profissionais nas postagens (ex.: @gabiamorimfoto, @fe.bordallo). Antes de publicar em produção é obrigatório: confirmar com a Casa Beliê a autorização de uso de imagem das famílias/crianças e o crédito/licença dos fotógrafos.",
+    "Qualidade das fotos: recorte e redimensionamento feitos com sips (nativo). Sem pipeline de color grading; as fotos originais já são profissionais. Ideal reprocessar em AVIF/WebP e pedir os originais em alta ao cliente.",
+    "WhatsApp (21) 99669-4990 (atualizado para o número da bio oficial do @casabelie), e-mail, endereço 131 e horário vieram de fontes públicas — confirmar antes do deploy em produção.",
+    "Fundadoras sem foto (monogramas desenhados como placeholder) — solicitar retratos autorizados.",
+    "Depoimentos e '1.000 avaliações no Google' não publicados por falta de confirmação/autorização — a home usa apenas números defensáveis (800 m², 0 telas, 2 fundadoras). Prova social real deixará a página mais forte.",
+    "Hero JPEG de 624KB: dentro do alvo de peso, mas AVIF/WebP com pipeline de otimização reduziria ~50%. Screenshots de emulação 768/1024 do ambiente de review ficaram instáveis; a validação nesses viewports foi por medição de layout, não visual.",
+    "Integrações GA4/Meta Pixel/Google Ads aguardando IDs do cliente — pontos de evento já marcados no código (data-evt).",
+    "Galeria com 4 categorias de foto das 8 recomendadas no briefing; completar quando houver acervo real (mínimo 24 imagens)."
+  ],
+  "deep_review_passes": [
+    {
+      "pass": 1,
+      "focus": "impacto e direção (hero, assinatura, hierarquia, copy)",
+      "found_and_fixed": [
+        "Headline do hero cortava 'brincar de verdade' em 320px (palavra sublinhada com nowrap media 372px). Corrigido com clamp(1.7rem, 8.5vw, 2.9rem) em <=560px; medida final 273px.",
+        "Logo oficial sozinha lia como circulo abstrato no header. Adicionado wordmark 'Casa Beliê' em Young Serif ao lado do simbolo (melhora o teste dos 5 segundos).",
+        "String de ajuda do admin ensinava <img> sem alt; exemplo corrigido para incluir alt."
+      ]
+    },
+    {
+      "pass": 2,
+      "focus": "responsividade, estados e funcionamento",
+      "found_and_fixed": [
+        "Overflow horizontal verificado por medição em 320/768/1024/1440 em Home, Sobre, Festas, Espaço, Blog, Post e Contato: zero overflow em todos.",
+        "Menu mobile: abre, fecha por botão/Esc/clique em link, trava o scroll do body; verificado em 320px.",
+        "Blog validado nos 7 passos do DOC-MESTRE: /admin/ sem senha não vaza dados (HTML inspecionado), senha errada retorna 401, senha correta lista todos, post de teste criado/apareceu no público/arquivado sumiu do público/excluído, APIs públicas retornam somente published, build verde após tudo."
+      ]
+    },
+    {
+      "pass": 3,
+      "focus": "feedback do cliente: tipografia, peso do hero, imagens reais e fundadoras",
+      "found_and_fixed": [
+        "Tipografia estava pesada (Young Serif). Trocada por Fraunces light (weight 340-370, optical sizing), que corresponde ao estilo de serifa leve e elegante usado pela própria marca no Instagram.",
+        "Hero estava escuro/pesado. Scrim reduzido (~.72->.52 embaixo, topo mais leve) + text-shadow na headline para manter legibilidade — foto real aparece muito mais.",
+        "Fotos genéricas (Pexels) substituídas por fotos REAIS do @casabelie em todo o site: hero (mesa de doces azulejo/limões), manifesto (família), muro (pai+filha, mesa circo, bolo), galeria, e novas: fachada real da casa, criança pintando no muro de pintura.",
+        "Seção de fundadoras agora traz FOTO REAL das duas sócias juntas (Isabela & Cecília abraçadas), substituindo os monogramas placeholder — atende pedido explícito do cliente.",
+        "Páginas internas ganharam imagens reais: Sobre (fachada + muro de pintura + sócias), Festas (grid de 3 fotos reais).",
+        "WhatsApp atualizado para o número da bio oficial do Instagram (99669-4990)."
+      ]
+    }
+  ],
+  "final_recommendation": "Pronto para apresentação interna e revisão do cliente com provisórios sinalizados. Não publicar em produção antes de: confirmar WhatsApp/endereço/horário, trocar fotos provisórias pelas reais e definir BLOG_ADMIN_PASSWORD de produção."
+}

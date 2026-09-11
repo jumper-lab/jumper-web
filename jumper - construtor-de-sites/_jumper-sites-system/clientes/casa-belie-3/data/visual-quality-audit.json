@@ -1,0 +1,30 @@
+{
+  "schema_version": "3.0.0",
+  "stage": "version_3_build_validation",
+  "status": "build_approved_visual_review_pending",
+  "client": "Casa Beliê",
+  "slug": "casa-belie-3",
+  "audited_at": "2026-09-10",
+  "source": "briefing/entrada/Site Belie.pdf",
+  "base_version": "casa-belie-2",
+  "build": {
+    "command": "astro build --base /casabelie-3",
+    "result": "pass",
+    "routes_checked": ["/", "/festas/", "/espaco/", "/contato/"]
+  },
+  "content_checks": {
+    "event_formats": ["Escolar", "Infantil", "Teen", "Adulto e confraternizações"],
+    "buffet": "present",
+    "recreation_spaces": 14,
+    "decoration": "present",
+    "google_reviews": "5,0 e 1.487 avaliações, consultado em 10/09/2026",
+    "contact": "telefone, e-mail, tipo de evento e observações atualizados"
+  },
+  "known_issues": [
+    "A nota e a contagem do Google são dados dinâmicos e devem ser atualizadas antes da publicação definitiva.",
+    "As fotos reais e o vídeo vieram da versão 2; manter a validação de autorização de imagem e créditos antes da publicação.",
+    "O vídeo do hero continua pesado e deve ser comprimido para produção.",
+    "Integrações de analytics e anúncios aguardam os IDs do cliente."
+  ],
+  "reference": "O arquivo visual-quality-audit-v2-reference.json preserva a auditoria visual da versão base."
+}

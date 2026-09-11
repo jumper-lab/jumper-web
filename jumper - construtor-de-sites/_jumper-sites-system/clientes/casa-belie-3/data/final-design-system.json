@@ -1,0 +1,208 @@
+{
+  "schema_version": "3.0.0",
+  "stage": "final_design_system",
+  "client": "Casa Beliê",
+  "slug": "casa-belie-3",
+  "personality": "A",
+  "model": "M4",
+  "resolved_from": ["briefing/briefing-normalizado.md", "data/design-system.json", "3 DSs-base da personalidade A (repertório)"],
+
+  "client_truth": {
+    "what": "Casa de festas infantil de ~800 m² em Laranjeiras, RJ, com quintal verde, luz natural, área molhada, tanque de areia, muro de pintura e festa completa (espaço + buffet + decoração afetiva + recreação + equipe).",
+    "for_whom": "Famílias da Zona Sul do RJ (Laranjeiras, Flamengo, Botafogo, Catete, Cosme Velho) sensíveis à estética, à experiência das crianças e à praticidade de um pacote bem cuidado.",
+    "why_trust": "Fundadoras com trajetória: Isabela (Madame Girafa, festas afetivas desde 2014) e Cecília (Vila Pindorama, Icaraí). Casa real, festas reais, portfolio profissional.",
+    "core_message": "Infância livre, quintal verde, luz natural, brincar de verdade sem telas, decoração lúdica/afetiva — 'um belo lugar para viver o que realmente importa'.",
+    "not": "Não é buffet genérico, não é parque indoor e não usa estética de balada infantil neon. Sem mascotes e sem foco em preço.",
+    "conversion": "Gerar WhatsApp com CTA 'Pedir orçamento'. Sem preços públicos."
+  },
+
+  "visual_thesis": "A Casa Beliê tem literalmente um muro de pintura onde as crianças deixam marcas. O site repete esse gesto: uma casa editorial calma — papel quente, serifa de livro de história, muito ar — onde a infância rabiscou por cima: traços de giz que se desenham, anotações manuscritas de álbum de família, fotos presas com fita no muro de memórias. A tensão entre 'casa bonita de revista' e 'traço de criança de verdade' é a Beliê. Falsificável: buffet genérico não tem muro de pintura nem álbum — tem cards e balões; outra casa afetiva sem muro de pintura não sustentaria o conceito.",
+
+  "signature_element": {
+    "name": "Traço Beliê (o muro de pintura no site)",
+    "what": "Traços de giz de cera/pincel em SVG desenhados à mão, animados por stroke-dashoffset (se desenham quando entram em cena), nas cores lavanda-brand, verde-folha e terracota.",
+    "where": ["sublinhado da palavra-chave da headline do hero (todas as páginas)", "estrelinha rabiscada nos kickers de seção", "círculo de giz no hover do CTA principal", "muro de memórias: fotos com fita, rotação sutil e legenda manuscrita", "rabisco atrás do numeral 01 da lista de serviços"],
+    "min_points_rule": "presente em 5 pontos nomeados — acima do mínimo de 3 do sistema"
+  },
+
+  "repertoire_used": {
+    "ds_base_01_1_padaria": "Disciplina de contraste: toda cor tem variante deep verificada para texto; storytelling familiar como estrutura de seção Sobre.",
+    "ds_base_01_2_clinica": "Cores claras da marca tratadas como superfície/decoração com variante profunda para funcional; tom lúdico sem infantilizar o adulto decisor.",
+    "ds_base_01_3_floricultura": "Editorial botânico: whitespace generoso, itálico/manuscrito para destaques poéticos curtos, cores decorativas explicitamente proibidas como texto.",
+    "rule": "Repertório de princípios, zero cópia de layout, classe ou componente."
+  },
+
+  "global_reference_repertoire": {
+    "researched": false,
+    "note": "Nenhuma referência global externa pesquisada nesta versão; direção nasce do briefing + repertório interno. Referências do briefing (site atual, Instagram, portfolio Bruna Guerson) usadas como verdade de conteúdo, não como molde visual."
+  },
+
+  "anti_generic_decisions": [
+    "Hero com foto real e headline com sublinhado de giz animado — não hero de gradiente/blobs.",
+    "Serviços em lista editorial numerada com rabisco — não grid de 3 cards idênticos.",
+    "Galeria como muro de memórias (fita, rotação, legenda manuscrita) — não grid uniforme de thumbnails.",
+    "Ícones: nenhum emoji; estrelinhas/setas rabiscadas em SVG próprio.",
+    "Copy na voz da casa ('Bate na porta que a gente abre') — clichês proibidos listados no content.json.",
+    "Prova social sem números não confirmados; bloco de depoimentos oculto até haver autorização.",
+    "Lavanda é momento de marca, não fundo universal — evita o 'site roxo' que o briefing proíbe."
+  ],
+
+  "tokens": {
+    "color": {
+      "lavanda-brand": "#B9A5D8",
+      "lavanda-profunda": "#6A5497",
+      "lavanda-veu": "#F1ECF8",
+      "verde-folha": "#5F8A50",
+      "verde-mata": "#3D5A34",
+      "verde-brisa": "#EAF2E3",
+      "papel": "#FDFAF4",
+      "areia": "#F3EAD9",
+      "manteiga": "#F7E8C9",
+      "terracota": "#D98E6A",
+      "pessego": "#F5D3BE",
+      "ceu": "#A8C6DA",
+      "ink": "#3A3440",
+      "ink-suave": "#6E6577"
+    },
+    "color_roles": {
+      "background": "papel",
+      "surface_alt": "areia | lavanda-veu | verde-brisa | manteiga — alternância, nunca duas vizinhas iguais",
+      "text_primary": "ink",
+      "text_secondary": "ink-suave (mínimo AA verificado)",
+      "text_on_dark": "papel sobre lavanda-profunda ou verde-mata",
+      "cta_bg": "lavanda-profunda",
+      "cta_text": "papel",
+      "link": "lavanda-profunda",
+      "kicker_verde": "verde-mata (verde-folha reprovado para texto pequeno: 3.85:1)",
+      "decorative_only": ["lavanda-brand", "terracota", "pessego", "ceu", "manteiga", "verde-folha (exceto texto grande)"]
+    },
+    "contrast_verification": {
+      "ink_on_papel": "11.55:1 — AAA",
+      "ink_on_areia": "10.07:1 — AAA",
+      "ink_on_lavanda_veu": "10.37:1 — AAA",
+      "ink_on_verde_brisa": "10.49:1 — AAA",
+      "ink_on_manteiga": "9.94:1 — AAA",
+      "ink_on_pessego": "8.56:1 — AAA",
+      "ink_suave_on_papel": "5.32:1 — AA",
+      "ink_suave_on_areia": "4.64:1 — AA",
+      "papel_on_lavanda_profunda": "6.06:1 — AA (botões e seções escuras aprovados)",
+      "papel_on_verde_mata": "7.44:1 — AAA",
+      "lavanda_profunda_on_papel": "6.06:1 — AA (links aprovados)",
+      "lavanda_profunda_on_lavanda_veu": "5.44:1 — AA",
+      "verde_mata_on_verde_brisa": "6.75:1 — AA",
+      "manteiga_on_verde_mata": "6.40:1 — AA (manuscritas sobre verde-mata aprovadas)",
+      "verde_folha_on_papel": "3.85:1 — APENAS texto grande/decorativo",
+      "terracota_on_papel": "2.51:1 — DECORATIVO apenas (traços)",
+      "lavanda_brand_on_papel": "2.14:1 — DECORATIVO apenas (traços, superfícies)"
+    },
+    "typography": {
+      "display": { "family": "Fraunces", "fallback": "Georgia, serif", "usage": "headlines, numerais, destaques", "weights": [400] },
+      "body": { "family": "Nunito Sans", "fallback": "system-ui, sans-serif", "usage": "corpo, nav, botões, formulários", "weights": [400, 600, 800] },
+      "handwritten": { "family": "Caveat", "fallback": "cursive", "usage": "APENAS legendas, anotações de margem, citação das fundadoras", "weights": [500, 600] },
+      "scale": {
+        "hero_display": "clamp(2.5rem, 6.4vw, 4.7rem) / 1.08",
+        "h2": "clamp(1.9rem, 3.6vw, 2.7rem) / 1.1",
+        "h3": "1.35rem",
+        "body": "1.0625rem / 1.65",
+        "hand": "1.3rem–1.6rem",
+        "kicker": "0.72rem / letter-spacing .16em / 800",
+        "max_line_width": "62ch"
+      }
+    },
+    "spacing": {
+      "section_y": "clamp(64px, 10vh, 120px)",
+      "shell_max": "1200px",
+      "gutter": "clamp(20px, 4vw, 48px)",
+      "rhythm_rule": "densidade varia entre seções; manifesto e muro respiram mais, listas são mais densas"
+    },
+    "radius": { "buttons": "999px (pill)", "panels": "18–20px", "photos_album": "0 (borda de papel branca + fita)", "daub_organic": "border-radius orgânico só em swatches/manchas decorativas" },
+    "shadow": { "cta_hover": "0 12px 26px -10px rgba(106,84,151,.55)", "polaroid": "0 18px 40px -18px rgba(58,52,64,.35)", "rule": "sombra só em elementos que levantam (foto, botão); nunca sombra uniforme em tudo" }
+  },
+
+  "hero_direction": {
+    "rule": "Toda página abre com primeira dobra dominante. Home: min-height 100svh (fallback 100vh). Internas: mínimo 62vh com largura total.",
+    "home": "Foto real full-bleed (quintal/casa, luz natural) + scrim quente linear para legibilidade + kicker com estrelinha + headline Fraunces 2 linhas com sublinhado de giz animado na palavra-chave + parágrafo síntese + CTA 'Pedir orçamento' (círculo de giz no hover) + ghost 'Conhecer a casa' + anotação manuscrita 'o quintal fica bem aqui' com seta desenhada (desktop) + scroll hint.",
+    "internas": "Mesma anatomia sem foto obrigatória: fundo em superfície alternada, headline com stroke_word definida no content.json.",
+    "media": "Provisória: pexels 10032939. Final: foto real do quintal da Beliê tratada (Instagram/cliente autorizada)."
+  },
+
+  "navigation_direction": {
+    "header": "Fixo, transparente sobre o hero (logo invertida branca, links brancos), ganha fundo papel + sombra fina + logo colorida após 40px de scroll (300ms).",
+    "links": "A casa · Festas · Espaço · Novidades + CTA pill 'Pedir orçamento' (papel sobre hero, lavanda-profunda quando sólido).",
+    "hover": "sublinhado 2px que cresce da esquerda.",
+    "mobile": "menu hambúrguer em painel de tela cheia papel, links em Fraunces grandes, CTA fixo no rodapé do painel; fecha com Esc e clique fora.",
+    "footer": "verde-mata com texto papel: tagline, endereço (provisório sinalizado), Instagram, horário, mini-nav e linha de SEO local."
+  },
+
+  "media_direction": {
+    "priority": ["Instagram oficial @casabelie — fotos REAIS baixadas e recortadas (em uso)", "imagem IA sob medida (só se faltar foto real para uma função)", "Pexels apenas em último caso"],
+    "excluded": "Imagens do site WordPress atual E Pexels — decisão do usuário: só fotos reais do cliente.",
+    "real_photos_in_use": {
+      "hero": "r-hero — mesa de doces azulejo/limões, arco de balões azul+amarelo, tijolinho branco (paleta idêntica à do site)",
+      "manifesto": "r-familia — família com a filha no colo diante da mesa temática",
+      "muro": ["r-baby — pai jogando a filha para o alto entre balões", "r-mesa — sócia finalizando mesa de bolo (tema circo, 1 aninho)", "r-bolo — calda de chocolate no prato 'fica, vai ter bolo'"],
+      "galeria": ["r-hero", "r-mesa", "r-cafe — bandeja de café e bolo no quintal", "r-familia"],
+      "source_note": "Baixadas do Instagram público via navegador; faixas de texto do IG recortadas com sips. Autorização de imagem e crédito de fotógrafos pendentes (ver known_issues do audit)."
+    },
+    "treatment": "Muro de memórias: borda de papel branca 14px, fita adesiva manteiga translúcida, rotação -2.4° a 2.2°, legenda Caveat. Full-bleed: scrim quente rgba(45,36,55,.74→.16), nunca duotone/overlay roxo.",
+    "children_rule": "Fotos com crianças identificáveis só com autorização por escrito.",
+    "alt_text": "Todos escritos do zero, descritivos, com contexto local quando fizer sentido."
+  },
+
+  "section_system": {
+    "home_order": ["hero 100svh", "marquee de palavras da casa", "manifesto (citação manuscrita + polaroid)", "a casa / ambientes (grid editorial com notas manuscritas)", "festas (lista numerada, 3 itens + link)", "muro de memórias (galeria polaroid sobre verde-mata)", "fundadoras (2 retratos + bios)", "números permitidos (800m² / 0 telas / 2 fundadoras)", "novidades (últimos posts)", "CTA final + contato/mapa"],
+    "variation_rule": "Anatomia nunca repete em seções vizinhas: imersivo → faixa → 2 colunas → grid → lista → mural → retratos → números → cards de post → conversão.",
+    "surface_rule": "papel → lavanda-profunda (marquee) → areia → papel → papel → verde-mata → lavanda-veu → papel → verde-brisa → manteiga (CTA final)."
+  },
+
+  "component_language": {
+    "buttons": "Pill lavanda-profunda; hover: eleva 2px + sombra + círculo de giz terracota se desenha ao redor; active: scale .97. Ghost com borda interna.",
+    "service_row": "grid numeral rabiscado + título/desc + seta circular que gira levemente e preenche no hover; fundo verde-brisa no hover.",
+    "polaroid": "papel branco, fita, rotação; hover endireita e eleva.",
+    "note": "anotação Caveat com seta SVG desenhada, sempre apontando algo real.",
+    "forms": "campos com borda 1.5px ink 12%, foco lavanda-profunda com anel suave, labels sempre visíveis, erros em #B3372E com mensagem textual.",
+    "blog_card": "recorte de papel: título Fraunces, data manuscrita, sem thumbnail obrigatória.",
+    "icons": "nenhuma biblioteca; SVGs próprios de traço (estrela, seta, coração) — nunca emoji."
+  },
+
+  "responsive_rules": {
+    "breakpoints": "320 / 768 / 1024 / 1440+",
+    "hero": "100svh em todos; anotação manuscrita só ≥1000px; headline clamp fluido; CTAs empilham <480px em largura total.",
+    "muro": "3 colunas → 1 coluna centrada ≤780px (rotações mantidas, menores).",
+    "services": "grid 3 colunas → numeral acima do texto <640px; área de toque ≥44px.",
+    "nav": "hambúrguer <820px.",
+    "no_horizontal_scroll": "obrigatório de 320 a 1920; traços SVG com overflow controlado.",
+    "type_floor": "corpo nunca <1rem; manuscrita nunca <1.15rem."
+  },
+
+  "accessibility_floor": {
+    "contrast": "todos os pares funcionais AA+ (tabela em tokens.contrast_verification); decorativos marcados.",
+    "focus": "anel de foco visível 2px lavanda-profunda offset 2px em todo interativo.",
+    "semantics": "landmarks (header/nav/main/footer), h1 único por página, alt em toda imagem, aria-hidden em traços decorativos, skip-link.",
+    "motion": "prefers-reduced-motion: desliga zoom/marquee/desenho de traços (aparecem completos), mantém fades 150ms.",
+    "keyboard": "menu mobile com focus-trap; carrossel/galeria navegável por teclado; formulário com labels associados."
+  },
+
+  "performance_floor": {
+    "images": "AVIF/WebP com fallback, srcset por viewport, lazy exceto hero (fetchpriority=high), dimensões explícitas (zero CLS).",
+    "fonts": "Google Fonts com preconnect + display=swap; 3 famílias, pesos mínimos (Fraunces 400, Nunito Sans 400/600/800, Caveat 500/600).",
+    "js": "vanilla mínimo: IntersectionObserver, header scroll, menu. Sem framework de runtime.",
+    "targets": "LCP < 2.5s em 4G, CLS < 0.1, peso da home < 1.2MB com hero otimizado."
+  },
+
+  "quality_gate": {
+    "five_second_test": "Primeira dobra responde: casa de festas infantil, em Laranjeiras, para famílias que querem brincar de verdade, CTA orçamento.",
+    "print_test": "Hero sem logo identifica segmento e personalidade: foto de quintal/festa afetiva + sublinhado de giz + manuscrita = casa afetiva de festas, não buffet.",
+    "competitor_test": "Ao lado de buffet genérico da região: mais editorial, mais específico, mais confiável.",
+    "review_rule": "Duas revisões obrigatórias (impacto/direção + responsividade/acabamento) com screenshots 320/768/1024/1440; terceira se restar dúvida.",
+    "honesty": "visual-quality-audit.json com known_issues obrigatório."
+  },
+
+  "blog_module": {
+    "enabled": true,
+    "admin": "/admin/ protegido por BLOG_ADMIN_PASSWORD (401 em senha errada; nada renderiza antes da senha)",
+    "routes": ["/blog/", "/blog/[slug]/", "/api/blog-posts", "/api/blog-upload"],
+    "storage": "data/blog-posts.json + public/uploads/blog/",
+    "astro": "output: server + @astrojs/node"
+  }
+}

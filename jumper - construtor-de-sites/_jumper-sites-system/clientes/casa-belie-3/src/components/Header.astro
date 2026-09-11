@@ -1,0 +1,120 @@
+---
+// Header fixo: transparente sobre hero com foto, sólido nas demais situações.
+import { withBase } from '../lib/paths.js';
+const { overHero = false } = Astro.props;
+const nav = [
+  { label: 'A casa', href: withBase('/sobre/') },
+  { label: 'Festas', href: withBase('/festas/') },
+  { label: 'Espaço', href: withBase('/espaco/') },
+  { label: 'Novidades', href: withBase('/blog/') },
+  { label: 'Contato', href: withBase('/contato/') },
+];
+const current = Astro.url.pathname;
+---
+<header id="hd" class={overHero ? '' : 'solid static-solid'}>
+  <a class="brand" href={withBase('/')} aria-label="Casa Beliê — início">
+    <span class="brand-logo" aria-hidden="true">
+      <img class="logo-white" src={withBase('/images/logo-belie-white-96.webp')} alt="" width="96" height="96" />
+      <img class="logo-color" src={withBase('/images/logo-belie-96.webp')} alt="" width="96" height="96" />
+    </span>
+    <span class="brand-name serif">Casa Beliê</span>
+  </a>
+  <nav aria-label="Navegação principal">
+    {nav.map(item => (
+      <a href={item.href} aria-current={current.startsWith(item.href) ? 'page' : undefined}>{item.label}</a>
+    ))}
+    <a class="cta" href="https://wa.me/5521996694990?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20festas%20na%20Casa%20Beli%C3%AA%20:)" target="_blank" rel="noopener">Pedir orçamento</a>
+  </nav>
+  <button id="menu-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-mobile">
+    <span></span><span></span>
+  </button>
+</header>
+
+<div id="menu-mobile" hidden>
+  <nav aria-label="Menu">
+    <a href={withBase('/')}>Início</a>
+    {nav.map(item => <a href={item.href}>{item.label}</a>)}
+  </nav>
+  <a class="btn" href="https://wa.me/5521996694990?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20festas%20na%20Casa%20Beli%C3%AA%20:)" target="_blank" rel="noopener">Pedir orçamento <span class="arr">→</span></a>
+</div>
+
+<style>
+  header{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+    padding:18px var(--gutter);transition:background .3s var(--ease),box-shadow .3s var(--ease),padding .3s var(--ease);animation:header-enter .72s var(--ease) both}
+  @keyframes header-enter{from{transform:translate3d(0,-18px,0)}to{transform:translate3d(0,0,0)}}
+  header.solid{background:rgba(253,250,244,.94);backdrop-filter:blur(8px);box-shadow:0 1px 0 rgba(58,52,64,.08);padding-top:12px;padding-bottom:12px}
+  header:not(.solid){background:linear-gradient(to bottom,rgba(27,22,31,.42),rgba(27,22,31,0))}
+  header.menu-open{background:rgba(253,250,244,.98);box-shadow:0 1px 0 rgba(58,52,64,.08)}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .brand-logo{position:relative;width:46px;height:46px;flex:none}
+  .brand-logo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:opacity .3s var(--ease)}
+  .brand-logo .logo-white{opacity:1}
+  .brand-logo .logo-color{opacity:0}
+  header.solid .brand-logo .logo-white,header.menu-open .brand-logo .logo-white{opacity:0}
+  header.solid .brand-logo .logo-color,header.menu-open .brand-logo .logo-color{opacity:1}
+  .brand-name{font-family:"Fraunces Hero","Fraunces",Georgia,serif;font-size:1.25rem;color:#fff;transition:color .3s}
+  header.solid .brand-name{color:var(--ink)}
+  header.menu-open .brand-name{color:var(--ink)}
+  nav{display:flex;align-items:center;gap:clamp(14px,2.5vw,32px)}
+  nav a{text-decoration:none;font-weight:600;font-size:.95rem;color:#fff;position:relative;transition:color .3s}
+  header.solid nav a{color:var(--ink)}
+  header > nav a:not(.cta){z-index:0;padding:5px 8px;margin:-5px -8px}
+  header > nav a:not(.cta)::before,header > nav a:not(.cta)::after{content:"";position:absolute;pointer-events:none;inset:-2px -6px -3px;border:1.4px solid currentColor;border-radius:48% 52% 46% 54% / 56% 43% 57% 44%;opacity:0;transform:scale(.78) rotate(-2deg);transition:opacity .3s ease,transform .5s var(--ease)}
+  header > nav a:not(.cta)::after{inset:0 -8px -5px -5px;border-width:1px;border-radius:53% 47% 55% 45% / 44% 57% 43% 56%;transform:scale(.8) rotate(1.5deg)}
+  header > nav a:not(.cta):is(:focus-visible,[aria-current="page"])::before{opacity:.72;transform:scale(1) rotate(-2deg)}
+  header > nav a:not(.cta):is(:focus-visible,[aria-current="page"])::after{opacity:.3;transform:scale(1) rotate(1.5deg)}
+  header > nav a:not(.cta):focus-visible{outline:none}
+  @media(hover:hover){
+    header > nav a:not(.cta):hover::before{opacity:.72;transform:scale(1) rotate(-2deg)}
+    header > nav a:not(.cta):hover::after{opacity:.3;transform:scale(1) rotate(1.5deg)}
+  }
+  nav .cta{background:var(--papel);color:var(--lav-prof);padding:11px 22px;border-radius:999px;font-weight:800;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+  nav .cta:hover{transform:translateY(-2px);box-shadow:0 8px 20px -6px rgba(0,0,0,.35)}
+  header.solid nav .cta{background:var(--lav-prof);color:var(--papel)}
+
+  #menu-btn{display:none;flex-direction:column;gap:6px;background:none;border:0;padding:10px;cursor:pointer}
+  #menu-btn span{width:26px;height:2.5px;border-radius:2px;background:#fff;transition:background .3s,transform .3s var(--ease)}
+  header.solid #menu-btn span{background:var(--ink)}
+  header.menu-open #menu-btn span{background:var(--ink)}
+  header.menu-open #menu-btn span:first-child{transform:translateY(4.25px) rotate(45deg)}
+  header.menu-open #menu-btn span:last-child{transform:translateY(-4.25px) rotate(-45deg)}
+  @media(max-width:960px){
+    nav{display:none}
+    #menu-btn{display:flex}
+  }
+  @media(prefers-reduced-motion:reduce){
+    header{animation:none}
+    header > nav a:not(.cta)::before,header > nav a:not(.cta)::after{transition:none}
+  }
+
+  #menu-mobile{position:fixed;inset:0;z-index:49;background:var(--papel);display:flex;flex-direction:column;justify-content:flex-start;align-items:center;gap:8px;padding:clamp(92px,15vh,124px) var(--gutter) max(32px,env(safe-area-inset-bottom));overflow-y:auto}
+  #menu-mobile[hidden]{display:none}
+  #menu-mobile nav{display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:24px}
+  #menu-mobile nav a{font-family:"Fraunces",serif;font-size:clamp(1.5rem,6vw,1.9rem);color:var(--ink);text-decoration:none;min-height:44px;display:flex;align-items:center}
+  #menu-mobile nav a:hover{color:var(--lav-prof)}
+  @media(min-height:700px){#menu-mobile{justify-content:center;padding-top:88px}}
+</style>
+
+<script>
+  const hd = document.getElementById('hd');
+  if (hd && !hd.classList.contains('static-solid')) {
+    const onScroll = () => hd.classList.toggle('solid', scrollY > 40);
+    addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+  const btn = document.getElementById('menu-btn');
+  const panel = document.getElementById('menu-mobile');
+  if (btn && panel) {
+    const toggle = (open) => {
+      panel.hidden = !open;
+      hd?.classList.toggle('menu-open', open);
+      btn.setAttribute('aria-expanded', String(open));
+      btn.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+      document.body.style.overflow = open ? 'hidden' : '';
+      if (open) panel.querySelector('a')?.focus();
+    };
+    btn.addEventListener('click', () => toggle(panel.hidden));
+    addEventListener('keydown', (e) => { if (e.key === 'Escape' && !panel.hidden) { toggle(false); btn.focus(); } });
+    panel.addEventListener('click', (e) => { if (e.target.closest('a')) toggle(false); });
+  }
+</script>

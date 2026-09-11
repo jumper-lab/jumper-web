@@ -1,0 +1,68 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+import { withBase } from '../lib/paths.js';
+
+const {
+  title = 'Casa Beliê — Um belo lugar para celebrar em Laranjeiras',
+  description = 'Festas infantis, escolares, teens e celebrações adultas numa casa de 800 m² com quintal verde, buffet, decoração e recreação em Laranjeiras.',
+  overHero = false,
+  noChrome = false,
+} = Astro.props;
+
+const fontCss = `
+  @font-face{font-family:"Fraunces Hero";font-style:normal;font-weight:370;font-display:swap;src:url("${withBase('/fonts/fraunces-hero.woff2')}") format("woff2")}
+  @font-face{font-family:"Fraunces";font-style:normal;font-weight:300 500;font-display:swap;src:url("${withBase('/fonts/fraunces-latin.woff2')}") format("woff2")}
+  @font-face{font-family:"Nunito Sans";font-style:normal;font-weight:400;font-display:swap;src:url("${withBase('/fonts/nunito-sans-latin.woff2')}") format("woff2")}
+  @font-face{font-family:"Nunito Sans";font-style:normal;font-weight:600;font-display:swap;src:url("${withBase('/fonts/nunito-sans-600.woff2')}") format("woff2")}
+  @font-face{font-family:"Nunito Sans";font-style:normal;font-weight:700;font-display:swap;src:url("${withBase('/fonts/nunito-sans-700.woff2')}") format("woff2")}
+  @font-face{font-family:"Nunito Sans";font-style:normal;font-weight:800;font-display:swap;src:url("${withBase('/fonts/nunito-sans-800.woff2')}") format("woff2")}
+  @font-face{font-family:"Caveat";font-style:normal;font-weight:500 600;font-display:swap;src:url("${withBase('/fonts/caveat-latin.woff2')}") format("woff2")}
+`;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).href;
+---
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <link rel="icon" type="image/png" href={withBase('/images/logo-belie-48.png')} />
+  <link rel="preload" href={withBase('/fonts/fraunces-hero.woff2')} as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href={withBase('/fonts/nunito-sans-latin.woff2')} as="font" type="font/woff2" crossorigin />
+  <style is:inline set:html={fontCss}></style>
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="Casa Beliê" />
+  <meta property="og:url" content={canonical} />
+  <!-- Integrações pendentes de IDs (briefing): GA4, Meta Pixel, Google Ads.
+       Eventos a instrumentar: clique WhatsApp (data-evt="whatsapp"), envio de formulário, clique no mapa. -->
+  <script is:inline>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  {!noChrome && <Header overHero={overHero} />}
+  <main id="conteudo">
+    <slot />
+  </main>
+  {!noChrome && <Footer />}
+
+  <script>
+    // Revelações e traços: entram em cena uma única vez.
+    const animated = Array.from(document.querySelectorAll('.reveal, .draw'));
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((es) => es.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      }), { threshold: 0.08, rootMargin: '0px 0px -7% 0px' });
+      animated.forEach((el) => io.observe(el));
+    } else {
+      animated.forEach((el) => el.classList.add('in'));
+    }
+  </script>
+</body>
+</html>
