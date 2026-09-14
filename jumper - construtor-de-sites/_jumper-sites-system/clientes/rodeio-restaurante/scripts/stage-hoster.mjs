@@ -90,14 +90,15 @@ for (const client of registry.clients) {
       throw new Error(`A URL de desenvolvimento de ${site.slug} não corresponde ao slug registrado.`);
     }
     await readFile(join(target, site.slug, 'index.html'));
-    links.push(`<a class="open" href="/${escapeHtml(site.slug)}/"><span>${escapeHtml(site.label)}</span><span class="arrow" aria-hidden="true">→</span></a>`);
+    links.push({ label: site.label, url: `/${site.slug}/`, external: false });
   }
   if (client.officialSite) {
     const officialUrl = new URL(client.officialSite.url);
     if (officialUrl.protocol !== 'https:') throw new Error(`O site oficial de ${client.name} precisa usar HTTPS.`);
-    links.push(`<a class="open official" href="${escapeHtml(officialUrl.href)}" target="_blank" rel="noopener"><span>${escapeHtml(client.officialSite.label)}</span><span class="arrow" aria-hidden="true">↗</span></a>`);
+    links.push({ label: client.officialSite.label, url: officialUrl.href, external: true });
   }
-  cards.push(`<article class="card" style="--project:${escapeHtml(client.accent)}"><span class="tag">${escapeHtml(client.category)}</span><h2>${escapeHtml(client.name)}</h2><p class="description">${escapeHtml(client.description)}</p><div class="links">${links.join('')}</div></article>`);
+  const linksData = escapeHtml(JSON.stringify(links));
+  cards.push(`<article class="card" style="--project:${escapeHtml(client.accent)}"><button class="card-open" type="button" aria-haspopup="dialog" aria-controls="client-links-dialog" data-client="${escapeHtml(client.name)}" data-category="${escapeHtml(client.category)}" data-accent="${escapeHtml(client.accent)}" data-links="${linksData}"><span class="tag">${escapeHtml(client.category)}</span><h2>${escapeHtml(client.name)}</h2><p class="description">${escapeHtml(client.description)}</p><span class="card-action"><span>Abrir links</span><span class="arrow" aria-hidden="true">→</span></span></button></article>`);
 }
 const dashboard = dashboardTemplate.replace('<!-- JUMPER_CLIENT_CARDS -->', cards.join('\n'));
 if (dashboard === dashboardTemplate) throw new Error('O marcador de cards não foi encontrado no template do hub.');
