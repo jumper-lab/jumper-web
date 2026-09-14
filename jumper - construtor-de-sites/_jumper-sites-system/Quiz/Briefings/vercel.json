@@ -20,6 +20,14 @@
     {
       "src": "assets/**",
       "use": "@vercel/static"
+    },
+    {
+      "src": "api/redirect.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "recover-draft.html",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -28,11 +36,12 @@
       "dest": "/api/briefings.js"
     },
     {
-      "handle": "filesystem"
+      "src": "/recuperar-rascunho",
+      "dest": "/recover-draft.html"
     },
     {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/api/redirect.js"
     }
   ]
 }

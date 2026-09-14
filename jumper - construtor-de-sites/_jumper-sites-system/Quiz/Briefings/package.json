@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vercel dev",
     "serve:local": "node local-server.mjs",
-    "check": "node --check quiz.js && node --check local-server.mjs && node --check api/briefings.js && node --check notion-client.mjs"
+    "check": "node --check quiz.js && node --check local-server.mjs && node --check api/briefings.js && node --check notion-client.mjs && node --check m5-validation.mjs && node --check intake-validation.mjs && node --check content-review.mjs",
+    "test": "node --test ../../scripts/tests/*.test.mjs"
   }
 }

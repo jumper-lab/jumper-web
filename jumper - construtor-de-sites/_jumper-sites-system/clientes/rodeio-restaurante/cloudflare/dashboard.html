@@ -26,6 +26,15 @@
       main{width:min(944px,calc(100% - 48px));margin:auto;padding:72px 0 80px}
       h1{font-family:Greed,Impact,sans-serif;font-size:clamp(44px,4.25vw,58px);font-weight:900;line-height:.94;letter-spacing:-.025em;text-transform:uppercase;margin:0;max-width:760px}
       .lead{font-size:17px;font-weight:300;line-height:1.45;color:var(--muted);margin:14px 0 0}
+      .briefing-tool{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-top:42px;padding:24px;border:1px solid #eadbd5;border-radius:14px;background:#fff8f5}
+      .briefing-copy{max-width:600px}
+      .briefing-tool .tag{color:#d84022}
+      .briefing-tool h2{font-size:27px;margin:14px 0 8px}
+      .briefing-tool .description{max-width:520px;font-size:15px;line-height:1.45}
+      .briefing-action{display:inline-flex;flex:none;align-items:center;justify-content:space-between;gap:28px;min-height:46px;padding:0 18px;border-radius:999px;background:#101010;color:#fff;text-decoration:none;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;transition:transform .2s ease,background .2s ease}
+      .briefing-action:hover,.briefing-action:focus-visible{background:#2b2b2b;transform:translateY(-2px);outline:none}
+      .section-label{display:flex;align-items:center;gap:9px;margin:44px 0 -26px;font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#555}
+      .section-label:before{content:"";width:6px;height:6px;border-radius:50%;background:#101010}
       .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:42px}
       .card{min-height:260px;border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;background:#fff;transition:transform .28s cubic-bezier(.22,.8,.24,1),border-color .28s ease,box-shadow .28s ease}
       .card:hover,.card:focus-visible{transform:translateY(-4px);border-color:#bcbcbc;box-shadow:0 15px 35px rgba(0,0,0,.055);outline:none}
@@ -40,8 +49,8 @@
       .arrow{font-size:17px;line-height:.8;transition:transform .25s ease}
       .open:hover .arrow,.open:focus-visible .arrow{transform:translateX(4px)}
       footer{padding-top:24px;padding-bottom:20px;justify-content:flex-start}
-      @media(max-width:800px){main{padding-top:54px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-      @media(max-width:560px){header,footer{padding-left:24px;padding-right:24px}.by{display:none}.top-right{gap:0}main{width:calc(100% - 48px);padding:46px 0 64px}h1{font-size:42px}.lead{font-size:16px}.grid{grid-template-columns:1fr;margin-top:32px}.card{min-height:190px}.footer-copy{font-size:9px}}
+      @media(max-width:800px){main{padding-top:54px}.briefing-tool{align-items:start;flex-direction:column}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+      @media(max-width:560px){header,footer{padding-left:24px;padding-right:24px}.by{display:none}.top-right{gap:0}main{width:calc(100% - 48px);padding:46px 0 64px}h1{font-size:42px}.lead{font-size:16px}.briefing-tool{margin-top:32px;padding:20px}.briefing-tool h2{font-size:24px}.briefing-action{width:100%}.section-label{margin-top:34px;margin-bottom:-18px}.grid{grid-template-columns:1fr;margin-top:32px}.card{min-height:190px}.footer-copy{font-size:9px}}
       @media(prefers-reduced-motion:reduce){*{transition:none!important}}
     </style>
   </head>
@@ -56,6 +65,15 @@
     <main>
       <h1>Os sites criados pela Jumper.</h1>
       <p class="lead">Acesse, por cliente, as versões em desenvolvimento e os sites oficiais.</p>
+      <section class="briefing-tool" aria-labelledby="briefing-title">
+        <div class="briefing-copy">
+          <span class="tag">Para novos projetos de site</span>
+          <h2 id="briefing-title">Preencha o briefing do seu novo site</h2>
+          <p class="description">Conte sobre seu negócio, público, objetivos, oferta, estilo e materiais. Suas respostas orientam a Jumper a definir o escopo e criar um site específico para você.</p>
+        </div>
+        <a class="briefing-action" href="/briefing/"><span>Preencher briefing</span><span class="arrow" aria-hidden="true">↗</span></a>
+      </section>
+      <p class="section-label">Sites em desenvolvimento</p>
       <section class="grid" aria-label="Sites disponíveis">
         <!-- JUMPER_CLIENT_CARDS -->
       </section>

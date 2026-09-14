@@ -205,6 +205,7 @@ const firstValueByHints = (entry, hints) => {
 };
 
 const MODEL_CONFIRMATION_FIELDS = [
+  { model: 'M5', label: 'Confirmo que este briefing é para Reformulação de Site Institucional Local' },
   {
     model: 'M1',
     label: 'Confirmo que este briefing é para Site One Page',
@@ -240,6 +241,7 @@ const isCheckedValue = (value) => {
 
 const detectModel = (value) => {
   const normalized = normalizeKey(value);
+  if (/\bm5\b/.test(normalized) || normalized.includes('reformulacao')) return 'M5';
   if (normalized.includes('m1') || normalized.includes('one page')) return 'M1';
   if (normalized.includes('m2') || normalized.includes('duas')) return 'M2';
   if (normalized.includes('m3') || normalized.includes('portfolio') || normalized.includes('catalogo')) return 'M3';
@@ -406,9 +408,14 @@ const generated = submissionRows.map((row, index) => {
     model,
     modelDetectionSource: modelDetection.source,
     secondaryPage: model === 'M2' ? (secondaryPage ?? null) : null,
+    reformulation: model === "M5" ? {
+      existing_site_url: firstValueByHints(entry, ["site atual m5", "url do site atual", "site atual"]),
+      scope_status: "pending_review",
+    } : null,
     personalityBaseDesignSystemsFolder: personalityFolder,
     needs_review: {
       model: model === null,
+      reformulationScope: model === 'M5',
       secondaryPage: model === 'M2' && secondaryPage === null,
       personality: personalityFolder === null,
     },
@@ -459,6 +466,7 @@ const generated = submissionRows.map((row, index) => {
     site: {
       engine: 'ds-autoral',
       model: meta.model,
+      ...(meta.model === "M5" ? { reformulation: meta.reformulation } : {}),
       secondary_page: meta.secondaryPage,
       hosting: 'cloudflare-workers-static-assets',
       base_path: `/${slug}`,
@@ -485,7 +493,7 @@ generated.forEach(({ folder, meta }) => {
   const personalityLabel = meta.personalityBaseDesignSystemsFolder ?? 'personalidade nao detectada';
   console.log(`- ${meta.clientName} (${modelLabel})`);
   console.log(`  ${folder}`);
-  if (meta.needs_review.model || meta.needs_review.secondaryPage || meta.needs_review.personality) {
+  if (meta.needs_review.model || meta.needs_review.secondaryPage || meta.needs_review.personality || meta.needs_review.reformulationScope) {
     console.log(`  Revisar antes de criar cliente: ${JSON.stringify(meta.needs_review)}`);
     console.log(`  Personalidade: ${personalityLabel}`);
   }

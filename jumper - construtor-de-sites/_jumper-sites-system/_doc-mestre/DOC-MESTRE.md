@@ -200,9 +200,9 @@ O site só está pronto quando todas estas afirmações são verdadeiras:
 - blog validado nos 7 passos, quando ativo;
 - auditoria honesta gerada e README do cliente atualizado.
 
-## Piso Funcional Por Modelo (M1–M4)
+## Piso Funcional Por Modelo (M1–M5)
 
-O site é ferramenta, não folheto. Cada modelo tem um piso de funcionalidade que resolve a vida do negócio local. Modelo maior soma ao piso do anterior. **Regra de ouro:** toda funcionalidade que pesa (mapa, chat, player, terceiros) entra sob demanda — carregada por interação, `loading="lazy"`, ou embed adiado — para nunca sabotar a nota AAA+.
+O site é ferramenta, não folheto. Cada modelo tem um piso de funcionalidade que resolve a vida do negócio local. Nos modelos M1–M4, modelo maior soma ao piso do anterior. M5 tem escopo de reformulação próprio, sem herança automática de M4. **Regra de ouro:** toda funcionalidade que pesa (mapa, chat, player, terceiros) entra sob demanda — carregada por interação, `loading="lazy"`, ou embed adiado — para nunca sabotar a nota AAA+.
 
 - **M1 — presença essencial:** CTA de conversão direto (WhatsApp com mensagem pré-preenchida ou telefone clicável), localização com endereço e link de rotas, horário de funcionamento, dados estruturados `LocalBusiness`. É o mínimo para o "teste dos 5 segundos" virar ação.
 - **M2 — soma:** formulário de contato que envia e confirma (com estados de erro/sucesso), galeria real do negócio, prova social verdadeira (avaliações/depoimentos, nunca inventados), status "aberto agora" quando fizer sentido.
@@ -210,6 +210,12 @@ O site é ferramenta, não folheto. Cada modelo tem um piso de funcionalidade qu
 - **M4 — soma:** blog/novidades editável (Blog Autônomo Jumper), área administrativa, e recursos de app quando o briefing pedir (PWA/instalável, multilíngue). Aqui o site é uma plataforma, não uma página.
 
 Nada nesta lista justifica peso: um mapa que derruba o LCP ou um chat de terceiro que trava a interação REPROVAM. Funcionalidade premium é a que aparece quando é útil e some do caminho crítico quando não é.
+
+## M5 — Reformulação de Site Institucional Local
+
+M5 reconstrói um site existente com escopo aprovado de páginas, conteúdos e funcionalidades. Aplicar integralmente [M5-REFORMULACAO.md](M5-REFORMULACAO.md): levantamento, aprovação, DSs, prompt executivo, construção, validação de URLs e integrações, backup, recuperação e auditoria final. Nenhum cliente de exemplo integra o modelo.
+
+Antes de construir: `node scripts/m5-scope.mjs clientes/SLUG`. Na entrega: acrescentar `--delivery`. Execute dentro de `_jumper-sites-system/`. Esses gates somam aos critérios gerais; M5 não significa páginas ilimitadas.
 
 ## Comandos
 
@@ -316,3 +322,13 @@ Antes de entregar:
 5. Arquivar um post e confirmar que ele some do blog público.
 6. Subir imagem de teste e apagar depois.
 7. Rodar `npm run build`.
+
+
+### Entrada guiada M1–M5 (14/09/2026)
+
+O formulário público tem 9 etapas em M1, 10 em M2–M4 e 11 em M5, com detalhes condicionais/opcionais e retomada por rascunho. As regras de interpretação e complementação pela Jumper estão em [FORMULARIO-GUIADO.md](FORMULARIO-GUIADO.md). Esta entrada não elimina levantamento técnico nem aprovação de escopo. Ler permissões explícitas de contato, IA e banco de imagens; valores vazios/“quero orientação” são pendências. O Notion recebe o conteúdo completo e os novos campos de materiais e IA. O contrato M5 antes de construção e entrega permanece obrigatório.
+
+
+### Endereço público do briefing
+
+https://site.jumper.dev.br/briefing . A interface é o briefing público oficial e grava na mesma base Notion do Jumper Atlas. `https://quizzer.jumpers.cloud/briefing-novo-site` é a rota técnica compatível, sem uso em novos links. Conexões, atualização e reversão estão em [MIGRACAO-URL-FORMULARIO.md](MIGRACAO-URL-FORMULARIO.md).

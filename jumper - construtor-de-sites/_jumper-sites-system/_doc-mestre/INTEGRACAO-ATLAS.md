@@ -52,9 +52,17 @@ As alterações locais limitam-se ao importador/testes, comandos npm, documenta�
 
 ## Teste real do formulário publicado — 08/09/2026
 
-Submissão feita pela interface https://briefing-formulario-sites-jumper.vercel.app/.
+Submissão feita pela interface do formulário. Endereço público oficial: https://site.jumper.dev.br/briefing. A rota técnica `https://quizzer.jumpers.cloud/briefing-novo-site` permanece como compatibilidade de infraestrutura.
 Registro único confirmado às 18:26 (America/Sao_Paulo):
 https://app.notion.com/p/3d5db609496881ba96e6e35aa619c8ab.
 Nome: “TESTE INTEGRAÇÃO ATLAS — 2026-09-08 — NÃO PRODUZIR”. Conta vazia, dados fictícios, sem criação de trabalho comercial. Confirma chegada à base existente já movida para Atlas; não comprova ativação do importador de Documentos.
 
 O teste também revelou que checkboxes de etapas anteriores eram apagados ao avançar (incluindo confirmação M1 e integrações). Correção incluída em quiz.js: atualizar somente grupos presentes na etapa atual, preservando a possibilidade de desmarcar todos. Teste de regressão incluído. A mensagem de sucesso antiga também foi corrigida no código. Essas correções dependem do deploy do formulário para chegar à produção.
+
+## Inclusão do M5 — 14/09/2026
+
+M5 — Reformulação de Site Institucional Local está disponível no formulário público e no campo Modelo contratado do banco original do Construtor. Foram acrescentadas propriedades de URL atual, diagnóstico, preservar/atualizar/retirar/acrescentar, páginas solicitadas, funcionalidades, URLs importantes, situação dos acessos e confirmação M5. As respostas completas continuam nos blocos JSON/Markdown. A aprovação do escopo ocorre depois da entrada.
+
+O teste técnico retornou HTTP 201 e foi conferido na base `370db609496880e28cbfce7472169134`, fonte `370db609-4968-80f0-9a18-000b646e806e`. Registro `3dbdb609-4968-8120-8514-f6d13e6d7a87`, identificado como fictício e marcado 🗄️ Arquivado após validação; nenhuma Conta/Tarefa foi criada pelo teste. GET da API retornou 405 e M5 incompleto retornou 400.
+
+As regras de produção estão em [M5-REFORMULACAO.md](M5-REFORMULACAO.md). A inclusão do modelo não ativa automaticamente o importador assistido de Documentos.

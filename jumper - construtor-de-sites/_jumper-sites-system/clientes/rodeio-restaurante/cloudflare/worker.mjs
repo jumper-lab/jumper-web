@@ -4,6 +4,8 @@ const PUBLIC_SITES = ['/rodeio', '/izigym', '/casabelie', '/casabelie-2', '/casa
 const IZI_OFFICIAL_HOST = 'www.izigym.com.br';
 const IZI_OFFICIAL_APEX = 'izigym.com.br';
 const IZI_OFFICIAL_ROOT = '/_official/izigym';
+const BRIEFING_PREFIX = '/briefing';
+const BRIEFING_API = 'https://briefing-formulario-sites-jumper.vercel.app/api/briefings';
 const LOGIN_PATH = '/__jumper/login';
 const LOGOUT_PATH = '/__jumper/logout';
 const COOKIE_NAME = 'jumper_hoster_session';
@@ -111,6 +113,12 @@ export default {
     }
 
     if (url.pathname.startsWith('/_official/')) return new Response('Not Found', { status: 404 });
+
+    if (url.pathname === BRIEFING_PREFIX) return Response.redirect(new URL(`${BRIEFING_PREFIX}/`, url), 308);
+
+    if (url.pathname === `${BRIEFING_PREFIX}/api/briefings`) {
+      return fetch(new Request(BRIEFING_API, request));
+    }
 
     if (url.pathname.startsWith('/fonts/')) return env.ASSETS.fetch(request);
 
