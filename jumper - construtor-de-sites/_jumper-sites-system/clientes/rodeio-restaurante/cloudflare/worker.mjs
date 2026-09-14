@@ -4,6 +4,9 @@ const PUBLIC_SITES = ['/rodeio', '/izigym', '/casabelie', '/casabelie-2', '/casa
 const IZI_OFFICIAL_HOST = 'www.izigym.com.br';
 const IZI_OFFICIAL_APEX = 'izigym.com.br';
 const IZI_OFFICIAL_ROOT = '/_official/izigym';
+const BRIEFING_PATH = '/briefing';
+const BRIEFING_API_PATH = `${BRIEFING_PATH}/api/briefings`;
+const BRIEFING_API_UPSTREAM = 'https://briefing-formulario-sites-jumper.vercel.app/api/briefings';
 const LOGIN_PATH = '/__jumper/login';
 const LOGOUT_PATH = '/__jumper/logout';
 const COOKIE_NAME = 'jumper_hoster_session';
@@ -131,6 +134,20 @@ export default {
       return new Response(null, { status: 303, headers });
     }
 
+    if (url.pathname === BRIEFING_API_PATH) {
+      if (request.method !== 'POST') {
+        return new Response('Method Not Allowed', { status: 405, headers: { Allow: 'POST' } });
+      }
+      const headers = new Headers(request.headers);
+      headers.delete('host');
+      return fetch(BRIEFING_API_UPSTREAM, {
+        method: 'POST',
+        headers,
+        body: request.body,
+        redirect: 'manual',
+      });
+    }
+
     for (const prefix of PUBLIC_SITES) {
       if (url.pathname === prefix) return Response.redirect(new URL(`${prefix}/`, url), 308);
     }
@@ -141,6 +158,15 @@ export default {
 
     if (url.pathname === '/' && !(await isAuthorized(request, password))) {
       return htmlResponse(loginPage('/'), 401);
+    }
+
+    if (url.pathname === BRIEFING_PATH) {
+      const assetUrl = new URL('/briefing-page.shell', url);
+      const response = await env.ASSETS.fetch(new Request(assetUrl, request));
+      const headers = new Headers(response.headers);
+      headers.set('Content-Type', 'text/html; charset=utf-8');
+      headers.set('X-Robots-Tag', 'noindex, nofollow');
+      return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
     }
 
     if (url.pathname.startsWith('/izigym/cdn-cgi/image/')) {

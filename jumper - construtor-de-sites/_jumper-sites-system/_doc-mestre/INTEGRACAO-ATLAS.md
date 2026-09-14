@@ -52,7 +52,7 @@ As alterações locais limitam-se ao importador/testes, comandos npm, documenta�
 
 ## Teste real do formulário publicado — 08/09/2026
 
-Submissão feita pela interface https://briefing-formulario-sites-jumper.vercel.app/.
+Submissão feita pela interface https://site.jumper.dev.br/briefing.
 Registro único confirmado às 18:26 (America/Sao_Paulo):
 https://app.notion.com/p/3d5db609496881ba96e6e35aa619c8ab.
 Nome: “TESTE INTEGRAÇÃO ATLAS — 2026-09-08 — NÃO PRODUZIR”. Conta vazia, dados fictícios, sem criação de trabalho comercial. Confirma chegada à base existente já movida para Atlas; não comprova ativação do importador de Documentos.
