@@ -85,6 +85,11 @@ for (const client of registry.clients) {
     await readFile(join(target, site.slug, 'index.html'));
     links.push(`<a class="open" href="/${escapeHtml(site.slug)}/"><span>${escapeHtml(site.label)}</span><span class="arrow" aria-hidden="true">→</span></a>`);
   }
+  for (const resource of client.resourceLinks ?? []) {
+    const resourceUrl = new URL(resource.url);
+    if (resourceUrl.protocol !== 'https:') throw new Error(`O recurso de ${client.name} precisa usar HTTPS.`);
+    links.push(`<a class="open" href="${escapeHtml(resourceUrl.href)}" target="_blank" rel="noopener"><span>${escapeHtml(resource.label)}</span><span class="arrow" aria-hidden="true">↗</span></a>`);
+  }
   if (client.officialSite) {
     const officialUrl = new URL(client.officialSite.url);
     if (officialUrl.protocol !== 'https:') throw new Error(`O site oficial de ${client.name} precisa usar HTTPS.`);
