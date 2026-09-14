@@ -1,18 +1,20 @@
-const STORAGE_KEY = "jumper-studio-briefing-quiz-v2";
+const LEGACY_STORAGE_KEY = "jumper-studio-briefing-quiz-v2";
+const STORAGE_KEY = "jumper-studio-briefing-guided-v1";
 const FORM_ID = "jumper-studio-site-factory-briefing";
 
 const models = [
-  ["M1", "One Page", "Site de uma página com apresentação, serviços, prova e contato."],
+  ["M1", "One Page", "Uma página com até 5 seções: apresentação, serviços, sobre, provas e contato."],
   ["M2", "Duas páginas", "Home completa com uma segunda página escolhida pelo cliente."],
   ["M3", "Portfólio ou catálogo", "Home, galeria/catálogo/portfólio e contato."],
   ["M4", "Completo local", "Home, sobre, serviços, depoimentos, blog/novidades e contato."],
+  ["M5", "Reformulação institucional", "Reconstrução de um site existente, com páginas e funcionalidades definidas antes da construção."],
 ];
 
 const businessNatures = [
   ["A", "Espaço físico aberto ao público"],
   ["B", "Endereço comercial com atendimento por agendamento"],
-  ["C", "Profissional autônomo, online ou vai até o cliente"],
-  ["D", "Remoto, delivery, móvel ou sem endereço fixo"],
+  ["C", "Atendimento no endereço do cliente"],
+  ["D", "Online, delivery ou sem atendimento presencial"],
 ];
 
 const personalities = [
@@ -26,6 +28,31 @@ const personalities = [
 
 const initialState = {
   model: "",
+  contactUse: "",
+  publicContact: "",
+  wantsGallery: "",
+  wantsTeam: "",
+  wantsBooking: "",
+  materialsStatus: "",
+  aiImages: "",
+  hasTestimonials: "",
+  reviewConfirmed: false,
+  submissionId: "",
+  submitted: false,
+  lastStep: "model",
+  legacyDraft: false,
+  existingSiteUrl: "",
+  reformulationReason: "",
+  existingSiteProblems: "",
+  preserveItems: "",
+  changeItems: "",
+  removeItems: "",
+  addItems: "",
+  requestedPages: "",
+  existingFeatures: "",
+  importantUrls: "",
+  accessNotes: "",
+
   modelConfirmation: [],
   businessNature: "",
   businessName: "",
@@ -59,6 +86,11 @@ const initialState = {
   targetAudience: "",
   appointmentLink: "",
   secondaryPage: "",
+  secondaryPageGoal: "",
+  differentiatorEvidence: "",
+  customerQuestions: "",
+  serviceProcess: "",
+  pricingDetails: "",
   servicesItems: "",
   pricingDisplay: "",
   promotion: "",
@@ -100,7 +132,7 @@ const initialState = {
   partnerLogosFolder: "",
   videoUrl: "",
   missingMaterials: "",
-  usePexels: "sim",
+  usePexels: "",
   uploadedFiles: {},
   domainStatus: "",
   currentDomain: "",
@@ -115,492 +147,248 @@ const initialState = {
   finalNotes: "",
 };
 
+let storageAvailable = true;
 let state = loadState();
-let currentStep = 0;
+let currentStep = state.lastStep || 'model';
 let submitStatus = null;
-
+let isSubmitting = false;
+let showSavePanel = false;
+const yesNoHelp = [['','Escolha'],['sim','Sim'],['nao','Não'],['nao-sei','Quero orientação da Jumper']];
+const goalChoices = [['','Escolha'],['whatsapp','Receber contatos pelo WhatsApp'],['agendamento','Receber agendamentos'],['leads','Receber pedidos de orçamento'],['venda','Apresentar produtos ou serviços para vender'],['autoridade','Transmitir confiança'],['portfolio','Mostrar meus trabalhos ou produtos'],['nao-sei','Quero ajuda para definir']];
+const fieldsByStep = {
+  business: [
+    ['businessName','Qual é o nome do negócio?','text','Nome que deve aparecer no site',null,true],
+    ['shortDescription','O que seu negócio faz?','textarea','Explique com suas palavras. Não precisa escrever um texto pronto para o site.',null,true],
+    ['targetAudience','Quem você atende?','text','Ex.: famílias do bairro, empresas, pessoas buscando atendimento',null,true],
+    ['cityCoverage','Em quais cidades ou regiões?','text','Pode ser atendimento online ou em todo o Brasil.',null,true],
+  ],
+  goals: [
+    ['mainGoal','O que você mais espera do site?','select','',goalChoices,true],
+    ['priorityOffer','O que merece mais destaque?','text','Um serviço, produto, tipo de trabalho ou o próprio negócio.',null,true],
+    ['differentiator','Por que seus clientes escolhem você?','textarea','O que muda na prática para quem escolhe seu negócio? Evite responder apenas “qualidade” ou “bom atendimento”.',null,true],
+    ['differentiatorEvidence','Conte um exemplo que mostre essa diferença','textarea','Pode ser uma etapa do trabalho, um cuidado específico, um produto próprio ou uma situação real, sem expor dados pessoais. Se ainda não souber, peça ajuda para identificar.',null,true],
+  ],
+  contact: [
+    ['contactName','Com quem vamos falar sobre o projeto?','text','Seu nome',null,true],
+    ['whatsapp','WhatsApp para contato','tel','Com DDD. Preencha este campo ou o e-mail.'],
+    ['contactEmail','E-mail para contato','email','Preencha este campo ou o WhatsApp.'],
+    ['contactUse','Podemos mostrar esse contato no site?','select','',[['','Escolha'],['sim','Sim, pode usar no site'],['outro','Quero usar outro contato público'],['depois','Vamos decidir depois']],true],
+  ],
+  style: [
+    ['personality','Que impressão o site deve passar?','select','',[['','Escolha'],...personalities.map(([v,t,d])=>[v,`${t} — ${d}`]),['nao-sei','Quero uma recomendação da Jumper']],true],
+    ['primaryColor','Alguma cor que precisa aparecer?','text','Pode escrever o nome da cor ou dizer que está no material da marca.'],
+    ['visualReferences','Quais sites ou marcas são boas referências?','textarea','Cole links e diga o que gosta: fotos, cores, organização ou linguagem. Se não tiver referências, diga isso.',null,true],['avoidSite','Há algum estilo de site que você quer evitar?','textarea','Se possível, explique o motivo.'],['voiceTone','Como sua marca conversa com o público?','select','',[['','Definir com a Jumper'],['formal-cortes','Formal e cortês'],['casual-amistoso','Casual e amistoso'],['direto-premium','Direto e premium'],['objetivo-profissional','Objetivo e profissional']]],
+    ['forbiddenWords','Algo que devemos evitar ou respeitar?','textarea','Cores, imagens, palavras, promessas ou cuidados importantes.'],
+  ],
+  materials: [
+    ['materialsStatus','Como prefere enviar logo, fotos e textos?','select','',[['','Escolha'],['link','Tenho uma pasta ou link para compartilhar'],['later','Vou organizar e enviar depois'],['existing','Quero aproveitar materiais do meu site atual']],true],
+    ['aiImages','Podemos criar imagens com IA enquanto aguardamos suas fotos?','select','',[['','Escolha'],['sim','Sim, quero avaliar as imagens antes da publicação'],['nao','Não, use apenas materiais autorizados'],['nao-sei','Quero orientação antes de decidir']],true],
+    ['usePexels','Se faltar alguma foto, podemos usar um banco de imagens?','select','',[['','Escolha'],['fallback','Sim, somente se faltar material adequado'],['nao','Não'],['nao-sei','Quero orientação antes de decidir']],true],
+  ],
+  finish: [
+    ['deadline','Existe alguma data importante?','text','Se houver, diga a data e o motivo.'],
+    ['domainStatus','Você já tem um endereço para o site?','select','',[['','Escolha'],['sim-registrado','Sim, já tenho um domínio'],['quero-registrar','Ainda não tenho'],['nao-sei','Preciso de ajuda para conferir']]],
+    ['finalNotes','Faltou contar algo importante?','textarea','Pedidos especiais, cuidados ou informações que ajudam no projeto.'],
+  ],
+};
 const steps = [
-  {
-    id: "model",
-    title: "Modelo do site",
-    kicker: "Escopo",
-    description: "Escolha o modelo contratado. Essa resposta define as próximas perguntas e a arquitetura do site.",
-    render: () => choiceCards("model", models.map(([value, title, text]) => ({ value, title: `${modelDisplay(value)} - ${title}`, text }))),
-  },
-  {
-    id: "model-confirmation",
-    title: "Confirmação",
-    kicker: "Modelo",
-    description: "Confirme que este briefing corresponde ao modelo escolhido.",
-    condition: () => Boolean(state.model),
-    render: () => `
-      <div class="field-grid">
-        <div class="field full">
-          <div class="field-head">
-            <span>01</span>
-            <label>${modelConfirmationLabel(state.model)}</label>
-          </div>
-          <div class="option-strip single-option">
-            ${checkboxPills("modelConfirmation", [[state.model, "Confirmo"]])}
-          </div>
-        </div>
-      </div>
-    `,
-  },
-  {
-    id: "nature",
-    title: "Tipo de atendimento",
-    kicker: "Operação",
-    description: "Informe como o negócio atende. Isso define endereço, mapa, fotos do espaço e área de cobertura.",
-    render: () => choiceCards("businessNature", businessNatures.map(([value, title]) => ({ value, title: `${value} - ${title}`, text: natureHelp(value) }))),
-  },
-  {
-    id: "identity",
-    title: "Identidade",
-    kicker: "Dados básicos",
-    description: "Essas informações identificam o cliente e criam a base da pasta no Site Factory.",
-    render: () => fields([
-      ["businessName", "Nome do negócio", "input", "Ex: Jardim Aurora"],
-      ["segment", "Segmento principal", "input", "Ex: clínica, restaurante, escola infantil"],
-      ["cityCoverage", "Cidade, bairros ou região de atuação", "input", "Ex: Curitiba, Juvevê, Cabral e região norte"],
-      ["contactName", "Responsável principal", "input", "Nome da pessoa responsável pelo briefing"],
-    ]),
-  },
-  {
-    id: "contact",
-    title: "Contatos",
-    kicker: "Canais",
-    description: "O site precisa saber quais canais podem aparecer e qual contato receberá as conversões.",
-    render: () => fields([
-      ["whatsapp", "WhatsApp principal", "input", "+55 11 99999-9999"],
-      ["contactEmail", "E-mail principal", "input", "contato@empresa.com"],
-      ["instagram", "Instagram", "input", "@empresa ou link"],
-      ["phone", "Telefone fixo", "input", "Opcional"],
-    ]),
-  },
-  {
-    id: "social-business",
-    title: "Dados extras",
-    kicker: "Presença",
-    description: "Redes, histórico e dados opcionais que ajudam a completar a ficha pública do negócio.",
-    render: () => fields([
-      ["facebook", "Facebook", "input", "Link opcional"],
-      ["linkedin", "LinkedIn", "input", "Link opcional"],
-      ["foundedYear", "Ano de fundação", "input", "Ex: 2019"],
-      ["cnpj", "CNPJ", "input", "Opcional"],
-    ]),
-  },
-  {
-    id: "location",
-    title: "Endereço",
-    kicker: "Presença local",
-    description: "Essas perguntas aparecem para negócios com endereço físico ou atendimento por agendamento.",
-    condition: () => ["A", "B"].includes(state.businessNature),
-    render: () => fields([
-      ["address", "Endereço completo com CEP", "textarea", "Rua, número, bairro, cidade, estado e CEP"],
-      ["showAddress", "Exibição do endereço", "select", "", [["", "Escolha"], ["sim-mapa", "Sim com mapa"], ["sim-endereco", "Sim só endereço"], ["bairro-cidade", "Não só bairro cidade"], ["nao-publico", "Não para público"]]],
-      ["googleBusiness", "Google Meu Negócio", "input", "Cole o link do perfil no Google Maps"],
-      ["businessHours", "Horário de funcionamento", "textarea", "Dias e horários de atendimento"],
-    ]),
-  },
-  {
-    id: "coverage",
-    title: "Área de atendimento",
-    kicker: "Cobertura",
-    description: "Para atendimentos móveis, online ou sem endereço fixo, indique onde e como o cliente atende.",
-    condition: () => ["C", "D"].includes(state.businessNature),
-    render: () => fields([
-      ["serviceArea", "Área de cobertura ou formato de atendimento", "textarea", "Ex: online para todo Brasil, domicílio em bairros específicos, delivery..."],
-      ["businessHours", "Horário de atendimento", "textarea", "Dias, horários e regras de agendamento"],
-    ]),
-  },
-  {
-    id: "positioning",
-    title: "Posicionamento",
-    kicker: "Mensagem",
-    description: "Aqui ficam as frases que ajudam a construir hero, chamadas e narrativa comercial.",
-    render: () => fields([
-      ["shortDescription", "Frase principal do negócio", "textarea", "Em uma frase, explique o que o negócio faz."],
-      ["differentiator", "Maior diferencial", "textarea", "Por que alguém deveria escolher esse negócio?"],
-      ["mustHaveMessage", "Mensagem que não pode faltar", "textarea", "Algo obrigatório no site."],
-      ["clientVoiceQuote", "Frase na voz do cliente", "textarea", "Uma frase em primeira pessoa que represente o negócio."],
-    ]),
-  },
-  {
-    id: "conversion",
-    title: "Conversão",
-    kicker: "Objetivo",
-    description: "Defina o que o site precisa gerar e qual ação deve receber mais destaque.",
-    render: () => fields([
-      ["mainGoal", "Objetivo principal do site", "select", "", goalOptions()],
-      ["primaryCTA", "CTA principal", "select", "", ctaOptions()],
-      ["priorityOffer", "Serviço ou produto prioritário", "textarea", "O que o site mais precisa vender, apresentar ou gerar?"],
-      ["appointmentLink", "Link de agendamento ou compra", "input", "Calendly, WhatsApp, loja, agenda ou outro link"],
-    ]),
-  },
-  {
-    id: "audience",
-    title: "Público",
-    kicker: "Cliente ideal",
-    description: "Essas respostas ajudam a definir copy, seções, prioridades e tom de comunicação.",
-    render: () => fields([
-      ["targetAudience", "Público-alvo principal", "textarea", "Descreva quem é o cliente ideal: perfil, região, necessidade e nível de decisão."],
-      ["typicalProblem", "Problema típico do cliente", "textarea", "Qual dor, dúvida ou necessidade faz a pessoa procurar o negócio?"],
-      ["typicalResult", "Resultado típico esperado", "textarea", "O que muda para o cliente depois de contratar/comprar?"],
-      ["notFor", "Pra quem não é", "textarea", "Quem não é o público ideal ou o que o negócio não faz?"],
-    ]),
-  },
-  {
-    id: "m2-page",
-    title: "Segunda página",
-    kicker: "M2",
-    description: "No M2, o cliente escolhe uma segunda página. O sistema não deve criar páginas extras sem necessidade.",
-    condition: () => state.model === "M2",
-    render: () => choiceCards("secondaryPage", [
-      { value: "sobre", title: "Sobre nós", text: "História, autoridade, equipe e confiança." },
-      { value: "servicos", title: "Serviços", text: "Lista mais completa de serviços, planos ou produtos." },
-      { value: "contato", title: "Contato", text: "Mapa, canais, horários e chamada para atendimento." },
-    ]),
-  },
-  {
-    id: "story",
-    title: "História",
-    kicker: "Sobre",
-    description: "Bloco usado principalmente em M2 e M4, mas também ajuda a dar profundidade ao conteúdo.",
-    condition: () => ["M2", "M4"].includes(state.model),
-    render: () => fields([
-      ["story", "Como o negócio começou", "textarea", "Conte a origem, motivação e trajetória."],
-      ["notFor", "Pra quem não é", "textarea", "Que tipo de cliente, pedido ou expectativa não combina?"],
-      ["clientVoiceQuote", "Frase em primeira pessoa", "textarea", "Ex: Aqui, cada cliente é atendido com tempo e cuidado."],
-    ]),
-  },
-  {
-    id: "services",
-    title: "Serviços",
-    kicker: "Oferta",
-    description: "Aparece para M1, M2 e M4. O sistema usa isso para montar cards, seções, CTAs e hierarquia de oferta.",
-    condition: () => ["M1", "M2", "M4"].includes(state.model),
-    render: () => fields([
-      ["servicesItems", "Serviços, planos ou produtos", "textarea", "Liste nomes, descrições curtas e prioridades."],
-      ["pricingDisplay", "Exibição de preços", "select", "", pricingOptions()],
-      ["promotion", "Promoção ou condição especial", "textarea", "Alguma oferta, benefício, primeira consulta, pacote ou condição?"],
-    ]),
-  },
-  {
-    id: "portfolio",
-    title: "Portfólio",
-    kicker: "M3",
-    description: "No M3, o eixo do site é a galeria, catálogo, produto, projeto ou portfólio.",
-    condition: () => state.model === "M3",
-    render: () => fields([
-      ["portfolioType", "Tipo de galeria", "select", "", portfolioOptions()],
-      ["portfolioCategories", "Categorias da galeria", "textarea", "Ex: residencial, comercial, eventos, produtos..."],
-      ["portfolioMinItems", "Quantidade de itens na galeria", "input", "Ex: 12 projetos, 20 produtos, 8 fotos principais"],
-      ["portfolioPricing", "Preços na galeria", "select", "", galleryPricingOptions()],
-      ["portfolioItemsDescription", "Itens da galeria", "textarea", "Liste os principais itens, projetos, produtos ou trabalhos que devem aparecer."],
-    ]),
-  },
-  {
-    id: "team",
-    title: "Equipe",
-    kicker: "Pessoas",
-    description: "Aparece para M2 e M4 quando o cliente quer apresentar equipe, responsáveis ou especialistas.",
-    condition: () => ["M2", "M4"].includes(state.model),
-    render: () => fields([
-      ["teamSection", "Seção de equipe", "select", "", [["", "Escolha"], ["sim-fotos-bio", "Sim com fotos e bio"], ["sim-nomes", "Sim nomes e cargos"], ["nao-sozinho", "Não trabalho sozinho"], ["sem-destaque", "Tenho equipe sem destaque"]]],
-      ["teamList", "Lista da equipe", "textarea", "Nome, cargo, bio curta e observações."],
-    ]),
-  },
-  {
-    id: "proof",
-    title: "Prova social",
-    kicker: "Confiança",
-    description: "Depoimentos, números e credenciais ajudam o site a vender sem parecer genérico.",
-    render: () => fields([
-      ["testimonials", "Depoimentos", "textarea", "Cole depoimentos com nome, contexto e autorização se houver."],
-      ["testimonialsPermission", "Permissão dos depoimentos", "select", "", [["", "Escolha"], ["nome-foto", "Nome e foto"], ["primeiro-nome", "Primeiro nome ou iniciais"], ["anonimo", "Anônimo"], ["nao-sei", "Não sei"]]],
-      ["credibilityNumbers", "Números de credibilidade", "textarea", "Ex: clientes atendidos, anos de mercado, avaliações, capacidade..."],
-      ["googleRating", "Avaliação no Google", "input", "Ex: 4,9 estrelas com 86 avaliações"],
-      ["credentials", "Certificações, prêmios ou parcerias", "textarea", "Certificações, selos, parceiros, associações, formações."],
-    ]),
-  },
-  {
-    id: "blog",
-    title: "Blog",
-    kicker: "M4",
-    description: "Quando ativo, o site final precisa receber o Blog Autônomo Jumper com painel administrativo.",
-    condition: () => state.model === "M4",
-    render: () => fields([
-      ["blogMode", "Blog ou novidades", "select", "", [["", "Escolha"], ["blog-ativo", "Blog ativo"], ["novidades", "Novidades pontuais"], ["sem-blog", "Não por enquanto"]]],
-      ["blogFrequency", "Frequência de publicação", "select", "", [["", "Escolha"], ["1-semana", "1 post por semana"], ["2-mes", "2 posts por mês"], ["1-mes", "1 post por mês"], ["irregular", "Irregular"]]],
-      ["blogInitialPosts", "Conteúdo de 3 posts iniciais", "textarea", "Liste títulos, temas ou rascunhos dos 3 primeiros posts."],
-      ["blogAdminPassword", "Senha inicial desejada para o painel", "input", "Opcional. Pode ser definida depois."],
-    ]),
-  },
-  {
-    id: "visual-references",
-    title: "Referências",
-    kicker: "Design",
-    description: "Referências positivas e negativas orientam o Design System sem virar molde copiado.",
-    render: () => fields([
-      ["visualReferences", "Sites de referência positivos", "textarea", "Cole até 3 links e diga o que gosta em cada um."],
-      ["avoidSite", "Site que não quer parecer", "textarea", "Cole 1 link ou descreva o que evitar."],
-      ["personality", "Personalidade visual", "select", "", personalityOptions()],
-      ["voiceTone", "Tom de voz", "select", "", voiceOptions()],
-    ]),
-  },
-  {
-    id: "visual-rules",
-    title: "Cores e limites",
-    kicker: "Identidade visual",
-    description: "Essas preferências viram regras e restrições para a direção visual do cliente.",
-    render: () => fields([
-      ["primaryColor", "Cor principal", "input", "Nome, hex ou descrição"],
-      ["secondaryColors", "Cores secundárias ou proibidas", "textarea", "Cores de apoio e cores que não devem aparecer."],
-      ["forbiddenWords", "Palavras, temas ou promessas proibidas", "textarea", "Termos legais, promessas, frases ou abordagens que devem ser evitadas."],
-      ["visualPreference", "Clima visual preferido", "select", "", [["", "Escolha"], ["claro", "Mais claro"], ["escuro", "Mais escuro"], ["equilibrado", "Equilibrado"], ["nao-sei", "Não sei, a Jumper pode recomendar"]]],
-      ["animationPreference", "Animação", "select", "", [["", "Escolha"], ["nenhuma", "Nenhuma"], ["discreta", "Discreta"], ["media", "Média"], ["nao-sei", "Não sei"]]],
-    ]),
-  },
-  {
-    id: "assets",
-    title: "Materiais",
-    kicker: "Uploads",
-    description: "Links principais de materiais, logo, manual e imagem de capa para orientar a curadoria de assets.",
-    render: () => fields([
-      ["materialsFolder", "Link da pasta principal de materiais", "input", "Drive, Dropbox, WeTransfer ou outro"],
-      ["brandManualLink", "Manual de marca", "input", "Link ou arquivo enviado abaixo"],
-      ["logoLink", "Logo", "input", "Link da logo ou envie arquivo abaixo"],
-      ["heroImageLink", "Imagem de capa/hero", "input", "Link da imagem principal ou envie arquivo abaixo"],
-    ]),
-  },
-  {
-    id: "asset-upload",
-    title: "Upload",
-    kicker: "Materiais",
-    description: "O cliente pode subir arquivos agora ou deixar indicado o que será enviado depois.",
-    render: () => fields([
-      ["usePexels", "Usar Pexels provisório?", "select", "", [["sim", "Sim usar Pexels"], ["nao", "Não usar Pexels"], ["fallback", "Só se faltar foto real"], ["nao-sei", "Não sei"]]],
-      ["assetUploads", "Subir arquivos", "file", "Logo, manual, fotos, vídeos ou materiais", { multiple: true }],
-      ["additionalImages", "Imagens adicionais do site", "file", "Fotos extras para serviços, equipe, ambiente, produtos, bastidores, galeria ou detalhes.", { multiple: true }],
-      ["missingMaterials", "Materiais faltando", "textarea", "O que ainda será enviado depois?"],
-    ]),
-  },
-  {
-    id: "people-location-assets",
-    title: "Fotos do negócio",
-    kicker: "Assets por seção",
-    description: "Fotos de pessoas, espaço físico e equipe ajudam o site a parecer real e específico.",
-    render: () => fields([
-      ["ownerPhotosFolder", "Fotos profissionais do responsável", "input", "M2/M3/M4 ou quando houver rosto/autoridade"],
-      ["locationPhotosFolder", "Fotos do espaço físico", "input", "Aparece para negócios com endereço físico"],
-      ["teamPhotosFolder", "Fotos da equipe", "input", "Se houver seção de equipe"],
-    ]),
-  },
-  {
-    id: "section-assets",
-    title: "Fotos de seções",
-    kicker: "Assets por seção",
-    description: "Materiais por serviço, galeria, parceiros e vídeo institucional.",
-    render: () => fields([
-      ["servicesPhotosFolder", "Fotos dos serviços em ação", "input", "M1/M2/M4"],
-      ["galleryFolder", "Fotos da galeria, catálogo ou portfólio", "input", "Obrigatório para M3"],
-      ["partnerLogosFolder", "Logos de parceiros/certificadores", "input", "Opcional"],
-      ["videoUrl", "Vídeo institucional", "input", "YouTube, Vimeo, Drive ou outro link"],
-    ]),
-  },
-  {
-    id: "domain",
-    title: "Domínio",
-    kicker: "Publicação",
-    description: "Domínio e registrador orientam a preparação para publicação.",
-    render: () => fields([
-      ["domainStatus", "Domínio próprio", "select", "", [["", "Escolha"], ["sim-registrado", "Sim registrado"], ["tenho-nao-sei", "Tenho mas não sei onde"], ["quero-registrar", "Não tenho quero registrar"], ["nao-sei", "Não sei preciso de ajuda"]]],
-      ["currentDomain", "Domínio atual", "input", "Ex: empresa.com.br"],
-      ["registrar", "Registrador do domínio", "input", "Registro.br, GoDaddy, Hostinger..."],
-      ["desiredDomain", "Domínio desejado", "input", "Ex: empresa.com.br"],
-    ]),
-  },
-  {
-    id: "integrations",
-    title: "Integrações",
-    kicker: "Técnico",
-    description: "Marque tudo que o site precisa preparar. Quando o cliente não souber, o sistema registra como recomendação pendente.",
-    render: () => `
-      <div class="field-grid">
-        <div class="field full">
-          <div class="field-head">
-            <span>01</span>
-            <label>Integrações desejadas</label>
-          </div>
-          <div class="option-strip integrations-strip">
-            ${checkboxPills("integrations", integrationOptions())}
-          </div>
-        </div>
-      </div>
-    `,
-  },
-  {
-    id: "tracking",
-    title: "Ferramentas atuais",
-    kicker: "Técnico",
-    description: "IDs e sistemas atuais ajudam a preparar analytics, pixels, agenda e CRM.",
-    render: () => fields([
-      ["pixelIds", "IDs de pixels, Analytics ou Ads", "textarea", "GA4, Meta Pixel, Google Ads ou outros IDs."],
-      ["crmCurrent", "CRM, agenda ou plataforma atual", "textarea", "Calendly, Google Calendar, RD, HubSpot, WhatsApp Business, planilhas..."],
-    ]),
-  },
-  {
-    id: "finish",
-    title: "Finalização",
-    kicker: "Prazo",
-    description: "Últimas informações antes de enviar o briefing para a Jumper.",
-    render: () => fields([
-      ["deadline", "Prazo desejado", "select", "", deadlineOptions()],
-      ["pendingToStart", "Pendências para iniciar", "textarea", "Liste o que ainda precisa ser resolvido antes de começarmos com segurança."],
-      ["bestContactTime", "Melhor horário para contato", "input", "Dias e horários preferidos"],
-      ["finalNotes", "Informações finais", "textarea", "Contexto, pendências, cuidados, observações legais ou comerciais."],
-    ]),
-  },
-  {
-    id: "review",
-    title: "Revisar",
-    kicker: "Envio",
-    description: "Confira os dados principais antes de enviar o briefing para a Jumper.",
-    render: () => resultMarkup(),
-  },
+  {id:'model',title:'Vamos começar pelo seu site',description:'Escolha o modelo combinado com a Jumper. Responda com suas palavras; o planejamento e os detalhes técnicos ficam com a nossa equipe.',render:()=>choiceCards('model',models.map(([value,title,text])=>({value,title:`${value} · ${title}`,text})))+`<p class="help">Não sabe o modelo? Confira com quem contratou o projeto antes de continuar.</p><label class="draft-import">Continuar um rascunho de outro aparelho<input type="file" id="draft-import" accept="application/json,.json"></label>`},
+  {id:'business',title:'Conte um pouco sobre o negócio',description:'Quatro respostas curtas já nos ajudam a entender o ponto de partida.',render:()=>fields(fieldsByStep.business)},
+  {id:'goals',title:'O que o site precisa trazer para você?',description:'Escolha a prioridade. A Jumper transforma suas respostas em conteúdo e caminhos de contato.',render:()=>fields(fieldsByStep.goals)},
+  {id:'audience',title:'O que leva seu cliente a procurar você?',description:'Respostas curtas e exemplos reais ajudam a escrever um site com a voz do seu negócio.',render:()=>fields([
+    ['typicalProblem','Que necessidade ou problema você resolve?','textarea','O que costuma acontecer antes de alguém procurar seu negócio?',null,true],
+    ['typicalResult','O que seu cliente espera conseguir?','textarea','Descreva o benefício real. Evite promessas que não possa cumprir.',null,true],
+    ['customerQuestions','O que seus clientes perguntam antes de contratar ou comprar?','textarea','Liste 2 ou 3 dúvidas e como você costuma responder. Se o negócio é novo, diga quais dúvidas espera receber; vamos validar juntos.',null,true],
+    ['notFor','Existe algum público ou pedido que você não atende?','text','Ex.: região fora da cobertura, serviço que não oferece.'],
+    ['mustHaveMessage','Qual mensagem não pode faltar no site?','textarea','Uma informação que o visitante precisa entender para escolher você.'],
+  ])},
+  {id:'offer',title:'Vamos apresentar bem sua oferta',description:'Não precisa redigir textos prontos. Explique a oferta e o caminho de contratação. Loja, pagamento ou reserva automática dependem do escopo combinado.',render:()=>fields([
+    ['servicesItems','Quais serviços, produtos ou planos precisam aparecer?','textarea','Para cada um, diga o nome, o que inclui e para quem serve. Se a lista estiver em um material, indique onde.',null,true],
+    ['serviceProcess','Como funciona, do primeiro contato até a entrega ou atendimento?','textarea','Descreva as etapas, prazos habituais e o que o cliente precisa saber ou preparar. Para produtos, explique pedido, retirada ou entrega.',null,true],
+    ['pricingDisplay','Como o site deve tratar os preços?','select','',[['','Escolha'],['todos','Mostrar os preços'],['sem-precos','Pedir orçamento'],['misto','Mostrar alguns preços'],['nao-sei','Preciso decidir com a Jumper']],true],
+    ...(['todos','misto'].includes(state.pricingDisplay)?[['pricingDetails','Quais valores e condições podem ser divulgados?','textarea','Relacione oferta e preço, ou indique a tabela que enviará. Inclua o que o valor cobre e as condições. Nada será publicado sem conferência.',null,true]]:[]),
+    ['primaryCTA','Qual deve ser a principal ação do visitante?','select','',[['','Escolha'],['whatsapp','Chamar no WhatsApp'],['agendamento','Agendar atendimento'],['orcamento','Pedir orçamento'],['comprar','Iniciar uma compra ou contratação'],['catalogo','Ver o catálogo'],['servicos','Conhecer os serviços'],['nao-sei','Quero orientação']],true],
+    ...(state.model==='M1'&&state.primaryCTA==='agendamento'?[['appointmentLink','Já existe um link para agendar?','url','Cole o link público, se houver. A Jumper confirma o destino antes de publicar.']]:[]),
+    ['promotion','Existe condição especial ou informação sobre contratação?','textarea','Prazos, formas de atendimento, condições ou regras que precisam ficar claras.'],
+  ])},
+  {id:'trust',title:'O que mostra a experiência do seu negócio?',description:'História e provas reais tornam o site específico. Não ter avaliações ainda é uma resposta válida.',render:()=>fields([
+    ['story','Como o negócio começou e o que o caracteriza hoje?','textarea','Conte a trajetória, especialidade ou jeito de trabalhar. Para um negócio novo, explique a proposta.',null,true],
+    ['hasTestimonials','Há avaliações ou depoimentos reais disponíveis?','select','',yesNoHelp,true],
+    ...(state.hasTestimonials==='sim'?[
+      ['testimonials','Quais avaliações podemos consultar?','textarea','Cole os textos ou links. Se vai enviar depois, informe onde estão.',null,true],
+      ['testimonialsPermission','Como foi autorizado o uso desses depoimentos?','select','',[['','Escolha'],['nome-foto','Nome e foto autorizados'],['primeiro-nome','Somente primeiro nome ou iniciais'],['anonimo','Publicação anônima autorizada'],['nao-sei','Ainda preciso confirmar a autorização']],true],
+    ]:[]),
+    ['credibilityNumbers','Há números reais que ajudam a apresentar sua experiência?','text','Ex.: anos de atuação, projetos entregues. Só informe dados verificáveis.'],
+    ['credentials','Existem certificações, prêmios ou parceiros relevantes?','textarea','Informe os nomes e, se possível, onde podemos conferir.'],
+  ])},
+  {id:'m5-reformulation',title:'O que vamos melhorar no site atual?',description:'A Jumper vai analisar as páginas e preparar uma proposta de estrutura para sua aprovação.',condition:()=>state.model==='M5',render:()=>fields([
+    ['existingSiteUrl','Qual é o endereço do site atual?','url','https://seusite.com.br',null,true],
+    ['reformulationReason','O que você gostaria de melhorar?','textarea','Ex.: facilitar contatos, atualizar informações ou mudar o visual.',null,true],
+    ['existingSiteProblems','O que hoje atrapalha o visitante ou sua equipe?','textarea','Ex.: informações antigas, dificuldade para contato, navegação ou funcionamento no celular.'],
+  ])},
+  {id:'m5-scope',title:'O que deve continuar e o que precisa mudar?',description:'Este levantamento orienta a reformulação. A Jumper vai conferir o site e aprovar com você as páginas e os recursos antes de construir.',condition:()=>state.model==='M5',render:()=>fields([
+    ['preserveItems','O que precisa ser preservado?','textarea','Marca, fotos, conteúdos ou recursos. Pode responder “nada específico” ou pedir uma análise.',null,true],
+    ['changeItems','O que precisa ser atualizado ou reorganizado?','textarea','Cite informações ou partes do site que precisam de revisão.'],
+    ['removeItems','O que não deve continuar na nova versão?','textarea','Se não há nada definido, diga “nenhum item definido”. Não vamos interpretar campo vazio como autorização para remover.',null,true],
+    ['addItems','O que precisa ser acrescentado?','textarea','Descreva a necessidade, sem se preocupar com a solução técnica.'],
+    ['requestedPages','Quais páginas você espera na nova versão?','textarea','Liste as páginas ou escreva “quero que a Jumper proponha a estrutura”.',null,true],
+    ['existingFeatures','O que o site faz hoje que precisamos considerar?','textarea','Ex.: contato, agenda, blog, catálogo, pedidos ou área de acesso. Se não souber, peça que a Jumper confira.',null,true],
+    ['importantUrls','Há algum link que não pode deixar de funcionar?','textarea','Links usados em anúncios, redes sociais ou materiais. A equipe também fará o levantamento técnico.'],
+  ])},
+  {id:'operation',title:'Como você atende seus clientes?',description:'Escolha a forma principal de atendimento. Se combina formatos, conte isso nos horários ou nas observações finais.',render:()=>fields([
+    ['businessNature','Seu atendimento é…','select','',[['','Escolha'],...businessNatures.map(([v,t])=>[v,t])],true],
+    ...(['A','B'].includes(state.businessNature)?[
+      ['showAddress','Como podemos mostrar sua localização?','select','',[['','Escolha'],['sim-mapa','Endereço completo e localização'],['bairro-cidade','Somente bairro e cidade'],['nao-publico','Não mostrar endereço']],true],
+      ...(state.showAddress==='sim-mapa'?[['address','Endereço completo','text','Rua, número, bairro, cidade e CEP']]:[]),
+    ]:[]),
+    ...(state.businessNature?[['businessHours','Dias e horários de atendimento','text','Pode deixar para enviar depois.']]:[])
+  ])},
+  {id:'structure',title:'Quais partes fazem sentido para seu site?',description:'Marque apenas o que precisa. Recursos adicionais serão conferidos com o escopo contratado antes de construir.',condition:()=>state.model!=='M1'&&Boolean(state.model),render:()=>structureMarkup()},
+  {id:'contact',title:'Como podemos falar com você?',description:'Informe um WhatsApp ou e-mail. Vamos separar o contato do projeto do contato que será público.',render:()=>'<p class="contact-requirement"><strong>Um canal de contato é obrigatório.</strong> Preencha WhatsApp ou e-mail. Você também pode informar os dois.</p>'+fields([...fieldsByStep.contact,['instagram','Instagram do negócio','text','Informe o perfil, se houver.'],['googleBusiness','Perfil do negócio no Google','url','Link público, se houver.'],...(state.contactUse==='outro'?[['publicContact','Contato que pode aparecer no site','text','WhatsApp, telefone ou e-mail público',null,true]]:[])])},
+  {id:'style',title:'Que sensação sua marca deve transmitir?',description:'Não precisa entender de design. Você pode pedir uma recomendação e aprovar a direção visual depois.',render:()=>fields(fieldsByStep.style)},
+  {id:'materials',title:'Vamos reunir os materiais',description:'Uma única pasta com logo, fotos e textos é suficiente. Você também pode enviar depois. Não compartilhe senhas.',render:()=>fields([
+    fieldsByStep.materials[0],
+    ...(state.materialsStatus==='link'?[['materialsFolder','Link da pasta de materiais','url','Drive, Dropbox ou outro link acessível à Jumper',null,true]]:[]),
+    ...(state.materialsStatus==='existing'&&state.model!=='M5'?[['existingSiteUrl','Endereço do site com os materiais','url','https://seusite.com.br',null,true]]:[]),
+    ...fieldsByStep.materials.slice(1),['missingMaterials','Quais materiais já existem e quais faltam?','textarea','Logo, manual da marca, fotos reais, textos, catálogo ou vídeos. Diga também o que a Jumper precisará ajudar a produzir.'],
+  ])+`<p class="help">Os arquivos ficam na pasta compartilhada. Este formulário recebe o link, não faz upload das fotos. Imagens provisórias serão identificadas para sua aprovação.</p>`},
+  {id:'finish',title:'Mais algum cuidado antes de começar?',description:'Esta etapa é opcional. O que ainda não souber será conferido pela Jumper.',render:()=>fields([
+    fieldsByStep.finish[0],
+    ...(state.model!=='M5'?[fieldsByStep.finish[1],...(state.domainStatus==='sim-registrado'?[['currentDomain','Qual é o endereço?','text','seusite.com.br']]:[])]:[]),
+    fieldsByStep.finish[2],
+  ])},
+  {id:'review',title:'Confira antes de enviar',description:'Você pode editar cada parte. Depois do envio, a Jumper confere as informações e combina os próximos passos.',render:()=>resultMarkup()},
 ];
 
-const stepContainer = document.querySelector("#step-container");
-const stepCount = document.querySelector("#step-count");
-const stepTitle = document.querySelector("#step-title");
-const progressBar = document.querySelector("#progress-bar");
-const summaryList = document.querySelector("#summary-list");
-const summaryScore = document.querySelector("#summary-score");
-const liveSummary = document.querySelector(".live-summary");
-const prevButton = document.querySelector("#prev-button");
-const nextButton = document.querySelector("#next-button");
-const resetButton = document.querySelector("#reset-button");
-const form = document.querySelector("#quiz-form");
-
-function loadState() {
-  try {
-    return { ...initialState, ...JSON.parse(localStorage.getItem(STORAGE_KEY)) };
-  } catch {
-    return { ...initialState };
-  }
-}
-
-function saveState() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-}
-
-function visibleSteps() {
-  return steps.filter((step) => !step.condition || step.condition());
-}
-
-function currentVisibleStep() {
-  const visible = visibleSteps();
-  currentStep = Math.min(currentStep, visible.length - 1);
-  return { visible, step: visible[currentStep] };
-}
-
-function fields(items, includeWrapper = true) {
-  const markup = items.map(([name, label, type, placeholder, options], index) => fieldMarkup(name, label, type, placeholder, options, index)).join("");
-  return includeWrapper ? `<div class="field-grid">${markup}</div>` : markup;
-}
-
-function fieldMarkup(name, label, type, placeholder, options, index) {
-  const value = escapeHtml(state[name] || "");
-  const number = String(index + 1).padStart(2, "0");
-  let control = "";
-
-  if (type === "textarea") {
-    control = `<textarea id="${name}" name="${name}" placeholder="${placeholder}">${value}</textarea>`;
-  } else if (type === "select") {
-    control = `
-      <select id="${name}" name="${name}">
-        ${options.map(([optionValue, optionLabel]) => `<option value="${optionValue}" ${state[name] === optionValue ? "selected" : ""}>${optionLabel}</option>`).join("")}
-      </select>
-    `;
-  } else if (type === "file") {
-    const fileNames = state.uploadedFiles?.[name]?.length ? state.uploadedFiles[name].join(", ") : "Nenhum arquivo selecionado";
-    control = `
-      <input id="${name}" name="${name}" type="file" ${options?.multiple ? "multiple" : ""} />
-      <p class="file-hint">${escapeHtml(fileNames)}</p>
-    `;
-  } else {
-    control = `<input id="${name}" name="${name}" value="${value}" placeholder="${placeholder}" />`;
-  }
-
-  return `
-    <div class="field ${type === "textarea" || type === "file" ? "full" : ""}">
-      <div class="field-head">
-        <span>${number}</span>
-        <label for="${name}">${label}</label>
-      </div>
-      ${control}
-    </div>
-  `;
-}
-
-function choiceCards(name, options) {
-  return `
-    <div class="choice-grid">
-      ${options.map((option) => `
-        <label class="choice">
-          <input type="radio" name="${name}" value="${option.value}" ${state[name] === option.value ? "checked" : ""} />
-          <span class="choice-index">${option.value}</span>
-          <strong>${option.title}</strong>
-          <span class="choice-copy">${option.text}</span>
-        </label>
-      `).join("")}
-    </div>
-  `;
-}
-
-function checkboxPills(name, options) {
-  return options.map(([value, label]) => `
-    <label class="pill">
-      <input type="checkbox" name="${name}" value="${value}" ${state[name].includes(value) ? "checked" : ""} />
-      <span>${label}</span>
-    </label>
-  `).join("");
-}
-
-function resultMarkup() {
-  const personality = personalities.find(([value]) => value === state.personality);
-  const reviewItems = [
-    ["Negócio", state.businessName || "Não informado"],
-    ["Modelo", state.model ? `${state.model} - ${modelSummary(state.model)}` : "Não escolhido"],
-    ["Natureza", businessNatureSummary(state.businessNature) || "Não escolhida"],
-    ["Segmento", state.segment || "Não informado"],
-    ["Objetivo", state.mainGoal || "Não informado"],
-    ["CTA", state.primaryCTA || "Não escolhido"],
-    ["Personalidade", personality ? `${personality[0]} - ${personality[1]}` : "Não escolhida"],
-    ["Materiais", state.materialsFolder || state.logoLink || "Links ou uploads pendentes"],
+function structureMarkup() {
+  const gallery = state.model==='M3'||state.wantsGallery==='sim';
+  const team = state.wantsTeam==='sim';
+  const blog = ['M4','M5'].includes(state.model)&&['blog-ativo','novidades'].includes(state.blogMode);
+  const base = [
+    ...(state.model==='M2'?[['secondaryPage','Qual será a segunda página?','select','',[['','Escolha'],['sobre','Sobre o negócio'],['servicos','Serviços'],['contato','Contato'],['outra','Outra página combinada com a Jumper'],['nao-sei','Quero ajuda para escolher']],true],['secondaryPageGoal','O que essa segunda página precisa mostrar ou resolver?','textarea','Diga o assunto, o conteúdo principal e a ação esperada. Se escolheu outra página, informe qual. Se precisa de orientação, conte a necessidade.',null,true]]:[]),
+    ...(state.model!=='M3'?[['wantsGallery','Quer mostrar uma galeria ou catálogo?','select','',yesNoHelp]]:[]),
+    ['wantsTeam','Quer apresentar a equipe ou profissionais?','select','',yesNoHelp],
+    ...(['M4','M5'].includes(state.model)?[['blogMode','Quer publicar artigos ou novidades?','select','',[['','Decidir depois'],['blog-ativo','Sim, com frequência'],['novidades','Sim, de vez em quando'],['sem-blog','Não preciso agora'],['nao-sei','Quero orientação']]]]:[]),
+    ['wantsBooking','Precisa de agendamento ou reserva pelo site?','select','',yesNoHelp],
   ];
-
-  return `
-    <div class="result-box">
-      <div class="review-list">
-        ${reviewItems.map(([label, value]) => `
-          <div>
-            <span>${label}</span>
-            <strong>${escapeHtml(value)}</strong>
-          </div>
-        `).join("")}
-      </div>
-      ${submitStatus ? `<p class="submit-status ${submitStatus.type}">${escapeHtml(submitStatus.message)}</p>` : ""}
-    </div>
-  `;
+  return fields(base)
+    +(gallery?detailSection('Detalhes da galeria ou catálogo',[
+      ['portfolioType','O que você quer mostrar?','select','',[['','Decidir depois'],['portfolio','Trabalhos ou projetos'],['catalogo','Produtos ou cardápio'],['fotos-videos','Fotos e vídeos'],['antes-depois','Antes e depois']]],
+      ['portfolioItemsDescription','Quais itens devem aparecer e o que contar sobre eles?','textarea','Produtos: nome, características, variações e como pedir. Trabalhos: contexto, sua participação e resultado real. Indique onde estão fotos e detalhes; não precisa transcrever o catálogo inteiro.',null,true],['portfolioMinItems','Quantidade aproximada de itens','text','Ex.: 10 produtos. Se não souber, escreva “a confirmar”.',null,true],['portfolioCategories','Como esses itens podem ser agrupados?','textarea','Tipos de serviço, linhas de produtos ou categorias de trabalhos.'],['portfolioPricing','Os itens terão preços?','select','',[['','Definir depois'],['sim-valores','Sim, com valores'],['nao-orcamento','Não, apenas orçamento'],['alguns','Alguns com preço']]]
+    ]):'')
+    +(team?detailSection('Detalhes da equipe', [['teamList','Quem devemos apresentar?','textarea','Para cada pessoa: nome, função, especialidade e experiência que podemos conferir. Indique também onde estão as fotos autorizadas ou o que enviará depois.',null,true]]):'')
+    +(blog?detailSection('Detalhes das publicações', [['blogFrequency','Com que frequência pretende publicar?','select','',[['','Decidir depois'],['1-semana','Semanalmente'],['1-mes','Mensalmente'],['irregular','Quando houver novidades']]],['blogInitialPosts','Que temas ou textos devem iniciar as publicações?','textarea','Liste temas ligados às dúvidas do seu público e indique quem fornecerá ou aprovará os textos. Se precisar de apoio, diga isso; não inventaremos artigos atribuídos à sua equipe.',null,true]]):'')
+    +(state.wantsBooking==='sim'?detailSection('Detalhes do agendamento', [['appointmentLink','Já usa uma ferramenta para agendar?','url','Cole o link, se tiver. Se não, vamos orientar.']]):'');
 }
 
-function buildPayload() {
-  const slug = slugify(state.businessName || "cliente-sem-nome");
-  const hasBlog = state.model === "M4" && ["blog-ativo", "novidades"].includes(state.blogMode);
+function detailSection(title,items) {return `<section class="detail-section"><h3>${escapeHtml(title)}</h3><p class="conditional-help">Você escolheu incluir este recurso. Preencha os campos marcados como obrigatórios; os opcionais podem ficar para depois.</p>${fields(items)}</section>`;}
+function optionalDetails(title, items) {
+  return `<details class="optional-details"><summary>${escapeHtml(title)} <span>opcional</span></summary>${fields(items)}</details>`;
+}
+function fields(items) {return `<div class="field-grid">${items.map(fieldMarkup).join('')}</div>`;}
+function fieldMarkup([name,label,type,hint,options,required],index) {
+  const value=escapeHtml(state[name]||'');
+  const contactAlternative=['whatsapp','contactEmail'].includes(name);
+  const requirement=contactAlternative?'Preencha pelo menos um':required?'Obrigatório':'Opcional';
+  const requirementClass=contactAlternative?'alternative':required?'required':'optional';
+  const described=(hint?` aria-describedby="${name}-help"`:'')+(required?' aria-required="true"':'');
+  let control;
+  if(type==='select') control=`<select id="${name}" name="${name}" ${described}>${options.map(([v,t])=>`<option value="${escapeHtml(v)}" ${state[name]===v?'selected':''}>${escapeHtml(t)}</option>`).join('')}</select>`;
+  else if(type==='textarea') control=`<textarea rows="3" maxlength="8000" id="${name}" name="${name}" ${described}>${value}</textarea>`;
+  else control=`<input type="${type}" id="${name}" name="${name}" value="${value}" maxlength="2000" ${described} ${name==='contactName'?'autocomplete="name"':name==='contactEmail'?'autocomplete="email"':name==='whatsapp'?'autocomplete="tel"':''}>`;
+  return `<div class="field ${type==='textarea'||type==='url'?'full':''}"><div class="field-head"><label for="${name}">${escapeHtml(label)} <span class="requirement-badge requirement-${requirementClass}">${requirement}</span></label></div>${control}${hint?`<p class="field-help" id="${name}-help">${escapeHtml(hint)}</p>`:''}</div>`;
+}
+function choiceCards(name,options) {return `<fieldset class="choice-fieldset"><legend class="model-legend">Modelo contratado <span class="requirement-badge requirement-required">Obrigatório</span></legend><div class="choice-grid">${options.map(o=>`<label class="choice"><input type="radio" name="${name}" value="${o.value}" ${state[name]===o.value?'checked':''}><strong>${escapeHtml(o.title)}</strong><span class="choice-copy">${escapeHtml(o.text)}</span></label>`).join('')}</div></fieldset>`;}
+function escapeHtml(value) {return String(value??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');}
+function slugify(value) {return value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');}
+function visibleSteps() {return steps.filter(s=>!s.condition||s.condition());}
+function validUrl(value) {try {const u=new URL(value);return ['http:','https:'].includes(u.protocol)&&!u.username&&!u.password;}catch{return false;}}
 
-  return {
+// Only fields relevant to the current choices become active construction inputs.
+function activeState() {
+  const s=structuredClone(state);
+  if(s.contactUse!=='outro')s.publicContact='';
+  if(s.domainStatus!=='sim-registrado')s.currentDomain='';
+  if(s.model!=='M2'){s.secondaryPage='';s.secondaryPageGoal='';}
+  if(!['todos','misto'].includes(s.pricingDisplay))s.pricingDetails='';
+  if(s.model==='M1'){s.wantsGallery='nao';s.wantsTeam='nao';s.wantsBooking=s.primaryCTA==='agendamento'?'sim':'nao';}
+  if(s.model==='M3')s.wantsGallery='sim';
+  if(!['M4','M5'].includes(s.model))s.blogMode='sem-blog';
+  if(!['blog-ativo','novidades'].includes(s.blogMode)){s.blogFrequency='';s.blogInitialPosts='';}
+  if(s.wantsGallery!=='sim')for(const k of ['portfolioType','portfolioCategories','portfolioMinItems','portfolioPricing','portfolioItemsDescription','galleryFolder'])s[k]='';
+  s.teamSection=s.wantsTeam==='sim'?'sim-nomes':'';
+  if(s.wantsTeam!=='sim'){s.teamList='';s.teamPhotosFolder='';}
+  if(s.wantsBooking!=='sim')s.appointmentLink='';
+  if(s.hasTestimonials!=='sim'){s.testimonials='';s.testimonialsPermission='';}
+  if(!['A','B'].includes(s.businessNature)){s.address='';s.showAddress='';}
+  if(s.showAddress!=='sim-mapa'){s.address='';}
+  if(s.materialsStatus!=='link')s.materialsFolder='';
+  s.uploadedFiles={};s.additionalImages={};
+  s.integrations=(s.integrations||[]).filter(k=>!['scheduler','newsletter','live-chat'].includes(k));
+  if(s.wantsBooking==='sim')s.integrations.push('scheduler');
+  return s;
+}
+function pendingDecisions(s) {
+  const pending=['Conferir dados e autorização dos materiais; preparar conteúdo sem inventar fatos.','Confirmar páginas, funcionalidades e limites contratados antes de construir.','Validar contatos públicos, domínio e integrações; solicitar acessos por canal adequado.'];
+  if(s.personality==='nao-sei')pending.push('Propor personalidade visual A–F e obter aprovação.');
+  if(s.mainGoal==='nao-sei')pending.push('Definir objetivo comercial e ação principal com o cliente.');
+  if(s.primaryCTA==='nao-sei'||s.pricingDisplay==='nao-sei')pending.push('Definir chamada principal e apresentação de preços com o cliente.');
+  if(s.hasTestimonials==='sim'&&s.testimonialsPermission==='nao-sei')pending.push('Confirmar autorização dos depoimentos antes de publicar.');
+  if(s.secondaryPage==='nao-sei')pending.push('Definir e aprovar a segunda página do M2.');
+  if(s.materialsStatus==='later')pending.push('Receber logo, fotos e textos pelo link de materiais.');
+  if(s.aiImages==='nao-sei'||s.usePexels==='nao-sei')pending.push('Confirmar permissões de mídia; não interpretar dúvida como autorização.');
+  if(s.model==='M5')pending.push('Analisar o site atual e inventariar páginas, conteúdos, funções e URLs; aprovar escopo, backup e recuperação.');
+  if(s.wantsGallery==='sim')pending.push('Conferir itens, quantidade e organização da galeria/catálogo.');
+  if(s.wantsTeam==='sim')pending.push('Conferir nomes, descrições e fotos autorizadas da equipe.');
+  if(['blog-ativo','novidades'].includes(s.blogMode))pending.push('Conferir publicações iniciais e implementar Blog Autônomo Jumper quando aprovado no escopo.');
+  if(s.contactUse!=='sim')pending.push('Não publicar o contato privado do projeto sem confirmação.');
+  return pending;
+}
+function stepError(id) {
+  const required={business:['businessName','shortDescription','targetAudience','cityCoverage'],goals:['mainGoal','priorityOffer','differentiator','differentiatorEvidence'],audience:['typicalProblem','typicalResult','customerQuestions'],offer:['servicesItems','serviceProcess','pricingDisplay','primaryCTA'],trust:['story','hasTestimonials'],'m5-scope':['preserveItems','removeItems','requestedPages','existingFeatures'],contact:['contactName','contactUse'],operation:['businessNature'],style:['personality','visualReferences'],materials:['materialsStatus','aiImages','usePexels']};
+  const missing=(required[id]||[]).find(k=>!String(state[k]||'').trim());
+  if(missing)return {field:missing,message:'Responda este campo para continuar. Quando disponível, você pode escolher a ajuda da Jumper.'};
+  if(id==='model'&&!models.some(m=>m[0]===state.model))return {field:'model',message:'Escolha o modelo combinado com a Jumper.'};
+  if(id==='m5-reformulation'){
+    if(!validUrl(state.existingSiteUrl))return {field:'existingSiteUrl',message:'Informe o endereço completo do site, começando por https:// ou http://.'};
+    if(!state.reformulationReason.trim())return {field:'reformulationReason',message:'Conte com suas palavras o que gostaria de melhorar.'};
+  }
+  if(id==='operation'&&['A','B'].includes(state.businessNature)&&!state.showAddress)return {field:'showAddress',message:'Escolha como podemos mostrar sua localização.'};
+  if(id==='structure'&&state.model==='M2'&&!state.secondaryPageGoal.trim())return {field:'secondaryPageGoal',message:'Conte a finalidade e o conteúdo desejado para a segunda página.'};
+  if(id==='offer'&&['todos','misto'].includes(state.pricingDisplay)&&!state.pricingDetails.trim())return {field:'pricingDetails',message:'Informe os preços ou indique a tabela que será enviada para conferência.'};
+  if(id==='structure'&&state.model==='M2'&&!state.secondaryPage)return {field:'secondaryPage',message:'Escolha a segunda página ou peça orientação da Jumper.'};
+  if(id==='contact'){
+    if(state.googleBusiness&&!validUrl(state.googleBusiness))return {field:'googleBusiness',message:'Confira o link completo do perfil no Google ou deixe para enviar depois.'};
+    if(!state.whatsapp.trim()&&!state.contactEmail.trim())return {field:'whatsapp',message:'Informe pelo menos um WhatsApp ou e-mail para falarmos com você.'};
+    if(state.whatsapp&&state.whatsapp.replace(/\D/g,'').length<10)return {field:'whatsapp',message:'Confira o WhatsApp e inclua o DDD.'};
+    if(state.contactEmail&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(state.contactEmail))return {field:'contactEmail',message:'Confira o e-mail informado.'};
+    if(state.contactUse==='outro'&&!state.publicContact.trim())return {field:'publicContact',message:'Informe o contato que pode aparecer no site.'};
+  }
+  if(id==='materials'){
+    if(state.materialsStatus==='link'&&!validUrl(state.materialsFolder))return {field:'materialsFolder',message:'Cole o link completo da pasta, começando por https://.'};
+    if(state.materialsStatus==='existing'&&state.model!=='M5'&&!validUrl(state.existingSiteUrl))return {field:'existingSiteUrl',message:'Informe o endereço do site de onde podemos aproveitar os materiais.'};
+  }
+  if(id==='trust'&&state.hasTestimonials==='sim')for(const k of ['testimonials','testimonialsPermission'])if(!state[k].trim())return {field:k,message:'Informe a origem das avaliações e a situação da autorização.'};
+  if(id==='structure'){
+    const keys=[];
+    if(state.model==='M3'||state.wantsGallery==='sim')keys.push('portfolioItemsDescription','portfolioMinItems');
+    if(state.wantsTeam==='sim')keys.push('teamList');
+    if(['M4','M5'].includes(state.model)&&['blog-ativo','novidades'].includes(state.blogMode))keys.push('blogInitialPosts');
+    for(const k of keys)if(!state[k].trim())return {field:k,message:'Conte o que já sabe. Se faltam dados, indique o que será enviado ou precisa de orientação.'};
+  }
+  if(id==='review'&&!state.reviewConfirmed)return {field:'reviewConfirmed',message:'Confirme o modelo e as respostas para enviar.'};
+  if(((id==='structure'&&state.wantsBooking==='sim')||(id==='offer'&&state.model==='M1'&&state.primaryCTA==='agendamento'))&&state.appointmentLink&&!validUrl(state.appointmentLink))return {field:'appointmentLink',message:'Confira o link completo de agendamento ou deixe para enviar depois.'};
+  return null;
+}
+function buildPayload() {
+  const state = activeState();
+  const slug = slugify(state.businessName || "cliente-sem-nome");
+  const hasBlog = ["M4", "M5"].includes(state.model) && ["blog-ativo", "novidades"].includes(state.blogMode);
+
+  const payload = {
+    briefing_depth: "strategic-v3",
+    intake_version: "guided-v1",
+    submission_id: state.submissionId,
     id: FORM_ID,
     source: "jumper.studio",
     channel: "site-publico",
@@ -625,9 +413,24 @@ function buildPayload() {
     },
     project_scope: {
       model: state.model,
-      model_confirmation: state.modelConfirmation.includes(state.model),
+      reformulation: state.model === "M5" ? {
+        existing_site_url: state.existingSiteUrl,
+        reason: state.reformulationReason,
+        problems: state.existingSiteProblems,
+        preserve: state.preserveItems,
+        change: state.changeItems,
+        remove: state.removeItems,
+        add: state.addItems,
+        requested_pages: state.requestedPages,
+        existing_features: state.existingFeatures,
+        important_urls: state.importantUrls,
+        access_notes: state.accessNotes,
+        scope_status: "pending_review",
+      } : null,
+      model_confirmation: state.reviewConfirmed,
       business_nature: state.businessNature,
       secondary_page: state.model === "M2" ? state.secondaryPage : null,
+      secondary_page_goal: state.model === "M2" ? state.secondaryPageGoal : "",
       has_blog: hasBlog,
       use_pexels_as_placeholder: state.usePexels === "sim",
       pexels_mode: state.usePexels,
@@ -644,6 +447,7 @@ function buildPayload() {
       positioning: {
         short_description: state.shortDescription,
         differentiator: state.differentiator,
+        differentiator_evidence: state.differentiatorEvidence,
         must_have_message: state.mustHaveMessage,
         client_voice_quote: state.clientVoiceQuote,
         story: state.story,
@@ -652,6 +456,7 @@ function buildPayload() {
         target: state.targetAudience,
         not_for: state.notFor,
         typical_problem: state.typicalProblem,
+        questions_raw: state.customerQuestions,
         typical_result: state.typicalResult,
       },
       conversion: {
@@ -662,6 +467,8 @@ function buildPayload() {
       },
       services: {
         items_raw: state.servicesItems,
+        process_raw: state.serviceProcess,
+        pricing_details: state.pricingDetails,
         pricing_mode: state.pricingDisplay,
         promotion: state.promotion,
       },
@@ -677,6 +484,7 @@ function buildPayload() {
         members_raw: state.teamList,
       },
       social_proof: {
+        testimonials_available: state.hasTestimonials,
         testimonials_raw: state.testimonials,
         testimonials_permission: state.testimonialsPermission,
         stats_raw: state.credibilityNumbers,
@@ -717,6 +525,9 @@ function buildPayload() {
       partner_logos_folder: state.partnerLogosFolder,
       video_url: state.videoUrl,
       missing_notes: state.missingMaterials,
+      availability: state.materialsStatus,
+      existing_site_url: state.materialsStatus === "existing" ? state.existingSiteUrl : "",
+      ai_placeholder_permission: state.aiImages,
       uploaded_files: state.uploadedFiles,
       additional_images: state.uploadedFiles?.additionalImages || [],
     },
@@ -735,6 +546,8 @@ function buildPayload() {
       deadline: state.deadline,
       pending_to_start: state.pendingToStart,
       best_contact_time: state.bestContactTime,
+      contact_publication: state.contactUse,
+      public_contact: state.publicContact,
       final_notes: state.finalNotes,
     },
     site_factory_target: {
@@ -743,301 +556,200 @@ function buildPayload() {
       expected_normalized_briefing: `_jumper-sites-system/clientes/${slug}/briefing/briefing-normalizado.md`,
     },
   };
+  payload.production_handoff = {
+    status: "needs_review",
+    pending_decisions: pendingDecisions(state),
+    requested_modules: { gallery: state.wantsGallery, team: state.wantsTeam, booking: state.wantsBooking, blog: state.blogMode },
+    note: "Respostas essenciais para análise. A Jumper complementa conteúdo, materiais, arquitetura e validações técnicas antes de construir. Não inventar respostas ausentes.",
+  };
+  return payload;
 }
-
-function render() {
-  const { visible, step } = currentVisibleStep();
-
-  stepContainer.innerHTML = `
-    <div class="step-layout">
-      <header class="step-header">
-        <span>${step.kicker}</span>
-        <h2>${step.title}</h2>
-        <p>${step.description}</p>
-      </header>
-      <div class="step-body">
-        ${step.render()}
-      </div>
-    </div>
-  `;
-
-  stepCount.textContent = `Etapa ${currentStep + 1} de ${visible.length}`;
-  stepTitle.textContent = "";
-  progressBar.style.width = `${((currentStep + 1) / visible.length) * 100}%`;
-  prevButton.disabled = currentStep === 0;
-  nextButton.textContent = step.id === "review" ? "Enviar briefing" : "Continuar";
-
-  renderSummary(visible);
-}
-
-function renderSummary(visible = visibleSteps()) {
-  const personality = personalities.find(([value]) => value === state.personality);
-  const requiredKeys = [
-    "model", "businessNature", "businessName", "segment", "cityCoverage", "contactName", "whatsapp", "contactEmail",
-    "shortDescription", "differentiator", "mainGoal", "primaryCTA", "priorityOffer", "personality",
-    "visualReferences", "materialsFolder", "domainStatus",
+function answerLabel(options,value,fallback='Decidir com a Jumper') {return options.find(o=>o[0]===value)?.[1]||fallback;}
+function reviewGroups() {
+  const s=activeState();
+  return [
+    ['business','Seu negócio',`${s.businessName}\n${s.shortDescription}\nPúblico: ${s.targetAudience}\nAtuação: ${s.cityCoverage}`],
+    ['goals','Objetivo',`${answerLabel(goalChoices,s.mainGoal)}\nDestaque: ${s.priorityOffer}\nDiferencial: ${s.differentiator}\nExemplo concreto: ${s.differentiatorEvidence}`],
+    ...(s.model==='M5'?[['m5-reformulation','Site atual',`${s.existingSiteUrl}\nMelhorar: ${s.reformulationReason}\nProblemas atuais: ${s.existingSiteProblems||'A analisar'}`]]:[]),
+    ['audience','Público e necessidades',`Necessidade: ${s.typicalProblem}\nBenefício esperado: ${s.typicalResult}\nDúvidas e respostas: ${s.customerQuestions}\nNão atende: ${s.notFor||'Não informado'}\nMensagem: ${s.mustHaveMessage||'Não informada'}`],
+    ['offer','Oferta e conversão',`Ofertas: ${s.servicesItems}\nComo funciona: ${s.serviceProcess}\nValores e condições: ${s.pricingDetails||"A confirmar, se forem publicados"}\nPreços: ${answerLabel([['todos','Mostrar preços'],['sem-precos','Pedir orçamento'],['misto','Mostrar alguns preços']],s.pricingDisplay)}\nAção principal: ${answerLabel([['whatsapp','Chamar no WhatsApp'],['agendamento','Agendar atendimento'],['orcamento','Pedir orçamento'],['comprar','Iniciar uma compra ou contratação'],['catalogo','Ver catálogo'],['servicos','Conhecer serviços']],s.primaryCTA)}\nLink para agendar: ${s.appointmentLink||"A definir, se necessário"}\nCondições: ${s.promotion||'Não informadas'}`],
+    ['trust','História e provas',`História: ${s.story}\nAvaliações: ${answerLabel(yesNoHelp,s.hasTestimonials)}\nDepoimentos: ${s.testimonials||'Não informados'}\nPermissão: ${answerLabel([['nome-foto','Nome e foto autorizados'],['primeiro-nome','Primeiro nome ou iniciais'],['anonimo','Publicação anônima autorizada']],s.testimonialsPermission,'A confirmar')}\nNúmeros: ${s.credibilityNumbers||'Não informados'}\nCredenciais: ${s.credentials||'Não informadas'}`],
+    ...(s.model==='M5'?[['m5-scope','Escopo da reformulação',`Preservar: ${s.preserveItems}\nAtualizar: ${s.changeItems||'A conferir'}\nRetirar: ${s.removeItems}\nAcrescentar: ${s.addItems||'A conferir'}\nPáginas: ${s.requestedPages}\nRecursos atuais: ${s.existingFeatures}\nLinks importantes: ${s.importantUrls||'A levantar'}`]]:[]),
+    ['operation','Atendimento',`${businessNatures.find(o=>o[0]===s.businessNature)?.[1]||''}\nLocalização: ${s.showAddress==='sim-mapa'?(s.address||'Endereço a confirmar'):s.showAddress==='nao-publico'?'Não mostrar endereço':s.cityCoverage}\nHorários: ${s.businessHours||'A confirmar'}`],
+    ...(s.model!=='M1'?[['structure','Partes do site',`${s.model==='M2'?`Segunda página: ${answerLabel([['sobre','Sobre o negócio'],['servicos','Serviços'],['contato','Contato'],['outra','Outra página combinada com a Jumper'],['nao-sei','Quero ajuda para escolher']],s.secondaryPage)}\nFinalidade e conteúdo: ${s.secondaryPageGoal}\n`:''}Galeria: ${answerLabel(yesNoHelp,s.wantsGallery)}${s.wantsGallery==='sim'?`\nItens: ${s.portfolioItemsDescription||'Envio posterior'}\nQuantidade: ${s.portfolioMinItems}\nCategorias: ${s.portfolioCategories||'A organizar'}\nPreços da galeria: ${answerLabel([['sim-valores','Com valores'],['nao-orcamento','Solicitar orçamento'],['alguns','Alguns com preço']],s.portfolioPricing)}`:''}\nEquipe: ${answerLabel(yesNoHelp,s.wantsTeam)}${s.wantsTeam==='sim'?`\nPessoas: ${s.teamList||'Envio posterior'}`:''}\nPublicações: ${answerLabel([['blog-ativo','Publicar com frequência'],['novidades','Publicar de vez em quando'],['sem-blog','Sem publicações por enquanto'],['nao-sei','Quero orientação']],s.blogMode)}${s.blogFrequency?`\nFrequência: ${answerLabel([['1-semana','Semanalmente'],['1-mes','Mensalmente'],['irregular','Quando houver novidades']],s.blogFrequency)}`:''}${s.blogInitialPosts?`\nTemas ou textos: ${s.blogInitialPosts}`:''}\nAgendamento: ${answerLabel(yesNoHelp,s.wantsBooking)}${s.appointmentLink?`\nAgenda: ${s.appointmentLink}`:''}`]]:[]),
+    ['contact','Contato',`${s.contactName}\n${s.whatsapp}\n${s.contactEmail}\nInstagram: ${s.instagram||'Não informado'}\nPerfil Google: ${s.googleBusiness||'Não informado'}\nUso no site: ${s.contactUse==='sim'?'Autorizado':s.contactUse==='outro'?s.publicContact:'Decidir depois; contato do projeto é privado'}`],
+    ['style','Estilo',`${personalities.find(p=>p[0]===s.personality)?.[1]||'Quero recomendação da Jumper'}\nCor: ${s.primaryColor||'A definir'}\nReferências: ${s.visualReferences||'Não informadas'}\nEvitar: ${s.avoidSite||'Não informado'}\nTom de voz: ${answerLabel([['formal-cortes','Formal e cortês'],['casual-amistoso','Casual e amistoso'],['direto-premium','Direto e premium'],['objetivo-profissional','Objetivo e profissional']],s.voiceTone)}\nCuidados: ${s.forbiddenWords||'Não informados'}`],
+    ['materials','Materiais e imagens',`${s.materialsStatus==='link'?s.materialsFolder:s.materialsStatus==='existing'?`Aproveitar materiais de ${s.existingSiteUrl}`:'Vou enviar depois'}\nDisponíveis e pendentes: ${s.missingMaterials||'A conferir'}\nImagens de IA: ${s.aiImages==='sim'?'Pode criar para minha aprovação':s.aiImages==='nao'?'Não autorizado':'Quero orientação'}\nFotos de banco: ${s.usePexels==='fallback'?'Somente se necessário':s.usePexels==='nao'?'Não autorizado':'Quero orientação'}`],
+    ['finish','Cuidados finais',`Data importante: ${s.deadline||'Não informada'}\nDomínio: ${s.model==='M5'?s.existingSiteUrl:s.currentDomain||answerLabel([['sim-registrado','Já tenho domínio'],['quero-registrar','Ainda não tenho'],['nao-sei','Preciso de ajuda']],s.domainStatus)}\nObservações: ${s.finalNotes||'Nenhuma'}`],
   ];
-  const completed = requiredKeys.filter((key) => {
-    const value = state[key];
-    return Array.isArray(value) ? value.length : Boolean(value);
-  }).length;
-  const score = Math.min(10, Math.round((completed / requiredKeys.length) * 100) / 10).toFixed(1);
-  const summary = [
-    ["modelo", "Modelo", state.model ? `${state.model} - ${modelSummary(state.model)}` : ""],
-    ["natureza", "Operação", businessNatureSummary(state.businessNature)],
-    ["briefing", "Negócio", state.businessName],
-    ["contato", "Contato", state.whatsapp || state.contactEmail],
-    ["local", "Atuação", state.cityCoverage || state.serviceArea],
-    ["objetivo", "Objetivo", state.mainGoal],
-    ["cta", "CTA", state.primaryCTA],
-    ["publico", "Público", state.targetAudience],
-    ["oferta", "Oferta", state.priorityOffer || state.servicesItems || state.portfolioType],
-    ["prova", "Prova", state.testimonials || state.credibilityNumbers],
-    ["estilo", "Estilo", personality ? personality[1] : ""],
-    ["assets", "Materiais", state.materialsFolder || state.logoLink || fileSummary()],
-    ["blog", "Blog", state.model === "M4" ? state.blogMode : ""],
-    ["dominio", "Domínio", state.currentDomain || state.desiredDomain || state.domainStatus],
-    ["status", "Próximo passo", currentStep === visible.length - 1 ? "Enviar briefing para a Jumper" : `Responder etapa ${currentStep + 1} de ${visible.length}`],
-  ];
-
-  summaryScore.textContent = `${score} /10`;
-  summaryList.innerHTML = summary.map(([event, term, value]) => `
-    <div class="${value ? "" : "is-pending"}">
-      <span>${event}</span>
-      <dt>${term}</dt>
-      <dd>${escapeHtml(value || "***")}</dd>
-    </div>
-  `).join("");
 }
-
-function syncSummaryDisclosure() {
-  if (!liveSummary) return;
-
-  if (window.matchMedia("(max-width: 860px)").matches) {
-    liveSummary.removeAttribute("open");
-    return;
+function resultMarkup() {
+  return `<div class="result-box"><p class="scope-note"><strong>${escapeHtml(models.find(m=>m[0]===state.model)?.slice(0,2).join(' · ')||'')}</strong><br>As respostas serão conferidas pela Jumper. Páginas, recursos e materiais pendentes serão combinados antes da construção.</p><div class="review-list">${reviewGroups().map(([id,title,text])=>`<div><span>${escapeHtml(title)}</span><p>${escapeHtml(text)}</p><button type="button" class="edit-button" data-edit="${id}" aria-label="Editar ${escapeHtml(title)}">Editar</button></div>`).join('')}</div><label class="confirmation"><input type="checkbox" id="reviewConfirmed" name="reviewConfirmed" ${state.reviewConfirmed?'checked':''}><span><span class="requirement-badge requirement-required">Obrigatório</span> Confirmo que o modelo ${escapeHtml(state.model)} é o combinado e que estas respostas podem ser usadas pela Jumper na preparação do site.</span></label><p class="help">Não envie senhas. Materiais e informações ainda pendentes serão solicitados pela equipe.</p></div>`;
+}
+function sanitizeDraft(raw) {
+  if(!raw||typeof raw!=='object'||Array.isArray(raw))throw Error('Arquivo de rascunho inválido.');
+  const s=structuredClone(initialState);
+  for(const [key,base]of Object.entries(initialState)){
+    const v=raw[key];
+    if(typeof base==='string'&&typeof v==='string')s[key]=v.slice(0,10000);
+    else if(typeof base==='boolean'&&typeof v==='boolean')s[key]=v;
+    else if(Array.isArray(base)&&Array.isArray(v))s[key]=v.filter(x=>typeof x==='string').slice(0,50);
   }
-
-  liveSummary.setAttribute("open", "");
+  // A file restore is a draft, never an instruction to submit or a successful receipt.
+  s.reviewConfirmed=false;s.submitted=false;s.blogAdminPassword='';
+  return s;
 }
-
-function updateStateFromForm() {
-  const formData = new FormData(form);
-  const next = { ...state, uploadedFiles: { ...state.uploadedFiles } };
-
-  Object.keys(initialState).forEach((key) => {
-    if (Array.isArray(initialState[key])) {
-      // A step only renders its own controls. Preserve selections from other steps;
-      // an unchecked group on this step must still be allowed to become empty.
-      if ([...form.elements].some((control) => control.name === key)) {
-        next[key] = formData.getAll(key).map(String);
-      }
-    } else if (key !== "uploadedFiles" && formData.has(key)) {
-      const value = formData.get(key);
-      next[key] = typeof value === "string" ? value : "";
+function loadState() {
+  try {
+    const saved=localStorage.getItem(STORAGE_KEY);
+    if(saved){const raw=JSON.parse(saved);const s=sanitizeDraft(raw);s.submitted=raw.submitted===true;s.reviewConfirmed=raw.reviewConfirmed===true;return s;}
+    const old=localStorage.getItem(LEGACY_STORAGE_KEY);
+    if(old){const s=sanitizeDraft(JSON.parse(old));s.legacyDraft=true;
+      s.wantsGallery=s.model==='M3'||s.portfolioType?'sim':'';
+      s.wantsTeam=['sim-fotos-bio','sim-nomes'].includes(s.teamSection)?'sim':'';
+      s.wantsBooking=s.appointmentLink?'sim':'';
+      s.hasTestimonials=s.testimonials?'sim':'';
+      s.materialsStatus=s.materialsFolder?'link':'';
+      s.usePexels='';s.aiImages='';s.lastStep='model';return s;
     }
-  });
-
-  form.querySelectorAll('input[type="file"]').forEach((input) => {
-    const files = [...input.files].map((file) => file.name);
-    if (files.length) next.uploadedFiles[input.name] = files;
-  });
-
-  state = next;
+  }catch {storageAvailable=false;}
+  return structuredClone(initialState);
+}
+function saveState() {
+  state.lastStep=currentStep;
+  try {localStorage.setItem(STORAGE_KEY,JSON.stringify(state));storageAvailable=true;}catch{storageAvailable=false;}
+}
+function updateStateFromForm() {
+  const data=new FormData(form);
+  let answersChanged=false;
+  for(const control of Array.from(form.elements)){
+    const key=control.name;
+    if(!Object.hasOwn(initialState,key))continue;
+    const previous=JSON.stringify(state[key]);
+    if(control.type==='checkbox'&&typeof initialState[key]==='boolean')state[key]=control.checked;
+    else if(Array.isArray(initialState[key]))state[key]=data.getAll(key).map(String);
+    else if(data.has(key)&&typeof initialState[key]==='string')state[key]=String(data.get(key));
+    if(key!=='reviewConfirmed'&&previous!==JSON.stringify(state[key]))answersChanged=true;
+  }
+  if(answersChanged)state.reviewConfirmed=false;
   saveState();
 }
-
 function resetQuiz() {
-  state = { ...initialState, uploadedFiles: {} };
-  currentStep = 0;
-  localStorage.removeItem(STORAGE_KEY);
-  render();
+  if(!confirm('Apagar este rascunho e começar outro?'))return;
+  state=structuredClone(initialState);currentStep='model';submitStatus=null;showSavePanel=false;
+  try{localStorage.removeItem(LEGACY_STORAGE_KEY);localStorage.removeItem(STORAGE_KEY);}catch{}
+  saveState();render(true);
 }
+const stepContainer = document.querySelector('#step-container');
+const form = document.querySelector('#quiz-form');
+const nextButton = document.querySelector('#next-button');
+const prevButton = document.querySelector('#prev-button');
+const saveButton = document.querySelector('#save-button');
+const liveSummary = document.querySelector('.live-summary');
 
-function advance(direction) {
-  updateStateFromForm();
-  const visible = visibleSteps();
-  currentStep = Math.max(0, Math.min(visible.length - 1, currentStep + direction));
-  render();
+function render(focus=false) {
+  const visible=visibleSteps();
+  if(!visible.some(s=>s.id===currentStep))currentStep='model';
+  const step=visible.find(s=>s.id===currentStep);
+  const index=visible.indexOf(step);
+  if(state.submitted){
+    stepContainer.innerHTML='<div class="step-layout"><header class="step-header"><span>Recebido</span><h2 tabindex="-1">Obrigado por contar sua história.</h2><p>Seu briefing foi recebido pela Jumper. Nossa equipe vai conferir as respostas, os materiais e o escopo antes de dar continuidade ao site.</p></header><button type="button" class="ghost-button" id="new-briefing">Começar outro briefing</button></div>';
+    nextButton.hidden=true;prevButton.hidden=true;saveButton.hidden=true;
+  }else{
+    stepContainer.innerHTML=`<div class="step-layout"><header class="step-header"><span>Etapa ${index+1} de ${visible.length}</span><h2 tabindex="-1">${step.title}</h2><p>${step.description}</p></header>${showSavePanel?`<section class="save-panel" role="status"><strong>${storageAvailable?'Rascunho salvo neste navegador.':'O navegador não conseguiu guardar o rascunho.'}</strong><p>Para continuar em outro aparelho, baixe uma cópia e use “Continuar um rascunho” na primeira etapa. O arquivo contém suas respostas; guarde com cuidado.</p><button type="button" class="ghost-button" id="download-draft">Baixar cópia do rascunho</button><button type="button" class="edit-button" id="close-save">Continuar preenchendo</button></section>`:''}${submitStatus?`<div class="submit-status ${submitStatus.type}" role="${submitStatus.type==='error'?'alert':'status'}" tabindex="-1">${escapeHtml(submitStatus.message)}</div>`:''}${state.legacyDraft&&currentStep==='model'?'<p class="help">Encontramos respostas da versão anterior e as preservamos. Confira o novo caminho e suas preferências de imagens antes de enviar.</p>':''}<div class="step-body">${step.render()}</div></div>`;
+    nextButton.hidden=false;saveButton.hidden=false;prevButton.hidden=index===0;
+    nextButton.disabled=isSubmitting;prevButton.disabled=isSubmitting;saveButton.disabled=isSubmitting;
+    nextButton.textContent=isSubmitting?'Enviando…':currentStep==='review'?'Enviar briefing':currentStep==='finish'?'Revisar respostas':'Continuar';
+    if(isSubmitting)for(const e of form.querySelectorAll('input,select,textarea,button'))e.disabled=true;
+  }
+  renderSummary();saveState();
+  if(focus){stepContainer.scrollTop=0;stepContainer.querySelector(submitStatus?.type==='error'?'.submit-status':'h2')?.focus();}
 }
-
-function modelSummary(model) {
-  const found = models.find(([value]) => value === model);
-  return found ? found[1] : model;
-}
-
-function modelDisplay(model) {
-  return `Modelo de Site ${String(model).replace("M", "")}`;
-}
-
-function businessNatureSummary(value) {
-  const found = businessNatures.find(([option]) => option === value);
-  return found ? found[1] : "";
-}
-
-function fileSummary() {
-  const files = Object.values(state.uploadedFiles || {}).flat();
-  return files.length ? `${files.length} arquivo(s) selecionado(s)` : "";
-}
-
-function natureHelp(value) {
-  const help = {
-    A: "Pede endereço, mapa, horário e fotos do espaço.",
-    B: "Pede endereço, agenda, mapa e horário de atendimento.",
-    C: "Pede área de cobertura, agenda e formato de atendimento.",
-    D: "Pede cobertura, entrega, remoto ou atendimento móvel.",
-  };
-  return help[value] || "";
-}
-
-function goalOptions() {
-  return [["", "Escolha"], ["whatsapp", "Gerar WhatsApp"], ["agendamento", "Agendamento"], ["leads", "Captar leads"], ["venda", "Vender serviço ou produto"], ["autoridade", "Autoridade e confiança"], ["portfolio", "Portfolio ou catálogo"], ["institucional", "Institucional"]];
-}
-
-function ctaOptions() {
-  return [["", "Escolha"], ["Chamar no WhatsApp", "Chamar no WhatsApp"], ["Agendar atendimento", "Agendar atendimento"], ["Pedir orçamento", "Pedir orçamento"], ["Comprar ou contratar", "Comprar ou contratar"], ["Ver catálogo", "Ver catálogo"], ["Conhecer serviços", "Conhecer serviços"]];
-}
-
-function pricingOptions() {
-  return [["", "Escolha"], ["todos", "Todos os preços visíveis"], ["sem-precos", "Não exibir preços"], ["misto", "Misto"], ["faixa-a-partir", "Faixa a partir de"]];
-}
-
-function galleryPricingOptions() {
-  return [["", "Escolha"], ["sim-valores", "Sim com valores"], ["nao-orcamento", "Não só orçamento"], ["alguns", "Alguns com preço"]];
-}
-
-function portfolioOptions() {
-  return [["", "Escolha"], ["portfolio", "Portfolio de trabalhos"], ["catalogo", "Catálogo de produtos"], ["antes-depois", "Antes e depois"], ["fotos-videos", "Fotos e vídeos"]];
-}
-
-function personalityOptions() {
-  return [["", "Escolha"], ...personalities.map(([value, title]) => [value, `${value} - ${title}`])];
-}
-
-function voiceOptions() {
-  return [["", "Escolha"], ["formal-cortes", "Formal e cortês"], ["casual-amistoso", "Casual e amistoso"], ["direto-premium", "Direto e premium"], ["informal-regional", "Informal e regional"], ["objetivo-profissional", "Objetivo profissional"]];
-}
-
-function integrationOptions() {
-  const base = [
-    ["analytics", "Google Analytics"],
-    ["whatsapp", "WhatsApp"],
-    ["meta-pixel", "Meta Pixel"],
-    ["google-ads", "Google Ads"],
-    ["form-email", "Formulário por e-mail"],
-    ["form-whatsapp", "Formulário para WhatsApp"],
-    ["maps", "Google Maps"],
-    ["none", "Nenhuma"],
-    ["not-sure", "Não sei"],
+function summaryRows() {
+  const s=activeState();
+  return [
+    ['Modelo',models.find(m=>m[0]===s.model)?.slice(0,2).join(' · ')],
+    ['Negócio',s.businessName],['Atendimento',businessNatures.find(n=>n[0]===s.businessNature)?.[1]],
+    ['Contato',s.whatsapp||s.contactEmail],['Atuação',s.cityCoverage],
+    ['Objetivo',s.mainGoal?answerLabel(goalChoices,s.mainGoal):''],['Público',s.targetAudience],
+    ['Necessidade',s.typicalProblem],['Diferencial',s.differentiator],['Oferta',s.priorityOffer],
+    ['Serviços / produtos',s.servicesItems],['História',s.story],
+    ['Provas',s.testimonials||s.credibilityNumbers||(s.hasTestimonials==='nao'?'Ainda sem avaliações':'')],
+    ['Estilo',s.personality?answerLabel(personalities,s.personality,'Quero orientação'):''],
+    ['Referências',s.visualReferences],['Materiais',s.materialsFolder||(s.materialsStatus==='later'?'Envio posterior':s.materialsStatus==='existing'?'Aproveitar site atual':'')],
+    ...(s.model==='M2'?[['Segunda página',s.secondaryPage?answerLabel([['sobre','Sobre'],['servicos','Serviços'],['contato','Contato'],['outra','Outra página'],['nao-sei','Definir com a Jumper']],s.secondaryPage):'']]:[]),
+    ...(s.model==='M3'||s.wantsGallery==='sim'?[['Catálogo / galeria',s.portfolioItemsDescription]]:[]),
+    ...(s.model==='M5'?[['Site atual',s.existingSiteUrl],['Páginas solicitadas',s.requestedPages],['Preservar',s.preserveItems]]:[]),
   ];
-  if (state.model !== "M1") {
-    base.splice(7, 0, ["scheduler", "Agendamento online"], ["newsletter", "Newsletter/lista"], ["live-chat", "Chat ao vivo"]);
-  }
-  return base;
 }
-
-function deadlineOptions() {
-  return [["", "Escolha"], ["sem-urgencia", "Sem urgência"], ["7-dias", "Até 7 dias"], ["15-dias", "Até 15 dias"], ["30-dias", "Até 30 dias"], ["data-especifica", "Data específica"]];
+function renderSummary() {
+  const visible=visibleSteps(),index=visible.findIndex(s=>s.id===currentStep);
+  document.querySelector('#summary-score').textContent=state.submitted?'Enviado':`${index+1}/${visible.length}`;
+  document.querySelector('#step-count').textContent=state.submitted?'Respostas recebidas':`Etapa ${index+1} de ${visible.length}`;
+  document.querySelector('#progress-bar').style.width=`${state.submitted?100:Math.round(index/Math.max(1,visible.length-1)*100)}%`;
+  document.querySelector('#draft-status').textContent=state.submitted?'Envio confirmado.':storageAvailable?'Suas respostas ficam salvas neste navegador.':'Para não perder as respostas, use “Salvar para depois” e baixe uma cópia.';
+  const summary=summaryRows();
+  document.querySelector('#summary-list').innerHTML=summary.map(([term,value])=>`<div class="${value?'':'is-pending'}"><dt>${escapeHtml(term)}</dt><dd>${escapeHtml(value||'A preencher')}</dd></div>`).join('');
 }
-
-function modelConfirmationLabel(model) {
-  const labels = {
-    M1: "Confirmo que este briefing é para Site One Page",
-    M2: "Confirmo que este briefing é para Site com Duas Páginas",
-    M3: "Confirmo que este briefing é para Portfólio ou Catálogo",
-    M4: "Confirmo que este briefing é para Site Completo Local",
-  };
-  return labels[model] || "Confirmo o modelo contratado";
+function goTo(id) {currentStep=id;submitStatus=null;showSavePanel=false;render(true);}
+async function next() {
+  if(isSubmitting||state.submitted)return;
+  updateStateFromForm();const error=stepError(currentStep);
+  if(error){showError(error);return;}
+  if(currentStep==='review'){await submitBriefing();return;}
+  const visible=visibleSteps();goTo(visible[visible.findIndex(s=>s.id===currentStep)+1].id);
 }
-
-function slugify(value) {
-  return value
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+function showError(error) {
+  submitStatus={type:'error',message:error.message};render(true);
+  const control=form.elements.namedItem(error.field);
+  if(control instanceof HTMLElement){control.setAttribute('aria-invalid','true');control.closest('details')?.setAttribute('open','');control.focus();}
 }
-
-function escapeHtml(value) {
-  return String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
-
-form.addEventListener("input", () => {
-  updateStateFromForm();
-  renderSummary();
-});
-
-form.addEventListener("change", (event) => {
-  updateStateFromForm();
-
-  if (["model", "businessNature"].includes(event.target.name)) {
-    const { visible } = currentVisibleStep();
-    currentStep = Math.min(currentStep, visible.length - 1);
-    render();
-    return;
-  }
-
-  renderSummary();
-});
-
-prevButton.addEventListener("click", () => advance(-1));
-
-nextButton.addEventListener("click", async () => {
-  updateStateFromForm();
-  const { visible, step } = currentVisibleStep();
-
-  if (step.id !== "review") {
-    currentStep = Math.min(visible.length - 1, currentStep + 1);
-    render();
-    return;
-  }
-
-  await submitBriefing();
-});
-
-resetButton.addEventListener("click", resetQuiz);
-
-window.addEventListener("resize", syncSummaryDisclosure);
-syncSummaryDisclosure();
-render();
-
 async function submitBriefing() {
-  const payload = buildPayload();
-
-  nextButton.disabled = true;
-  nextButton.textContent = "Enviando...";
-  submitStatus = { type: "pending", message: "Enviando briefing para a Jumper..." };
-  render();
-
+  if(isSubmitting||state.submitted)return;
+  for(const step of visibleSteps()){const error=stepError(step.id);if(error){currentStep=step.id;showError(error);return;}}
+  if(!state.submissionId)state.submissionId=crypto.randomUUID();
+  saveState();isSubmitting=true;submitStatus={type:'pending',message:'Enviando suas respostas. Aguarde a confirmação.'};render();
   try {
-    const response = await fetch("/api/briefings", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.message || "Não foi possível enviar o briefing.");
-    }
-
-    submitStatus = {
-      type: "success",
-      message: "Briefing recebido pela Jumper. Nossa equipe irá conferir os dados e os materiais para dar continuidade ao projeto.",
-    };
-    console.info("Briefing salvo", data);
-  } catch (error) {
-    submitStatus = { type: "error", message: `Não foi possível enviar agora. ${error.message}` };
-    console.error("Erro ao enviar briefing", error, payload);
-  } finally {
-    nextButton.disabled = false;
-    render();
-  }
+    const response=await fetch(document.querySelector('meta[name="briefing-api"]')?.content || '/api/briefings',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(buildPayload())});
+    const data=await response.json();
+    if(!response.ok)throw Error(data.message||'Não foi possível enviar agora.');
+    if(!data.ok||!data.notion_page_id)throw Error('Não recebemos a confirmação. Confira com a Jumper antes de reenviar.');
+    state.submitted=true;submitStatus=null;
+  }catch(error){submitStatus={type:'error',message:`${error.message} Suas respostas foram mantidas. Se a conexão caiu durante o envio, confira com a Jumper antes de tentar novamente.`};}
+  finally{isSubmitting=false;saveState();render(true);}
 }
+function downloadDraft() {
+  const copy=structuredClone(state);copy.submitted=false;copy.reviewConfirmed=false;copy.blogAdminPassword='';
+  const blob=new Blob([JSON.stringify({format:'jumper-briefing-draft',version:1,state:copy},null,2)],{type:'application/json'});
+  const link=document.createElement('a');link.href=URL.createObjectURL(blob);link.download='meu-briefing-jumper.json';link.click();setTimeout(()=>URL.revokeObjectURL(link.href),1000);
+}
+form.addEventListener('input',()=>{if(!isSubmitting&&!state.submitted){updateStateFromForm();renderSummary();}});
+form.addEventListener('change',async event=>{
+  if(event.target.id==='draft-import'){
+    try{const file=event.target.files[0];if(!file)return;if(file.size>500000)throw Error('Arquivo muito grande. Use a cópia de rascunho baixada neste formulário.');const draft=JSON.parse(await file.text());if(draft.format!=='jumper-briefing-draft'||draft.version!==1)throw Error('Use um arquivo de rascunho exportado pelo formulário Jumper.');state=sanitizeDraft(draft.state);currentStep=state.lastStep||'model';submitStatus={type:'success',message:'Rascunho recuperado. Confira as respostas antes de enviar.'};saveState();render(true);}catch(error){submitStatus={type:'error',message:error.message};render(true);}return;
+  }
+  if(isSubmitting||state.submitted)return;
+  const key=event.target.name;
+  const openDetails=Array.from(stepContainer.querySelectorAll('details[open]')).map(d=>d.querySelector('summary')?.textContent);
+  const scroll=stepContainer.scrollTop;
+  updateStateFromForm();
+  if(['model','businessNature','showAddress','contactUse','materialsStatus','wantsGallery','wantsTeam','wantsBooking','blogMode','hasTestimonials','domainStatus','pricingDisplay','primaryCTA'].includes(key)){
+    if(key==='model')state.reviewConfirmed=false;
+    render();for(const d of stepContainer.querySelectorAll('details'))if(openDetails.includes(d.querySelector('summary')?.textContent))d.open=true;
+    const control=form.elements.namedItem(key);if(control instanceof HTMLElement)control.focus({preventScroll:true});stepContainer.scrollTop=scroll;
+  }else renderSummary();
+});
+form.addEventListener('submit',event=>{event.preventDefault();next();});
+form.addEventListener('click',event=>{
+  const button=event.target.closest('button');if(!button||isSubmitting)return;
+  if(button.dataset.edit){updateStateFromForm();state.reviewConfirmed=false;goTo(button.dataset.edit);}
+  if(button.id==='download-draft')downloadDraft();
+  if(button.id==='close-save'){showSavePanel=false;render(true);}
+  if(button.id==='new-briefing')resetQuiz();
+});
+nextButton.addEventListener('click',next);
+prevButton.addEventListener('click',()=>{if(isSubmitting)return;updateStateFromForm();const visible=visibleSteps();const index=visible.findIndex(s=>s.id===currentStep);if(index>0)goTo(visible[index-1].id);});
+saveButton.addEventListener('click',()=>{updateStateFromForm();showSavePanel=true;submitStatus=null;render(true);stepContainer.querySelector('.save-panel')?.scrollIntoView({block:'start'});});
+window.addEventListener('beforeunload',()=>saveState());
+if(innerWidth<=860)liveSummary.open=false;
+render();
