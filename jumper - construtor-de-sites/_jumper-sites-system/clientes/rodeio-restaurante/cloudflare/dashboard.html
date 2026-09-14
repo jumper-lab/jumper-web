@@ -31,8 +31,11 @@
       .briefing-tool .tag{color:#d84022}
       .briefing-tool h2{font-size:27px;margin:14px 0 8px}
       .briefing-tool .description{max-width:520px;font-size:15px;line-height:1.45}
-      .briefing-action{display:inline-flex;flex:none;align-items:center;justify-content:space-between;gap:28px;min-height:46px;padding:0 18px;border-radius:999px;background:#101010;color:#fff;text-decoration:none;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;transition:transform .2s ease,background .2s ease}
+      .briefing-actions{display:flex;flex:none;align-items:center;gap:10px}
+      .briefing-action,.briefing-copy-link{display:inline-flex;flex:none;align-items:center;justify-content:space-between;gap:28px;min-height:46px;padding:0 18px;border-radius:999px;background:#101010;color:#fff;text-decoration:none;font:700 10px Saans,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;transition:transform .2s ease,background .2s ease;cursor:pointer}
       .briefing-action:hover,.briefing-action:focus-visible{background:#2b2b2b;transform:translateY(-2px);outline:none}
+      .briefing-copy-link{gap:0;border:1px solid #b9b0ad;background:transparent;color:#272323}
+      .briefing-copy-link:hover,.briefing-copy-link:focus-visible{border-color:#272323;background:#fff;outline:none}
       .section-label{display:flex;align-items:center;gap:9px;margin:44px 0 -26px;font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#555}
       .section-label:before{content:"";width:6px;height:6px;border-radius:50%;background:#101010}
       .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:42px}
@@ -50,7 +53,7 @@
       .open:hover .arrow,.open:focus-visible .arrow{transform:translateX(4px)}
       footer{padding-top:24px;padding-bottom:20px;justify-content:flex-start}
       @media(max-width:800px){main{padding-top:54px}.briefing-tool{align-items:start;flex-direction:column}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-      @media(max-width:560px){header,footer{padding-left:24px;padding-right:24px}.by{display:none}.top-right{gap:0}main{width:calc(100% - 48px);padding:46px 0 64px}h1{font-size:42px}.lead{font-size:16px}.briefing-tool{margin-top:32px;padding:20px}.briefing-tool h2{font-size:24px}.briefing-action{width:100%}.section-label{margin-top:34px;margin-bottom:-18px}.grid{grid-template-columns:1fr;margin-top:32px}.card{min-height:190px}.footer-copy{font-size:9px}}
+      @media(max-width:560px){header,footer{padding-left:24px;padding-right:24px}.by{display:none}.top-right{gap:0}main{width:calc(100% - 48px);padding:46px 0 64px}h1{font-size:42px}.lead{font-size:16px}.briefing-tool{margin-top:32px;padding:20px}.briefing-tool h2{font-size:24px}.briefing-actions{width:100%;flex-direction:column;align-items:stretch}.briefing-action,.briefing-copy-link{width:100%;justify-content:center}.section-label{margin-top:34px;margin-bottom:-18px}.grid{grid-template-columns:1fr;margin-top:32px}.card{min-height:190px}.footer-copy{font-size:9px}}
       @media(prefers-reduced-motion:reduce){*{transition:none!important}}
     </style>
   </head>
@@ -71,7 +74,10 @@
           <h2 id="briefing-title">Abra o formulário para o cliente</h2>
           <p class="description">Envie este link para o cliente preencher as informações do novo site. As respostas são recebidas no Notion Jumper Atlas.</p>
         </div>
-        <a class="briefing-action" href="/briefing/"><span>Abrir formulário</span><span class="arrow" aria-hidden="true">↗</span></a>
+        <div class="briefing-actions">
+          <button class="briefing-copy-link" id="copy-briefing-link" type="button" data-link="https://site.jumper.dev.br/briefing/">Copiar link</button>
+          <a class="briefing-action" href="/briefing/"><span>Abrir formulário</span><span class="arrow" aria-hidden="true">↗</span></a>
+        </div>
       </section>
       <p class="section-label">Sites em desenvolvimento</p>
       <section class="grid" aria-label="Sites disponíveis">
@@ -79,5 +85,18 @@
       </section>
     </main>
     <footer><span class="footer-copy">Sites · Jumper Studio</span></footer>
+    <script>
+      const copyBriefingLink = document.querySelector('#copy-briefing-link');
+      copyBriefingLink?.addEventListener('click', async () => {
+        const link = copyBriefingLink.dataset.link;
+        try {
+          await navigator.clipboard.writeText(link);
+          copyBriefingLink.textContent = 'Link copiado';
+        } catch {
+          copyBriefingLink.textContent = 'Não foi possível copiar';
+        }
+        window.setTimeout(() => { copyBriefingLink.textContent = 'Copiar link'; }, 2200);
+      });
+    </script>
   </body>
 </html>
