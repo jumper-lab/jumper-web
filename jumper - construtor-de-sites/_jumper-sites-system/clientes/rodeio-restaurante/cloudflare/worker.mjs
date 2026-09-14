@@ -140,7 +140,7 @@ export default {
     }
 
     if (url.pathname === '/' && !(await isAuthorized(request, password))) {
-      return htmlResponse(loginPage('/'), 401);
+      return htmlResponse(loginPage('/'));
     }
 
     if (url.pathname.startsWith('/izigym/cdn-cgi/image/')) {
