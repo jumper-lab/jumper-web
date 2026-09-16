@@ -136,3 +136,22 @@ Os valores visíveis no site continuam seguindo o briefing. As fontes públicas 
 4. **Telefone Iguatemi:** a [página oficial](https://rodeiosp.com.br/iguatemi/) informa **(11) 2348-1111**. O telefone do briefing, **(11) 3474-1333**, coincide com a página Jardins. Confirmar se o número fornecido centraliza o atendimento das duas casas; até lá, tratá-lo como contato geral, sem atribuí-lo especificamente ao Iguatemi em dados estruturados.
 
 Evidências detalhadas: `data/visual-review/revision-briefing-findings.json`. A confirmação comercial permanece pendente; os aprimoramentos técnicos e visuais independentes podem prosseguir.
+
+## Ajustes do cliente — 16/09/2026
+
+### Texto aprovado
+
+- Incluir na linha do tempo a certificação de qualidade, em **2001**.
+- Incluir a inauguração da unidade **Iguatemi**, em **2011**.
+
+### Fotografia pendente de novo acervo
+
+- Substituir a imagem de fachada da abertura por uma imagem clara e representativa da unidade.
+- Substituir a imagem editorial da unidade Iguatemi.
+- Substituir a foto do cardápio físico quando a fotografia do novo modelo for disponibilizada.
+- Na página de Cardápio, manter poucos pratos fotografados e usar a tipografia/listagem do cardápio como conteúdo principal.
+- Na página de Eventos, usar um registro de evento de cada unidade. A pasta compartilhada `EVENTOS` estava vazia na revisão, portanto ainda falta pelo menos o registro da unidade sem cobertura.
+
+### Próximo dia de fotos sugerido
+
+Fachada, salão e ambientes, pratos em destaque, cardápio atualizado e um evento em cada unidade, com prioridade para a unidade Iguatemi.
