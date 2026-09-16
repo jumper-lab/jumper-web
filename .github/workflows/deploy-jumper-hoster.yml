@@ -1,0 +1,46 @@
+name: Deploy Jumper Hoster
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'jumper - construtor-de-sites/_jumper-sites-system/**'
+      - '.github/workflows/deploy-jumper-hoster.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: jumper-hoster-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Build and deploy jumper-hoster
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: jumper - construtor-de-sites/_jumper-sites-system/clientes/rodeio-restaurante
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: jumper - construtor-de-sites/_jumper-sites-system/clientes/rodeio-restaurante/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build and stage the hub
+        run: npm run build:cloudflare
+
+      - name: Deploy to Cloudflare Workers
+        run: npx --yes wrangler deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
