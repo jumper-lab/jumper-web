@@ -6,6 +6,21 @@
   "clientRoutesAccess": "public",
   "clients": [
     {
+      "id": "jumper-briefing-novo-site",
+      "name": "Briefing de novo site",
+      "category": "Jumper",
+      "description": "Formulário dos modelos M1–M5 integrado ao Notion Jumper Atlas.",
+      "accent": "#fa4721",
+      "developmentSites": [],
+      "resourceLinks": [
+        {
+          "label": "Abrir formulário",
+          "url": "https://site.jumper.dev.br/briefing"
+        }
+      ],
+      "officialSite": null
+    },
+    {
       "id": "rodeio",
       "name": "Rodeio",
       "category": "Restaurante",

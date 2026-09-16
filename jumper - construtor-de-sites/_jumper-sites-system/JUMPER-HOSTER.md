@@ -29,3 +29,9 @@ O registro e o painel devem permanecer sincronizados. O painel é gerado a parti
 - Casa Beliê: desenvolvimentos em `/casabelie/`, `/casabelie-2/` e `/casabelie-3/`, e oficial em `https://casabelie.com.br/`
 
 Vercel pode ser usada somente quando houver pedido explícito. Ela não é origem, proxy ou etapa obrigatória do fluxo padrão.
+
+## Deploy pelo GitHub
+
+O deploy de produção é disparado exclusivamente pelo workflow `.github/workflows/deploy-jumper-hoster.yml` depois de um merge na branch `main`. O workflow instala as dependências do Rodeio, roda `npm run build:cloudflare` para gerar o pacote completo do hub e executa `wrangler deploy` para o Worker central.
+
+O repositório precisa ter o Secret Actions `CLOUDFLARE_API_TOKEN`, criado com uma API token da conta Jumper que tenha permissão de escrita para Workers. Não execute deploy de produção manualmente a partir de uma máquina local: valide localmente, envie a branch e faça merge na `main`.

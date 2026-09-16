@@ -102,7 +102,7 @@
     "hero": "100svh em todos os viewports (min-height:100svh, fallback 100vh), foto real em full-bleed com scrim quente, headline Fraunces com sublinhado de giz que se desenha ao carregar, anotação manuscrita apontando o quintal, CTA 'Pedir orçamento' + âncora 'Conhecer a casa'. Header transparente sobre o hero.",
     "first_fold_message": "O que é (casa de festas em Laranjeiras) + para quem (famílias que querem brincar de verdade) + por que confiar (casa real, quintal verde) + o que fazer (pedir orçamento).",
     "sections_rhythm": "Hero imersivo → faixa-marquee de palavras da casa (quintal verde ✳ sem telas ✳ brincar livre) → manifesto com foto de álbum → a casa/ambientes → festas (lista editorial numerada, sem 3 cards) → muro de memórias → fundadoras → prova social → novidades → contato com mapa.",
-    "blog": "Blog Autônomo Jumper: /posts/ com senha, /blog/, APIs internas, data/blog-posts.json, Astro modo server + adapter Node."
+    "blog": "Blog Autônomo Jumper: /admin/ com senha, /blog/, APIs internas, data/blog-posts.json, Astro modo server + adapter Node."
   },
 
   "motion": {

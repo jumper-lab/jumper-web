@@ -200,7 +200,7 @@
 
   "blog_module": {
     "enabled": true,
-    "admin": "/posts/ protegido por BLOG_ADMIN_PASSWORD (401 em senha errada; nada renderiza antes da senha)",
+    "admin": "/admin/ protegido por BLOG_ADMIN_PASSWORD (401 em senha errada; nada renderiza antes da senha)",
     "routes": ["/blog/", "/blog/[slug]/", "/api/blog-posts", "/api/blog-upload"],
     "storage": "data/blog-posts.json + public/uploads/blog/",
     "astro": "output: server + @astrojs/node"

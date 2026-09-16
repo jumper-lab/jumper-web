@@ -70,6 +70,7 @@ await mkdir(briefingTarget, { recursive: true });
 for (const file of ['index.html', 'styles.css', 'quiz.js']) {
   await cp(join(briefingSource, file), join(briefingTarget, file));
 }
+await cp(join(briefingSource, 'index.html'), join(target, 'briefing-page.shell'));
 await cp(join(briefingSource, 'assets'), join(briefingTarget, 'assets'), { recursive: true });
 
 const dashboardTemplate = await readFile(join(projectRoot, 'cloudflare', 'dashboard.html'), 'utf8');
@@ -91,6 +92,11 @@ for (const client of registry.clients) {
     }
     await readFile(join(target, site.slug, 'index.html'));
     links.push({ label: site.label, url: `/${site.slug}/`, external: false });
+  }
+  for (const resource of client.resourceLinks ?? []) {
+    const resourceUrl = new URL(resource.url);
+    if (resourceUrl.protocol !== 'https:') throw new Error(`O recurso de ${client.name} precisa usar HTTPS.`);
+    links.push({ label: resource.label, url: resourceUrl.href, external: true });
   }
   if (client.officialSite) {
     const officialUrl = new URL(client.officialSite.url);

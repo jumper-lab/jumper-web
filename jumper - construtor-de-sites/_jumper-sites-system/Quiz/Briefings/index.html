@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jumper Studio - Briefing Quiz</title>
-    <meta name="briefing-api" content="/api/briefings" />
+    <meta name="briefing-api" content="/briefing/api/briefings" />
     <link rel="canonical" href="https://site.jumper.dev.br/briefing" />
+    <base href="/briefing/" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -20,17 +21,27 @@
           </div>
         </div>
 
-        <section class="progress-overview" aria-label="Seu progresso">
-          <header class="progress-overview-header">
-            <span><i aria-hidden="true"></i>Seu progresso</span>
+        <details class="live-summary" aria-label="Resumo das respostas" open>
+          <summary>
+            <span>Resumo das respostas</span>
             <strong id="summary-score">1/9</strong>
-          </header>
-          <div class="progress-card">
-            <span id="step-count">Etapa 1 de 9</span>
-            <div class="progress-track" aria-hidden="true"><span id="progress-bar"></span></div>
+          </summary>
+          <div class="summary-console">
+            <div class="progress-card">
+              <div class="progress-copy">
+                <span id="step-count">Etapa 1 de 9</span>
+
+              </div>
+              <div class="progress-track" aria-hidden="true">
+                <span id="progress-bar"></span>
+              </div>
+            </div>
+            <div class="summary-console-head" aria-hidden="true">
+              <span>O caminho do seu site</span>
+            </div>
+            <dl id="summary-list"></dl>
           </div>
-          <ol id="progress-steps" class="progress-steps"></ol>
-        </section>
+        </details>
         <p id="draft-status" class="draft-status" role="status"></p>
       </aside>
 

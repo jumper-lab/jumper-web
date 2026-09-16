@@ -41,7 +41,7 @@ Prioridade: (1) fotos do @casabelie baixadas e tratadas (crop, luz quente) — m
 
 ## Blog Autônomo Jumper
 
-Astro `output:"server"` + `@astrojs/node` (standalone). `/posts/` protegido por `BLOG_ADMIN_PASSWORD` (fallback local `belie2026posts` SÓ para preview, documentado no README); senha errada → 401; nada renderiza nem é buscado antes da senha; sem auto-login por localStorage. Rotas: `/blog/`, `/blog/[slug]/`, `/api/blog-posts`, `/api/blog-upload`. Posts em `data/blog-posts.json`; upload em `public/uploads/blog/` (jpg/png/webp/avif/gif, máx 8MB). APIs públicas retornam apenas `published`; draft/archived nunca aparecem no blog público.
+Astro `output:"server"` + `@astrojs/node` (standalone). `/admin/` protegido por `BLOG_ADMIN_PASSWORD` (fallback local `belie-preview-2026` SÓ para preview, documentado no README); senha errada → 401; nada renderiza nem é buscado antes da senha; sem auto-login por localStorage. Rotas: `/blog/`, `/blog/[slug]/`, `/api/blog-posts`, `/api/blog-upload`. Posts em `data/blog-posts.json`; upload em `public/uploads/blog/` (jpg/png/webp/avif/gif, máx 8MB). APIs públicas retornam apenas `published`; draft/archived nunca aparecem no blog público.
 
 ## Checklist de Revisão Visual
 

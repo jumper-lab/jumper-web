@@ -192,7 +192,7 @@ const fieldsByStep = {
   ],
 };
 const steps = [
-  {id:'model',title:'Vamos começar pelo seu site',description:'Escolha o modelo combinado com a Jumper. Responda com suas palavras; o planejamento e os detalhes técnicos ficam com a nossa equipe.',render:()=>choiceCards('model',models.map(([value,title,text])=>({value,title:`${value} · ${title}`,text})))+`<p class="help">Não sabe o modelo? Confira com quem contratou o projeto antes de continuar.</p><section class="draft-import" aria-labelledby="draft-import-title"><div class="draft-import-copy"><strong id="draft-import-title">Já começou este briefing em outro aparelho?</strong><p>Selecione a cópia de rascunho que você baixou para continuar de onde parou.</p></div><label class="draft-upload-control"><input type="file" id="draft-import" accept="application/json,.json"><span>Selecionar cópia do rascunho</span></label><span class="draft-import-status" id="draft-import-status" aria-live="polite">Nenhum arquivo selecionado</span></section>`},
+  {id:'model',title:'Vamos começar pelo seu site',description:'Escolha o modelo combinado com a Jumper. Responda com suas palavras; o planejamento e os detalhes técnicos ficam com a nossa equipe.',render:()=>choiceCards('model',models.map(([value,title,text])=>({value,title:`${value} · ${title}`,text})))+`<p class="help">Não sabe o modelo? Confira com quem contratou o projeto antes de continuar.</p><label class="draft-import">Continuar um rascunho de outro aparelho<input type="file" id="draft-import" accept="application/json,.json"></label>`},
   {id:'business',title:'Conte um pouco sobre o negócio',description:'Quatro respostas curtas já nos ajudam a entender o ponto de partida.',render:()=>fields(fieldsByStep.business)},
   {id:'goals',title:'O que o site precisa trazer para você?',description:'Escolha a prioridade. A Jumper transforma suas respostas em conteúdo e caminhos de contato.',render:()=>fields(fieldsByStep.goals)},
   {id:'audience',title:'O que leva seu cliente a procurar você?',description:'Respostas curtas e exemplos reais ajudam a escrever um site com a voz do seu negócio.',render:()=>fields([
@@ -645,6 +645,7 @@ const form = document.querySelector('#quiz-form');
 const nextButton = document.querySelector('#next-button');
 const prevButton = document.querySelector('#prev-button');
 const saveButton = document.querySelector('#save-button');
+const liveSummary = document.querySelector('.live-summary');
 
 function render(focus=false) {
   const visible=visibleSteps();
@@ -664,18 +665,31 @@ function render(focus=false) {
   renderSummary();saveState();
   if(focus){stepContainer.scrollTop=0;stepContainer.querySelector(submitStatus?.type==='error'?'.submit-status':'h2')?.focus();}
 }
-const progressLabels={
-  model:'Modelo',business:'Seu negócio',goals:'Objetivo',audience:'Público',offer:'Oferta',trust:'Confiança',
-  'm5-reformulation':'Site atual','m5-scope':'Escopo da reforma',operation:'Atendimento',structure:'Estrutura',
-  contact:'Contato',style:'Estilo',materials:'Materiais',finish:'Cuidados finais',review:'Revisão',
-};
+function summaryRows() {
+  const s=activeState();
+  return [
+    ['Modelo',models.find(m=>m[0]===s.model)?.slice(0,2).join(' · ')],
+    ['Negócio',s.businessName],['Atendimento',businessNatures.find(n=>n[0]===s.businessNature)?.[1]],
+    ['Contato',s.whatsapp||s.contactEmail],['Atuação',s.cityCoverage],
+    ['Objetivo',s.mainGoal?answerLabel(goalChoices,s.mainGoal):''],['Público',s.targetAudience],
+    ['Necessidade',s.typicalProblem],['Diferencial',s.differentiator],['Oferta',s.priorityOffer],
+    ['Serviços / produtos',s.servicesItems],['História',s.story],
+    ['Provas',s.testimonials||s.credibilityNumbers||(s.hasTestimonials==='nao'?'Ainda sem avaliações':'')],
+    ['Estilo',s.personality?answerLabel(personalities,s.personality,'Quero orientação'):''],
+    ['Referências',s.visualReferences],['Materiais',s.materialsFolder||(s.materialsStatus==='later'?'Envio posterior':s.materialsStatus==='existing'?'Aproveitar site atual':'')],
+    ...(s.model==='M2'?[['Segunda página',s.secondaryPage?answerLabel([['sobre','Sobre'],['servicos','Serviços'],['contato','Contato'],['outra','Outra página'],['nao-sei','Definir com a Jumper']],s.secondaryPage):'']]:[]),
+    ...(s.model==='M3'||s.wantsGallery==='sim'?[['Catálogo / galeria',s.portfolioItemsDescription]]:[]),
+    ...(s.model==='M5'?[['Site atual',s.existingSiteUrl],['Páginas solicitadas',s.requestedPages],['Preservar',s.preserveItems]]:[]),
+  ];
+}
 function renderSummary() {
   const visible=visibleSteps(),index=visible.findIndex(s=>s.id===currentStep);
   document.querySelector('#summary-score').textContent=state.submitted?'Enviado':`${index+1}/${visible.length}`;
   document.querySelector('#step-count').textContent=state.submitted?'Respostas recebidas':`Etapa ${index+1} de ${visible.length}`;
   document.querySelector('#progress-bar').style.width=`${state.submitted?100:Math.round(index/Math.max(1,visible.length-1)*100)}%`;
   document.querySelector('#draft-status').textContent=state.submitted?'Envio confirmado.':storageAvailable?'Suas respostas ficam salvas neste navegador.':'Para não perder as respostas, use “Salvar para depois” e baixe uma cópia.';
-  document.querySelector('#progress-steps').innerHTML=visible.map((step,stepIndex)=>`<li class="${stepIndex===index?'is-current':''}"><span>${stepIndex+1}</span><span>${escapeHtml(progressLabels[step.id]||step.title)}</span></li>`).join('');
+  const summary=summaryRows();
+  document.querySelector('#summary-list').innerHTML=summary.map(([term,value])=>`<div class="${value?'':'is-pending'}"><dt>${escapeHtml(term)}</dt><dd>${escapeHtml(value||'A preencher')}</dd></div>`).join('');
 }
 function goTo(id) {currentStep=id;submitStatus=null;showSavePanel=false;render(true);}
 async function next() {
@@ -712,7 +726,7 @@ function downloadDraft() {
 form.addEventListener('input',()=>{if(!isSubmitting&&!state.submitted){updateStateFromForm();renderSummary();}});
 form.addEventListener('change',async event=>{
   if(event.target.id==='draft-import'){
-    try{const file=event.target.files[0];const status=document.querySelector('#draft-import-status');if(!file)return;if(status)status.textContent=file.name;if(file.size>500000)throw Error('Arquivo muito grande. Use a cópia de rascunho baixada neste formulário.');const draft=JSON.parse(await file.text());if(draft.format!=='jumper-briefing-draft'||draft.version!==1)throw Error('Use um arquivo de rascunho exportado pelo formulário Jumper.');state=sanitizeDraft(draft.state);currentStep=state.lastStep||'model';submitStatus={type:'success',message:'Rascunho recuperado. Confira as respostas antes de enviar.'};saveState();render(true);}catch(error){submitStatus={type:'error',message:error.message};render(true);}return;
+    try{const file=event.target.files[0];if(!file)return;if(file.size>500000)throw Error('Arquivo muito grande. Use a cópia de rascunho baixada neste formulário.');const draft=JSON.parse(await file.text());if(draft.format!=='jumper-briefing-draft'||draft.version!==1)throw Error('Use um arquivo de rascunho exportado pelo formulário Jumper.');state=sanitizeDraft(draft.state);currentStep=state.lastStep||'model';submitStatus={type:'success',message:'Rascunho recuperado. Confira as respostas antes de enviar.'};saveState();render(true);}catch(error){submitStatus={type:'error',message:error.message};render(true);}return;
   }
   if(isSubmitting||state.submitted)return;
   const key=event.target.name;
@@ -737,4 +751,5 @@ nextButton.addEventListener('click',next);
 prevButton.addEventListener('click',()=>{if(isSubmitting)return;updateStateFromForm();const visible=visibleSteps();const index=visible.findIndex(s=>s.id===currentStep);if(index>0)goTo(visible[index-1].id);});
 saveButton.addEventListener('click',()=>{updateStateFromForm();showSavePanel=true;submitStatus=null;render(true);stepContainer.querySelector('.save-panel')?.scrollIntoView({block:'start'});});
 window.addEventListener('beforeunload',()=>saveState());
+if(innerWidth<=860)liveSummary.open=false;
 render();

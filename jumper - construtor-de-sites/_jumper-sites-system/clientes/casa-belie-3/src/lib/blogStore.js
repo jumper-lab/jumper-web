@@ -53,6 +53,6 @@ export function slugify(title) {
 // Senha real via env. Fallback local existe SOMENTE para preview e está
 // documentado no README do cliente (regra DOC-MESTRE).
 export function checkPassword(pass) {
-  const real = process.env.BLOG_ADMIN_PASSWORD || import.meta.env.BLOG_ADMIN_PASSWORD || 'belie2026posts';
+  const real = process.env.BLOG_ADMIN_PASSWORD || import.meta.env.BLOG_ADMIN_PASSWORD || 'belie-preview-2026';
   return typeof pass === 'string' && pass.length > 0 && pass === real;
 }

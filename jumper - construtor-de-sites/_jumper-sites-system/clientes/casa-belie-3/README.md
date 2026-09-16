@@ -21,10 +21,10 @@ npm run preview    # serve o build
 
 ## Blog Autônomo Jumper
 
-- Painel: `/posts/` — pede senha antes de mostrar qualquer coisa.
-- Senha: variável de ambiente `BLOG_ADMIN_PASSWORD`. O fallback local `belie2026posts` existe SOMENTE para preview local e deve ser sobrescrito com uma senha forte no ambiente de produção (defina a env var no host).
+- Painel: `/admin/` — pede senha antes de mostrar qualquer coisa.
+- Senha: variável de ambiente `BLOG_ADMIN_PASSWORD`. **Fallback local `belie-preview-2026` existe SOMENTE para preview local** e deve ser sobrescrito com uma senha forte no ambiente de produção (defina a env var no host).
 - Trocar senha: alterar `BLOG_ADMIN_PASSWORD` no ambiente e reiniciar o processo.
-- Publicar/arquivar: no `/posts/`, editar a novidade e mudar o Status (Rascunho/Publicado/Arquivado). Só `published` aparece em `/blog/` e nas APIs públicas.
+- Publicar/arquivar: no `/admin/`, editar a novidade e mudar o Status (Rascunho/Publicado/Arquivado). Só `published` aparece em `/blog/` e nas APIs públicas.
 - Subir imagem: no editor, campo "subir imagem do computador" (jpg/png/webp/avif/gif, máx 8MB) → salva em `public/uploads/blog/` e preenche a capa; para usar no corpo: `<img src="/uploads/blog/arquivo.jpg" alt="descreva a foto">`.
 - Dados: `data/blog-posts.json`. Posts 2 e 3 estão como rascunho para desenvolvimento com o cliente.
 
@@ -48,7 +48,7 @@ briefing/               briefing normalizado + payload + entrada
 data/                   design systems, content, prompt executivo, auditoria, blog-posts.json
 public/images/          assets locais (fotos provisórias + logo oficial)
 public/uploads/blog/    uploads do painel
-src/pages/              index, sobre, festas, espaco, contato, blog/, posts/, api/
+src/pages/              index, sobre, festas, espaco, contato, blog/, admin/, api/
 src/components/         Header, Footer, HeroInterno, CtaFinal, Star
 src/lib/blogStore.js    persistência e senha do blog
 ```
