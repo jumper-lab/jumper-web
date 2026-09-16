@@ -85,7 +85,7 @@
         </div>
         <div class="briefing-actions">
           <button class="briefing-copy-link" id="copy-briefing-link" type="button" data-link="https://site.jumper.dev.br/briefing/">Copiar link</button>
-          <a class="briefing-action" href="/briefing/"><span>Abrir formulário</span><span class="arrow" aria-hidden="true">↗</span></a>
+          <a class="briefing-action" href="/briefing/" target="_blank" rel="noopener"><span>Abrir formulário</span><span class="arrow" aria-hidden="true">↗</span></a>
         </div>
       </section>
       <p class="section-label">Sites em desenvolvimento</p>
@@ -144,11 +144,12 @@
           anchor.className = 'lightbox-link';
           anchor.href = link.url;
           anchor.textContent = link.label;
-          if (link.external) { anchor.target = '_blank'; anchor.rel = 'noopener'; }
+          anchor.target = '_blank';
+          anchor.rel = 'noopener';
           const arrow = document.createElement('span');
           arrow.className = 'arrow';
           arrow.setAttribute('aria-hidden', 'true');
-          arrow.textContent = link.external ? '↗' : '→';
+          arrow.textContent = '↗';
           anchor.append(arrow);
           return anchor;
         }));
