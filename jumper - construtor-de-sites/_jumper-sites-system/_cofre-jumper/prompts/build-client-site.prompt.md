@@ -137,7 +137,7 @@ Leia:
 Se `design-system.json`, `content.json` ou `jumper.config.json` ainda não existirem, crie-os antes de continuar:
 - `design-system.json` preserva preferências visuais, personalidade A–F, cores/fontes pedidas, sites bonitos, sites a evitar e inferências iniciais;
 - `content.json` organiza conteúdo real, sem inventar telefone, endereço, equipe, preços, depoimentos, números ou certificações;
-- `jumper.config.json` registra slug, nome, modelo M1/M2/M3/M4 e engine `ds-autoral`.
+- `jumper.config.json` registra slug, nome, modelo M1/M2/M3/M4/M5 e engine `ds-autoral`.
 
 Depois de criar DS inicial e conteúdo, gere previews simples quando fizer sentido, mas não crie documentos extras de processo.
 
@@ -178,6 +178,19 @@ Apresente um preview do DS final em `data/design-system-previews/final-design-sy
 
 Gate da fase: se o DS final, lido sozinho, não permite imaginar um site específico e diferente do que você faria para outro cliente, refaça antes de avançar.
 
+BRIEFING GUIADO — TODOS OS MODELOS
+Quando `intake_version = guided-v1`, leia `production_handoff` e a seção “Complementação pela Jumper” no briefing. Consulte `_doc-mestre/FORMULARIO-GUIADO.md`. Complemente conteúdo, arquitetura e requisitos técnicos antes da construção; campos vazios e “quero orientação” são pendências, não fatos, recusas ou permissões. Recursos solicitados não ampliam o modelo contratado. Contatos do projeto só podem ser publicados conforme `operations.contact_publication`: `sim` permite usar os informados; `outro` exige o contato público indicado; `depois` exige confirmação. A preferência por IA abaixo só se aplica se `assets.ai_placeholder_permission = sim`, com aprovação das imagens antes da publicação. `nao` e `nao-sei` não autorizam IA. Banco de imagens só com permissão expressa; `pexels_mode = fallback` permite uso se faltar material adequado. Confirme depoimentos, retratos, direitos de uso, domínio e integrações; não invente credenciais, resultados ou textos atribuídos a clientes.
+
+CONTEÚDO ESPECÍFICO — CONDIÇÃO PARA CONSTRUIR
+- Para `briefing_depth = strategic-v3`, leia também `production_handoff.content_review` e os campos `differentiator_evidence`, `questions_raw`, `process_raw`, `pricing_details` e `secondary_page_goal`. A triagem é um alerta, nunca uma nota de qualidade nem aprovação automática.
+- Antes do código, registre no documento executivo já obrigatório os fatos/fontes que sustentam: promessa principal, público e necessidade, diferencial concreto, oferta e processo, provas autorizadas e direção visual. Use o exemplo do cliente, as dúvidas reais e os materiais para definir o conteúdo e a composição.
+- Se faltar informação essencial para um desses pontos, registre a pergunta específica e obtenha a complementação. Não preencha com “qualidade”, “excelência”, promessas inventadas, depoimentos fictícios ou imagens que simulem produtos, equipe ou instalações reais. Pode avançar apenas no trabalho que independe da informação pendente.
+- M1: priorize oferta e ação principal em até 5 seções; um link externo de agendamento cabe na página, sem presumir agenda própria. M2: a segunda página deve cumprir a finalidade informada e ter conteúdo próprio, sem duplicar a Home. M3: trate produtos como catálogo e trabalhos como casos com contexto e participação; não invente resultados nem itens. M4: desenvolva sobre, serviços e provas com fatos reais; blog usa temas pertinentes e textos aprovados. M5: baseie a nova estrutura no diagnóstico e no escopo aprovado, com decisão explícita sobre o que preservar, mudar e retirar.
+- Faça o teste de troca de nome: se os textos e a direção visual continuarem adequados a qualquer concorrente ao trocar apenas o nome, revise usando os fatos específicos. Registre a conclusão na auditoria existente. Formulário completo não dispensa revisão editorial.
+
+M5 — REFORMULAÇÃO
+Quando o modelo for M5, leia `_doc-mestre/M5-REFORMULACAO.md`. A estrutura não é herdada do M4: faça inventário do site atual e registre páginas, recursos, preservações, exclusões, URLs e limites aprovados em `jumper.config.json -> site.reformulation`. O briefing público é solicitação, não aprovação de arquitetura. Não construa sem aprovação real identificada e datada e sem `node scripts/m5-scope.mjs clientes/SLUG` aprovado. Use o diagnóstico no DS final sem copiar o layout anterior automaticamente. Não use nomes de clientes de exemplo.
+
 FASE 3 — GERAR O PROMPT EXECUTIVO DO SITE
 Antes de criar `src/`, gere `clientes/[slug]/data/final-site-build-prompt.md`.
 
@@ -200,6 +213,8 @@ Use exatamente estes cabeçalhos (o doctor valida a estrutura):
 - `## Critério de Pronto`
 
 Gate da fase: se o prompt executivo estiver raso, genérico ou permitir dois sites muito diferentes, refaça antes de codar.
+
+Para M5, acrescente `## Reformulação M5 e Transição` ao prompt executivo: contrato de páginas/recursos, conteúdo a migrar/retirar, mapa de URLs, integrações, backup e recuperação.
 
 FASE 4 — CONSTRUIR O SITE
 Construa o site em Astro dentro de `clientes/[slug]/`.
@@ -260,6 +275,8 @@ Gere `data/visual-quality-audit.json` com avaliação honesta, no formato que o 
 - `deep_review_passes`: lista com o que cada passe de revisão encontrou e corrigiu (mínimo 2 passes);
 - `known_issues`: obrigatório — o que ficou aquém e por quê; auditoria sem nenhuma ressalva registrada é sinal de auditoria desonesta, não de site perfeito;
 - `final_recommendation`: veredito final em texto.
+
+Para M5, registre `reformulation_checks` na auditoria com evidências de escopo, conteúdo, URLs, integrações, backup e recuperação, além de cada página e funcionalidade. Execute `node scripts/m5-scope.mjs clientes/SLUG --delivery`. Plano não é evidência: teste, registre limitações reais e bloqueie entrega se necessário.
 
 Atualize `README.md` do cliente com: como rodar, como fazer build, o que é mídia provisória e como trocar, dados pendentes do cliente, e instruções do blog quando houver.
 

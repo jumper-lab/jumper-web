@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { validateM5Scope } from "./m5-scope.mjs";
 
 import fs from "node:fs";
 import path from "node:path";
@@ -273,6 +274,11 @@ const clients = listDirs("_jumper-sites-system/clientes");
 for (const slug of clients) {
   const base = `_jumper-sites-system/clientes/${slug}`;
   const hasClientSource = isDir(`${base}/src`);
+  const config = readJson(`${base}/jumper.config.json`);
+  if (config?.site?.model === "M5") {
+    const m5Errors = validateM5Scope(config, readJson(`${base}/data/visual-quality-audit.json`), hasClientSource);
+    for (const error of m5Errors) (hasClientSource ? blockers : warnings).push(`Cliente ${slug}: ${error}`);
+  }
 
   const minimalClientFiles = [
     `${base}/jumper.config.json`,

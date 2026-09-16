@@ -67,10 +67,10 @@ await cp(belie2Pages, belie2Target, { recursive: true });
 await cp(belie3Source, belie3Target, { recursive: true });
 await cp(belie3Pages, belie3Target, { recursive: true });
 await mkdir(briefingTarget, { recursive: true });
-await cp(join(briefingSource, 'index.html'), join(briefingTarget, 'index.html'));
+for (const file of ['index.html', 'styles.css', 'quiz.js']) {
+  await cp(join(briefingSource, file), join(briefingTarget, file));
+}
 await cp(join(briefingSource, 'index.html'), join(target, 'briefing-page.shell'));
-await cp(join(briefingSource, 'styles.css'), join(briefingTarget, 'styles.css'));
-await cp(join(briefingSource, 'quiz.js'), join(briefingTarget, 'quiz.js'));
 await cp(join(briefingSource, 'assets'), join(briefingTarget, 'assets'), { recursive: true });
 
 const dashboardTemplate = await readFile(join(projectRoot, 'cloudflare', 'dashboard.html'), 'utf8');
@@ -91,19 +91,20 @@ for (const client of registry.clients) {
       throw new Error(`A URL de desenvolvimento de ${site.slug} não corresponde ao slug registrado.`);
     }
     await readFile(join(target, site.slug, 'index.html'));
-    links.push(`<a class="open" href="/${escapeHtml(site.slug)}/"><span>${escapeHtml(site.label)}</span><span class="arrow" aria-hidden="true">→</span></a>`);
+    links.push({ label: site.label, url: `/${site.slug}/`, external: false });
   }
   for (const resource of client.resourceLinks ?? []) {
     const resourceUrl = new URL(resource.url);
     if (resourceUrl.protocol !== 'https:') throw new Error(`O recurso de ${client.name} precisa usar HTTPS.`);
-    links.push(`<a class="open" href="${escapeHtml(resourceUrl.href)}" target="_blank" rel="noopener"><span>${escapeHtml(resource.label)}</span><span class="arrow" aria-hidden="true">↗</span></a>`);
+    links.push({ label: resource.label, url: resourceUrl.href, external: true });
   }
   if (client.officialSite) {
     const officialUrl = new URL(client.officialSite.url);
     if (officialUrl.protocol !== 'https:') throw new Error(`O site oficial de ${client.name} precisa usar HTTPS.`);
-    links.push(`<a class="open official" href="${escapeHtml(officialUrl.href)}" target="_blank" rel="noopener"><span>${escapeHtml(client.officialSite.label)}</span><span class="arrow" aria-hidden="true">↗</span></a>`);
+    links.push({ label: client.officialSite.label, url: officialUrl.href, external: true });
   }
-  cards.push(`<article class="card" style="--project:${escapeHtml(client.accent)}"><span class="tag">${escapeHtml(client.category)}</span><h2>${escapeHtml(client.name)}</h2><p class="description">${escapeHtml(client.description)}</p><div class="links">${links.join('')}</div></article>`);
+  const linksData = escapeHtml(JSON.stringify(links));
+  cards.push(`<article class="card" style="--project:${escapeHtml(client.accent)}"><button class="card-open" type="button" aria-haspopup="dialog" aria-controls="client-links-dialog" data-client="${escapeHtml(client.name)}" data-category="${escapeHtml(client.category)}" data-accent="${escapeHtml(client.accent)}" data-links="${linksData}"><span class="tag">${escapeHtml(client.category)}</span><h2>${escapeHtml(client.name)}</h2><p class="description">${escapeHtml(client.description)}</p><span class="card-action"><span>Abrir links</span><span class="arrow" aria-hidden="true">→</span></span></button></article>`);
 }
 const dashboard = dashboardTemplate.replace('<!-- JUMPER_CLIENT_CARDS -->', cards.join('\n'));
 if (dashboard === dashboardTemplate) throw new Error('O marcador de cards não foi encontrado no template do hub.');

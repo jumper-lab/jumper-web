@@ -26,7 +26,7 @@ O registro e o painel devem permanecer sincronizados. O painel é gerado a parti
 
 - Rodeio: desenvolvimento em `/rodeio/` e oficial em `https://rodeiosp.com.br/`
 - IZI Gym: desenvolvimento em `/izigym/` e oficial em `https://www.izigym.com.br/`, ambos servidos pelo `jumper-hoster`
-- Casa Beliê: desenvolvimentos em `/casabelie/` e `/casabelie-2/`, e oficial em `https://casabelie.com.br/`
+- Casa Beliê: desenvolvimentos em `/casabelie/`, `/casabelie-2/` e `/casabelie-3/`, e oficial em `https://casabelie.com.br/`
 
 Vercel pode ser usada somente quando houver pedido explícito. Ela não é origem, proxy ou etapa obrigatória do fluxo padrão.
 

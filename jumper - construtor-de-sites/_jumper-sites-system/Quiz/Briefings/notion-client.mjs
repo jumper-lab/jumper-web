@@ -1,14 +1,23 @@
+import { reviewBriefingContent } from "./content-review.mjs";
+import { validateGuidedIntake } from "./intake-validation.mjs";
+import { validateM5Intake } from "./m5-validation.mjs";
 const NOTION_VERSION = "2022-06-28";
 
 export async function createNotionBriefingPage(payload, config = {}) {
   if (!payload || typeof payload !== "object" || Array.isArray(payload) ||
       typeof payload.client?.name !== "string" || !payload.client.name.trim() ||
-      !["M1", "M2", "M3", "M4"].includes(payload.project_scope?.model) ||
+      !["M1", "M2", "M3", "M4", "M5"].includes(payload.project_scope?.model) ||
       !payload.created_at || !Number.isFinite(Date.parse(payload.created_at))) {
     const error = new Error("Confira nome do negócio, modelo e data de envio do briefing.");
     error.code = "invalid_briefing";
     error.status = 400;
     throw error;
+  }
+  const guidedErrors = validateGuidedIntake(payload);
+  if (guidedErrors.length) { const error = new Error(guidedErrors.join(" ")); error.status = 400; error.code = "invalid_briefing"; throw error; }
+  const m5Errors = validateM5Intake(payload);
+  if (m5Errors.length) {
+    const error = new Error(m5Errors.join(" ")); error.status = 400; error.code = "invalid_m5_briefing"; throw error;
   }
   const notionToken = config.notionToken || process.env.NOTION_TOKEN || "";
   const databaseId = config.databaseId || process.env.NOTION_DATABASE_ID || "370db609496880e28cbfce7472169134";
@@ -20,6 +29,14 @@ export async function createNotionBriefingPage(payload, config = {}) {
     throw error;
   }
 
+  if (payload.project_scope?.model === "M5") {
+    payload = { ...payload, project_scope: { ...payload.project_scope, reformulation: { ...payload.project_scope.reformulation, scope_status: "pending_review" } } };
+  }
+  if(payload.briefing_depth==='strategic-v3') {
+    const review=reviewBriefingContent(payload);
+    const pending=Array.isArray(payload.production_handoff?.pending_decisions)?payload.production_handoff.pending_decisions.filter(x=>typeof x==='string'):[];
+    payload={...payload,production_handoff:{...payload.production_handoff,status:'needs_review',content_review:review,pending_decisions:[...new Set([...pending,...review.issues])]}};
+  }
   const notionPayload = {
     parent: { database_id: databaseId },
     properties: mapPayloadToNotionProperties(payload),
@@ -131,7 +148,7 @@ export function mapPayloadToNotionProperties(payload) {
     "IDs de pixels": richText(payload.integrations?.pixel_ids_raw),
     "CRM ou sistema atual": richText(payload.integrations?.crm_current),
     "Prazo desejado": select(deadlineSelect(payload.operations?.deadline)),
-    "Pendências para iniciar": richText(payload.operations?.pending_to_start),
+    "Pendências para iniciar": richText(payload.intake_version === "guided-v1" ? (payload.production_handoff?.pending_decisions || []).join("\n") : payload.operations?.pending_to_start),
     "Informações finais": richText(payload.operations?.final_notes),
     "Melhor horário para contato": richText(payload.operations?.best_contact_time),
     "Confirmo que este briefing é para Site One Page": checkbox(model === "M1" && payload.project_scope?.model_confirmation),
@@ -140,6 +157,26 @@ export function mapPayloadToNotionProperties(payload) {
     "Confirmo que este briefing é para Site Completo Local": checkbox(model === "M4" && payload.project_scope?.model_confirmation),
   };
 
+  if (model === "M5") {
+    const reformulation = payload.project_scope.reformulation;
+    properties["Site atual M5"] = url(reformulation.existing_site_url);
+    properties["Motivo da reformulação M5"] = richText(reformulation.reason);
+    properties["Problemas atuais M5"] = richText(reformulation.problems);
+    properties["Preservar M5"] = richText(reformulation.preserve);
+    properties["Atualizar M5"] = richText(reformulation.change);
+    properties["Retirar M5"] = richText(reformulation.remove);
+    properties["Acrescentar M5"] = richText(reformulation.add);
+    properties["Páginas solicitadas M5"] = richText(reformulation.requested_pages);
+    properties["Funcionalidades atuais M5"] = richText(reformulation.existing_features);
+    properties["URLs importantes M5"] = richText(reformulation.important_urls);
+    properties["Acessos e materiais M5"] = richText(reformulation.access_notes);
+    properties["Confirmo que este briefing é para Reformulação de Site Institucional Local"] = checkbox(payload.project_scope.model_confirmation);
+  }
+
+  if (payload.intake_version === "guided-v1") {
+    properties["Preferência de imagens IA"] = select({sim:"Pode criar para aprovação",nao:"Não autorizado","nao-sei":"Quero orientação"}[payload.assets?.ai_placeholder_permission]);
+    properties["Disponibilidade de materiais"] = select({link:"Link compartilhado",later:"Envio posterior",existing:"Aproveitar site atual"}[payload.assets?.availability]);
+  }
   return Object.fromEntries(Object.entries(properties).filter(([, value]) => value));
 }
 
@@ -230,7 +267,7 @@ function renderNormalizedBriefing(payload) {
     ["Natureza do negócio", payload.project_scope?.business_nature],
     ["Personalidade visual", payload.creative_direction?.personality],
     ["Tom de voz", payload.creative_direction?.voice_tone],
-    ["Usar Pexels provisório", payload.project_scope?.use_pexels_as_placeholder ? "Sim" : "Não"],
+    ["Fotos de banco", pexelsSelect(payload.project_scope?.pexels_mode, payload.project_scope?.use_pexels_as_placeholder) || "A confirmar"],
     ["Blog ativo", payload.project_scope?.has_blog ? "Sim" : "Não"],
     ["Cidade / cobertura", payload.location?.city_coverage || payload.location?.service_area],
     ["Endereço", payload.location?.address],
@@ -247,9 +284,14 @@ Gerado automaticamente a partir do formulário público da Jumper.
 
 ${rows.map(([label, value]) => `- **${label}:** ${clean(value) || "Não informado"}`).join("\n")}
 
+${payload.project_scope?.model === "M5" ? `## Reformulação M5\n\nEscopo pendente de análise e aprovação.\n\n${Object.entries(payload.project_scope.reformulation || {}).map(([key, value]) => `- **${key}:** ${clean(value) || "Não informado"}`).join("\n")}\n` : ""}
+
+${payload.intake_version === "guided-v1" ? `## Complementação pela Jumper\n\nEstas respostas são a entrada inicial, não uma aprovação de arquitetura.\n\n${(payload.production_handoff?.pending_decisions || []).map(item => `- ${item}`).join("\n")}\n\n- Contatos do projeto podem ser publicados: ${payload.operations?.contact_publication || "A confirmar"}\n- Contato público alternativo: ${payload.operations?.public_contact || "Não informado"}\n- Materiais: ${payload.assets?.availability || "A confirmar"}\n- Site de origem dos materiais: ${payload.assets?.existing_site_url || payload.project_scope?.reformulation?.existing_site_url || "Não informado"}\n- Imagens de IA: ${payload.assets?.ai_placeholder_permission || "A confirmar"}\n- Fotos de banco: ${payload.project_scope?.pexels_mode || "A confirmar"}\n` : ""}
+
 ## Posicionamento
 
 - **Descrição curta:** ${clean(payload.content?.positioning?.short_description) || "Não informado"}
+- **Exemplo do diferencial:** ${clean(payload.content?.positioning?.differentiator_evidence) || "A levantar com o cliente"}
 - **Diferencial:** ${clean(payload.content?.positioning?.differentiator) || "Não informado"}
 - **Mensagem obrigatória:** ${clean(payload.content?.positioning?.must_have_message) || "Não informado"}
 - **Frase na voz do cliente:** ${clean(payload.content?.positioning?.client_voice_quote) || "Não informado"}
@@ -259,6 +301,7 @@ ${rows.map(([label, value]) => `- **${label}:** ${clean(value) || "Não informad
 
 - **Público-alvo:** ${clean(payload.content?.audience?.target) || "Não informado"}
 - **Pra quem não é:** ${clean(payload.content?.audience?.not_for) || "Não informado"}
+- **Dúvidas e respostas do público:** ${clean(payload.content?.audience?.questions_raw) || "A levantar com o cliente"}
 - **Problema típico:** ${clean(payload.content?.audience?.typical_problem) || "Não informado"}
 - **Resultado típico:** ${clean(payload.content?.audience?.typical_result) || "Não informado"}
 - **Objetivo principal:** ${clean(payload.content?.conversion?.main_goal) || "Não informado"}
@@ -269,11 +312,39 @@ ${rows.map(([label, value]) => `- **${label}:** ${clean(value) || "Não informad
 ## Serviços, Produtos e Prova Social
 
 - **Serviços / produtos:** ${clean(payload.content?.services?.items_raw) || "Não informado"}
+- **Como funciona:** ${clean(payload.content?.services?.process_raw) || "A levantar com o cliente"}
+- **Valores e condições para conferir:** ${clean(payload.content?.services?.pricing_details) || "Não informado ou não se aplica"}
 - **Modo de preço:** ${clean(payload.content?.services?.pricing_mode) || "Não informado"}
 - **Promoção:** ${clean(payload.content?.services?.promotion) || "Não informado"}
+- **Disponibilidade de avaliações:** ${clean(payload.content?.social_proof?.testimonials_available) || "Não informado"}
+- **Autorização dos depoimentos:** ${clean(payload.content?.social_proof?.testimonials_permission) || "A confirmar antes da publicação"}
 - **Depoimentos:** ${clean(payload.content?.social_proof?.testimonials_raw) || "Não informado"}
 - **Números de credibilidade:** ${clean(payload.content?.social_proof?.stats_raw) || "Não informado"}
 - **Credenciais / prêmios / parcerias:** ${clean(payload.content?.social_proof?.credentials_raw) || "Não informado"}
+
+## Estrutura e Conteúdo por Modelo
+
+- **Segunda página M2:** ${payload.project_scope?.model === "M2" ? clean(payload.project_scope?.secondary_page) || "A definir" : "Não se aplica"}
+- **Finalidade e conteúdo da segunda página:** ${clean(payload.project_scope?.secondary_page_goal) || "Não informado ou não se aplica"}
+- **Galeria solicitada:** ${clean(payload.production_handoff?.requested_modules?.gallery) || "A conferir no escopo"}
+- **Tipo de galeria:** ${clean(payload.content?.portfolio?.mode) || "Não informado"}
+- **Itens da galeria:** ${clean(payload.content?.portfolio?.items_description) || "Não informado"}
+- **Quantidade de itens:** ${clean(payload.content?.portfolio?.minimum_items) || "Não informado"}
+- **Categorias:** ${clean(payload.content?.portfolio?.categories_raw) || "Não informado"}
+- **Preços da galeria:** ${clean(payload.content?.portfolio?.pricing_mode) || "A definir"}
+- **Equipe solicitada:** ${clean(payload.production_handoff?.requested_modules?.team) || clean(payload.content?.team?.enabled) || "A conferir no escopo"}
+- **Pessoas e funções:** ${clean(payload.content?.team?.members_raw) || "Não informado"}
+- **Publicações:** ${clean(payload.content?.blog?.mode) || "A conferir no escopo"}
+- **Frequência:** ${clean(payload.content?.blog?.frequency) || "Não informado"}
+- **Temas e textos iniciais:** ${clean(payload.content?.blog?.initial_posts_raw) || "Não informado"}
+- **Agendamento solicitado:** ${clean(payload.production_handoff?.requested_modules?.booking) || "A conferir no escopo"}
+
+${payload.production_handoff?.content_review ? `## Revisão editorial antes da construção
+
+${payload.production_handoff.content_review.rule}
+
+${payload.production_handoff.content_review.issues.map(issue=>`- ${issue}`).join("\n") || "- Revisar adequação e veracidade das respostas; ausência de alertas automáticos não aprova conteúdo."}
+` : ""}
 
 ## Direção Visual
 
@@ -300,6 +371,9 @@ ${rows.map(([label, value]) => `- **${label}:** ${clean(value) || "Não informad
 
 ## Operação e Domínio
 
+- **Instagram:** ${clean(payload.client?.social?.instagram) || "Não informado"}
+- **Perfil público Google:** ${clean(payload.location?.google_business) || "Não informado"}
+- **Horários:** ${clean(payload.location?.business_hours) || "A confirmar"}
 - **Domínio:** ${clean(payload.domain?.status) || "Não informado"}
 - **Domínio atual:** ${clean(payload.domain?.current) || "Não informado"}
 - **Domínio desejado:** ${clean(payload.domain?.desired) || "Não informado"}
@@ -358,7 +432,7 @@ function limit(value, max) {
 }
 
 function modelSelect(model) {
-  return { M1: "M1 One Page", M2: "M2 Duas Páginas", M3: "M3 Portfolio", M4: "M4 Completo Local" }[model] || "";
+  return { M1: "M1 One Page", M2: "M2 Duas Páginas", M3: "M3 Portfolio", M4: "M4 Completo Local", M5: "M5 Reformulação Institucional" }[model] || "";
 }
 
 function businessNatureSelect(value) {
@@ -380,10 +454,11 @@ function addressDisplaySelect(value) {
 }
 
 function secondaryPageSelect(value) {
-  return { sobre: "Sobre nós", servicos: "Serviços", contato: "Contato" }[value] || "";
+  return { sobre: "Sobre nós", servicos: "Serviços", contato: "Contato", outra: "Outra página a definir" }[value] || "";
 }
 
 function goalSelect(value) {
+  if (value === "nao-sei") return "";
   return {
     whatsapp: "Gerar WhatsApp",
     agendamento: "Agendamento",

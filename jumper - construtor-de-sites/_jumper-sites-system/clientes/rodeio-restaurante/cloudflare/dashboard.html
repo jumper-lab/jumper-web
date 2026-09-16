@@ -26,22 +26,43 @@
       main{width:min(944px,calc(100% - 48px));margin:auto;padding:72px 0 80px}
       h1{font-family:Greed,Impact,sans-serif;font-size:clamp(44px,4.25vw,58px);font-weight:900;line-height:.94;letter-spacing:-.025em;text-transform:uppercase;margin:0;max-width:760px}
       .lead{font-size:17px;font-weight:300;line-height:1.45;color:var(--muted);margin:14px 0 0}
+      .briefing-tool{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-top:42px;padding:24px;border:1px solid #eadbd5;border-radius:14px;background:#fff8f5}
+      .briefing-copy{max-width:600px}
+      .briefing-tool .tag{color:#d84022}
+      .briefing-tool h2{font-size:27px;margin:14px 0 8px}
+      .briefing-tool .description{max-width:520px;font-size:15px;line-height:1.45}
+      .briefing-actions{display:flex;flex:none;align-items:center;gap:10px}
+      .briefing-action,.briefing-copy-link{display:inline-flex;flex:none;align-items:center;justify-content:space-between;gap:28px;min-height:46px;padding:0 18px;border-radius:999px;background:#101010;color:#fff;text-decoration:none;font:700 10px Saans,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;transition:transform .2s ease,background .2s ease;cursor:pointer}
+      .briefing-action:hover,.briefing-action:focus-visible{background:#2b2b2b;transform:translateY(-2px);outline:none}
+      .briefing-copy-link{gap:0;border:1px solid #b9b0ad;background:transparent;color:#272323}
+      .briefing-copy-link:hover,.briefing-copy-link:focus-visible{border-color:#272323;background:#fff;outline:none}
+      .section-label{display:flex;align-items:center;gap:9px;margin:44px 0 -26px;font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#555}
+      .section-label:before{content:"";width:6px;height:6px;border-radius:50%;background:#101010}
       .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:42px}
-      .card{min-height:260px;border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;background:#fff;transition:transform .28s cubic-bezier(.22,.8,.24,1),border-color .28s ease,box-shadow .28s ease}
-      .card:hover,.card:focus-visible{transform:translateY(-4px);border-color:#bcbcbc;box-shadow:0 15px 35px rgba(0,0,0,.055);outline:none}
+      .card{min-height:260px;border:1px solid var(--line);border-radius:14px;padding:0;background:#fff;transition:transform .28s cubic-bezier(.22,.8,.24,1),border-color .28s ease,box-shadow .28s ease}
+      .card-open{appearance:none;width:100%;min-height:258px;border:0;border-radius:inherit;padding:20px;background:transparent;color:inherit;text-align:left;display:flex;flex-direction:column;cursor:pointer;font:inherit}
+      .card:hover,.card:focus-within{transform:translateY(-4px);border-color:#bcbcbc;box-shadow:0 15px 35px rgba(0,0,0,.055)}
+      .card-open:focus-visible{outline:3px solid var(--project,var(--blue));outline-offset:3px}
       .tag{display:flex;align-items:center;gap:8px;color:var(--project,var(--blue));font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase}
       .tag:before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;flex:none}
       h2{font-size:20px;font-weight:700;line-height:1.1;letter-spacing:-.025em;margin:14px 0 8px}
       .description{font-size:14px;font-weight:300;line-height:1.35;color:var(--muted);margin:0;max-width:270px}
-      .links{display:grid;gap:8px;margin-top:auto;padding-top:22px}
-      .open{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #e7e7e7;padding:11px 0 2px;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:color .2s ease}
-      .open.official{color:var(--project,var(--blue))}
-      .open:hover,.open:focus-visible{color:var(--project,var(--blue));outline:none}
+      .card-action{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #e7e7e7;padding:13px 0 2px;margin-top:auto;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:color .2s ease}
+      .card-open:hover .card-action{color:var(--project,var(--blue))}
       .arrow{font-size:17px;line-height:.8;transition:transform .25s ease}
-      .open:hover .arrow,.open:focus-visible .arrow{transform:translateX(4px)}
+      .card-open:hover .arrow,.card-open:focus-visible .arrow{transform:translateX(4px)}
+      .link-lightbox{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:24px;background:rgba(16,16,16,.45);backdrop-filter:blur(7px);opacity:0;visibility:hidden;transition:opacity .2s ease,visibility .2s ease}
+      .link-lightbox.is-open{opacity:1;visibility:visible}
+      .lightbox-panel{width:min(100%,470px);max-height:min(680px,calc(100svh - 48px));overflow:auto;border-radius:16px;background:#fff;padding:24px;box-shadow:0 28px 80px rgba(0,0,0,.2);transform:translateY(10px) scale(.98);transition:transform .24s cubic-bezier(.22,.8,.24,1)}
+      .link-lightbox.is-open .lightbox-panel{transform:translateY(0) scale(1)}
+      .lightbox-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;padding-bottom:20px;border-bottom:1px solid #e7e7e7}
+      .lightbox-head .tag{margin-bottom:12px}.lightbox-head h2{margin:0;font-size:28px}.lightbox-close{appearance:none;flex:none;width:36px;height:36px;border:1px solid var(--line);border-radius:50%;background:#fff;color:var(--ink);cursor:pointer;font:24px/1 Arial,sans-serif;transition:background .2s ease}
+      .lightbox-close:hover,.lightbox-close:focus-visible{background:#f2f2f2;outline:2px solid var(--ink);outline-offset:2px}
+      .lightbox-links{display:grid;margin-top:6px}.lightbox-link{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;border-bottom:1px solid #e7e7e7;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}.lightbox-link:hover,.lightbox-link:focus-visible{color:var(--lightbox-accent,var(--blue));outline:none}.lightbox-link .arrow{flex:none}
+      body.lightbox-open{overflow:hidden}
       footer{padding-top:24px;padding-bottom:20px;justify-content:flex-start}
-      @media(max-width:800px){main{padding-top:54px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-      @media(max-width:560px){header,footer{padding-left:24px;padding-right:24px}.by{display:none}.top-right{gap:0}main{width:calc(100% - 48px);padding:46px 0 64px}h1{font-size:42px}.lead{font-size:16px}.grid{grid-template-columns:1fr;margin-top:32px}.card{min-height:190px}.footer-copy{font-size:9px}}
+      @media(max-width:800px){main{padding-top:54px}.briefing-tool{align-items:start;flex-direction:column}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+      @media(max-width:560px){header,footer{padding-left:24px;padding-right:24px}.by{display:none}.top-right{gap:0}main{width:calc(100% - 48px);padding:46px 0 64px}h1{font-size:42px}.lead{font-size:16px}.briefing-tool{margin-top:32px;padding:20px}.briefing-tool h2{font-size:24px}.briefing-actions{width:100%;flex-direction:column;align-items:stretch}.briefing-action,.briefing-copy-link{width:100%;justify-content:center}.section-label{margin-top:34px;margin-bottom:-18px}.grid{grid-template-columns:1fr;margin-top:32px}.card{min-height:190px}.footer-copy{font-size:9px}}
       @media(prefers-reduced-motion:reduce){*{transition:none!important}}
     </style>
   </head>
@@ -56,10 +77,92 @@
     <main>
       <h1>Os sites criados pela Jumper.</h1>
       <p class="lead">Acesse, por cliente, as versões em desenvolvimento e os sites oficiais.</p>
+      <section class="briefing-tool" aria-labelledby="briefing-title">
+        <div class="briefing-copy">
+          <span class="tag">Formulário de briefing</span>
+          <h2 id="briefing-title">Acesse o formulário de briefing</h2>
+          <p class="description">Envie este link para o cliente preencher as informações do novo site. As respostas são recebidas no Notion Jumper Atlas.</p>
+        </div>
+        <div class="briefing-actions">
+          <button class="briefing-copy-link" id="copy-briefing-link" type="button" data-link="https://site.jumper.dev.br/briefing/">Copiar link</button>
+          <a class="briefing-action" href="/briefing/" target="_blank" rel="noopener"><span>Abrir formulário</span><span class="arrow" aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+      <p class="section-label">Sites em desenvolvimento</p>
       <section class="grid" aria-label="Sites disponíveis">
         <!-- JUMPER_CLIENT_CARDS -->
       </section>
     </main>
     <footer><span class="footer-copy">Sites · Jumper Studio</span></footer>
+    <div class="link-lightbox" id="client-links-dialog" aria-hidden="true">
+      <section class="lightbox-panel" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" tabindex="-1">
+        <div class="lightbox-head">
+          <div><span class="tag" id="lightbox-category"></span><h2 id="lightbox-title"></h2></div>
+          <button class="lightbox-close" type="button" aria-label="Fechar links">×</button>
+        </div>
+        <nav class="lightbox-links" id="lightbox-links" aria-label="Links do cliente"></nav>
+      </section>
+    </div>
+    <script>
+      const copyBriefingLink = document.querySelector('#copy-briefing-link');
+      copyBriefingLink?.addEventListener('click', async () => {
+        const link = copyBriefingLink.dataset.link;
+        try {
+          await navigator.clipboard.writeText(link);
+          copyBriefingLink.textContent = 'Link copiado';
+        } catch {
+          copyBriefingLink.textContent = 'Não foi possível copiar';
+        }
+        window.setTimeout(() => { copyBriefingLink.textContent = 'Copiar link'; }, 2200);
+      });
+
+      const lightbox = document.querySelector('#client-links-dialog');
+      const lightboxPanel = lightbox?.querySelector('.lightbox-panel');
+      const lightboxClose = lightbox?.querySelector('.lightbox-close');
+      const lightboxTitle = lightbox?.querySelector('#lightbox-title');
+      const lightboxCategory = lightbox?.querySelector('#lightbox-category');
+      const lightboxLinks = lightbox?.querySelector('#lightbox-links');
+      let lastTrigger = null;
+
+      function closeLightbox() {
+        if (!lightbox) return;
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('lightbox-open');
+        lastTrigger?.focus();
+      }
+
+      function openLightbox(trigger) {
+        if (!lightbox || !lightboxLinks || !lightboxTitle || !lightboxCategory) return;
+        const links = JSON.parse(trigger.dataset.links || '[]');
+        lastTrigger = trigger;
+        lightboxTitle.textContent = trigger.dataset.client || 'Links';
+        lightboxCategory.textContent = trigger.dataset.category || 'Sites';
+        lightbox.style.setProperty('--lightbox-accent', trigger.dataset.accent || '#0787e8');
+        lightboxLinks.replaceChildren(...links.map((link) => {
+          const anchor = document.createElement('a');
+          anchor.className = 'lightbox-link';
+          anchor.href = link.url;
+          anchor.textContent = link.label;
+          anchor.target = '_blank';
+          anchor.rel = 'noopener';
+          const arrow = document.createElement('span');
+          arrow.className = 'arrow';
+          arrow.setAttribute('aria-hidden', 'true');
+          arrow.textContent = '↗';
+          anchor.append(arrow);
+          return anchor;
+        }));
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('lightbox-open');
+        lightboxClose?.focus();
+      }
+
+      document.querySelectorAll('.card-open').forEach((trigger) => trigger.addEventListener('click', () => openLightbox(trigger)));
+      lightboxClose?.addEventListener('click', closeLightbox);
+      lightbox?.addEventListener('click', (event) => { if (event.target === lightbox) closeLightbox(); });
+      document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && lightbox?.classList.contains('is-open')) closeLightbox(); });
+    </script>
   </body>
 </html>

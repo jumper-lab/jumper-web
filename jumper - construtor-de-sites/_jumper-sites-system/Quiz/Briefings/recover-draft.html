@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Recuperar rascunho — Jumper</title>
+<style>body{font:18px/1.6 Arial,sans-serif;color:#eee;background:#111;max-width:640px;margin:8vh auto;padding:24px}h1{line-height:1.15}a{color:#ffaf9c}button{font:inherit;background:#fff;border:0;border-radius:6px;padding:14px 20px;cursor:pointer}button:disabled{opacity:.4;cursor:default}p{overflow-wrap:anywhere}</style></head>
+<body><h1>Leve seu rascunho para o endereço oficial.</h1><p id="status">Conferindo as respostas salvas neste navegador…</p><button id="download" type="button" disabled>Baixar meu rascunho</button><p>Depois de baixar, abra o formulário oficial e escolha “Continuar um rascunho de outro aparelho” na primeira etapa. O arquivo contém suas respostas; guarde com cuidado.</p><p><a href="https://site.jumper.dev.br/briefing">Abrir o formulário oficial →</a></p>
+<script>
+let draft;
+try {
+ const raw=localStorage.getItem('jumper-studio-briefing-guided-v1')||localStorage.getItem('jumper-studio-briefing-quiz-v2');
+ if(raw){draft=JSON.parse(raw);if(!draft||typeof draft!=='object'||Array.isArray(draft))throw Error();}
+ if(draft&&Object.keys(draft).length){
+  const received=draft.submitted===true;
+  draft.blogAdminPassword='';draft.submitted=false;draft.reviewConfirmed=false;
+  document.querySelector('#status').textContent=received?'Este briefing já estava marcado como enviado. Você pode baixar uma cópia, mas confira com a Jumper antes de reenviar.':'Encontramos respostas salvas. Baixe uma cópia para continuar no novo formulário.';
+  document.querySelector('#download').disabled=false;
+ }else document.querySelector('#status').textContent='Não encontramos rascunho neste navegador. Tente no aparelho e navegador usados no preenchimento anterior.';
+}catch {document.querySelector('#status').textContent='Não foi possível acessar o rascunho. Confira se este é o mesmo navegador e se o armazenamento está permitido.';}
+document.querySelector('#download').addEventListener('click',()=>{if(!draft)return;const url=URL.createObjectURL(new Blob([JSON.stringify({format:'jumper-briefing-draft',version:1,state:draft},null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='meu-briefing-jumper.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+</script></body></html>

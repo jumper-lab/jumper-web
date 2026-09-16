@@ -1,0 +1,229 @@
+---
+// Painel do Blog Autônomo Jumper. Toda leitura/escrita passa pelas APIs com senha
+// (x-blog-pass). Antes da senha correta, nenhum dado é renderizado nem buscado.
+// Sem auto-login por localStorage: a senha vive só na memória da aba.
+import Base from '../../layouts/Base.astro';
+import { withBase } from '../../lib/paths.js';
+
+export const prerender = false;
+---
+<Base title="Posts — Casa Beliê" description="Painel de novidades da Casa Beliê." noChrome={true}>
+  <div class="admin">
+    <!-- LOGIN -->
+    <div id="tela-login" class="tela">
+      <img src={withBase('/images/logo-belie-96.webp')} alt="Casa Beliê" width="96" height="96" />
+      <h1>Novidades da casa</h1>
+      <p class="lead">Digite a senha para editar as novidades.</p>
+      <form id="form-login">
+        <div class="field">
+          <label for="senha">Senha</label>
+          <input id="senha" type="password" autocomplete="current-password" required />
+          <span class="err" id="login-err">Senha incorreta. Tente de novo.</span>
+        </div>
+        <button class="btn" type="submit">Entrar <span class="arr">→</span></button>
+      </form>
+    </div>
+
+    <!-- PAINEL -->
+    <div id="tela-painel" class="tela" hidden>
+      <header class="topo">
+        <h1>Novidades</h1>
+        <div class="acoes">
+          <button class="btn" id="novo-post" type="button">+ Nova novidade</button>
+          <button class="btn ghost dark" id="sair" type="button">Sair</button>
+        </div>
+      </header>
+
+      <div class="abas" role="tablist" aria-label="Filtrar por status">
+        <button class="aba ativa" data-st="published" role="tab" aria-selected="true">Publicados</button>
+        <button class="aba" data-st="draft" role="tab" aria-selected="false">Rascunhos</button>
+        <button class="aba" data-st="archived" role="tab" aria-selected="false">Arquivados</button>
+      </div>
+      <ul id="lista" role="list"></ul>
+
+      <!-- EDITOR -->
+      <div id="editor" hidden>
+        <h2 id="editor-titulo">Nova novidade</h2>
+        <div class="field"><label for="e-title">Título</label><input id="e-title" type="text" /></div>
+        <div class="field"><label for="e-excerpt">Resumo (aparece na lista)</label><input id="e-excerpt" type="text" /></div>
+        <div class="field"><label for="e-body">Conteúdo (HTML simples: &lt;p&gt;, &lt;strong&gt;, &lt;em&gt;, &lt;img&gt;)</label><textarea id="e-body" rows="10"></textarea></div>
+        <div class="linha">
+          <div class="field"><label for="e-date">Data</label><input id="e-date" type="date" /></div>
+          <div class="field"><label for="e-status">Status</label>
+            <select id="e-status">
+              <option value="draft">Rascunho</option>
+              <option value="published">Publicado</option>
+              <option value="archived">Arquivado</option>
+            </select>
+          </div>
+        </div>
+        <div class="field"><label for="e-cover">Imagem de capa (caminho)</label><input id="e-cover" type="text" placeholder="/uploads/blog/…" /></div>
+        <div class="field">
+          <label for="e-upload">Ou subir imagem do computador</label>
+          <input id="e-upload" type="file" accept="image/*" />
+          <span class="mini" id="upload-status"></span>
+        </div>
+        <div class="editor-acoes">
+          <button class="btn" id="salvar" type="button">Salvar</button>
+          <button class="btn ghost dark" id="cancelar" type="button">Cancelar</button>
+          <button class="btn perigo" id="excluir" type="button" hidden>Excluir</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .admin{min-height:100vh;min-height:100svh;background:var(--lav-veu);padding:48px var(--gutter)}
+  .tela{max-width:860px;margin:0 auto;background:#fff;border-radius:24px;padding:clamp(28px,4vw,48px);border:1px solid rgba(58,52,64,.07)}
+  #tela-login{max-width:460px;text-align:center}
+  #tela-login img{margin:0 auto 16px}
+  #tela-login h1{font-size:1.8rem;margin-bottom:6px}
+  #tela-login .lead{margin:0 auto 24px}
+  #tela-login form{text-align:left}
+  #tela-login .btn{width:100%;justify-content:center}
+  #login-err{display:none}
+  #tela-login.erro #login-err{display:block}
+  .topo{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+  .topo h1{font-size:1.7rem}
+  .acoes{display:flex;gap:10px}
+  .abas{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+  .aba{font:inherit;font-weight:800;background:var(--lav-veu);border:0;border-radius:999px;padding:9px 18px;cursor:pointer;color:var(--lav-prof)}
+  .aba.ativa{background:var(--lav-prof);color:#fff}
+  #lista{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px}
+  #lista li{display:flex;justify-content:space-between;align-items:center;gap:14px;border:1px solid rgba(58,52,64,.1);border-radius:14px;padding:14px 18px}
+  #lista .t{font-weight:800}
+  #lista .d{font-size:.83rem;color:var(--ink-suave)}
+  #lista button{font:inherit;font-weight:800;color:var(--lav-prof);background:none;border:0;cursor:pointer;text-decoration:underline}
+  #editor{margin-top:32px;border-top:2px dashed var(--lav-brand);padding-top:28px}
+  #editor h2{margin-bottom:18px}
+  .linha{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:560px){.linha{grid-template-columns:1fr}}
+  .editor-acoes{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+  .btn.perigo{background:#B3372E}
+  .mini{font-size:.83rem;color:var(--ink-suave)}
+  @media(max-width:560px){
+    .admin{padding:24px 14px}
+    .tela{padding:26px 20px;border-radius:20px}
+    .acoes{width:100%}
+    .acoes .btn{flex:1;padding-inline:14px}
+    #lista li{align-items:flex-start;padding:14px}
+    #lista .d{overflow-wrap:anywhere}
+    .editor-acoes .btn{flex:1 1 auto}
+  }
+</style>
+
+<script>
+  const APP_BASE = import.meta.env.BASE_URL.endsWith('/')
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
+  let PASS = null;          // só em memória — sem localStorage (regra do sistema)
+  let POSTS = [];
+  let filtro = 'published';
+  let editSlug = null;
+
+  const $ = (id) => document.getElementById(id);
+  const api = (body) => fetch(`${APP_BASE}api/blog-posts`, {
+    method: body ? 'POST' : 'GET',
+    headers: { 'x-blog-pass': PASS, ...(body ? { 'Content-Type': 'application/json' } : {}) },
+    body: body ? JSON.stringify(body) : undefined,
+  });
+
+  $('form-login').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    PASS = $('senha').value;
+    const r = await api();
+    if (r.status === 401) { PASS = null; $('tela-login').classList.add('erro'); return; }
+    POSTS = await r.json();
+    $('tela-login').hidden = true;
+    $('tela-painel').hidden = false;
+    render();
+  });
+
+  $('sair').addEventListener('click', () => location.reload());
+
+  document.querySelectorAll('.aba').forEach((b) => b.addEventListener('click', () => {
+    filtro = b.dataset.st;
+    document.querySelectorAll('.aba').forEach((x) => { x.classList.toggle('ativa', x === b); x.setAttribute('aria-selected', String(x === b)); });
+    render();
+  }));
+
+  function render() {
+    const ul = $('lista');
+    ul.innerHTML = '';
+    const items = POSTS.filter((p) => p.status === filtro);
+    if (!items.length) { ul.innerHTML = '<li><span class="d">Nada por aqui ainda.</span></li>'; return; }
+    for (const p of items) {
+      const li = document.createElement('li');
+      const info = document.createElement('div');
+      const t = document.createElement('div'); t.className = 't'; t.textContent = p.title;
+      const d = document.createElement('div'); d.className = 'd'; d.textContent = `${p.dateLabel || p.date} · /blog/${p.slug}/`;
+      info.append(t, d);
+      const ed = document.createElement('button'); ed.textContent = 'Editar';
+      ed.addEventListener('click', () => abrirEditor(p));
+      li.append(info, ed);
+      ul.append(li);
+    }
+  }
+
+  function abrirEditor(p) {
+    editSlug = p?.slug ?? null;
+    $('editor-titulo').textContent = p ? 'Editar novidade' : 'Nova novidade';
+    $('e-title').value = p?.title ?? '';
+    $('e-excerpt').value = p?.excerpt ?? '';
+    $('e-body').value = p?.body ?? '';
+    $('e-date').value = p?.date ?? new Date().toISOString().slice(0, 10);
+    $('e-status').value = p?.status ?? 'draft';
+    $('e-cover').value = p?.cover ?? '';
+    $('excluir').hidden = !p;
+    $('upload-status').textContent = '';
+    $('editor').hidden = false;
+    $('e-title').focus();
+  }
+
+  $('novo-post').addEventListener('click', () => abrirEditor(null));
+  $('cancelar').addEventListener('click', () => { $('editor').hidden = true; });
+
+  $('salvar').addEventListener('click', async () => {
+    const post = {
+      title: $('e-title').value.trim(),
+      excerpt: $('e-excerpt').value.trim(),
+      body: $('e-body').value,
+      date: $('e-date').value,
+      status: $('e-status').value,
+      cover: $('e-cover').value.trim(),
+    };
+    if (!post.title) { alert('A novidade precisa de um título.'); return; }
+    const body = editSlug ? { action: 'update', slug: editSlug, post } : { action: 'create', post };
+    const r = await api(body);
+    if (!r.ok) { alert('Não foi possível salvar. Tente de novo.'); return; }
+    POSTS = await (await api()).json();
+    $('editor').hidden = true;
+    render();
+  });
+
+  $('excluir').addEventListener('click', async () => {
+    if (!editSlug || !confirm('Excluir esta novidade de vez?')) return;
+    const r = await api({ action: 'delete', slug: editSlug });
+    if (!r.ok) { alert('Não foi possível excluir.'); return; }
+    POSTS = await (await api()).json();
+    $('editor').hidden = true;
+    render();
+  });
+
+  $('e-upload').addEventListener('change', async () => {
+    const f = $('e-upload').files[0];
+    if (!f) return;
+    $('upload-status').textContent = 'Subindo…';
+    const fd = new FormData();
+    fd.append('file', f);
+    const r = await fetch(`${APP_BASE}api/blog-upload`, { method: 'POST', headers: { 'x-blog-pass': PASS }, body: fd });
+    const data = await r.json().catch(() => ({}));
+    if (r.ok && data.url) {
+      $('e-cover').value = data.url;
+      $('upload-status').textContent = `Pronto: ${data.url} (copiada para a capa; use também no corpo com <img src="${data.url}" alt="descreva a foto">)`;
+    } else {
+      $('upload-status').textContent = 'Falha no upload. Verifique o formato (jpg/png/webp) e o tamanho (máx 8MB).';
+    }
+  });
+</script>
