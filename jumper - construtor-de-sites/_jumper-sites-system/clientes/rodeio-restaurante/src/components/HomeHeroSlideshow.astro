@@ -1,0 +1,217 @@
+---
+import { getImage } from 'astro:assets';
+import { photos, type PhotoName } from '../lib/photos';
+
+interface Slide {
+  name: PhotoName;
+  caption: string;
+  alt: string;
+}
+
+const slides: Slide[] = [
+  {
+    name: 'reservas',
+    caption: 'Rodeio Jardins · a casa em movimento',
+    alt: 'Salão do Rodeio Jardins em movimento, com clientes reunidos à mesa',
+  },
+  {
+    name: 'cardapioHero',
+    caption: 'A carne, no centro da experiência',
+    alt: 'Corte de carne grelhada servido no Rodeio',
+  },
+  {
+    name: 'iguatemi',
+    caption: 'Rodeio Iguatemi · São Paulo',
+    alt: 'Salão do Rodeio Iguatemi com mesas postas, madeira e vegetação',
+  },
+  {
+    name: 'servico',
+    caption: 'Arroz Rodeio · um clássico da casa',
+    alt: 'Arroz Rodeio sendo finalizado e servido à mesa',
+  },
+  {
+    name: 'jardinsLounge',
+    caption: 'Jardins · encontros depois que anoitece',
+    alt: 'Lounge do Rodeio Jardins à noite, iluminado por pequenos abajures',
+  },
+  {
+    name: 'mesa',
+    caption: 'A mesa preparada para o próximo encontro',
+    alt: 'Mesa preparada no Rodeio, com louças, taças e iluminação intimista',
+  },
+];
+
+const crop = async (name: PhotoName, widths: number[], ratio: number) => {
+  const source = photos[name];
+  const images = await Promise.all(widths.map((width) => getImage({
+    src: source,
+    width,
+    height: Math.round(width / ratio),
+    fit: 'cover',
+    position: 'centre',
+    format: 'avif',
+    quality: 60,
+  })));
+  return {
+    src: images[0].src,
+    srcset: images.map((image, index) => `${image.src} ${widths[index]}w`).join(', '),
+  };
+};
+
+const preparedSlides = await Promise.all(slides.map(async (slide) => {
+  const [phone, tablet, desktop] = await Promise.all([
+    crop(slide.name, [360, 540, 720, 900], 9 / 16),
+    crop(slide.name, [640, 840, 1080], 4 / 5),
+    crop(slide.name, [960, 1440, 1920, 2560], 16 / 9),
+  ]);
+  return { ...slide, phone, tablet, desktop };
+}));
+---
+
+<div class="home-slideshow" data-home-slideshow data-slide-count={preparedSlides.length}>
+  <div class="home-slideshow-frames" aria-hidden="true">
+    {preparedSlides.map((slide, index) => (
+      <div class:list={['hero-slide', { 'is-active': index === 0 }]} data-hero-slide data-caption={slide.caption}>
+        <picture>
+          <source
+            media="(max-width:599px) and (orientation:portrait)"
+            srcset={index === 0 ? slide.phone.srcset : undefined}
+            data-srcset={index > 0 ? slide.phone.srcset : undefined}
+            sizes="max(100vw, 56.25vh)"
+            width="900"
+            height="1600"
+            type="image/avif"
+          />
+          <source
+            media="(min-width:600px) and (max-width:1199px) and (orientation:portrait)"
+            srcset={index === 0 ? slide.tablet.srcset : undefined}
+            data-srcset={index > 0 ? slide.tablet.srcset : undefined}
+            sizes="max(100vw, 80vh)"
+            width="1080"
+            height="1350"
+            type="image/avif"
+          />
+          <img
+            src={index === 0 ? slide.desktop.src : undefined}
+            srcset={index === 0 ? slide.desktop.srcset : undefined}
+            data-src={index > 0 ? slide.desktop.src : undefined}
+            data-srcset={index > 0 ? slide.desktop.srcset : undefined}
+            sizes="max(100vw, 177.78vh)"
+            width="2560"
+            height="1440"
+            alt=""
+            loading={index === 0 ? 'eager' : 'lazy'}
+            fetchpriority={index === 0 ? 'high' : 'low'}
+            decoding="async"
+          />
+        </picture>
+      </div>
+    ))}
+  </div>
+
+  <div class="home-slideshow-controls" aria-label="Fotografias em destaque">
+    <span class="home-slideshow-count" aria-hidden="true"><span data-slide-current>01</span> / {String(preparedSlides.length).padStart(2, '0')}</span>
+    <div class="home-slideshow-dots">
+      {preparedSlides.map((slide, index) => (
+        <button
+          type="button"
+          class:list={['home-slideshow-dot', { 'is-active': index === 0 }]}
+          data-slide-control={index}
+          aria-label={`Exibir fotografia ${index + 1}: ${slide.caption}`}
+          aria-current={index === 0 ? 'true' : undefined}
+        ><span></span></button>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script>
+  const slideshow = document.querySelector<HTMLElement>('[data-home-slideshow]');
+
+  if (slideshow && slideshow.dataset.ready !== 'true') {
+    slideshow.dataset.ready = 'true';
+    const frames = [...slideshow.querySelectorAll<HTMLElement>('[data-hero-slide]')];
+    const controls = [...slideshow.querySelectorAll<HTMLButtonElement>('[data-slide-control]')];
+    const currentLabel = slideshow.querySelector<HTMLElement>('[data-slide-current]');
+    const caption = slideshow.closest('figure')?.querySelector<HTMLElement>('[data-home-slide-caption]');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const connection = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
+    const limitedConnection = Boolean(connection?.saveData || connection?.effectiveType === 'slow-2g' || connection?.effectiveType === '2g');
+    let activeIndex = 0;
+    let timer = 0;
+    let transitionToken = 0;
+
+    const loadFrame = (index: number) => {
+      const frame = frames[index];
+      if (!frame || frame.dataset.loaded === 'true') return;
+      frame.querySelectorAll<HTMLSourceElement>('source[data-srcset]').forEach((source) => {
+        source.srcset = source.dataset.srcset || '';
+        source.removeAttribute('data-srcset');
+      });
+      const image = frame.querySelector<HTMLImageElement>('img[data-src]');
+      if (image) {
+        image.srcset = image.dataset.srcset || '';
+        image.src = image.dataset.src || '';
+        image.removeAttribute('data-srcset');
+        image.removeAttribute('data-src');
+      }
+      frame.dataset.loaded = 'true';
+    };
+
+    const preloadFollowingFrame = () => {
+      if (limitedConnection || reducedMotion) return;
+      const nextIndex = (activeIndex + 1) % frames.length;
+      const preload = () => loadFrame(nextIndex);
+      const idleWindow = window as Window & { requestIdleCallback?: (callback: () => void, options?: { timeout: number }) => number };
+      if (typeof idleWindow.requestIdleCallback === 'function') {
+        idleWindow.requestIdleCallback(preload, { timeout: 1800 });
+      } else {
+        globalThis.setTimeout(preload, 700);
+      }
+    };
+
+    const schedule = () => {
+      window.clearTimeout(timer);
+      if (reducedMotion || limitedConnection || document.hidden) return;
+      timer = window.setTimeout(() => showFrame((activeIndex + 1) % frames.length), 6500);
+    };
+
+    const commitFrame = (index: number) => {
+      frames.forEach((frame, frameIndex) => frame.classList.toggle('is-active', frameIndex === index));
+      controls.forEach((control, controlIndex) => {
+        const isActive = controlIndex === index;
+        control.classList.toggle('is-active', isActive);
+        if (isActive) control.setAttribute('aria-current', 'true');
+        else control.removeAttribute('aria-current');
+      });
+      activeIndex = index;
+      if (currentLabel) currentLabel.textContent = String(index + 1).padStart(2, '0');
+      if (caption) caption.textContent = frames[index]?.dataset.caption || '';
+      preloadFollowingFrame();
+      schedule();
+    };
+
+    const showFrame = async (index: number) => {
+      const normalizedIndex = (index + frames.length) % frames.length;
+      if (normalizedIndex === activeIndex) return;
+      const token = ++transitionToken;
+      loadFrame(normalizedIndex);
+      const image = frames[normalizedIndex]?.querySelector('img');
+      if (image && !image.complete) {
+        await Promise.race([
+          image.decode().catch(() => undefined),
+          new Promise((resolve) => window.setTimeout(resolve, 1600)),
+        ]);
+      }
+      if (token === transitionToken) commitFrame(normalizedIndex);
+    };
+
+    const queueInitialPreload = () => globalThis.setTimeout(preloadFollowingFrame, 3200);
+
+    controls.forEach((control, index) => control.addEventListener('click', () => showFrame(index)));
+    document.addEventListener('visibilitychange', () => document.hidden ? window.clearTimeout(timer) : schedule());
+    if (document.readyState === 'complete') queueInitialPreload();
+    else window.addEventListener('load', queueInitialPreload, { once: true });
+    schedule();
+  }
+</script>
