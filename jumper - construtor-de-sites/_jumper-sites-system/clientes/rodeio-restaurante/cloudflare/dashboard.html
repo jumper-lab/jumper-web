@@ -39,16 +39,16 @@
       .briefing-copy-link:hover,.briefing-copy-link:focus-visible{border-color:#272323;background:#fff;outline:none}
       .section-label{display:flex;align-items:center;gap:9px;margin:44px 0 -26px;font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#555}
       .section-label:before{content:"";width:6px;height:6px;border-radius:50%;background:#101010}
-      .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:start;gap:16px;margin-top:42px}
-      .card{border:1px solid var(--line);border-radius:14px;padding:0;background:#fff;transition:transform .28s cubic-bezier(.22,.8,.24,1),border-color .28s ease,box-shadow .28s ease}
-      .card-open{appearance:none;width:100%;border:0;border-radius:inherit;padding:20px;background:transparent;color:inherit;text-align:left;display:flex;flex-direction:column;cursor:pointer;font:inherit}
+      .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:42px}
+      .card{min-height:222px;border:1px solid var(--line);border-radius:14px;padding:0;background:#fff;transition:transform .28s cubic-bezier(.22,.8,.24,1),border-color .28s ease,box-shadow .28s ease}
+      .card-open{appearance:none;width:100%;min-height:220px;border:0;border-radius:inherit;padding:20px;background:transparent;color:inherit;text-align:left;display:flex;flex-direction:column;cursor:pointer;font:inherit}
       .card:hover,.card:focus-within{transform:translateY(-4px);border-color:#bcbcbc;box-shadow:0 15px 35px rgba(0,0,0,.055)}
       .card-open:focus-visible{outline:3px solid var(--project,var(--blue));outline-offset:3px}
       .tag{display:flex;align-items:center;gap:8px;color:var(--project,var(--blue));font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase}
       .tag:before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;flex:none}
       h2{font-size:20px;font-weight:700;line-height:1.1;letter-spacing:-.025em;margin:14px 0 8px}
       .description{font-size:14px;font-weight:300;line-height:1.35;color:var(--muted);margin:0;max-width:270px}
-      .card-action{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #e7e7e7;padding:13px 0 2px;margin-top:22px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:color .2s ease}
+      .card-action{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #e7e7e7;padding:13px 0 2px;margin-top:auto;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:color .2s ease}
       .card-open:hover .card-action{color:var(--project,var(--blue))}
       .arrow{font-size:17px;line-height:.8;transition:transform .25s ease}
       .card-open:hover .arrow,.card-open:focus-visible .arrow{transform:translateX(4px)}
@@ -63,7 +63,7 @@
       body.lightbox-open{overflow:hidden}
       footer{padding-top:24px;padding-bottom:20px;justify-content:flex-start}
       @media(max-width:800px){main{padding-top:54px}.briefing-tool{align-items:start;flex-direction:column}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-      @media(max-width:560px){header,footer{padding-left:24px;padding-right:24px}.by{display:none}.top-right{gap:0}main{width:calc(100% - 48px);padding:46px 0 64px}h1{font-size:42px}.lead{font-size:16px}.briefing-tool{margin-top:32px;padding:20px}.briefing-tool h2{font-size:24px}.briefing-actions{width:100%;flex-direction:column;align-items:stretch}.briefing-action,.briefing-copy-link{width:100%;justify-content:center}.section-label{margin-top:34px;margin-bottom:-18px}.grid{grid-template-columns:1fr;margin-top:32px}.footer-copy{font-size:9px}}
+      @media(max-width:560px){header,footer{padding-left:24px;padding-right:24px}.by{display:none}.top-right{gap:0}main{width:calc(100% - 48px);padding:46px 0 64px}h1{font-size:42px}.lead{font-size:16px}.briefing-tool{margin-top:32px;padding:20px}.briefing-tool h2{font-size:24px}.briefing-actions{width:100%;flex-direction:column;align-items:stretch}.briefing-action,.briefing-copy-link{width:100%;justify-content:center}.section-label{margin-top:34px;margin-bottom:-18px}.grid{grid-template-columns:1fr;margin-top:32px}.card{min-height:190px}.card-open{min-height:188px}.footer-copy{font-size:9px}}
       @media(prefers-reduced-motion:reduce){*{transition:none!important}}
     </style>
   </head>
