@@ -319,7 +319,7 @@
 }
 @media (prefers-reduced-motion: no-preference) {
   .hero-home .hero-figure img {
-    animation: home-facade-arrive 1800ms cubic-bezier(.2,.65,.25,1) backwards;
+    animation: home-facade-arrive 1300ms cubic-bezier(.2,.65,.25,1) backwards;
   }
   .hero-home .hero-copy > .eyebrow {
     animation: home-detail-arrive 650ms 100ms ease-out backwards;
