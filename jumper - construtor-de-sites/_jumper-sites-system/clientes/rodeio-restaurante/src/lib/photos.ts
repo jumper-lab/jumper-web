@@ -29,5 +29,8 @@ import jardinsMesaDois from '../../briefing/entrada/matrizes/jardinsMesaDois.web
 import jardinsMesaNoite from '../../briefing/entrada/matrizes/jardinsMesaNoite.webp';
 import jardinsPassagem from '../../briefing/entrada/matrizes/jardinsPassagem.webp';
 import jardinsLounge from '../../briefing/entrada/matrizes/jardinsLounge.webp';
-export const photos = {iguatemiMesa,fachada,jardins,iguatemi,mesa,picanha,servico,sobremesa,historia,origem,bar,reservas,jardinsHero,historiaHero,cardapioHero,livroCardapio,carneDetalhe,sobremesaServico,mesaDetalhe,jardinsDirectory,iguatemiDirectory,jardinsGallery,jardinsSala,iguatemiHero,iguatemiAcervo,reservasHero,jardinsJanela,jardinsMesaDois,jardinsMesaNoite,jardinsPassagem,jardinsLounge};
+import historiaFamilia from '../../briefing/entrada/matrizes/historia-familia.jpg';
+import historiaRetrato from '../../briefing/entrada/matrizes/historia-retrato.jpg';
+import historiaFachadaAcervo from '../../briefing/entrada/matrizes/historia-fachada-acervo.jpg';
+export const photos = {iguatemiMesa,fachada,jardins,iguatemi,mesa,picanha,servico,sobremesa,historia,origem,bar,reservas,jardinsHero,historiaHero,cardapioHero,livroCardapio,carneDetalhe,sobremesaServico,mesaDetalhe,jardinsDirectory,iguatemiDirectory,jardinsGallery,jardinsSala,iguatemiHero,iguatemiAcervo,reservasHero,jardinsJanela,jardinsMesaDois,jardinsMesaNoite,jardinsPassagem,jardinsLounge,historiaFamilia,historiaRetrato,historiaFachadaAcervo};
 export type PhotoName = keyof typeof photos;
