@@ -313,7 +313,7 @@
 /* The facade wordmark is the visual centre of the home composition. */
 @media (min-width: 960px) {
   .hero-home .hero-figure img {
-    transform: translateX(21.5%) scaleX(1.43);
+    transform: translate(21.5%, -3.5%) scale(1.43);
     transform-origin: center;
   }
 }
@@ -344,7 +344,7 @@
 }
 @keyframes home-facade-arrive {
   from { transform: translateX(21.5%) scaleX(1.47); }
-  to { transform: translateX(21.5%) scaleX(1.43); }
+  to { transform: translate(21.5%, -3.5%) scale(1.43); }
 }
 @keyframes home-title-arrive {
   from { opacity: 0; transform: translateY(65%); }
