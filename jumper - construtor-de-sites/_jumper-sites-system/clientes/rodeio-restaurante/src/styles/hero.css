@@ -343,8 +343,16 @@
   .hero-home:focus-within .hero-scroll { animation: none; }
 }
 @keyframes home-facade-arrive {
-  from { transform: translateX(21.5%) scaleX(1.47); }
-  to { transform: translate(21.5%, -3.5%) scale(1.43); }
+  from {
+    opacity: 0.62;
+    filter: brightness(0.94) saturate(0.96);
+    transform: translateX(15%);
+  }
+  to {
+    opacity: 1;
+    filter: none;
+    transform: translateX(15%);
+  }
 }
 @keyframes home-title-arrive {
   from { opacity: 0; transform: translateY(65%); }
