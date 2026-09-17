@@ -191,6 +191,11 @@ export default {
     }
     const headers = new Headers(response.headers);
     headers.set('X-Robots-Tag', 'noindex, nofollow');
+    // Client-site documents must always reflect the current Worker deployment.
+    // Images, scripts and fonts retain the asset cache headers generated at build time.
+    if (response.headers.get('Content-Type')?.includes('text/html')) {
+      headers.set('Cache-Control', 'no-store, max-age=0');
+    }
     return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
   },
 };
