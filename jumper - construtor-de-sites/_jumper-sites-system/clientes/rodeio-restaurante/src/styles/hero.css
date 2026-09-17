@@ -313,7 +313,7 @@
 /* The facade wordmark is the visual centre of the home composition. */
 @media (min-width: 960px) {
   .hero-home .hero-figure img {
-    transform: translate(21.5%, -3.5%) scale(1.43);
+    transform: translateX(15%);
     transform-origin: center;
   }
 }
@@ -377,10 +377,11 @@
   /* Preserve the facade's light; shade only the left editorial column. */
   background: linear-gradient(
     90deg,
-    rgba(29, 22, 17, 0.82) 0%,
-    rgba(29, 22, 17, 0.64) 25%,
-    rgba(29, 22, 17, 0.24) 42%,
-    rgba(29, 22, 17, 0) 60%
+    rgba(29, 22, 17, 0.98) 0%,
+    rgba(29, 22, 17, 0.92) 18%,
+    rgba(29, 22, 17, 0.62) 32%,
+    rgba(29, 22, 17, 0.18) 47%,
+    rgba(29, 22, 17, 0) 62%
   );
 }
 .hero-photo .hero-copy {
