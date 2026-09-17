@@ -42,7 +42,7 @@ await rm(target, { recursive: true, force: true });
 await mkdir(clientTarget, { recursive: true });
 await cp(source, clientTarget, { recursive: true });
 await cp(join(projectRoot, 'cloudflare', 'fonts'), fontsTarget, { recursive: true });
-await cp(join(projectRoot, 'cloudflare', 'favicon.svg'), join(target, 'favicon.svg'));
+await cp(join(projectRoot, 'cloudflare', 'favicon-jumper.png'), join(target, 'favicon-jumper.png'));
 await cp(iziSource, iziTarget, { recursive: true });
 await cp(iziOfficialSource, iziOfficialTarget, { recursive: true });
 await writeFile(
