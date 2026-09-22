@@ -22,6 +22,9 @@ const belie3Pages = join(projectRoot, 'cloudflare', 'snapshots', 'casa-belie-3')
 const belie3Target = join(target, 'casabelie-3');
 const briefingSource = resolve(projectRoot, '../../Quiz/Briefings');
 const briefingTarget = join(target, 'briefing');
+const iziLandingSource = resolve(projectRoot, '../izigym-lp/dist');
+const iziLandingTarget = join(target, 'izigym-lp');
+const iziVilaRomanaTarget = join(target, 'izigym-lp-vilaromana');
 
 const textExtensions = new Set(['.html', '.css', '.js', '.mjs', '.xml', '.txt', '.webmanifest']);
 
@@ -73,6 +76,14 @@ for (const file of ['index.html', 'styles.css', 'quiz.js']) {
 }
 await cp(join(briefingSource, 'index.html'), join(target, 'briefing-page.shell'));
 await cp(join(briefingSource, 'assets'), join(briefingTarget, 'assets'), { recursive: true });
+
+// Keep the already published Vila Romana landing in the shared Worker asset bundle.
+await cp(iziLandingSource, iziLandingTarget, { recursive: true });
+await cp(iziLandingSource, iziVilaRomanaTarget, { recursive: true });
+await rewriteTree(iziVilaRomanaTarget, [
+  ['/izigym-lp/', '/izigym-lp-vilaromana/'],
+]);
+await cp(join(iziVilaRomanaTarget, 'simple', 'index.html'), join(iziVilaRomanaTarget, 'index.html'));
 
 const dashboardTemplate = await readFile(join(projectRoot, 'cloudflare', 'dashboard.html'), 'utf8');
 const registry = JSON.parse(await readFile(resolve(projectRoot, '../../jumper-hoster.registry.json'), 'utf8'));

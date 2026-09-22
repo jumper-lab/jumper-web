@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /izigym-lp/
+Sitemap: https://site.jumper.dev.br/izigym-lp/sitemap.xml
