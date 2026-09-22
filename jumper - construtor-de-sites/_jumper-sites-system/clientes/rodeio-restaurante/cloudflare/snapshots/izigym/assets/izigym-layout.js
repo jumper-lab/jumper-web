@@ -142,6 +142,7 @@ let hovered = false;
 let focused = false;
 let interacting = false;
 let railVisible = false;
+let videoOpen = false;
 
 function cloneSlide(slide) {
   const clone = slide.cloneNode(true);
@@ -206,7 +207,7 @@ rail.addEventListener("keydown", (event) => {
 function updateAutoplay() {
   clearInterval(autoTimer);
   autoTimer = 0;
-  if (reducedMotion.matches || hovered || focused || interacting || !railVisible || document.hidden) return;
+  if (reducedMotion.matches || hovered || focused || interacting || videoOpen || !railVisible || document.hidden) return;
   autoTimer = setInterval(() => moveRail(1), 4200);
 }
 function pauseInteraction() {
@@ -228,3 +229,29 @@ if ("IntersectionObserver" in window) {
     updateAutoplay();
   }, { threshold: .05 }).observe(rail);
 }
+
+const videoDialog = document.querySelector(".gallery-video-dialog");
+const videoPlayer = videoDialog?.querySelector(".gallery-video-player");
+rail.querySelector(".gallery-video:not([data-clone]) .gallery-video-play")?.addEventListener("click", () => {
+  const video = document.createElement("video");
+  video.src = "https://site.jumper.dev.br/izigym-lp-vilaromana/assets/izigym.mp4";
+  video.poster = "images/gallery-05.jpg";
+  video.controls = true;
+  video.playsInline = true;
+  video.preload = "metadata";
+  video.setAttribute("aria-label", "Conheça a IZI Gym em vídeo");
+  videoPlayer.replaceChildren(video);
+  videoOpen = true;
+  updateAutoplay();
+  videoDialog.showModal();
+  video.play().catch(() => {});
+});
+videoDialog?.querySelector(".gallery-video-close")?.addEventListener("click", () => videoDialog.close());
+videoDialog?.addEventListener("click", (event) => {
+  if (event.target === videoDialog) videoDialog.close();
+});
+videoDialog?.addEventListener("close", () => {
+  videoPlayer.replaceChildren();
+  videoOpen = false;
+  updateAutoplay();
+});

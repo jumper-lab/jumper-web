@@ -69,3 +69,64 @@ html.motion-ready .motion-image:not(.is-revealed){clip-path:inset(0 0 14% 0 roun
   .hero-image,.manifesto>img,.location>img{transform:none!important;will-change:auto}
   .gallery-rail{scroll-behavior:auto}
 }
+/* The hero fills the viewport while still growing for short screens or browser text zoom. */
+.hero{height:auto;min-height:100svh;min-height:100dvh;max-height:none}
+.hero-content{height:auto;min-height:100svh;min-height:100dvh}
+/* Four photography cards are visible before the highlighted video card. */
+.gallery-rail figure{flex:0 0 calc((100vw - 10vw - 54px)/4)}
+.gallery-rail img{height:clamp(340px,34vw,480px)}
+.gallery-video-media{position:relative;height:clamp(340px,34vw,480px);overflow:hidden;border-radius:24px;background:var(--ink)}
+.gallery-video-play{position:relative;display:block;width:100%;height:100%;padding:0;border:0;background:var(--ink);color:#fff;cursor:pointer;text-align:left}
+.gallery-video-play img{width:100%;height:100%;object-fit:cover;filter:brightness(.62);transition:transform .5s,filter .5s}
+.gallery-video-play:hover img{transform:scale(1.05);filter:brightness(.48)}
+.gallery-video-badge{position:absolute;top:18px;left:18px;z-index:1;padding:9px 12px;border-radius:99px;background:var(--red);color:#fff;font-size:11px;letter-spacing:.06em}
+.gallery-video-icon{position:absolute;top:50%;left:50%;display:grid;place-items:center;width:68px;height:68px;border:2px solid #fff;border-radius:50%;background:#ffffff29;font:24px Arial,sans-serif;transform:translate(-50%,-50%);transition:background .25s,scale .25s}
+.gallery-video-play:hover .gallery-video-icon{background:var(--red);scale:1.08}
+.gallery-video figcaption{display:flex;justify-content:space-between;gap:10px}
+.video-caption-tag{color:var(--red);font-weight:700}
+.gallery-video-dialog{position:fixed;inset:0;margin:auto;width:min(520px,calc(100vw - 40px),calc((100dvh - 40px)*9/16));max-width:none;max-height:calc(100dvh - 40px);padding:0;border:0;border-radius:20px;overflow:visible;background:var(--ink);color:#fff;box-shadow:0 30px 90px #0008}
+.gallery-video-dialog::backdrop{background:#111c;backdrop-filter:blur(7px)}
+.gallery-video-player{width:100%;aspect-ratio:9/16;overflow:hidden;border-radius:20px}
+.gallery-video-player video{display:block;width:100%;height:100%;object-fit:contain;background:#222}
+.gallery-video-close{position:absolute;z-index:1;top:-18px;right:-18px;display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:50%;background:#fff;color:var(--ink);font-size:28px;cursor:pointer}
+/* Match the sales-page plan hierarchy while keeping Alto de Pinheiros information. */
+.plans-heading{margin-bottom:30px}
+.plans-heading h2{max-width:620px}
+.plans-heading p{max-width:300px;font-size:17px}
+.plans-grid{grid-template-columns:1.15fr 1fr;gap:18px}
+.plan-card{min-height:0;padding:30px;border:1px solid #c7bfad;background:transparent;border-radius:20px}
+.plan-card.featured{border:1px solid #fff;background:#fff}
+.plan-head{align-items:center;min-height:24px;padding:0;border:0}
+.plan-head span:first-child{font-size:10px;color:var(--ink)}
+.plan-head .plan-tag{border:1px solid var(--red);border-radius:99px;padding:5px 9px;color:var(--red);font-size:10px;white-space:nowrap}
+.plan-card h3{margin-top:25px;font-size:clamp(27px,2.5vw,39px);line-height:1.1}
+.plan-card.featured h3{color:var(--red)}
+.plan-card .plan-subtitle{margin-top:3px;font-size:14px}
+.plan-price{align-items:baseline;gap:7px;margin-top:24px}
+.plan-price .plan-currency{align-self:flex-start;margin-top:8px;font-size:22px}
+.plan-price strong{font-size:clamp(58px,5vw,82px);line-height:1}
+.plan-price span:last-child{font-size:14px}
+.plan-card .plan-caption{min-height:0;margin-top:4px;font-size:14px}
+.plan-card ul{margin:20px 0 24px}
+.plan-card li{padding:9px 0;font-size:14px}
+.plan-card li:before{content:'+';color:var(--ink);margin-right:12px}
+.plan-card .button{min-height:48px;margin-top:auto;padding:10px 18px;font-size:14px}
+.plan-card.featured .button{box-shadow:0 5px 0 #e22d1929}
+.plans-legal{max-width:760px;margin:17px 0 13px;font-size:11px;line-height:1.45}
+.plans-whatsapp{display:inline-flex;align-items:center;justify-content:space-between;gap:22px;min-height:42px;padding:9px 16px;border-radius:99px;background:#147747;color:#fff;font-size:13px;transition:background .2s}
+.plans-whatsapp:hover{background:#0f5e38}
+@media(min-width:701px) and (max-width:1100px){.gallery-rail figure{flex-basis:calc((100vw - 10vw - 36px)/3)}}
+@media(max-width:700px){
+  .hero,.hero-content{min-height:max(700px,100dvh)}
+  .gallery-rail figure{flex-basis:78vw}
+  .gallery-rail img,.gallery-video-media{height:clamp(350px,115vw,500px)}
+  .gallery-video-dialog{width:min(calc(100vw - 24px),calc((100dvh - 40px)*9/16))}
+  .gallery-video-close{top:-16px;right:-5px}
+  .plans-heading{margin-bottom:26px}
+  .plans-heading p{max-width:100%}
+  .plans-grid{grid-template-columns:1fr}
+  .plan-card{padding:24px}
+  .plan-card h3{font-size:30px}
+  .plan-price strong{font-size:72px}
+  .plans-whatsapp{width:100%}
+}
