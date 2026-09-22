@@ -8,7 +8,7 @@
     "build": "astro build",
     "preview": "astro preview --host 127.0.0.1",
     "check": "astro check",
-    "build:cloudflare": "SITE_URL=https://site.jumper.dev.br BASE_PATH=/rodeio astro build && node scripts/stage-hoster.mjs",
+    "build:cloudflare": "SITE_URL=https://site.jumper.dev.br BASE_PATH=/rodeio astro build && npm ci --prefix ../izigym-lp && npm run build --prefix ../izigym-lp && node scripts/stage-hoster.mjs",
     "capture:vercel-sites": "node scripts/capture-vercel-sites.mjs",
     "stage:hoster": "node scripts/stage-hoster.mjs",
     "deploy:cloudflare": "npm run build:cloudflare && wrangler deploy",
