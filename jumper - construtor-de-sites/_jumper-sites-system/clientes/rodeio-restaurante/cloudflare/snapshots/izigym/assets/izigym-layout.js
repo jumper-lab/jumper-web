@@ -234,7 +234,8 @@ const videoDialog = document.querySelector(".gallery-video-dialog");
 const videoPlayer = videoDialog?.querySelector(".gallery-video-player");
 rail.querySelector(".gallery-video:not([data-clone]) .gallery-video-play")?.addEventListener("click", () => {
   const video = document.createElement("video");
-  video.src = "https://site.jumper.dev.br/izigym-lp-vilaromana/assets/izigym.mp4";
+  // Keep the asset segment separate so the hoster staging rewrite cannot prefix it with /izigym.
+  video.src = "https://site.jumper.dev.br/izigym-lp-vilaromana/" + "assets/izigym.mp4";
   video.poster = "images/gallery-05.jpg";
   video.controls = true;
   video.playsInline = true;
