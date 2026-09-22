@@ -424,3 +424,10 @@ h3{line-height:1.08;letter-spacing:-.035em}
  .header nav a.is-active{padding-left:10px}
 }
 @media(prefers-reduced-motion:reduce){.header nav,.header nav a,.header nav a:after,.menu-toggle,.menu-toggle span{transition:none!important;transform:none!important}}
+
+/* Match the circular down-arrow used on the IZI Gym hero. */
+.hero .scroll-cue{font:26px/1 Arial,sans-serif}
+.hero .scroll-cue svg{display:none}
+.hero .scroll-cue::after{content:"↓";display:block;animation:hero-scroll-arrow 2.4s ease-in-out infinite}
+@keyframes hero-scroll-arrow{50%{transform:translateY(4px)}}
+@media(prefers-reduced-motion:reduce){.hero .scroll-cue::after{animation:none}}
