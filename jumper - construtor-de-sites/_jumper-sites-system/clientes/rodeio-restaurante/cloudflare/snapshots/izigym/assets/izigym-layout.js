@@ -95,10 +95,8 @@ if ("IntersectionObserver" in window) {
       });
     });
   }, { rootMargin: "-22% 0px -68% 0px" });
-  navLinks.forEach((link) => {
-    const section = document.querySelector(link.hash);
-    if (section) navObserver.observe(section);
-  });
+  const sections = [...navLinks.map((link) => document.querySelector(link.hash)), ...["#faq", "#unidade", "#contato"].map((selector) => document.querySelector(selector))];
+  sections.filter(Boolean).forEach((section) => navObserver.observe(section));
 }
 
 const parallaxMedia = [...document.querySelectorAll(".manifesto > img, .location > img")];

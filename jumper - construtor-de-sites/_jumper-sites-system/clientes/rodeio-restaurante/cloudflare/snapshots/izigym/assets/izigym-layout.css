@@ -179,3 +179,31 @@ html.motion-ready .motion-image:not(.is-revealed){clip-path:inset(0 0 14% 0 roun
   .footer-brand p{margin-top:18px;padding:0;font-size:29px;text-align:left}
 }
 @media(max-width:359px){.footer-links{grid-template-columns:1fr}.footer-brand img{height:230px}}
+
+/* Exact navigation rhythm and interaction from the Vila Romana reference. */
+.header{box-shadow:none;backdrop-filter:blur(10px)}
+.header.is-scrolled{background:rgba(255,255,255,.97);box-shadow:0 2px 12px #0000000a}
+.desktop-nav{line-height:1.5}
+.desktop-nav a{padding:12px 0;text-decoration:none!important}
+.desktop-nav a:after{bottom:5px}
+.desktop-nav a.is-active{transform:none}
+@media(hover:hover){.desktop-nav a:hover{transform:translateY(-2px)}}
+.header-action{position:relative;gap:24px;line-height:1.2;letter-spacing:-.018em;background:#e32b12;border-color:#e32b12}
+.header-action svg{width:24px;height:24px;flex:none;transition:transform .3s cubic-bezier(.22,1,.36,1)}
+.header-action:hover{background:var(--ink);border-color:var(--ink)}
+.header-action:hover svg{transform:translate(2px,-2px)}
+@media(min-width:768px) and (max-width:1100px){.desktop-nav{gap:15px;font-size:13px}.header-action{font-size:14px}}
+@media(max-width:767px){
+  .header{top:10px;left:12px;right:12px;height:58px;min-height:58px;padding:6px 14px;border-radius:16px;grid-template-columns:1fr auto 1fr}
+  .brand img{width:55px;height:48px}
+  .desktop-nav,.header-action{display:none}
+  .menu-toggle{display:flex;grid-column:1;grid-row:1;align-items:center;gap:10px;padding:9px 0;border:0;background:none;font-size:13px;cursor:pointer}
+  .menu-toggle span{margin:0;font-size:21px;transition:transform .35s}
+  .menu-toggle[aria-expanded=true]{color:var(--red)}
+  .menu-toggle[aria-expanded=true] span{transform:rotate(45deg)}
+  .mobile-nav{position:absolute;top:66px;left:0;right:0;z-index:3;grid-column:auto;grid-row:auto;display:flex;visibility:hidden;opacity:0;flex-direction:column;align-items:stretch;gap:0;padding:20px 24px;border-radius:18px;background:#fff;box-shadow:0 18px 40px #43434124;transform:translateY(-8px);transition:opacity .3s,transform .35s,visibility .35s}
+  .mobile-nav.open{top:66px;left:0;right:0;grid-column:auto;grid-row:auto;display:flex;visibility:visible;opacity:1;padding:20px 24px;border-radius:18px;transform:none}
+  .mobile-nav a{position:relative;padding:17px 4px;border:0;border-bottom:1px solid #c7bfad;font-size:24px;line-height:1.5}
+  .mobile-nav a:last-child{border:0}
+  .mobile-nav a:hover{color:var(--red)}
+}
