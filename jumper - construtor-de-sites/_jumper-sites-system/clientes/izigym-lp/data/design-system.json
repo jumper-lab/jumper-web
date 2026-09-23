@@ -1,0 +1,17 @@
+{
+  "source": "https://www.izigym.com.br/",
+  "content_source": "https://lp.izigym.com.br/",
+  "tokens": {
+    "colors": {
+      "ink": "#18181b",
+      "dark": "#080808",
+      "paper": "#f5f5f5",
+      "accent": "#e52c12",
+      "cta_accessible": "#db2911"
+    },
+    "fonts": {
+      "all": "Outfit 300/500/700 do site oficial"
+    }
+  },
+  "user_directive": "Seguir design, cores e layout do site oficial, com foco na oferta e matrícula."
+}

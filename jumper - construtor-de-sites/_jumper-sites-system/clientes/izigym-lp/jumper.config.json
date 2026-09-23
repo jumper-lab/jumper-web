@@ -1,0 +1,64 @@
+{
+  "client": {
+    "name": "IZI Gym",
+    "slug": "izigym-lp"
+  },
+  "site": {
+    "model": "M5",
+    "engine": "ds-autoral",
+    "personality": "C — Energético e vibrante",
+    "url": "https://site.jumper.dev.br/izigym-lp/",
+    "reformulation": {
+      "existing_site_url": "https://lp.izigym.com.br/",
+      "scope_status": "approved",
+      "approved_by": "Usuário desta conversa — pedido explícito de refazer a landing completa preservando informações e imagens",
+      "approved_at": "2026-09-17",
+      "pages": [
+        {
+          "path": "/",
+          "purpose": "Landing única de vendas; todas as informações e imagens da origem, reorganizadas."
+        }
+      ],
+      "features": [
+        {
+          "name": "Matrícula WhatsApp",
+          "acceptance": "Links para +55 11 95213-7022 com mensagem e origem."
+        },
+        {
+          "name": "Formulário de matrícula",
+          "acceptance": "Modal acessível carrega Yayforms DEXAqYo ao clicar; fechar por botão e Escape."
+        },
+        {
+          "name": "Vídeo e imagens",
+          "acceptance": "Vídeo original reproduz sob demanda e imagens originais renderizam."
+        },
+        {
+          "name": "Navegação responsiva",
+          "acceptance": "Âncoras, planos, Instagram e localização acessíveis de 320 a 1440 pixels."
+        }
+      ],
+      "inventory": [
+        {
+          "item": "Textos, oferta, planos, imagens, vídeo, WhatsApp e Yayforms",
+          "action": "keep",
+          "reason": "Pedido explícito de manter todas as informações e imagens."
+        },
+        {
+          "item": "Layout e estilos",
+          "action": "replace",
+          "reason": "Redesign completo moderno solicitado."
+        }
+      ],
+      "url_map": [
+        {
+          "from": "https://lp.izigym.com.br/",
+          "action": "keep",
+          "to": "https://lp.izigym.com.br/",
+          "reason": "Original preservado; nova versão independente em /izigym-lp/."
+        }
+      ],
+      "backup_plan": "Cópia do HTML e assets originais em briefing/entrada; nenhuma alteração na origem.",
+      "rollback_plan": "Remover somente a nova versão /izigym-lp/ do hub; página original permanece operacional."
+    }
+  }
+}

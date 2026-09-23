@@ -22,6 +22,10 @@
     {
       "pattern": "www.izigym.com.br",
       "custom_domain": true
+    },
+    {
+      "pattern": "cerrocora.izigym.com.br",
+      "custom_domain": true
     }
   ]
 }

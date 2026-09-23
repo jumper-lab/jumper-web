@@ -1,0 +1,33 @@
+{
+  "environment": "Astro preview local, Lighthouse mobile simulado; não é PageSpeed público nem dados de campo",
+  "date": "2026-09-22",
+  "scores": {
+    "performance": 95,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 63
+  },
+  "metrics": {
+    "largest-contentful-paint": "2.9 s",
+    "cumulative-layout-shift": "0",
+    "total-blocking-time": "0 ms"
+  },
+  "seo_note": "noindex intencional em rota de desenvolvimento",
+  "responsive_widths": [
+    320,
+    390,
+    768,
+    1024,
+    1440,
+    1920
+  ],
+  "horizontal_overflow": false,
+  "passed": [
+    "menu e Escape",
+    "abas mouse e teclado",
+    "FAQ",
+    "modal com iframe carregado",
+    "reduced motion sem animações",
+    "sem erros JS"
+  ]
+}

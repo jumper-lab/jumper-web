@@ -46,16 +46,48 @@
       "accent": "#e52c12",
       "developmentSites": [
         {
+          "slug": "izigym-lp",
+          "label": "LP Vendas - Cerro Corá v1 - Desenvolvimento",
+          "url": "https://site.jumper.dev.br/izigym-lp/"
+        },
+        {
+          "slug": "izigym-lp-vilaromana",
+          "label": "LP Vendas - Cerro Corá v2 - Desenvolvimento",
+          "url": "https://site.jumper.dev.br/izigym-lp-vilaromana/"
+        },
+        {
           "slug": "izigym",
-          "label": "Site em desenvolvimento",
+          "label": "Site Institucional - Desenvolvimento",
           "url": "https://site.jumper.dev.br/izigym/"
         }
       ],
       "officialSite": {
-        "label": "Site oficial",
+        "label": "Site Institucional - Oficial",
         "url": "https://www.izigym.com.br/",
         "hostedBy": "jumper-hoster"
-      }
+      },
+      "hubLinks": [
+        {
+          "label": "LP Vendas - Cerro Corá v1 - Desenvolvimento",
+          "slug": "izigym-lp"
+        },
+        {
+          "label": "LP Vendas - Cerro Corá v2 - Desenvolvimento",
+          "slug": "izigym-lp-vilaromana"
+        },
+        {
+          "label": "LP Vendas - Cerro Corá - Oficial",
+          "url": "https://cerrocora.izigym.com.br/"
+        },
+        {
+          "label": "Site Institucional - Desenvolvimento",
+          "slug": "izigym"
+        },
+        {
+          "label": "Site Institucional - Oficial",
+          "url": "https://www.izigym.com.br/"
+        }
+      ]
     },
     {
       "id": "casabelie",

@@ -1,9 +1,10 @@
 const SITE_PREFIX = '/rodeio';
 const LEGACY_PREFIX = '/site';
-const PUBLIC_SITES = ['/rodeio', '/izigym', '/casabelie', '/casabelie-2', '/casabelie-3'];
+const PUBLIC_SITES = ['/rodeio', '/izigym', '/izigym-lp', '/izigym-lp-vilaromana', '/casabelie', '/casabelie-2', '/casabelie-3'];
 const IZI_OFFICIAL_HOST = 'www.izigym.com.br';
 const IZI_OFFICIAL_APEX = 'izigym.com.br';
 const IZI_OFFICIAL_ROOT = '/_official/izigym';
+const IZI_CERRO_CORÁ_HOST = 'cerrocora.izigym.com.br';
 const BRIEFING_PATH = '/briefing';
 const BRIEFING_API_PATH = `${BRIEFING_PATH}/api/briefings`;
 const BRIEFING_API_UPSTREAM = 'https://briefing-formulario-sites-jumper.vercel.app/api/briefings';
@@ -83,6 +84,23 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const password = env.JUMPER_HOSTER_PASSWORD;
+
+    if (url.hostname === IZI_CERRO_CORÁ_HOST) {
+      if (url.pathname === '/robots.txt') {
+        return new Response('User-agent: *\nAllow: /\n', {
+          headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'public, max-age=3600' },
+        });
+      }
+      const assetUrl = new URL(url.pathname === '/' ? '/cerrocora/' : url.pathname, url);
+      const response = await env.ASSETS.fetch(new Request(assetUrl, request));
+      const headers = new Headers(response.headers);
+      headers.delete('X-Robots-Tag');
+      if (url.pathname === '/' && response.status === 200) {
+        headers.set('Content-Type', 'text/html; charset=utf-8');
+        headers.set('Cache-Control', 'no-store, max-age=0');
+      }
+      return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
+    }
 
     if (url.hostname === IZI_OFFICIAL_APEX) {
       url.hostname = IZI_OFFICIAL_HOST;
@@ -190,7 +208,11 @@ export default {
       response = await env.ASSETS.fetch(new Request(new URL('/izigym/index.html', url), request));
     }
     const headers = new Headers(response.headers);
-    headers.set('X-Robots-Tag', 'noindex, nofollow');
+    if (['/izigym-lp/', '/izigym-lp/index.html', '/izigym-lp-vilaromana/', '/izigym-lp-vilaromana/index.html'].includes(url.pathname)) {
+      headers.delete('X-Robots-Tag');
+    } else {
+      headers.set('X-Robots-Tag', 'noindex, nofollow');
+    }
     // Client-site documents must always reflect the current Worker deployment.
     // Images, scripts and fonts retain the asset cache headers generated at build time.
     if (response.headers.get('Content-Type')?.includes('text/html')) {

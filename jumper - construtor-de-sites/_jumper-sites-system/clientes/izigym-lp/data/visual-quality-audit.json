@@ -1,0 +1,189 @@
+{
+  "schema_version": "3.0.0",
+  "stage": "visual_quality_audit",
+  "client_slug": "izigym-lp",
+  "status": "approved_with_fixes",
+  "date": "2026-09-17",
+  "first_fold": {
+    "five_second_test": "Academia, promoção de R$27, benefício spinning/relax, matrícula e endereço visíveis.",
+    "print_test": "Foto full-bleed da unidade, Outfit bold, preto e vermelho seguem site oficial escolhido pelo usuário.",
+    "competitor_test": "Comparado diretamente com www.izigym.com.br; visual alinhado à referência e hierarquia adaptada para oferta."
+  },
+  "visual_checks": {
+    "viewports": [
+      320,
+      768,
+      1024,
+      1440
+    ],
+    "horizontal_overflow": false,
+    "broken_images": [],
+    "whitespace": "Espaços vazios revisados: sem buracos; intervalos entre blocos criam ritmo.",
+    "viewport_hero": {
+      "verified": [
+        [
+          320,
+          568
+        ],
+        [
+          390,
+          844
+        ],
+        [
+          768,
+          900
+        ],
+        [
+          1440,
+          900
+        ],
+        [
+          1651,
+          827
+        ]
+      ],
+      "result": "Hero igual à viewport, conteúdo dentro da altura e sem overflow horizontal."
+    }
+  },
+  "functional_checks": {
+    "build": "passed",
+    "automated_evidence": "data/qa/results.json",
+    "form": "4 pontos abrem; botão fecha e restaura foco; iframe e UTMs confirmados",
+    "escape": "Funciona quando foco está no documento pai; iframe externo pode capturar tecla",
+    "video": "readyState 4; reprodução e pausa passaram",
+    "tracking": "evento whatsapp_click e parâmetros conferidos; GTM limitado ao hostname oficial"
+  },
+  "deep_review_passes": [
+    {
+      "pass": 1,
+      "evidence": "Capturas 320, 768, 1024 e 1440; zero overflow, fontes Outfit carregadas, imagens e vídeo válidos.",
+      "findings": [
+        "Versão anterior rejeitada pelo usuário; estética substituída integralmente",
+        "Planos estavam longe da oferta"
+      ],
+      "fixes": [
+        "Foto full-bleed, preto/branco/vermelho e Outfit",
+        "Planos imediatamente após números; promoção primeiro em mobile"
+      ]
+    },
+    {
+      "pass": 2,
+      "evidence": "Capturas individuais do hero e planos, composição completa e teste normal de rolagem.",
+      "findings": [
+        "CTA do Prime quebrava R$27 em 320px"
+      ],
+      "fixes": [
+        "Texto do CTA encurtado para Começar por R$27"
+      ],
+      "whitespace": "Respiros entre seções e espaço de comparação nos planos conferidos."
+    },
+    {
+      "pass": 3,
+      "findings": [
+        "Camiseta da origem tem apenas 99x120px; ampliação revela limite de resolução."
+      ],
+      "fixes": [
+        "Removido card e ampliada camisa; largura desktop limitada a 360px para reduzir pixelização."
+      ],
+      "evidence": "Capturas square; proporção 1:1 e ausência de overflow verificadas."
+    }
+  ],
+  "known_issues": [
+    "Origem alterna Premium e Prime; condições preservadas e precisam de confirmação comercial antes de tráfego.",
+    "Formulário externo carrega e abre; envio real não realizado para não gerar lead fictício. Escape pode ser capturado quando foco está dentro do iframe, mas fechar por botão funciona.",
+    "GTM original condicionado a lp.izigym.com.br; validação real de Ads/Meta requer publicação no hostname de produção e acesso aos painéis.",
+    "Horários e validade exata da oferta não constam na origem.",
+    "Comando geral npm run gate não existe no checkout atual; doctor global acusa arquivos raiz ausentes e pendências preexistentes em outros clientes. Build do cliente e checagem M5 executados separadamente.",
+    "ZIP do usuário não encontrado em /Users/marajah/Documents/GitHub/izigym.zip; referência ao vivo e snapshot local do site oficial foram usados.",
+    "A camiseta original fornecida pela LP tem somente 99x120px; precisa de arquivo maior para ficar nítida na ampliação solicitada."
+  ],
+  "final_recommendation": "Redesign apto para apresentação; confirmar nomenclatura comercial e fazer validação de campanha antes de enviar tráfego.",
+  "reformulation_checks": {
+    "scope": {
+      "status": "passed",
+      "evidence": "Landing única, todos os blocos e integrações preservados conforme pedido."
+    },
+    "content": {
+      "status": "passed",
+      "evidence": "Conferência com original.html e content.json; imagens listadas no manifest."
+    },
+    "urls": {
+      "status": "passed",
+      "evidence": "Âncoras verificadas; destinos WhatsApp, formulário, Maps e Instagram mantidos."
+    },
+    "integrations": {
+      "status": "passed",
+      "evidence": "Yayforms carrega com UTMs; vídeo reproduz; evento WhatsApp emitido em teste sem contato externo."
+    },
+    "backup": {
+      "status": "passed",
+      "evidence": "HTML e assets da origem em briefing/entrada."
+    },
+    "rollback": {
+      "status": "passed",
+      "evidence": "Nova rota independente; remover entrada e assets da nova versão preserva a origem."
+    },
+    "pages": [
+      {
+        "path": "/",
+        "status": "passed",
+        "evidence": "Capturas e revisão em quatro larguras, zero overflow e imagens quebradas."
+      }
+    ],
+    "features": [
+      {
+        "name": "Matrícula WhatsApp",
+        "status": "passed",
+        "evidence": "Verificação em data/qa/results.json; links inspecionados e fluxo de apresentação exercitado."
+      },
+      {
+        "name": "Formulário de matrícula",
+        "status": "passed",
+        "evidence": "Verificação em data/qa/results.json; links inspecionados e fluxo de apresentação exercitado."
+      },
+      {
+        "name": "Vídeo e imagens",
+        "status": "passed",
+        "evidence": "Verificação em data/qa/results.json; links inspecionados e fluxo de apresentação exercitado."
+      },
+      {
+        "name": "Navegação responsiva",
+        "status": "passed",
+        "evidence": "Verificação em data/qa/results.json; links inspecionados e fluxo de apresentação exercitado."
+      }
+    ]
+  },
+  "revision": "Hero quadrado, camiseta ampliada e ordem da origem",
+  "deployment": {
+    "version": "2ec71533-c9de-42bb-b902-4204fda7c276",
+    "url": "https://site.jumper.dev.br/izigym-lp/",
+    "previous_version": "7eb10545-e996-4202-a583-3167548614eb",
+    "scope": "Somente assets do namespace izigym-lp atualizados; outros sites e Worker mantidos."
+  },
+  "video_dimensions": {
+    "requested": "100vw × 69vh",
+    "verified": [
+      {
+        "viewport": [
+          320,
+          900
+        ],
+        "video": [
+          320,
+          621
+        ]
+      },
+      {
+        "viewport": [
+          1440,
+          900
+        ],
+        "video": [
+          1440,
+          621
+        ]
+      }
+    ],
+    "horizontal_overflow": false
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "IZI Gym Digital Design System",
+  "version": "1.0.0",
+  "source": "IZI GYM - Guia de Identidade Visual.pdf",
+  "brandIdea": "Bonita como boutique, eficiente como low-cost e viva como comunidade.",
+  "colors": {
+    "canvas": {"value":"#E6DDC9","pantone":"7527 C","use":"Fundo principal e superfícies claras"},
+    "ink": {"value":"#434341","pantone":"426 C","use":"Texto e modo noturno"},
+    "panel": {"value":"#595857","pantone":"425 C","use":"Cards escuros"},
+    "muted": {"value":"#939394","pantone":"407 C","use":"Texto secundário, evidência e linhas"},
+    "paper": {"value":"#FFFFFF","use":"Texto sobre carvão e bordas de imagem"},
+    "accent": {"value":"#E52C12","pantone":"2028 C","use":"Pontuação, destaques e CTA principal"},
+    "whatsapp": {"value":"#0F806F","use":"Exceção funcional exclusiva para links de WhatsApp"}
+  },
+  "typography": {
+    "display": {"family":"Fields","weights":"200–900","use":"Títulos e afirmações"},
+    "interface": {"family":"Obviously","weights":"300–900","use":"Corpo, subtítulos, botões e números"},
+    "buttonWeight": 500,
+    "rules": ["Fields nunca é usada em corpo de texto", "Botões não usam bold", "Frases curtas e linguagem próxima"]
+  },
+  "geometry": {"radiusSmall":"8px","radiusMedium":"18px","radiusLarge":"38px","radiusPill":"999px","contentWide":"1232px","readingWidth":"860px"},
+  "motion": {"fast":"220ms","base":"440ms","slow":"880ms","enter":"420ms","ease":"cubic-bezier(0.22, 0.61, 0.36, 1)","reducedMotion":"Sem animação contínua"},
+  "logo": {"clearSpace":"Altura do G da assinatura","minimumDigital":"25px","rules":["Não distorcer","Não recolorir fora das versões oficiais","Não alterar proporções ou espaçamento","Usar versão branca no modo noturno"]},
+  "components": ["Cabeçalho sobre imagem","Hero de oferta","Pílula de ação","Faixa de números","Card de experiência","Card de plano","Prova social","Acordeão de objeções","Barra fixa mobile","Modal de matrícula"],
+  "breakpoints": {"mobile":"até 767px","tablet":"768px–1100px","desktop":"acima de 1100px"}
+}

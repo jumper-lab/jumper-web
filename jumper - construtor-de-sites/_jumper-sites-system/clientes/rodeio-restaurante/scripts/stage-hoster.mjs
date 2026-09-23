@@ -22,6 +22,10 @@ const belie3Pages = join(projectRoot, 'cloudflare', 'snapshots', 'casa-belie-3')
 const belie3Target = join(target, 'casabelie-3');
 const briefingSource = resolve(projectRoot, '../../Quiz/Briefings');
 const briefingTarget = join(target, 'briefing');
+const iziLandingSource = resolve(projectRoot, '../izigym-lp/dist');
+const iziLandingTarget = join(target, 'izigym-lp');
+const iziVilaRomanaTarget = join(target, 'izigym-lp-vilaromana');
+const iziCerroCoraTarget = join(target, 'cerrocora');
 
 const textExtensions = new Set(['.html', '.css', '.js', '.mjs', '.xml', '.txt', '.webmanifest']);
 
@@ -71,7 +75,20 @@ for (const file of ['index.html', 'styles.css', 'quiz.js']) {
   await cp(join(briefingSource, file), join(briefingTarget, file));
 }
 await cp(join(briefingSource, 'index.html'), join(target, 'briefing-page.shell'));
+await cp(join(briefingSource, 'index.html'), join(target, 'briefing-page.shell'));
 await cp(join(briefingSource, 'assets'), join(briefingTarget, 'assets'), { recursive: true });
+await cp(iziLandingSource, iziLandingTarget, { recursive: true });
+await cp(iziLandingSource, iziVilaRomanaTarget, { recursive: true });
+await rewriteTree(iziVilaRomanaTarget, [
+  ['/izigym-lp/', '/izigym-lp-vilaromana/'],
+]);
+await cp(join(iziVilaRomanaTarget, 'simple', 'index.html'), join(iziVilaRomanaTarget, 'index.html'));
+await mkdir(iziCerroCoraTarget, { recursive: true });
+const cerroCoraHtml = await readFile(join(iziVilaRomanaTarget, 'index.html'), 'utf8');
+await writeFile(
+  join(iziCerroCoraTarget, 'index.html'),
+  cerroCoraHtml.replaceAll('https://site.jumper.dev.br/izigym-lp-vilaromana/', 'https://cerrocora.izigym.com.br/'),
+);
 
 const dashboardTemplate = await readFile(join(projectRoot, 'cloudflare', 'dashboard.html'), 'utf8');
 const registry = JSON.parse(await readFile(resolve(projectRoot, '../../jumper-hoster.registry.json'), 'utf8'));
@@ -86,22 +103,38 @@ const escapeHtml = (value) => String(value)
 const cards = [];
 for (const client of registry.clients) {
   const links = [];
-  for (const site of client.developmentSites) {
-    if (site.url !== `https://site.jumper.dev.br/${site.slug}/`) {
-      throw new Error(`A URL de desenvolvimento de ${site.slug} não corresponde ao slug registrado.`);
+  if (client.hubLinks) {
+    for (const item of client.hubLinks) {
+      if (item.slug) {
+        if (item.url !== undefined && item.url !== `https://site.jumper.dev.br/${item.slug}/`) {
+          throw new Error(`A URL de desenvolvimento de ${item.slug} não corresponde ao slug registrado.`);
+        }
+        await readFile(join(target, item.slug, 'index.html'));
+        links.push({ label: item.label, url: `/${item.slug}/`, external: false });
+      } else {
+        const itemUrl = new URL(item.url);
+        if (itemUrl.protocol !== 'https:') throw new Error(`O link de ${client.name} precisa usar HTTPS.`);
+        links.push({ label: item.label, url: itemUrl.href, external: true });
+      }
     }
-    await readFile(join(target, site.slug, 'index.html'));
-    links.push({ label: site.label, url: `/${site.slug}/`, external: false });
-  }
-  for (const resource of client.resourceLinks ?? []) {
-    const resourceUrl = new URL(resource.url);
-    if (resourceUrl.protocol !== 'https:') throw new Error(`O recurso de ${client.name} precisa usar HTTPS.`);
-    links.push({ label: resource.label, url: resourceUrl.href, external: true });
-  }
-  if (client.officialSite) {
-    const officialUrl = new URL(client.officialSite.url);
-    if (officialUrl.protocol !== 'https:') throw new Error(`O site oficial de ${client.name} precisa usar HTTPS.`);
-    links.push({ label: client.officialSite.label, url: officialUrl.href, external: true });
+  } else {
+    for (const site of client.developmentSites) {
+      if (site.url !== `https://site.jumper.dev.br/${site.slug}/`) {
+        throw new Error(`A URL de desenvolvimento de ${site.slug} não corresponde ao slug registrado.`);
+      }
+      await readFile(join(target, site.slug, 'index.html'));
+      links.push({ label: site.label, url: `/${site.slug}/`, external: false });
+    }
+    for (const resource of client.resourceLinks ?? []) {
+      const resourceUrl = new URL(resource.url);
+      if (resourceUrl.protocol !== 'https:') throw new Error(`O recurso de ${client.name} precisa usar HTTPS.`);
+      links.push({ label: resource.label, url: resourceUrl.href, external: true });
+    }
+    if (client.officialSite) {
+      const officialUrl = new URL(client.officialSite.url);
+      if (officialUrl.protocol !== 'https:') throw new Error(`O site oficial de ${client.name} precisa usar HTTPS.`);
+      links.push({ label: client.officialSite.label, url: officialUrl.href, external: true });
+    }
   }
   const linksData = escapeHtml(JSON.stringify(links));
   cards.push(`<article class="card" style="--project:${escapeHtml(client.accent)}"><button class="card-open" type="button" aria-haspopup="dialog" aria-controls="client-links-dialog" data-client="${escapeHtml(client.name)}" data-category="${escapeHtml(client.category)}" data-accent="${escapeHtml(client.accent)}" data-links="${linksData}"><span class="tag">${escapeHtml(client.category)}</span><h2>${escapeHtml(client.name)}</h2><p class="description">${escapeHtml(client.description)}</p><span class="card-action"><span>Abrir links</span><span class="arrow" aria-hidden="true">→</span></span></button></article>`);
@@ -109,6 +142,6 @@ for (const client of registry.clients) {
 const dashboard = dashboardTemplate.replace('<!-- JUMPER_CLIENT_CARDS -->', cards.join('\n'));
 if (dashboard === dashboardTemplate) throw new Error('O marcador de cards não foi encontrado no template do hub.');
 await writeFile(join(target, 'index.html'), dashboard);
-await writeFile(join(target, 'robots.txt'), 'User-agent: *\nDisallow: /\n');
+await writeFile(join(target, 'robots.txt'), 'User-agent: *\nDisallow: /\nAllow: /izigym-lp/\nAllow: /izigym-lp-vilaromana/\n');
 
 console.log(`Jumper Hoster preparado: ${registry.clients.length} clientes, ${registry.clients.reduce((total, client) => total + client.developmentSites.length, 0)} sites em desenvolvimento e IZI Gym oficial.`);
