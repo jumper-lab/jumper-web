@@ -1,18 +1,24 @@
 const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
-const mobile = matchMedia("(max-width: 700px)");
+const mobile = matchMedia("(max-width: 767px)");
 const header = document.querySelector(".header");
 const toggle = document.querySelector(".menu-toggle");
-const mobileNav = document.querySelector(".mobile-nav");
+const navigation = document.querySelector("#navigation");
 const hero = document.querySelector(".hero");
 
 function setMenu(open) {
   toggle?.setAttribute("aria-expanded", String(open));
-  mobileNav?.classList.toggle("open", open);
+  navigation?.classList.toggle("open", open);
+  navigation.inert = mobile.matches && !open;
 }
+setMenu(false);
 toggle?.addEventListener("click", () => setMenu(toggle.getAttribute("aria-expanded") !== "true"));
-mobileNav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setMenu(false)));
+navigation?.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setMenu(false)));
+mobile.addEventListener("change", () => setMenu(false));
+document.querySelector("[data-scroll-to='planos']")?.addEventListener("click", () => {
+  document.getElementById("planos")?.scrollIntoView({ behavior: reducedMotion.matches ? "instant" : "smooth" });
+});
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && toggle?.getAttribute("aria-expanded") === "true") {
+  if (event.key === "Escape" && navigation?.classList.contains("open")) {
     setMenu(false);
     toggle.focus();
   }
@@ -34,9 +40,13 @@ function play(element, keyframes, duration = 760, delay = 0) {
 
 requestAnimationFrame(() => {
   play(header, [
-    { opacity: 0, transform: "translate3d(0,-24px,0) scale(.985)" },
+    { opacity: 0, transform: "translate3d(0,-22px,0) scale(.985)" },
     { opacity: 1, transform: "translate3d(0,0,0) scale(1)" },
-  ], 760, 30);
+  ], 760, 40);
+  if (!mobile.matches) document.querySelectorAll(".header nav a").forEach((link, index) => play(link, [
+    { opacity: 0, transform: "translate3d(0,-12px,0)" },
+    { opacity: 1, transform: "translate3d(0,0,0)" },
+  ], 540, 130 + index * 65));
   play(document.querySelector(".hero-image"), [{ opacity: .55 }, { opacity: 1 }], 1100);
   document.querySelectorAll(".hero-content > .eyebrow, .hero h1, .hero-description, .hero-button, .hero-facts > div, .scroll-hint")
     .forEach((element, index) => play(element, [
@@ -82,7 +92,7 @@ document.querySelectorAll(".faq details").forEach((details) => {
   });
 });
 
-const navLinks = [...document.querySelectorAll('.desktop-nav a[href^="#"]')];
+const navLinks = [...navigation.querySelectorAll('a[href^="#"]')];
 if ("IntersectionObserver" in window) {
   const navObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -95,7 +105,7 @@ if ("IntersectionObserver" in window) {
       });
     });
   }, { rootMargin: "-22% 0px -68% 0px" });
-  const sections = [...navLinks.map((link) => document.querySelector(link.hash)), ...["#faq", "#unidade", "#contato"].map((selector) => document.querySelector(selector))];
+  const sections = navLinks.map((link) => document.querySelector(link.hash));
   sections.filter(Boolean).forEach((section) => navObserver.observe(section));
 }
 
@@ -104,7 +114,7 @@ let scrollFrame = 0;
 function updateScroll() {
   scrollFrame = 0;
   const heroBottom = hero.getBoundingClientRect().bottom;
-  header.classList.toggle("is-scrolled", scrollY > 50);
+  header.classList.toggle("scrolled", heroBottom < 0);
   document.querySelector(".mobile-cta")?.classList.toggle("is-visible", heroBottom < 0);
   if (reducedMotion.matches || mobile.matches) {
     document.querySelector(".hero-image")?.style.removeProperty("--hero-parallax");
