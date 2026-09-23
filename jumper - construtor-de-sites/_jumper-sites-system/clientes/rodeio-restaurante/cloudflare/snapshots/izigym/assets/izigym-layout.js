@@ -27,11 +27,11 @@ document.addEventListener("click", (event) => {
   if (!event.target.closest(".header")) setMenu(false);
 });
 
-function play(element, keyframes, duration = 760, delay = 0) {
+function play(element, keyframes, duration = 760, delay = 0, mobileDuration = 560, mobileDelay = 180) {
   if (!element || reducedMotion.matches) return;
   const animation = element.animate(keyframes, {
-    duration: mobile.matches ? Math.min(duration, 560) : duration,
-    delay: mobile.matches ? Math.min(delay, 180) : delay,
+    duration: mobile.matches ? Math.min(duration, mobileDuration) : duration,
+    delay: mobile.matches ? Math.min(delay, mobileDelay) : delay,
     easing: "cubic-bezier(.22,1,.36,1)",
     fill: "both",
   });
@@ -42,7 +42,7 @@ requestAnimationFrame(() => {
   play(header, [
     { opacity: 0, transform: "translate3d(0,-22px,0) scale(.985)" },
     { opacity: 1, transform: "translate3d(0,0,0) scale(1)" },
-  ], 760, 40);
+  ], 760, 40, 500, 120);
   if (!mobile.matches) document.querySelectorAll(".header nav a").forEach((link, index) => play(link, [
     { opacity: 0, transform: "translate3d(0,-12px,0)" },
     { opacity: 1, transform: "translate3d(0,0,0)" },
