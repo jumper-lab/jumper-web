@@ -1,0 +1,57 @@
+/* Header rules are carried from clientes/izigym-lp/src/simple.css.
+   Keep the Alto de Pinheiros destinations in index.html; do not fork the visual design. */
+.header{position:fixed;z-index:30;top:16px;left:24px;right:24px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:76px;min-height:0;padding:8px 18px;background:rgba(255,255,255,.97);border-radius:22px;box-shadow:none;transition:background .3s,box-shadow .3s;backdrop-filter:blur(10px)}
+.header.scrolled{background:rgba(255,255,255,.97);box-shadow:0 2px 12px #0000000a}
+.header nav{display:flex;gap:24px;align-items:center;font-size:14px;line-height:1.5;background:rgba(255,255,255,.97)}
+.header nav a{padding:12px 0;position:relative;text-decoration:none!important;transition:color .25s cubic-bezier(.25,.46,.45,.94),transform .3s cubic-bezier(.25,.46,.45,.94)}
+.header nav a:after{content:'';position:absolute;left:0;right:0;bottom:5px;height:2px;background:#e52c12;transform:scaleX(0);transform-origin:right center;transition:transform .38s cubic-bezier(.22,1,.36,1)}
+.header nav a:hover,.header nav a.is-active{color:#e52c12}
+.header nav a:hover:after,.header nav a.is-active:after{transform:scaleX(1);transform-origin:left center}
+.header .brand{grid-column:2;grid-row:1}
+.header .brand img{display:block;width:70px;height:58px;object-fit:contain}
+.header .pill{min-height:54px;border:1px solid currentColor;border-radius:999px;display:inline-flex;justify-content:space-between;align-items:center;gap:24px;padding:14px 24px;background:transparent;font-size:16px;line-height:1.2;letter-spacing:-.025em;transition:background .25s,color .25s;backface-visibility:hidden}
+.header .pill svg{transition:transform .3s cubic-bezier(.25,.46,.45,.94)}
+.header .pill:hover svg{transform:translate(2px,-2px)}
+.header .header-action{justify-self:end;grid-column:3;grid-row:1;position:relative;min-height:50px;font-size:15px!important;font-weight:400;letter-spacing:-.018em;padding:12px 20px;background:#e32b12!important;border:3px solid #e32b12!important;color:#fff!important;box-shadow:none;overflow:hidden}
+.header .header-action:hover{background:#434341!important;border-color:#434341!important;color:#fff!important;box-shadow:0 4px 0 rgba(67,67,65,.2);transform:translateY(2px)}
+.header .header-action svg{width:25px;height:25px;flex-shrink:0}
+.header .menu-toggle,.header .nav-mobile{display:none}
+.header .menu-toggle{transition:color .25s cubic-bezier(.25,.46,.45,.94),transform .3s cubic-bezier(.25,.46,.45,.94)}
+@media(hover:hover){
+  .header nav a:hover{transform:translate3d(0,-2px,0)}
+  .header .menu-toggle:hover{color:#e52c12;transform:translate3d(2px,0,0)}
+  .header .menu-toggle:hover span{transform:rotate(90deg)}
+  .header .menu-toggle[aria-expanded=true]:hover span{transform:rotate(135deg)}
+}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+  .header .header-action:after{content:'';position:absolute;inset:-2px;background:linear-gradient(105deg,transparent 25%,rgba(255,255,255,.18) 46%,transparent 67%);transform:translate3d(-125%,0,0);transition:transform .7s cubic-bezier(.25,.46,.45,.94);pointer-events:none}
+  .header .header-action:hover:after{transform:translate3d(125%,0,0)}
+}
+@media(max-width:1100px) and (min-width:768px){
+  .header nav{font-size:12px;gap:13px}
+  .header .header-action{font-size:12px!important}
+}
+@media(max-width:767px){
+  .header{top:10px;left:12px;right:12px;height:58px;min-height:0;padding:6px 14px;border-radius:16px;grid-template-columns:1fr auto 1fr;backdrop-filter:none}
+  .header .brand img{width:54px;height:46px}
+  .header .header-action{display:none}
+  .header .menu-toggle{display:flex;grid-column:1;grid-row:1;gap:10px;align-items:center;width:fit-content;border:0;background:none;padding:9px 0;font-size:13px;cursor:pointer}
+  .header .menu-toggle span{font-size:21px;margin:0;transition:transform .35s}
+  .header .menu-toggle[aria-expanded=true] span{transform:rotate(45deg)}
+  .header nav{position:absolute;top:66px;left:0;right:0;display:flex;flex-direction:column;align-items:stretch;gap:0;padding:20px 24px;border-radius:18px;background:rgba(255,255,255,.97);opacity:0;visibility:hidden;transform:translate3d(0,-10px,0) scale(.985);transform-origin:top center;box-shadow:0 18px 40px rgba(67,67,65,0);clip-path:inset(0 0 100% 0 round 18px);transition:clip-path .55s cubic-bezier(.785,.135,.15,.86),opacity .35s,visibility .55s,transform .55s}
+  .header nav.open{opacity:1;visibility:visible;transform:translate3d(0,0,0) scale(1);box-shadow:0 18px 40px rgba(67,67,65,.14);clip-path:inset(0 round 18px)}
+  .header nav a{font-size:24px;padding:17px 4px;border-bottom:1px solid #c7bfad;opacity:0;transform:translateY(24px);transition:opacity .32s,transform .52s cubic-bezier(.25,.46,.45,.94),color .25s,padding-left .3s cubic-bezier(.25,.46,.45,.94)}
+  .header nav.open a{opacity:1;transform:translateY(0)}
+  .header nav.open a:nth-child(1){transition-delay:90ms}
+  .header nav.open a:nth-child(2){transition-delay:140ms}
+  .header nav.open a:nth-child(3){transition-delay:190ms}
+  .header nav.open a:nth-child(4){transition-delay:240ms}
+  .header nav a:last-child{border:0}
+  .header nav a:after{bottom:10px;right:auto;width:42px;height:2px}
+  .header nav a.is-active{padding-left:10px}
+  .header .nav-mobile{display:block}
+}
+@media(prefers-reduced-motion:reduce){
+  .header nav,.header nav a,.header nav a:after,.header .menu-toggle,.header .menu-toggle span{transition:none!important;transform:none!important}
+  .header nav.open a{transition-delay:0s}
+}

@@ -11,19 +11,15 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="preload" as="image" href="images/hero-izigym.jpg">
   <link rel="stylesheet" href="assets/izigym-layout.css">
+  <link rel="stylesheet" href="assets/izigym-reference-header.css">
 </head>
 <body>
   <a class="skip" href="#conteudo">Ir para o conteúdo</a>
   <header class="header" id="topo">
-    <nav class="desktop-nav" aria-label="Navegação principal">
-      <a href="#academia">A academia</a><a href="#experiencias">Experiências</a><a href="#planos">Planos</a>
-    </nav>
-    <a class="brand" href="#topo" aria-label="IZI Gym, voltar ao início"><img src="brand/izi-gym-vermelho.png" alt="IZI Gym"></a>
-    <a class="button button-red header-action" href="#planos">Quero fazer parte <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"></path></svg></a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">Menu <span aria-hidden="true">+</span></button>
-    <nav class="mobile-nav" id="mobile-nav" aria-label="Navegação móvel">
-      <a href="#academia">A academia</a><a href="#experiencias">Experiências</a><a href="#planos">Planos</a><a href="#unidade">Como chegar</a>
-    </nav>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation">Menu <span>+</span></button>
+    <nav id="navigation" aria-label="Navegação principal"><a href="#academia">A academia</a><a href="#experiencias">Experiências</a><a href="#planos">Planos</a><a class="nav-mobile" href="#unidade">Como chegar</a></nav>
+    <a class="brand" href="#topo" aria-label="IZI Gym início"><img src="brand/izi-gym-vermelho.png" width="1182" height="1126" alt="IZI Gym"></a>
+    <button class="pill header-action" type="button" data-scroll-to="planos">Quero fazer parte <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"></path></svg></button>
   </header>
   <main id="conteudo">
     <section class="hero" aria-labelledby="hero-title">
