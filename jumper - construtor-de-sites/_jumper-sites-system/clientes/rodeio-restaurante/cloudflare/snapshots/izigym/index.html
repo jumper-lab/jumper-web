@@ -10,7 +10,7 @@
   <link rel="canonical" href="https://site.jumper.dev.br/izigym/">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="preload" as="image" href="images/hero-izigym.jpg">
-  <link rel="stylesheet" href="assets/izigym-layout.css">
+  <link rel="stylesheet" href="assets/izigym-layout.css?v=cerrocora-rail-2">
   <link rel="stylesheet" href="assets/izigym-reference-header.css">
 </head>
 <body>
@@ -74,19 +74,11 @@
     <section class="section gallery" id="interior">
       <div class="section-label"><span>[ 03 / POR DENTRO ]</span><span>IZI ONE ALTO DE PINHEIROS</span></div>
       <div class="gallery-heading"><h2>Conheça a estrutura <em>por dentro.</em></h2><p>Ambientes modernos, equipamentos selecionados e uma atmosfera pensada para deixar o treino mais simples de começar e melhor de manter.</p></div>
-      <div class="gallery-controls">
-        <span>Explore os ambientes</span>
-        <div>
-          <span class="gallery-count" data-rail-status aria-live="off">01 / 05</span>
-          <button type="button" class="gallery-prev" aria-label="Foto anterior">←</button>
-          <button type="button" class="gallery-next" aria-label="Próxima foto">→</button>
-        </div>
-      </div>
-      <div class="gallery-rail" role="region" aria-roledescription="carrossel" aria-label="Quatro fotos da academia e um vídeo do tour; deslize ou use as setas para navegar" tabindex="0">
-        <figure><img src="images/gallery-01-fast.jpg" alt="Recepção da academia" width="667" height="1000" loading="eager" decoding="async" fetchpriority="low"><figcaption>01 / RECEPÇÃO</figcaption></figure>
-        <figure><img src="images/gallery-02-fast.jpg" alt="Área de musculação" width="667" height="1000" loading="eager" decoding="async" fetchpriority="low"><figcaption>02 / MUSCULAÇÃO</figcaption></figure>
-        <figure><img src="images/gallery-03-fast.jpg" alt="Equipamentos de treino" width="667" height="1000" loading="eager" decoding="async" fetchpriority="low"><figcaption>03 / EQUIPAMENTOS</figcaption></figure>
-        <figure><img src="images/gallery-04-fast.jpg" alt="Espaço de treino de força" width="667" height="1000" loading="eager" decoding="async" fetchpriority="low"><figcaption>04 / FORÇA</figcaption></figure>
+      <div class="gallery-rail" role="region" aria-roledescription="carrossel" aria-label="Quatro fotos da academia e um vídeo do tour; deslize para conhecer" tabindex="0">
+        <figure><img src="images/gallery-01-fast.jpg" alt="Recepção da academia" width="667" height="1000" loading="eager" decoding="async" fetchpriority="low"><figcaption><span>01 /</span> Recepção da academia.</figcaption></figure>
+        <figure><img src="images/gallery-02-fast.jpg" alt="Área de musculação" width="667" height="1000" loading="eager" decoding="async" fetchpriority="low"><figcaption><span>02 /</span> Área de musculação.</figcaption></figure>
+        <figure><img src="images/gallery-03-fast.jpg" alt="Equipamentos de treino" width="667" height="1000" loading="eager" decoding="async" fetchpriority="low"><figcaption><span>03 /</span> Equipamentos para seu treino.</figcaption></figure>
+        <figure><img src="images/gallery-04-fast.jpg" alt="Espaço de treino de força" width="667" height="1000" loading="eager" decoding="async" fetchpriority="low"><figcaption><span>04 /</span> Espaço para evoluir.</figcaption></figure>
         <figure class="gallery-video">
           <div class="gallery-video-media">
             <button type="button" class="gallery-video-play" aria-label="Reproduzir vídeo da IZI Gym">
@@ -95,9 +87,10 @@
               <span class="gallery-video-icon" aria-hidden="true">▶</span>
             </button>
           </div>
-          <figcaption>05 / CONHEÇA A IZI <span class="video-caption-tag">VÍDEO</span></figcaption>
+          <figcaption><span>05 /</span> Conheça a IZI em vídeo. <span class="video-caption-tag">VÍDEO</span></figcaption>
         </figure>
       </div>
+      <p class="gallery-hint">DESLIZE PARA EXPLORAR <span data-rail-status aria-live="polite">01 / 05</span></p>
       <dialog class="gallery-video-dialog" aria-label="Vídeo da IZI Gym">
         <button type="button" class="gallery-video-close" aria-label="Fechar vídeo">×</button>
         <div class="gallery-video-player"></div>
@@ -171,6 +164,6 @@
     <div class="footer-legal"><span>IZI GYM · ALTO DE PINHEIROS</span><span>2026 © IZI GYM</span></div>
   </footer>
   <a class="mobile-cta" href="#planos">Conheça os planos <span aria-hidden="true">↗</span></a>
-  <script src="assets/izigym-layout.js" defer></script>
+  <script src="assets/izigym-layout.js?v=cerrocora-rail-2" defer></script>
 </body>
 </html>

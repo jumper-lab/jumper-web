@@ -142,27 +142,20 @@ const rail = document.querySelector(".gallery-rail");
 const originalSlides = [...rail.children];
 const slideCount = originalSlides.length;
 const status = document.querySelector("[data-rail-status]");
-let currentSlide = 0;
-let motionFrame = 0;
-let settleTimer = 0;
-let queuedDirection = 0;
-let correctingRail = false;
-let autoTimer = 0;
-let interactionTimer = 0;
-let hovered = false;
-let focused = false;
-let interacting = false;
-let railVisible = false;
-let videoOpen = false;
+let railFrame = 0;
 
 function cloneSlide(slide) {
   const clone = slide.cloneNode(true);
   clone.dataset.clone = "true";
   clone.setAttribute("aria-hidden", "true");
-  clone.setAttribute("inert", "");
   clone.classList.remove("motion-target", "motion-image");
   clone.classList.add("is-revealed");
-  clone.querySelectorAll("img").forEach((image) => { image.alt = ""; });
+  clone.querySelectorAll("img").forEach((image) => {
+    image.alt = "";
+    image.loading = "lazy";
+    image.decoding = "async";
+  });
+  clone.querySelectorAll("button").forEach((button) => { button.tabIndex = -1; });
   return clone;
 }
 originalSlides.forEach((slide) => rail.append(cloneSlide(slide)));
@@ -174,137 +167,61 @@ function railMetrics() {
   const nextGroup = rail.children[slideCount * 2];
   return { step: second.offsetLeft - first.offsetLeft, group: nextGroup.offsetLeft - first.offsetLeft };
 }
-function wrapSlide(index) {
-  return ((index % slideCount) + slideCount) % slideCount;
-}
-function updateRailStatus() {
-  status.textContent = `${String(currentSlide + 1).padStart(2, "0")} / ${String(slideCount).padStart(2, "0")}`;
-}
 function jumpRail(left) {
-  correctingRail = true;
-  rail.style.scrollSnapType = "none";
+  const behavior = rail.style.scrollBehavior;
+  rail.style.scrollBehavior = "auto";
   rail.scrollLeft = left;
-  requestAnimationFrame(() => {
-    rail.style.removeProperty("scroll-snap-type");
-    correctingRail = false;
-  });
+  rail.style.scrollBehavior = behavior;
 }
-function settleRail() {
-  clearTimeout(settleTimer);
-  if (motionFrame || correctingRail) return;
+function warmRailImages(logical) {
+  for (let offset = -1; offset < 5; offset++) {
+    const slide = rail.children[slideCount + logical + offset];
+    slide?.querySelectorAll("img").forEach((image) => {
+      image.loading = "eager";
+      if (!image.complete) image.decode().catch(() => {});
+    });
+  }
+}
+function updateRail() {
+  railFrame = 0;
   const { step, group } = railMetrics();
   if (!step || !group) return;
-  const physical = slideCount + Math.round((rail.scrollLeft - group) / step);
-  currentSlide = wrapSlide(physical - slideCount);
-  updateRailStatus();
-  if (physical < slideCount || physical >= slideCount * 2) {
-    jumpRail(group + currentSlide * step);
-  }
+  if (rail.scrollLeft < group - step * .75) jumpRail(rail.scrollLeft + group);
+  else if (rail.scrollLeft > group * 2 - step * .25) jumpRail(rail.scrollLeft - group);
+  const logical = Math.round((rail.scrollLeft - group) / step);
+  warmRailImages(logical);
+  const current = ((logical % slideCount) + slideCount) % slideCount + 1;
+  status.textContent = `${String(current).padStart(2, "0")} / ${String(slideCount).padStart(2, "0")}`;
 }
 rail.addEventListener("scroll", () => {
-  if (motionFrame || correctingRail) return;
-  clearTimeout(settleTimer);
-  settleTimer = setTimeout(settleRail, 130);
+  if (!railFrame) railFrame = requestAnimationFrame(updateRail);
 }, { passive: true });
-rail.addEventListener("scrollend", settleRail);
 function resetRail() {
-  if (motionFrame) cancelAnimationFrame(motionFrame);
-  motionFrame = 0;
-  const { step, group } = railMetrics();
-  if (step && group) jumpRail(group + currentSlide * step);
-  updateRailStatus();
+  const { group } = railMetrics();
+  if (group) jumpRail(group);
+  updateRail();
 }
-requestAnimationFrame(resetRail);
-addEventListener("resize", () => requestAnimationFrame(resetRail), { passive: true });
-
-function moveRail(direction) {
-  if (motionFrame) {
-    queuedDirection = direction;
-    return;
-  }
-  const { step, group } = railMetrics();
-  if (!step || !group) return;
-  const from = rail.scrollLeft;
-  const targetPhysical = currentSlide + direction;
-  const to = group + targetPhysical * step;
-  currentSlide = wrapSlide(targetPhysical);
-  updateRailStatus();
-  rail.style.scrollSnapType = "none";
-  const finish = () => {
-    motionFrame = 0;
-    if (targetPhysical < 0 || targetPhysical >= slideCount) {
-      // The matching clone is already on screen: reposition only after the motion ends.
-      rail.scrollLeft = group + currentSlide * step;
-    }
-    requestAnimationFrame(() => rail.style.removeProperty("scroll-snap-type"));
-    if (queuedDirection) {
-      const next = queuedDirection;
-      queuedDirection = 0;
-      requestAnimationFrame(() => moveRail(next));
-    }
-  };
-  if (reducedMotion.matches) {
-    rail.scrollLeft = to;
-    finish();
-    return;
-  }
-  const duration = 380;
-  const started = performance.now();
-  const animate = (now) => {
-    const progress = Math.min((now - started) / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    rail.scrollLeft = from + (to - from) * eased;
-    if (progress < 1) motionFrame = requestAnimationFrame(animate);
-    else finish();
-  };
-  motionFrame = requestAnimationFrame(animate);
-}
-document.querySelector(".gallery-prev")?.addEventListener("click", () => { pauseInteraction(); moveRail(-1); });
-document.querySelector(".gallery-next")?.addEventListener("click", () => { pauseInteraction(); moveRail(1); });
+if ("IntersectionObserver" in window) {
+  const warmObserver = new IntersectionObserver((entries) => {
+    if (!entries.some((entry) => entry.isIntersecting)) return;
+    resetRail();
+    warmObserver.disconnect();
+  }, { rootMargin: "1600px 0px" });
+  warmObserver.observe(rail);
+} else requestAnimationFrame(resetRail);
+addEventListener("resize", resetRail, { passive: true });
 rail.addEventListener("keydown", (event) => {
   if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
     event.preventDefault();
-    pauseInteraction();
-    moveRail(event.key === "ArrowRight" ? 1 : -1);
+    const { step } = railMetrics();
+    rail.scrollBy({ left: step * (event.key === "ArrowRight" ? 1 : -1), behavior: reducedMotion.matches ? "instant" : "smooth" });
   }
 });
-function updateAutoplay() {
-  clearInterval(autoTimer);
-  autoTimer = 0;
-  if (reducedMotion.matches || hovered || focused || interacting || videoOpen || !railVisible || document.hidden) return;
-  autoTimer = setInterval(() => moveRail(1), 4200);
-}
-function pauseInteraction() {
-  interacting = true;
-  clearTimeout(interactionTimer);
-  updateAutoplay();
-  interactionTimer = setTimeout(() => { interacting = false; updateAutoplay(); }, 6000);
-}
-rail.addEventListener("mouseenter", () => { hovered = true; updateAutoplay(); });
-rail.addEventListener("mouseleave", () => { hovered = false; updateAutoplay(); });
-rail.addEventListener("focusin", () => { focused = true; updateAutoplay(); });
-rail.addEventListener("focusout", () => { focused = false; updateAutoplay(); });
-rail.addEventListener("pointerdown", () => {
-  if (motionFrame) {
-    cancelAnimationFrame(motionFrame);
-    motionFrame = 0;
-    queuedDirection = 0;
-    rail.style.removeProperty("scroll-snap-type");
-  }
-  pauseInteraction();
-});
-document.addEventListener("visibilitychange", updateAutoplay);
-reducedMotion.addEventListener("change", updateAutoplay);
-if ("IntersectionObserver" in window) {
-  new IntersectionObserver(([entry]) => {
-    railVisible = entry.isIntersecting;
-    updateAutoplay();
-  }, { threshold: .05 }).observe(rail);
-}
 
 const videoDialog = document.querySelector(".gallery-video-dialog");
 const videoPlayer = videoDialog?.querySelector(".gallery-video-player");
-rail.querySelector(".gallery-video:not([data-clone]) .gallery-video-play")?.addEventListener("click", () => {
+rail.addEventListener("click", (event) => {
+  if (!event.target.closest(".gallery-video-play")) return;
   const video = document.createElement("video");
   // Keep the asset segment separate so the hoster staging rewrite cannot prefix it with /izigym.
   video.src = "https://site.jumper.dev.br/izigym-lp-vilaromana/" + "assets/izigym.mp4";
@@ -314,8 +231,6 @@ rail.querySelector(".gallery-video:not([data-clone]) .gallery-video-play")?.addE
   video.preload = "metadata";
   video.setAttribute("aria-label", "Conheça a IZI Gym em vídeo");
   videoPlayer.replaceChildren(video);
-  videoOpen = true;
-  updateAutoplay();
   videoDialog.showModal();
   video.play().catch(() => {});
 });
@@ -325,6 +240,4 @@ videoDialog?.addEventListener("click", (event) => {
 });
 videoDialog?.addEventListener("close", () => {
   videoPlayer.replaceChildren();
-  videoOpen = false;
-  updateAutoplay();
 });
