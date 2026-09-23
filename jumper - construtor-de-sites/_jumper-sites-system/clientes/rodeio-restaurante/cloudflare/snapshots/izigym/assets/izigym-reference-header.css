@@ -1,6 +1,7 @@
 /* Header rules are carried from clientes/izigym-lp/src/simple.css.
    Keep the Alto de Pinheiros destinations in index.html; do not fork the visual design. */
-.header{position:fixed;z-index:30;top:16px;left:24px;right:24px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:76px;min-height:0;padding:8px 18px;background:rgba(255,255,255,.97);border-radius:22px;box-shadow:none;transition:background .3s,box-shadow .3s;backdrop-filter:blur(10px)}
+@font-face{font-family:'Obviously Header';src:url('obviously-reference-regular.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
+.header{position:fixed;z-index:30;top:16px;left:24px;right:24px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:76px;min-height:0;padding:8px 18px;background:rgba(255,255,255,.97);border-radius:22px;box-shadow:none;transition:background .3s,box-shadow .3s;backdrop-filter:blur(10px);font-family:'Obviously Header','Obviously',Arial,sans-serif;line-height:1.5}
 .header.scrolled{background:rgba(255,255,255,.97);box-shadow:0 2px 12px #0000000a}
 .header nav{display:flex;gap:24px;align-items:center;font-size:14px;line-height:1.5;background:rgba(255,255,255,.97)}
 .header nav a{padding:12px 0;position:relative;text-decoration:none!important;transition:color .25s cubic-bezier(.25,.46,.45,.94),transform .3s cubic-bezier(.25,.46,.45,.94)}
