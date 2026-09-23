@@ -51,7 +51,7 @@ const revealTargets = document.querySelectorAll(
   ".gallery-heading > *, .gallery-tour, .gallery-controls, " +
   ".manifesto-content > *, .plans-heading > *, .plan-card, " +
   ".faq > div:first-child > *, .faq details, .location > img, .location-copy > *, " +
-  ".closing > *, .footer-main, .footer-bottom > div"
+  ".closing > *, .footer-follow, .footer-links > *, .footer-brand, .footer-legal"
 );
 if (!reducedMotion.matches && "IntersectionObserver" in window) {
   revealTargets.forEach((element) => {
