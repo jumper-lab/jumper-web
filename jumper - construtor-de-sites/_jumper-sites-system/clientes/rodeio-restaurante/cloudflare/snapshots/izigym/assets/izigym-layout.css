@@ -207,3 +207,30 @@ html.motion-ready .motion-image:not(.is-revealed){clip-path:inset(0 0 14% 0 roun
   .mobile-nav a:last-child{border:0}
   .mobile-nav a:hover{color:var(--red)}
 }
+
+/* Cerro Corá photo rail: generous portrait cards, free swipe and a quiet status below. */
+.gallery{overflow-x:clip}
+.gallery-rail{gap:4px;width:calc(100% + 5vw + 16px);margin:52px -8px 0;padding:8px 8px 16px;scroll-behavior:smooth}
+.gallery-rail figure{flex:0 0 calc(clamp(310px,27vw,440px) + 16px);padding-inline:8px;overflow:visible;scroll-snap-stop:always}
+.gallery-rail img,.gallery-video-media{height:clamp(480px,64vh,680px);border-radius:26px}
+.gallery-rail img{transition:scale .6s cubic-bezier(.22,1,.36,1);scale:1}
+.gallery-rail figure:hover img{transform:none}
+.gallery-rail figcaption{display:flex;align-items:baseline;gap:8px;margin-top:18px;font-size:16px;line-height:1.35}
+.gallery-rail figcaption span:first-child{flex:none;white-space:nowrap}
+.gallery-video[data-clone]{pointer-events:auto}
+.gallery-video .video-caption-tag{margin-left:auto;font-size:11px;letter-spacing:.06em}
+.gallery-hint{display:flex;justify-content:space-between;gap:16px;margin-top:20px;font-size:11px;letter-spacing:.08em}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){.gallery-rail figure:not(.gallery-video):hover img{scale:1.03}}
+@media(min-width:768px) and (max-width:1100px){
+  .gallery-rail{width:calc(100% + 16px)}
+  .gallery-rail figure{flex-basis:calc(46% + 16px)}
+  .gallery-rail img,.gallery-video-media{height:clamp(340px,45vw,480px)}
+}
+@media(max-width:767px){
+  .gallery-rail{gap:0;width:calc(100% + 36px);margin:40px -8px 0;padding:8px 8px 16px}
+  .gallery-rail figure{flex-basis:calc(82vw + 16px)}
+  .gallery-rail img,.gallery-video-media{height:clamp(350px,115vw,500px);border-radius:18px}
+  .gallery-rail figcaption{font-size:14px}
+  .gallery-hint{margin-top:12px}
+}
+@media(prefers-reduced-motion:reduce){.gallery-rail{scroll-behavior:auto}.gallery-rail img{transition:none}}
