@@ -91,7 +91,7 @@ function jsonResponse(value, status = 200) {
   });
 }
 
-async function submitIziLead(request, env) {
+async function submitIziLead(request, env, isTest = false) {
   if (request.method !== 'POST') {
     return jsonResponse({ error: 'Método não permitido.' }, 405);
   }
@@ -150,9 +150,10 @@ async function submitIziLead(request, env) {
   const field = (key) => typeof campaign[key] === 'string' ? campaign[key].trim().slice(0, 200) || null : null;
   const id = crypto.randomUUID();
   const consentedAt = new Date().toISOString();
+  const leadsDb = isTest ? env.IZI_LEADS_TEST_DB : env.IZI_LEADS_DB;
 
   try {
-    await env.IZI_LEADS_DB.prepare(
+    await leadsDb.prepare(
       `INSERT INTO izi_gym_leads
        (id, name, phone, email, consent_version, consented_at, utm_source, utm_medium, utm_campaign, utm_content, utm_term, gclid, fbclid)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
@@ -193,11 +194,12 @@ const form=document.querySelector('#lead-form');const status=document.querySelec
 </script></body></html>`, 200, { 'Content-Security-Policy': csp, 'Cache-Control': 'no-store, private' });
 }
 
-async function listIziLeads(request, env) {
+async function listIziLeads(request, env, isTest = false) {
   if (request.method !== 'GET') return jsonResponse({ error: 'Método não permitido.' }, 405);
   if (!(await isAuthorized(request, env.JUMPER_HOSTER_PASSWORD))) return jsonResponse({ error: 'Acesso não autorizado.' }, 401);
+  const leadsDb = isTest ? env.IZI_LEADS_TEST_DB : env.IZI_LEADS_DB;
   try {
-    const { results = [] } = await env.IZI_LEADS_DB.prepare(
+    const { results = [] } = await leadsDb.prepare(
       `SELECT id, created_at, name, phone, email, consent_version, consented_at, utm_source, utm_medium, utm_campaign, utm_content, utm_term, gclid, fbclid
        FROM izi_gym_leads ORDER BY created_at DESC LIMIT 500`,
     ).all();
@@ -254,8 +256,8 @@ export default {
           if (request.method !== 'GET') return new Response('Method Not Allowed', { status: 405, headers: { Allow: 'GET' } });
           return leadTestPage(crypto.randomUUID());
         }
-        if (isAdmin) return listIziLeads(request, env);
-        return submitIziLead(request, env);
+        if (isAdmin) return listIziLeads(request, env, true);
+        return submitIziLead(request, env, true);
       }
     }
 
