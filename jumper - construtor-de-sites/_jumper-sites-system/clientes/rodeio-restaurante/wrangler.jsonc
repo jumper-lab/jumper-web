@@ -10,6 +10,27 @@
     "run_worker_first": true,
     "not_found_handling": "404-page"
   },
+  "kv_namespaces": [
+    {
+      "binding": "JUMPER_BRIEFING_DRAFTS",
+      "id": "47cdb91716ab4cd99d66807fae60b655"
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "IZI_LEADS_DB",
+      "database_name": "izi-gym-leads",
+      "database_id": "28c64f5a-5163-4db9-a557-1b5ffd2067f1",
+      "migrations_dir": "cloudflare/migrations/izi-gym-leads"
+    }
+  ],
+  "ratelimits": [
+    {
+      "name": "IZI_LEAD_LIMITER",
+      "namespace_id": "348672410",
+      "simple": { "limit": 30, "period": 60 }
+    }
+  ],
   "routes": [
     {
       "pattern": "site.jumper.dev.br",
