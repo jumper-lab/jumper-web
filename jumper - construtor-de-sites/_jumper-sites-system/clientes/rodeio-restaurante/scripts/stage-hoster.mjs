@@ -1,6 +1,7 @@
 import { cp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { dirname, extname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { applyCerroCoupon } from '../cloudflare/cerro-coupon.mjs';
 
 const projectRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
 const source = join(projectRoot, 'dist');
@@ -85,9 +86,13 @@ await rewriteTree(iziVilaRomanaTarget, [
 await cp(join(iziVilaRomanaTarget, 'simple', 'index.html'), join(iziVilaRomanaTarget, 'index.html'));
 await mkdir(iziCerroCoraTarget, { recursive: true });
 const cerroCoraHtml = await readFile(join(iziVilaRomanaTarget, 'index.html'), 'utf8');
+const cerroCoraAnalytics = cerroCoraHtml
+  .replace('<head>', `<head><!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-N52MH72F');</script><!-- End Google Tag Manager -->`)
+  .replace('</head>', `<!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-7CECXK1LS2"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7CECXK1LS2');</script></head>`)
+  .replace('<body>', `<body><!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N52MH72F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) -->`);
 await writeFile(
   join(iziCerroCoraTarget, 'index.html'),
-  cerroCoraHtml.replaceAll('https://site.jumper.dev.br/izigym-lp-vilaromana/', 'https://cerrocora.izigym.com.br/'),
+  applyCerroCoupon(cerroCoraAnalytics.replaceAll('https://site.jumper.dev.br/izigym-lp-vilaromana/', 'https://cerrocora.izigym.com.br/'), { strict: true }),
 );
 
 const dashboardTemplate = await readFile(join(projectRoot, 'cloudflare', 'dashboard.html'), 'utf8');

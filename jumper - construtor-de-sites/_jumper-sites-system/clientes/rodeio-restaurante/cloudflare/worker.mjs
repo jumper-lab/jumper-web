@@ -1,3 +1,5 @@
+import { applyCerroCoupon } from './cerro-coupon.mjs';
+
 const SITE_PREFIX = '/rodeio';
 const LEGACY_PREFIX = '/site';
 const PUBLIC_SITES = ['/rodeio', '/izigym', '/izigym-lp', '/izigym-lp-vilaromana', '/casabelie', '/casabelie-2', '/casabelie-3'];
@@ -239,6 +241,7 @@ export default {
       if (url.pathname === '/' && response.status === 200) {
         headers.set('Content-Type', 'text/html; charset=utf-8');
         headers.set('Cache-Control', 'no-store, max-age=0');
+        return new Response(applyCerroCoupon(await response.text()), { status: response.status, statusText: response.statusText, headers });
       }
       return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
     }
