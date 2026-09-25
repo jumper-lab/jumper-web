@@ -18,6 +18,10 @@ const couponStyles = `
 .plan-coupon-note strong,.footer-offer strong,.modal-coupon strong{color:#e52c12;font-weight:400}
 .footer-offer s{text-decoration-color:#e52c12}
 .modal-coupon{margin:-6px 0 16px;padding:12px 15px;border:1px solid #e52c12;border-radius:12px;font-size:14px;line-height:1.4}
+@media(min-width:768px){
+ .hero{height:auto;max-height:none;min-height:max(800px,100svh)}
+ .hero-layout{height:auto;min-height:max(800px,100svh);padding-top:148px}
+}
 @media(max-width:767px){
  .hero-story.hero-offer{width:100%}
  .hero-offer h1{font-size:clamp(39px,10.6vw,53px)}
