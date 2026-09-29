@@ -8,6 +8,13 @@ O `jumper-hoster` é o hub oficial de desenvolvimento dos sites criados pelo Jum
 - Registro oficial: `jumper-hoster.registry.json`
 - Acesso: o painel raiz é restrito à equipe Jumper; as rotas dos clientes são públicas.
 
+## Nomes e fontes de verdade
+
+- **`jumper-web`** é este repositório. Contém o construtor, o registro `jumper-hoster.registry.json`, o template do hub e o código do Worker `jumper-hoster`.
+- **`jumper-hoster`** é o nome do Worker da Cloudflare que serve `site.jumper.dev.br`. Não é um repositório separado. O mesmo Worker também atende domínios oficiais configurados em `clientes/rodeio-restaurante/wrangler.jsonc`.
+- **`jumper-site`** é outro repositório (`jumper-lab/jumper-site`), origem do site institucional `jumper.studio`. Sua prévia existente é `jumpersite.vercel.app`. O card no hub contém links; o site institucional não deve ser copiado nem implantado pelo `jumper-hoster` sem um projeto específico para isso.
+- **`izigym`** também tem repositório próprio (`jumper-lab/izigym`). Os snapshots usados pelo `jumper-hoster` ficam neste repositório, mas uma mudança no repositório da IZI não atualiza automaticamente os snapshots daqui.
+
 ## Regra obrigatória
 
 Todo site concluído pelo construtor deve ser publicado neste Worker. Uma entrega só está completa quando:
@@ -30,8 +37,16 @@ O registro e o painel devem permanecer sincronizados. O painel é gerado a parti
 
 Vercel pode ser usada somente quando houver pedido explícito. Ela não é origem, proxy ou etapa obrigatória do fluxo padrão.
 
-## Deploy pelo GitHub
+## Publicação segura — GitHub primeiro, Cloudflare depois
 
-O deploy de produção é disparado exclusivamente pelo workflow `.github/workflows/deploy-jumper-hoster.yml` depois de um merge na branch `main`. O workflow instala as dependências do Rodeio, roda `npm run build:cloudflare` para gerar o pacote completo do hub e executa `wrangler deploy` para o Worker central.
+1. Faça os ajustes em uma branch local isolada, valide-os e abra uma PR para `main` no GitHub.
+2. Após o merge, use um checkout **limpo e atualizado de `main`**. Um merge não publica o hub. Não há workflow de GitHub Actions que faça o deploy do `jumper-hoster`.
+3. Prepare o pacote completo com `npm run build:cloudflare` em `clientes/rodeio-restaurante`. Esse build inclui as outras páginas do Worker; não existe deploy de um único card pelo Wrangler.
+4. Execute `npm run preflight:cloudflare` com `CLOUDFLARE_API_TOKEN` no ambiente. O preflight bloqueia um checkout fora de `main`, diferente do GitHub, com alterações rastreadas ou com páginas protegidas diferentes das versões atualmente publicadas. Também compara os domínios ativos com o `wrangler.jsonc`, verifica recursos críticos do Worker e detecta se a versão ativa mudou durante a auditoria.
+5. Somente com preflight aprovado execute `npm run deploy:cloudflare`, que reconstrói o pacote, repete o preflight e então roda a versão de Wrangler fixada no `package-lock.json`. Depois confira o hub, as rotas de desenvolvimento e os domínios oficiais. Registre o ID da versão publicada para permitir rollback.
 
-O repositório precisa ter o Secret Actions `CLOUDFLARE_API_TOKEN`, criado com uma API token da conta Jumper que tenha permissão de escrita para Workers. Não execute deploy de produção manualmente a partir de uma máquina local: valide localmente, envie a branch e faça merge na `main`.
+O token deve ficar em variável de ambiente local ou gerenciador de segredos, nunca em Git. Se o preflight falhar, **não rode `wrangler deploy` diretamente para contorná-lo**: reconcilie o conteúdo publicado com o GitHub em PR específica ou isole explicitamente o projeto que será alterado. A verificação de páginas iniciais e recursos críticos reduz o risco, mas não substitui revisão do diff nem uma checagem funcional pós-deploy.
+
+### Reconciliação de 29/09/2026
+
+A primeira auditoria encontrou recursos de Cerro Corá, leads IZI e briefing que faltavam no `main`. A PR #37 integrou esses recursos ao GitHub. Um novo build do `main` passou no preflight contra a versão Cloudflare `282b6913-c6de-4b31-af96-128b007ecd99`: todas as páginas iniciais protegidas e os domínios conferiram. Esse resultado é uma fotografia datada; qualquer novo deploy, commit ou mudança de assets exige reconstrução e nova auditoria antes da publicação.
