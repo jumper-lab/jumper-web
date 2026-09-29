@@ -50,16 +50,16 @@ test('month filter queries production D1 and CSV uses same filter', async () => 
   const html = await page.text();
   assert.match(html, /Cadastros do formulário/);
   assert.match(html, /Base de dados/);
-  assert.match(html, /izi-gym-leads-dev/);
+  assert.match(html, /izi-lp-CerroCora-leads-dev/);
   assert.doesNotMatch(html, /Campanha \(UTM\)/);
-  assert.match(html, /href="\/__jumper\/izi-gym\/leads-live\?database=izi-gym-leads&amp;month=2026-09&amp;page=1"/);
+  assert.match(html, /href="\/__jumper\/izi-gym\/leads-live\?database=izi-lp-CerroCora-leads&amp;month=2026-09&amp;page=1"/);
   assert.match(html, /Atualizar planilha/);
   assert.deepEqual(calls[0].values, ['2026-09-01', '2026-10-01']);
 
   calls.length = 0;
   const csv = await worker.fetch(new Request('https://site.jumper.dev.br/__jumper/izi-gym/leads-live.csv?month=2026-09', { headers }), env);
   assert.equal(csv.status, 200);
-  assert.match(csv.headers.get('Content-Disposition'), /izi-gym-leads-2026-09\.csv/);
+  assert.match(csv.headers.get('Content-Disposition'), /izi-lp-CerroCora-leads-2026-09\.csv/);
   assert.deepEqual(calls[0].values, ['2026-09-01', '2026-10-01']);
   assert.match(await csv.text(), /'\=Test/);
 });
@@ -70,15 +70,15 @@ test('development selection and CSV use only the development D1', async () => {
   const env = environment(productionCalls, developmentCalls);
   const headers = { Cookie: `jumper_hoster_session=${token}` };
   const path = 'https://site.jumper.dev.br/__jumper/izi-gym/leads-live';
-  const response = await worker.fetch(new Request(`${path}?database=izi-gym-leads-dev&month=2026-09`, { headers }), env);
+  const response = await worker.fetch(new Request(`${path}?database=izi-lp-CerroCora-leads-dev&month=2026-09`, { headers }), env);
   assert.equal(response.status, 200);
-  assert.match(await response.text(), /<strong>izi-gym-leads-dev<\/strong> está selecionada/);
+  assert.match(await response.text(), /<strong>izi-lp-CerroCora-leads-dev<\/strong> está selecionada/);
   assert.equal(productionCalls.length, 0);
   assert.deepEqual(developmentCalls[0].values, ['2026-09-01', '2026-10-01']);
 
-  const csv = await worker.fetch(new Request(`${path}.csv?database=izi-gym-leads-dev&month=2026-09`, { headers }), env);
+  const csv = await worker.fetch(new Request(`${path}.csv?database=izi-lp-CerroCora-leads-dev&month=2026-09`, { headers }), env);
   assert.equal(csv.status, 200);
-  assert.match(csv.headers.get('Content-Disposition'), /izi-gym-leads-dev-2026-09\.csv/);
+  assert.match(csv.headers.get('Content-Disposition'), /izi-lp-CerroCora-leads-dev-2026-09\.csv/);
   assert.equal(productionCalls.length, 0);
 
   const invalid = await worker.fetch(new Request(`${path}?database=another-db`, { headers }), env);

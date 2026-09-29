@@ -19,15 +19,15 @@
   "d1_databases": [
     {
       "binding": "IZI_LEADS_DB",
-      "database_name": "izi-gym-leads",
-      "database_id": "28c64f5a-5163-4db9-a557-1b5ffd2067f1",
-      "migrations_dir": "cloudflare/migrations/izi-gym-leads"
+      "database_name": "izi-lp-CerroCora-leads",
+      "database_id": "e06d432d-eaf4-47cb-90a2-fd7b6cc54ebc",
+      "migrations_dir": "cloudflare/migrations/izi-lp-CerroCora-leads"
     },
     {
       "binding": "IZI_LEADS_TEST_DB",
-      "database_name": "izi-gym-leads-dev",
-      "database_id": "836cc67f-400d-4c8e-8d6a-11bc6fc40a56",
-      "migrations_dir": "cloudflare/migrations/izi-gym-leads-dev"
+      "database_name": "izi-lp-CerroCora-leads-dev",
+      "database_id": "af52ce85-b519-473c-ad3c-66654cf3aabd",
+      "migrations_dir": "cloudflare/migrations/izi-lp-CerroCora-leads-dev"
     }
   ],
   "ratelimits": [
