@@ -1,5 +1,13 @@
 # Rodeio Restaurante
 
+## Sincronização pública — 29/09/2026
+
+A versão publicada em [site.jumper.dev.br/rodeio](https://site.jumper.dev.br/rodeio/) foi sincronizada com o estado mais recente do projeto: slideshow da home com seis fotografias inéditas na ordem aprovada, textos finais, acervo ampliado da página História, animações, galerias e demais ajustes visuais acumulados. O site é servido diretamente pelo Cloudflare Worker `jumper-hoster`; a versão consolidada desta rodada é `5c239f82-f47b-4bfa-a3b7-c4a3cbdc7575`.
+
+`astro check` concluiu sem erros e o build gerou as dez páginas previstas. Após a publicação, nove rotas públicas foram verificadas em 390 × 844 e 1440 × 900: 18 combinações aprovadas, sem overflow, imagens quebradas, erros de console ou erros de execução. O HTML público da home foi comparado com o pacote local e é idêntico. A indexação continua desativada porque este endereço é o ambiente de desenvolvimento.
+
+As notas abaixo registram rodadas históricas de trabalho. Indicações como “sem deploy” descrevem somente a rodada citada e foram superadas por esta sincronização.
+
 ## Compatibilidade entre navegadores — 09/09/2026
 
 Auditoria automatizada concluída em Chromium, Firefox e WebKit, nos viewports 390 × 844 e 1440 × 900. Foram executadas 78 verificações: carregamento das 10 páginas, conteúdo visível, ausência de overlay e erros de console, imagens carregadas, ausência de overflow, heros com 100% do viewport, menu mobile, navegação, lightbox com anterior/próxima/teclado/retorno de foco e seleção de unidade nas reservas. Resultado: 78 aprovadas, nenhuma falha.

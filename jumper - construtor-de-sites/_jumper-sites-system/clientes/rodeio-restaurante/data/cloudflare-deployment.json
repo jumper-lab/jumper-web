@@ -2,7 +2,7 @@
   "url": "https://site.jumper.dev.br/rodeio",
   "provider": "cloudflare-workers-static-assets",
   "worker": "jumper-hoster",
-  "versionId": "cd5dad4e-dbaa-40e5-aba9-75ff508f5913",
+  "versionId": "5c239f82-f47b-4bfa-a3b7-c4a3cbdc7575",
   "status": "READY",
   "indexing": "noindex",
   "results": [
@@ -40,62 +40,6 @@
     },
     {
       "route": "/rodeio/privacidade/",
-      "status": 200
-    },
-    {
-      "route": "/izigym/",
-      "status": 200
-    },
-    {
-      "route": "/casabelie/",
-      "status": 200
-    },
-    {
-      "route": "/casabelie/sobre/",
-      "status": 200
-    },
-    {
-      "route": "/casabelie/festas/",
-      "status": 200
-    },
-    {
-      "route": "/casabelie/espaco/",
-      "status": 200
-    },
-    {
-      "route": "/casabelie/blog/",
-      "status": 200
-    },
-    {
-      "route": "/casabelie/contato/",
-      "status": 200
-    },
-    {
-      "route": "/casabelie-2/",
-      "status": 200
-    },
-    {
-      "route": "/casabelie-2/sobre/",
-      "status": 200
-    },
-    {
-      "route": "/casabelie-2/festas/",
-      "status": 200
-    },
-    {
-      "route": "/casabelie-2/espaco/",
-      "status": 200
-    },
-    {
-      "route": "/casabelie-2/blog/",
-      "status": 200
-    },
-    {
-      "route": "/casabelie-2/blog/por-que-a-casa-belie-nao-tem-telas/",
-      "status": 200
-    },
-    {
-      "route": "/casabelie-2/contato/",
       "status": 200
     }
   ],
@@ -141,7 +85,7 @@
       "marge.ns.cloudflare.com"
     ]
   },
-  "date": "2026-09-10T10:41:00.000Z",
+  "date": "2026-09-29T23:20:46.000Z",
   "access": {
     "dashboard": "password",
     "clientSites": "public",
@@ -172,5 +116,29 @@
       "izigym"
     ],
     "verifiedAt": "2026-09-10T10:44:00.000Z"
+  },
+  "lastRodeioSync": {
+    "deployedAt": "2026-09-29T23:20:46.000Z",
+    "sourceCommit": "4b7b3957485e074d7658524796f4bccecf142343",
+    "workerSourceCommit": "5545a687344d95cffbdce2c2f96de0da863fbd9d",
+    "scope": [
+      "slideshow da home com seis fotografias inéditas na ordem aprovada",
+      "textos finais e acervo ampliado da página História",
+      "animações, galerias e ajustes visuais acumulados"
+    ],
+    "verification": {
+      "astroCheckErrors": 0,
+      "buildPages": 10,
+      "publicRoutes": 9,
+      "viewportChecks": 18,
+      "viewports": [
+        "390x844",
+        "1440x900"
+      ],
+      "overflowFailures": 0,
+      "brokenImages": 0,
+      "consoleErrors": 0,
+      "publicHomeMatchesPackage": true
+    }
   }
 }

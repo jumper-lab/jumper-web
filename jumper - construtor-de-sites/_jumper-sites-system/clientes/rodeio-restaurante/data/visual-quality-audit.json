@@ -302,14 +302,14 @@
     "Endereço Jardins: briefing 1448 versus página oficial 1498. Confirmar número vigente e mudança de 2026; mantido briefing, sem inferência comercial.",
     "Horários e contato: briefing tem horários globais e 3474-1333; Iguatemi oficial informa outros horários e 2348-1111. Confirmar por unidade antes de lançamento definitivo.",
     "Manual e logo originais não estavam disponíveis na ingestão. Laranja atual é interpretação documentada, e marca veio do site oficial; conformidade de marca depende do material.",
-    "A versão revisada existe somente localmente. Vercel ainda mostra a publicação anterior, sem os novos ajustes nem política de cache; próximo deploy exige autorização específica.",
+    "A versão revisada está publicada diretamente no Cloudflare Worker jumper-hoster em https://site.jumper.dev.br/rodeio/. A sincronização de 29/09/2026 confirmou o HTML público idêntico ao pacote local; a Vercel não participa desse tráfego.",
     "SEO permanece 69 por noindex intencional. A API PageSpeed retornou429 na revisão anterior; esta rodada usa Lighthouse de laboratório, sem INP/CrUX ou garantia de campo.",
     "Em viewports extremos de zoom, 100vh exige rolagem interna do texto. CTA acessível por foco foi verificado, mas não há garantia de toda combinação de navegador e tecnologia assistiva.",
     "Reservas, mapas, cardápio e eventos dependem de serviços externos. Erros de terceiros podem ocorrer; links alternativos existem e nenhum formulário real foi submetido.",
     "Acervo histórico tem resolução inferior às fotografias contemporâneas; os heros internos usam essa imagem real sem fabricar um acervo de maior definição.",
     "Meta de desempenho global ainda não atingida nas medições locais: home mobile mediana94 e LCP2,749s (meta2,5s); Restaurantes mobile mediana80, faixa61–91, com TBT bastante variável. Atividade concorrente foi observada no Chrome habitual, mas não prova a causa de cada resultado. Revalidar em ambiente sem concorrência antes de afirmar PageSpeed todo verde; não descartar amostras ruins."
   ],
-  "final_recommendation": "Redesenho visual concluído e validado localmente. Home, menu e todas as páginas estão prontos para avaliação visual. Desempenho mobile exige nova validação em ambiente sem concorrência e possível otimização adicional; não declarar todas as categorias verdes. Não publicar sem autorização específica. Confirmar dados comerciais e marca antes de habilitar indexação.",
+  "final_recommendation": "Redesenho visual concluído, validado e publicado no ambiente de desenvolvimento do Cloudflare. Home, menu e todas as páginas estão disponíveis para avaliação visual. Desempenho mobile deve continuar sendo acompanhado em medições públicas e de campo. Confirmar dados comerciais, fotografias ainda pendentes e marca antes de habilitar indexação ou migrar para o domínio definitivo.",
   "validation": {
     "astro_check": "39 arquivos; zero erros, avisos e hints na versão final",
     "build": "10 páginas; última compilação contém os recortes portrait em qualidade55 e prioridades de imagem explícitas",
@@ -614,5 +614,15 @@
       "Dados comerciais conflitantes ainda aguardam confirmação: número de Jardins, horários por unidade e telefone geral.",
       "Sem nova validação do conteúdo dos serviços externos de cardápio, reservas ou eventos."
     ]
+  },
+  "publication_status": {
+    "environment": "development",
+    "provider": "cloudflare-workers-static-assets",
+    "worker": "jumper-hoster",
+    "url": "https://site.jumper.dev.br/rodeio/",
+    "versionId": "5c239f82-f47b-4bfa-a3b7-c4a3cbdc7575",
+    "deployedAt": "2026-09-29T23:20:46.000Z",
+    "indexing": "noindex",
+    "verification": "9 rotas públicas e 18 combinações de viewport aprovadas; HTML público da home idêntico ao pacote local."
   }
 }
