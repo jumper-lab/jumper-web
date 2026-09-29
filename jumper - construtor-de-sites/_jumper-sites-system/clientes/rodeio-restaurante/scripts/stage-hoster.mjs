@@ -25,6 +25,7 @@ const briefingTarget = join(target, 'briefing');
 const iziLandingSource = resolve(projectRoot, '../izigym-lp/dist');
 const iziLandingTarget = join(target, 'izigym-lp');
 const iziVilaRomanaTarget = join(target, 'izigym-lp-vilaromana');
+const iziCerroCoraTarget = join(target, 'cerrocora');
 
 const textExtensions = new Set(['.html', '.css', '.js', '.mjs', '.xml', '.txt', '.webmanifest']);
 
@@ -84,6 +85,12 @@ await rewriteTree(iziVilaRomanaTarget, [
   ['/izigym-lp/', '/izigym-lp-vilaromana/'],
 ]);
 await cp(join(iziVilaRomanaTarget, 'simple', 'index.html'), join(iziVilaRomanaTarget, 'index.html'));
+await mkdir(iziCerroCoraTarget, { recursive: true });
+const cerroCoraHtml = await readFile(join(iziVilaRomanaTarget, 'index.html'), 'utf8');
+await writeFile(
+  join(iziCerroCoraTarget, 'index.html'),
+  cerroCoraHtml.replaceAll('https://site.jumper.dev.br/izigym-lp-vilaromana/', 'https://cerrocora.izigym.com.br/'),
+);
 
 const dashboardTemplate = await readFile(join(projectRoot, 'cloudflare', 'dashboard.html'), 'utf8');
 const registry = JSON.parse(await readFile(resolve(projectRoot, '../../jumper-hoster.registry.json'), 'utf8'));
@@ -103,17 +110,34 @@ for (const client of registry.clients) {
       throw new Error(`A URL de desenvolvimento de ${site.slug} não corresponde ao slug registrado.`);
     }
     await readFile(join(target, site.slug, 'index.html'));
-    links.push({ label: site.label, url: `/${site.slug}/`, external: false });
   }
-  for (const resource of client.resourceLinks ?? []) {
-    const resourceUrl = new URL(resource.url);
-    if (resourceUrl.protocol !== 'https:') throw new Error(`O recurso de ${client.name} precisa usar HTTPS.`);
-    links.push({ label: resource.label, url: resourceUrl.href, external: true });
-  }
-  if (client.officialSite) {
-    const officialUrl = new URL(client.officialSite.url);
-    if (officialUrl.protocol !== 'https:') throw new Error(`O site oficial de ${client.name} precisa usar HTTPS.`);
-    links.push({ label: client.officialSite.label, url: officialUrl.href, external: true });
+  if (client.hubLinks) {
+    for (const item of client.hubLinks) {
+      if (item.slug) {
+        if (!client.developmentSites.some((site) => site.slug === item.slug)) {
+          throw new Error(`O link ${item.slug} não corresponde a um site de desenvolvimento de ${client.name}.`);
+        }
+        links.push({ label: item.label, url: `/${item.slug}/`, external: false });
+      } else {
+        const linkUrl = new URL(item.url);
+        if (linkUrl.protocol !== 'https:') throw new Error(`O link de ${client.name} precisa usar HTTPS.`);
+        links.push({ label: item.label, url: linkUrl.href, external: true });
+      }
+    }
+  } else {
+    for (const site of client.developmentSites) {
+      links.push({ label: site.label, url: `/${site.slug}/`, external: false });
+    }
+    for (const resource of client.resourceLinks ?? []) {
+      const resourceUrl = new URL(resource.url);
+      if (resourceUrl.protocol !== 'https:') throw new Error(`O recurso de ${client.name} precisa usar HTTPS.`);
+      links.push({ label: resource.label, url: resourceUrl.href, external: true });
+    }
+    if (client.officialSite) {
+      const officialUrl = new URL(client.officialSite.url);
+      if (officialUrl.protocol !== 'https:') throw new Error(`O site oficial de ${client.name} precisa usar HTTPS.`);
+      links.push({ label: client.officialSite.label, url: officialUrl.href, external: true });
+    }
   }
   const linksData = escapeHtml(JSON.stringify(links));
   cards.push(`<article class="card" style="--project:${escapeHtml(client.accent)}"><button class="card-open" type="button" aria-haspopup="dialog" aria-controls="client-links-dialog" data-client="${escapeHtml(client.name)}" data-category="${escapeHtml(client.category)}" data-accent="${escapeHtml(client.accent)}" data-links="${linksData}"><span class="tag">${escapeHtml(client.category)}</span><h2>${escapeHtml(client.name)}</h2><p class="description">${escapeHtml(client.description)}</p><span class="card-action"><span>Abrir links</span><span class="arrow" aria-hidden="true">→</span></span></button></article>`);

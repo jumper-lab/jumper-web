@@ -1,0 +1,5 @@
+# Motion reference — 2026-09-22
+Reference observed live: https://thesimplegym.com.br/ and archived app-9c78103b.css / app-9c78103b2.js.
+Observed: split words blur-in 1.2s / 32ms stagger; masked slide-up .6s / 48ms stagger; scaleOut 1.2→1; hero scroll -20vh with opacity→0; rails from 10rem; capsule inversion .2s. Live scroll sample: hero translateY(-122.865px), opacity .0295.
+Adaptation: Obviously preserved. Intro word blur 3px→0 1s/32ms; masked headings 800ms/95ms per row. Photos scale 1.15→1; gallery entrance 48px. Hero and large media follow scroll with smaller mobile amplitude. Capsule inversion .2s, arrow exit/reentry .45s. Mobile mask .55s and staggered links. Tabs image zoom and caption entrance. Native scroll, no blocking loader.
+QA: widths 320,390,768,1024,1440,1920, zero horizontal overflow. Menu/Escape, keyboard tabs, form iframe, FAQ pass. Reduced-motion cancels animations. Local Lighthouse mobile performance 93, accessibility 100, best practices 100; not public PSI/field scores.

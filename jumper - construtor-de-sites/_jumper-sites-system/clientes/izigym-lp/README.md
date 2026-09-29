@@ -1,0 +1,44 @@
+# IZI Gym — landing de vendas
+
+Landing de conversão baseada no conteúdo da campanha original e no Guia de Identidade Visual oficial da IZI Gym. O sistema usa Fields nos títulos, Obviously no corpo e na interface, canvas areia, modo noturno carvão e vermelho institucional como acento.
+
+Preview atual: https://site.jumper.dev.br/izigym-lp-vilaromana/
+
+Site principal: https://cerrocora.izigym.com.br/
+
+## Operação
+
+- `npm run dev`: desenvolvimento em `http://127.0.0.1:4327/izigym-lp/`.
+- `npm run build`: gera o site estático em `dist/`.
+- Landing oficial e preview v2: `src/pages/simple.astro`, `src/simple.ts` e `src/simple.css`.
+- `src/pages/index.astro` permanece como versão v1 de desenvolvimento.
+- Design system: `DESIGN_SYSTEM.md` e `data/final-design-system.json`.
+- Auditoria de aplicação: `data/brand-audit-2026-09-22.md`.
+- Ativos oficiais: `public/assets/brand/`.
+
+## Conversão
+
+Na landing oficial, o modal de matrícula usa um formulário próprio com nome, telefone, e-mail e consentimento. O envio vai para `POST /api/izigym/leads` no Worker `jumper-hoster`; após a confirmação de gravação no D1 `izi-lp-CerroCora-leads`, as ofertas do PRIME seguem diretamente para o checkout com o cupom `0,99_IZI`. O botão Izi One continua levando à seleção de planos, pois o checkout do PRIME não corresponde a essa escolha. Se a gravação falhar, o visitante permanece no formulário e vê o erro. UTMs, gclid e fbclid são preservados no cadastro. Os eventos `enrollment_open` e `lead_submit` registram a interação sem enviar dados pessoais à camada de analytics. A landing oficial não exibe botões de WhatsApp.
+
+No preview v2 em `site.jumper.dev.br`, o mesmo endpoint usa a base separada `izi-lp-CerroCora-leads-dev`, protegida pelo acesso ao Jumper Hoster. Os cadastros de produção podem ser consultados no [D1 da Cloudflare](https://dash.cloudflare.com/e23efa36a1e09015eebb2b36bdfcf201/workers/d1/databases/e06d432d-eaf4-47cb-90a2-fd7b6cc54ebc/studio). O v1 de desenvolvimento ainda preserva o embed histórico do YayForms.
+
+O hub da Jumper inclui o [painel administrativo dos cadastros da LP](https://site.jumper.dev.br/__jumper/izi-gym/leads-live), protegido pela sessão do Jumper Hoster. Ele abre na base oficial `izi-lp-CerroCora-leads` e permite escolher a base de desenvolvimento `izi-lp-CerroCora-leads-dev` pelo nome exato, além de filtrar por período e plano. A lista e o CSV sempre usam a base selecionada e o mesmo intervalo de datas; o arquivo inclui o nome da base. A exportação aceita até 20 mil registros por vez; acima disso, filtre por um período menor. O painel antigo em `/__jumper/izi-gym/leads` continua separado e consulta somente a base de desenvolvimento.
+
+## Regras de marca
+
+- Fields somente para títulos e afirmações.
+- Obviously para corpo, subtítulos, interface, preço e métricas.
+- Botões com peso 500.
+- Areia `#E6DDC9` como canvas e carvão `#434341` como modo noturno.
+- Vermelho `#E52C12` usado como acento.
+- Verde `#0F806F` restrito a ações reais de WhatsApp.
+- Logos oficiais, sem distorção, recoloração ou alteração de proporção.
+
+## Validação
+
+Build aprovado. Revisão em 390×844 e 1440×900 sem overflow; hero ocupa a viewport; fontes oficiais carregam; formulário abre e fecha; CTA fixo mobile aparece apenas depois da hero; console sem erros.
+
+## Pendências comerciais
+
+- A origem chama o plano promocional de Premium e a tabela o nomeia Prime. Confirmar a nomenclatura antes de mídia em escala.
+- Validade exata da oferta e regras adicionais não foram fornecidas e não foram inventadas.
