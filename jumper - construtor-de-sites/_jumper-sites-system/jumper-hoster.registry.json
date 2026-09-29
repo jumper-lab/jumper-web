@@ -6,6 +6,28 @@
   "clientRoutesAccess": "public",
   "clients": [
     {
+      "id": "jumper-studio",
+      "name": "Jumper Studio",
+      "category": "Jumper",
+      "description": "Site institucional da Jumper, com soluções, cases e pensamento.",
+      "accent": "#fa4721",
+      "developmentSites": [],
+      "resourceLinks": [
+        {
+          "label": "Prévia das páginas",
+          "url": "https://jumpersite.vercel.app/"
+        },
+        {
+          "label": "Repositório no GitHub",
+          "url": "https://github.com/jumper-lab/jumper-site"
+        }
+      ],
+      "officialSite": {
+        "label": "Site oficial",
+        "url": "https://jumper.studio/"
+      }
+    },
+    {
       "id": "rodeio",
       "name": "Rodeio",
       "category": "Restaurante",
