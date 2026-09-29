@@ -312,12 +312,105 @@ async function listLiveIziLeads(request, env) {
     ]);
     const options = (rows, key, selected) => rows.map((row) => `<option value="${escapeHtml(row[key])}"${row[key] === selected ? ' selected' : ''}>${escapeHtml(row[key])}</option>`).join('');
     const body = results.length ? results.map((row) => `<tr>${['created_at', 'name', 'phone', 'email', 'plan'].map((key) => `<td>${escapeHtml(row[key])}</td>`).join('')}</tr>`).join('') : '<tr><td colspan="5">Nenhum cadastro encontrado para esses filtros.</td></tr>';
-    const periodOptions = [['all', 'Todo o período'], ['today', 'Hoje'], ['yesterday', 'Ontem'], ['last7', 'Últimos 7 dias'], ['last30', 'Últimos 30 dias'], ['this_month', 'Este mês'], ['previous_month', 'Mês anterior'], ['custom', 'Escolher datas']].map(([value, label]) => `<option value="${value}"${(period === 'legacy_month' ? 'custom' : period) === value ? ' selected' : ''}>${label}</option>`).join('');
+    const periodChoices = [['all', 'Todo o período'], ['today', 'Hoje'], ['yesterday', 'Ontem'], ['last7', 'Últimos 7 dias'], ['last30', 'Últimos 30 dias'], ['this_month', 'Este mês'], ['previous_month', 'Mês anterior']];
+    const selectedCustom = period === 'custom' || period === 'legacy_month';
+    const periodButtons = periodChoices.map(([value, label]) => `<button class="period-choice" type="button" data-period="${value}"${period === value ? ' aria-current="true"' : ''}>${label}</button>`).join('');
     const initialFrom = month ? `${month}-01` : from;
     const initialTo = month ? shiftDate(shiftDate(`${month}-01`, 32).slice(0, 7) + '-01', -1) : to;
+    const dateLabel = (value) => value ? `${value.slice(8, 10)}/${value.slice(5, 7)}/${value.slice(0, 4)}` : '';
+    const selectedPeriodLabel = selectedCustom ? `${dateLabel(initialFrom)} a ${dateLabel(initialTo)}` : periodChoices.find(([value]) => value === period)?.[1] || 'Todo o período';
+    const nonce = crypto.randomUUID().replaceAll('-', '');
+    const periodScript = String.raw`
+const picker = document.querySelector('.period-picker');
+const form = document.querySelector('.filters');
+const periodInput = form.elements.period;
+const fromInput = form.elements.from;
+const toInput = form.elements.to;
+const summary = picker.querySelector('.period-summary');
+const calendar = picker.querySelector('.calendar');
+const menu = picker.querySelector('.period-menu');
+const grid = picker.querySelector('.calendar-grid');
+const monthLabel = picker.querySelector('.calendar-month');
+const rangeLabel = picker.querySelector('.range-label');
+const apply = picker.querySelector('.apply-range');
+let start = fromInput.value;
+let end = toInput.value;
+let visibleMonth = (start || picker.dataset.today).slice(0, 7);
+const shortDate = value => value ? value.slice(8, 10) + '/' + value.slice(5, 7) + '/' + value.slice(0, 4) : '';
+const monthName = value => new Intl.DateTimeFormat('pt-BR', { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(value + '-01T12:00:00Z'));
+function showCalendar() {
+  calendar.hidden = false;
+  menu.classList.add('calendar-open');
+  renderCalendar();
+}
+function renderCalendar() {
+  monthLabel.textContent = monthName(visibleMonth);
+  grid.replaceChildren();
+  const [year, month] = visibleMonth.split('-').map(Number);
+  const firstDay = (new Date(Date.UTC(year, month - 1, 1)).getUTCDay() + 6) % 7;
+  const days = new Date(Date.UTC(year, month, 0)).getUTCDate();
+  for (let index = 0; index < firstDay; index++) grid.append(document.createElement('span'));
+  for (let day = 1; day <= days; day++) {
+    const date = visibleMonth + '-' + String(day).padStart(2, '0');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'calendar-day';
+    if (date === start || date === end) button.classList.add('selected');
+    else if (start && end && date > start && date < end) button.classList.add('in-range');
+    button.textContent = String(day);
+    button.setAttribute('aria-label', shortDate(date));
+    button.setAttribute('aria-pressed', String(date === start || date === end));
+    button.addEventListener('click', (event) => {
+      event.stopPropagation();
+      if (!start || end) { start = date; end = ''; }
+      else if (date < start) { end = start; start = date; }
+      else { end = date; }
+      renderCalendar();
+    });
+    grid.append(button);
+  }
+  rangeLabel.textContent = start ? (end ? shortDate(start) + ' até ' + shortDate(end) : 'Início: ' + shortDate(start) + '. Escolha o fim.') : 'Escolha o início e o fim do período.';
+  apply.disabled = !start || !end;
+}
+picker.querySelectorAll('[data-period]').forEach(button => button.addEventListener('click', () => {
+  periodInput.value = button.dataset.period;
+  fromInput.value = '';
+  toInput.value = '';
+  summary.textContent = button.textContent;
+  calendar.hidden = true;
+  menu.classList.remove('calendar-open');
+  picker.open = false;
+}));
+picker.querySelector('.choose-dates').addEventListener('click', showCalendar);
+picker.querySelector('.calendar-back').addEventListener('click', () => { calendar.hidden = true; menu.classList.remove('calendar-open'); });
+picker.querySelectorAll('[data-month-step]').forEach(button => button.addEventListener('click', () => {
+  const [year, month] = visibleMonth.split('-').map(Number);
+  const next = new Date(Date.UTC(year, month - 1 + Number(button.dataset.monthStep), 1));
+  visibleMonth = next.toISOString().slice(0, 7);
+  renderCalendar();
+}));
+apply.addEventListener('click', () => {
+  if (!start || !end) return;
+  periodInput.value = 'custom';
+  fromInput.value = start;
+  toInput.value = end;
+  summary.textContent = shortDate(start) + ' a ' + shortDate(end);
+  picker.open = false;
+});
+picker.addEventListener('toggle', () => {
+  if (picker.open && periodInput.value === 'custom') showCalendar();
+});
+document.addEventListener('click', event => { if (!picker.contains(event.target)) picker.open = false; });
+form.addEventListener('submit', event => {
+  if (periodInput.value === 'custom' && (!fromInput.value || !toInput.value)) {
+    event.preventDefault();
+    picker.open = true;
+    showCalendar();
+  }
+});`;
     const pages = Math.max(1, Math.ceil(total / 50));
     const pagination = `<nav class="pages" aria-label="Páginas">${page > 1 ? `<a href="${escapeHtml(link(basePath, `page=${page - 1}`))}">← Anterior</a>` : ''}<span>Página ${page} de ${pages}</span>${page < pages ? `<a href="${escapeHtml(link(basePath, `page=${page + 1}`))}">Próxima →</a>` : ''}</nav>`;
-    return htmlResponse(`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Cadastros da LP · IZI Gym</title><style>*{box-sizing:border-box}body{margin:0;padding:clamp(16px,4vw,40px);background:#f2eee5;color:#30302e;font:15px/1.5 system-ui,sans-serif}.wrap{max-width:1240px;margin:auto}.top,.pages{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}.toolbar{display:flex;align-items:end;justify-content:space-between;gap:12px}.controls{display:flex;align-items:center;gap:8px;white-space:nowrap}.eyebrow{text-transform:uppercase;letter-spacing:.14em;color:#e52c12;font-size:11px;font-weight:700}h1{margin:4px 0;font-size:clamp(28px,4vw,42px)}.panel{margin-top:24px;padding:clamp(18px,3vw,30px);background:#fff;border:1px solid #ddd8cc;border-radius:18px}.filters{display:flex;align-items:end;gap:8px;min-width:0;flex:1;white-space:nowrap}.filters label{display:grid;gap:5px;font-size:12px;font-weight:700}.filters input,.filters select{height:40px;min-width:0;width:145px;border:1px solid #ccc6b9;border-radius:8px;padding:0 10px;background:#fff;font:inherit}.button,.pages a{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:9px 12px;border:0;border-radius:999px;background:#e52c12;color:#fff;text-decoration:none;font:inherit;font-size:13px;font-weight:700;cursor:pointer}.button.secondary,.pages a{background:#30302e}.notice{color:#686760}.count{margin:16px 0 0}.filters label:first-child select{width:225px}.filters a{align-self:end}.custom-dates{display:none;align-items:end;gap:8px}.filters:has(select[name=period] option[value=custom]:checked) .custom-dates{display:flex}.filters select[name=period]{width:155px}.table-wrap{overflow:auto;margin-top:18px}table{width:100%;border-collapse:collapse;text-align:left}th,td{padding:12px;border-bottom:1px solid #e4e0d8;white-space:nowrap}th{font-size:11px;text-transform:uppercase;letter-spacing:.06em}.pages{margin-top:18px}@media(max-width:1150px){.toolbar{align-items:stretch;flex-wrap:wrap}.filters,.controls{flex-wrap:wrap}.filters:has(select[name=period] option[value=custom]:checked) .custom-dates{flex-wrap:wrap}}@media(max-width:600px){.toolbar,.filters,.controls{display:grid;width:100%}.filters{grid-template-columns:1fr 1fr}.filters label:first-child{grid-column:1/-1}.filters .custom-dates{grid-column:1/-1;display:none}.filters:has(select[name=period] option[value=custom]:checked) .custom-dates{display:grid;grid-template-columns:1fr 1fr}.filters label,.filters input,.filters select,.filters label:first-child select,.filters select[name=period]{width:100%}.controls{grid-template-columns:1fr 1fr}.controls .button{text-align:center;white-space:normal}}@media(max-width:420px){.controls{grid-template-columns:1fr}}</style></head><body><main class="wrap"><div class="top"><div><span class="eyebrow">IZI Gym · LP Cerro Corá</span><h1>Cadastros do formulário</h1><p class="notice">Escolha a base que deseja consultar. <strong>${database}</strong> está selecionada; o CSV usa esta mesma base.</p></div><form action="${LOGOUT_PATH}" method="post"><button class="button secondary" type="submit">Sair</button></form></div><section class="panel"><div class="toolbar"><form class="filters" method="get" action="${basePath}"><label>Base de dados<select name="database"><option value="izi-lp-CerroCora-leads"${database === 'izi-lp-CerroCora-leads' ? ' selected' : ''}>izi-lp-CerroCora-leads</option><option value="izi-lp-CerroCora-leads-dev"${database === 'izi-lp-CerroCora-leads-dev' ? ' selected' : ''}>izi-lp-CerroCora-leads-dev</option></select></label><label>Período<select name="period">${periodOptions}</select></label><div class="custom-dates"><label>De<input name="from" type="date" value="${escapeHtml(initialFrom)}"></label><label>Até<input name="to" type="date" value="${escapeHtml(initialTo)}"></label></div><label>Plano<select name="plan"><option value="">Todos</option>${options(plans, 'plan', plan)}</select></label><button class="button secondary" type="submit">Filtrar</button><a class="button secondary" href="${basePath}">Limpar filtros</a></form><div class="controls"><a class="button secondary" href="${escapeHtml(link(basePath, `page=${page}`))}" aria-label="Atualizar a lista de cadastros mantendo os filtros">↻ Atualizar planilha</a><a class="button" href="${escapeHtml(link(`${basePath}.csv`))}">Baixar CSV dos resultados</a></div></div><p class="notice count"><strong>${total}</strong> cadastro${total === 1 ? '' : 's'} encontrado${total === 1 ? '' : 's'}. Exibindo até 50 por página.</p><div class="table-wrap"><table><thead><tr><th>Data</th><th>Nome</th><th>Telefone</th><th>E-mail</th><th>Plano</th></tr></thead><tbody>${body}</tbody></table></div>${pagination}</section></main></body></html>`, 200, { 'Cache-Control': 'no-store, private' });
+    return htmlResponse(`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Cadastros da LP · IZI Gym</title><style>*{box-sizing:border-box}body{margin:0;padding:clamp(16px,4vw,40px);background:#f2eee5;color:#30302e;font:15px/1.5 system-ui,sans-serif}.wrap{max-width:1240px;margin:auto}.top,.pages{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}.toolbar{display:flex;align-items:end;justify-content:space-between;gap:12px}.controls{display:flex;align-items:center;gap:8px;white-space:nowrap}.eyebrow{text-transform:uppercase;letter-spacing:.14em;color:#e52c12;font-size:11px;font-weight:700}h1{margin:4px 0;font-size:clamp(28px,4vw,42px)}.panel{margin-top:24px;padding:clamp(18px,3vw,30px);background:#fff;border:1px solid #ddd8cc;border-radius:18px}.filters{display:flex;align-items:end;gap:8px;min-width:0;flex:1;white-space:nowrap}.filters label{display:grid;gap:5px;font-size:12px;font-weight:700}.filters input,.filters select{height:40px;min-width:0;width:145px;border:1px solid #ccc6b9;border-radius:8px;padding:0 10px;background:#fff;font:inherit}.button,.pages a{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:9px 12px;border:0;border-radius:999px;background:#e52c12;color:#fff;text-decoration:none;font:inherit;font-size:13px;font-weight:700;cursor:pointer}.button.secondary,.pages a{background:#30302e}.notice{color:#686760}.count{margin:16px 0 0}.filters label:first-child select{width:225px}.filters a{align-self:end}.period-field{position:relative;min-width:155px}.field-label{display:block;margin-bottom:5px;font-size:12px;font-weight:700}.period-picker{position:relative}.period-summary{display:flex;align-items:center;justify-content:space-between;width:155px;height:40px;padding:0 10px;border:1px solid #ccc6b9;border-radius:8px;background:white;font-size:12px;font-weight:700;cursor:pointer;list-style:none;overflow:hidden;white-space:nowrap}.period-summary::-webkit-details-marker{display:none}.period-summary:after{content:"⌄";margin-left:8px}.period-summary:focus-visible,.period-menu button:focus-visible{outline:2px solid #1379d5;outline-offset:2px}.period-menu{position:absolute;z-index:10;top:calc(100% + 6px);left:0;width:min(320px,calc(100vw - 40px));max-height:min(620px,75vh);overflow:auto;padding:10px;background:#fff;border:1px solid #ddd8cc;border-radius:14px;box-shadow:0 14px 30px #0002;white-space:normal}.period-choice{display:block;width:100%;padding:9px 10px;text-align:left;border:0;border-radius:8px;background:transparent;color:inherit;font:inherit;font-size:13px;cursor:pointer}.period-choice:hover,.period-choice[aria-current=true]{background:#f2eee5}.period-menu.calendar-open .period-choice{display:none}.calendar[hidden]{display:none}.calendar-header{display:flex;align-items:center;justify-content:space-between;gap:6px}.calendar-header button{width:30px;height:30px;border:0;border-radius:50%;background:#f2eee5;color:inherit;cursor:pointer}.calendar-header .calendar-back{width:auto;padding:0 8px;border-radius:8px}.calendar-month{text-transform:capitalize;font-size:14px;font-weight:700}.calendar-weekdays,.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center}.calendar-weekdays{margin-top:12px;font-size:11px;color:#686760}.calendar-grid{margin-top:5px}.calendar-day{aspect-ratio:1;border:0;border-radius:8px;background:transparent;color:inherit;font:inherit;font-size:12px;cursor:pointer}.calendar-day:hover,.calendar-day.in-range{background:#f2eee5}.calendar-day.selected{background:#30302e;color:#fff}.range-label{min-height:35px;margin:12px 0 6px;font-size:12px;color:#686760}.apply-range{width:100%}.apply-range:disabled{opacity:.45;cursor:not-allowed}.table-wrap{overflow:auto;margin-top:18px}table{width:100%;border-collapse:collapse;text-align:left}th,td{padding:12px;border-bottom:1px solid #e4e0d8;white-space:nowrap}th{font-size:11px;text-transform:uppercase;letter-spacing:.06em}.pages{margin-top:18px}@media(max-width:1150px){.toolbar{align-items:stretch;flex-wrap:wrap}.filters,.controls{flex-wrap:wrap}}@media(max-width:600px){.toolbar,.filters,.controls{display:grid;width:100%}.filters{grid-template-columns:1fr 1fr}.filters label:first-child{grid-column:1/-1}.period-field{min-width:0}.period-summary{width:100%}.period-menu{left:0;right:auto}.filters label,.filters input,.filters select,.filters label:first-child select{width:100%}.controls{grid-template-columns:1fr 1fr}.controls .button{text-align:center;white-space:normal}}@media(max-width:420px){.controls{grid-template-columns:1fr}}</style></head><body><main class="wrap"><div class="top"><div><span class="eyebrow">IZI Gym · LP Cerro Corá</span><h1>Cadastros do formulário</h1><p class="notice">Escolha a base que deseja consultar. <strong>${database}</strong> está selecionada; o CSV usa esta mesma base.</p></div><form action="${LOGOUT_PATH}" method="post"><button class="button secondary" type="submit">Sair</button></form></div><section class="panel"><div class="toolbar"><form class="filters" method="get" action="${basePath}"><label>Base de dados<select name="database"><option value="izi-lp-CerroCora-leads"${database === 'izi-lp-CerroCora-leads' ? ' selected' : ''}>izi-lp-CerroCora-leads</option><option value="izi-lp-CerroCora-leads-dev"${database === 'izi-lp-CerroCora-leads-dev' ? ' selected' : ''}>izi-lp-CerroCora-leads-dev</option></select></label><div class="period-field"><span class="field-label">Período</span><details class="period-picker" data-today="${today}"><summary class="period-summary">${escapeHtml(selectedPeriodLabel)}</summary><div class="period-menu">${periodButtons}<button class="period-choice choose-dates" type="button">Escolher datas no calendário</button><div class="calendar" hidden><div class="calendar-header"><button class="calendar-back" type="button" aria-label="Voltar às opções de período">←</button><button type="button" data-month-step="-1" aria-label="Mês anterior">‹</button><span class="calendar-month"></span><button type="button" data-month-step="1" aria-label="Próximo mês">›</button></div><div class="calendar-weekdays"><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span><span>Dom</span></div><div class="calendar-grid"></div><p class="range-label" role="status"></p><button class="button apply-range" type="button" disabled>Aplicar período</button></div></div></details><input type="hidden" name="period" value="${selectedCustom ? 'custom' : period}"><input type="hidden" name="from" value="${escapeHtml(initialFrom)}"><input type="hidden" name="to" value="${escapeHtml(initialTo)}"></div><label>Plano<select name="plan"><option value="">Todos</option>${options(plans, 'plan', plan)}</select></label><button class="button secondary" type="submit">Filtrar</button><a class="button secondary" href="${basePath}">Limpar filtros</a></form><div class="controls"><a class="button secondary" href="${escapeHtml(link(basePath, `page=${page}`))}" aria-label="Atualizar a lista de cadastros mantendo os filtros">↻ Atualizar planilha</a><a class="button" href="${escapeHtml(link(`${basePath}.csv`))}">Baixar CSV dos resultados</a></div></div><p class="notice count"><strong>${total}</strong> cadastro${total === 1 ? '' : 's'} encontrado${total === 1 ? '' : 's'}. Exibindo até 50 por página.</p><div class="table-wrap"><table><thead><tr><th>Data</th><th>Nome</th><th>Telefone</th><th>E-mail</th><th>Plano</th></tr></thead><tbody>${body}</tbody></table></div>${pagination}</section></main><script nonce="${nonce}">${periodScript}</script></body></html>`, 200, { 'Cache-Control': 'no-store, private', 'Content-Security-Policy': `${securityHeaders['Content-Security-Policy']}; script-src 'nonce-${nonce}'` });
   } catch {
     console.error('IZI live leads admin query failed.');
     return jsonResponse({ error: 'Não foi possível consultar os cadastros.' }, 503);

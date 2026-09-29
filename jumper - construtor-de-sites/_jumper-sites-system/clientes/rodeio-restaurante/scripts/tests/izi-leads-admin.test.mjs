@@ -94,10 +94,12 @@ test('custom date range filters the table and CSV using São Paulo calendar days
   const response = await worker.fetch(new Request(`${path}?${query}`, { headers }), env);
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /<label>Período<select name="period">/);
-  assert.match(html, /<option value="custom" selected>Escolher datas<\/option>/);
-  assert.match(html, /name="from" type="date" value="2026-09-15"/);
-  assert.match(html, /name="to" type="date" value="2026-09-29"/);
+  assert.match(html, /<span class="field-label">Período<\/span><details class="period-picker"/);
+  assert.match(html, /class="period-summary">15\/09\/2026 a 29\/09\/2026<\/summary>/);
+  assert.match(html, /class="calendar" hidden/);
+  assert.match(html, /name="from" value="2026-09-15"/);
+  assert.match(html, /name="to" value="2026-09-29"/);
+  assert.doesNotMatch(html, /name="from" type="date"/);
   assert.match(html, /period=custom&amp;from=2026-09-15&amp;to=2026-09-29/);
   assert.deepEqual(calls[0].values, ['2026-09-15T03:00:00.000Z', '2026-09-30T03:00:00.000Z']);
 
