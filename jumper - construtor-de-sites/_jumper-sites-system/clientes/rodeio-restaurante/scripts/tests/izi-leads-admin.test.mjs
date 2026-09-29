@@ -40,7 +40,10 @@ test('month filter queries production D1 and CSV uses same filter', async () => 
   const headers = { Cookie: `jumper_hoster_session=${token}` };
   const page = await worker.fetch(new Request('https://site.jumper.dev.br/__jumper/izi-gym/leads-live?month=2026-09', { headers }), env);
   assert.equal(page.status, 200);
-  assert.match(await page.text(), /Cadastros do formulário/);
+  const html = await page.text();
+  assert.match(html, /Cadastros do formulário/);
+  assert.match(html, /href="\/__jumper\/izi-gym\/leads-live\?month=2026-09&amp;page=1"/);
+  assert.match(html, /Atualizar planilha/);
   assert.deepEqual(calls[0].values, ['2026-09-01', '2026-10-01']);
 
   calls.length = 0;
