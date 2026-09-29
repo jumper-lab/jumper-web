@@ -40,6 +40,7 @@ const initialState = {
   submissionId: "",
   submitted: false,
   lastStep: "model",
+  furthestStep: "model",
   legacyDraft: false,
   existingSiteUrl: "",
   reformulationReason: "",
@@ -148,9 +149,11 @@ const initialState = {
 };
 
 let storageAvailable = true;
+let linkedDraftStatus = null;
 let state = loadState();
 let currentStep = state.lastStep || 'model';
-let submitStatus = null;
+if (!state.furthestStep || state.furthestStep === 'model') state.furthestStep = state.lastStep || currentStep;
+let submitStatus = linkedDraftStatus;
 let isSubmitting = false;
 let showSavePanel = false;
 const yesNoHelp = [['','Escolha'],['sim','Sim'],['nao','Não'],['nao-sei','Quero orientação da Jumper']];
@@ -192,7 +195,7 @@ const fieldsByStep = {
   ],
 };
 const steps = [
-  {id:'model',title:'Vamos começar pelo seu site',description:'Escolha o modelo combinado com a Jumper. Responda com suas palavras; o planejamento e os detalhes técnicos ficam com a nossa equipe.',render:()=>choiceCards('model',models.map(([value,title,text])=>({value,title:`${value} · ${title}`,text})))+`<p class="help">Não sabe o modelo? Confira com quem contratou o projeto antes de continuar.</p><label class="draft-import">Continuar um rascunho de outro aparelho<input type="file" id="draft-import" accept="application/json,.json"></label>`},
+  {id:'model',title:'Vamos começar pelo seu site',description:'Escolha o modelo combinado com a Jumper. Responda com suas palavras; o planejamento e os detalhes técnicos ficam com a nossa equipe.',render:()=>choiceCards('model',models.map(([value,title,text])=>({value,title:`${value} · ${title}`,text})))+`<p class="help">Não sabe o modelo? Confira com quem contratou o projeto antes de continuar.</p><section class="draft-import" aria-labelledby="draft-import-title"><div class="draft-import-copy"><strong id="draft-import-title">Já começou este briefing em outro aparelho?</strong><p>Selecione a cópia de rascunho que você baixou para continuar de onde parou.</p></div><label class="draft-upload-control"><input type="file" id="draft-import" accept="application/json,.json"><span>Selecionar cópia do rascunho</span></label><span class="draft-import-status" id="draft-import-status" aria-live="polite">Nenhum arquivo selecionado</span></section>`},
   {id:'business',title:'Conte um pouco sobre o negócio',description:'Quatro respostas curtas já nos ajudam a entender o ponto de partida.',render:()=>fields(fieldsByStep.business)},
   {id:'goals',title:'O que o site precisa trazer para você?',description:'Escolha a prioridade. A Jumper transforma suas respostas em conteúdo e caminhos de contato.',render:()=>fields(fieldsByStep.goals)},
   {id:'audience',title:'O que leva seu cliente a procurar você?',description:'Respostas curtas e exemplos reais ajudam a escrever um site com a voz do seu negócio.',render:()=>fields([
@@ -599,10 +602,41 @@ function sanitizeDraft(raw) {
   s.reviewConfirmed=false;s.submitted=false;s.blogAdminPassword='';
   return s;
 }
+function readLinkedDraft() {
+  if(typeof location==='undefined'||!location.hash.startsWith('#jumper-draft-v1='))return null;
+  const encoded=location.hash.slice('#jumper-draft-v1='.length);
+  // Remove personal answers from the address bar and browser history as soon as they are read.
+  history.replaceState(history.state,'',location.pathname+location.search);
+  try {
+    if(!/^[A-Za-z0-9_-]+$/.test(encoded)||encoded.length>700000)throw Error('Link de rascunho inválido.');
+    const base64=encoded.replace(/-/g,'+').replace(/_/g,'/');
+    const bytes=Uint8Array.from(atob(base64),char=>char.charCodeAt(0));
+    const draft=JSON.parse(new TextDecoder().decode(bytes));
+    if(draft.format!=='jumper-briefing-draft'||draft.version!==1)throw Error('Link de rascunho inválido.');
+    return sanitizeDraft(draft.state);
+  }catch{
+    linkedDraftStatus={type:'error',message:'Não foi possível abrir o rascunho deste link. Peça um novo link ou importe o arquivo JSON.'};
+    return null;
+  }
+}
 function loadState() {
+  const linked=readLinkedDraft();
   try {
     const saved=localStorage.getItem(STORAGE_KEY);
-    if(saved){const raw=JSON.parse(saved);const s=sanitizeDraft(raw);s.submitted=raw.submitted===true;s.reviewConfirmed=raw.reviewConfirmed===true;return s;}
+    if(saved){const raw=JSON.parse(saved);const s=sanitizeDraft(raw);s.submitted=raw.submitted===true;s.reviewConfirmed=raw.reviewConfirmed===true;
+      if(linked){
+        if(s.businessName.trim()){
+          linkedDraftStatus=s.businessName.trim()===linked.businessName.trim()
+            ?{type:'success',message:'Seu rascunho mais recente neste navegador foi preservado. Confira as respostas antes de enviar.'}
+            :{type:'error',message:'Já existe um briefing de outro negócio neste navegador. Ele foi preservado; abra o link em uma janela privada para carregar o novo rascunho.'};
+          return s;
+        }
+        linkedDraftStatus={type:'success',message:'Respostas carregadas do link. Confira e complete o briefing antes de enviar.'};
+        return linked;
+      }
+      return s;
+    }
+    if(linked){linkedDraftStatus={type:'success',message:'Respostas carregadas do link. Confira e complete o briefing antes de enviar.'};return linked;}
     const old=localStorage.getItem(LEGACY_STORAGE_KEY);
     if(old){const s=sanitizeDraft(JSON.parse(old));s.legacyDraft=true;
       s.wantsGallery=s.model==='M3'||s.portfolioType?'sim':'';
@@ -612,7 +646,7 @@ function loadState() {
       s.materialsStatus=s.materialsFolder?'link':'';
       s.usePexels='';s.aiImages='';s.lastStep='model';return s;
     }
-  }catch {storageAvailable=false;}
+  }catch {storageAvailable=false;if(linked){linkedDraftStatus={type:'success',message:'Respostas carregadas do link. Confira e complete o briefing antes de enviar.'};return linked;}}
   return structuredClone(initialState);
 }
 function saveState() {
@@ -645,13 +679,14 @@ const form = document.querySelector('#quiz-form');
 const nextButton = document.querySelector('#next-button');
 const prevButton = document.querySelector('#prev-button');
 const saveButton = document.querySelector('#save-button');
-const liveSummary = document.querySelector('.live-summary');
 
 function render(focus=false) {
   const visible=visibleSteps();
   if(!visible.some(s=>s.id===currentStep))currentStep='model';
   const step=visible.find(s=>s.id===currentStep);
   const index=visible.indexOf(step);
+  const furthestIndex=visible.findIndex(s=>s.id===state.furthestStep);
+  if(index>furthestIndex)state.furthestStep=currentStep;
   if(state.submitted){
     stepContainer.innerHTML='<div class="step-layout"><header class="step-header"><span>Recebido</span><h2 tabindex="-1">Obrigado por contar sua história.</h2><p>Seu briefing foi recebido pela Jumper. Nossa equipe vai conferir as respostas, os materiais e o escopo antes de dar continuidade ao site.</p></header><button type="button" class="ghost-button" id="new-briefing">Começar outro briefing</button></div>';
     nextButton.hidden=true;prevButton.hidden=true;saveButton.hidden=true;
@@ -665,31 +700,61 @@ function render(focus=false) {
   renderSummary();saveState();
   if(focus){stepContainer.scrollTop=0;stepContainer.querySelector(submitStatus?.type==='error'?'.submit-status':'h2')?.focus();}
 }
-function summaryRows() {
-  const s=activeState();
-  return [
-    ['Modelo',models.find(m=>m[0]===s.model)?.slice(0,2).join(' · ')],
-    ['Negócio',s.businessName],['Atendimento',businessNatures.find(n=>n[0]===s.businessNature)?.[1]],
-    ['Contato',s.whatsapp||s.contactEmail],['Atuação',s.cityCoverage],
-    ['Objetivo',s.mainGoal?answerLabel(goalChoices,s.mainGoal):''],['Público',s.targetAudience],
-    ['Necessidade',s.typicalProblem],['Diferencial',s.differentiator],['Oferta',s.priorityOffer],
-    ['Serviços / produtos',s.servicesItems],['História',s.story],
-    ['Provas',s.testimonials||s.credibilityNumbers||(s.hasTestimonials==='nao'?'Ainda sem avaliações':'')],
-    ['Estilo',s.personality?answerLabel(personalities,s.personality,'Quero orientação'):''],
-    ['Referências',s.visualReferences],['Materiais',s.materialsFolder||(s.materialsStatus==='later'?'Envio posterior':s.materialsStatus==='existing'?'Aproveitar site atual':'')],
-    ...(s.model==='M2'?[['Segunda página',s.secondaryPage?answerLabel([['sobre','Sobre'],['servicos','Serviços'],['contato','Contato'],['outra','Outra página'],['nao-sei','Definir com a Jumper']],s.secondaryPage):'']]:[]),
-    ...(s.model==='M3'||s.wantsGallery==='sim'?[['Catálogo / galeria',s.portfolioItemsDescription]]:[]),
-    ...(s.model==='M5'?[['Site atual',s.existingSiteUrl],['Páginas solicitadas',s.requestedPages],['Preservar',s.preserveItems]]:[]),
-  ];
-}
+const progressLabels={
+  model:'Modelo',business:'Seu negócio',goals:'Objetivo',audience:'Público',offer:'Oferta',trust:'Confiança',
+  'm5-reformulation':'Site atual','m5-scope':'Escopo da reforma',operation:'Atendimento',structure:'Estrutura',
+  contact:'Contato',style:'Estilo',materials:'Materiais',finish:'Cuidados finais',review:'Revisão',
+};
 function renderSummary() {
   const visible=visibleSteps(),index=visible.findIndex(s=>s.id===currentStep);
+  const rememberedIndex=Math.max(index,visible.findIndex(s=>s.id===state.furthestStep));
   document.querySelector('#summary-score').textContent=state.submitted?'Enviado':`${index+1}/${visible.length}`;
   document.querySelector('#step-count').textContent=state.submitted?'Respostas recebidas':`Etapa ${index+1} de ${visible.length}`;
   document.querySelector('#progress-bar').style.width=`${state.submitted?100:Math.round(index/Math.max(1,visible.length-1)*100)}%`;
   document.querySelector('#draft-status').textContent=state.submitted?'Envio confirmado.':storageAvailable?'Suas respostas ficam salvas neste navegador.':'Para não perder as respostas, use “Salvar para depois” e baixe uma cópia.';
-  const summary=summaryRows();
-  document.querySelector('#summary-list').innerHTML=summary.map(([term,value])=>`<div class="${value?'':'is-pending'}"><dt>${escapeHtml(term)}</dt><dd>${escapeHtml(value||'A preencher')}</dd></div>`).join('');
+  document.querySelector('#progress-steps').innerHTML=visible.map((step,stepIndex)=>{
+    const label=escapeHtml(progressLabels[step.id]||step.title);
+    if(stepIndex<=rememberedIndex&&stepIndex!==index)return `<li class="is-complete"><button type="button" data-progress-step="${escapeHtml(step.id)}" aria-label="Ir para a etapa ${stepIndex+1}: ${label}"><span>${stepIndex+1}</span><span>${label}</span></button></li>`;
+    return `<li class="${stepIndex===index?'is-current':''}"${stepIndex===index?' aria-current="step"':''}><span>${stepIndex+1}</span><span>${label}</span></li>`;
+  }).join('');
+}
+function refreshConditionalFields() {
+  const step=visibleSteps().find(item=>item.id===currentStep);
+  const body=stepContainer.querySelector('.step-body');
+  if(!step||!body)return;
+  const fresh=document.createElement('div');
+  fresh.innerHTML=step.render();
+  const currentGrid=body.querySelector(':scope > .field-grid');
+  const freshGrid=fresh.querySelector(':scope > .field-grid');
+  if(currentGrid&&freshGrid){
+    const fieldName=field=>field.querySelector('[name]')?.name;
+    const wanted=Array.from(freshGrid.children).filter(field=>field.classList.contains('field'));
+    const names=new Set(wanted.map(fieldName));
+    for(const field of Array.from(currentGrid.children))if(field.classList.contains('field')&&!names.has(fieldName(field)))field.remove();
+    for(let index=0;index<wanted.length;index++){
+      const field=wanted[index],name=fieldName(field);
+      if(Array.from(currentGrid.children).some(existing=>fieldName(existing)===name))continue;
+      const next=wanted.slice(index+1).map(fieldName).map(nextName=>Array.from(currentGrid.children).find(existing=>fieldName(existing)===nextName)).find(Boolean);
+      currentGrid.insertBefore(field,next||null);
+    }
+  }
+  const sectionTitle=section=>section.querySelector('h3')?.textContent;
+  const freshSections=Array.from(fresh.querySelectorAll(':scope > .detail-section'));
+  const freshTitles=new Set(freshSections.map(sectionTitle));
+  for(const section of body.querySelectorAll(':scope > .detail-section'))if(!freshTitles.has(sectionTitle(section)))section.remove();
+  for(let index=0;index<freshSections.length;index++){
+    const section=freshSections[index],title=sectionTitle(section);
+    if(Array.from(body.querySelectorAll(':scope > .detail-section')).some(existing=>sectionTitle(existing)===title))continue;
+    const next=freshSections.slice(index+1).map(sectionTitle).map(nextTitle=>Array.from(body.querySelectorAll(':scope > .detail-section')).find(existing=>sectionTitle(existing)===nextTitle)).find(Boolean);
+    body.insertBefore(section,next||null);
+  }
+}
+function clearValidationMessage(control) {
+  control.removeAttribute('aria-invalid');
+  if(submitStatus?.type==='error'&&submitStatus.field===control.name){
+    submitStatus=null;
+    stepContainer.querySelector('.submit-status.error')?.remove();
+  }
 }
 function goTo(id) {currentStep=id;submitStatus=null;showSavePanel=false;render(true);}
 async function next() {
@@ -700,9 +765,9 @@ async function next() {
   const visible=visibleSteps();goTo(visible[visible.findIndex(s=>s.id===currentStep)+1].id);
 }
 function showError(error) {
-  submitStatus={type:'error',message:error.message};render(true);
-  const control=form.elements.namedItem(error.field);
-  if(control instanceof HTMLElement){control.setAttribute('aria-invalid','true');control.closest('details')?.setAttribute('open','');control.focus();}
+  submitStatus={type:'error',field:error.field,message:error.message};render(true);
+  const control=Array.from(form.elements).find(element=>element.name===error.field);
+  if(control){control.setAttribute('aria-invalid','true');control.closest('details')?.setAttribute('open','');control.focus();}
 }
 async function submitBriefing() {
   if(isSubmitting||state.submitted)return;
@@ -723,23 +788,31 @@ function downloadDraft() {
   const blob=new Blob([JSON.stringify({format:'jumper-briefing-draft',version:1,state:copy},null,2)],{type:'application/json'});
   const link=document.createElement('a');link.href=URL.createObjectURL(blob);link.download='meu-briefing-jumper.json';link.click();setTimeout(()=>URL.revokeObjectURL(link.href),1000);
 }
-form.addEventListener('input',()=>{if(!isSubmitting&&!state.submitted){updateStateFromForm();renderSummary();}});
+form.addEventListener('input',event=>{if(!isSubmitting&&!state.submitted){updateStateFromForm();clearValidationMessage(event.target);renderSummary();}});
 form.addEventListener('change',async event=>{
   if(event.target.id==='draft-import'){
-    try{const file=event.target.files[0];if(!file)return;if(file.size>500000)throw Error('Arquivo muito grande. Use a cópia de rascunho baixada neste formulário.');const draft=JSON.parse(await file.text());if(draft.format!=='jumper-briefing-draft'||draft.version!==1)throw Error('Use um arquivo de rascunho exportado pelo formulário Jumper.');state=sanitizeDraft(draft.state);currentStep=state.lastStep||'model';submitStatus={type:'success',message:'Rascunho recuperado. Confira as respostas antes de enviar.'};saveState();render(true);}catch(error){submitStatus={type:'error',message:error.message};render(true);}return;
+    try{const file=event.target.files[0];const status=document.querySelector('#draft-import-status');if(!file)return;if(status)status.textContent=file.name;if(file.size>500000)throw Error('Arquivo muito grande. Use a cópia de rascunho baixada neste formulário.');const draft=JSON.parse(await file.text());if(draft.format!=='jumper-briefing-draft'||draft.version!==1)throw Error('Use um arquivo de rascunho exportado pelo formulário Jumper.');state=sanitizeDraft(draft.state);currentStep=state.lastStep||'model';submitStatus={type:'success',message:'Rascunho recuperado. Confira as respostas antes de enviar.'};saveState();render(true);}catch(error){submitStatus={type:'error',message:error.message};render(true);}return;
   }
   if(isSubmitting||state.submitted)return;
   const key=event.target.name;
   const openDetails=Array.from(stepContainer.querySelectorAll('details[open]')).map(d=>d.querySelector('summary')?.textContent);
-  const scroll=stepContainer.scrollTop;
   updateStateFromForm();
-  if(['model','businessNature','showAddress','contactUse','materialsStatus','wantsGallery','wantsTeam','wantsBooking','blogMode','hasTestimonials','domainStatus','pricingDisplay','primaryCTA'].includes(key)){
-    if(key==='model')state.reviewConfirmed=false;
-    render();for(const d of stepContainer.querySelectorAll('details'))if(openDetails.includes(d.querySelector('summary')?.textContent))d.open=true;
-    const control=form.elements.namedItem(key);if(control instanceof HTMLElement)control.focus({preventScroll:true});stepContainer.scrollTop=scroll;
-  }else renderSummary();
+  if(key==='model')state.furthestStep='model';
+  clearValidationMessage(event.target);
+  if(['businessNature','showAddress','contactUse','materialsStatus','wantsGallery','wantsTeam','wantsBooking','blogMode','hasTestimonials','domainStatus','pricingDisplay','primaryCTA'].includes(key)){
+    refreshConditionalFields();
+    for(const detail of stepContainer.querySelectorAll('details'))if(openDetails.includes(detail.querySelector('summary')?.textContent))detail.open=true;
+  }
+  renderSummary();
 });
 form.addEventListener('submit',event=>{event.preventDefault();next();});
+document.querySelector('#progress-steps').addEventListener('click',event=>{
+  const button=event.target.closest('[data-progress-step]');
+  if(!button||isSubmitting||state.submitted)return;
+  updateStateFromForm();
+  state.reviewConfirmed=false;
+  goTo(button.dataset.progressStep);
+});
 form.addEventListener('click',event=>{
   const button=event.target.closest('button');if(!button||isSubmitting)return;
   if(button.dataset.edit){updateStateFromForm();state.reviewConfirmed=false;goTo(button.dataset.edit);}
@@ -751,5 +824,4 @@ nextButton.addEventListener('click',next);
 prevButton.addEventListener('click',()=>{if(isSubmitting)return;updateStateFromForm();const visible=visibleSteps();const index=visible.findIndex(s=>s.id===currentStep);if(index>0)goTo(visible[index-1].id);});
 saveButton.addEventListener('click',()=>{updateStateFromForm();showSavePanel=true;submitStatus=null;render(true);stepContainer.querySelector('.save-panel')?.scrollIntoView({block:'start'});});
 window.addEventListener('beforeunload',()=>saveState());
-if(innerWidth<=860)liveSummary.open=false;
 render();

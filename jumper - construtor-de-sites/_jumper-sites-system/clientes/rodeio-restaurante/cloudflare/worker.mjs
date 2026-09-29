@@ -12,6 +12,7 @@ const IZI_LEADS_ADMIN_PATH = '/__jumper/izi-gym/leads';
 const IZI_LEADS_LIVE_ADMIN_PATH = '/__jumper/izi-gym/leads-live';
 const BRIEFING_PATH = '/briefing';
 const BRIEFING_API_PATH = `${BRIEFING_PATH}/api/briefings`;
+const BRIEFING_CONTINUE_PREFIX = `${BRIEFING_PATH}/continuar/`;
 const BRIEFING_API_UPSTREAM = 'https://briefing-formulario-sites-jumper.vercel.app/api/briefings';
 const LOGIN_PATH = '/__jumper/login';
 const LOGOUT_PATH = '/__jumper/logout';
@@ -525,6 +526,28 @@ export default {
       });
     }
 
+    if (url.pathname.startsWith(BRIEFING_CONTINUE_PREFIX)) {
+      if (request.method !== 'GET') return new Response('Method Not Allowed', { status: 405, headers: { Allow: 'GET' } });
+      const token = url.pathname.slice(BRIEFING_CONTINUE_PREFIX.length);
+      if (!/^[a-f0-9]{32}$/.test(token)) return new Response('Not Found', { status: 404 });
+      const draft = await env.JUMPER_BRIEFING_DRAFTS?.get(`draft:${token}`);
+      if (!draft) return new Response('Not Found', { status: 404 });
+      const bytes = new TextEncoder().encode(draft);
+      const encoded = btoa(Array.from(bytes, (byte) => String.fromCharCode(byte)).join(''))
+        .replaceAll('+', '-').replaceAll('/', '_').replaceAll('=', '');
+      const destination = new URL(`${BRIEFING_PATH}/`, url);
+      destination.hash = `jumper-draft-v1=${encoded}`;
+      return new Response(null, {
+        status: 302,
+        headers: {
+          Location: destination.href,
+          'Cache-Control': 'no-store, private',
+          'Referrer-Policy': 'no-referrer',
+          'X-Robots-Tag': 'noindex, nofollow',
+        },
+      });
+    }
+
     for (const prefix of PUBLIC_SITES) {
       if (url.pathname === prefix) return Response.redirect(new URL(`${prefix}/`, url), 308);
     }
@@ -538,12 +561,8 @@ export default {
     }
 
     if (url.pathname === BRIEFING_PATH) {
-      const assetUrl = new URL('/briefing-page.shell', url);
-      const response = await env.ASSETS.fetch(new Request(assetUrl, request));
-      const headers = new Headers(response.headers);
-      headers.set('Content-Type', 'text/html; charset=utf-8');
-      headers.set('X-Robots-Tag', 'noindex, nofollow');
-      return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
+      url.pathname = `${BRIEFING_PATH}/`;
+      return Response.redirect(url, 308);
     }
 
     if (url.pathname.startsWith('/izigym/cdn-cgi/image/')) {
