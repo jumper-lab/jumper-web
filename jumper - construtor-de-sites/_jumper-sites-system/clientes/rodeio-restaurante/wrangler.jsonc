@@ -10,6 +10,33 @@
     "run_worker_first": true,
     "not_found_handling": "404-page"
   },
+  "kv_namespaces": [
+    {
+      "binding": "JUMPER_BRIEFING_DRAFTS",
+      "id": "47cdb91716ab4cd99d66807fae60b655"
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "IZI_LEADS_DB",
+      "database_name": "izi-lp-CerroCora-leads",
+      "database_id": "e06d432d-eaf4-47cb-90a2-fd7b6cc54ebc",
+      "migrations_dir": "cloudflare/migrations/izi-lp-CerroCora-leads"
+    },
+    {
+      "binding": "IZI_LEADS_TEST_DB",
+      "database_name": "izi-lp-CerroCora-leads-dev",
+      "database_id": "af52ce85-b519-473c-ad3c-66654cf3aabd",
+      "migrations_dir": "cloudflare/migrations/izi-lp-CerroCora-leads-dev"
+    }
+  ],
+  "ratelimits": [
+    {
+      "name": "IZI_LEAD_LIMITER",
+      "namespace_id": "348672410",
+      "simple": { "limit": 30, "period": 60 }
+    }
+  ],
   "routes": [
     {
       "pattern": "site.jumper.dev.br",
@@ -21,6 +48,10 @@
     },
     {
       "pattern": "www.izigym.com.br",
+      "custom_domain": true
+    },
+    {
+      "pattern": "cerrocora.izigym.com.br",
       "custom_domain": true
     }
   ]
