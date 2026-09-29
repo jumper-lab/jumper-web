@@ -97,7 +97,6 @@ const attribution=new URLSearchParams(location.search);
 const campaignKeys=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'];
 const primeCheckout='https://vendas.online.sistemapacto.com.br/checkout?un=1&k=6e2660773cc378e250e6a8731d6830e5&pl=2&cupom=0,99_IZI';
 const planSelection='https://vendas.online.sistemapacto.com.br/planos?un=1&k=6e2660773cc378e250e6a8731d6830e5';
-document.querySelectorAll<HTMLAnchorElement>('[data-cta]').forEach(a=>{const u=new URL(a.href);campaignKeys.forEach(k=>{const v=attribution.get(k);if(v)u.searchParams.set(k,v);});a.href=u.toString();});
 const modal=document.querySelector<HTMLDialogElement>('#enrollment')!;
 let opener:HTMLElement|null=null;
 const leadForm=document.querySelector<HTMLFormElement>('#lead-form')!;
@@ -148,4 +147,3 @@ leadForm.addEventListener('submit',async event=>{
 modal.addEventListener('cancel',event=>{event.preventDefault();modal.close();});
 modal.querySelector('.close')!.addEventListener('click',()=>modal.close());modal.addEventListener('click',event=>{if(event.target===modal){const box=modal.getBoundingClientRect();if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)modal.close();}});modal.addEventListener('close',()=>{document.body.classList.remove('modal-open');opener?.focus();});
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&modal.open)modal.close();});
-document.querySelectorAll<HTMLAnchorElement>('[data-cta]').forEach(a=>a.addEventListener('click',()=>{const w=window as Window & {dataLayer?:unknown[];fbq?:(action:string,event:string)=>void};w.dataLayer=w.dataLayer||[];w.fbq?.('track','Contact');const params=new URLSearchParams(location.search);w.dataLayer.push({event:'whatsapp_click',placement:a.dataset.cta,...Object.fromEntries(campaignKeys.map(key=>[key,params.get(key)]))});}));
