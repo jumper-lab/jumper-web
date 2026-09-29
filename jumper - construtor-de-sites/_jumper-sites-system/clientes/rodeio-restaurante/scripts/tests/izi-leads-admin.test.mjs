@@ -84,3 +84,35 @@ test('development selection and CSV use only the development D1', async () => {
   const invalid = await worker.fetch(new Request(`${path}?database=another-db`, { headers }), env);
   assert.equal(invalid.status, 400);
 });
+
+test('custom date range filters the table and CSV using São Paulo calendar days', async () => {
+  const calls = [];
+  const env = environment(calls);
+  const headers = { Cookie: `jumper_hoster_session=${token}` };
+  const path = 'https://site.jumper.dev.br/__jumper/izi-gym/leads-live';
+  const query = 'period=custom&from=2026-09-15&to=2026-09-29';
+  const response = await worker.fetch(new Request(`${path}?${query}`, { headers }), env);
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /<label>Período<select name="period">/);
+  assert.match(html, /<option value="custom" selected>Escolher datas<\/option>/);
+  assert.match(html, /name="from" type="date" value="2026-09-15"/);
+  assert.match(html, /name="to" type="date" value="2026-09-29"/);
+  assert.match(html, /period=custom&amp;from=2026-09-15&amp;to=2026-09-29/);
+  assert.deepEqual(calls[0].values, ['2026-09-15T03:00:00.000Z', '2026-09-30T03:00:00.000Z']);
+
+  calls.length = 0;
+  const csv = await worker.fetch(new Request(`${path}.csv?${query}`, { headers }), env);
+  assert.equal(csv.status, 200);
+  assert.deepEqual(calls[0].values, ['2026-09-15T03:00:00.000Z', '2026-09-30T03:00:00.000Z']);
+  assert.match(csv.headers.get('Content-Disposition'), /2026-09-15-a-2026-09-29\.csv/);
+});
+
+test('invalid custom date ranges are rejected', async () => {
+  const headers = { Cookie: `jumper_hoster_session=${token}` };
+  const path = 'https://site.jumper.dev.br/__jumper/izi-gym/leads-live';
+  for (const query of ['period=custom&from=2026-09-29&to=2026-09-01', 'period=custom&from=2026-02-30&to=2026-03-01', 'period=custom&from=2026-09-01']) {
+    const response = await worker.fetch(new Request(`${path}?${query}`, { headers }), environment([]));
+    assert.equal(response.status, 400);
+  }
+});
