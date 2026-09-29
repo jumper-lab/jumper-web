@@ -51,6 +51,7 @@ test('month filter queries production D1 and CSV uses same filter', async () => 
   assert.match(html, /Cadastros do formulário/);
   assert.match(html, /Base de dados/);
   assert.match(html, /izi-lp-CerroCora-leads-dev/);
+  assert.match(html, /href="https:\/\/dash\.cloudflare\.com\/e23efa36a1e09015eebb2b36bdfcf201\/workers\/d1\/databases\/e06d432d-eaf4-47cb-90a2-fd7b6cc54ebc\/studio" target="_blank" rel="noopener noreferrer">Abrir base selecionada no Cloudflare/);
   assert.doesNotMatch(html, /Campanha \(UTM\)/);
   assert.match(html, /href="\/__jumper\/izi-gym\/leads-live\?database=izi-lp-CerroCora-leads&amp;month=2026-09&amp;page=1"/);
   assert.match(html, /Atualizar planilha/);
@@ -72,7 +73,9 @@ test('development selection and CSV use only the development D1', async () => {
   const path = 'https://site.jumper.dev.br/__jumper/izi-gym/leads-live';
   const response = await worker.fetch(new Request(`${path}?database=izi-lp-CerroCora-leads-dev&month=2026-09`, { headers }), env);
   assert.equal(response.status, 200);
-  assert.match(await response.text(), /<strong>izi-lp-CerroCora-leads-dev<\/strong> está selecionada/);
+  const html = await response.text();
+  assert.match(html, /<strong>izi-lp-CerroCora-leads-dev<\/strong> está selecionada/);
+  assert.match(html, /href="https:\/\/dash\.cloudflare\.com\/e23efa36a1e09015eebb2b36bdfcf201\/workers\/d1\/databases\/af52ce85-b519-473c-ad3c-66654cf3aabd\/studio" target="_blank" rel="noopener noreferrer">Abrir base selecionada no Cloudflare/);
   assert.equal(productionCalls.length, 0);
   assert.deepEqual(developmentCalls[0].values, ['2026-09-01', '2026-10-01']);
 
