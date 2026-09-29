@@ -9,6 +9,7 @@ const IZI_LEADS_PATH = '/api/izigym/leads';
 const IZI_LEADS_TEST_HOST = 'site.jumper.dev.br';
 const IZI_LEADS_TEST_PATH = '/izigym-leads-test';
 const IZI_LEADS_ADMIN_PATH = '/__jumper/izi-gym/leads';
+const IZI_LEADS_LIVE_ADMIN_PATH = '/__jumper/izi-gym/leads-live';
 const BRIEFING_PATH = '/briefing';
 const BRIEFING_API_PATH = `${BRIEFING_PATH}/api/briefings`;
 const BRIEFING_API_UPSTREAM = 'https://briefing-formulario-sites-jumper.vercel.app/api/briefings';
@@ -222,6 +223,74 @@ async function listIziLeads(request, env, isTest = false) {
   }
 }
 
+async function listLiveIziLeads(request, env) {
+  if (request.method !== 'GET') return jsonResponse({ error: 'Método não permitido.' }, 405);
+  if (!(await isAuthorized(request, env.JUMPER_HOSTER_PASSWORD))) return htmlResponse(loginPage(IZI_LEADS_LIVE_ADMIN_PATH), 401);
+
+  const url = new URL(request.url);
+  const month = url.searchParams.get('month') || '';
+  const plan = url.searchParams.get('plan') || '';
+  const source = url.searchParams.get('source') || '';
+  if ((month && !/^\d{4}-(0[1-9]|1[0-2])$/.test(month)) || plan.length > 80 || source.length > 200) {
+    return htmlResponse('<h1>Filtros inválidos.</h1>', 400);
+  }
+  const page = Math.max(1, Math.min(10000, Number.parseInt(url.searchParams.get('page') || '1', 10) || 1));
+  const where = [];
+  const values = [];
+  if (month) {
+    const [year, number] = month.split('-').map(Number);
+    const nextMonth = `${number === 12 ? year + 1 : year}-${String(number === 12 ? 1 : number + 1).padStart(2, '0')}`;
+    where.push('created_at >= ? AND created_at < ?');
+    values.push(`${month}-01`, `${nextMonth}-01`);
+  }
+  if (plan) { where.push('plan = ?'); values.push(plan); }
+  if (source) { where.push('utm_source = ?'); values.push(source); }
+  const clause = where.length ? ` WHERE ${where.join(' AND ')}` : '';
+  const basePath = IZI_LEADS_LIVE_ADMIN_PATH;
+  const filterParams = new URLSearchParams();
+  if (month) filterParams.set('month', month);
+  if (plan) filterParams.set('plan', plan);
+  if (source) filterParams.set('source', source);
+  const query = filterParams.toString();
+  const link = (target, extra = '') => `${target}?${[query, extra].filter(Boolean).join('&')}`;
+
+  try {
+    const db = env.IZI_LEADS_DB;
+    const countRow = await db.prepare(`SELECT COUNT(*) AS total FROM izi_gym_leads${clause}`).bind(...values).first();
+    const total = Number(countRow?.total || 0);
+    if (url.pathname.endsWith('.csv')) {
+      if (total > 20000) return jsonResponse({ error: 'A exportação ultrapassa 20.000 registros. Aplique um filtro de mês.' }, 413);
+      const columns = ['created_at', 'name', 'phone', 'email', 'plan', 'consent_version', 'consented_at', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'fbclid'];
+      const cell = (value) => {
+        let text = String(value ?? '');
+        if (/^\s*[=+@-]/.test(text)) text = `'${text}`;
+        return `"${text.replaceAll('"', '""')}"`;
+      };
+      const lines = [columns.map(cell).join(',')];
+      for (let offset = 0; offset < total; offset += 1000) {
+        const { results = [] } = await db.prepare(`SELECT ${columns.join(',')} FROM izi_gym_leads${clause} ORDER BY created_at DESC, id DESC LIMIT 1000 OFFSET ?`).bind(...values, offset).all();
+        for (const row of results) lines.push(columns.map((column) => cell(row[column])).join(','));
+      }
+      const filename = `izi-gym-leads${month ? `-${month}` : ''}.csv`;
+      return new Response(`\uFEFF${lines.join('\r\n')}\r\n`, { headers: { ...securityHeaders, 'Content-Type': 'text/csv; charset=utf-8', 'Content-Disposition': `attachment; filename="${filename}"` } });
+    }
+
+    const [{ results = [] }, { results: plans = [] }, { results: sources = [] }] = await Promise.all([
+      db.prepare(`SELECT created_at, name, phone, email, plan, utm_source FROM izi_gym_leads${clause} ORDER BY created_at DESC, id DESC LIMIT 50 OFFSET ?`).bind(...values, (page - 1) * 50).all(),
+      db.prepare("SELECT DISTINCT plan FROM izi_gym_leads WHERE plan IS NOT NULL AND plan != '' ORDER BY plan LIMIT 100").all(),
+      db.prepare("SELECT DISTINCT utm_source FROM izi_gym_leads WHERE utm_source IS NOT NULL AND utm_source != '' ORDER BY utm_source LIMIT 100").all(),
+    ]);
+    const options = (rows, key, selected) => rows.map((row) => `<option value="${escapeHtml(row[key])}"${row[key] === selected ? ' selected' : ''}>${escapeHtml(row[key])}</option>`).join('');
+    const body = results.length ? results.map((row) => `<tr>${['created_at', 'name', 'phone', 'email', 'plan', 'utm_source'].map((key) => `<td>${escapeHtml(row[key])}</td>`).join('')}</tr>`).join('') : '<tr><td colspan="6">Nenhum cadastro encontrado para esses filtros.</td></tr>';
+    const pages = Math.max(1, Math.ceil(total / 50));
+    const pagination = `<nav class="pages" aria-label="Páginas">${page > 1 ? `<a href="${link(basePath, `page=${page - 1}`)}">← Anterior</a>` : ''}<span>Página ${page} de ${pages}</span>${page < pages ? `<a href="${link(basePath, `page=${page + 1}`)}">Próxima →</a>` : ''}</nav>`;
+    return htmlResponse(`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Cadastros da LP · IZI Gym</title><style>*{box-sizing:border-box}body{margin:0;padding:clamp(16px,4vw,40px);background:#f2eee5;color:#30302e;font:15px/1.5 system-ui,sans-serif}.wrap{max-width:1240px;margin:auto}.top,.actions,.pages{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}.eyebrow{text-transform:uppercase;letter-spacing:.14em;color:#e52c12;font-size:11px;font-weight:700}h1{margin:4px 0;font-size:clamp(28px,4vw,42px)}.panel{margin-top:24px;padding:clamp(18px,3vw,30px);background:#fff;border:1px solid #ddd8cc;border-radius:18px}.filters{display:flex;align-items:end;gap:12px;flex-wrap:wrap}.filters label{display:grid;gap:5px;font-size:12px;font-weight:700}.filters input,.filters select{height:42px;min-width:155px;border:1px solid #ccc6b9;border-radius:8px;padding:0 10px;background:#fff;font:inherit}.button,.pages a{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:9px 16px;border:0;border-radius:999px;background:#e52c12;color:#fff;text-decoration:none;font:inherit;font-weight:700;cursor:pointer}.button.secondary,.pages a{background:#30302e}.notice{color:#686760}.table-wrap{overflow:auto;margin-top:18px}table{width:100%;border-collapse:collapse;text-align:left}th,td{padding:12px;border-bottom:1px solid #e4e0d8;white-space:nowrap}th{font-size:11px;text-transform:uppercase;letter-spacing:.06em}.pages{margin-top:18px}@media(max-width:600px){.actions{width:100%}.filters label,.filters input,.filters select{width:100%}}</style></head><body><main class="wrap"><div class="top"><div><span class="eyebrow">IZI Gym · LP Cerro Corá · Produção</span><h1>Cadastros do formulário</h1></div><form action="${LOGOUT_PATH}" method="post"><button class="button secondary" type="submit">Sair</button></form></div><section class="panel"><form class="filters" method="get" action="${basePath}"><label>Mês<input name="month" type="month" value="${escapeHtml(month)}"></label><label>Plano<select name="plan"><option value="">Todos</option>${options(plans, 'plan', plan)}</select></label><label>Origem<select name="source"><option value="">Todas</option>${options(sources, 'utm_source', source)}</select></label><button class="button secondary" type="submit">Filtrar</button><a href="${basePath}">Limpar filtros</a></form><div class="actions"><p class="notice"><strong>${total}</strong> cadastro${total === 1 ? '' : 's'} encontrado${total === 1 ? '' : 's'}. Exibindo até 50 por página.</p><a class="button" href="${link(`${basePath}.csv`)}">Baixar CSV ${month ? 'do mês' : 'dos resultados'}</a></div><div class="table-wrap"><table><thead><tr><th>Data</th><th>Nome</th><th>Telefone</th><th>E-mail</th><th>Plano</th><th>Origem</th></tr></thead><tbody>${body}</tbody></table></div>${pagination}</section></main></body></html>`, 200, { 'Cache-Control': 'no-store, private' });
+  } catch {
+    console.error('IZI live leads admin query failed.');
+    return jsonResponse({ error: 'Não foi possível consultar os cadastros.' }, 503);
+  }
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -246,6 +315,9 @@ export default {
     }
 
     if (url.hostname === IZI_LEADS_TEST_HOST) {
+      if (url.pathname === IZI_LEADS_LIVE_ADMIN_PATH || url.pathname === `${IZI_LEADS_LIVE_ADMIN_PATH}.csv`) {
+        return listLiveIziLeads(request, env);
+      }
       const isTestPage = url.pathname === IZI_LEADS_TEST_PATH || url.pathname === `${IZI_LEADS_TEST_PATH}/`;
       const isAdmin = url.pathname === IZI_LEADS_ADMIN_PATH || url.pathname === `${IZI_LEADS_ADMIN_PATH}.csv`;
       if (isTestPage || isAdmin || url.pathname === IZI_LEADS_PATH) {
