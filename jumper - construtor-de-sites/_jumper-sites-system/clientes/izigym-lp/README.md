@@ -22,7 +22,7 @@ Na landing oficial, o modal de matrícula usa um formulário próprio com nome, 
 
 No preview v2 em `site.jumper.dev.br`, o mesmo endpoint usa a base separada `izi-gym-leads-dev`, protegida pelo acesso ao Jumper Hoster. Os cadastros de produção podem ser consultados no [D1 da Cloudflare](https://dash.cloudflare.com/e23efa36a1e09015eebb2b36bdfcf201/workers/d1/databases/28c64f5a-5163-4db9-a557-1b5ffd2067f1/studio). O v1 de desenvolvimento ainda preserva o embed histórico do YayForms.
 
-O hub da Jumper inclui o [painel administrativo dos cadastros da LP oficial](https://site.jumper.dev.br/__jumper/izi-gym/leads-live), protegido pela sessão do Jumper Hoster. Ele consulta somente o D1 de produção, permite filtrar por mês, plano e origem, e exporta CSV com os filtros aplicados. A exportação aceita até 20 mil registros por vez; acima disso, filtre por mês. O painel de teste em `/__jumper/izi-gym/leads` continua separado e consulta somente o D1 de desenvolvimento.
+O hub da Jumper inclui o [painel administrativo dos cadastros da LP](https://site.jumper.dev.br/__jumper/izi-gym/leads-live), protegido pela sessão do Jumper Hoster. Ele abre na base oficial `izi-gym-leads` e permite escolher a base de desenvolvimento `izi-gym-leads-dev` pelo nome exato, além de filtrar por mês e plano. A lista e o CSV sempre usam a base selecionada; o arquivo inclui o nome dela. A exportação aceita até 20 mil registros por vez; acima disso, filtre por mês. O painel antigo em `/__jumper/izi-gym/leads` continua separado e consulta somente a base de desenvolvimento.
 
 ## Regras de marca
 

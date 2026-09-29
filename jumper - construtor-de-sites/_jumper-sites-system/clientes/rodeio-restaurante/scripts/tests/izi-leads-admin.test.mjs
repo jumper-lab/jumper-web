@@ -10,8 +10,8 @@ const key = await crypto.subtle.importKey('raw', new TextEncoder().encode(secret
 const token = [...new Uint8Array(await crypto.subtle.sign('HMAC', key, new TextEncoder().encode('jumper-hoster-session-v1')))]
   .map((byte) => byte.toString(16).padStart(2, '0')).join('');
 
-function environment(calls) {
-  const db = {
+function mockDb(calls) {
+  return {
     prepare(sql) {
       const query = { sql, values: [] };
       calls.push(query);
@@ -25,7 +25,14 @@ function environment(calls) {
       };
     },
   };
-  return { JUMPER_HOSTER_PASSWORD: secret, IZI_LEADS_DB: db, IZI_LEADS_TEST_DB: { prepare() { throw new Error('Development D1 must not be used.'); } } };
+}
+
+function environment(calls, devCalls = null) {
+  return {
+    JUMPER_HOSTER_PASSWORD: secret,
+    IZI_LEADS_DB: mockDb(calls),
+    IZI_LEADS_TEST_DB: devCalls ? mockDb(devCalls) : { prepare() { throw new Error('Development D1 must not be used.'); } },
+  };
 }
 
 test('live admin requires authentication', async () => {
@@ -42,9 +49,10 @@ test('month filter queries production D1 and CSV uses same filter', async () => 
   assert.equal(page.status, 200);
   const html = await page.text();
   assert.match(html, /Cadastros do formulário/);
-  assert.match(html, /Esta página mostra somente os cadastros da LP oficial/);
-  assert.match(html, /Campanha \(UTM\)/);
-  assert.match(html, /href="\/__jumper\/izi-gym\/leads-live\?month=2026-09&amp;page=1"/);
+  assert.match(html, /Base de dados/);
+  assert.match(html, /izi-gym-leads-dev/);
+  assert.doesNotMatch(html, /Campanha \(UTM\)/);
+  assert.match(html, /href="\/__jumper\/izi-gym\/leads-live\?database=izi-gym-leads&amp;month=2026-09&amp;page=1"/);
   assert.match(html, /Atualizar planilha/);
   assert.deepEqual(calls[0].values, ['2026-09-01', '2026-10-01']);
 
@@ -54,4 +62,25 @@ test('month filter queries production D1 and CSV uses same filter', async () => 
   assert.match(csv.headers.get('Content-Disposition'), /izi-gym-leads-2026-09\.csv/);
   assert.deepEqual(calls[0].values, ['2026-09-01', '2026-10-01']);
   assert.match(await csv.text(), /'\=Test/);
+});
+
+test('development selection and CSV use only the development D1', async () => {
+  const productionCalls = [];
+  const developmentCalls = [];
+  const env = environment(productionCalls, developmentCalls);
+  const headers = { Cookie: `jumper_hoster_session=${token}` };
+  const path = 'https://site.jumper.dev.br/__jumper/izi-gym/leads-live';
+  const response = await worker.fetch(new Request(`${path}?database=izi-gym-leads-dev&month=2026-09`, { headers }), env);
+  assert.equal(response.status, 200);
+  assert.match(await response.text(), /<strong>izi-gym-leads-dev<\/strong> está selecionada/);
+  assert.equal(productionCalls.length, 0);
+  assert.deepEqual(developmentCalls[0].values, ['2026-09-01', '2026-10-01']);
+
+  const csv = await worker.fetch(new Request(`${path}.csv?database=izi-gym-leads-dev&month=2026-09`, { headers }), env);
+  assert.equal(csv.status, 200);
+  assert.match(csv.headers.get('Content-Disposition'), /izi-gym-leads-dev-2026-09\.csv/);
+  assert.equal(productionCalls.length, 0);
+
+  const invalid = await worker.fetch(new Request(`${path}?database=another-db`, { headers }), env);
+  assert.equal(invalid.status, 400);
 });
