@@ -37,6 +37,14 @@
       .briefing-action:hover,.briefing-action:focus-visible{background:#2b2b2b;transform:translateY(-2px);outline:none}
       .briefing-copy-link{gap:0;border:1px solid #b9b0ad;background:transparent;color:#272323}
       .briefing-copy-link:hover,.briefing-copy-link:focus-visible{border-color:#272323;background:#fff;outline:none}
+      .project-note{margin-top:28px;padding:20px 24px;border:1px solid #e5ded3;border-radius:14px;background:#fbf8f2}
+      .project-note h2{margin:0 0 8px;font-size:17px;letter-spacing:0}
+      .project-note>p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
+      .project-types{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:18px 0 0}
+      .project-types div{border-top:1px solid #ded7cd;padding-top:12px}
+      .project-types dt{font-size:12px;font-weight:700}
+      .project-types dd{margin:5px 0 0;color:var(--muted);font-size:12px;line-height:1.4}
+      .project-types a{text-underline-offset:2px}
       .section-label{display:flex;align-items:center;gap:9px;margin:44px 0 -26px;font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#555}
       .section-label:before{content:"";width:6px;height:6px;border-radius:50%;background:#101010}
       .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:42px}
@@ -62,8 +70,8 @@
       .lightbox-links{display:grid;margin-top:6px}.lightbox-link{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;border-bottom:1px solid #e7e7e7;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}.lightbox-link:hover,.lightbox-link:focus-visible{color:var(--lightbox-accent,var(--blue));outline:none}.lightbox-link .arrow{flex:none}
       body.lightbox-open{overflow:hidden}
       footer{padding-top:24px;padding-bottom:20px;justify-content:flex-start}
-      @media(max-width:800px){main{padding-top:54px}.briefing-tool{align-items:start;flex-direction:column}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-      @media(max-width:560px){header,footer{padding-left:24px;padding-right:24px}.by{display:none}.top-right{gap:0}main{width:calc(100% - 48px);padding:46px 0 64px}h1{font-size:42px}.lead{font-size:16px}.briefing-tool{margin-top:32px;padding:20px}.briefing-tool h2{font-size:24px}.briefing-actions{width:100%;flex-direction:column;align-items:stretch}.briefing-action,.briefing-copy-link{width:100%;justify-content:center}.section-label{margin-top:34px;margin-bottom:-18px}.grid{grid-template-columns:1fr;margin-top:32px}.card{min-height:190px}.card-open{min-height:188px}.footer-copy{font-size:9px}}
+      @media(max-width:800px){main{padding-top:54px}.briefing-tool{align-items:start;flex-direction:column}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.project-types{grid-template-columns:1fr;gap:12px}}
+      @media(max-width:560px){header,footer{padding-left:24px;padding-right:24px}.by{display:none}.top-right{gap:0}main{width:calc(100% - 48px);padding:46px 0 64px}h1{font-size:42px}.lead{font-size:16px}.briefing-tool{margin-top:32px;padding:20px}.briefing-tool h2{font-size:24px}.briefing-actions{width:100%;flex-direction:column;align-items:stretch}.briefing-action,.briefing-copy-link{width:100%;justify-content:center}.project-note{padding:18px}.section-label{margin-top:34px;margin-bottom:-18px}.grid{grid-template-columns:1fr;margin-top:32px}.card{min-height:190px}.card-open{min-height:188px}.footer-copy{font-size:9px}}
       @media(prefers-reduced-motion:reduce){*{transition:none!important}}
     </style>
   </head>
@@ -89,7 +97,16 @@
           <a class="briefing-action" href="/briefing/" target="_blank" rel="noopener"><span>Abrir formulário</span><span class="arrow" aria-hidden="true">↗</span></a>
         </div>
       </section>
-      <p class="section-label">Sites em desenvolvimento</p>
+      <aside class="project-note" aria-labelledby="project-note-title">
+        <h2 id="project-note-title">Atenção: os projetos Jumper têm funções diferentes</h2>
+        <p>Use o nome certo ao procurar código, prévias ou o serviço que publica este hub.</p>
+        <dl class="project-types">
+          <div><dt><a href="https://github.com/jumper-lab/jumper-web" target="_blank" rel="noopener">jumper-web ↗</a></dt><dd>Repositório do construtor de sites e do código deste hub. Não é o site institucional.</dd></div>
+          <div><dt><a href="https://github.com/jumper-lab/jumper-site" target="_blank" rel="noopener">jumper-site ↗</a></dt><dd>Repositório do site institucional em <a href="https://jumper.studio/" target="_blank" rel="noopener">jumper.studio</a>, com prévia das páginas na Vercel.</dd></div>
+          <div><dt>jumper-hoster</dt><dd>Worker da Cloudflare que serve <a href="https://site.jumper.dev.br/" target="_blank" rel="noopener">este hub</a> e os sites em desenvolvimento. Seu código fica no jumper-web.</dd></div>
+        </dl>
+      </aside>
+      <p class="section-label">Sites e prévias</p>
       <section class="grid" aria-label="Sites disponíveis">
         <!-- JUMPER_CLIENT_CARDS -->
       </section>
