@@ -1,0 +1,86 @@
+{
+  "date": "2026-09-29T23:31:00.000Z",
+  "scope": "Validação sem envio de formulários ou reservas",
+  "summary": {
+    "checked": 9,
+    "passed": 9,
+    "failed": 0,
+    "mapAssociationsCorrected": true
+  },
+  "results": [
+    {
+      "name": "reservas_jardins",
+      "url": "https://rodeiosp.com.br/reservas/jardins/",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://rodeiosp.com.br/reservas/jardins/",
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "name": "reservas_iguatemi",
+      "url": "https://rodeiosp.com.br/reservas/iguatemi/",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://rodeiosp.com.br/reservas/iguatemi/",
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "name": "widget_jardins",
+      "url": "https://reservation-widget.tagme.com.br/reservation/schedule/56c778030896b3cd13c609e5/reservationWidget",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://reservation-widget.tagme.com.br/reservation/schedule/56c778030896b3cd13c609e5/reservationWidget",
+      "contentType": "text/html"
+    },
+    {
+      "name": "widget_iguatemi",
+      "url": "https://reservation-widget.tagme.com.br/reservation/schedule/56c778010896b3cd13c609d2/reservationWidget",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://reservation-widget.tagme.com.br/reservation/schedule/56c778010896b3cd13c609d2/reservationWidget",
+      "contentType": "text/html"
+    },
+    {
+      "name": "mapa_jardins",
+      "url": "https://share.google/SoX3qamTaF1qtEKIs",
+      "expected": "Haddock+Lobo",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://www.google.com/search?sca_esv=a6de26ecf3f9c9fb&cs=0&output=search&kgmid=/g/1tf7npnf&q=Churrascaria+Rodeio+-+Haddock+Lobo&shem=dlvs1,epsd1,ltae,rimspwouoe&shndl=30&source=sh/x/loc/uni/m1/1&kgs=24ecb05f78d185e9&utm_source=dlvs1,epsd1,ltae,rimspwouoe,sh/x/loc/uni/m1/1",
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "name": "mapa_iguatemi",
+      "url": "https://share.google/ieCesdCBfaoqhE5d4",
+      "expected": "Iguatemi",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://www.google.com/search?sca_esv=a6de26ecf3f9c9fb&cs=0&output=search&kgmid=/g/1ptvtx_kh&q=Churrascaria+Rodeio+-+Iguatemi&shem=dlvs1,epsd1,ltae,rimspwouoe&shndl=30&source=sh/x/loc/uni/m1/1&kgs=1bf41a46589121ae&utm_source=dlvs1,epsd1,ltae,rimspwouoe,sh/x/loc/uni/m1/1",
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "name": "cardapio",
+      "url": "https://livemenu.app/menu/56c778030896b3cd13c609e5",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://livemenu.app/menu/56c778030896b3cd13c609e5",
+      "contentType": "text/html"
+    },
+    {
+      "name": "eventos",
+      "url": "https://rodeiosp.com.br/eventos/",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://rodeiosp.com.br/eventos/",
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "name": "instagram",
+      "url": "https://www.instagram.com/rodeiorestaurante/",
+      "status": 200,
+      "ok": true,
+      "finalUrl": "https://www.instagram.com/rodeiorestaurante/",
+      "contentType": "text/html; charset=\"utf-8\""
+    }
+  ]
+}

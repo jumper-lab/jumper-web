@@ -1,0 +1,38 @@
+{
+  "tool": "Lighthouse 13.0.1",
+  "environment": "laboratório local contra a URL pública; não substitui dados de campo CrUX",
+  "mobile": {
+    "fetchTime": "2026-09-29T23:28:03.127Z",
+    "finalUrl": "https://site.jumper.dev.br/rodeio/",
+    "scores": {
+      "performance": 97,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 69
+    },
+    "metrics": {
+      "fcp": 1836.1929999999998,
+      "lcp": 2253.819,
+      "tbt": 36.5,
+      "cls": 0,
+      "speedIndex": 1980.2780618851361
+    }
+  },
+  "desktop": {
+    "fetchTime": "2026-09-29T23:28:16.941Z",
+    "finalUrl": "https://site.jumper.dev.br/rodeio/",
+    "scores": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 69
+    },
+    "metrics": {
+      "fcp": 509.399,
+      "lcp": 636.198,
+      "tbt": 0,
+      "cls": 0,
+      "speedIndex": 664.2880694045652
+    }
+  }
+}

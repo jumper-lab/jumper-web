@@ -2,7 +2,7 @@
   "url": "https://site.jumper.dev.br/rodeio",
   "provider": "cloudflare-workers-static-assets",
   "worker": "jumper-hoster",
-  "versionId": "5c239f82-f47b-4bfa-a3b7-c4a3cbdc7575",
+  "versionId": "4a5729ef-968d-42d0-80d6-3d3cd140b422",
   "status": "READY",
   "indexing": "noindex",
   "results": [
@@ -85,7 +85,7 @@
       "marge.ns.cloudflare.com"
     ]
   },
-  "date": "2026-09-29T23:20:46.000Z",
+  "date": "2026-09-29T23:29:30.097Z",
   "access": {
     "dashboard": "password",
     "clientSites": "public",
@@ -118,13 +118,13 @@
     "verifiedAt": "2026-09-10T10:44:00.000Z"
   },
   "lastRodeioSync": {
-    "deployedAt": "2026-09-29T23:20:46.000Z",
-    "sourceCommit": "4b7b3957485e074d7658524796f4bccecf142343",
-    "workerSourceCommit": "5545a687344d95cffbdce2c2f96de0da863fbd9d",
+    "deployedAt": "2026-09-29T23:29:30.097Z",
+    "workerVersionId": "4a5729ef-968d-42d0-80d6-3d3cd140b422",
     "scope": [
       "slideshow da home com seis fotografias inéditas na ordem aprovada",
       "textos finais e acervo ampliado da página História",
-      "animações, galerias e ajustes visuais acumulados"
+      "animações, galerias e ajustes visuais acumulados",
+      "correção da associação dos mapas de Jardins e Iguatemi"
     ],
     "verification": {
       "astroCheckErrors": 0,
@@ -138,7 +138,31 @@
       "overflowFailures": 0,
       "brokenImages": 0,
       "consoleErrors": 0,
-      "publicHomeMatchesPackage": true
+      "externalLinksChecked": 9,
+      "externalLinksPassed": 9,
+      "mapAssociationsCorrect": true,
+      "publicHomeMatchesPackage": true,
+      "lighthouse": {
+        "mobile": {
+          "performance": 97,
+          "accessibility": 100,
+          "bestPractices": 100,
+          "seo": 69,
+          "lcpMs": 2253.819,
+          "tbtMs": 36.5,
+          "cls": 0
+        },
+        "desktop": {
+          "performance": 100,
+          "accessibility": 100,
+          "bestPractices": 100,
+          "seo": 69,
+          "lcpMs": 636.198,
+          "tbtMs": 0,
+          "cls": 0
+        },
+        "note": "Laboratório local contra a URL pública; API PageSpeed indisponível por cota 429; sem dados de campo CrUX."
+      }
     }
   }
 }

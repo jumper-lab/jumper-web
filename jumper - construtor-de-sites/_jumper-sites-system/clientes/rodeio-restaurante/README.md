@@ -2,9 +2,13 @@
 
 ## Sincronização pública — 29/09/2026
 
-A versão publicada em [site.jumper.dev.br/rodeio](https://site.jumper.dev.br/rodeio/) foi sincronizada com o estado mais recente do projeto: slideshow da home com seis fotografias inéditas na ordem aprovada, textos finais, acervo ampliado da página História, animações, galerias e demais ajustes visuais acumulados. O site é servido diretamente pelo Cloudflare Worker `jumper-hoster`; a versão consolidada desta rodada é `5c239f82-f47b-4bfa-a3b7-c4a3cbdc7575`.
+A versão publicada em [site.jumper.dev.br/rodeio](https://site.jumper.dev.br/rodeio/) foi sincronizada com o estado mais recente do projeto: slideshow da home com seis fotografias inéditas na ordem aprovada, textos finais, acervo ampliado da página História, animações, galerias e demais ajustes visuais acumulados. O site é servido diretamente pelo Cloudflare Worker `jumper-hoster`; a versão consolidada desta rodada é `4a5729ef-968d-42d0-80d6-3d3cd140b422`.
 
 `astro check` concluiu sem erros e o build gerou as dez páginas previstas. Após a publicação, nove rotas públicas foram verificadas em 390 × 844 e 1440 × 900: 18 combinações aprovadas, sem overflow, imagens quebradas, erros de console ou erros de execução. O HTML público da home foi comparado com o pacote local e é idêntico. A indexação continua desativada porque este endereço é o ambiente de desenvolvimento.
+
+Os links externos foram revalidados sem enviar formulários ou reservas: páginas e widgets Tagme das duas unidades, cardápio Live Menu, eventos, Instagram e os dois destinos do Google Maps responderam HTTP 200. A auditoria revelou que os mapas estavam associados às unidades opostas; a versão atual corrige Jardins para Haddock Lobo e Iguatemi para Shopping Iguatemi. Evidência: `data/visual-review/public-sync-2026-09-29/external-links.json`.
+
+Lighthouse 13.0.1 contra a URL pública: **mobile 97/100/100/69** e **desktop 100/100/100/69** em Performance/Acessibilidade/Boas Práticas/SEO. No mobile, LCP 2,254 s, TBT 36,5 ms e CLS 0; no desktop, LCP 0,636 s, TBT 0 e CLS 0. SEO 69 é consequência do `noindex` intencional do ambiente de desenvolvimento. A API PageSpeed retornou 429 por cota diária, portanto esta é evidência de laboratório, sem alegar dados de campo CrUX. Evidência: `data/visual-review/public-sync-2026-09-29/lighthouse-summary.json`.
 
 As notas abaixo registram rodadas históricas de trabalho. Indicações como “sem deploy” descrevem somente a rodada citada e foram superadas por esta sincronização.
 
