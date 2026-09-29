@@ -95,6 +95,8 @@ window.addEventListener('resize',resetRail,{passive:true});
 document.querySelectorAll('details').forEach(d=>d.addEventListener('toggle',()=>{if(d.open)animate(d.querySelector('p')!);}));
 const attribution=new URLSearchParams(location.search);
 const campaignKeys=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'];
+const primeCheckout='https://vendas.online.sistemapacto.com.br/checkout?un=1&k=6e2660773cc378e250e6a8731d6830e5&pl=2&cupom=0,99_IZI';
+const planSelection='https://vendas.online.sistemapacto.com.br/planos?un=1&k=6e2660773cc378e250e6a8731d6830e5';
 document.querySelectorAll<HTMLAnchorElement>('[data-cta]').forEach(a=>{const u=new URL(a.href);campaignKeys.forEach(k=>{const v=attribution.get(k);if(v)u.searchParams.set(k,v);});a.href=u.toString();});
 const modal=document.querySelector<HTMLDialogElement>('#enrollment')!;
 let opener:HTMLElement|null=null;
@@ -135,7 +137,7 @@ leadForm.addEventListener('submit',async event=>{
   w.fbq?.('track','Lead');
   leadStatus.textContent='Cadastro recebido. Redirecionando para concluir sua matrícula…';
   leadForm.reset();
-  window.setTimeout(()=>location.assign('https://lp.izigym.com.br/obrigado/'),700);
+  window.setTimeout(()=>location.assign(leadForm.dataset.plan==='One'?planSelection:primeCheckout),700);
  }catch(error){
   leadStatus.textContent=error instanceof Error?error.message:'Não foi possível concluir o cadastro. Tente novamente.';
   leadSubmit.disabled=false;
