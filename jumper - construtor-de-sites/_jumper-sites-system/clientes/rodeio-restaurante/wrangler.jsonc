@@ -25,9 +25,9 @@
     },
     {
       "binding": "IZI_LEADS_TEST_DB",
-      "database_name": "izi-gym-leads-test",
-      "database_id": "754149bd-3ca6-4692-960d-d8c888b5fed8",
-      "migrations_dir": "cloudflare/migrations/izi-gym-leads-test"
+      "database_name": "izi-gym-leads-dev",
+      "database_id": "836cc67f-400d-4c8e-8d6a-11bc6fc40a56",
+      "migrations_dir": "cloudflare/migrations/izi-gym-leads-dev"
     }
   ],
   "ratelimits": [
