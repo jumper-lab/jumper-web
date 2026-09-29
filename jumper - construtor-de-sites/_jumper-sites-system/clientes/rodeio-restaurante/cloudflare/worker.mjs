@@ -145,6 +145,7 @@ async function submitIziLead(request, env, isTest = false) {
     return jsonResponse({ error: 'Confira o e-mail informado.' }, 422);
   }
   if (payload.consent !== true) return jsonResponse({ error: 'É necessário autorizar o contato da IZI Gym.' }, 422);
+  const plan = typeof payload.plan === 'string' ? payload.plan.trim().slice(0, 80) : null;
 
   const campaign = payload.campaign && typeof payload.campaign === 'object' ? payload.campaign : {};
   const field = (key) => typeof campaign[key] === 'string' ? campaign[key].trim().slice(0, 200) || null : null;
@@ -155,8 +156,8 @@ async function submitIziLead(request, env, isTest = false) {
   try {
     await leadsDb.prepare(
       `INSERT INTO izi_gym_leads
-       (id, name, phone, email, consent_version, consented_at, utm_source, utm_medium, utm_campaign, utm_content, utm_term, gclid, fbclid)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+       (id, name, phone, email, consent_version, consented_at, utm_source, utm_medium, utm_campaign, utm_content, utm_term, gclid, fbclid, plan)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     ).bind(
       id,
       name,
@@ -171,6 +172,7 @@ async function submitIziLead(request, env, isTest = false) {
       field('utm_term'),
       field('gclid'),
       field('fbclid'),
+      plan,
     ).run();
   } catch {
     // Do not log submitted personal data.
@@ -200,11 +202,11 @@ async function listIziLeads(request, env, isTest = false) {
   const leadsDb = isTest ? env.IZI_LEADS_TEST_DB : env.IZI_LEADS_DB;
   try {
     const { results = [] } = await leadsDb.prepare(
-      `SELECT id, created_at, name, phone, email, consent_version, consented_at, utm_source, utm_medium, utm_campaign, utm_content, utm_term, gclid, fbclid
+      `SELECT id, created_at, name, phone, email, consent_version, consented_at, utm_source, utm_medium, utm_campaign, utm_content, utm_term, gclid, fbclid, plan
        FROM izi_gym_leads ORDER BY created_at DESC LIMIT 500`,
     ).all();
     if (new URL(request.url).pathname.endsWith('.csv')) {
-      const columns = ['created_at', 'name', 'phone', 'email', 'consent_version', 'consented_at', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'fbclid'];
+      const columns = ['created_at', 'name', 'phone', 'email', 'plan', 'consent_version', 'consented_at', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'fbclid'];
       const cell = (value) => {
         let text = String(value ?? '');
         if (/^[\s]*[=+@-]/.test(text)) text = `'${text}`;
@@ -213,8 +215,8 @@ async function listIziLeads(request, env, isTest = false) {
       const csv = [columns.map(cell).join(','), ...results.map((row) => columns.map((column) => cell(row[column])).join(','))].join('\r\n');
       return new Response(`\uFEFF${csv}`, { headers: { ...securityHeaders, 'Content-Type': 'text/csv; charset=utf-8', 'Content-Disposition': 'attachment; filename="izi-gym-leads.csv"', 'Cache-Control': 'no-store, private' } });
     }
-    const body = results.length ? results.map((row) => `<tr>${['created_at', 'name', 'phone', 'email', 'utm_source'].map((key) => `<td>${escapeHtml(row[key])}</td>`).join('')}</tr>`).join('') : '<tr><td colspan="5">Nenhum cadastro encontrado.</td></tr>';
-    return htmlResponse(`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Cadastros IZI Gym · Jumper</title><style>*{box-sizing:border-box}body{margin:0;padding:28px;background:#f2eee5;color:#30302e;font:15px/1.5 system-ui,sans-serif}.wrap{max-width:1200px;margin:auto}.top,.actions{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}.panel{margin-top:20px;padding:24px;background:white;border:1px solid #ddd8cc;border-radius:16px}h1{margin:0;font-size:32px}.notice{color:#686760}.actions a{display:inline-block;padding:11px 16px;border-radius:999px;background:#e52c12;color:#fff;text-decoration:none}.actions form{margin:0}.actions button{padding:11px 16px;border:0;border-radius:999px;background:#30302e;color:white;font:inherit}.table-wrap{overflow:auto;margin-top:20px}table{width:100%;border-collapse:collapse;text-align:left}th,td{padding:12px;border-bottom:1px solid #e4e0d8;white-space:nowrap}th{font-size:11px;text-transform:uppercase;letter-spacing:.06em}</style></head><body><main class="wrap"><div class="top"><h1>Cadastros IZI Gym</h1><div class="actions"><a href="${IZI_LEADS_TEST_PATH}/">Novo teste</a><a href="${IZI_LEADS_ADMIN_PATH}.csv">Exportar CSV (até 500 registros)</a><form action="${LOGOUT_PATH}" method="post"><button type="submit">Sair</button></form></div></div><section class="panel"><p class="notice">Dados pessoais: acesso restrito. Exibindo os ${results.length} registros mais recentes (máximo de 500).</p><div class="table-wrap"><table><thead><tr><th>Data</th><th>Nome</th><th>Telefone</th><th>E-mail</th><th>Origem</th></tr></thead><tbody>${body}</tbody></table></div></section></main></body></html>`, 200, { 'Cache-Control': 'no-store, private' });
+    const body = results.length ? results.map((row) => `<tr>${['created_at', 'name', 'phone', 'email', 'plan', 'utm_source'].map((key) => `<td>${escapeHtml(row[key])}</td>`).join('')}</tr>`).join('') : '<tr><td colspan="6">Nenhum cadastro encontrado.</td></tr>';
+    return htmlResponse(`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Cadastros IZI Gym · Jumper</title><style>*{box-sizing:border-box}body{margin:0;padding:28px;background:#f2eee5;color:#30302e;font:15px/1.5 system-ui,sans-serif}.wrap{max-width:1200px;margin:auto}.top,.actions{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}.panel{margin-top:20px;padding:24px;background:white;border:1px solid #ddd8cc;border-radius:16px}h1{margin:0;font-size:32px}.notice{color:#686760}.actions a{display:inline-block;padding:11px 16px;border-radius:999px;background:#e52c12;color:#fff;text-decoration:none}.actions form{margin:0}.actions button{padding:11px 16px;border:0;border-radius:999px;background:#30302e;color:white;font:inherit}.table-wrap{overflow:auto;margin-top:20px}table{width:100%;border-collapse:collapse;text-align:left}th,td{padding:12px;border-bottom:1px solid #e4e0d8;white-space:nowrap}th{font-size:11px;text-transform:uppercase;letter-spacing:.06em}</style></head><body><main class="wrap"><div class="top"><h1>Cadastros IZI Gym</h1><div class="actions"><a href="${IZI_LEADS_TEST_PATH}/">Novo teste</a><a href="${IZI_LEADS_ADMIN_PATH}.csv">Exportar CSV (até 500 registros)</a><form action="${LOGOUT_PATH}" method="post"><button type="submit">Sair</button></form></div></div><section class="panel"><p class="notice">Dados pessoais: acesso restrito. Exibindo os ${results.length} registros mais recentes (máximo de 500).</p><div class="table-wrap"><table><thead><tr><th>Data</th><th>Nome</th><th>Telefone</th><th>E-mail</th><th>Plano</th><th>Origem</th></tr></thead><tbody>${body}</tbody></table></div></section></main></body></html>`, 200, { 'Cache-Control': 'no-store, private' });
   } catch {
     return jsonResponse({ error: 'Não foi possível consultar os cadastros.' }, 503);
   }

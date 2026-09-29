@@ -10,14 +10,17 @@ Site principal: https://cerrocora.izigym.com.br/
 
 - `npm run dev`: desenvolvimento em `http://127.0.0.1:4327/izigym-lp/`.
 - `npm run build`: gera o site estático em `dist/`.
-- Implementação: `src/pages/index.astro` e `src/styles.css`.
+- Landing oficial e preview v2: `src/pages/simple.astro`, `src/simple.ts` e `src/simple.css`.
+- `src/pages/index.astro` permanece como versão v1 de desenvolvimento.
 - Design system: `DESIGN_SYSTEM.md` e `data/final-design-system.json`.
 - Auditoria de aplicação: `data/brand-audit-2026-09-22.md`.
 - Ativos oficiais: `public/assets/brand/`.
 
 ## Conversão
 
-WhatsApp +55 11 95213-7022 com mensagem da promoção. O Yayforms DEXAqYo carrega apenas após o clique em matrícula. UTMs, gclid e fbclid são preservados; os eventos `whatsapp_click` e `enrollment_open` registram origem e atribuição.
+WhatsApp +55 11 95213-7022 com mensagem da promoção. Na landing oficial, o modal de matrícula usa um formulário próprio com nome, telefone, e-mail e consentimento. O envio vai para `POST /api/izigym/leads` no Worker `jumper-hoster`; após a confirmação de gravação no D1 `izi-gym-leads`, o visitante segue para a página de agradecimento e checkout já utilizada pela campanha. UTMs, gclid e fbclid são preservados. Os eventos `whatsapp_click`, `enrollment_open` e `lead_submit` registram a interação sem enviar dados pessoais à camada de analytics.
+
+No preview v2 em `site.jumper.dev.br`, o mesmo endpoint usa a base separada `izi-gym-leads-test`, protegida pelo acesso ao Jumper Hoster. Os cadastros de produção podem ser consultados no [D1 da Cloudflare](https://dash.cloudflare.com/e23efa36a1e09015eebb2b36bdfcf201/workers/d1/databases/28c64f5a-5163-4db9-a557-1b5ffd2067f1/studio). O v1 de desenvolvimento ainda preserva o embed histórico do YayForms.
 
 ## Regras de marca
 

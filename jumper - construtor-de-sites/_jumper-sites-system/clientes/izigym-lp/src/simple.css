@@ -7,6 +7,24 @@
 @media(hover:hover) and (prefers-reduced-motion:no-preference){.pillar-photo img,.location-photo img{transition:transform .8s var(--ease)}.pillar-photo:hover img,.location-photo:hover img{transform:scale(1.035)}}
 @supports(animation-timeline:scroll()){@media(prefers-reduced-motion:no-preference){.hero{overflow:hidden}.hero-image{animation:hero-depth linear both;animation-timeline:scroll(root);animation-range:0px 900px}@keyframes hero-depth{from{transform:scale(1)}to{transform:scale(1.06)}}}}
 
+/* Cadastro próprio da IZI: integrado ao Worker e ao D1. */
+#form-host{height:auto;max-height:none;overflow:visible;padding:22px 24px;background:#fff}
+#lead-form{display:grid;gap:9px}
+#lead-form>label:not(.lead-consent):not(.lead-trap){display:flex;justify-content:space-between;margin-top:10px;font-size:15px}
+#lead-form>label:first-child{margin-top:0}
+#lead-form>label>span[aria-hidden=true],.lead-consent span[aria-hidden=true]{color:var(--accent)}
+#lead-form>input:not([type=hidden]){width:100%;min-height:46px;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);font:inherit;font-size:16px}
+#lead-form>input:focus-visible,.lead-consent input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#lead-form>input::placeholder{color:#888}
+.lead-consent{display:flex;align-items:flex-start;gap:10px;margin:11px 0 2px;font-size:12px;line-height:1.4}
+.lead-consent input{width:18px;height:18px;flex:none;margin:0;accent-color:var(--accent)}
+.lead-trap{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+#lead-form .lead-submit{width:100%;margin-top:6px;border-color:var(--accent);background:var(--accent);color:#fff;justify-content:center;font-size:17px}
+#lead-form .lead-submit:hover{border-color:var(--ink);background:var(--ink)}
+#lead-form .lead-submit:disabled{opacity:.65;cursor:wait}
+#lead-status{min-height:1.4em;margin:2px 0 0;color:#a32717;font-size:13px;line-height:1.4}
+@media(max-width:767px){#form-host{height:auto;max-height:none;padding:18px}#lead-form .lead-submit{font-size:16px}dialog{overflow-y:auto}}
+
 /* Optical adjustment for Obviously across the full Simple edition. */
 h1,h2,h3{letter-spacing:-.04em}h2{font-size:clamp(40px,5vw,76px);line-height:1.08}.hero-story h1{font-size:clamp(58px,6.1vw,96px);line-height:1.08}.hero-story>p:last-child{font-size:18px}.label{letter-spacing:.035em}.pill{font-size:16px;font-weight:400}.header nav{font-size:14px}.header-action{font-size:14px}.hero-deal .pill{font-size:14px}.hero-deal>p{font-size:16px}.price{font-size:100px}.intro-copy{font-size:19px}.pillar-tabs button{font-size:clamp(28px,3vw,44px)}.plan h3{font-size:32px}.plan-price strong{font-size:82px;font-weight:400}.manifesto h2{font-size:clamp(48px,6.2vw,90px)}.plan .pill{font-size:15px}.faq summary{font-size:18px}
 @media(max-width:1100px) and (min-width:768px){.header nav{font-size:12px;gap:13px}.header-action{font-size:12px}.hero-story h1{font-size:57px}.hero-deal .pill{font-size:12px;padding:14px}.plan .pill{font-size:13px}}
@@ -457,3 +475,19 @@ h3{line-height:1.08;letter-spacing:-.035em}
 .pillar-tabs button{transition:color .24s var(--ease),box-shadow .3s var(--ease)}
 .pillar-tabs button[aria-selected=true]{color:var(--accent)!important}
 .pillar-tabs button[aria-selected=true] .tab-sign{color:var(--accent)}
+
+/* Branded scroll cue for the hero on desktop and mobile. */
+.hero .scroll-cue{width:54px;height:54px;border:1px solid rgba(255,255,255,.82);border-radius:50%;color:var(--accent);background:rgba(246,242,233,.94);box-shadow:0 0 0 5px rgba(255,255,255,.12),0 8px 22px rgba(0,0,0,.28);display:grid;place-items:center;font-size:0;transition:background .25s var(--ease),box-shadow .25s var(--ease),transform .25s var(--ease)}
+.hero .scroll-cue::after{content:none}
+.hero .scroll-cue svg{display:block;width:23px;height:23px;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round;animation:hero-scroll-cue 1.45s cubic-bezier(.4,0,.2,1) infinite}
+@keyframes hero-scroll-cue{0%,100%{transform:translateY(-2px);opacity:.76}50%{transform:translateY(4px);opacity:1}}
+@media(hover:hover){.hero .scroll-cue:hover{background:#fff;box-shadow:0 0 0 7px rgba(255,255,255,.18),0 10px 26px rgba(0,0,0,.32);transform:translateY(-2px) scale(1.04)}}
+@media(max-width:767px){.hero .scroll-cue{width:52px;height:52px}.hero .scroll-cue svg{width:22px;height:22px}}
+@media(max-width:359px){.hero .scroll-cue{width:48px;height:48px}}
+@media(prefers-reduced-motion:reduce){.hero .scroll-cue svg{animation:none}}
+
+/* Dark editorial scrim and restrained parallax on the manifesto photograph. */
+.manifesto:after{background:linear-gradient(90deg,rgba(0,0,0,.78) 0%,rgba(0,0,0,.54) 38%,rgba(0,0,0,.12) 76%)}
+.manifesto>img{will-change:transform}
+@media(max-width:767px){.manifesto:after{background:linear-gradient(0deg,rgba(0,0,0,.76) 0%,rgba(0,0,0,.38) 55%,rgba(0,0,0,.08) 100%)}}
+@media(prefers-reduced-motion:reduce){.manifesto>img{transform:none!important;will-change:auto}}

@@ -48,15 +48,13 @@ const activateNavigation=(id:string)=>navigationLinks.forEach(link=>{const activ
 const sectionSpy=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)activateNavigation((entry.target as HTMLElement).id);}),{rootMargin:'-22% 0px -68% 0px',threshold:0});
 navigationLinks.forEach(link=>{const section=document.querySelector<HTMLElement>(link.hash);if(section)sectionSpy.observe(section);});
 // Bounded requestAnimationFrame work. Parallax runs only for visible media and stays off on mobile.
-const heroSection=document.querySelector<HTMLElement>('.hero')!;
 const movingPhotos=[...document.querySelectorAll<HTMLElement>('.manifesto>img,.location-photo>img')];
 const activePhotos=new Set<HTMLElement>();
 const mediaObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{const image=(entry.target as HTMLElement).querySelector<HTMLElement>('img')||(entry.target as HTMLElement);if(entry.isIntersecting)activePhotos.add(image);else{activePhotos.delete(image);image.style.transform='';image.style.willChange='';}}),{rootMargin:'15% 0px'});
 movingPhotos.forEach(photo=>mediaObserver.observe(photo.parentElement!));
 let frame=0;
-const updateScroll=()=>{frame=0;if(reducedMotion.matches||mobile.matches){movingPhotos.forEach(el=>{el.style.transform='';el.style.willChange='';});return;}
- const heroRect=heroSection.getBoundingClientRect();
- activePhotos.forEach(img=>{const r=img.parentElement!.getBoundingClientRect();const progress=(innerHeight-r.top)/(innerHeight+r.height);img.style.willChange='transform';img.style.transform=`scale(1.06) translate3d(0,${(progress-.5)*5}%,0)`;});
+const updateScroll=()=>{frame=0;if(reducedMotion.matches){movingPhotos.forEach(el=>{el.style.transform='';el.style.willChange='';});return;}
+ activePhotos.forEach(img=>{const r=img.parentElement!.getBoundingClientRect();const progress=(innerHeight-r.top)/(innerHeight+r.height);const travel=mobile.matches?3.2:6;img.style.willChange='transform';img.style.transform=`scale(1.08) translate3d(0,${(progress-.5)*travel}%,0)`;});
 };
 const requestScroll=()=>{if(!frame)frame=requestAnimationFrame(updateScroll);};
 window.addEventListener('scroll',requestScroll,{passive:true});window.addEventListener('resize',requestScroll,{passive:true});reducedMotion.addEventListener('change',requestScroll);requestScroll();
@@ -99,8 +97,52 @@ const attribution=new URLSearchParams(location.search);
 const campaignKeys=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'];
 document.querySelectorAll<HTMLAnchorElement>('[data-cta]').forEach(a=>{const u=new URL(a.href);campaignKeys.forEach(k=>{const v=attribution.get(k);if(v)u.searchParams.set(k,v);});a.href=u.toString();});
 const modal=document.querySelector<HTMLDialogElement>('#enrollment')!;
-let opener:HTMLElement|null=null;let loaded=false;
-document.querySelectorAll<HTMLElement>('[data-enroll]').forEach(button=>button.addEventListener('click',()=>{const w=window as Window & {dataLayer?:unknown[];fbq?:(action:string,event:string)=>void};w.dataLayer=w.dataLayer||[];w.fbq?.('track','InitiateCheckout');w.dataLayer.push({event:'enrollment_open',plan:button.dataset.enroll,...Object.fromEntries(campaignKeys.map(key=>[key,attribution.get(key)]))});opener=button;modal.showModal();modal.querySelector<HTMLButtonElement>('.close')?.focus();document.body.classList.add('modal-open');document.querySelector('#enrollment-title')!.textContent=`Sua matrícula · ${button.dataset.enroll}`;if(!loaded){const host=document.querySelector('#form-host')!;const widget=document.createElement('div');widget.setAttribute('data-yf-widget','DEXAqYo');widget.setAttribute('data-yf-transitive-search-params','utm_source,utm_medium,utm_campaign,utm_content,utm_term,gclid,fbclid');widget.style.cssText='width:100%;height:100%;';host.append(widget);const script=document.createElement('script');script.src='https://embed.yayforms.link/next/embed.js';script.async=true;document.body.append(script);const observer=new MutationObserver(()=>{const frame=host.querySelector('iframe');if(frame){frame.title='Formulário de matrícula IZI Gym';observer.disconnect();}});observer.observe(host,{childList:true,subtree:true});loaded=true;}}));
+let opener:HTMLElement|null=null;
+const leadForm=document.querySelector<HTMLFormElement>('#lead-form')!;
+const leadStatus=document.querySelector<HTMLElement>('#lead-status')!;
+const leadSubmit=leadForm.querySelector<HTMLButtonElement>('[type="submit"]')!;
+const startedAt=leadForm.querySelector<HTMLInputElement>('[name="startedAt"]')!;
+document.querySelectorAll<HTMLElement>('[data-enroll]').forEach(button=>button.addEventListener('click',()=>{
+ const w=window as Window & {dataLayer?:unknown[];fbq?:(action:string,event:string)=>void};
+ w.dataLayer=w.dataLayer||[];
+ w.fbq?.('track','InitiateCheckout');
+ w.dataLayer.push({event:'enrollment_open',plan:button.dataset.enroll,...Object.fromEntries(campaignKeys.map(key=>[key,attribution.get(key)]))});
+ opener=button;
+ leadForm.dataset.plan=button.dataset.enroll||'Primeiro mês';
+ leadStatus.textContent='';
+ startedAt.value=String(Date.now());
+ document.querySelector<HTMLElement>('.modal-coupon')!.hidden=button.dataset.enroll==='One';
+ document.querySelector('#enrollment-title')!.textContent=`Sua matrícula · ${button.dataset.enroll}`;
+ modal.showModal();
+ document.body.classList.add('modal-open');
+ leadForm.querySelector<HTMLInputElement>('[name="name"]')?.focus();
+}));
+leadForm.addEventListener('submit',async event=>{
+ event.preventDefault();
+ if(!leadForm.reportValidity())return;
+ const data=new FormData(leadForm);
+ const campaign=Object.fromEntries(campaignKeys.map(key=>[key,attribution.get(key)]).filter(([,value])=>value));
+ leadSubmit.disabled=true;
+ leadSubmit.textContent='Enviando…';
+ leadStatus.textContent='';
+ try{
+  const response=await fetch('/api/izigym/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:data.get('name'),phone:data.get('phone'),email:data.get('email'),consent:data.get('consent')==='on',website:data.get('website'),startedAt:Number(data.get('startedAt')),plan:leadForm.dataset.plan,campaign})});
+  const result=await response.json();
+  if(!response.ok||!result.ok||!result.id)throw new Error(result.error||'Não foi possível salvar seu cadastro.');
+  const w=window as Window & {dataLayer?:unknown[];fbq?:(action:string,event:string)=>void};
+  w.dataLayer=w.dataLayer||[];
+  w.dataLayer.push({event:'lead_submit',plan:leadForm.dataset.plan,lead_id:result.id});
+  w.fbq?.('track','Lead');
+  leadStatus.textContent='Cadastro recebido. Redirecionando para concluir sua matrícula…';
+  leadForm.reset();
+  window.setTimeout(()=>location.assign('https://lp.izigym.com.br/obrigado/'),700);
+ }catch(error){
+  leadStatus.textContent=error instanceof Error?error.message:'Não foi possível concluir o cadastro. Tente novamente.';
+  leadSubmit.disabled=false;
+  leadSubmit.textContent='Próxima etapa →';
+  startedAt.value=String(Date.now());
+ }
+});
 modal.addEventListener('cancel',event=>{event.preventDefault();modal.close();});
 modal.querySelector('.close')!.addEventListener('click',()=>modal.close());modal.addEventListener('click',event=>{if(event.target===modal){const box=modal.getBoundingClientRect();if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)modal.close();}});modal.addEventListener('close',()=>{document.body.classList.remove('modal-open');opener?.focus();});
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&modal.open)modal.close();});
