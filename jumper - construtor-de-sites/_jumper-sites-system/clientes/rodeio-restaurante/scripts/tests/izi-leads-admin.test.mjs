@@ -42,6 +42,8 @@ test('month filter queries production D1 and CSV uses same filter', async () => 
   assert.equal(page.status, 200);
   const html = await page.text();
   assert.match(html, /Cadastros do formulário/);
+  assert.match(html, /Esta página mostra somente os cadastros da LP oficial/);
+  assert.match(html, /Campanha \(UTM\)/);
   assert.match(html, /href="\/__jumper\/izi-gym\/leads-live\?month=2026-09&amp;page=1"/);
   assert.match(html, /Atualizar planilha/);
   assert.deepEqual(calls[0].values, ['2026-09-01', '2026-10-01']);
