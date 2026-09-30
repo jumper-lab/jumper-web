@@ -76,6 +76,11 @@ segunda lista de regras naquele manual.
   Actions. Deploy dev usa `npm run deploy:dev -- --allow=<slug>`; deploy live
   usa o preflight e o comando documentados no manual, a partir de `main` limpo.
   Um deploy do Worker live monta o pacote completo, não apenas um cliente.
+- Execute deploys do Hoster **sempre** pelos comandos `npm run deploy:cloudflare`,
+  `npm run deploy:dev -- --allow=<slug>` ou `npm run deploy:dev:worker`.
+  Eles registram a fase ativa na Sala de Máquinas e removem o marcador ao
+  terminar. Um `wrangler deploy` direto não aparece como processo em andamento
+  e continua proibido como atalho para contornar as verificações.
 - Para publicar **só código compartilhado** no Worker dev, sem alterar nenhum
   cliente, parta de `main` limpo após a PR e use `npm run deploy:dev:worker`.
   Esse fluxo compara os **sete** sites dev com a publicação ativa; qualquer

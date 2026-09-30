@@ -17,6 +17,10 @@
     {
       "binding": "JUMPER_BRIEFING_DRAFTS",
       "id": "47cdb91716ab4cd99d66807fae60b655"
+    },
+    {
+      "binding": "JUMPER_HUB_OPERATIONS",
+      "id": "c561dc1cddb04f889a297343d50bc20d"
     }
   ],
   "d1_databases": [

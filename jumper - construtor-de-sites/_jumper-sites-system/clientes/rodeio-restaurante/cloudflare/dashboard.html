@@ -80,6 +80,10 @@
         </div>
         <div class="machine-content">
           <h2 id="machine-room-title">Últimas movimentações</h2>
+          <section class="machine-processes" aria-labelledby="machine-processes-title">
+            <h3 id="machine-processes-title">Em andamento agora</h3>
+            <ul id="machine-process-list" aria-live="polite"><li class="machine-process-empty">Consultando os processos…</li></ul>
+          </section>
           <ul class="machine-alerts" id="machine-alerts" aria-label="Avisos de publicação" aria-live="polite" hidden></ul>
           <ol class="machine-events" id="machine-events" aria-label="Atividade recente dos projetos">
             <li class="machine-placeholder">Buscando atualizações…</li>
@@ -87,7 +91,7 @@
         </div>
         <div class="machine-footer">
           <span id="machine-updated">Consultando as fontes…</span>
-          <span>Somente leitura · a cada 60 s</span>
+          <span>Somente leitura · versões 60 s · processos 10 s</span>
         </div>
         <div class="project-glossary" aria-label="Significado dos termos técnicos">
           <span>repositório (projeto de código no GitHub)</span>
@@ -116,8 +120,13 @@
       const machineAlerts = document.querySelector('#machine-alerts');
       const machineHealth = document.querySelector('#machine-health');
       const machineUpdated = document.querySelector('#machine-updated');
+      const machineProcessList = document.querySelector('#machine-process-list');
       let lastActivity = '';
       let lastAlerts = '';
+      let lastProcesses = '';
+      let latestAlerts = [];
+      let githubProcesses = { available: false, items: [] };
+      let trackedProcesses = { available: false, items: [] };
 
       function machineTime(value) {
         if (!value) return 'Horário indisponível';
@@ -145,11 +154,66 @@
         }));
       }
 
+      function renderMachineProcesses() {
+        const items = [...(githubProcesses.items || []), ...(trackedProcesses.items || [])];
+        const signature = JSON.stringify({ items, github: githubProcesses.available, tracked: trackedProcesses.available });
+        if (signature === lastProcesses) return;
+        lastProcesses = signature;
+        if (!items.length) {
+          const empty = document.createElement('li');
+          empty.className = 'machine-process-empty';
+          empty.textContent = !trackedProcesses.available || !githubProcesses.available
+            ? 'Nenhum processo ativo confirmado; uma ou mais fontes não puderam ser verificadas.'
+            : !trackedProcesses.githubEventsEnabled
+              ? 'Nenhum deploy ativo confirmado. Execuções do GitHub ainda não estão conectadas.'
+              : 'Nenhum processo ativo confirmado nas fontes monitoradas.';
+          machineProcessList.replaceChildren(empty);
+        } else {
+          machineProcessList.replaceChildren(...items.map((process) => {
+            const item = document.createElement('li');
+            item.className = 'machine-process';
+            const source = document.createElement('span');
+            source.className = 'machine-source';
+            source.textContent = process.source;
+            const phase = document.createElement('strong');
+            phase.textContent = process.phase;
+            const time = document.createElement('span');
+            time.textContent = `Desde ${machineTime(process.startedAt)}`;
+            item.append(source, phase, time);
+            if (process.url) {
+              try {
+                const url = new URL(process.url);
+                if (url.origin === 'https://github.com') {
+                  const link = document.createElement('a');
+                  link.href = url.href;
+                  link.target = '_blank';
+                  link.rel = 'noopener';
+                  link.textContent = 'Ver processo ↗';
+                  item.append(link);
+                }
+              } catch { /* URL inválida não é exibida. */ }
+            }
+            return item;
+          }));
+        }
+        updateMachineHealth();
+      }
+
+      function updateMachineHealth() {
+        const attention = latestAlerts.filter((alert) => alert.level === 'attention').length;
+        const active = (githubProcesses.items?.length || 0) + (trackedProcesses.items?.length || 0);
+        const partial = latestAlerts.length || !githubProcesses.available || !trackedProcesses.available || !trackedProcesses.githubEventsEnabled;
+        machineHealth.textContent = attention ? `Atenção · ${attention}${active ? ` · ${active} ativo(s)` : ''}`
+          : active ? `Em andamento · ${active}` : partial ? 'Verificação parcial' : 'Versões alinhadas';
+        machineHealth.dataset.state = attention ? 'attention' : active ? 'active' : partial ? 'partial' : 'ok';
+      }
+
       function renderMachine(status) {
         const alerts = Array.isArray(status.alerts) ? status.alerts : [{ level: 'partial', title: 'Verificação incompleta', detail: 'O estado das publicações não pôde ser confirmado.' }];
-        const attention = alerts.filter((alert) => alert.level === 'attention').length;
-        machineHealth.textContent = attention ? `Atenção · ${attention}` : alerts.length ? 'Verificação parcial' : 'Versões alinhadas';
-        machineHealth.dataset.state = attention ? 'attention' : alerts.length ? 'partial' : 'ok';
+        latestAlerts = alerts;
+        githubProcesses = status.processes || { available: false, items: [] };
+        renderMachineProcesses();
+        updateMachineHealth();
         renderMachineAlerts(alerts);
         machineUpdated.textContent = `Conferido em ${machineTime(status.checkedAt)}`;
         const activity = Array.isArray(status.activity) ? status.activity : [];
@@ -205,9 +269,11 @@
           if (!response.ok) throw new Error('Consulta indisponível');
           renderMachine(await response.json());
         } catch {
-          machineHealth.textContent = 'Consulta indisponível';
-          machineHealth.dataset.state = 'attention';
-          renderMachineAlerts([{ level: 'attention', title: 'Não foi possível verificar as publicações', detail: 'A consulta falhou. As movimentações abaixo podem estar desatualizadas; tente novamente em instantes.' }]);
+          latestAlerts = [{ level: 'attention', title: 'Não foi possível verificar as publicações', detail: 'A consulta falhou. As movimentações abaixo podem estar desatualizadas; tente novamente em instantes.' }];
+          githubProcesses = { available: false, items: [] };
+          renderMachineAlerts(latestAlerts);
+          renderMachineProcesses();
+          updateMachineHealth();
           machineUpdated.textContent = 'Consulta falhou · atualização pendente';
           if (!lastActivity) {
             const empty = document.createElement('li');
@@ -217,9 +283,21 @@
           }
         }
       }
+      async function updateTrackedProcesses() {
+        try {
+          const response = await fetch('/__jumper/active-processes', { credentials: 'same-origin', cache: 'no-store' });
+          if (!response.ok) throw new Error('Consulta indisponível');
+          trackedProcesses = await response.json();
+        } catch {
+          trackedProcesses = { available: false, items: [] };
+        }
+        renderMachineProcesses();
+      }
       updateSystemStatus();
+      updateTrackedProcesses();
       window.setInterval(() => { if (!document.hidden) updateSystemStatus(); }, 60_000);
-      document.addEventListener('visibilitychange', () => { if (!document.hidden) updateSystemStatus(); });
+      window.setInterval(() => { if (!document.hidden) updateTrackedProcesses(); }, 10_000);
+      document.addEventListener('visibilitychange', () => { if (!document.hidden) { updateSystemStatus(); updateTrackedProcesses(); } });
 
       const copyBriefingLink = document.querySelector('#copy-briefing-link');
       copyBriefingLink?.addEventListener('click', async () => {

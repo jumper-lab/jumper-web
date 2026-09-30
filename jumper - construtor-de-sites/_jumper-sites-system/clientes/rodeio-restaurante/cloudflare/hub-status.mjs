@@ -169,7 +169,7 @@ export function releaseAlerts(repositories, siteDeployment, hoster) {
       level: 'attention',
       source: 'jumper-hoster',
       title: 'Cloudflare e GitHub estão diferentes',
-      detail: 'O Worker ativo não corresponde ao main (versão principal do GitHub) do jumper-web. Confira se há deploy pendente ou sobrescrita.',
+      detail: 'O Worker ativo não corresponde ao main (versão principal do GitHub) do jumper-web. Essa diferença não prova que há um deploy em andamento; confira o processo confirmado abaixo.',
     });
   } else if (!webSha || !hoster.commitSha) {
     alerts.push({
@@ -230,6 +230,7 @@ export function releaseState(versionMetadata, repositories, production = { commi
       commitSha: deployedSha,
       state: !webSha || !deployedSha ? 'unverified' : webSha === deployedSha ? 'matched' : 'different',
     };
+  const vercelActive = ['queued', 'pending', 'in_progress'].includes(siteDeployment.state);
   return {
     checkedAt: new Date().toISOString(),
     repositories,
@@ -237,5 +238,16 @@ export function releaseState(versionMetadata, repositories, production = { commi
     hoster,
     alerts: releaseAlerts(repositories, siteDeployment, hoster),
     activity: recentActivity(repositories, siteDeployment, hoster),
+    processes: {
+      available: siteDeployment.state !== 'unknown',
+      items: [
+        ...(vercelActive ? [{
+          source: 'jumper-site',
+          phase: siteDeployment.state === 'in_progress' ? 'Vercel: publicando jumper.studio' : 'Vercel: publicação de jumper.studio na fila',
+          startedAt: siteDeployment.deployedAt,
+          url: siteDeployment.url,
+        }] : []),
+      ],
+    },
   };
 }
