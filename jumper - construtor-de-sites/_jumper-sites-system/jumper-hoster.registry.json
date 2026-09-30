@@ -123,10 +123,166 @@
           "url": "https://site.jumper.dev.br/casabelie-3/"
         }
       ],
+      "resourceLinks": [
+        {
+          "label": "Informações do site · Kinsta",
+          "url": "https://my.kinsta.com/sites/details/32505414-f88a-40c6-8884-e35432df4088/c411e3b5-58fa-4dbb-9569-696745ac49b5?idCompany=a4fe3de6-a921-4f99-8d42-9797ef21cc95"
+        }
+      ],
       "officialSite": {
         "label": "Site oficial",
         "url": "https://casabelie.com.br/"
       }
+    },
+    {
+      "id": "almeida-prado",
+      "name": "Almeida Prado",
+      "category": "Kinsta",
+      "description": "Site em produção hospedado na Kinsta.",
+      "accent": "#fa4721",
+      "developmentSites": [],
+      "hubLinks": [
+        {
+          "label": "Site em produção",
+          "url": "https://homeopatiaalmeidaprado.com.br/"
+        },
+        {
+          "label": "Desenvolvimento · Informações no Kinsta",
+          "url": "https://my.kinsta.com/sites/details/ebc945d5-7379-4733-af60-f7bbf72d368d/39e332d1-230d-440c-8769-5528162a97d4?idCompany=a4fe3de6-a921-4f99-8d42-9797ef21cc95"
+        }
+      ]
+    },
+    {
+      "id": "boiler",
+      "name": "Boiler",
+      "category": "Kinsta",
+      "description": "Site em produção hospedado na Kinsta.",
+      "accent": "#fa4721",
+      "developmentSites": [],
+      "hubLinks": [
+        {
+          "label": "Site em produção",
+          "url": "https://boiler.fit/"
+        },
+        {
+          "label": "Desenvolvimento · Informações no Kinsta",
+          "url": "https://my.kinsta.com/sites/details/e46a0307-24f7-4a45-bed2-c5f265dcce61/227f7c14-62ea-49a7-85ee-7b07f58d6a86?idCompany=a4fe3de6-a921-4f99-8d42-9797ef21cc95"
+        }
+      ]
+    },
+    {
+      "id": "madame-girafa",
+      "name": "Madame Girafa",
+      "category": "Kinsta",
+      "description": "Site em produção hospedado na Kinsta.",
+      "accent": "#fa4721",
+      "developmentSites": [],
+      "hubLinks": [
+        {
+          "label": "Site em produção",
+          "url": "https://madamegirafa.com.br/"
+        },
+        {
+          "label": "Informações do site · Kinsta",
+          "url": "https://my.kinsta.com/sites/details/c384c8b4-0e38-461c-b0b9-4da1a1cc3647/43cea9a4-3e35-423e-ad8b-97487ebf7711?idCompany=a4fe3de6-a921-4f99-8d42-9797ef21cc95"
+        }
+      ]
+    },
+    {
+      "id": "mundo-mariana-xavier",
+      "name": "Mundo Mariana Xavier",
+      "category": "Kinsta",
+      "description": "Site em produção hospedado na Kinsta.",
+      "accent": "#fa4721",
+      "developmentSites": [],
+      "hubLinks": [
+        {
+          "label": "Site em produção",
+          "url": "https://mundomarianaxavier.com.br/"
+        },
+        {
+          "label": "Desenvolvimento · Informações no Kinsta",
+          "url": "https://my.kinsta.com/sites/details/30653b5a-3007-4941-8f77-11b84d1d65c9/8b60feee-b5fc-412a-900e-dbb32fb6bb48?idCompany=a4fe3de6-a921-4f99-8d42-9797ef21cc95"
+        }
+      ]
+    },
+    {
+      "id": "seven",
+      "name": "SEVEN",
+      "category": "Kinsta",
+      "description": "Site principal, Superfoods e gateways em produção na Kinsta.",
+      "accent": "#fa4721",
+      "developmentSites": [],
+      "hubLinks": [
+        {
+          "label": "Site principal · produção",
+          "url": "https://clinicaseven.com.br/"
+        },
+        {
+          "label": "Site principal · desenvolvimento no Kinsta",
+          "url": "https://my.kinsta.com/sites/details/7a34a892-e5e4-46c6-83b0-553d7d591921/e78274af-eb46-4f4d-a092-08d06679827a?idCompany=a4fe3de6-a921-4f99-8d42-9797ef21cc95"
+        },
+        {
+          "label": "Superfoods · produção",
+          "url": "https://sevensuperfood.com.br/"
+        },
+        {
+          "label": "Superfoods · informações no Kinsta",
+          "url": "https://my.kinsta.com/sites/details/09e83edc-45d8-4377-abeb-d02ce40a4f3b/48fd0432-b326-4da5-9f59-1442bdc1b4d6?idCompany=a4fe3de6-a921-4f99-8d42-9797ef21cc95"
+        },
+        {
+          "label": "Gateway 1 · produção",
+          "url": "https://gateway1.clinicaseven.com.br/"
+        },
+        {
+          "label": "Gateway 1 · informações no Kinsta",
+          "url": "https://my.kinsta.com/sites/details/b14632f7-4b70-4dd9-b4db-1ce72d6d84a1/be5f375e-5453-4638-8c00-58b4d0683144?idCompany=a4fe3de6-a921-4f99-8d42-9797ef21cc95"
+        },
+        {
+          "label": "Gateway 2 · produção",
+          "url": "https://gateway2.clinicaseven.com.br/"
+        },
+        {
+          "label": "Gateway 2 · informações no Kinsta",
+          "url": "https://my.kinsta.com/sites/details/25497774-8512-45a2-b50d-91f75de54edf/2179fef0-4eb4-474f-9dca-4c866738670a?idCompany=a4fe3de6-a921-4f99-8d42-9797ef21cc95"
+        }
+      ]
+    },
+    {
+      "id": "trama-casa",
+      "name": "Trama Casa",
+      "category": "Kinsta",
+      "description": "Site em produção hospedado na Kinsta.",
+      "accent": "#fa4721",
+      "developmentSites": [],
+      "hubLinks": [
+        {
+          "label": "Site em produção",
+          "url": "https://tramacasa.com/"
+        },
+        {
+          "label": "Desenvolvimento · Informações no Kinsta",
+          "url": "https://my.kinsta.com/sites/details/4f20a77b-e256-4820-a1ba-c9478c407d1e/12e36891-e73a-473d-bb7d-1afe069409fe?idCompany=a4fe3de6-a921-4f99-8d42-9797ef21cc95"
+        }
+      ]
+    },
+    {
+      "id": "tyaro-studio",
+      "name": "Tyaro Studio",
+      "category": "Kinsta",
+      "description": "Site em produção hospedado na Kinsta.",
+      "accent": "#fa4721",
+      "developmentSites": [],
+      "hubLinks": [
+        {
+          "label": "Site em produção",
+          "url": "https://tyarostudio.com.br/"
+        },
+        {
+          "label": "Informações do site · Kinsta",
+          "url": "https://my.kinsta.com/sites/details/1c91093e-b3e1-4eb4-84e4-d4d07781efb4/87a0bcaa-bf16-4863-88ec-943d66424442?idCompany=a4fe3de6-a921-4f99-8d42-9797ef21cc95"
+        }
+      ]
     }
   ]
 }
