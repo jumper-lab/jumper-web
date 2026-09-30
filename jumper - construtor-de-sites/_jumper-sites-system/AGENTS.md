@@ -56,8 +56,10 @@ segunda lista de regras naquele manual.
   `/__jumper/*`, `/api/*`, `/fonts/*` e os domínios oficiais continuam no
   `jumper-hoster` live. As rotas `/<slug>/*` declaradas em
   `clientes/rodeio-restaurante/wrangler.dev.jsonc` vão ao Worker dev.
-  Uma prévia dev do hub ou do formulário requer **novo endereço e proteção de
-  acesso verificada**; não a exponha nem mova os links live por suposição.
+  Uma prévia dev do hub requer novo endereço e proteção de equipe verificada.
+  O briefing enviado ao cliente deve continuar **público, sem login ou senha**.
+  Se houver prévia do formulário, use endereço separado e backend de teste
+  isolado; nunca capture respostas de clientes na prévia nem mova o link live.
 - Para mudar um site existente, trabalhe em branch isolada e declare **um único
   slug** autorizado. Monte o pacote local, atualize o inventário de arquivos
   **apenas desse slug** com `npm run inventory:dev -- --allow=<slug>` se os

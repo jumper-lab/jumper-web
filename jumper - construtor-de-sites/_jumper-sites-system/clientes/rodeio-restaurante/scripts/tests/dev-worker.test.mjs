@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import devWorker, { developmentSlugs, isDevelopmentRequest } from '../../cloudflare/dev-worker.mjs';
+import devWorker, { developmentSlugs, isDevelopmentRequest, isPreviewAsset } from '../../cloudflare/dev-worker.mjs';
 
 test('somente os sete caminhos de desenvolvimento são permitidos', () => {
   assert.equal(developmentSlugs.length, 7);
@@ -33,6 +33,12 @@ test('host de prévia permanece fechado sem aplicação Access configurada', asy
     const response = await devWorker.fetch(new Request(`https://site-dev.jumper.dev.br${path}`), { ASSETS: assets });
     assert.equal(response.status, 404, path);
   }
+});
+
+test('prévia interna não inclui o formulário público', () => {
+  assert.equal(isPreviewAsset('/'), true);
+  assert.equal(isPreviewAsset('/briefing/'), false);
+  assert.equal(isPreviewAsset('/briefing/api/briefings'), false);
 });
 
 test('marca uma resposta dev sem mudar seu corpo', async () => {

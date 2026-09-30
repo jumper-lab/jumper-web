@@ -20,7 +20,6 @@ export function isDevelopmentRequest(url) {
 
 export function isPreviewAsset(pathname) {
   return pathname === '/' || pathname === '/index.html'
-    || pathname === '/briefing' || pathname.startsWith('/briefing/')
     || pathname === '/hub-redesign.css' || pathname === '/favicon-jumper.png'
     || pathname.startsWith('/hub-design-system/') || pathname.startsWith('/fonts/');
 }
@@ -28,12 +27,6 @@ export function isPreviewAsset(pathname) {
 async function previewResponse(request, env) {
   const url = new URL(request.url);
   if (!await verifyDevAccess(request, env)) return new Response('Not Found', { status: 404 });
-  if (url.pathname === '/briefing/api/briefings') {
-    return new Response(JSON.stringify({ error: 'Envio desativado na prévia de desenvolvimento.' }), {
-      status: 503,
-      headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex, nofollow' },
-    });
-  }
   if (url.pathname === '/__jumper/system-status') {
     return new Response(JSON.stringify({ error: 'Estado do live indisponível nesta prévia.' }), {
       status: 503,
@@ -46,7 +39,6 @@ async function previewResponse(request, env) {
   if (!['GET', 'HEAD'].includes(request.method) || !isPreviewAsset(url.pathname)) {
     return new Response('Not Found', { status: 404 });
   }
-  if (url.pathname === '/briefing') return Response.redirect(new URL('/briefing/', url), 308);
   const response = await env.ASSETS.fetch(request);
   const headers = new Headers(response.headers);
   headers.set('X-Jumper-Worker', 'jumper-hoster-dev');
