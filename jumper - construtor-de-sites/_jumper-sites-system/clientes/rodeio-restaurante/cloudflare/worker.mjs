@@ -1,4 +1,5 @@
 import { hubStatus } from './hub-status.mjs';
+import { cloudflareProcesses, githubWebhook } from './process-status.mjs';
 
 const SITE_PREFIX = '/rodeio';
 const LEGACY_PREFIX = '/site';
@@ -20,6 +21,8 @@ const BRIEFING_API_UPSTREAM = 'https://briefing-formulario-sites-jumper.vercel.a
 const LOGIN_PATH = '/__jumper/login';
 const LOGOUT_PATH = '/__jumper/logout';
 const HUB_STATUS_PATH = '/__jumper/system-status';
+const HUB_PROCESSES_PATH = '/__jumper/active-processes';
+const HUB_GITHUB_EVENTS_PATH = '/__jumper/github-events';
 const COOKIE_NAME = 'jumper_hoster_session';
 const HUB_COOKIE_NAME = 'jumper_hub_session';
 const SESSION_SECONDS = 60 * 60 * 12;
@@ -431,6 +434,10 @@ export default {
     const hubPassword = env.JUMPER_HUB_PASSWORD || password;
     const hubCookieName = env.JUMPER_HUB_PASSWORD ? HUB_COOKIE_NAME : COOKIE_NAME;
 
+    if (url.hostname === IZI_LEADS_TEST_HOST && url.pathname === HUB_GITHUB_EVENTS_PATH) {
+      return githubWebhook(request, env.JUMPER_HUB_OPERATIONS, env.JUMPER_HUB_GITHUB_WEBHOOK_SECRET);
+    }
+
     if (url.hostname === IZI_CERRO_CORÁ_HOST) {
       if (url.pathname === IZI_LEADS_PATH) return submitIziLead(request, env);
       if (url.pathname === '/robots.txt') {
@@ -528,6 +535,12 @@ export default {
       if (request.method !== 'GET') return new Response('Method Not Allowed', { status: 405, headers: { Allow: 'GET' } });
       if (!(await isAuthorized(request, hubPassword, hubCookieName))) return jsonResponse({ error: 'Acesso não autorizado.' }, 401);
       return jsonResponse(await hubStatus(env.CF_VERSION_METADATA));
+    }
+
+    if (url.hostname === IZI_LEADS_TEST_HOST && url.pathname === HUB_PROCESSES_PATH) {
+      if (request.method !== 'GET') return new Response('Method Not Allowed', { status: 405, headers: { Allow: 'GET' } });
+      if (!(await isAuthorized(request, hubPassword, hubCookieName))) return jsonResponse({ error: 'Acesso não autorizado.' }, 401);
+      return jsonResponse(await cloudflareProcesses(env.JUMPER_HUB_OPERATIONS, { githubEventsEnabled: Boolean(env.JUMPER_HUB_GITHUB_WEBHOOK_SECRET) }));
     }
 
     if (url.pathname === BRIEFING_API_PATH) {

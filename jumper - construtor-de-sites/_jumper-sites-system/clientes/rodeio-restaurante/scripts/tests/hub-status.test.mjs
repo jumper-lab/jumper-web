@@ -29,7 +29,7 @@ test('publication alerts distinguish mismatches, failures and missing evidence',
   );
   assert.deepEqual(overwritten.alerts.map((alert) => alert.level), ['attention', 'attention']);
   assert.match(overwritten.alerts[0].detail, /main \(versão principal do GitHub\)/);
-  assert.match(overwritten.alerts[0].detail, /sobrescrita/);
+  assert.match(overwritten.alerts[0].detail, /não prova que há um deploy em andamento/);
 
   const failed = releaseState(
     { id: 'version-3', tag: `git-${sha}` }, repositories,
@@ -69,6 +69,16 @@ test('status reads only the two fixed GitHub repositories', async () => {
   assert.equal(status.hoster.state, 'matched');
   assert.equal(status.repositories.length, 2);
   assert.equal(status.activity.some((event) => event.source === 'jumper-hoster'), true);
+  assert.deepEqual(status.processes, { available: true, items: [] });
+});
+
+test('only a confirmed active Vercel deployment appears as a process', () => {
+  const state = releaseState({ id: 'version-1', tag: `git-${sha}` }, repositories,
+    { commitSha: 'b'.repeat(40), state: 'in_progress', deployedAt: '2026-09-30T08:00:00Z', url: 'https://github.com/jumper-lab/jumper-site/deployments/1' });
+  assert.deepEqual(state.processes.items.map((item) => item.source), ['jumper-site']);
+  assert.equal(state.processes.available, true);
+  const uncertain = releaseState({ id: 'version-1', tag: `git-${sha}` }, repositories);
+  assert.deepEqual(uncertain.processes, { available: false, items: [] });
 });
 
 test('activity shows the latest GitHub and deployment events without inventing links', () => {

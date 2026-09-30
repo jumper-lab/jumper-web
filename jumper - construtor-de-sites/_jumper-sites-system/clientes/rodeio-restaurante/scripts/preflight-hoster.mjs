@@ -28,6 +28,7 @@ const criticalWorkerFeatures = [
   'IZI_LEADS_DB',
   'IZI_LEADS_TEST_DB',
   'JUMPER_BRIEFING_DRAFTS',
+  'JUMPER_HUB_OPERATIONS',
   '/api/izigym/leads',
 ];
 
@@ -140,7 +141,12 @@ async function bindingDifferences(versionId) {
   const active = new Map((version.resources?.bindings || []).filter((binding) => binding.type === 'd1').map((binding) => [binding.name, binding.database_id]));
   const config = await readFile(join(projectRoot, 'wrangler.jsonc'), 'utf8');
   const configured = configuredBindingIds(config);
-  return [...active].flatMap(([name, id]) => configured.get(name) === id ? [] : [`D1: vínculo ativo ${name} (${id}) difere do pacote`]);
+  const activeKv = new Map((version.resources?.bindings || []).filter((binding) => binding.type === 'kv_namespace').map((binding) => [binding.name, binding.namespace_id]));
+  const configuredKv = new Map([...config.matchAll(/"binding"\s*:\s*"([^"]+)"\s*,\s*"id"\s*:\s*"([a-f0-9]+)"/g)].map(([, name, id]) => [name, id]));
+  return [
+    ...[...active].flatMap(([name, id]) => configured.get(name) === id ? [] : [`D1: vínculo ativo ${name} (${id}) difere do pacote`]),
+    ...[...activeKv].flatMap(([name, id]) => configuredKv.get(name) === id ? [] : [`KV: vínculo ativo ${name} (${id}) difere do pacote`]),
+  ];
 }
 
 async function liveWorkerFeatures() {
