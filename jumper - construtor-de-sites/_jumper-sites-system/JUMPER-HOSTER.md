@@ -15,6 +15,12 @@ O `jumper-hoster` é o hub oficial de desenvolvimento dos sites criados pelo Jum
 - **`jumper-site`** é outro repositório (`jumper-lab/jumper-site`), origem do site institucional `jumper.studio`. Sua prévia existente é `jumpersite.vercel.app`. O card no hub contém links; o site institucional não deve ser copiado nem implantado pelo `jumper-hoster` sem um projeto específico para isso.
 - **`izigym`** também tem repositório próprio (`jumper-lab/izigym`). Os snapshots usados pelo `jumper-hoster` ficam neste repositório, mas uma mudança no repositório da IZI não atualiza automaticamente os snapshots daqui.
 
+## Estado exibido no hub
+
+O painel consulta os commits atuais de `main` em `jumper-web` e `jumper-site`, além do último GitHub Deployment `Production` do `jumper-site` (Vercel), por uma rota autenticada de leitura. A versão ativa do `jumper-hoster` vem do binding nativo `CF_VERSION_METADATA`; os deploys feitos por `npm run deploy:cloudflare` recebem a tag `git-<SHA completo do main>`. Só há indicação de correspondência quando a tag ativa e o SHA atual de `jumper-web` são iguais; para o site institucional, compara-se o SHA do `main` com o último deployment de produção marcado `success`. Sem tag, sem GitHub, sem deployment válido ou com SHAs diferentes, o estado é **não comprovado/diferente**, nunca “sincronizado” por suposição. A correspondência Vercel/GitHub não substitui a checagem de DNS e da resposta real de `jumper.studio`.
+
+O painel não lê chats do Codex diretamente: as decisões dos chats devem chegar a uma PR integrada, e o código aprovado deve ser publicado antes de representar uma mudança como ativa. A consulta de estado não modifica assets, D1, Worker, GitHub nem o site institucional. Os cards continuam vindo do registro versionado e precisam de PR + deploy controlado quando sua estrutura mudar.
+
 ## Regra obrigatória
 
 Todo site concluído pelo construtor deve ser publicado neste Worker. Uma entrega só está completa quando:
