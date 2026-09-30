@@ -50,13 +50,28 @@
       </section>
       <div class="hub-details">
       <aside class="project-note" aria-labelledby="project-note-title">
-        <h2 id="project-note-title">Atenção: os projetos Jumper têm funções diferentes</h2>
-        <p>Use o nome certo ao procurar código, prévias ou o serviço que publica este hub.</p>
-        <dl class="project-types">
-          <div><dt><a href="https://github.com/jumper-lab/jumper-web" target="_blank" rel="noopener">jumper-web ↗</a></dt><dd>Repositório do construtor de sites e do código deste hub. Não é o site institucional.</dd></div>
-          <div><dt><a href="https://github.com/jumper-lab/jumper-site" target="_blank" rel="noopener">jumper-site ↗</a></dt><dd>Repositório do site institucional em <a href="https://jumper.studio/" target="_blank" rel="noopener">jumper.studio</a>, com prévia das páginas na Vercel.</dd></div>
-          <div><dt>jumper-hoster</dt><dd>Worker da Cloudflare que serve <a href="https://site.jumper.dev.br/" target="_blank" rel="noopener">este hub</a> e os sites em desenvolvimento. Seu código fica no jumper-web.</dd></div>
-        </dl>
+        <div class="project-note-head">
+          <span class="project-eyebrow">Mapa do sistema</span>
+          <h2 id="project-note-title">Três nomes. Três funções.</h2>
+          <p>Código, site institucional e publicação do hub: encontre o acesso certo para cada tarefa.</p>
+        </div>
+        <ul class="project-types">
+          <li class="project-item">
+            <span class="project-kind">01 · Repositório no GitHub</span>
+            <a class="project-title" href="https://github.com/jumper-lab/jumper-web" target="_blank" rel="noopener">jumper-web <span aria-hidden="true">↗</span></a>
+            <p>Construtor de sites e código deste hub.</p>
+          </li>
+          <li class="project-item">
+            <span class="project-kind">02 · Repositório no GitHub</span>
+            <a class="project-title" href="https://github.com/jumper-lab/jumper-site" target="_blank" rel="noopener">jumper-site <span aria-hidden="true">↗</span></a>
+            <p>Código do site institucional <a href="https://jumper.studio/" target="_blank" rel="noopener">jumper.studio</a>, com prévia na Vercel.</p>
+          </li>
+          <li class="project-item project-item--hoster">
+            <span class="project-kind">03 · Worker na Cloudflare</span>
+            <a class="project-title" href="https://dash.cloudflare.com/e23efa36a1e09015eebb2b36bdfcf201/workers/services/view/jumper-hoster/production" target="_blank" rel="noopener">jumper-hoster <span aria-hidden="true">↗</span></a>
+            <p>Publica <a href="https://site.jumper.dev.br/" target="_blank" rel="noopener">este hub</a> e as rotas em desenvolvimento. O código fica no jumper-web.</p>
+          </li>
+        </ul>
       </aside>
       <section class="machine-room" aria-labelledby="machine-room-title">
         <div class="machine-head">
