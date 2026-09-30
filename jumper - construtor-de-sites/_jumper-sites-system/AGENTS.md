@@ -76,6 +76,10 @@ segunda lista de regras naquele manual.
   Actions. Deploy dev usa `npm run deploy:dev -- --allow=<slug>`; deploy live
   usa o preflight e o comando documentados no manual, a partir de `main` limpo.
   Um deploy do Worker live monta o pacote completo, não apenas um cliente.
+- Para publicar **só código compartilhado** no Worker dev, sem alterar nenhum
+  cliente, parta de `main` limpo após a PR e use `npm run deploy:dev:worker`.
+  Esse fluxo compara os **sete** sites dev com a publicação ativa; qualquer
+  diferença bloqueia. Não escolha um slug fictício para pular a comparação.
 - A autorização de deploy dev **não** autoriza deploy live. Antes de publicar
   no live, confira as páginas e funções afetadas, domínios oficiais, hub,
   briefing, autenticação, APIs, dados e rastreamento. Alterações intencionais

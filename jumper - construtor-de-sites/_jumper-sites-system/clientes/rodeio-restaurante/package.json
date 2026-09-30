@@ -13,11 +13,13 @@
     "stage:hoster": "node scripts/stage-hoster.mjs",
     "preflight:cloudflare": "node scripts/preflight-hoster.mjs",
     "preflight:dev": "node scripts/preflight-hoster-dev.mjs",
+    "preflight:dev:worker": "node scripts/preflight-hoster-dev.mjs --worker-only",
     "inventory:dev": "node scripts/update-dev-inventory.mjs",
     "verify:dev-config": "node scripts/verify-hoster-dev-config.mjs",
     "test:dev-worker": "node --test scripts/tests/dev-worker.test.mjs scripts/tests/dev-access.test.mjs scripts/tests/dev-site-password.test.mjs",
     "test:dev-preflight": "node --test scripts/tests/dev-preflight.test.mjs",
     "deploy:dev": "npm run build:cloudflare && node scripts/deploy-hoster-dev.mjs",
+    "deploy:dev:worker": "npm run build:cloudflare && node scripts/deploy-hoster-dev.mjs --worker-only",
     "deploy:cloudflare": "npm run build:cloudflare && npm run preflight:cloudflare && node scripts/deploy-hoster.mjs",
     "postbuild": "node scripts/prune-unused-photo-masters.mjs"
   },

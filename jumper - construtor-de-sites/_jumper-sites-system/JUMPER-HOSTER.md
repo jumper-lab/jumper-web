@@ -76,6 +76,8 @@ Para permitir o preflight de outros clientes quando uma prévia estiver protegid
 
 Exemplo: uma alteração em `/izigym-lp-vilaromana/` usa `--allow=izigym-lp-vilaromana`. A rota `/izigym-lp/` continua protegida, mesmo sendo da mesma marca. O oficial Cerro Corá não é alterado por um deploy dev. Se o build tocar também a v1, a conferência bloqueia a publicação; é necessário decidir e revisar explicitamente o escopo, não liberar ambas por conveniência.
 
+Para mudar **somente o código compartilhado** do Worker dev, sem alterar nenhum cliente, integre primeiro a PR em `main` e trabalhe em um checkout limpo desse commit. Rode `npm run build:cloudflare`, `npm run preflight:dev:worker` e, após conferir o resultado e obter autorização, `npm run deploy:dev:worker`. Esse modo compara o inventário e o conteúdo publicado de **todos os sete** sites dev, sem slug liberado; também verifica as fronteiras live e a versão do Worker antes do upload. Uma diferença bloqueia. Ele não publica o Worker live, não ativa senha por cliente e não muda os links.
+
 ### Quando o preflight bloquear
 
 O arquivo **ainda não foi publicado**. Leia o caminho apontado no erro, compare o pacote local, a URL dev publicada e as alterações recentes no GitHub/outros trabalhos em andamento. Se a mudança é de outro cliente, preserve a versão correta no fonte antes de refazer o build. Se é um segundo ajuste intencional, separe-o em outra revisão e outro deploy de escopo explícito. Nunca substitua o dev pelo oficial ou faça `wrangler deploy` diretamente para passar por cima do bloqueio. Se não houver evidência para escolher a versão correta, pare e peça uma decisão.
