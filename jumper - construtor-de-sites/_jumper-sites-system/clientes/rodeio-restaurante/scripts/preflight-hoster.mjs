@@ -152,7 +152,7 @@ async function liveWorkerFeatures() {
 
 async function hubRouteDifferences(fetchLive = fetch) {
   const differences = [];
-  for (const [path, expectedStatus] of [['/', 401], ['/hub-assets/hub-redesign.css', 200]]) {
+  for (const [path, expectedStatus] of [['/', 401], ['/hub-assets/hub-redesign.css', 200], ['/__jumper/hub-status', 401]]) {
     try {
       const response = await fetchLive(`https://site.jumper.dev.br${path}`, {
         redirect: 'manual',

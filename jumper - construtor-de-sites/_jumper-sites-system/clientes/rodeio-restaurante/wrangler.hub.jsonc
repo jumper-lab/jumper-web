@@ -5,6 +5,7 @@
   "account_id": "e23efa36a1e09015eebb2b36bdfcf201",
   "compatibility_date": "2026-09-09",
   "workers_dev": false,
+  "version_metadata": { "binding": "CF_VERSION_METADATA" },
   "assets": {
     "directory": "./hub-dist",
     "binding": "ASSETS",
@@ -17,6 +18,7 @@
   ],
   "routes": [
     { "pattern": "site.jumper.dev.br/", "zone_name": "jumper.dev.br" },
+    { "pattern": "site.jumper.dev.br/__jumper/hub-status", "zone_name": "jumper.dev.br" },
     { "pattern": "site.jumper.dev.br/hub-assets/*", "zone_name": "jumper.dev.br" }
   ]
 }
