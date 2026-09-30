@@ -42,14 +42,20 @@ const deployment = spawnSync('npx', [
 if (deployment.error) throw deployment.error;
 if (deployment.status !== 0) process.exit(deployment.status || 1);
 
-const root = await fetch('https://site.jumper.dev.br/', { redirect: 'manual', signal: AbortSignal.timeout(20000) });
-if (root.status !== 401 || root.headers.get('X-Jumper-Surface') !== 'jumper-hub') {
-  throw new Error(`Deploy do hub não confirmado: raiz HTTP ${root.status} sem marcador do Worker separado.`);
+let routeReady = false;
+let lastCheck = 'sem resposta';
+for (let attempt = 0; attempt < 12; attempt += 1) {
+  const [root, css] = await Promise.all([
+    fetch('https://site.jumper.dev.br/', { redirect: 'manual', signal: AbortSignal.timeout(20000), cache: 'no-store' }),
+    fetch('https://site.jumper.dev.br/hub-assets/hub-redesign.css', { signal: AbortSignal.timeout(20000), cache: 'no-store' }),
+  ]);
+  routeReady = root.status === 401 && root.headers.get('X-Jumper-Surface') === 'jumper-hub'
+    && css.status === 200 && css.headers.get('X-Jumper-Surface') === 'jumper-hub';
+  if (routeReady) break;
+  lastCheck = `raiz HTTP ${root.status}, CSS HTTP ${css.status}`;
+  if (attempt < 11) await new Promise((resolve) => setTimeout(resolve, 5000));
 }
-const css = await fetch('https://site.jumper.dev.br/hub-assets/hub-redesign.css', { signal: AbortSignal.timeout(20000) });
-if (css.status !== 200 || css.headers.get('X-Jumper-Surface') !== 'jumper-hub') {
-  throw new Error(`Deploy do hub não confirmado: CSS HTTP ${css.status}.`);
-}
+if (!routeReady) throw new Error(`Deploy do hub não confirmado após aguardar propagação: ${lastCheck}. Não publique o hoster.`);
 const after = await livePages();
 for (const [name, original] of before) {
   if (after.get(name) !== original) throw new Error(`Atenção: ${name} mudou durante o deploy do hub. Não publique o hoster.`);
