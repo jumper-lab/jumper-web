@@ -91,7 +91,7 @@ html { background: var(--jumper-black); scroll-behavior: smooth; }
 .painel .project-item p { margin: 6px 0 0; color: var(--tinta-3); font: 420 12px/1.45 var(--font-sans); }
 .painel .project-item p a { color: var(--fg-muted); text-decoration: underline; text-decoration-color: var(--linha-1); text-underline-offset: 3px; }
 .painel .project-item p a:hover { color: var(--apoio); text-decoration-color: currentColor; }
-.project-glossary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-content: start; gap: 5px 14px; box-sizing: border-box; width: 100%; padding: 12px 15px; border-top: 1px solid var(--linha-1); color: var(--tinta-3); font: 420 10px/1.5 var(--font-sans); }
+.project-glossary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(4, auto); grid-auto-flow: column; align-content: start; gap: 5px 14px; box-sizing: border-box; width: 100%; padding: 12px 15px; border-top: 1px solid var(--linha-1); color: var(--tinta-3); font: 420 10px/1.5 var(--font-sans); }
 .project-glossary span { display: inline-block; }
 .project-glossary span::before { content: "·"; margin-right: 7px; color: var(--apoio); }
 .machine-room { grid-area: machine; display: flex; flex-direction: column; min-width: 0; align-self: stretch; overflow: hidden; border: 1px solid var(--linha-1); border-radius: var(--radius-md); background: var(--surface-card); }
@@ -166,7 +166,7 @@ html { background: var(--jumper-black); scroll-behavior: smooth; }
   .hub-details { grid-template-areas: "map" "machine"; padding-top: 66px; row-gap: 16px; }
   .painel .project-types { flex: none; grid-template-rows: none; }
   .machine-room { margin-top: 32px; }
-  .project-glossary { grid-template-columns: 1fr; }
+  .project-glossary { grid-template-columns: 1fr; grid-template-rows: none; grid-auto-flow: row; }
   .painel .grid { grid-auto-rows: 190px; }
 }
 @media (max-width: 480px) {
