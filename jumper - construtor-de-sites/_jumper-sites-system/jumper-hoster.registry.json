@@ -184,12 +184,12 @@
       "developmentSites": [],
       "hubLinks": [
         {
-          "label": "Site em produção",
-          "url": "https://homeopatiaalmeidaprado.com.br/"
-        },
-        {
           "label": "Desenvolvimento · painel de sites Kinsta",
           "url": "https://my.kinsta.com/sites"
+        },
+        {
+          "label": "Site em produção",
+          "url": "https://homeopatiaalmeidaprado.com.br/"
         }
       ]
     },
@@ -203,12 +203,12 @@
       "developmentSites": [],
       "hubLinks": [
         {
-          "label": "Site em produção",
-          "url": "https://boiler.fit/"
-        },
-        {
           "label": "Desenvolvimento · painel de sites Kinsta",
           "url": "https://my.kinsta.com/sites"
+        },
+        {
+          "label": "Site em produção",
+          "url": "https://boiler.fit/"
         }
       ]
     },
@@ -222,12 +222,12 @@
       "developmentSites": [],
       "hubLinks": [
         {
-          "label": "Site em produção",
-          "url": "https://madamegirafa.com.br/"
-        },
-        {
           "label": "Desenvolvimento · painel de sites Kinsta",
           "url": "https://my.kinsta.com/sites"
+        },
+        {
+          "label": "Site em produção",
+          "url": "https://madamegirafa.com.br/"
         }
       ]
     },
@@ -241,12 +241,12 @@
       "developmentSites": [],
       "hubLinks": [
         {
-          "label": "Site em produção",
-          "url": "https://mundomarianaxavier.com.br/"
-        },
-        {
           "label": "Desenvolvimento · painel de sites Kinsta",
           "url": "https://my.kinsta.com/sites"
+        },
+        {
+          "label": "Site em produção",
+          "url": "https://mundomarianaxavier.com.br/"
         }
       ]
     },
@@ -260,36 +260,36 @@
       "developmentSites": [],
       "hubLinks": [
         {
-          "label": "Site principal · produção",
-          "url": "https://clinicaseven.com.br/"
-        },
-        {
           "label": "Site principal · desenvolvimento no Kinsta",
           "url": "https://my.kinsta.com/sites"
-        },
-        {
-          "label": "Superfoods · produção",
-          "url": "https://sevensuperfood.com.br/"
         },
         {
           "label": "Superfoods · desenvolvimento no Kinsta",
           "url": "https://my.kinsta.com/sites"
         },
         {
-          "label": "Gateway 1 · produção",
-          "url": "https://gateway1.clinicaseven.com.br/"
-        },
-        {
           "label": "Gateway 1 · desenvolvimento no Kinsta",
           "url": "https://my.kinsta.com/sites"
         },
         {
-          "label": "Gateway 2 · produção",
-          "url": "https://gateway2.clinicaseven.com.br/"
-        },
-        {
           "label": "Gateway 2 · desenvolvimento no Kinsta",
           "url": "https://my.kinsta.com/sites"
+        },
+        {
+          "label": "Site principal · produção",
+          "url": "https://clinicaseven.com.br/"
+        },
+        {
+          "label": "Superfoods · produção",
+          "url": "https://sevensuperfood.com.br/"
+        },
+        {
+          "label": "Gateway 1 · produção",
+          "url": "https://gateway1.clinicaseven.com.br/"
+        },
+        {
+          "label": "Gateway 2 · produção",
+          "url": "https://gateway2.clinicaseven.com.br/"
         }
       ]
     },
@@ -303,12 +303,12 @@
       "developmentSites": [],
       "hubLinks": [
         {
-          "label": "Site em produção",
-          "url": "https://tramacasa.com/"
-        },
-        {
           "label": "Desenvolvimento · painel de sites Kinsta",
           "url": "https://my.kinsta.com/sites"
+        },
+        {
+          "label": "Site em produção",
+          "url": "https://tramacasa.com/"
         }
       ]
     },
@@ -322,12 +322,12 @@
       "developmentSites": [],
       "hubLinks": [
         {
-          "label": "Site em produção",
-          "url": "https://tyarostudio.com.br/"
-        },
-        {
           "label": "Desenvolvimento · painel de sites Kinsta",
           "url": "https://my.kinsta.com/sites"
+        },
+        {
+          "label": "Site em produção",
+          "url": "https://tyarostudio.com.br/"
         }
       ]
     }
