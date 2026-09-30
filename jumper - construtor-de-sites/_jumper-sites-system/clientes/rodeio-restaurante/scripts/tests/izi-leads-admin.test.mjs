@@ -6,6 +6,8 @@ import worker from '../../cloudflare/worker.mjs';
 globalThis.crypto ??= webcrypto;
 
 const secret = 'test-only-password';
+const canonicalPath = 'https://site.jumper.dev.br/__jumper/izi-gym/lp-cerro-cora/leads-live';
+const legacyPath = 'https://site.jumper.dev.br/__jumper/izi-gym/leads-live';
 const key = await crypto.subtle.importKey('raw', new TextEncoder().encode(secret), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
 const token = [...new Uint8Array(await crypto.subtle.sign('HMAC', key, new TextEncoder().encode('jumper-hoster-session-v1')))]
   .map((byte) => byte.toString(16).padStart(2, '0')).join('');
@@ -36,33 +38,53 @@ function environment(calls, devCalls = null) {
 }
 
 test('live admin requires authentication', async () => {
-  const response = await worker.fetch(new Request('https://site.jumper.dev.br/__jumper/izi-gym/leads-live'), environment([]));
-  assert.equal(response.status, 401);
-  assert.match(await response.text(), /Senha de acesso/);
+  for (const path of [canonicalPath, legacyPath]) {
+    const response = await worker.fetch(new Request(`${path}?period=today`), environment([]));
+    assert.equal(response.status, 401);
+    const html = await response.text();
+    assert.match(html, /Senha de acesso/);
+    assert.match(html, new RegExp(`name="next" value="${new URL(path).pathname}\\?period=today"`));
+  }
 });
 
 test('month filter queries production D1 and CSV uses same filter', async () => {
   const calls = [];
   const env = environment(calls);
   const headers = { Cookie: `jumper_hoster_session=${token}` };
-  const page = await worker.fetch(new Request('https://site.jumper.dev.br/__jumper/izi-gym/leads-live?month=2026-09', { headers }), env);
+  const page = await worker.fetch(new Request(`${canonicalPath}?month=2026-09`, { headers }), env);
   assert.equal(page.status, 200);
   const html = await page.text();
-  assert.match(html, /Cadastros do formulário/);
+  assert.match(html, /Cadastros da LP Cerro Corá/);
   assert.match(html, /Base de dados/);
   assert.match(html, /izi-lp-CerroCora-leads-dev/);
-  assert.match(html, /href="https:\/\/dash\.cloudflare\.com\/e23efa36a1e09015eebb2b36bdfcf201\/workers\/d1\/databases\/e06d432d-eaf4-47cb-90a2-fd7b6cc54ebc\/studio" target="_blank" rel="noopener noreferrer">Abrir base selecionada no Cloudflare/);
+  assert.match(html, /href="https:\/\/dash\.cloudflare\.com\/e23efa36a1e09015eebb2b36bdfcf201\/workers\/d1\/databases\/e06d432d-eaf4-47cb-90a2-fd7b6cc54ebc\/studio" target="_blank" rel="noopener noreferrer">Abrir base da LP Cerro Corá no Cloudflare/);
   assert.doesNotMatch(html, /Campanha \(UTM\)/);
-  assert.match(html, /href="\/__jumper\/izi-gym\/leads-live\?database=izi-lp-CerroCora-leads&amp;month=2026-09&amp;page=1"/);
-  assert.match(html, /Atualizar planilha/);
+  assert.match(html, /href="\/__jumper\/izi-gym\/lp-cerro-cora\/leads-live\?database=izi-lp-CerroCora-leads&amp;month=2026-09&amp;page=1"/);
+  assert.match(html, /Atualizar cadastros da LP Cerro Corá/);
+  assert.match(html, /Baixar CSV da LP Cerro Corá/);
   assert.deepEqual(calls[0].values, ['2026-09-01', '2026-10-01']);
 
   calls.length = 0;
-  const csv = await worker.fetch(new Request('https://site.jumper.dev.br/__jumper/izi-gym/leads-live.csv?month=2026-09', { headers }), env);
+  const csv = await worker.fetch(new Request(`${canonicalPath}.csv?month=2026-09`, { headers }), env);
   assert.equal(csv.status, 200);
   assert.match(csv.headers.get('Content-Disposition'), /izi-lp-CerroCora-leads-2026-09\.csv/);
   assert.deepEqual(calls[0].values, ['2026-09-01', '2026-10-01']);
   assert.match(await csv.text(), /'\=Test/);
+});
+
+test('legacy dashboard and CSV URLs remain connected to the same LP Cerro Corá data', async () => {
+  const calls = [];
+  const env = environment(calls);
+  const headers = { Cookie: `jumper_hoster_session=${token}` };
+  const page = await worker.fetch(new Request(`${legacyPath}?period=today`, { headers }), env);
+  assert.equal(page.status, 200);
+  const html = await page.text();
+  assert.match(html, /Cadastros da LP Cerro Corá/);
+  assert.match(html, /href="\/__jumper\/izi-gym\/lp-cerro-cora\/leads-live\?database=izi-lp-CerroCora-leads&amp;period=today&amp;page=1"/);
+  const csv = await worker.fetch(new Request(`${legacyPath}.csv?period=today`, { headers }), env);
+  assert.equal(csv.status, 200);
+  assert.match(csv.headers.get('Content-Disposition'), /izi-lp-CerroCora-leads-today\.csv/);
+  assert.ok(calls.length > 0);
 });
 
 test('development selection and CSV use only the development D1', async () => {
@@ -75,7 +97,7 @@ test('development selection and CSV use only the development D1', async () => {
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /<strong>izi-lp-CerroCora-leads-dev<\/strong> está selecionada/);
-  assert.match(html, /href="https:\/\/dash\.cloudflare\.com\/e23efa36a1e09015eebb2b36bdfcf201\/workers\/d1\/databases\/af52ce85-b519-473c-ad3c-66654cf3aabd\/studio" target="_blank" rel="noopener noreferrer">Abrir base selecionada no Cloudflare/);
+  assert.match(html, /href="https:\/\/dash\.cloudflare\.com\/e23efa36a1e09015eebb2b36bdfcf201\/workers\/d1\/databases\/af52ce85-b519-473c-ad3c-66654cf3aabd\/studio" target="_blank" rel="noopener noreferrer">Abrir base da LP Cerro Corá no Cloudflare/);
   assert.equal(productionCalls.length, 0);
   assert.deepEqual(developmentCalls[0].values, ['2026-09-01', '2026-10-01']);
 
