@@ -106,6 +106,9 @@ const escapeHtml = (value) => String(value)
 
 const cards = [];
 for (const client of registry.clients) {
+  if (typeof client.sourceLabel !== 'string' || !client.sourceLabel.trim()) {
+    throw new Error(`A origem de ${client.name} não foi informada para o hub.`);
+  }
   const links = [];
   for (const site of client.developmentSites) {
     if (site.url !== `https://site.jumper.dev.br/${site.slug}/`) {
@@ -142,7 +145,7 @@ for (const client of registry.clients) {
     }
   }
   const linksData = escapeHtml(JSON.stringify(links));
-  cards.push(`<article class="card" style="--project:${escapeHtml(client.accent)}"><button class="card-open" type="button" aria-haspopup="dialog" aria-controls="client-links-dialog" data-client="${escapeHtml(client.name)}" data-category="${escapeHtml(client.category)}" data-accent="${escapeHtml(client.accent)}" data-links="${linksData}"><span class="tag">${escapeHtml(client.category)}</span><h2>${escapeHtml(client.name)}</h2><p class="description">${escapeHtml(client.description)}</p><span class="card-action"><span>Abrir links</span><span class="arrow" aria-hidden="true">→</span></span></button></article>`);
+  cards.push(`<article class="card" style="--project:${escapeHtml(client.accent)}"><button class="card-open" type="button" aria-haspopup="dialog" aria-controls="client-links-dialog" data-client="${escapeHtml(client.name)}" data-category="${escapeHtml(client.category)}" data-accent="${escapeHtml(client.accent)}" data-links="${linksData}"><span class="tag">${escapeHtml(client.sourceLabel)}</span><h2>${escapeHtml(client.name)}</h2><span class="card-action"><span>Abrir links</span><span class="arrow" aria-hidden="true">→</span></span></button></article>`);
 }
 const dashboard = dashboardTemplate.replace('<!-- JUMPER_CLIENT_CARDS -->', cards.join('\n'));
 if (dashboard === dashboardTemplate) throw new Error('O marcador de cards não foi encontrado no template do hub.');
