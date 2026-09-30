@@ -162,17 +162,17 @@
 
       function renderMachineProcesses() {
         const items = [...(githubProcesses.items || []), ...(trackedProcesses.items || [])];
-        const signature = JSON.stringify({ items, github: githubProcesses.available, tracked: trackedProcesses.available });
+        const signature = JSON.stringify({ items, github: githubProcesses.available, tracked: trackedProcesses.available, githubEvents: trackedProcesses.githubEventsEnabled });
         if (signature === lastProcesses) return;
         lastProcesses = signature;
         if (!items.length) {
           const empty = document.createElement('li');
           empty.className = 'machine-process-empty';
           empty.textContent = !trackedProcesses.available || !githubProcesses.available
-            ? 'Nenhum processo ativo confirmado; uma ou mais fontes não puderam ser verificadas.'
+            ? 'Não foi possível confirmar processos agora: uma fonte monitorada está indisponível.'
             : !trackedProcesses.githubEventsEnabled
-              ? 'Nenhum deploy ativo confirmado. Execuções do GitHub ainda não estão conectadas.'
-              : 'Nenhum processo ativo confirmado nas fontes monitoradas.';
+              ? 'Nenhum deploy ativo detectado no Hoster ou na Vercel. Execuções do GitHub não são monitoradas.'
+              : 'Nenhum processo em andamento detectado nas fontes monitoradas.';
           machineProcessList.replaceChildren(empty);
         } else {
           machineProcessList.replaceChildren(...items.map((process) => {
@@ -208,7 +208,7 @@
       function updateMachineHealth() {
         const attention = latestAlerts.filter((alert) => alert.level === 'attention').length;
         const active = (githubProcesses.items?.length || 0) + (trackedProcesses.items?.length || 0);
-        const partial = latestAlerts.length || !githubProcesses.available || !trackedProcesses.available || !trackedProcesses.githubEventsEnabled;
+        const partial = latestAlerts.length || !githubProcesses.available || !trackedProcesses.available;
         machineHealth.textContent = attention ? `Atenção · ${attention}${active ? ` · ${active} ativo(s)` : ''}`
           : active ? `Em andamento · ${active}` : partial ? 'Verificação parcial' : 'Versões alinhadas';
         machineHealth.dataset.state = attention ? 'attention' : active ? 'active' : partial ? 'partial' : 'ok';
