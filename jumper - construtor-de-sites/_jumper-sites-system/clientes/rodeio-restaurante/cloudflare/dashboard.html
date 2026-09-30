@@ -58,15 +58,22 @@
           <div><dt>jumper-hoster</dt><dd>Worker da Cloudflare que serve <a href="https://site.jumper.dev.br/" target="_blank" rel="noopener">este hub</a> e os sites em desenvolvimento. Seu código fica no jumper-web.</dd></div>
         </dl>
       </aside>
-      <section class="system-status" aria-labelledby="system-status-title">
-        <h2 id="system-status-title">Estado das fontes</h2>
-        <p>Consulta de leitura ao GitHub, ao deploy da Vercel e à versão deste Worker na Cloudflare. Um chat ou PR sem merge não conta como publicado.</p>
-        <div class="system-status-grid">
-          <div class="system-status-item"><strong>jumper-web · GitHub main</strong><a id="status-jumper-web" href="https://github.com/jumper-lab/jumper-web" target="_blank" rel="noopener">Consultando…</a><small id="status-jumper-web-message"></small></div>
-          <div class="system-status-item"><strong>jumper-site · GitHub main</strong><a id="status-jumper-site" href="https://github.com/jumper-lab/jumper-site" target="_blank" rel="noopener">Consultando…</a><small id="status-jumper-site-message">O commit no GitHub não comprova a publicação em jumper.studio.</small><a id="status-jumper-site-deploy" href="https://github.com/jumper-lab/jumper-site/deployments" target="_blank" rel="noopener">Vercel Production: consultando…</a></div>
-          <div class="system-status-item"><strong>jumper-hoster · Cloudflare</strong><span id="status-hoster">Consultando…</span></div>
+      <section class="machine-room" aria-labelledby="machine-room-title">
+        <div class="machine-head">
+          <span class="machine-eyebrow"><span class="machine-led" aria-hidden="true"></span>Sala de máquinas · atualização automática</span>
+          <span class="machine-health" id="machine-health" role="status">Consultando</span>
         </div>
-        <p class="system-summary" id="status-summary" role="status">Conferindo as versões; não presuma sincronização.</p>
+        <div class="machine-content">
+          <h2 id="machine-room-title">Últimas movimentações</h2>
+          <p>O que entrou no GitHub e o que foi publicado nos sites.</p>
+          <ol class="machine-events" id="machine-events" aria-label="Atividade recente dos projetos">
+            <li class="machine-placeholder">Buscando atualizações…</li>
+          </ol>
+        </div>
+        <div class="machine-footer">
+          <span id="machine-updated">Consultando as fontes…</span>
+          <span>Somente leitura · a cada 60 s</span>
+        </div>
       </section>
       </div>
     </main>
@@ -81,52 +88,94 @@
       </section>
     </div>
     <script>
+      const machineEvents = document.querySelector('#machine-events');
+      const machineHealth = document.querySelector('#machine-health');
+      const machineUpdated = document.querySelector('#machine-updated');
+      let lastActivity = '';
+
+      function machineTime(value) {
+        if (!value) return 'Horário indisponível';
+        const date = new Date(value);
+        return Number.isFinite(date.getTime())
+          ? new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit', timeZone: 'America/Sao_Paulo' }).format(date)
+          : 'Horário indisponível';
+      }
+
+      function renderMachine(status) {
+        const health = status.hoster.state === 'different' || status.siteDeployment.relation === 'different'
+          ? 'Revisar publicações'
+          : status.hoster.state === 'matched' && status.siteDeployment.relation === 'matched'
+            ? 'Fontes alinhadas'
+            : 'Verificação parcial';
+        machineHealth.textContent = health;
+        machineHealth.dataset.state = health === 'Fontes alinhadas' ? 'ok' : health === 'Revisar publicações' ? 'attention' : 'partial';
+        machineUpdated.textContent = `Conferido em ${machineTime(status.checkedAt)}`;
+        const activity = Array.isArray(status.activity) ? status.activity : [];
+        const signature = JSON.stringify(activity);
+        if (signature === lastActivity) return;
+        lastActivity = signature;
+        if (!activity.length) {
+          const empty = document.createElement('li');
+          empty.className = 'machine-placeholder';
+          empty.textContent = 'Ainda não foi possível obter movimentações recentes.';
+          machineEvents.replaceChildren(empty);
+          return;
+        }
+        machineEvents.replaceChildren(...activity.map((event) => {
+          const item = document.createElement('li');
+          item.className = 'machine-event';
+          const meta = document.createElement('div');
+          meta.className = 'machine-event-meta';
+          const source = document.createElement('span');
+          source.className = 'machine-source';
+          source.textContent = event.source;
+          const time = document.createElement('time');
+          time.textContent = machineTime(event.occurredAt);
+          if (event.occurredAt) time.dateTime = event.occurredAt;
+          meta.append(source, time);
+          const title = document.createElement('strong');
+          title.className = 'machine-event-title';
+          title.textContent = event.title;
+          const detail = document.createElement('span');
+          detail.className = 'machine-event-detail';
+          detail.textContent = event.detail;
+          item.append(meta, title, detail);
+          if (event.url) {
+            let url;
+            try { url = new URL(event.url); } catch { /* Link inválido não é exibido. */ }
+            if (url?.origin === 'https://github.com') {
+              const link = document.createElement('a');
+              link.href = url.href;
+              link.target = '_blank';
+              link.rel = 'noopener';
+              link.setAttribute('aria-label', `Ver registro: ${event.title} em ${event.source}`);
+              link.textContent = '↗';
+              item.append(link);
+            }
+          }
+          return item;
+        }));
+      }
+
       async function updateSystemStatus() {
-        const summary = document.querySelector('#status-summary');
         try {
           const response = await fetch('/__jumper/system-status', { credentials: 'same-origin', cache: 'no-store' });
           if (!response.ok) throw new Error('Consulta indisponível');
-          const status = await response.json();
-          for (const repository of status.repositories) {
-            const link = document.getElementById(`status-${repository.id}`);
-            if (!link) continue;
-            link.textContent = repository.sha ? `Commit ${repository.sha.slice(0, 12)} ↗` : 'GitHub indisponível ↗';
-            link.href = repository.url;
-            const message = document.getElementById(`status-${repository.id}-message`);
-            if (message) message.textContent = repository.message || (repository.id === 'jumper-site' ? 'GitHub não comprova a publicação em jumper.studio.' : 'Última alteração indisponível.');
-          }
-          const hoster = document.querySelector('#status-hoster');
-          hoster.textContent = status.hoster.versionId
-            ? `Versão ${status.hoster.versionId.slice(0, 12)} · ${status.hoster.commitSha ? `commit ${status.hoster.commitSha.slice(0, 12)}` : 'commit não identificado'}`
-            : 'Versão não identificada';
-          const siteDeploy = document.querySelector('#status-jumper-site-deploy');
-          siteDeploy.href = status.siteDeployment.url;
-          siteDeploy.textContent = status.siteDeployment.commitSha
-            ? `Vercel Production: ${status.siteDeployment.commitSha.slice(0, 12)} · ${status.siteDeployment.state} ↗`
-            : 'Vercel Production: não verificada ↗';
-          const hosterStatus = status.hoster.state === 'matched'
-            ? 'jumper-web ↔ jumper-hoster: commits correspondem.'
-            : status.hoster.state === 'different'
-              ? 'jumper-web ↔ jumper-hoster: commits diferentes; revisar antes de publicar.'
-              : 'jumper-web ↔ jumper-hoster: correspondência não comprovada.';
-          const siteStatus = status.siteDeployment.relation === 'matched'
-            ? 'jumper-site ↔ Vercel Production: commits correspondem.'
-            : status.siteDeployment.relation === 'different'
-              ? 'jumper-site ↔ Vercel Production: commits diferentes.'
-              : 'jumper-site ↔ Vercel Production: correspondência não comprovada.';
-          summary.textContent = `${hosterStatus} ${siteStatus}`;
-          summary.title = `Consulta: ${status.checkedAt}`;
+          renderMachine(await response.json());
         } catch {
-          summary.textContent = 'Estado indisponível. Não é seguro presumir que GitHub e Cloudflare estão sincronizados.';
-          document.querySelector('#status-hoster').textContent = 'Consulta indisponível';
-          for (const id of ['jumper-web', 'jumper-site']) {
-            document.getElementById(`status-${id}`).textContent = 'Consulta indisponível ↗';
-          }
-          document.querySelector('#status-jumper-site-deploy').textContent = 'Vercel Production: consulta indisponível ↗';
+          machineHealth.textContent = 'Consulta indisponível';
+          machineHealth.dataset.state = 'attention';
+          machineUpdated.textContent = 'Não foi possível conferir as fontes agora.';
+          lastActivity = '';
+          const empty = document.createElement('li');
+          empty.className = 'machine-placeholder';
+          empty.textContent = 'As últimas movimentações estão temporariamente indisponíveis.';
+          machineEvents.replaceChildren(empty);
         }
       }
       updateSystemStatus();
-      window.setInterval(updateSystemStatus, 60_000);
+      window.setInterval(() => { if (!document.hidden) updateSystemStatus(); }, 60_000);
+      document.addEventListener('visibilitychange', () => { if (!document.hidden) updateSystemStatus(); });
 
       const copyBriefingLink = document.querySelector('#copy-briefing-link');
       copyBriefingLink?.addEventListener('click', async () => {

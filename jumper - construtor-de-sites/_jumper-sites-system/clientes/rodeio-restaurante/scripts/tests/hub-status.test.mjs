@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { hubStatus, releaseState } from '../../cloudflare/hub-status.mjs';
+import { hubStatus, recentActivity, releaseState } from '../../cloudflare/hub-status.mjs';
 import worker from '../../cloudflare/worker.mjs';
 
 const sha = 'a'.repeat(40);
@@ -26,17 +26,54 @@ test('status reads only the two fixed GitHub repositories', async () => {
     if (url.endsWith('deployments/1/statuses?per_page=1')) {
       return Response.json([{ state: 'success', created_at: '2026-09-01T00:01:00Z', creator: { login: 'vercel[bot]' } }]);
     }
-    return new Response(JSON.stringify({ sha }), { headers: { 'Content-Type': 'application/json' } });
+    return Response.json([{ sha, commit: { message: 'Atualiza o site', committer: { date: '2026-09-01T00:00:00Z' } } }]);
   };
   const status = await hubStatus({ id: 'version-1', tag: `git-${sha}` }, fetcher);
   assert.deepEqual(requests.slice().sort(), [
-    'https://api.github.com/repos/jumper-lab/jumper-web/commits/main',
-    'https://api.github.com/repos/jumper-lab/jumper-site/commits/main',
+    'https://api.github.com/repos/jumper-lab/jumper-web/commits?sha=main&per_page=3',
+    'https://api.github.com/repos/jumper-lab/jumper-site/commits?sha=main&per_page=3',
     'https://api.github.com/repos/jumper-lab/jumper-site/deployments?environment=Production&per_page=1',
     'https://api.github.com/repos/jumper-lab/jumper-site/deployments/1/statuses?per_page=1',
   ].sort());
   assert.equal(status.hoster.state, 'matched');
   assert.equal(status.repositories.length, 2);
+  assert.equal(status.activity.some((event) => event.source === 'jumper-hoster'), true);
+});
+
+test('activity shows the latest GitHub and deployment events without inventing links', () => {
+  const webCommits = Array.from({ length: 3 }, (_, index) => ({
+    sha: String(index + 1).repeat(40),
+    message: `Ajuste web ${index + 1}`,
+    committedAt: `2026-09-0${3 - index}T12:00:00Z`,
+  }));
+  const siteCommits = Array.from({ length: 3 }, (_, index) => ({
+    sha: String(index + 4).repeat(40),
+    message: `Ajuste site ${index + 1}`,
+    committedAt: `2026-09-0${3 - index}T10:00:00Z`,
+  }));
+  const events = recentActivity(
+    [{ id: 'jumper-web', recentCommits: webCommits }, { id: 'jumper-site', recentCommits: siteCommits }],
+    { commitSha: siteCommits[0].sha, state: 'success', deployedAt: '2026-09-03T11:00:00Z', url: 'https://github.com/jumper-lab/jumper-site/deployments/1' },
+    { versionId: 'version-1', commitSha: webCommits[0].sha, deployedAt: '2026-09-03T13:00:00Z' },
+  );
+  assert.equal(events.length, 4);
+  assert.equal(events[0].source, 'jumper-hoster');
+  assert.equal(events.some((event) => event.source === 'jumper-web' && event.kind === 'github'), true);
+  assert.equal(events.some((event) => event.source === 'jumper-site' && event.kind === 'github'), true);
+  assert.equal(events.some((event) => event.kind === 'site-deploy'), true);
+  assert.equal(events.every((event) => !event.url || event.url.startsWith('https://github.com/jumper-lab/')), true);
+  assert.equal(events.find((event) => event.kind === 'hoster-deploy').detail, 'Ajuste web 1');
+});
+
+test('activity remains honest when a source cannot be verified', () => {
+  const events = recentActivity(
+    [{ id: 'jumper-web', recentCommits: [] }, { id: 'jumper-site', recentCommits: [] }],
+    { commitSha: null, state: 'unknown' },
+    { versionId: 'version-2', commitSha: null, deployedAt: 'invalid' },
+  );
+  assert.deepEqual(events.map((event) => event.kind), ['hoster-deploy']);
+  assert.equal(events[0].url, null);
+  assert.equal(events[0].occurredAt, null);
 });
 
 test('status endpoint is restricted to the authenticated hub', async () => {
