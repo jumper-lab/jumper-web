@@ -150,6 +150,25 @@ async function liveWorkerFeatures() {
   return module.text();
 }
 
+async function hubRouteDifferences(fetchLive = fetch) {
+  const differences = [];
+  for (const [path, expectedStatus] of [['/', 401], ['/hub-assets/hub-redesign.css', 200]]) {
+    try {
+      const response = await fetchLive(`https://site.jumper.dev.br${path}`, {
+        redirect: 'manual',
+        signal: AbortSignal.timeout(20000),
+        headers: { 'Cache-Control': 'no-cache' },
+      });
+      if (response.status !== expectedStatus || response.headers.get('X-Jumper-Surface') !== 'jumper-hub') {
+        differences.push(`Hub: ${path} não está confirmado no Worker independente (HTTP ${response.status}).`);
+      }
+    } catch (error) {
+      differences.push(`Hub: não foi possível conferir ${path} (${error.message}).`);
+    }
+  }
+  return differences;
+}
+
 export async function runPreflight({ enforceGit = true, candidateAssets = assetsRoot } = {}) {
   if (enforceGit) assertGitHubFirst();
   const before = await activeVersion();
@@ -165,6 +184,7 @@ export async function runPreflight({ enforceGit = true, candidateAssets = assets
     differences.push(...await domainDifferences());
   }
   differences.push(...await bindingDifferences(before.versionId));
+  differences.push(...await hubRouteDifferences());
   differences.push(...await compareProtectedPages((asset) => readFile(join(candidateAssets, asset))));
   const after = await activeVersion();
   if (before.versionId !== after.versionId || before.deploymentId !== after.deploymentId) {
