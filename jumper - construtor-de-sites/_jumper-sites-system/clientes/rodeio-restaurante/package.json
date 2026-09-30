@@ -12,7 +12,7 @@
     "capture:vercel-sites": "node scripts/capture-vercel-sites.mjs",
     "stage:hoster": "node scripts/stage-hoster.mjs",
     "preflight:cloudflare": "node scripts/preflight-hoster.mjs",
-    "deploy:cloudflare": "npm run build:cloudflare && npm run preflight:cloudflare && wrangler deploy",
+    "deploy:cloudflare": "npm run build:cloudflare && npm run preflight:cloudflare && npx --no-install wrangler deploy",
     "postbuild": "node scripts/prune-unused-photo-masters.mjs"
   },
   "dependencies": {
