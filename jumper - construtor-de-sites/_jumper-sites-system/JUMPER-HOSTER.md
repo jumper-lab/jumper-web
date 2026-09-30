@@ -50,7 +50,11 @@ Vercel pode ser usada somente quando houver pedido explícito. Ela não é orige
 `clientes/rodeio-restaurante/wrangler.dev.jsonc` prepara o Worker
 `jumper-hoster-dev` com o pacote de assets do Hoster e uma entrada que delega
 ao mesmo Worker apenas nos sete caminhos dev, mas sem
-rotas públicas, acesso `workers.dev`, D1, KV ou limitador de produção. A
+acesso `workers.dev`, D1, KV ou limitador de produção. As únicas rotas
+públicas permitidas são `/rodeio/*`, `/izigym/*`, `/izigym-lp/*`,
+`/izigym-lp-vilaromana/*`, `/casabelie/*`, `/casabelie-2/*` e
+`/casabelie-3/*` em `site.jumper.dev.br`; o domínio e todos os outros
+caminhos continuam no `jumper-hoster` live. A
 configuração é verificada por `npm run verify:dev-config`; os caminhos são
 testados por `npm run test:dev-worker`. A resposta dev recebe
 `X-Jumper-Worker: jumper-hoster-dev` para confirmar o roteamento. A cópia inicial foi
