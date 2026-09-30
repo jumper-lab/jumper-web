@@ -13,6 +13,7 @@
     "stage:hoster": "node scripts/stage-hoster.mjs",
     "preflight:cloudflare": "node scripts/preflight-hoster.mjs",
     "verify:dev-config": "node scripts/verify-hoster-dev-config.mjs",
+    "test:dev-worker": "node --test scripts/tests/dev-worker.test.mjs",
     "deploy:cloudflare": "npm run build:cloudflare && npm run preflight:cloudflare && node scripts/deploy-hoster.mjs",
     "postbuild": "node scripts/prune-unused-photo-masters.mjs"
   },

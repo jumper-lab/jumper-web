@@ -10,13 +10,14 @@ const dev = readConfig('wrangler.dev.jsonc');
 
 assert.equal(live.name, 'jumper-hoster');
 assert.equal(dev.name, 'jumper-hoster-dev');
-for (const key of ['account_id', 'main', 'compatibility_date', 'assets', 'version_metadata']) {
+for (const key of ['account_id', 'compatibility_date', 'assets', 'version_metadata']) {
   assert.deepEqual(dev[key], live[key], `${key} precisa corresponder ao Hoster publicado`);
 }
+assert.equal(dev.main, 'cloudflare/dev-worker.mjs');
 assert.equal(dev.workers_dev, false);
 assert.equal(dev.preview_urls, false);
 assert.deepEqual(dev.routes, [], 'a cópia inicial não pode assumir nenhuma rota pública');
 for (const key of ['d1_databases', 'kv_namespaces', 'ratelimits', 'services', 'vars', 'triggers']) {
   assert.equal(dev[key], undefined, `o Worker dev não pode herdar ${key} de produção`);
 }
-console.log('Config do jumper-hoster-dev validada: mesmo código/assets, sem rotas e sem dados de produção.');
+console.log('Config do jumper-hoster-dev validada: mesmos assets, entrada restrita, sem rotas e sem dados de produção.');

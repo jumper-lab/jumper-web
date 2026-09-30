@@ -48,9 +48,12 @@ Vercel pode ser usada somente quando houver pedido explícito. Ela não é orige
 ### Cópia inicial do Worker de desenvolvimento
 
 `clientes/rodeio-restaurante/wrangler.dev.jsonc` prepara o Worker
-`jumper-hoster-dev` com o mesmo código e pacote de assets do Hoster, mas sem
+`jumper-hoster-dev` com o pacote de assets do Hoster e uma entrada que delega
+ao mesmo Worker apenas nos sete caminhos dev, mas sem
 rotas públicas, acesso `workers.dev`, D1, KV ou limitador de produção. A
-configuração é verificada por `npm run verify:dev-config`. A cópia inicial foi
+configuração é verificada por `npm run verify:dev-config`; os caminhos são
+testados por `npm run test:dev-worker`. A resposta dev recebe
+`X-Jumper-Worker: jumper-hoster-dev` para confirmar o roteamento. A cópia inicial foi
 comparada com a versão ativa `6c97d499-c969-43eb-8ec8-d3502bb622ad` do
 `jumper-hoster`; os documentos protegidos passaram no preflight. Esse teste
 não garante equivalência de todos os assets nem autoriza transferir tráfego.
