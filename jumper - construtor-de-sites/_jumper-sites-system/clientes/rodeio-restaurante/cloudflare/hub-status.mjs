@@ -159,6 +159,59 @@ export function recentActivity(repositories, siteDeployment, hoster) {
   return selected.sort((left, right) => timeValue(right) - timeValue(left));
 }
 
+export function releaseAlerts(repositories, siteDeployment, hoster) {
+  const alerts = [];
+  const webSha = repositories.find((repo) => repo.id === 'jumper-web')?.sha;
+  const siteSha = repositories.find((repo) => repo.id === 'jumper-site')?.sha;
+
+  if (hoster.state === 'different') {
+    alerts.push({
+      level: 'attention',
+      source: 'jumper-hoster',
+      title: 'Cloudflare e GitHub estão diferentes',
+      detail: 'O Worker ativo não corresponde ao main (versão principal do GitHub) do jumper-web. Confira se há deploy pendente ou sobrescrita.',
+    });
+  } else if (!webSha || !hoster.commitSha) {
+    alerts.push({
+      level: 'partial',
+      source: 'jumper-hoster',
+      title: 'Origem do Worker não confirmada',
+      detail: 'Não foi possível comparar a versão ativa com o main (versão principal do GitHub) do jumper-web.',
+    });
+  }
+
+  if (['failure', 'error'].includes(siteDeployment.state)) {
+    alerts.push({
+      level: 'attention',
+      source: 'jumper-site',
+      title: 'Deploy do site falhou',
+      detail: 'A publicação de produção na Vercel falhou. Confira o registro do deploy antes de considerar o site atualizado.',
+    });
+  } else if (siteDeployment.relation === 'different') {
+    alerts.push({
+      level: 'attention',
+      source: 'jumper-site',
+      title: 'Site publicado e GitHub estão diferentes',
+      detail: 'A produção não corresponde ao main (versão principal do GitHub) do jumper-site. Confira se há deploy pendente ou sobrescrita.',
+    });
+  } else if (!siteSha || !siteDeployment.commitSha || siteDeployment.state === 'unknown') {
+    alerts.push({
+      level: 'partial',
+      source: 'jumper-site',
+      title: 'Publicação não confirmada',
+      detail: 'Não foi possível confirmar a versão de produção do jumper-site na Vercel.',
+    });
+  } else if (siteDeployment.state !== 'success') {
+    alerts.push({
+      level: 'partial',
+      source: 'jumper-site',
+      title: 'Publicação em andamento',
+      detail: 'O deploy de produção ainda não foi concluído.',
+    });
+  }
+  return alerts;
+}
+
 export function releaseState(versionMetadata, repositories, production = { commitSha: null, state: 'unknown' }) {
   const webSha = repositories.find((repo) => repo.id === 'jumper-web')?.sha;
   const siteSha = repositories.find((repo) => repo.id === 'jumper-site')?.sha;
@@ -182,6 +235,7 @@ export function releaseState(versionMetadata, repositories, production = { commi
     repositories,
     siteDeployment,
     hoster,
+    alerts: releaseAlerts(repositories, siteDeployment, hoster),
     activity: recentActivity(repositories, siteDeployment, hoster),
   };
 }

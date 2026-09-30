@@ -80,7 +80,7 @@
         </div>
         <div class="machine-content">
           <h2 id="machine-room-title">Últimas movimentações</h2>
-          <p>O que entrou no GitHub e o que foi publicado nos sites.</p>
+          <ul class="machine-alerts" id="machine-alerts" aria-label="Avisos de publicação" aria-live="polite" hidden></ul>
           <ol class="machine-events" id="machine-events" aria-label="Atividade recente dos projetos">
             <li class="machine-placeholder">Buscando atualizações…</li>
           </ol>
@@ -104,9 +104,11 @@
     </div>
     <script>
       const machineEvents = document.querySelector('#machine-events');
+      const machineAlerts = document.querySelector('#machine-alerts');
       const machineHealth = document.querySelector('#machine-health');
       const machineUpdated = document.querySelector('#machine-updated');
       let lastActivity = '';
+      let lastAlerts = '';
 
       function machineTime(value) {
         if (!value) return 'Horário indisponível';
@@ -116,14 +118,30 @@
           : 'Horário indisponível';
       }
 
+      function renderMachineAlerts(alerts) {
+        const signature = JSON.stringify(alerts);
+        if (signature === lastAlerts) return;
+        lastAlerts = signature;
+        machineAlerts.hidden = alerts.length === 0;
+        machineAlerts.replaceChildren(...alerts.map((alert) => {
+          const item = document.createElement('li');
+          item.className = 'machine-alert';
+          item.dataset.level = alert.level === 'attention' ? 'attention' : 'partial';
+          const title = document.createElement('strong');
+          title.textContent = alert.title;
+          const detail = document.createElement('span');
+          detail.textContent = alert.detail;
+          item.append(title, detail);
+          return item;
+        }));
+      }
+
       function renderMachine(status) {
-        const health = status.hoster.state === 'different' || status.siteDeployment.relation === 'different'
-          ? 'Revisar publicações'
-          : status.hoster.state === 'matched' && status.siteDeployment.relation === 'matched'
-            ? 'Fontes alinhadas'
-            : 'Verificação parcial';
-        machineHealth.textContent = health;
-        machineHealth.dataset.state = health === 'Fontes alinhadas' ? 'ok' : health === 'Revisar publicações' ? 'attention' : 'partial';
+        const alerts = Array.isArray(status.alerts) ? status.alerts : [{ level: 'partial', title: 'Verificação incompleta', detail: 'O estado das publicações não pôde ser confirmado.' }];
+        const attention = alerts.filter((alert) => alert.level === 'attention').length;
+        machineHealth.textContent = attention ? `Atenção · ${attention}` : alerts.length ? 'Verificação parcial' : 'Versões alinhadas';
+        machineHealth.dataset.state = attention ? 'attention' : alerts.length ? 'partial' : 'ok';
+        renderMachineAlerts(alerts);
         machineUpdated.textContent = `Conferido em ${machineTime(status.checkedAt)}`;
         const activity = Array.isArray(status.activity) ? status.activity : [];
         const signature = JSON.stringify(activity);
@@ -180,12 +198,14 @@
         } catch {
           machineHealth.textContent = 'Consulta indisponível';
           machineHealth.dataset.state = 'attention';
-          machineUpdated.textContent = 'Não foi possível conferir as fontes agora.';
-          lastActivity = '';
-          const empty = document.createElement('li');
-          empty.className = 'machine-placeholder';
-          empty.textContent = 'As últimas movimentações estão temporariamente indisponíveis.';
-          machineEvents.replaceChildren(empty);
+          renderMachineAlerts([{ level: 'attention', title: 'Não foi possível verificar as publicações', detail: 'A consulta falhou. As movimentações abaixo podem estar desatualizadas; tente novamente em instantes.' }]);
+          machineUpdated.textContent = 'Consulta falhou · atualização pendente';
+          if (!lastActivity) {
+            const empty = document.createElement('li');
+            empty.className = 'machine-placeholder';
+            empty.textContent = 'Movimentações temporariamente indisponíveis.';
+            machineEvents.replaceChildren(empty);
+          }
         }
       }
       updateSystemStatus();

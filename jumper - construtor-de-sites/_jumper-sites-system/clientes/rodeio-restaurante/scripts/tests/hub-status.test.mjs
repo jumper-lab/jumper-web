@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { hubStatus, recentActivity, releaseState } from '../../cloudflare/hub-status.mjs';
+import { hubStatus, recentActivity, releaseAlerts, releaseState } from '../../cloudflare/hub-status.mjs';
 import worker from '../../cloudflare/worker.mjs';
 
 const sha = 'a'.repeat(40);
@@ -14,6 +14,37 @@ test('only a verified version tag can claim that GitHub and Cloudflare match', (
   assert.equal(releaseState({}, repositories, { commitSha: 'b'.repeat(40), state: 'success' }).siteDeployment.relation, 'matched');
   assert.equal(releaseState({}, repositories, { commitSha: sha, state: 'success' }).siteDeployment.relation, 'different');
   assert.equal(releaseState({}, repositories, { commitSha: 'b'.repeat(40), state: 'pending' }).siteDeployment.relation, 'unverified');
+});
+
+test('publication alerts distinguish mismatches, failures and missing evidence', () => {
+  const matched = releaseState(
+    { id: 'version-1', tag: `git-${sha}` }, repositories,
+    { commitSha: 'b'.repeat(40), state: 'success' },
+  );
+  assert.deepEqual(matched.alerts, []);
+
+  const overwritten = releaseState(
+    { id: 'version-2', tag: `git-${'c'.repeat(40)}` }, repositories,
+    { commitSha: sha, state: 'success' },
+  );
+  assert.deepEqual(overwritten.alerts.map((alert) => alert.level), ['attention', 'attention']);
+  assert.match(overwritten.alerts[0].detail, /main \(versão principal do GitHub\)/);
+  assert.match(overwritten.alerts[0].detail, /sobrescrita/);
+
+  const failed = releaseState(
+    { id: 'version-3', tag: `git-${sha}` }, repositories,
+    { commitSha: 'b'.repeat(40), state: 'failure' },
+  );
+  assert.equal(failed.alerts.length, 1);
+  assert.equal(failed.alerts[0].title, 'Deploy do site falhou');
+  assert.equal(failed.alerts[0].level, 'attention');
+
+  const unknown = releaseAlerts(
+    [{ id: 'jumper-web', sha: null }, { id: 'jumper-site', sha: null }],
+    { commitSha: null, state: 'unknown', relation: 'unverified' },
+    { commitSha: null, state: 'unverified' },
+  );
+  assert.deepEqual(unknown.map((alert) => alert.level), ['partial', 'partial']);
 });
 
 test('status reads only the two fixed GitHub repositories', async () => {
