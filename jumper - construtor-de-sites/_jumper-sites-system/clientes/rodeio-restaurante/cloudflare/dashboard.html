@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
     <meta name="theme-color" content="#0a0a0a">
-    <link rel="icon" href="/hub-assets/favicon-jumper.png" type="image/png">
+    <link rel="icon" href="/favicon-jumper.png" type="image/png">
     <title>Sites — Jumper Studio</title>
     <meta name="description" content="Sites em desenvolvimento e sites oficiais dos clientes da Jumper Studio.">
-    <link rel="stylesheet" href="/hub-assets/hub-design-system/3.15.0/colors_and_type.css">
-    <link rel="stylesheet" href="/hub-assets/hub-design-system/3.15.0/painel.css">
-    <link rel="stylesheet" href="/hub-assets/hub-redesign.css">
+    <link rel="stylesheet" href="/hub-design-system/3.15.0/colors_and_type.css">
+    <link rel="stylesheet" href="/hub-design-system/3.15.0/painel.css">
+    <link rel="stylesheet" href="/hub-redesign.css">
   </head>
   <body class="painel" data-theme="dark">
     <header class="site-header">
@@ -52,8 +52,8 @@
       <aside class="project-note" aria-labelledby="project-note-title">
         <div class="project-note-head">
           <span class="project-eyebrow">Mapa do sistema</span>
-          <h2 id="project-note-title">Quatro nomes. Quatro funções.</h2>
-          <p>Código, site institucional, painel e hospedagem dos clientes: encontre o acesso certo para cada tarefa.</p>
+          <h2 id="project-note-title">Três nomes. Três funções.</h2>
+          <p>Código, site institucional e publicação do hub: encontre o acesso certo para cada tarefa.</p>
         </div>
         <ul class="project-types">
           <li class="project-item">
@@ -66,15 +66,10 @@
             <a class="project-title" href="https://github.com/jumper-lab/jumper-site" target="_blank" rel="noopener">jumper-site <span aria-hidden="true">↗</span></a>
             <p>Código do site institucional <a href="https://jumper.studio/" target="_blank" rel="noopener">jumper.studio</a>, com prévia na Vercel.</p>
           </li>
-          <li class="project-item">
-            <span class="project-kind">03 · Worker na Cloudflare</span>
-            <a class="project-title" href="https://dash.cloudflare.com/e23efa36a1e09015eebb2b36bdfcf201/workers/services/view/jumper-hub/production" target="_blank" rel="noopener">jumper-hub <span aria-hidden="true">↗</span></a>
-            <p>Publica somente <a href="https://site.jumper.dev.br/" target="_blank" rel="noopener">este painel</a> e seus arquivos.</p>
-          </li>
           <li class="project-item project-item--hoster">
-            <span class="project-kind">04 · Worker na Cloudflare</span>
+            <span class="project-kind">03 · Worker na Cloudflare</span>
             <a class="project-title" href="https://dash.cloudflare.com/e23efa36a1e09015eebb2b36bdfcf201/workers/services/view/jumper-hoster/production" target="_blank" rel="noopener">jumper-hoster <span aria-hidden="true">↗</span></a>
-            <p>Publica as rotas em desenvolvimento e mantém o login e a sala de máquinas.</p>
+            <p>Publica <a href="https://site.jumper.dev.br/" target="_blank" rel="noopener">este hub</a> e as rotas em desenvolvimento. O código fica no jumper-web.</p>
           </li>
         </ul>
       </aside>
@@ -102,7 +97,7 @@
         <span>commit (registro de uma alteração)</span>
         <span>PR (pedido para revisar e integrar ajustes)</span>
         <span>deploy (publicação de uma versão)</span>
-        <span>Worker (serviço da Cloudflare que entrega o hub ou os sites)</span>
+        <span>Worker (serviço da Cloudflare que entrega o hub)</span>
       </div>
       </div>
     </main>
@@ -206,7 +201,7 @@
 
       async function updateSystemStatus() {
         try {
-          const response = await fetch('/__jumper/hub-status', { credentials: 'same-origin', cache: 'no-store' });
+          const response = await fetch('/__jumper/system-status', { credentials: 'same-origin', cache: 'no-store' });
           if (!response.ok) throw new Error('Consulta indisponível');
           renderMachine(await response.json());
         } catch {

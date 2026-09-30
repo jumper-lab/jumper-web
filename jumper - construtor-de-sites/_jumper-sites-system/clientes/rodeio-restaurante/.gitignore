@@ -1,7 +1,6 @@
 node_modules/
 dist/
 hoster-dist/
-hub-dist/
 .astro/
 .env
 .DS_Store

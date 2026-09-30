@@ -566,15 +566,8 @@ export default {
       return Response.redirect(url, 308);
     }
 
-    if (url.hostname === IZI_LEADS_TEST_HOST && url.pathname === '/') {
-      if (url.search) {
-        url.search = '';
-        return Response.redirect(url, 308);
-      }
-      if (!(await isAuthorized(request, password))) return htmlResponse(loginPage('/'), 401);
-      if (request.headers.get('X-Jumper-Hub-Auth') === '1') {
-        return new Response(null, { status: 204, headers: securityHeaders });
-      }
+    if (url.pathname === '/' && !(await isAuthorized(request, password))) {
+      return htmlResponse(loginPage('/'), 401);
     }
 
     if (url.pathname === BRIEFING_PATH) {
