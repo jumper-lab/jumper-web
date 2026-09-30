@@ -1,0 +1,12 @@
+# Estende as regras default do gitleaks
+[extend]
+useDefault = true
+
+# Allowlist para falsos positivos.
+[allowlist]
+description = "Allowlist global do projeto izigym"
+
+# Path-level: .env.example nao contem valores reais.
+paths = [
+  '''(.*?)\.env\.example$''',
+]

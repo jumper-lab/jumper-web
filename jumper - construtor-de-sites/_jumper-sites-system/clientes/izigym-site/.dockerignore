@@ -1,0 +1,59 @@
+# Git
+.git
+.gitignore
+.github
+
+# Dependências (serão instaladas dentro da imagem)
+node_modules
+.pnp
+.pnp.js
+
+# Builds locais
+dist
+build
+.next
+.nuxt
+.cache
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Editores
+.vscode
+.idea
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Ambiente / segredos
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+credentials.json
+secrets.json
+service-account*.json
+
+# Docs e meta (não precisam na imagem)
+README.md
+CHANGELOG.md
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+SECURITY.md
+LICENSE
+AI_RULES.md
+
+# Testes/coverage
+coverage
+.nyc_output
+
+# Temp
+.tmp
+tmp
+*.bak

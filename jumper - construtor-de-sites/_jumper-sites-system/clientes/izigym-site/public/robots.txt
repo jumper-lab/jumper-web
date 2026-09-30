@@ -1,0 +1,24 @@
+# robots.txt — IZI ONE
+# Documentação: https://www.robotstxt.org/
+
+User-agent: *
+Allow: /
+
+# Bloqueia bots agressivos / scrapers de conteúdo
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+# Sitemap principal
+Sitemap: https://www.izigym.com.br/sitemap.xml
