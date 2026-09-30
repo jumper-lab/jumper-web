@@ -36,3 +36,49 @@ MENU - Digite o número para escolher a opção<br>
 ────────────────────────────────────────
 
 As instruções operacionais detalhadas de cada opção continuam documentadas em `../backup/AGENTS.md` e na documentação mestre do sistema.
+
+## Publicação de sites pelo Jumper Hoster
+
+Esta é a regra operacional obrigatória para agentes que alteram o hub, o formulário
+de briefing, o construtor ou sites hospedados pelo `jumper-hoster`. O procedimento,
+os endereços e as limitações estão em `JUMPER-HOSTER.md`; não mantenha uma
+segunda lista de regras naquele manual.
+
+- O menu **CONSTRUTOR DE SITES JUMPER STUDIO®** é uma interação neste chat.
+  `https://site.jumper.dev.br/briefing/` é o formulário público de entrada;
+  não é o endereço de publicação do site criado pelo construtor.
+- Todo site novo criado pelo construtor vai **primeiro** a uma rota de cliente
+  no Worker `jumper-hoster-dev`, para revisão. Nunca publique um site novo
+  diretamente no `jumper-hoster` live ou em seu domínio oficial por inferência.
+  Um slug novo precisa de registro, rota dev e testes específicos antes de
+  receber tráfego; não crie uma rota ampla que capture o hub ou outro cliente.
+- Os links públicos atuais não mudam: `/` (hub), `/briefing/`, `/briefing/api/*`,
+  `/__jumper/*`, `/api/*`, `/fonts/*` e os domínios oficiais continuam no
+  `jumper-hoster` live. As rotas `/<slug>/*` declaradas em
+  `clientes/rodeio-restaurante/wrangler.dev.jsonc` vão ao Worker dev.
+  Uma prévia dev do hub requer novo endereço e proteção de equipe verificada.
+  O briefing enviado ao cliente deve continuar **público, sem login ou senha**.
+  Se houver prévia do formulário, use endereço separado e backend de teste
+  isolado; nunca capture respostas de clientes na prévia nem mova o link live.
+- Para mudar um site existente, trabalhe em branch isolada e declare **um único
+  slug** autorizado. Monte o pacote local, atualize o inventário de arquivos
+  **apenas desse slug** com `npm run inventory:dev -- --allow=<slug>` se os
+  caminhos de assets mudaram, revise o diff, rode os testes e
+  `npm run preflight:dev -- --allow=<slug>` em
+  `clientes/rodeio-restaurante`. A verificação deve comparar os outros sites
+  com as versões publicadas no dev **antes** de qualquer upload. Se houver
+  diferença, erro de leitura, rota inesperada ou outro deploy concorrente,
+  pare; não publique, não use `wrangler deploy` para contornar a trava e não
+  copie a versão live por cima do dev. Investigue e reconcilie por PR.
+- O fluxo do Hoster é branch → build e testes → PR → prévia no dev mediante
+  autorização → revisão → merge em `main` → publicação live separada e
+  explicitamente autorizada. PR/merge não dispara deploy do Hoster por GitHub
+  Actions. Deploy dev usa `npm run deploy:dev -- --allow=<slug>`; deploy live
+  usa o preflight e o comando documentados no manual, a partir de `main` limpo.
+  Um deploy do Worker live monta o pacote completo, não apenas um cliente.
+- A autorização de deploy dev **não** autoriza deploy live. Antes de publicar
+  no live, confira as páginas e funções afetadas, domínios oficiais, hub,
+  briefing, autenticação, APIs, dados e rastreamento. Alterações intencionais
+  de mais de um site ou de áreas compartilhadas exigem escopo e revisão
+  explícitos; não marque diferenças inesperadas como permitidas para fazer o
+  preflight passar.
