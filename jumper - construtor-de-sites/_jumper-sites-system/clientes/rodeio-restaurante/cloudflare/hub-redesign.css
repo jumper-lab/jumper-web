@@ -107,6 +107,7 @@ html { background: var(--jumper-black); scroll-behavior: smooth; }
 .machine-content { flex: 1; padding: 15px 15px 3px; }
 .painel .machine-content h2 { margin: 0; color: var(--fg); font: 650 18px/1.2 var(--font-sans); letter-spacing: -.035em; }
 .machine-processes { margin-top: 12px; padding: 11px; border: 1px solid var(--linha-1); border-radius: 8px; background: color-mix(in srgb, var(--apoio) 5%, transparent); }
+.machine-processes[hidden] { display: none; }
 .machine-processes h3 { margin: 0 0 8px; color: var(--apoio); font: 600 10px/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
 .machine-processes ul { display: grid; gap: 7px; max-height: 156px; margin: 0; padding: 0; overflow-y: auto; list-style: none; }
 .machine-process { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 8px; padding-top: 7px; border-top: 1px solid var(--linha-1); }

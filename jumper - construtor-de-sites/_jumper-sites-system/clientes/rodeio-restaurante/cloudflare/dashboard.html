@@ -85,9 +85,9 @@
         </div>
         <div class="machine-content">
           <h2 id="machine-room-title">Últimas movimentações</h2>
-          <section class="machine-processes" aria-labelledby="machine-processes-title">
+          <section class="machine-processes" id="machine-processes" aria-labelledby="machine-processes-title" hidden>
             <h3 id="machine-processes-title">Em andamento agora</h3>
-            <ul id="machine-process-list" aria-live="polite"><li class="machine-process-empty">Consultando os processos…</li></ul>
+            <ul id="machine-process-list" aria-live="polite"></ul>
           </section>
           <ul class="machine-alerts" id="machine-alerts" aria-label="Avisos de publicação" aria-live="polite" hidden></ul>
           <ol class="machine-events" id="machine-events" aria-label="Atividade recente dos projetos">
@@ -126,6 +126,7 @@
       const machineAlerts = document.querySelector('#machine-alerts');
       const machineHealth = document.querySelector('#machine-health');
       const machineUpdated = document.querySelector('#machine-updated');
+      const machineProcesses = document.querySelector('#machine-processes');
       const machineProcessList = document.querySelector('#machine-process-list');
       let lastActivity = '';
       let lastAlerts = '';
@@ -165,15 +166,9 @@
         const signature = JSON.stringify({ items, github: githubProcesses.available, tracked: trackedProcesses.available, githubEvents: trackedProcesses.githubEventsEnabled });
         if (signature === lastProcesses) return;
         lastProcesses = signature;
+        machineProcesses.hidden = items.length === 0;
         if (!items.length) {
-          const empty = document.createElement('li');
-          empty.className = 'machine-process-empty';
-          empty.textContent = !trackedProcesses.available || !githubProcesses.available
-            ? 'Não foi possível confirmar processos agora: uma fonte monitorada está indisponível.'
-            : !trackedProcesses.githubEventsEnabled
-              ? 'Nenhum deploy ativo detectado no Hoster ou na Vercel. Execuções do GitHub não são monitoradas.'
-              : 'Nenhum processo em andamento detectado nas fontes monitoradas.';
-          machineProcessList.replaceChildren(empty);
+          machineProcessList.replaceChildren();
         } else {
           machineProcessList.replaceChildren(...items.map((process) => {
             const item = document.createElement('li');
