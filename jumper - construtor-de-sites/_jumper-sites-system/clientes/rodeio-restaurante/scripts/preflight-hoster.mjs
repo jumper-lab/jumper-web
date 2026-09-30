@@ -67,7 +67,7 @@ function git(...args) {
 function assertGitHubFirst() {
   const branch = git('branch', '--show-current');
   if (branch && branch !== 'main') throw new Error('Deploy permitido somente de main. Faça PR e merge antes.');
-  if (git('status', '--porcelain', '--untracked-files=no')) throw new Error('Há alterações locais rastreadas. Use um checkout limpo.');
+  if (git('status', '--porcelain', '--untracked-files=normal')) throw new Error('Há alterações locais rastreadas ou não rastreadas. Use um checkout limpo.');
   const local = git('rev-parse', 'HEAD');
   const remote = git('ls-remote', 'origin', 'refs/heads/main').split(/\s+/)[0];
   if (local !== remote) throw new Error('main local não corresponde ao main atual do GitHub. Atualize o checkout.');
@@ -107,7 +107,7 @@ async function domainDifferences() {
   return compareDomains(configured, published);
 }
 
-async function activeVersion() {
+export async function activeVersion() {
   if (!process.env.CLOUDFLARE_API_TOKEN) {
     const deployments = wranglerJson('deployments', 'list');
     if (!Array.isArray(deployments) || !deployments.length) throw new Error('Wrangler não confirmou o deployment atual.');

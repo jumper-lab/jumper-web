@@ -1,3 +1,5 @@
+import { hubStatus } from './hub-status.mjs';
+
 const SITE_PREFIX = '/rodeio';
 const LEGACY_PREFIX = '/site';
 const PUBLIC_SITES = ['/rodeio', '/izigym', '/izigym-lp', '/izigym-lp-vilaromana', '/casabelie', '/casabelie-2', '/casabelie-3'];
@@ -16,6 +18,7 @@ const BRIEFING_CONTINUE_PREFIX = `${BRIEFING_PATH}/continuar/`;
 const BRIEFING_API_UPSTREAM = 'https://briefing-formulario-sites-jumper.vercel.app/api/briefings';
 const LOGIN_PATH = '/__jumper/login';
 const LOGOUT_PATH = '/__jumper/logout';
+const HUB_STATUS_PATH = '/__jumper/system-status';
 const COOKIE_NAME = 'jumper_hoster_session';
 const SESSION_SECONDS = 60 * 60 * 12;
 const encoder = new TextEncoder();
@@ -511,6 +514,12 @@ export default {
       const headers = new Headers({ Location: '/', ...securityHeaders });
       headers.append('Set-Cookie', `${COOKIE_NAME}=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Lax`);
       return new Response(null, { status: 303, headers });
+    }
+
+    if (url.hostname === IZI_LEADS_TEST_HOST && url.pathname === HUB_STATUS_PATH) {
+      if (request.method !== 'GET') return new Response('Method Not Allowed', { status: 405, headers: { Allow: 'GET' } });
+      if (!(await isAuthorized(request, password))) return jsonResponse({ error: 'Acesso não autorizado.' }, 401);
+      return jsonResponse(await hubStatus(env.CF_VERSION_METADATA));
     }
 
     if (url.pathname === BRIEFING_API_PATH) {

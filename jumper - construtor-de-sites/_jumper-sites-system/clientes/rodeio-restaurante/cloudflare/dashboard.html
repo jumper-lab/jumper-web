@@ -45,6 +45,15 @@
       .project-types dt{font-size:12px;font-weight:700}
       .project-types dd{margin:5px 0 0;color:var(--muted);font-size:12px;line-height:1.4}
       .project-types a{text-underline-offset:2px}
+      .system-status{margin-top:16px;padding:20px 24px;border:1px solid #d9e3ea;border-radius:14px;background:#f7fafc}
+      .system-status h2{margin:0 0 7px;font-size:17px}
+      .system-status>p{margin:0;color:var(--muted);font-size:12px;line-height:1.45}
+      .system-status-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:17px}
+      .system-status-item{border-top:1px solid #d6e0e6;padding-top:11px;min-width:0}
+      .system-status-item strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.1em}
+      .system-status-item a,.system-status-item span{display:block;margin-top:7px;font-size:12px;overflow-wrap:anywhere}
+      .system-status-item small{display:block;margin-top:5px;color:var(--muted);font-size:11px;line-height:1.35}
+      .system-status .system-summary{margin-top:14px;font-weight:700}
       .section-label{display:flex;align-items:center;gap:9px;margin:44px 0 -26px;font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#555}
       .section-label:before{content:"";width:6px;height:6px;border-radius:50%;background:#101010}
       .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:42px}
@@ -70,7 +79,7 @@
       .lightbox-links{display:grid;margin-top:6px}.lightbox-link{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;border-bottom:1px solid #e7e7e7;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}.lightbox-link:hover,.lightbox-link:focus-visible{color:var(--lightbox-accent,var(--blue));outline:none}.lightbox-link .arrow{flex:none}
       body.lightbox-open{overflow:hidden}
       footer{padding-top:24px;padding-bottom:20px;justify-content:flex-start}
-      @media(max-width:800px){main{padding-top:54px}.briefing-tool{align-items:start;flex-direction:column}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.project-types{grid-template-columns:1fr;gap:12px}}
+      @media(max-width:800px){main{padding-top:54px}.briefing-tool{align-items:start;flex-direction:column}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.project-types,.system-status-grid{grid-template-columns:1fr;gap:12px}}
       @media(max-width:560px){header,footer{padding-left:24px;padding-right:24px}.by{display:none}.top-right{gap:0}main{width:calc(100% - 48px);padding:46px 0 64px}h1{font-size:42px}.lead{font-size:16px}.briefing-tool{margin-top:32px;padding:20px}.briefing-tool h2{font-size:24px}.briefing-actions{width:100%;flex-direction:column;align-items:stretch}.briefing-action,.briefing-copy-link{width:100%;justify-content:center}.project-note{padding:18px}.section-label{margin-top:34px;margin-bottom:-18px}.grid{grid-template-columns:1fr;margin-top:32px}.card{min-height:190px}.card-open{min-height:188px}.footer-copy{font-size:9px}}
       @media(prefers-reduced-motion:reduce){*{transition:none!important}}
     </style>
@@ -106,6 +115,16 @@
           <div><dt>jumper-hoster</dt><dd>Worker da Cloudflare que serve <a href="https://site.jumper.dev.br/" target="_blank" rel="noopener">este hub</a> e os sites em desenvolvimento. Seu código fica no jumper-web.</dd></div>
         </dl>
       </aside>
+      <section class="system-status" aria-labelledby="system-status-title">
+        <h2 id="system-status-title">Estado das fontes</h2>
+        <p>Consulta de leitura ao GitHub, ao deploy da Vercel e à versão deste Worker na Cloudflare. Um chat ou PR sem merge não conta como publicado.</p>
+        <div class="system-status-grid">
+          <div class="system-status-item"><strong>jumper-web · GitHub main</strong><a id="status-jumper-web" href="https://github.com/jumper-lab/jumper-web" target="_blank" rel="noopener">Consultando…</a><small id="status-jumper-web-message"></small></div>
+          <div class="system-status-item"><strong>jumper-site · GitHub main</strong><a id="status-jumper-site" href="https://github.com/jumper-lab/jumper-site" target="_blank" rel="noopener">Consultando…</a><small id="status-jumper-site-message">O commit no GitHub não comprova a publicação em jumper.studio.</small><a id="status-jumper-site-deploy" href="https://github.com/jumper-lab/jumper-site/deployments" target="_blank" rel="noopener">Vercel Production: consultando…</a></div>
+          <div class="system-status-item"><strong>jumper-hoster · Cloudflare</strong><span id="status-hoster">Consultando…</span></div>
+        </div>
+        <p class="system-summary" id="status-summary" role="status">Conferindo as versões; não presuma sincronização.</p>
+      </section>
       <p class="section-label">Sites e prévias</p>
       <section class="grid" aria-label="Sites disponíveis">
         <!-- JUMPER_CLIENT_CARDS -->
@@ -122,6 +141,53 @@
       </section>
     </div>
     <script>
+      async function updateSystemStatus() {
+        const summary = document.querySelector('#status-summary');
+        try {
+          const response = await fetch('/__jumper/system-status', { credentials: 'same-origin', cache: 'no-store' });
+          if (!response.ok) throw new Error('Consulta indisponível');
+          const status = await response.json();
+          for (const repository of status.repositories) {
+            const link = document.getElementById(`status-${repository.id}`);
+            if (!link) continue;
+            link.textContent = repository.sha ? `Commit ${repository.sha.slice(0, 12)} ↗` : 'GitHub indisponível ↗';
+            link.href = repository.url;
+            const message = document.getElementById(`status-${repository.id}-message`);
+            if (message) message.textContent = repository.message || (repository.id === 'jumper-site' ? 'GitHub não comprova a publicação em jumper.studio.' : 'Última alteração indisponível.');
+          }
+          const hoster = document.querySelector('#status-hoster');
+          hoster.textContent = status.hoster.versionId
+            ? `Versão ${status.hoster.versionId.slice(0, 12)} · ${status.hoster.commitSha ? `commit ${status.hoster.commitSha.slice(0, 12)}` : 'commit não identificado'}`
+            : 'Versão não identificada';
+          const siteDeploy = document.querySelector('#status-jumper-site-deploy');
+          siteDeploy.href = status.siteDeployment.url;
+          siteDeploy.textContent = status.siteDeployment.commitSha
+            ? `Vercel Production: ${status.siteDeployment.commitSha.slice(0, 12)} · ${status.siteDeployment.state} ↗`
+            : 'Vercel Production: não verificada ↗';
+          const hosterStatus = status.hoster.state === 'matched'
+            ? 'jumper-web ↔ jumper-hoster: commits correspondem.'
+            : status.hoster.state === 'different'
+              ? 'jumper-web ↔ jumper-hoster: commits diferentes; revisar antes de publicar.'
+              : 'jumper-web ↔ jumper-hoster: correspondência não comprovada.';
+          const siteStatus = status.siteDeployment.relation === 'matched'
+            ? 'jumper-site ↔ Vercel Production: commits correspondem.'
+            : status.siteDeployment.relation === 'different'
+              ? 'jumper-site ↔ Vercel Production: commits diferentes.'
+              : 'jumper-site ↔ Vercel Production: correspondência não comprovada.';
+          summary.textContent = `${hosterStatus} ${siteStatus}`;
+          summary.title = `Consulta: ${status.checkedAt}`;
+        } catch {
+          summary.textContent = 'Estado indisponível. Não é seguro presumir que GitHub e Cloudflare estão sincronizados.';
+          document.querySelector('#status-hoster').textContent = 'Consulta indisponível';
+          for (const id of ['jumper-web', 'jumper-site']) {
+            document.getElementById(`status-${id}`).textContent = 'Consulta indisponível ↗';
+          }
+          document.querySelector('#status-jumper-site-deploy').textContent = 'Vercel Production: consulta indisponível ↗';
+        }
+      }
+      updateSystemStatus();
+      window.setInterval(updateSystemStatus, 60_000);
+
       const copyBriefingLink = document.querySelector('#copy-briefing-link');
       copyBriefingLink?.addEventListener('click', async () => {
         const link = copyBriefingLink.dataset.link;
