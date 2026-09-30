@@ -74,13 +74,13 @@ html { background: var(--jumper-black); scroll-behavior: smooth; }
 .painel .card-action .arrow { display: grid; place-items: center; width: 28px; height: 28px; flex: none; border: 1px solid var(--linha-1); border-radius: 50%; color: inherit; font-size: 16px; }
 .painel .arrow { line-height: 1; transition: transform var(--duration-slow) var(--ease-jumper); }
 .painel .card-open:hover .arrow, .painel .card-open:focus-visible .arrow { transform: translateX(3px); }
-.hub-details { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "map machine"; column-gap: clamp(36px, 6vw, 86px); padding-top: clamp(64px, 7vw, 100px); }
+.hub-details { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "map machine"; align-items: stretch; column-gap: clamp(36px, 6vw, 86px); padding-top: clamp(64px, 7vw, 100px); }
 .painel .project-note { grid-area: map; display: flex; flex-direction: column; min-width: 0; margin: 0; padding: 0; border: 0; border-radius: 0; background: transparent; }
 .project-note-head { padding-top: 24px; border-top: 1px solid var(--linha-1); }
 .painel .project-eyebrow { color: var(--apoio); font: 500 10px/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; }
 .painel .project-note h2 { margin: 13px 0 9px; color: var(--fg); font: 650 26px/1.12 var(--font-sans); letter-spacing: -.04em; }
 .painel .project-note-head > p { max-width: 420px; margin: 0; color: var(--tinta-3); font: 420 13px/1.5 var(--font-sans); }
-.painel .project-types { display: grid; flex: 1; grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 9px; margin: 21px 0 0; padding: 0; list-style: none; }
+.painel .project-types { display: grid; flex: 1; grid-template-rows: repeat(4, minmax(0, 1fr)); gap: 9px; margin: 21px 0 0; padding: 0; list-style: none; }
 .painel .project-item { min-width: 0; padding: 15px 17px 16px; border: 1px solid var(--linha-1); border-radius: var(--radius-sm); background: var(--surface-card); transition: border-color var(--duration) ease, background var(--duration) ease; }
 .painel .project-item:hover, .painel .project-item:focus-within { border-color: var(--tinta-3); }
 .painel .project-kind { display: block; color: var(--apoio); font: 500 10px/1.3 var(--font-mono); letter-spacing: .05em; text-transform: uppercase; }
