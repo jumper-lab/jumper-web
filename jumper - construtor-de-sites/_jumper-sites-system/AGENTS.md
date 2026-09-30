@@ -82,3 +82,16 @@ segunda lista de regras naquele manual.
   de mais de um site ou de áreas compartilhadas exigem escopo e revisão
   explícitos; não marque diferenças inesperadas como permitidas para fazer o
   preflight passar.
+- O hub live permanece protegido por senha. A senha do hub usa o segredo
+  `JUMPER_HUB_PASSWORD`; as áreas administrativas conservam
+  `JUMPER_HOSTER_PASSWORD`. Nunca escreva valores de senha no GitHub, em PRs,
+  documentação ou logs. A eventual prévia dev do hub também exige senha,
+  além da proteção de equipe, e recebe o segredo no Worker dev separadamente.
+  Não confunda senha do hub com proteção dos sites dev.
+- Sites dev são públicos por padrão. Somente se o usuário pedir uma prévia
+  privada, pergunte **qual slug** e qual senha ele quer definir para aquele
+  site. Configure apenas o segredo Cloudflare
+  `HOSTER_DEV_PASSWORD_<SLUG>` correspondente. Cada senha protege o HTML e os
+  assets daquele slug, sem afetar os demais ou os domínios live. Mudanças de
+  segredo criam versões do Worker; siga o preflight e a publicação controlada
+  do manual, nunca execute `wrangler secret put` direto sem revisão.

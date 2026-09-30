@@ -20,6 +20,7 @@ const LOGIN_PATH = '/__jumper/login';
 const LOGOUT_PATH = '/__jumper/logout';
 const HUB_STATUS_PATH = '/__jumper/system-status';
 const COOKIE_NAME = 'jumper_hoster_session';
+const HUB_COOKIE_NAME = 'jumper_hub_session';
 const SESSION_SECONDS = 60 * 60 * 12;
 const encoder = new TextEncoder();
 
@@ -54,17 +55,17 @@ function constantTimeEqual(left, right) {
   return difference === 0;
 }
 
-function cookieValue(request) {
+function cookieValue(request, cookieName = COOKIE_NAME) {
   const cookies = request.headers.get('Cookie') || '';
   for (const part of cookies.split(';')) {
     const [name, ...value] = part.trim().split('=');
-    if (name === COOKIE_NAME) return value.join('=');
+    if (name === cookieName) return value.join('=');
   }
   return '';
 }
 
-async function isAuthorized(request, secret) {
-  const provided = cookieValue(request);
+async function isAuthorized(request, secret, cookieName = COOKIE_NAME) {
+  const provided = cookieValue(request, cookieName);
   if (!provided || !secret) return false;
   const expected = await sessionToken(secret);
   return constantTimeEqual(await sha256(provided), await sha256(expected));
@@ -426,6 +427,8 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const password = env.JUMPER_HOSTER_PASSWORD;
+    const hubPassword = env.JUMPER_HUB_PASSWORD || password;
+    const hubCookieName = env.JUMPER_HUB_PASSWORD ? HUB_COOKIE_NAME : COOKIE_NAME;
 
     if (url.hostname === IZI_CERRO_CORÁ_HOST) {
       if (url.pathname === IZI_LEADS_PATH) return submitIziLead(request, env);
@@ -502,23 +505,27 @@ export default {
     if (url.pathname === LOGIN_PATH && request.method === 'POST') {
       const form = await request.formData();
       const entered = String(form.get('password') || '');
-      const matches = password && constantTimeEqual(await sha256(entered), await sha256(password));
       const next = safeNext(String(form.get('next') || '/'));
+      const isHubLogin = next === '/';
+      const loginPassword = isHubLogin ? hubPassword : password;
+      const loginCookieName = isHubLogin ? hubCookieName : COOKIE_NAME;
+      const matches = loginPassword && constantTimeEqual(await sha256(entered), await sha256(loginPassword));
       if (!matches) return htmlResponse(loginPage(next, true), 401);
       const headers = new Headers({ Location: next, ...securityHeaders });
-      headers.append('Set-Cookie', `${COOKIE_NAME}=${await sessionToken(password)}; Path=/; Max-Age=${SESSION_SECONDS}; HttpOnly; Secure; SameSite=Lax`);
+      headers.append('Set-Cookie', `${loginCookieName}=${await sessionToken(loginPassword)}; Path=/; Max-Age=${SESSION_SECONDS}; HttpOnly; Secure; SameSite=Lax`);
       return new Response(null, { status: 303, headers });
     }
 
     if (url.pathname === LOGOUT_PATH && request.method === 'POST') {
       const headers = new Headers({ Location: '/', ...securityHeaders });
       headers.append('Set-Cookie', `${COOKIE_NAME}=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Lax`);
+      headers.append('Set-Cookie', `${HUB_COOKIE_NAME}=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Lax`);
       return new Response(null, { status: 303, headers });
     }
 
     if (url.hostname === IZI_LEADS_TEST_HOST && url.pathname === HUB_STATUS_PATH) {
       if (request.method !== 'GET') return new Response('Method Not Allowed', { status: 405, headers: { Allow: 'GET' } });
-      if (!(await isAuthorized(request, password))) return jsonResponse({ error: 'Acesso não autorizado.' }, 401);
+      if (!(await isAuthorized(request, hubPassword, hubCookieName))) return jsonResponse({ error: 'Acesso não autorizado.' }, 401);
       return jsonResponse(await hubStatus(env.CF_VERSION_METADATA));
     }
 
@@ -566,7 +573,7 @@ export default {
       return Response.redirect(url, 308);
     }
 
-    if (url.pathname === '/' && !(await isAuthorized(request, password))) {
+    if (['/', '/index', '/index/', '/index.html'].includes(url.pathname) && !(await isAuthorized(request, hubPassword, hubCookieName))) {
       return htmlResponse(loginPage('/'), 401);
     }
 

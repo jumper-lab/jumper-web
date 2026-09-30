@@ -36,7 +36,8 @@ test('host de prévia permanece fechado sem aplicação Access configurada', asy
 });
 
 test('prévia interna não inclui o formulário público', () => {
-  assert.equal(isPreviewAsset('/'), true);
+  assert.equal(isPreviewAsset('/'), false);
+  assert.equal(isPreviewAsset('/index.html'), false);
   assert.equal(isPreviewAsset('/briefing/'), false);
   assert.equal(isPreviewAsset('/briefing/api/briefings'), false);
 });

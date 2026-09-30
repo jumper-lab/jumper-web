@@ -72,6 +72,32 @@ test('bloqueia quando outro Worker responde no lugar do dev', async () => {
   }
 });
 
+test('segue só redirecionamentos dentro do mesmo site dev', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'hoster-dev-redirect-'));
+  try {
+    const inventory = {};
+    for (const slug of developmentSlugs) {
+      await mkdir(join(root, slug));
+      await writeFile(join(root, slug, 'index.html'), 'igual');
+      inventory[slug] = [`${slug}/index.html`];
+    }
+    const calls = [];
+    const fetchPublished = async (url) => {
+      calls.push(url);
+      const path = new URL(url).pathname;
+      if (path === '/rodeio/index.html') return new Response(null, { status: 307, headers: { Location: '/rodeio/' } });
+      if (path === '/casabelie/index.html') return new Response(null, { status: 307, headers: { Location: 'https://evil.example/collect' } });
+      return new Response('igual', { headers: { 'X-Jumper-Worker': 'jumper-hoster-dev' } });
+    };
+    const result = await compareUntouchedSites({ allowedSlug: 'izigym', root, inventory, fetchPublished });
+    assert.deepEqual(result.differences, ['casabelie/index.html: não foi possível comparar (redirecionamento saiu do site dev; token não enviado)']);
+    assert.ok(calls.includes('https://site.jumper.dev.br/rodeio/'));
+    assert.ok(calls.every((url) => new URL(url).hostname === 'site.jumper.dev.br'));
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
 test('detecta quando hub ou briefing são capturados pelo Worker dev', async () => {
   const expected = new Map([
     ['/', 401], ['/briefing/', 200], ['/briefing/styles.css', 200],
