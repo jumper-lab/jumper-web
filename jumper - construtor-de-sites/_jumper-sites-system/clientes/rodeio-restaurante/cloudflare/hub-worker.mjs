@@ -35,6 +35,9 @@ export default {
 
     const documentUrl = new URL('/index.html', url);
     const document = await env.ASSETS.fetch(new Request(documentUrl, request));
+    if (document.status !== 200) {
+      return hubHeaders(new Response('Hub temporariamente indisponível.', { status: 503 }), { 'Cache-Control': 'no-store, private' });
+    }
     return hubHeaders(document, { 'Cache-Control': 'no-store, private' });
   },
 };

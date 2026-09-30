@@ -44,6 +44,14 @@ test('authenticated hub serves only its own document', async () => {
   assert.deepEqual(env.calls, ['/', '/index.html']);
 });
 
+test('an asset redirect cannot send an authenticated user back to the hub root', async () => {
+  const env = environment(true);
+  env.ASSETS.fetch = async () => Response.redirect('https://site.jumper.dev.br/', 307);
+  const response = await hubWorker.fetch(new Request('https://site.jumper.dev.br/'), env);
+  assert.equal(response.status, 503);
+  assert.equal(response.headers.get('Location'), null);
+});
+
 test('hub routes do not capture client paths, login or the private document URL', async () => {
   const env = environment(true);
   for (const path of ['/izigym/', '/rodeio/', '/__jumper/login', '/index.html']) {
