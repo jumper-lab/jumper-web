@@ -1,0 +1,22 @@
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const root = join(dirname(fileURLToPath(import.meta.url)), '..');
+const readConfig = (name) => JSON.parse(readFileSync(join(root, name), 'utf8'));
+const live = readConfig('wrangler.jsonc');
+const dev = readConfig('wrangler.dev.jsonc');
+
+assert.equal(live.name, 'jumper-hoster');
+assert.equal(dev.name, 'jumper-hoster-dev');
+for (const key of ['account_id', 'main', 'compatibility_date', 'assets', 'version_metadata']) {
+  assert.deepEqual(dev[key], live[key], `${key} precisa corresponder ao Hoster publicado`);
+}
+assert.equal(dev.workers_dev, false);
+assert.equal(dev.preview_urls, false);
+assert.deepEqual(dev.routes, [], 'a cópia inicial não pode assumir nenhuma rota pública');
+for (const key of ['d1_databases', 'kv_namespaces', 'ratelimits', 'services', 'vars', 'triggers']) {
+  assert.equal(dev[key], undefined, `o Worker dev não pode herdar ${key} de produção`);
+}
+console.log('Config do jumper-hoster-dev validada: mesmo código/assets, sem rotas e sem dados de produção.');
