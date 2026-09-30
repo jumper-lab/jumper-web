@@ -33,7 +33,7 @@ html { background: var(--jumper-black); scroll-behavior: smooth; }
 .painel .logout svg { display: block; width: 16px; height: 16px; flex: none; }
 .painel .logout:hover { color: var(--apoio); }
 .painel .hub-main { width: min(var(--hub-width), 100%); margin: auto; padding: 0 var(--hub-gutter) var(--space-20); }
-.hub-intro { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(300px, .65fr); align-items: end; gap: clamp(32px, 6vw, 100px); padding: clamp(58px, 7vw, 100px) 0 clamp(64px, 8vw, 112px); }
+.hub-intro { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(300px, .65fr); align-items: start; gap: clamp(32px, 6vw, 100px); padding: clamp(36px, 4vw, 56px) 0 clamp(40px, 5vw, 64px); }
 .hero-eyebrow, .painel .section-label { display: flex; align-items: center; gap: 10px; margin: 0; color: var(--apoio); font: 650 11px/1.3 var(--font-sans); letter-spacing: var(--eyebrow-tracking); text-transform: uppercase; }
 .hero-eyebrow::before, .painel .section-label::before { content: ""; width: 6px; height: 6px; flex: none; border-radius: 50%; background: currentColor; }
 .hero-eyebrow span { color: var(--tinta-4); }
@@ -137,7 +137,7 @@ html { background: var(--jumper-black); scroll-behavior: smooth; }
 .painel .lightbox-link:hover { color: var(--jumper-purple); text-decoration: none; }
 .painel.lightbox-open { overflow: hidden; }
 @media (max-width: 900px) {
-  .hub-intro { grid-template-columns: 1fr; gap: 38px; }
+  .hub-intro { grid-template-columns: 1fr; gap: 30px; }
   .painel .briefing-tool { max-width: 620px; }
   .hub-details { gap: 36px; }
 }
@@ -149,7 +149,7 @@ html { background: var(--jumper-black); scroll-behavior: smooth; }
   .painel .wordmark img { width: 86px; }
   .painel .wordmark span { padding-left: 13px; font-size: 10px; }
   .painel .by { display: none; }
-  .hub-intro { padding: 57px 0 64px; }
+  .hub-intro { padding: 36px 0 44px; }
   .painel .hero-copy h1 { font-size: clamp(52px, 12vw, 78px); }
   .directory-head { display: block; }
   .directory-head > p { margin-top: 11px; max-width: none; }
