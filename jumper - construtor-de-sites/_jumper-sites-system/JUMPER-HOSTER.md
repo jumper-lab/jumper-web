@@ -45,6 +45,21 @@ Vercel pode ser usada somente quando houver pedido explícito. Ela não é orige
 
 ## Publicação segura — GitHub primeiro, Cloudflare depois
 
+### Cópia inicial do Worker de desenvolvimento
+
+`clientes/rodeio-restaurante/wrangler.dev.jsonc` prepara o Worker
+`jumper-hoster-dev` com o mesmo código e pacote de assets do Hoster, mas sem
+rotas públicas, acesso `workers.dev`, D1, KV ou limitador de produção. A
+configuração é verificada por `npm run verify:dev-config`. A cópia inicial foi
+comparada com a versão ativa `6c97d499-c969-43eb-8ec8-d3502bb622ad` do
+`jumper-hoster`; os documentos protegidos passaram no preflight. Esse teste
+não garante equivalência de todos os assets nem autoriza transferir tráfego.
+Enquanto `routes` estiver vazio, **todos os links continuam no Worker original**.
+Ativar qualquer caminho de desenvolvimento exige uma PR separada, teste do
+conteúdo e das chamadas de rede, sem capturar hub, domínios oficiais ou APIs
+de rastreamento. Nenhum deploy do Worker de produção é necessário para criar
+o Worker dev.
+
 1. Faça os ajustes em uma branch local isolada, valide-os e abra uma PR para `main` no GitHub.
 2. Após o merge, use um checkout **limpo e atualizado de `main`**. Um merge não publica o hub. Não há workflow de GitHub Actions que faça o deploy do `jumper-hoster`.
 3. Prepare o pacote completo com `npm run build:cloudflare` em `clientes/rodeio-restaurante`. Esse build inclui as outras páginas do Worker; não existe deploy de um único card pelo Wrangler.
