@@ -1,0 +1,133 @@
+/* Hub visual layer. Foundations and painel are pinned to Jumper DS 3.15.0. */
+html { background: var(--jumper-black); scroll-behavior: smooth; }
+.painel[data-theme="dark"] {
+  --hub-width: 1320px;
+  --hub-gutter: clamp(22px, 4.2vw, 64px);
+  display: block;
+  min-height: 100svh;
+  background: var(--surface-page);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: var(--ui-md);
+  font-variation-settings: "wght" var(--voz-fala);
+}
+.painel :focus-visible { outline: 2px solid var(--apoio); outline-offset: 4px; box-shadow: none; }
+.painel .site-header {
+  width: min(var(--hub-width), 100%);
+  min-height: 78px;
+  margin: auto;
+  padding: 0 var(--hub-gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--linha-1);
+}
+.painel .wordmark { display: inline-flex; align-items: center; gap: 19px; color: var(--fg); text-decoration: none; }
+.painel .wordmark:hover { text-decoration: none; }
+.painel .wordmark img { display: block; width: 105px; height: auto; }
+.painel .wordmark span { display: block; padding-left: 19px; border-left: 1px solid var(--linha-1); font: 650 12px/1 var(--font-sans); letter-spacing: var(--rotulo-tracking); text-transform: uppercase; }
+.painel .top-right { display: flex; align-items: center; gap: 28px; }
+.painel .by { font: 500 10px/1 var(--font-mono); letter-spacing: var(--rotulo-tracking); text-transform: uppercase; color: var(--tinta-4); }
+.painel .logout { appearance: none; padding: 6px 0; border: 0; background: transparent; color: var(--tinta-3); font: 650 12px/1 var(--font-sans); letter-spacing: .06em; text-transform: none; cursor: pointer; }
+.painel .logout:hover { color: var(--fg); }
+.painel .hub-main { width: min(var(--hub-width), 100%); margin: auto; padding: 0 var(--hub-gutter) var(--space-20); }
+.hub-intro { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(300px, .65fr); align-items: end; gap: clamp(32px, 6vw, 100px); padding: clamp(58px, 7vw, 100px) 0 clamp(64px, 8vw, 112px); }
+.hero-eyebrow, .painel .section-label { display: flex; align-items: center; gap: 10px; margin: 0; color: var(--apoio); font: 650 11px/1.3 var(--font-sans); letter-spacing: var(--eyebrow-tracking); text-transform: uppercase; }
+.hero-eyebrow::before, .painel .section-label::before { content: ""; width: 6px; height: 6px; flex: none; border-radius: 50%; background: currentColor; }
+.hero-eyebrow span { color: var(--tinta-4); }
+.painel .hero-copy h1 { max-width: 780px; margin: 21px 0 0; color: var(--fg); font: 780 clamp(58px, 6.5vw, 104px)/.98 var(--font-sans); letter-spacing: -.065em; text-transform: none; }
+.hero-copy h1 span { color: var(--tinta-3); font-variation-settings: "wght" var(--voz-sussurro); }
+.painel .lead { max-width: 540px; margin: 26px 0 0; color: var(--tinta-3); font: 420 clamp(17px, 1.6vw, 20px)/1.4 var(--font-sans); }
+.painel .briefing-tool { display: block; min-width: 0; margin: 0 0 4px; padding: 24px 0 0; border: 0; border-top: 2px solid var(--traco); border-radius: 0; background: transparent; }
+.painel .briefing-copy { max-width: none; }
+.painel .briefing-tool .tag { color: var(--apoio); }
+.painel .tag { display: flex; align-items: center; gap: 9px; font: 650 10px/1.3 var(--font-sans); letter-spacing: var(--rotulo-tracking); text-transform: uppercase; }
+.painel .tag::before { content: ""; display: block; width: 5px; height: 5px; flex: none; border-radius: 50%; background: currentColor; }
+.painel .briefing-tool h2 { margin: 13px 0 8px; color: var(--fg); font: 650 27px/1.1 var(--font-sans); letter-spacing: -.035em; }
+.painel .briefing-tool .description { max-width: 410px; color: var(--tinta-3); font: 420 14px/1.5 var(--font-sans); }
+.painel .briefing-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 23px; }
+.painel .briefing-action, .painel .briefing-copy-link { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 42px; padding: 0 17px; border-radius: var(--radius-pill); font: 650 11px/1 var(--font-sans); letter-spacing: 0; text-transform: none; }
+.painel .briefing-copy-link { appearance: none; cursor: pointer; }
+.painel .briefing-action { background: var(--apoio); color: var(--jumper-black); border: 1px solid var(--apoio); }
+.painel .briefing-action:hover { background: var(--jumper-orange-soft); color: var(--jumper-black); border-color: var(--jumper-orange-soft); }
+.painel .briefing-copy-link { background: transparent; color: var(--fg); border: 1px solid var(--linha-1); }
+.painel .briefing-copy-link:hover { background: var(--surface-card); color: var(--fg); border-color: var(--tinta-3); }
+.painel .directory { padding: clamp(30px, 4vw, 55px) clamp(24px, 4vw, 55px) clamp(26px, 3vw, 42px); border-radius: var(--radius-md); background: var(--surface-page); color: var(--fg); }
+.directory-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; padding-bottom: 25px; border-bottom: 1px solid var(--linha-1); }
+.painel .directory .section-label { color: var(--apoio); }
+.painel .directory-head h2 { margin: 10px 0 0; font: 780 clamp(36px, 4vw, 54px)/1 var(--font-sans); letter-spacing: -.055em; }
+.directory-head > p { max-width: 230px; margin: 0 0 3px; color: var(--tinta-3); font: 420 13px/1.45 var(--font-sans); }
+.painel .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 42px; margin: 0; }
+.painel .card { min-height: 0; border: 0; border-bottom: 1px solid var(--linha-1); border-radius: 0; background: transparent; box-shadow: none; transition: background var(--duration) ease; }
+.painel .card:hover, .painel .card:focus-within { transform: none; border-color: var(--linha-1); box-shadow: none; }
+.painel .card-open { width: 100%; min-height: 186px; padding: 24px 0 21px; border-radius: 0; color: var(--fg); }
+.painel .card-open { appearance: none; display: flex; flex-direction: column; align-items: stretch; border: 0; background: transparent; text-align: left; font: inherit; cursor: pointer; }
+.painel .card-open:focus-visible { outline: 2px solid var(--apoio); outline-offset: -2px; }
+.painel .card .tag { color: var(--apoio); }
+.painel .card h2 { margin: 10px 0 6px; font: 780 30px/1.08 var(--font-sans); letter-spacing: -.045em; }
+.painel .card .description { max-width: 390px; color: var(--tinta-3); font: 420 14px/1.4 var(--font-sans); }
+.painel .description { margin: 0; }
+.painel .card-action { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-top: auto; padding: 17px 0 0; border: 0; color: var(--tinta-3); font: 650 11px/1 var(--font-sans); letter-spacing: .03em; text-transform: none; }
+.painel .card-open:hover .card-action { color: var(--apoio); }
+.painel .card-action .arrow { display: grid; place-items: center; width: 31px; height: 31px; border: 1px solid var(--linha-1); border-radius: 50%; color: var(--fg); font-size: 17px; }
+.painel .card-open:hover .arrow { border-color: var(--apoio); color: var(--apoio); }
+.painel .arrow { line-height: 1; transition: transform var(--duration-slow) var(--ease-jumper); }
+.painel .card-open:hover .arrow, .painel .card-open:focus-visible .arrow { transform: translateX(3px); }
+.hub-details { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(36px, 6vw, 86px); padding-top: clamp(64px, 7vw, 100px); }
+.painel .project-note, .painel .system-status { min-width: 0; margin: 0; padding: 24px 0 0; border: 0; border-top: 1px solid var(--linha-1); border-radius: 0; background: transparent; }
+.painel .project-note h2, .painel .system-status h2 { margin: 0 0 10px; color: var(--fg); font: 650 23px/1.15 var(--font-sans); letter-spacing: -.035em; }
+.painel .project-note > p, .painel .system-status > p { color: var(--tinta-3); font: 420 13px/1.5 var(--font-sans); }
+.painel .project-types, .painel .system-status-grid { display: grid; grid-template-columns: 1fr; gap: 0; margin-top: 20px; }
+.painel .project-types div, .painel .system-status-item { min-width: 0; padding: 15px 0; border-top: 1px solid var(--linha-2); }
+.painel .project-types dt, .painel .system-status-item strong { color: var(--fg); font: 650 12px/1.35 var(--font-sans); letter-spacing: 0; text-transform: none; }
+.painel .project-types dd, .painel .system-status-item small { margin: 5px 0 0; color: var(--tinta-4); font: 420 12px/1.45 var(--font-sans); }
+.painel .project-types a, .painel .system-status-item a { color: var(--tinta-2); text-decoration: underline; text-decoration-color: var(--linha-1); text-underline-offset: 3px; }
+.painel .project-types dd a { color: var(--fg-muted); }
+.painel .project-types a:hover, .painel .system-status-item a:hover { color: var(--apoio); text-decoration-color: currentColor; }
+.painel .system-status-item a, .painel .system-status-item span { display: block; margin-top: 5px; font: 500 11px/1.5 var(--font-mono); overflow-wrap: anywhere; }
+.painel .system-status .system-summary { margin-top: 20px; padding: 14px 0 0 13px; border-left: 2px solid var(--traco); color: var(--tinta-2); font: 520 12px/1.5 var(--font-sans); }
+.painel footer { width: min(var(--hub-width), 100%); margin: auto; padding: 24px var(--hub-gutter) 28px; border-top: 1px solid var(--linha-1); }
+.painel .footer-copy { color: var(--tinta-4); font: 500 10px/1 var(--font-mono); letter-spacing: var(--rotulo-tracking); text-transform: uppercase; }
+.painel .link-lightbox { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; padding: 24px; background: color-mix(in srgb, var(--jumper-black) 72%, transparent); backdrop-filter: blur(8px); opacity: 0; visibility: hidden; transition: opacity var(--duration) ease, visibility var(--duration) ease; }
+.painel .link-lightbox.is-open { opacity: 1; visibility: visible; }
+.painel .lightbox-panel { width: min(100%, 520px); max-height: calc(100svh - 48px); overflow: auto; padding: 29px; border: 1px solid var(--gray-200); border-radius: var(--radius-md); background: var(--jumper-white); color: var(--gray-800); box-shadow: var(--shadow-deck); transform: translateY(12px); transition: transform var(--duration-slow) var(--ease-jumper); }
+.painel .link-lightbox.is-open .lightbox-panel { transform: translateY(0); }
+.painel .lightbox-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; padding-bottom: 20px; border-bottom: 1px solid var(--gray-150); }
+.painel .lightbox-head .tag { color: var(--jumper-purple); }
+.painel .lightbox-head h2 { color: var(--gray-800); font: 780 35px/1 var(--font-sans); letter-spacing: -.045em; }
+.painel .lightbox-close { appearance: none; flex: none; width: 36px; height: 36px; border: 1px solid var(--gray-200); border-radius: 50%; background: var(--jumper-white); color: var(--gray-800); cursor: pointer; font: 24px/1 Arial, sans-serif; }
+.painel .lightbox-close:hover { background: var(--gray-050); }
+.painel .lightbox-links { display: grid; margin-top: 6px; }
+.painel .lightbox-link { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--gray-150); color: var(--gray-800); font: 650 13px/1.3 var(--font-sans); letter-spacing: 0; text-transform: none; }
+.painel .lightbox-link:hover { color: var(--jumper-purple); text-decoration: none; }
+.painel.lightbox-open { overflow: hidden; }
+@media (max-width: 900px) {
+  .hub-intro { grid-template-columns: 1fr; gap: 38px; }
+  .painel .briefing-tool { max-width: 620px; }
+  .hub-details { gap: 36px; }
+}
+@media (max-width: 700px) {
+  .painel .site-header { min-height: 65px; }
+  .painel .wordmark img { width: 86px; }
+  .painel .wordmark span { padding-left: 13px; font-size: 10px; }
+  .painel .by { display: none; }
+  .hub-intro { padding: 57px 0 64px; }
+  .painel .hero-copy h1 { font-size: clamp(52px, 12vw, 78px); }
+  .directory-head { display: block; }
+  .directory-head > p { margin-top: 11px; max-width: none; }
+  .painel .grid, .hub-details { grid-template-columns: 1fr; }
+  .hub-details { padding-top: 66px; gap: 48px; }
+  .painel .card-open { min-height: 170px; }
+}
+@media (max-width: 480px) {
+  .painel .hero-copy h1 { font-size: 51px; }
+  .painel .lead { font-size: 17px; }
+  .painel .briefing-actions { flex-direction: column; align-items: stretch; }
+  .painel .briefing-action, .painel .briefing-copy-link { width: 100%; }
+  .painel .directory { padding: 27px 21px 21px; }
+  .painel .card h2 { font-size: 27px; }
+  .painel .lightbox-panel { padding: 23px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .painel *, .painel *::before, .painel *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}

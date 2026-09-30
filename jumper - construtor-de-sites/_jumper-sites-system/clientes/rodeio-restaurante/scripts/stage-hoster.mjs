@@ -47,6 +47,8 @@ await mkdir(clientTarget, { recursive: true });
 await cp(source, clientTarget, { recursive: true });
 await cp(join(projectRoot, 'cloudflare', 'fonts'), fontsTarget, { recursive: true });
 await cp(join(projectRoot, 'cloudflare', 'favicon-jumper.png'), join(target, 'favicon-jumper.png'));
+await cp(join(projectRoot, 'cloudflare', 'design-system', '3.15.0'), join(target, 'hub-design-system', '3.15.0'), { recursive: true });
+await cp(join(projectRoot, 'cloudflare', 'hub-redesign.css'), join(target, 'hub-redesign.css'));
 await cp(iziSource, iziTarget, { recursive: true });
 await cp(iziOfficialSource, iziOfficialTarget, { recursive: true });
 await writeFile(
