@@ -65,7 +65,8 @@ function git(...args) {
 }
 
 function assertGitHubFirst() {
-  if (git('branch', '--show-current') !== 'main') throw new Error('Deploy permitido somente de main. Faça PR e merge antes.');
+  const branch = git('branch', '--show-current');
+  if (branch && branch !== 'main') throw new Error('Deploy permitido somente de main. Faça PR e merge antes.');
   if (git('status', '--porcelain', '--untracked-files=no')) throw new Error('Há alterações locais rastreadas. Use um checkout limpo.');
   const local = git('rev-parse', 'HEAD');
   const remote = git('ls-remote', 'origin', 'refs/heads/main').split(/\s+/)[0];
@@ -107,6 +108,15 @@ async function domainDifferences() {
 }
 
 async function activeVersion() {
+  if (!process.env.CLOUDFLARE_API_TOKEN) {
+    const deployments = wranglerJson('deployments', 'list');
+    if (!Array.isArray(deployments) || !deployments.length) throw new Error('Wrangler não confirmou o deployment atual.');
+    const deployment = deployments.sort((a, b) => a.created_on.localeCompare(b.created_on)).at(-1);
+    if (deployment.versions?.length !== 1 || deployment.versions[0].percentage !== 100) {
+      throw new Error('O Worker não tem uma única versão ativa a 100%.');
+    }
+    return { deploymentId: deployment.id, versionId: deployment.versions[0].version_id };
+  }
   const payload = await (await cloudflareGet('/deployments')).json();
   if (!payload.success) throw new Error('Cloudflare não confirmou o deployment atual.');
   const deployment = payload.result?.deployments?.[0];
@@ -114,6 +124,23 @@ async function activeVersion() {
     throw new Error('O Worker não tem uma única versão ativa a 100%.');
   }
   return { deploymentId: deployment.id, versionId: deployment.versions[0].version_id };
+}
+
+function wranglerJson(...args) {
+  return JSON.parse(execFileSync('npx', ['--no-install', 'wrangler', ...args, '--json'], { cwd: projectRoot, encoding: 'utf8' }));
+}
+
+function configuredBindingIds(config) {
+  const bindings = [...config.matchAll(/"binding"\s*:\s*"([^"]+)"\s*,\s*"database_name"\s*:\s*"[^"]+"\s*,\s*"database_id"\s*:\s*"([^"]+)"/g)];
+  return new Map(bindings.map(([, name, id]) => [name, id]));
+}
+
+async function bindingDifferences(versionId) {
+  const version = wranglerJson('versions', 'view', versionId);
+  const active = new Map((version.resources?.bindings || []).filter((binding) => binding.type === 'd1').map((binding) => [binding.name, binding.database_id]));
+  const config = await readFile(join(projectRoot, 'wrangler.jsonc'), 'utf8');
+  const configured = configuredBindingIds(config);
+  return [...active].flatMap(([name, id]) => configured.get(name) === id ? [] : [`D1: vínculo ativo ${name} (${id}) difere do pacote`]);
 }
 
 async function liveWorkerFeatures() {
@@ -127,11 +154,17 @@ export async function runPreflight({ enforceGit = true, candidateAssets = assets
   if (enforceGit) assertGitHubFirst();
   const before = await activeVersion();
   const candidateWorker = await readFile(join(projectRoot, 'cloudflare/worker.mjs'), 'utf8');
-  const liveWorker = await liveWorkerFeatures();
   const differences = criticalWorkerFeatures
-    .filter((feature) => liveWorker.includes(feature) && !candidateWorker.includes(feature))
-    .map((feature) => `Worker: recurso ativo ausente no código candidato (${feature})`);
-  differences.push(...await domainDifferences());
+    .filter((feature) => !candidateWorker.includes(feature))
+    .map((feature) => `Worker: recurso crítico ausente no código candidato (${feature})`);
+  if (process.env.CLOUDFLARE_API_TOKEN) {
+    const liveWorker = await liveWorkerFeatures();
+    differences.push(...criticalWorkerFeatures
+      .filter((feature) => liveWorker.includes(feature) && !candidateWorker.includes(feature))
+      .map((feature) => `Worker: recurso ativo ausente no código candidato (${feature})`));
+    differences.push(...await domainDifferences());
+  }
+  differences.push(...await bindingDifferences(before.versionId));
   differences.push(...await compareProtectedPages((asset) => readFile(join(candidateAssets, asset))));
   const after = await activeVersion();
   if (before.versionId !== after.versionId || before.deploymentId !== after.deploymentId) {
