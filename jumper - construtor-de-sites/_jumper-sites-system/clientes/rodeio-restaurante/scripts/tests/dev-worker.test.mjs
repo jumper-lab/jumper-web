@@ -10,6 +10,10 @@ test('somente os sete caminhos de desenvolvimento são permitidos', () => {
   }
   for (const url of [
     'https://site.jumper.dev.br/',
+    'https://site.jumper.dev.br/briefing/',
+    'https://site.jumper.dev.br/briefing/api/briefings',
+    'https://site.jumper.dev.br/__dev/hub/',
+    'https://site.jumper.dev.br/__dev/briefing/',
     'https://site.jumper.dev.br/api/izigym/leads',
     'https://site.jumper.dev.br/__jumper/system-status',
     'https://site.jumper.dev.br/_official/izigym/index.html',
@@ -21,6 +25,14 @@ test('somente os sete caminhos de desenvolvimento são permitidos', () => {
 test('responde 404 fora dos caminhos dev antes de acessar qualquer binding', async () => {
   const response = await devWorker.fetch(new Request('https://www.izigym.com.br/'), {});
   assert.equal(response.status, 404);
+});
+
+test('host de prévia permanece fechado sem aplicação Access configurada', async () => {
+  const assets = { fetch: async () => { throw new Error('assets não deveriam ser lidos'); } };
+  for (const path of ['/', '/briefing/', '/__jumper/system-status']) {
+    const response = await devWorker.fetch(new Request(`https://site-dev.jumper.dev.br${path}`), { ASSETS: assets });
+    assert.equal(response.status, 404, path);
+  }
 });
 
 test('marca uma resposta dev sem mudar seu corpo', async () => {
