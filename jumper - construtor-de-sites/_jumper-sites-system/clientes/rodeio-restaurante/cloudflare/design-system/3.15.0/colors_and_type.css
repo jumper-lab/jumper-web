@@ -1,0 +1,577 @@
+/* ==========================================================
+   Jumper Design System — colors_and_type
+   Single source of truth for color + type tokens.
+   Pair with styles/components.css for component patterns.
+   ========================================================== */
+
+/* Official Haffer family — uploaded by Jumper.
+   Two variable axes: weight (100→900) and italic.
+   We register the upright + italic variables separately so the browser
+   can pick the right file without a slnt/ital axis shuffle. */
+
+@font-face {
+  font-family: "Haffer";
+  src: url("fonts/HafferUprightVF.ttf") format("truetype-variations"),
+       url("fonts/HafferVF.ttf")        format("truetype-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Haffer";
+  src: url("fonts/HafferItalicVF.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Official JetBrains Mono — variable weight axis (100→800), upright + italic.
+   Used by --font-mono for numbers, indexed lists and technical metadata. */
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("fonts/JetBrainsMono[wght].ttf") format("truetype-variations");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("fonts/JetBrainsMono-Italic[wght].ttf") format("truetype-variations");
+  font-weight: 100 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  /* ---------- Brand ---------- */
+  --jumper-orange:        #fa4721;
+  --jumper-orange-soft:   #ff6b47;   /* secondary accent; interaction/gradient only */
+  --jumper-orange-hover:  var(--jumper-orange-soft);
+  --jumper-purple:        #8143a7;   /* secondary; used in gradient/witness contexts only */
+  --jumper-black:         #0a0a0a;
+  --jumper-white:         #ffffff;
+  --jumper-cream:         #fffaf4;   /* light-overlay color over the auth gradient */
+
+  /* ---------- Neutral scale ---------- */
+  --gray-950: #0a0a0a;
+  --gray-900: #1a1a1a;   /* canonical dark card surface */
+  --gray-850: #181818;
+  --gray-800: #21272f;
+  --gray-700: #3e3d40;
+  --gray-600: #585e6b;
+  --gray-500: #6e6b6b;
+  --gray-400: #9ba3b0;
+  --gray-300: #a09d9d;
+  --gray-200: #cfcbc8;
+  --gray-150: #e2e4e9;
+  --gray-100: #edeff3;
+  --gray-050: #f7f7f7;
+
+/* Brand silver — the cool-gray tertiary swatch from the official
+   Estudio Cru identity. Appears in content card backgrounds and
+   applications. rgb(198,203,212) confirmed from Figma metadata. */
+--silver:  #c6cbd4;
+--silver-light: #e8eaed;
+  --success: #22c55e;
+  --warning: #eab308;
+  --error:   #ef4444;
+  --info:    #3b82f6;
+
+  /* ---------- Dataviz ----------
+     Stable categorical order shared by Flow and deck reports. Semantic roles
+     use the same tokens: chart-3 positive, chart-4 warning, chart-5 negative,
+     chart-6 cool contrast line over warm bars. */
+  --chart-1: #fa4721;
+  --chart-2: #a96bc7;
+  --chart-3: #22c55e;
+  --chart-4: #eab308;
+  --chart-5: #ef4444;
+  --chart-6: #3b82f6;
+
+  /* Fundo de gráfico: o corpo do funil de bandas e o trilho do dot plot. Não é
+     linha de grade — é a forma que liga as etapas, e precisa ser legível sem
+     competir com a série. Medido em 18/09/2026 sobre o relatório-página: no
+     branco o cinza claro; no preto, o do bloco dark abaixo. */
+  --chart-body: #e8eaee;
+
+  /* ---------- Video Editorial ----------
+     Modo escuro editorial de vídeo (canal). Constantes: vídeo não tem tema
+     claro — vivem no :root, nunca no bloco dark. Prefixo video- para não
+     colidir com os grupos surface e fg do tema web. Primeiro consumidor:
+     jumper-channel (frame preset gerado). */
+  --video-canvas: #080807;   /* fundo de frame — mais fundo que --jumper-black */
+  --video-ink:    #f1ecdf;   /* texto principal sobre canvas */
+  --video-muted:  #9b958a;   /* texto secundário/labels sobre canvas */
+  --video-panel:  #151411;   /* superfície de painel/card sobre canvas */
+
+  /* ---------- Foreground / surfaces (light is default) ---------- */
+  --surface-page:         #ffffff;
+  --surface-page-inverse: #0a0a0a;
+  --surface-card:         #f7f7f7;
+  --surface-card-inverse: #1a1a1a;
+  --surface-muted:        #e2e4e9;
+  --surface-muted-inverse:#1a1a1a;
+
+  --fg:                #21272f;
+  --fg-inverse:        #ffffff;
+  --fg-muted:          #585e6b;
+  --fg-muted-inverse:  #a0a0a0;
+
+  --border:            #ccd0d7;
+  --border-inverse:    #333333;
+  --focus-ring:        0 0 0 2px rgba(250, 71, 33, 0.35);
+
+  /* ---------- Consumer aliases ----------
+     Flow/shadcn and the standalone deck adapter consume the same foundation
+     with different naming conventions. Aliases prevent local token forks. */
+  --background: var(--surface-page);
+  --card: var(--surface-card);
+  --foreground: var(--fg);
+  --muted: var(--surface-muted);
+  --muted-foreground: var(--fg-muted);
+  --popover: var(--surface-card);
+  --popover-foreground: var(--fg);
+  --destructive: var(--error);
+
+  /* ---------- Type families ---------- */
+  --font-sans: "Haffer", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* ---------- Type weights (variable axis) ---------- */
+  --w-light:    300;  /* @kind font */
+  --w-regular:  400;  /* @kind font */
+  --w-medium:   500;  /* @kind font */
+  --w-semibold: 600;  /* @kind font */
+  --w-bold:     700;  /* @kind font */
+  --w-black:    900;  /* @kind font */
+
+  /* ---------- Editorial / site scale ---------- */
+  --type-detail:    12px;
+  --type-body:      16px;
+  --type-lede:      20px;
+  --type-title:     58px;   /* section H2 */
+  --type-statement: 72px;   /* hero/manifesto */
+  --type-display:   92px;   /* display / deck cover */
+  --type-metric:   124px;   /* metric hero */
+
+  /* ---------- Product / app scale ---------- */
+  --ui-xs:    10px;
+  --ui-sm:    12px;
+  --ui-md:    14px;
+  --ui-lg:    16px;
+  --ui-title: 24px;
+
+  /* ---------- Spacing ---------- */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-30: 120px;
+
+  /* ---------- Layout ---------- */
+  --wrap:        1200px;
+  --wrap-wide:   1440px;
+  --page-pad:    clamp(24px, 4vw, 48px);
+  --section-pad: clamp(72px, 10vw, 120px);
+
+  /* ---------- Radius ---------- */
+  --radius-xs:   4px;
+  --radius-sm:   6px;
+  --radius-md:   8px;   /* canonical for cards */
+  --radius-lg:   12px;
+  --radius-xl:   18px;  /* glass auth card */
+  --radius-pill: 999px;
+
+  /* ---------- Shadow ---------- */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-deck: 0 24px 80px rgba(0, 0, 0, 0.42);
+
+  /* ---------- Motion ---------- */
+  --ease-jumper:   cubic-bezier(0.16, 1, 0.3, 1);  /* @kind other */
+  --duration-fast: 150ms;  /* @kind other */
+  --duration:      200ms;  /* @kind other */
+  --duration-slow: 300ms;  /* @kind other */
+}
+
+/* ==========================================================
+   3.3 — camadas novas, ao lado das antigas. Nada abaixo substitui um
+   token existente; a 4.0 decide o que sai. Fonte: revisão "Jumper
+   Visto de Dentro" (setembro de 2026).
+   ========================================================== */
+
+:root {
+  /* ---------- Neutro de um matiz ----------
+     Um só matiz (250°, o da prata oficial #c6cbd4), croma constante e
+     quase nulo, luminosidade em passos perceptuais. Substitui, na 4.0, a
+     escala --gray-* que alterna frio e quente. */
+  --neutro-950: oklch(0.13 0.008 250);
+  --neutro-900: oklch(0.20 0.010 250);
+  --neutro-800: oklch(0.27 0.012 250);
+  --neutro-700: oklch(0.36 0.012 250);
+  --neutro-600: oklch(0.46 0.012 250);
+  --neutro-500: oklch(0.56 0.012 250);
+  --neutro-400: oklch(0.67 0.012 250);
+  --neutro-300: oklch(0.76 0.012 250);
+  --neutro-200: oklch(0.84 0.012 250);   /* = prata oficial */
+  --neutro-150: oklch(0.89 0.010 250);
+  --neutro-100: oklch(0.93 0.008 250);
+  --neutro-050: oklch(0.97 0.005 250);
+
+  /* ---------- Tinta e linha ----------
+     Quatro tintas e duas linhas em currentColor: valem sobre preto e
+     sobre branco sem tema. Substituem os rgba de branco e preto soltos. */
+  --tinta-1: currentColor;                                        /* título, número, decisão */
+  --tinta-2: color-mix(in srgb, currentColor 84%, transparent);   /* parágrafo, chamada */
+  --tinta-3: color-mix(in srgb, currentColor 68%, transparent);   /* lede, apoio, nota */
+  --tinta-4: color-mix(in srgb, currentColor 50%, transparent);   /* rótulo, metadado */
+  --linha-1: color-mix(in srgb, currentColor 14%, transparent);   /* divisor, borda de painel */
+  --linha-2: color-mix(in srgb, currentColor 8%, transparent);    /* hover de linha, grade */
+
+  /* ---------- Vozes ----------
+     Cinco pesos da Haffer com nome. 700 e 850 são meio-passo óptico,
+     permitidos só em display. */
+  --voz-sussurro: 420;  /* o em dos títulos, a palavra secundária */
+  --voz-fala:     520;  /* corpo, navegação, tabela */
+  --voz-firme:    650;  /* eyebrow, botão, rótulo */
+  --voz-tese:     780;  /* statement, título, insight */
+  --voz-grito:    900;  /* display, métrica hero, capa */
+
+  /* ---------- Rótulo ----------
+     Um rastreio para toda caixa-alta pequena. O eyebrow mantém 0.18em por
+     ser o único com ponto. */
+  --rotulo-tracking: 0.14em;
+  --eyebrow-tracking: 0.18em;
+
+  /* ---------- Movimento ----------
+     Entrada em cascata: passo entre irmãos e duração de entrada.
+     A contagem do numeral tem tempo PRÓPRIO, e mais longo: um número que
+     conta no tempo de uma entrada não é lido, é um borrão. É o tempo que o
+     cânone de vídeo reserva ao papel `numeral` (video/CANON.md). */
+  --stagger:        70ms;
+  --duration-enter: 600ms;
+  --duration-conta: 1200ms;
+
+  /* ---------- Símbolo ----------
+     Citação: o símbolo atrás da bola do avatar. J a 0.88 do diâmetro,
+     deslocado 0.24 para fora; X centrado, bola cobrindo 0.60 da largura. */
+  --citacao-j-largura:   0.88;
+  --citacao-j-desloc:    0.24;
+  --citacao-x-cobertura: 0.60;
+  --simbolo-proporcao:   1.4936;  /* altura do J dividida pela largura */
+
+  /* ---------- Trama ----------
+     Três alturas do símbolo repetido; as pontas quase se encostam. */
+  --trama-sm: 22px;
+  --trama-md: 30px;
+  --trama-lg: 34px;
+}
+
+/* ==========================================================
+   3.4 — dispositivos como componentes. Tokens dos dispositivos novos
+   (expoente, contra, metric, quadro de vídeo). A paleta do vídeo é a da
+   3.2 (--video-canvas/ink/muted/panel). Continua aditivo. Fonte: revisão "Jumper Visto de Dentro",
+   Propostas 04, 05, 06 e 08.
+   ========================================================== */
+
+:root {
+  /* ---------- Símbolo em uso ----------
+     Proporção do X (altura sobre largura) e a escala do expoente:
+     o X no canto do número a 0.24 do corpo. */
+  --simbolo-x-proporcao: 0.8424;
+  --expoente-escala:     0.24;
+  --contra-x:            32px;   /* largura do X entre A e B */
+  --fundo-x-opacidade:   0.1;    /* o X atrás de um cruzamento */
+
+  /* ---------- Metric ----------
+     Quatro densidades e o hero. O tamanho é do valor; a anatomia não muda. */
+  --metric-faixa:    36px;
+  --metric-bloco:    40px;
+  --metric-painel:   40px;
+  --metric-destaque: 56px;
+  --metric-hero:     96px;
+
+  /* ---------- Os dois acentos (3.5) ----------
+     A casa tem duas cores de marca e cada tema decide o papel de cada uma.
+     APOIO é a cor que trabalha: abertura de seção, botão primário, sinal de
+     tendência, rótulo de marca, o ponto que afirma. TRAÇO é a cor que só
+     marca: sublinhado, filete, borda, régua — nunca preenchimento, nunca
+     texto (dispositivo .traco em ../ui/styles.css).
+
+     A troca não é gosto, é contraste medido. Sobre branco o laranja dá
+     3,51:1 e o roxo 6,37:1; sobre preto o laranja dá 5,65:1 e o roxo
+     3,11:1. Cada cor apoia no tema onde passa no critério de texto de
+     4,5:1 e vira traço no tema onde reprova. Traço não é texto, então o
+     critério de texto não se aplica a ele.
+
+     Componente nunca cita cor de marca: cita papel, e o tema resolve.
+     A cor de apoio continua rara, nos dois temas. */
+  --apoio: var(--jumper-purple);
+  --traco: var(--jumper-orange);
+
+  /* ---------- Aparelho (3.6) ----------
+     A moldura que mostra produto na tela. Proporções são especificação
+     pública de aparelho; o resto é desenho da casa: aro fino, halo
+     rebaixado, raio proporcional à largura. Sem entalhe, sem alto-falante,
+     sem botão físico. A altura sai da proporção, nunca de JS. */
+  --aparelho-celular-proporcao:   2.1667;  /* 19,5:9, altura sobre largura */
+  --aparelho-navegador-proporcao: 0.625;   /* 16:10 */
+  --aparelho-raio-fator:          0.145;   /* do raio sobre a largura, no celular */
+  --aparelho-moldura-fator:       0.046;   /* da borda de tela sobre a largura */
+  --aparelho-aro:                 1px;
+  --aparelho-halo:                4px;
+  --aparelho-chrome-altura:       34px;    /* barra do navegador; fixa, não escala */
+
+  /* ---------- Ficha (3.6) ----------
+     Largura padrão da coluna de chave. */
+  --ficha-coluna-chave: 200px;
+}
+
+/* ---------- Dark / inverse theme ---------- */
+[data-theme="dark"],
+.theme-dark {
+  --surface-page: #0a0a0a;
+  --surface-card: #1a1a1a;
+  --surface-muted:#1a1a1a;
+  --fg:           #ffffff;
+  --fg-muted:     #a0a0a0;
+  --border:       #333333;
+  --chart-body:   #1f1f21;
+  /* Os aliases de consumo precisam ser redeclarados aqui: uma custom
+     property com var() é resolvida onde é declarada, então os aliases do
+     :root ficariam claros num trecho escuro da página (3.3). */
+  --background: var(--surface-page);
+  --card: var(--surface-card);
+  --foreground: var(--fg);
+  --muted: var(--surface-muted);
+  --muted-foreground: var(--fg-muted);
+  --popover: var(--surface-card);
+  --popover-foreground: var(--fg);
+  /* Os dois acentos trocam de lugar: no preto quem trabalha é o laranja e
+     quem só marca é o roxo (3.5). */
+  --apoio: var(--jumper-orange);
+  --traco: var(--jumper-purple);
+}
+
+/* ---------- Light / scoped theme ----------
+   O claro é o padrão do :root, mas um trecho claro DENTRO de uma página
+   escura precisa de um bloco próprio: custom property só é reposta onde é
+   declarada, e sem isto uma ilha clara herdaria os valores escuros do
+   ancestral (medido em 03/09/2026, ao ligar os dois acentos). Espelha o
+   :root nos tokens que o bloco escuro sobrescreve. */
+[data-theme="light"],
+.theme-light {
+  --surface-page: #ffffff;
+  --surface-card: #f7f7f7;
+  --surface-muted:#e2e4e9;
+  --fg:           #21272f;
+  --fg-muted:     #585e6b;
+  --border:       #ccd0d7;
+  --chart-body:   #e8eaee;
+  --background: var(--surface-page);
+  --card: var(--surface-card);
+  --foreground: var(--fg);
+  --muted: var(--surface-muted);
+  --muted-foreground: var(--fg-muted);
+  --popover: var(--surface-card);
+  --popover-foreground: var(--fg);
+  /* os dois acentos voltam ao papel do claro */
+  --apoio: var(--jumper-purple);
+  --traco: var(--jumper-orange);
+}
+
+/* ---------- Minimal theme (3.12) ---------- */
+[data-theme="minimal"],
+.theme-minimal {
+  /* O terceiro tema da casa: editorial técnico, para painéis e documentos de
+     trabalho (referência: ReelStack "The Make"). Chão cinza NEUTRO — sem o
+     matiz frio da prata, que no chão inteiro lê como azulado —, cartão branco,
+     tinta preta, canto reto, nenhuma sombra. Quem trabalha é a TINTA (botão
+     primário preto, link sublinhado); o laranja fica só como traço — filete,
+     marcador, sobrelinha. Espelha os tokens que os blocos escuro e claro
+     sobrescrevem, e zera raio e sombra: é a forma, mais que a cor, que separa
+     este tema dos outros dois. */
+  --surface-page: #f5f5f4;
+  --surface-card: #ffffff;
+  --surface-muted:#ebebea;
+  --fg:           #111111;
+  --fg-muted:     #5f5f5c;
+  --border:       #dcdcda;
+  --chart-body:   #ebebea;
+  --background: var(--surface-page);
+  --card: var(--surface-card);
+  --foreground: var(--fg);
+  --muted: var(--surface-muted);
+  --muted-foreground: var(--fg-muted);
+  --popover: var(--surface-card);
+  --popover-foreground: var(--fg);
+  --apoio: #111111;
+  --traco: var(--jumper-orange);
+  --focus-ring: 0 0 0 2px var(--jumper-orange);
+  --radius-xs: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+}
+
+/* ==========================================================
+   Semantic type roles. Use these classes instead of one-off
+   font-size declarations whenever possible.
+   ========================================================== */
+
+html {
+  color: var(--fg);
+  background: var(--surface-page);
+  font-family: var(--font-sans);
+  font-size: var(--type-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body { margin: 0; }
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, canvas { display: block; max-width: 100%; }
+button, input, textarea, select { font: inherit; }
+
+::selection {
+  background: rgba(250, 71, 33, 0.35);
+  color: #ffffff;
+}
+
+/* Eyebrow — orange caps label that opens every section */
+.type-eyebrow,
+.eyebrow {
+  color: var(--jumper-orange);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-variation-settings: "wght" 650;
+}
+
+/* Display — deck cover / metric hero */
+.type-display {
+  font-size: var(--type-display);
+  line-height: 0.96;
+  letter-spacing: 0;
+  font-variation-settings: "wght" 850;
+}
+
+/* Statement — hero manifesto */
+.type-statement {
+  font-size: var(--type-statement);
+  line-height: 1.02;
+  font-variation-settings: "wght" 780;
+}
+
+/* Title — section H2 */
+.type-title,
+h1, h2 {
+  font-size: var(--type-title);
+  line-height: 1.04;
+  font-variation-settings: "wght" 700;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.type-metric {
+  font-size: var(--type-metric);
+  line-height: 0.92;
+  font-variation-settings: "wght" 900;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Lede — long-form intro paragraph */
+.type-lede {
+  color: var(--fg-muted);
+  font-size: var(--type-lede);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Body */
+p { margin: 0 0 1em; line-height: 1.55; }
+.muted { color: var(--fg-muted); }
+
+/* Mono — numbers, indexed lists, technical metadata */
+.type-mono {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  font-variation-settings: "wght" 520;
+}
+
+/* Rótulo — a caixa-alta pequena única do sistema (3.3) */
+.label {
+  font-size: 11px;
+  letter-spacing: var(--rotulo-tracking);
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--tinta-4);
+  font-variation-settings: "wght" var(--voz-firme);
+}
+
+/* Vozes — peso pelo nome (3.3) */
+.voz-sussurro { font-variation-settings: "wght" var(--voz-sussurro); }
+.voz-fala     { font-variation-settings: "wght" var(--voz-fala); }
+.voz-firme    { font-variation-settings: "wght" var(--voz-firme); }
+.voz-tese     { font-variation-settings: "wght" var(--voz-tese); }
+.voz-grito    { font-variation-settings: "wght" var(--voz-grito); }
+
+/* Tintas — cor do texto em relação ao currentColor do contexto (3.3) */
+.tinta-2 { color: var(--tinta-2); }
+.tinta-3 { color: var(--tinta-3); }
+.tinta-4 { color: var(--tinta-4); }
+
+/* Número hero — proporcional; tabular só onde há coluna (3.3) */
+.numero-hero {
+  font-variant-numeric: proportional-nums lining-nums;
+  letter-spacing: -0.03em;
+  font-variation-settings: "wght" var(--voz-grito);
+  white-space: nowrap;
+}
+
+/* Editorial helper: secondary words inside titles fade to 48% */
+.type-display em,
+.type-statement em,
+.type-title em,
+h1 em, h2 em {
+  color: color-mix(in srgb, currentColor 48%, transparent);
+  font-style: normal;
+  font-variation-settings: "wght" 420;
+}
+
+/* Responsive type — collapse for narrow viewports */
+@media (max-width: 760px) {
+  :root {
+    --type-lede:     18px;
+    --type-title:    40px;
+    --type-display:  58px;
+    --type-statement:46px;
+    --type-metric:   72px;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --type-title:    72px;
+    --type-display:  112px;
+    --type-statement:86px;
+    --type-metric:   156px;
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "_": "Mapa arquivo → família/estilo/peso, lido pelo consumidor (lib/font-face.mjs do jumper-channel) para emitir @font-face. Os valores aqui são os que a tokens.css declara — é assim que o DS consome as faces, e é o que o vídeo tem de reproduzir. Todas as cinco faces são VARIÁVEIS, então a inferência por nome de arquivo acerta hoje; este arquivo existe para ela não virar defeito silencioso quando entrar uma face estática por peso, e para fixar duas coisas que a inferência erraria já agora: a JetBrains Mono vai só até 800 (não 900), e os três arquivos da Haffer são UMA família CSS com estilos diferentes, não três famílias.",
+  "_eixo": "Nos binários da Haffer o eixo wght vai a 1000; a tokens.css declara 100 900 porque 900 é o teto convencional do CSS. O valor daqui segue a tokens.css, que é o contrato de consumo.",
+
+  "HafferVF.ttf":                  { "family": "Haffer",         "style": "normal", "weight": "100 900", "license": "não declarada neste repositório — ver GAPS.md" },
+  "HafferUprightVF.ttf":           { "family": "Haffer",         "style": "normal", "weight": "100 900", "license": "não declarada neste repositório — ver GAPS.md" },
+  "HafferItalicVF.ttf":            { "family": "Haffer",         "style": "italic", "weight": "100 900", "license": "não declarada neste repositório — ver GAPS.md" },
+
+  "JetBrainsMono[wght].ttf":        { "family": "JetBrains Mono", "style": "normal", "weight": "100 800", "license": "OFL-1.1" },
+  "JetBrainsMono-Italic[wght].ttf": { "family": "JetBrains Mono", "style": "italic", "weight": "100 800", "license": "OFL-1.1" }
+}
