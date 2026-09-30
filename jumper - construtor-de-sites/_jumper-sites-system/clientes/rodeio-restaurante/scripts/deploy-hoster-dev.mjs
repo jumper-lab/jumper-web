@@ -5,7 +5,8 @@ import { activeDevVersion, checkLiveBoundaries, parseAllowedSlugs, runDevPreflig
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const repositoryRoot = resolve(projectRoot, '../../../..');
-const allowedSlug = parseAllowedSlugs(process.argv.slice(2));
+const flags = process.argv.slice(2);
+const allowedSlug = flags.length === 1 && flags[0] === '--worker-only' ? null : parseAllowedSlugs(flags);
 const git = (...args) => execFileSync('git', args, { cwd: repositoryRoot, encoding: 'utf8' }).trim();
 
 execFileSync('node', ['scripts/verify-hoster-dev-config.mjs'], { cwd: projectRoot, stdio: 'inherit' });
@@ -25,7 +26,7 @@ if (preflight.activeVersion !== activeDevVersion()) {
 
 const deployment = spawnSync('npx', [
   '--no-install', 'wrangler', 'deploy', '--config', 'wrangler.dev.jsonc', '--strict',
-  '--tag', `git-${sha}`, '--message', `jumper-web ${branch} ${sha} dev ${allowedSlug}`,
+  '--tag', `git-${sha}`, '--message', `jumper-web ${branch} ${sha} dev ${allowedSlug ?? 'worker-only'}`,
 ], { cwd: projectRoot, stdio: 'inherit' });
 if (deployment.error) throw deployment.error;
 if (deployment.status !== 0) process.exitCode = deployment.status || 1;

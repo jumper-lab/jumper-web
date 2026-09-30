@@ -70,7 +70,7 @@ export async function listSiteAssets(root, slug) {
 }
 
 export async function compareUntouchedSites({ allowedSlug, root = assetsRoot, fetchPublished = fetch, concurrency = 8, inventory, baselineInventory } = {}) {
-  if (!developmentSlugs.includes(allowedSlug)) throw new Error(`Caminho dev não autorizado: ${allowedSlug}`);
+  if (allowedSlug !== null && !developmentSlugs.includes(allowedSlug)) throw new Error(`Caminho dev não autorizado: ${allowedSlug}`);
   const expected = inventory || JSON.parse(await readFile(inventoryPath, 'utf8'));
   const paths = [];
   const differences = [];
@@ -159,6 +159,15 @@ function assertPushedCleanBranch() {
   return JSON.parse(git('show', `origin/main:${filename}`));
 }
 
+function assertCleanMain() {
+  if (git('branch', '--show-current') !== 'main') throw new Error('Deploy somente do código do Worker exige main limpo.');
+  if (git('status', '--porcelain', '--untracked-files=normal')) throw new Error('Checkout contém alterações locais.');
+  const remote = git('ls-remote', 'origin', 'refs/heads/main').split(/\s+/)[0];
+  if (git('rev-parse', 'HEAD') !== remote) throw new Error('O main local não corresponde ao GitHub.');
+  const filename = relative(repositoryRoot, inventoryPath).split(sep).join('/');
+  return JSON.parse(git('show', `HEAD:${filename}`));
+}
+
 export function activeDevVersion() {
   const deployments = JSON.parse(execFileSync('npx', ['--no-install', 'wrangler', 'deployments', 'list', '--name', workerName, '--json'], {
     cwd: projectRoot, encoding: 'utf8',
@@ -171,7 +180,7 @@ export function activeDevVersion() {
 }
 
 export async function runDevPreflight({ allowedSlug, root = assetsRoot, enforceGit = true, fetchPublished = fetch } = {}) {
-  const baselineInventory = enforceGit ? assertPushedCleanBranch() : undefined;
+  const baselineInventory = enforceGit ? (allowedSlug === null ? assertCleanMain() : assertPushedCleanBranch()) : undefined;
   const before = activeDevVersion();
   const result = await compareUntouchedSites({ allowedSlug, root, fetchPublished, baselineInventory });
   const live = await checkLiveBoundaries(fetchPublished);
@@ -184,14 +193,17 @@ export async function runDevPreflight({ allowedSlug, root = assetsRoot, enforceG
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   try {
     const audit = process.argv.includes('--audit');
-    const allowedSlug = parseAllowedSlugs(process.argv.slice(2).filter((arg) => arg !== '--audit'));
+    const flags = process.argv.slice(2).filter((arg) => arg !== '--audit');
+    const allowedSlug = flags.length === 1 && flags[0] === '--worker-only' ? null : parseAllowedSlugs(flags);
     const result = await runDevPreflight({ allowedSlug, enforceGit: !audit });
     console.log(`Worker dev ativo: ${result.activeVersion}; ${result.checked} assets de outros sites conferidos.`);
     if (result.differences.length) {
       for (const difference of result.differences) console.error(`BLOQUEADO: ${difference}`);
       process.exitCode = 1;
     } else {
-      console.log(`Preflight dev aprovado somente para ${allowedSlug}. Nenhum deploy foi feito.`);
+      console.log(allowedSlug === null
+        ? 'Preflight dev aprovado: todos os sete sites preservados. Nenhum deploy foi feito.'
+        : `Preflight dev aprovado somente para ${allowedSlug}. Nenhum deploy foi feito.`);
     }
   } catch (error) {
     console.error(`BLOQUEADO: ${error.message}`);

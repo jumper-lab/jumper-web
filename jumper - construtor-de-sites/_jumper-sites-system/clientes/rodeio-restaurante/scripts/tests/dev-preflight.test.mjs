@@ -72,6 +72,27 @@ test('bloqueia quando outro Worker responde no lugar do dev', async () => {
   }
 });
 
+test('deploy somente do código confere os sete sites, sem exceção', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'hoster-dev-worker-only-'));
+  try {
+    const inventory = {};
+    for (const slug of developmentSlugs) {
+      await mkdir(join(root, slug));
+      await writeFile(join(root, slug, 'index.html'), 'igual');
+      inventory[slug] = [`${slug}/index.html`];
+    }
+    const fetchPublished = async () => new Response('igual', { headers: { 'X-Jumper-Worker': 'jumper-hoster-dev' } });
+    const clean = await compareUntouchedSites({ allowedSlug: null, root, inventory, baselineInventory: inventory, fetchPublished });
+    assert.equal(clean.checked, 7);
+    assert.deepEqual(clean.differences, []);
+    await writeFile(join(root, 'izigym', 'index.html'), 'alterado');
+    const blocked = await compareUntouchedSites({ allowedSlug: null, root, inventory, baselineInventory: inventory, fetchPublished });
+    assert.deepEqual(blocked.differences, ['izigym/index.html: pacote difere do dev publicado']);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
 test('segue só redirecionamentos dentro do mesmo site dev', async () => {
   const root = await mkdtemp(join(tmpdir(), 'hoster-dev-redirect-'));
   try {
