@@ -6,7 +6,9 @@ Site institucional da IZI ONE / IZI Gym, academia em Alto de Pinheiros, Sao Paul
 
 Este código-fonte foi importado de `jumper-lab/izigym` (commit
 `0c1b3b8cba2eb636cd4d948f8771da74fd95fbc0`) para centralizar os sites
-Jumper fora da Kinsta em `jumper-web`. O histórico foi preservado pelo Git subtree.
+Jumper fora da Kinsta em `jumper-web`. Como `main` aceita apenas PR com squash,
+o histórico original foi preservado no próprio `jumper-web` pela tag
+`izigym-source-import-0c1b3b8`, que aponta para o commit de origem.
 `clientes/izigym-lp/` é outra página e não deve ser substituída por este projeto.
 
 O import **não altera a publicação**. O `jumper-hoster` ainda usa dois pacotes
