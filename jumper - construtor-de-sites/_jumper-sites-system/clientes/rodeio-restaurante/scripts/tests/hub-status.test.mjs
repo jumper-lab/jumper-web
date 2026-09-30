@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { hubStatus, recentActivity, releaseAlerts, releaseState } from '../../cloudflare/hub-status.mjs';
+import { compareWebDeployment, hubStatus, recentActivity, releaseAlerts, releaseState } from '../../cloudflare/hub-status.mjs';
 import worker from '../../cloudflare/worker.mjs';
 
 const sha = 'a'.repeat(40);
@@ -45,6 +45,30 @@ test('publication alerts distinguish mismatches, failures and missing evidence',
     { commitSha: null, state: 'unverified' },
   );
   assert.deepEqual(unknown.map((alert) => alert.level), ['partial', 'partial']);
+});
+
+test('hub-only GitHub changes do not create a false hoster overwrite alert', async () => {
+  const deployed = '1'.repeat(40);
+  const main = '2'.repeat(40);
+  const hubOnly = await compareWebDeployment(deployed, main, async () => Response.json({
+    status: 'ahead',
+    files: [{ filename: 'jumper - construtor-de-sites/_jumper-sites-system/clientes/rodeio-restaurante/cloudflare/dashboard.html' }],
+  }));
+  assert.equal(hubOnly, 'matched');
+  const state = releaseState({ id: 'version-1', tag: `git-${deployed}` }, [{ id: 'jumper-web', sha: main }], undefined, hubOnly);
+  assert.equal(state.hoster.state, 'matched');
+  assert.equal(state.alerts.some((alert) => alert.source === 'jumper-hoster'), false);
+
+  const pending = await compareWebDeployment('3'.repeat(40), main, async () => Response.json({
+    status: 'ahead',
+    files: [{ filename: 'jumper - construtor-de-sites/_jumper-sites-system/clientes/izigym-lp/src/simple.ts' }],
+  }));
+  assert.equal(pending, 'pending');
+  const pendingState = releaseState({ id: 'version-2', tag: `git-${'3'.repeat(40)}` }, [{ id: 'jumper-web', sha: main }], undefined, pending);
+  assert.equal(pendingState.alerts[0].level, 'partial');
+
+  const divergence = await compareWebDeployment('4'.repeat(40), main, async () => Response.json({ status: 'diverged' }));
+  assert.equal(divergence, 'different');
 });
 
 test('status reads only the two fixed GitHub repositories', async () => {

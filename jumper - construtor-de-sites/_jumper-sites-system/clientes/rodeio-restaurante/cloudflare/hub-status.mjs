@@ -9,6 +9,45 @@ let cached;
 let pending;
 let cachedSiteDeployment;
 let pendingSiteDeployment;
+const comparisonCache = new Map();
+const HUB_SOURCE = 'jumper - construtor-de-sites/_jumper-sites-system/clientes/rodeio-restaurante/';
+const HUB_ONLY_FILES = new Set([
+  `${HUB_SOURCE}cloudflare/dashboard.html`,
+  `${HUB_SOURCE}cloudflare/hub-redesign.css`,
+  `${HUB_SOURCE}cloudflare/hub-worker.mjs`,
+  `${HUB_SOURCE}cloudflare/favicon-jumper.png`,
+  `${HUB_SOURCE}scripts/stage-hub.mjs`,
+  `${HUB_SOURCE}scripts/deploy-hub.mjs`,
+  `${HUB_SOURCE}scripts/tests/hub-worker.test.mjs`,
+  `${HUB_SOURCE}wrangler.hub.jsonc`,
+]);
+
+function isHubOnly(filename) {
+  return HUB_ONLY_FILES.has(filename) || filename.startsWith(`${HUB_SOURCE}cloudflare/design-system/`);
+}
+
+export async function compareWebDeployment(deployedSha, mainSha, fetcher = fetch) {
+  if (!/^[a-f0-9]{40}$/.test(deployedSha || '') || !/^[a-f0-9]{40}$/.test(mainSha || '')) return 'unverified';
+  if (deployedSha === mainSha) return 'matched';
+  const key = `${deployedSha}:${mainSha}`;
+  if (comparisonCache.has(key)) return comparisonCache.get(key);
+  let relation = 'unverified';
+  try {
+    const response = await fetcher(`https://api.github.com/repos/jumper-lab/jumper-web/compare/${deployedSha}...${mainSha}`, {
+      headers: githubHeaders(), signal: AbortSignal.timeout(8_000),
+    });
+    if (!response.ok) throw new Error(`GitHub HTTP ${response.status}`);
+    const result = await response.json();
+    if (['behind', 'diverged'].includes(result.status)) relation = 'different';
+    else if (result.status === 'ahead' && Array.isArray(result.files) && result.files.length < 300) {
+      relation = result.files.every((file) => isHubOnly(file.filename) && (!file.previous_filename || isHubOnly(file.previous_filename))) ? 'matched' : 'pending';
+    }
+  } catch {
+    relation = 'unverified';
+  }
+  comparisonCache.set(key, relation);
+  return relation;
+}
 
 function githubHeaders() {
   return { Accept: 'application/vnd.github+json', 'User-Agent': 'Jumper-Hub-Status' };
@@ -95,7 +134,10 @@ export async function githubMains(fetcher = fetch, now = Date.now()) {
 
 export async function hubStatus(versionMetadata, fetcher = fetch) {
   const [repositories, production] = await Promise.all([githubMains(fetcher), siteDeployment(fetcher)]);
-  return releaseState(versionMetadata, repositories, production);
+  const deployedSha = /^git-([a-f0-9]{40})$/.exec(versionMetadata?.tag || '')?.[1] || null;
+  const mainSha = repositories.find((repository) => repository.id === 'jumper-web')?.sha;
+  const webRelation = await compareWebDeployment(deployedSha, mainSha, fetcher);
+  return releaseState(versionMetadata, repositories, production, webRelation);
 }
 
 function eventTime(value) {
@@ -140,7 +182,7 @@ export function recentActivity(repositories, siteDeployment, hoster) {
       source: 'jumper-hoster',
       kind: 'hoster-deploy',
       title: 'Worker publicado na Cloudflare',
-      detail: webCommit?.message || 'Versão ativa do hub e dos sites de desenvolvimento.',
+      detail: webCommit?.message || 'Versão ativa dos sites de desenvolvimento.',
       occurredAt: eventTime(hoster.deployedAt),
       url: /^[a-f0-9]{40}$/.test(hoster.commitSha || '')
         ? `https://github.com/jumper-lab/jumper-web/commit/${hoster.commitSha}`
@@ -171,7 +213,14 @@ export function releaseAlerts(repositories, siteDeployment, hoster) {
       title: 'Cloudflare e GitHub estão diferentes',
       detail: 'O Worker ativo não corresponde ao main (versão principal do GitHub) do jumper-web. Confira se há deploy pendente ou sobrescrita.',
     });
-  } else if (!webSha || !hoster.commitSha) {
+  } else if (hoster.state === 'pending') {
+    alerts.push({
+      level: 'partial',
+      source: 'jumper-hoster',
+      title: 'Alterações aguardam verificação no hoster',
+      detail: 'O GitHub tem mudanças além do hub após o último deploy do jumper-hoster. Confira o que ainda precisa ser publicado.',
+    });
+  } else if (hoster.state === 'unverified') {
     alerts.push({
       level: 'partial',
       source: 'jumper-hoster',
@@ -212,7 +261,7 @@ export function releaseAlerts(repositories, siteDeployment, hoster) {
   return alerts;
 }
 
-export function releaseState(versionMetadata, repositories, production = { commitSha: null, state: 'unknown' }) {
+export function releaseState(versionMetadata, repositories, production = { commitSha: null, state: 'unknown' }, webRelation = 'different') {
   const webSha = repositories.find((repo) => repo.id === 'jumper-web')?.sha;
   const siteSha = repositories.find((repo) => repo.id === 'jumper-site')?.sha;
   const tag = versionMetadata?.tag || null;
@@ -228,7 +277,7 @@ export function releaseState(versionMetadata, repositories, production = { commi
       versionId: versionMetadata?.id || null,
       deployedAt: versionMetadata?.timestamp || null,
       commitSha: deployedSha,
-      state: !webSha || !deployedSha ? 'unverified' : webSha === deployedSha ? 'matched' : 'different',
+      state: !webSha || !deployedSha ? 'unverified' : webSha === deployedSha ? 'matched' : webRelation,
     };
   return {
     checkedAt: new Date().toISOString(),
