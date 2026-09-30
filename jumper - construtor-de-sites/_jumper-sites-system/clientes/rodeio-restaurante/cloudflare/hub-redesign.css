@@ -81,7 +81,6 @@ html { background: var(--jumper-black); scroll-behavior: smooth; }
 .painel .project-types { display: grid; gap: 9px; margin: 21px 0 0; padding: 0; list-style: none; }
 .painel .project-item { min-width: 0; padding: 15px 17px 16px; border: 1px solid var(--linha-1); border-radius: var(--radius-sm); background: var(--surface-card); transition: border-color var(--duration) ease, background var(--duration) ease; }
 .painel .project-item:hover, .painel .project-item:focus-within { border-color: var(--tinta-3); }
-.painel .project-item--hoster { border-left: 2px solid var(--apoio); }
 .painel .project-kind { display: block; color: var(--apoio); font: 500 10px/1.3 var(--font-mono); letter-spacing: .05em; text-transform: uppercase; }
 .painel .project-title { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 7px; color: var(--fg); font: 650 17px/1.2 var(--font-sans); letter-spacing: -.025em; text-decoration: none; }
 .painel .project-title span { color: var(--tinta-3); font: 400 17px/1 var(--font-sans); transition: transform var(--duration-slow) var(--ease-jumper); }
