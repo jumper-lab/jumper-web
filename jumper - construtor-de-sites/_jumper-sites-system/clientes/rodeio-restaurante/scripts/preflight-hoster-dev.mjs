@@ -101,15 +101,28 @@ export async function compareUntouchedSites({ allowedSlug, root = assetsRoot, fe
       const url = new URL(`/${encodedPath}`, 'https://site.jumper.dev.br');
       try {
         const candidate = await readFile(join(root, path));
-        const response = await fetchPublished(url.href, {
-          redirect: 'follow',
-          headers: { 'Cache-Control': 'no-cache' },
-          signal: AbortSignal.timeout(30000),
-        });
-        if (response.url && !new URL(response.url).pathname.startsWith(`/${path.split('/')[0]}/`)) {
-          differences.push(`${path}: redirecionamento saiu do site dev`);
-          continue;
+        const sitePrefix = `/${path.split('/')[0]}/`;
+        let currentUrl = url;
+        let response;
+        for (let redirects = 0; redirects < 4; redirects += 1) {
+          response = await fetchPublished(currentUrl.href, {
+            redirect: 'manual',
+            headers: {
+              'Cache-Control': 'no-cache',
+              ...(process.env.HOSTER_DEV_AUDIT_TOKEN ? { 'X-Jumper-Dev-Audit-Token': process.env.HOSTER_DEV_AUDIT_TOKEN } : {}),
+            },
+            signal: AbortSignal.timeout(30000),
+          });
+          if (![301, 302, 303, 307, 308].includes(response.status)) break;
+          const location = response.headers.get('Location');
+          if (!location) throw new Error('redirecionamento sem destino');
+          const nextUrl = new URL(location, currentUrl);
+          if (nextUrl.origin !== url.origin || !nextUrl.pathname.startsWith(sitePrefix)) {
+            throw new Error('redirecionamento saiu do site dev; token não enviado');
+          }
+          currentUrl = nextUrl;
         }
+        if ([301, 302, 303, 307, 308].includes(response.status)) throw new Error('redirecionamentos demais');
         if (response.status !== 200 || response.headers.get('X-Jumper-Worker') !== workerName) {
           differences.push(`${path}: página publicada não veio do ${workerName} (HTTP ${response.status})`);
           continue;

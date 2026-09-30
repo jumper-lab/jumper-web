@@ -1,5 +1,6 @@
 import hoster from './worker.mjs';
 import { verifyDevAccess } from './dev-access.mjs';
+import { gateDevSite, passwordBindingFor } from './dev-site-password.mjs';
 
 export const previewHost = 'site-dev.jumper.dev.br';
 
@@ -19,14 +20,24 @@ export function isDevelopmentRequest(url) {
 }
 
 export function isPreviewAsset(pathname) {
-  return pathname === '/' || pathname === '/index.html'
-    || pathname === '/hub-redesign.css' || pathname === '/favicon-jumper.png'
+  return pathname === '/hub-redesign.css' || pathname === '/favicon-jumper.png'
     || pathname.startsWith('/hub-design-system/') || pathname.startsWith('/fonts/');
 }
 
 async function previewResponse(request, env) {
   const url = new URL(request.url);
   if (!await verifyDevAccess(request, env)) return new Response('Not Found', { status: 404 });
+  if ((url.pathname === '/' && ['GET', 'HEAD'].includes(request.method))
+    || (url.pathname === '/__jumper/login' && request.method === 'POST')) {
+    const internalUrl = new URL(url);
+    internalUrl.hostname = 'site.jumper.dev.br';
+    const response = await hoster.fetch(new Request(internalUrl, request), env);
+    const headers = new Headers(response.headers);
+    headers.set('X-Jumper-Worker', 'jumper-hoster-dev');
+    headers.set('X-Robots-Tag', 'noindex, nofollow');
+    headers.set('Cache-Control', 'no-store');
+    return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
+  }
   if (url.pathname === '/__jumper/system-status') {
     return new Response(JSON.stringify({ error: 'Estado do live indisponível nesta prévia.' }), {
       status: 503,
@@ -34,7 +45,12 @@ async function previewResponse(request, env) {
     });
   }
   if (url.pathname === '/__jumper/logout' && request.method === 'POST') {
-    return Response.redirect(new URL('/cdn-cgi/access/logout', url), 303);
+    const internalUrl = new URL(url);
+    internalUrl.hostname = 'site.jumper.dev.br';
+    const response = await hoster.fetch(new Request(internalUrl, request), env);
+    const headers = new Headers(response.headers);
+    headers.set('Location', new URL('/cdn-cgi/access/logout', url).href);
+    return new Response(null, { status: 303, headers });
   }
   if (!['GET', 'HEAD'].includes(request.method) || !isPreviewAsset(url.pathname)) {
     return new Response('Not Found', { status: 404 });
@@ -54,9 +70,16 @@ export default {
     if (!isDevelopmentRequest(url)) {
       return new Response('Not Found', { status: 404 });
     }
+    const slug = developmentSlugs.find((candidate) => url.pathname.startsWith(`/${candidate}/`));
+    const denied = await gateDevSite(request, env, slug);
+    if (denied) return denied;
     const response = await hoster.fetch(request, env, context);
     const headers = new Headers(response.headers);
     headers.set('X-Jumper-Worker', 'jumper-hoster-dev');
+    if (env[passwordBindingFor(slug)] !== undefined) {
+      headers.set('Cache-Control', 'no-store, private');
+      headers.set('X-Robots-Tag', 'noindex, nofollow');
+    }
     return new Response(response.body, {
       status: response.status,
       statusText: response.statusText,

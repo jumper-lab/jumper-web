@@ -126,3 +126,37 @@ test('status endpoint is restricted to the authenticated hub', async () => {
   assert.equal(authorized.status, 200);
   assert.equal((await authorized.json()).hoster.state, 'matched');
 });
+
+test('hub uses an independent password without changing administrative access', async () => {
+  const env = { JUMPER_HOSTER_PASSWORD: 'admin-test-secret', JUMPER_HUB_PASSWORD: 'hub-test-secret' };
+  const loginPath = 'https://site.jumper.dev.br/__jumper/login';
+  const hubLogin = await worker.fetch(new Request(loginPath, {
+    method: 'POST', body: new URLSearchParams({ password: 'hub-test-secret', next: '/' }),
+  }), env);
+  assert.equal(hubLogin.status, 303);
+  const hubCookie = hubLogin.headers.get('Set-Cookie').split(';')[0];
+  assert.match(hubCookie, /^jumper_hub_session=/);
+  const hub = await worker.fetch(new Request('https://site.jumper.dev.br/', { headers: { Cookie: hubCookie } }), {
+    ...env, ASSETS: { fetch: async () => new Response('hub') },
+  });
+  assert.equal(hub.status, 200);
+
+  const oldPassword = await worker.fetch(new Request(loginPath, {
+    method: 'POST', body: new URLSearchParams({ password: 'admin-test-secret', next: '/' }),
+  }), env);
+  assert.equal(oldPassword.status, 401);
+  const directHubFile = await worker.fetch(new Request('https://site.jumper.dev.br/index.html'), env);
+  assert.equal(directHubFile.status, 401);
+  const authorizedFile = await worker.fetch(new Request('https://site.jumper.dev.br/index.html', { headers: { Cookie: hubCookie } }), {
+    ...env, ASSETS: { fetch: async () => new Response('hub') },
+  });
+  assert.equal(authorizedFile.status, 200);
+  const adminLogin = await worker.fetch(new Request(loginPath, {
+    method: 'POST', body: new URLSearchParams({ password: 'admin-test-secret', next: '/izigym-leads-test/' }),
+  }), env);
+  assert.equal(adminLogin.status, 303);
+  assert.match(adminLogin.headers.get('Set-Cookie'), /^jumper_hoster_session=/);
+  const adminCookie = adminLogin.headers.get('Set-Cookie').split(';')[0];
+  const noHubAccess = await worker.fetch(new Request('https://site.jumper.dev.br/__jumper/system-status', { headers: { Cookie: adminCookie } }), env);
+  assert.equal(noHubAccess.status, 401);
+});
