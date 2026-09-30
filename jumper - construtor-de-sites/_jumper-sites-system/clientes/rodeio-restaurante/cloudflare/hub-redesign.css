@@ -90,26 +90,32 @@ html { background: var(--jumper-black); scroll-behavior: smooth; }
 .painel .project-item p a { color: var(--fg-muted); text-decoration: underline; text-decoration-color: var(--linha-1); text-underline-offset: 3px; }
 .painel .project-item p a:hover { color: var(--apoio); text-decoration-color: currentColor; }
 .machine-room { min-width: 0; align-self: start; overflow: hidden; border: 1px solid var(--linha-1); border-radius: var(--radius-md); background: var(--surface-card); }
-.machine-head, .machine-footer { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 14px 18px; }
+.machine-head, .machine-footer { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 11px 15px; }
 .machine-head { border-bottom: 1px solid var(--linha-1); }
-.machine-eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--tinta-2); font: 500 10px/1.4 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
-.machine-led { display: block; flex: none; width: 7px; height: 7px; border-radius: 50%; background: var(--apoio); }
-.machine-health { flex: none; color: var(--tinta-3); font: 500 10px/1.3 var(--font-mono); text-transform: uppercase; }
+.machine-eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--tinta-2); font: 500 9px/1.4 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; }
+.machine-led { display: block; flex: none; width: 7px; height: 7px; border-radius: 50%; background: var(--apoio); animation: machine-live 3.2s ease-in-out infinite; }
+@keyframes machine-live { 0%, 100% { opacity: .45; transform: scale(.85); box-shadow: 0 0 0 0 transparent; } 50% { opacity: 1; transform: scale(1.12); box-shadow: 0 0 0 5px color-mix(in srgb, var(--apoio) 12%, transparent); } }
+.machine-health { flex: none; color: var(--tinta-3); font: 500 9px/1.3 var(--font-mono); text-transform: uppercase; text-align: right; }
 .machine-health[data-state="ok"] { color: var(--success); }
 .machine-health[data-state="attention"] { color: var(--warning); }
-.machine-content { padding: 20px 18px 7px; }
-.painel .machine-content h2 { margin: 0 0 5px; color: var(--fg); font: 650 21px/1.2 var(--font-sans); letter-spacing: -.035em; }
-.painel .machine-content > p { margin: 0; color: var(--tinta-3); font: 420 12px/1.45 var(--font-sans); }
-.machine-events { margin: 21px 0 0; padding: 0; list-style: none; }
-.machine-event { position: relative; min-width: 0; padding: 12px 35px 13px 0; border-top: 1px solid var(--linha-2); }
+.machine-content { padding: 15px 15px 3px; }
+.painel .machine-content h2 { margin: 0; color: var(--fg); font: 650 18px/1.2 var(--font-sans); letter-spacing: -.035em; }
+.machine-alerts { display: grid; gap: 7px; margin: 12px 0 0; padding: 0; list-style: none; }
+.machine-alerts[hidden] { display: none; }
+.machine-alert { padding: 9px 11px; border-left: 2px solid var(--tinta-3); background: color-mix(in srgb, var(--tinta-3) 9%, transparent); }
+.machine-alert[data-level="attention"] { border-left-color: var(--warning); background: color-mix(in srgb, var(--warning) 10%, transparent); }
+.machine-alert strong { display: block; color: var(--fg); font: 650 11px/1.3 var(--font-sans); }
+.machine-alert span { display: block; margin-top: 3px; color: var(--tinta-3); font: 420 11px/1.4 var(--font-sans); }
+.machine-events { margin: 11px 0 0; padding: 0; list-style: none; }
+.machine-event { position: relative; min-width: 0; padding: 9px 30px 10px 0; border-top: 1px solid var(--linha-2); }
 .machine-event-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 14px; color: var(--tinta-4); font: 500 10px/1.35 var(--font-mono); }
 .machine-source { color: var(--apoio); }
-.machine-event-title { display: block; margin-top: 5px; color: var(--fg); font: 650 12px/1.3 var(--font-sans); }
-.machine-event-detail { display: block; margin-top: 3px; color: var(--tinta-3); font: 420 12px/1.4 var(--font-sans); overflow-wrap: anywhere; }
-.painel .machine-event > a { position: absolute; top: 27px; right: 2px; display: grid; place-items: center; width: 26px; height: 26px; color: var(--tinta-3); font: 500 17px/1 var(--font-sans); text-decoration: none; }
+.machine-event-title { display: block; margin-top: 3px; color: var(--fg); font: 650 11px/1.3 var(--font-sans); }
+.machine-event-detail { display: -webkit-box; margin-top: 2px; color: var(--tinta-3); font: 420 11px/1.35 var(--font-sans); overflow: hidden; overflow-wrap: anywhere; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.painel .machine-event > a { position: absolute; top: 22px; right: 0; display: grid; place-items: center; width: 24px; height: 24px; color: var(--tinta-3); font: 500 16px/1 var(--font-sans); text-decoration: none; }
 .painel .machine-event > a:hover { color: var(--apoio); text-decoration: none; }
-.machine-placeholder { padding: 22px 0 30px; color: var(--tinta-3); font: 420 12px/1.5 var(--font-sans); }
-.machine-footer { align-items: start; border-top: 1px solid var(--linha-1); color: var(--tinta-4); font: 500 10px/1.4 var(--font-mono); }
+.machine-placeholder { padding: 15px 0 20px; color: var(--tinta-3); font: 420 11px/1.5 var(--font-sans); }
+.machine-footer { align-items: start; border-top: 1px solid var(--linha-1); color: var(--tinta-4); font: 500 9px/1.4 var(--font-mono); }
 .painel footer { width: min(var(--hub-width), 100%); margin: auto; padding: 24px var(--hub-gutter) 28px; border-top: 1px solid var(--linha-1); }
 .painel .footer-copy { color: var(--tinta-4); font: 500 10px/1 var(--font-mono); letter-spacing: var(--rotulo-tracking); text-transform: uppercase; }
 .painel .link-lightbox { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; padding: 24px; background: color-mix(in srgb, var(--jumper-black) 72%, transparent); backdrop-filter: blur(8px); opacity: 0; visibility: hidden; transition: opacity var(--duration) ease, visibility var(--duration) ease; }
@@ -158,4 +164,5 @@ html { background: var(--jumper-black); scroll-behavior: smooth; }
 }
 @media (prefers-reduced-motion: reduce) {
   .painel *, .painel *::before, .painel *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+  .machine-led { opacity: 1; transform: none; box-shadow: none; }
 }
