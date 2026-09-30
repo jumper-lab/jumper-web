@@ -4,6 +4,12 @@ Briefing para LLMs que iniciam trabalho neste repositório.
 
 ---
 
+> Nota de migração: este arquivo veio do repositório histórico `jumper-lab/izigym`.
+> O projeto agora está em `jumper-web/clientes/izigym-site/`. As referências
+> abaixo a Vercel descrevem o fluxo antigo e não autorizam deploy. A publicação
+> atual continua pelo `jumper-hoster`, usando snapshots separados para
+> desenvolvimento e produção. Consulte `README.md` e `../../JUMPER-HOSTER.md`.
+
 ## Project Overview
 
 Site institucional (landing page single-page) da **IZI ONE / IZI Gym**, academia em Alto de Pinheiros, São Paulo. O site exibe informações da unidade, planos cadastrados no projeto, galeria do espaço, FAQ e contato.
