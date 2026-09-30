@@ -57,20 +57,18 @@ html { background: var(--jumper-black); scroll-behavior: smooth; }
 .painel .directory .section-label { color: var(--apoio); }
 .painel .directory-head h2 { margin: 10px 0 0; font: 780 clamp(36px, 4vw, 54px)/1 var(--font-sans); letter-spacing: -.055em; }
 .directory-head > p { max-width: 230px; margin: 0 0 3px; color: var(--tinta-3); font: 420 13px/1.45 var(--font-sans); }
-.painel .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 42px; margin: 0; }
+.painel .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 24px; margin: 0; }
 .painel .card { min-height: 0; border: 0; border-bottom: 1px solid var(--linha-1); border-radius: 0; background: transparent; box-shadow: none; transition: background var(--duration) ease; }
 .painel .card:hover, .painel .card:focus-within { transform: none; border-color: var(--linha-1); box-shadow: none; }
-.painel .card-open { width: 100%; min-height: 186px; padding: 24px 0 21px; border-radius: 0; color: var(--fg); }
+.painel .card-open { width: 100%; height: 100%; min-height: 150px; padding: 22px 0; border-radius: 0; color: var(--fg); }
 .painel .card-open { appearance: none; display: flex; flex-direction: column; align-items: stretch; border: 0; background: transparent; text-align: left; font: inherit; cursor: pointer; }
 .painel .card-open:focus-visible { outline: 2px solid var(--apoio); outline-offset: -2px; }
-.painel .card .tag { color: var(--apoio); }
-.painel .card h2 { margin: 10px 0 6px; font: 780 30px/1.08 var(--font-sans); letter-spacing: -.045em; }
-.painel .card .description { max-width: 390px; color: var(--tinta-3); font: 420 14px/1.4 var(--font-sans); }
+.painel .card .tag { max-width: 100%; color: var(--apoio); font-size: 10px; line-height: 1.4; letter-spacing: .06em; }
+.painel .card h2 { margin: 12px 0 0; font: 780 clamp(21px, 2vw, 27px)/1.08 var(--font-sans); letter-spacing: -.045em; overflow-wrap: anywhere; }
 .painel .description { margin: 0; }
-.painel .card-action { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-top: auto; padding: 17px 0 0; border: 0; color: var(--tinta-3); font: 650 11px/1 var(--font-sans); letter-spacing: .03em; text-transform: none; }
-.painel .card-open:hover .card-action { color: var(--apoio); }
-.painel .card-action .arrow { display: grid; place-items: center; width: 31px; height: 31px; border: 1px solid var(--linha-1); border-radius: 50%; color: var(--fg); font-size: 17px; }
-.painel .card-open:hover .arrow { border-color: var(--apoio); color: var(--apoio); }
+.painel .card-action { display: inline-flex; align-items: center; justify-content: space-between; gap: 16px; width: max-content; min-height: 34px; margin-top: auto; padding: 0 13px; border: 1px solid var(--linha-1); border-radius: var(--radius-pill); color: var(--fg); font: 650 11px/1 var(--font-sans); letter-spacing: .01em; text-transform: none; transition: background var(--duration) ease, border-color var(--duration) ease, color var(--duration) ease; }
+.painel .card-open:hover .card-action, .painel .card-open:focus-visible .card-action { border-color: var(--fg); background: var(--fg); color: var(--jumper-white); }
+.painel .card-action .arrow { display: inline-block; color: inherit; font-size: 16px; }
 .painel .arrow { line-height: 1; transition: transform var(--duration-slow) var(--ease-jumper); }
 .painel .card-open:hover .arrow, .painel .card-open:focus-visible .arrow { transform: translateX(3px); }
 .hub-details { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(36px, 6vw, 86px); padding-top: clamp(64px, 7vw, 100px); }
@@ -132,6 +130,9 @@ html { background: var(--jumper-black); scroll-behavior: smooth; }
   .painel .briefing-tool { max-width: 620px; }
   .hub-details { gap: 36px; }
 }
+@media (max-width: 1100px) {
+  .painel .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 @media (max-width: 700px) {
   .painel .site-header { min-height: 65px; }
   .painel .wordmark img { width: 86px; }
@@ -143,7 +144,7 @@ html { background: var(--jumper-black); scroll-behavior: smooth; }
   .directory-head > p { margin-top: 11px; max-width: none; }
   .painel .grid, .hub-details { grid-template-columns: 1fr; }
   .hub-details { padding-top: 66px; gap: 48px; }
-  .painel .card-open { min-height: 170px; }
+  .painel .card-open { min-height: 140px; }
 }
 @media (max-width: 480px) {
   .painel .hero-copy h1 { font-size: 51px; }
@@ -151,7 +152,7 @@ html { background: var(--jumper-black); scroll-behavior: smooth; }
   .painel .briefing-actions { flex-direction: column; align-items: stretch; }
   .painel .briefing-action, .painel .briefing-copy-link { width: 100%; }
   .painel .directory { padding: 27px 21px 21px; }
-  .painel .card h2 { font-size: 27px; }
+  .painel .card h2 { font-size: 25px; }
   .painel .lightbox-panel { padding: 23px; }
   .machine-head, .machine-footer { align-items: flex-start; flex-direction: column; gap: 6px; }
 }
