@@ -21,6 +21,42 @@
         {
           "label": "Repositório no GitHub",
           "url": "https://github.com/jumper-lab/jumper-site"
+        },
+        {
+          "label": "Webmaster · criação de sites",
+          "url": "https://jumper.studio/webmaster/"
+        },
+        {
+          "label": "Rastreamento avançado",
+          "url": "https://jumper.studio/rastreamento/"
+        },
+        {
+          "label": "Tráfego pago",
+          "url": "https://jumper.studio/trafego/"
+        },
+        {
+          "label": "JumperChat",
+          "url": "https://jumper.studio/chat/"
+        },
+        {
+          "label": "Cases",
+          "url": "https://jumper.studio/cases/"
+        },
+        {
+          "label": "Pensamento",
+          "url": "https://jumper.studio/pensamento/"
+        },
+        {
+          "label": "Sobre a Jumper",
+          "url": "https://jumper.studio/sobre"
+        },
+        {
+          "label": "Time",
+          "url": "https://jumper.studio/time"
+        },
+        {
+          "label": "Contato",
+          "url": "https://jumper.studio/contato"
         }
       ],
       "officialSite": {
