@@ -85,3 +85,28 @@ test('hoster validates the existing cookie for the hub without serving its docum
   }), { JUMPER_HOSTER_PASSWORD: password });
   assert.equal(blocked.status, 401);
 });
+
+test('hub status adds its own Cloudflare deployment without changing hoster data', async () => {
+  const sha = 'a'.repeat(40);
+  const base = {
+    repositories: [{ id: 'jumper-web', sha, recentCommits: [{ sha, message: 'Hub atualizado' }] }],
+    hoster: { worker: 'jumper-hoster', versionId: 'hoster-version' },
+    alerts: [],
+    activity: [],
+  };
+  const env = {
+    CF_VERSION_METADATA: { id: 'hub-version', tag: `git-${sha}`, timestamp: '2026-09-30T03:00:00Z' },
+    HOSTER: { async fetch(request) {
+      assert.equal(new URL(request.url).pathname, '/__jumper/system-status');
+      return Response.json(base);
+    } },
+  };
+  const response = await hubWorker.fetch(new Request('https://site.jumper.dev.br/__jumper/hub-status'), env);
+  assert.equal(response.status, 200);
+  const status = await response.json();
+  assert.equal(status.hoster.versionId, 'hoster-version');
+  assert.equal(status.hub.versionId, 'hub-version');
+  assert.equal(status.hub.state, 'matched');
+  assert.equal(status.activity[0].source, 'jumper-hub');
+  assert.deepEqual(status.alerts, []);
+});

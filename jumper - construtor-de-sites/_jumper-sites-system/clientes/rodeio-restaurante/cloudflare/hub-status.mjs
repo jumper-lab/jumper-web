@@ -26,10 +26,16 @@ function isHubOnly(filename) {
   return HUB_ONLY_FILES.has(filename) || filename.startsWith(`${HUB_SOURCE}cloudflare/design-system/`);
 }
 
-export async function compareWebDeployment(deployedSha, mainSha, fetcher = fetch) {
+function isHubRelevant(filename) {
+  return isHubOnly(filename)
+    || filename === `${HUB_SOURCE}package.json`
+    || filename === 'jumper - construtor-de-sites/_jumper-sites-system/jumper-hoster.registry.json';
+}
+
+async function compareDeployment(deployedSha, mainSha, isIrrelevant, cacheRole, fetcher) {
   if (!/^[a-f0-9]{40}$/.test(deployedSha || '') || !/^[a-f0-9]{40}$/.test(mainSha || '')) return 'unverified';
   if (deployedSha === mainSha) return 'matched';
-  const key = `${deployedSha}:${mainSha}`;
+  const key = `${cacheRole}:${deployedSha}:${mainSha}`;
   if (comparisonCache.has(key)) return comparisonCache.get(key);
   let relation = 'unverified';
   try {
@@ -40,13 +46,21 @@ export async function compareWebDeployment(deployedSha, mainSha, fetcher = fetch
     const result = await response.json();
     if (['behind', 'diverged'].includes(result.status)) relation = 'different';
     else if (result.status === 'ahead' && Array.isArray(result.files) && result.files.length < 300) {
-      relation = result.files.every((file) => isHubOnly(file.filename) && (!file.previous_filename || isHubOnly(file.previous_filename))) ? 'matched' : 'pending';
+      relation = result.files.every((file) => isIrrelevant(file.filename) && (!file.previous_filename || isIrrelevant(file.previous_filename))) ? 'matched' : 'pending';
     }
   } catch {
     relation = 'unverified';
   }
   comparisonCache.set(key, relation);
   return relation;
+}
+
+export function compareWebDeployment(deployedSha, mainSha, fetcher = fetch) {
+  return compareDeployment(deployedSha, mainSha, isHubOnly, 'hoster', fetcher);
+}
+
+export function compareHubDeployment(deployedSha, mainSha, fetcher = fetch) {
+  return compareDeployment(deployedSha, mainSha, (filename) => !isHubRelevant(filename), 'hub', fetcher);
 }
 
 function githubHeaders() {

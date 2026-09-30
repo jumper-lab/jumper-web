@@ -206,7 +206,7 @@
 
       async function updateSystemStatus() {
         try {
-          const response = await fetch('/__jumper/system-status', { credentials: 'same-origin', cache: 'no-store' });
+          const response = await fetch('/__jumper/hub-status', { credentials: 'same-origin', cache: 'no-store' });
           if (!response.ok) throw new Error('Consulta indisponível');
           renderMachine(await response.json());
         } catch {

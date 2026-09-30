@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { compareWebDeployment, hubStatus, recentActivity, releaseAlerts, releaseState } from '../../cloudflare/hub-status.mjs';
+import { compareHubDeployment, compareWebDeployment, hubStatus, recentActivity, releaseAlerts, releaseState } from '../../cloudflare/hub-status.mjs';
 import worker from '../../cloudflare/worker.mjs';
 
 const sha = 'a'.repeat(40);
@@ -69,6 +69,17 @@ test('hub-only GitHub changes do not create a false hoster overwrite alert', asy
 
   const divergence = await compareWebDeployment('4'.repeat(40), main, async () => Response.json({ status: 'diverged' }));
   assert.equal(divergence, 'different');
+
+  const hubStillCurrent = await compareHubDeployment('5'.repeat(40), main, async () => Response.json({
+    status: 'ahead',
+    files: [{ filename: 'jumper - construtor-de-sites/_jumper-sites-system/clientes/izigym-lp/src/simple.ts' }],
+  }));
+  assert.equal(hubStillCurrent, 'matched');
+  const hubPending = await compareHubDeployment('6'.repeat(40), main, async () => Response.json({
+    status: 'ahead',
+    files: [{ filename: 'jumper - construtor-de-sites/_jumper-sites-system/clientes/rodeio-restaurante/cloudflare/dashboard.html' }],
+  }));
+  assert.equal(hubPending, 'pending');
 });
 
 test('status reads only the two fixed GitHub repositories', async () => {

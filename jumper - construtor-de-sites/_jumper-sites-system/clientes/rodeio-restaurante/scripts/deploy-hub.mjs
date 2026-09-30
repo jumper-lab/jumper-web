@@ -17,7 +17,7 @@ if (sha !== git('ls-remote', 'origin', 'refs/heads/main').split(/\s+/)[0]) throw
 
 const config = JSON.parse(await readFile(join(projectRoot, 'wrangler.hub.jsonc'), 'utf8'));
 const routes = config.routes.map((route) => route.pattern).sort();
-const expectedRoutes = ['site.jumper.dev.br/', 'site.jumper.dev.br/hub-assets/*'].sort();
+const expectedRoutes = ['site.jumper.dev.br/', 'site.jumper.dev.br/__jumper/hub-status', 'site.jumper.dev.br/hub-assets/*'].sort();
 if (JSON.stringify(routes) !== JSON.stringify(expectedRoutes)) throw new Error('As rotas do hub mudaram; revise antes de publicar.');
 for (const path of ['index.html', 'hub-assets/hub-redesign.css', 'hub-assets/favicon-jumper.png']) {
   await readFile(join(projectRoot, 'hub-dist', path));
@@ -45,14 +45,16 @@ if (deployment.status !== 0) process.exit(deployment.status || 1);
 let routeReady = false;
 let lastCheck = 'sem resposta';
 for (let attempt = 0; attempt < 12; attempt += 1) {
-  const [root, css] = await Promise.all([
+  const [root, css, status] = await Promise.all([
     fetch('https://site.jumper.dev.br/', { redirect: 'manual', signal: AbortSignal.timeout(20000), cache: 'no-store' }),
     fetch('https://site.jumper.dev.br/hub-assets/hub-redesign.css', { signal: AbortSignal.timeout(20000), cache: 'no-store' }),
+    fetch('https://site.jumper.dev.br/__jumper/hub-status', { redirect: 'manual', signal: AbortSignal.timeout(20000), cache: 'no-store' }),
   ]);
   routeReady = root.status === 401 && root.headers.get('X-Jumper-Surface') === 'jumper-hub'
-    && css.status === 200 && css.headers.get('X-Jumper-Surface') === 'jumper-hub';
+    && css.status === 200 && css.headers.get('X-Jumper-Surface') === 'jumper-hub'
+    && status.status === 401 && status.headers.get('X-Jumper-Surface') === 'jumper-hub';
   if (routeReady) break;
-  lastCheck = `raiz HTTP ${root.status}, CSS HTTP ${css.status}`;
+  lastCheck = `raiz HTTP ${root.status}, CSS HTTP ${css.status}, status HTTP ${status.status}`;
   if (attempt < 11) await new Promise((resolve) => setTimeout(resolve, 5000));
 }
 if (!routeReady) throw new Error(`Deploy do hub não confirmado após aguardar propagação: ${lastCheck}. Não publique o hoster.`);
