@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-02T13:58:14.051Z",
+  "results": [
+    {
+      "coversHero": true
+    },
+    {
+      "coversHero": true
+    },
+    {
+      "slide": 1,
+      "active": "O corte, no centro da experiência"
+    },
+    {
+      "slide": 2,
+      "active": "Rodeio · São Paulo desde 1958"
+    },
+    {
+      "slide": 3,
+      "active": "A casa, pronta para receber"
+    },
+    {
+      "slide": 4,
+      "active": "Para começar, sabores da casa"
+    },
+    {
+      "slide": 5,
+      "active": "Clássicos servidos à mesa"
+    },
+    {
+      "slide": 6,
+      "active": "Para terminar, um último sabor"
+    }
+  ]
+}

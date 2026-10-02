@@ -104,8 +104,10 @@ const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
 const motionAnimations=new Set<Animation>();
 function serve(element:Element,delay=0){
  if(reducedMotion.matches)return;
+ // Hero headings remain visible from first paint; motion must not delay LCP.
+ const isHeroHeading=element.matches('.hero h1');
  const animation=element.animate([
-  {opacity:0,transform:'translateY(18px)'},
+  {opacity:isHeroHeading?1:0,transform:'translateY(18px)'},
   {opacity:1,transform:'translateY(0)'}
  ],{duration:720,delay,easing:'cubic-bezier(.22,.7,.2,1)',fill:'backwards'});
  motionAnimations.add(animation);

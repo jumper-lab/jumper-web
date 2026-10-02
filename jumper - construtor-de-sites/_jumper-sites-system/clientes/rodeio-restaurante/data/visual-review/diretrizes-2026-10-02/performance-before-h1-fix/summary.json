@@ -1,0 +1,156 @@
+{
+  "date": "2026-10-02T14:00:14.668Z",
+  "method": "Lighthouse local CLI; mobile Slow 4G, CPU 4x; desktop preset. Lab metrics, not PSI or CrUX.",
+  "runs": [
+    {
+      "url": "https://site.jumper.dev.br/rodeio/",
+      "formFactor": "mobile",
+      "filename": "home-mobile.json",
+      "scores": {
+        "performance": 97,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "lcpMs": 2389.756,
+      "tbtMs": 17,
+      "cls": 0,
+      "bytes": 522219
+    },
+    {
+      "url": "https://site.jumper.dev.br/rodeio/historia/",
+      "formFactor": "mobile",
+      "filename": "historia-mobile.json",
+      "scores": {
+        "performance": 96,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "lcpMs": 2668.5910000000003,
+      "tbtMs": 0,
+      "cls": 0,
+      "bytes": 338218
+    },
+    {
+      "url": "https://site.jumper.dev.br/rodeio/cardapio/",
+      "formFactor": "mobile",
+      "filename": "cardapio-mobile.json",
+      "scores": {
+        "performance": 92,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "lcpMs": 3266.9305000000004,
+      "tbtMs": 0,
+      "cls": 0,
+      "bytes": 344473
+    },
+    {
+      "url": "https://site.jumper.dev.br/rodeio/eventos/",
+      "formFactor": "mobile",
+      "filename": "eventos-mobile.json",
+      "scores": {
+        "performance": 96,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "lcpMs": 2647.379999999999,
+      "tbtMs": 12,
+      "cls": 0,
+      "bytes": 243448
+    },
+    {
+      "url": "https://site.jumper.dev.br/rodeio/reservas/",
+      "formFactor": "mobile",
+      "filename": "reservas-mobile.json",
+      "scores": {
+        "performance": 95,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "lcpMs": 2783.7950000000005,
+      "tbtMs": 0,
+      "cls": 0,
+      "bytes": 277731
+    },
+    {
+      "url": "https://site.jumper.dev.br/rodeio/restaurantes/",
+      "formFactor": "mobile",
+      "filename": "restaurantes-mobile.json",
+      "scores": {
+        "performance": 91,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "lcpMs": 3305.0979999999995,
+      "tbtMs": 0,
+      "cls": 0,
+      "bytes": 357347
+    },
+    {
+      "url": "https://site.jumper.dev.br/rodeio/restaurantes/jardins/",
+      "formFactor": "mobile",
+      "filename": "restaurantesjardins-mobile.json",
+      "scores": {
+        "performance": 92,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "lcpMs": 3229.5914999999995,
+      "tbtMs": 0,
+      "cls": 0,
+      "bytes": 414086
+    },
+    {
+      "url": "https://site.jumper.dev.br/rodeio/restaurantes/iguatemi/",
+      "formFactor": "mobile",
+      "filename": "restaurantesiguatemi-mobile.json",
+      "scores": {
+        "performance": 89,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "lcpMs": 3649.3689999999997,
+      "tbtMs": 0,
+      "cls": 0,
+      "bytes": 451030
+    },
+    {
+      "url": "https://site.jumper.dev.br/rodeio/em-breve/",
+      "formFactor": "mobile",
+      "filename": "em-breve-mobile.json",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "lcpMs": 1736.2490000000003,
+      "tbtMs": 0,
+      "cls": 0,
+      "bytes": 213909
+    },
+    {
+      "url": "https://site.jumper.dev.br/rodeio/",
+      "formFactor": "desktop",
+      "filename": "home-desktop.json",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "lcpMs": 763.5820000000001,
+      "tbtMs": 0,
+      "cls": 0,
+      "bytes": 556823
+    }
+  ]
+}
