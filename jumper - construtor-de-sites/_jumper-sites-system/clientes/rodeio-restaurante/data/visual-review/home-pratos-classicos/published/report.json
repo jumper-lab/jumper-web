@@ -1,0 +1,483 @@
+{
+  "date": "2026-10-02T18:20:14.265Z",
+  "base": "https://site.jumper.dev.br/rodeio",
+  "checks": [
+    {
+      "engine": "chromium",
+      "width": 320,
+      "height": 740,
+      "status": 200,
+      "photos": [
+        {
+          "alt": "Picanha fatiada do Rodeio servida em prato branco",
+          "currentSrc": "https://site.jumper.dev.br/rodeio/_astro/home-picanha-fatiada.B6Dirw2w_Z1pQ3Yn.avif",
+          "loading": "lazy",
+          "width": 288,
+          "height": 288,
+          "ready": true,
+          "display": {
+            "width": 272,
+            "height": 204
+          },
+          "fit": "cover",
+          "ratio": 1.3333333333333333
+        },
+        {
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, servido em uma travessa",
+          "currentSrc": "https://site.jumper.dev.br/rodeio/_astro/home-arroz-rodeio.Byf4c3NE_qU6yv.avif",
+          "loading": "lazy",
+          "width": 288,
+          "height": 288,
+          "ready": true,
+          "display": {
+            "width": 272,
+            "height": 204
+          },
+          "fit": "cover",
+          "ratio": 1.3333333333333333
+        }
+      ],
+      "layout": [
+        {
+          "x": 24,
+          "y": 268.3125,
+          "width": 272,
+          "height": 204
+        },
+        {
+          "x": 24,
+          "y": 535.8125,
+          "width": 272,
+          "height": 204
+        }
+      ],
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "photos": [
+        {
+          "alt": "Picanha fatiada do Rodeio servida em prato branco",
+          "currentSrc": "https://site.jumper.dev.br/rodeio/_astro/home-picanha-fatiada.B6Dirw2w_Z1yOb1p.avif",
+          "loading": "lazy",
+          "width": 351,
+          "height": 351,
+          "ready": true,
+          "display": {
+            "width": 342,
+            "height": 256.5
+          },
+          "fit": "cover",
+          "ratio": 1.3307392996108949
+        },
+        {
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, servido em uma travessa",
+          "currentSrc": "https://site.jumper.dev.br/rodeio/_astro/home-arroz-rodeio.Byf4c3NE_Z1s4vdO.avif",
+          "loading": "lazy",
+          "width": 351,
+          "height": 351,
+          "ready": true,
+          "display": {
+            "width": 342,
+            "height": 256.5
+          },
+          "fit": "cover",
+          "ratio": 1.3307392996108949
+        }
+      ],
+      "layout": [
+        {
+          "x": 24,
+          "y": 267.703125,
+          "width": 342,
+          "height": 256.5
+        },
+        {
+          "x": 24,
+          "y": 587.703125,
+          "width": 342,
+          "height": 256.5
+        }
+      ],
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "photos": [
+        {
+          "alt": "Picanha fatiada do Rodeio servida em prato branco",
+          "currentSrc": "https://site.jumper.dev.br/rodeio/_astro/home-picanha-fatiada.B6Dirw2w_Z1yOb1p.avif",
+          "loading": "lazy",
+          "width": 368,
+          "height": 368,
+          "ready": true,
+          "display": {
+            "width": 364.59375,
+            "height": 280
+          },
+          "fit": "cover",
+          "ratio": 1.3035714285714286
+        },
+        {
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, servido em uma travessa",
+          "currentSrc": "https://site.jumper.dev.br/rodeio/_astro/home-arroz-rodeio.Byf4c3NE_qU6yv.avif",
+          "loading": "lazy",
+          "width": 307,
+          "height": 307,
+          "ready": true,
+          "display": {
+            "width": 303.84375,
+            "height": 280
+          },
+          "fit": "cover",
+          "ratio": 1.0857142857142856
+        }
+      ],
+      "layout": [
+        {
+          "x": 33.78125,
+          "y": 419.9375,
+          "width": 364.59375,
+          "height": 280
+        },
+        {
+          "x": 430.375,
+          "y": 419.9375,
+          "width": 303.84375,
+          "height": 280
+        }
+      ],
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "height": 900,
+      "status": 200,
+      "photos": [
+        {
+          "alt": "Picanha fatiada do Rodeio servida em prato branco",
+          "currentSrc": "https://site.jumper.dev.br/rodeio/_astro/home-picanha-fatiada.B6Dirw2w_Z1yOb1p.avif",
+          "loading": "lazy",
+          "width": 691,
+          "height": 691,
+          "ready": true,
+          "display": {
+            "width": 698.875,
+            "height": 403.1875
+          },
+          "fit": "cover",
+          "ratio": 1.7344913151364765
+        },
+        {
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, servido em uma travessa",
+          "currentSrc": "https://site.jumper.dev.br/rodeio/_astro/home-arroz-rodeio.Byf4c3NE_Z1s4vdO.avif",
+          "loading": "lazy",
+          "width": 576,
+          "height": 576,
+          "ready": true,
+          "display": {
+            "width": 582.40625,
+            "height": 403.1875
+          },
+          "fit": "cover",
+          "ratio": 1.4441687344913152
+        }
+      ],
+      "layout": [
+        {
+          "x": 63.359375,
+          "y": 304.65625,
+          "width": 698.875,
+          "height": 403.1875
+        },
+        {
+          "x": 794.234375,
+          "y": 304.65625,
+          "width": 582.40625,
+          "height": 403.1875
+        }
+      ],
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 1920,
+      "height": 1080,
+      "status": 200,
+      "photos": [
+        {
+          "alt": "Picanha fatiada do Rodeio servida em prato branco",
+          "currentSrc": "https://site.jumper.dev.br/rodeio/_astro/home-picanha-fatiada.B6Dirw2w_Z1yOb1p.avif",
+          "loading": "lazy",
+          "width": 921,
+          "height": 921,
+          "ready": true,
+          "display": {
+            "width": 811.625,
+            "height": 440
+          },
+          "fit": "cover",
+          "ratio": 1.8454545454545455
+        },
+        {
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, servido em uma travessa",
+          "currentSrc": "https://site.jumper.dev.br/rodeio/_astro/home-arroz-rodeio.Byf4c3NE_Z1s4vdO.avif",
+          "loading": "lazy",
+          "width": 768,
+          "height": 768,
+          "ready": true,
+          "display": {
+            "width": 676.375,
+            "height": 440
+          },
+          "fit": "cover",
+          "ratio": 1.5363636363636364
+        }
+      ],
+      "layout": [
+        {
+          "x": 200,
+          "y": 375.953125,
+          "width": 811.625,
+          "height": 440
+        },
+        {
+          "x": 1043.625,
+          "y": 375.953125,
+          "width": 676.375,
+          "height": 440
+        }
+      ],
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "photos": [
+        {
+          "alt": "Picanha fatiada do Rodeio servida em prato branco",
+          "currentSrc": "https://site.jumper.dev.br/rodeio/_astro/home-picanha-fatiada.B6Dirw2w_Z1yOb1p.avif",
+          "loading": "lazy",
+          "width": 351,
+          "height": 351,
+          "ready": true,
+          "display": {
+            "width": 342,
+            "height": 256.5
+          },
+          "fit": "cover",
+          "ratio": 1.3307392996108949
+        },
+        {
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, servido em uma travessa",
+          "currentSrc": "https://site.jumper.dev.br/rodeio/_astro/home-arroz-rodeio.Byf4c3NE_Z1s4vdO.avif",
+          "loading": "lazy",
+          "width": 351,
+          "height": 351,
+          "ready": true,
+          "display": {
+            "width": 342,
+            "height": 256.5
+          },
+          "fit": "cover",
+          "ratio": 1.3307392996108949
+        }
+      ],
+      "layout": [
+        {
+          "x": 24,
+          "y": 21.73333740234375,
+          "width": 342,
+          "height": 256.5
+        },
+        {
+          "x": 24,
+          "y": 341.73333740234375,
+          "width": 342,
+          "height": 256.5
+        }
+      ],
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "height": 900,
+      "status": 200,
+      "photos": [
+        {
+          "alt": "Picanha fatiada do Rodeio servida em prato branco",
+          "currentSrc": "https://site.jumper.dev.br/rodeio/_astro/home-picanha-fatiada.B6Dirw2w_Z1yOb1p.avif",
+          "loading": "lazy",
+          "width": 691,
+          "height": 691,
+          "ready": true,
+          "display": {
+            "width": 698.88330078125,
+            "height": 403.20001220703125
+          },
+          "fit": "cover",
+          "ratio": 1.7344913151364765
+        },
+        {
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, servido em uma travessa",
+          "currentSrc": "https://site.jumper.dev.br/rodeio/_astro/home-arroz-rodeio.Byf4c3NE_Z1s4vdO.avif",
+          "loading": "lazy",
+          "width": 576,
+          "height": 576,
+          "ready": true,
+          "display": {
+            "width": 582.4166259765625,
+            "height": 403.20001220703125
+          },
+          "fit": "cover",
+          "ratio": 1.4441687344913152
+        }
+      ],
+      "layout": [
+        {
+          "x": 63.350006103515625,
+          "y": 304.6333312988281,
+          "width": 698.88330078125,
+          "height": 403.20001220703125
+        },
+        {
+          "x": 794.2333374023438,
+          "y": 304.6333312988281,
+          "width": 582.4166259765625,
+          "height": 403.20001220703125
+        }
+      ],
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "photos": [
+        {
+          "alt": "Picanha fatiada do Rodeio servida em prato branco",
+          "currentSrc": "https://site.jumper.dev.br/rodeio/_astro/home-picanha-fatiada.B6Dirw2w_Z1yOb1p.avif",
+          "loading": "lazy",
+          "width": 351,
+          "height": 351,
+          "ready": true,
+          "display": {
+            "width": 342,
+            "height": 256.5
+          },
+          "fit": "cover",
+          "ratio": 1.3307392996108949
+        },
+        {
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, servido em uma travessa",
+          "currentSrc": "https://site.jumper.dev.br/rodeio/_astro/home-arroz-rodeio.Byf4c3NE_Z1s4vdO.avif",
+          "loading": "lazy",
+          "width": 351,
+          "height": 351,
+          "ready": true,
+          "display": {
+            "width": 342,
+            "height": 256.5
+          },
+          "fit": "cover",
+          "ratio": 1.3307392996108949
+        }
+      ],
+      "layout": [
+        {
+          "x": 24,
+          "y": 266.703125,
+          "width": 342,
+          "height": 256.5
+        },
+        {
+          "x": 24,
+          "y": 586.703125,
+          "width": 342,
+          "height": 256.5
+        }
+      ],
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "height": 900,
+      "status": 200,
+      "photos": [
+        {
+          "alt": "Picanha fatiada do Rodeio servida em prato branco",
+          "currentSrc": "https://site.jumper.dev.br/rodeio/_astro/home-picanha-fatiada.B6Dirw2w_Z1yOb1p.avif",
+          "loading": "lazy",
+          "width": 691,
+          "height": 691,
+          "ready": true,
+          "display": {
+            "width": 698.875,
+            "height": 403.1875
+          },
+          "fit": "cover",
+          "ratio": 1.7344913151364765
+        },
+        {
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, servido em uma travessa",
+          "currentSrc": "https://site.jumper.dev.br/rodeio/_astro/home-arroz-rodeio.Byf4c3NE_Z1s4vdO.avif",
+          "loading": "lazy",
+          "width": 576,
+          "height": 576,
+          "ready": true,
+          "display": {
+            "width": 582.390625,
+            "height": 403.1875
+          },
+          "fit": "cover",
+          "ratio": 1.4441687344913152
+        }
+      ],
+      "layout": [
+        {
+          "x": 63.359375,
+          "y": 304.625,
+          "width": 698.875,
+          "height": 403.1875
+        },
+        {
+          "x": 794.234375,
+          "y": 304.625,
+          "width": 582.390625,
+          "height": 403.1875
+        }
+      ],
+      "violations": [],
+      "errors": [],
+      "passed": true
+    }
+  ]
+}
