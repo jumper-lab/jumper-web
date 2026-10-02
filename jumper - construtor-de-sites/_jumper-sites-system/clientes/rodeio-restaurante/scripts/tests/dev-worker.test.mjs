@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import devWorker, { developmentSlugs, isDevelopmentRequest, isPreviewAsset } from '../../cloudflare/dev-worker.mjs';
 
-test('somente os sete caminhos de desenvolvimento são permitidos', () => {
-  assert.equal(developmentSlugs.length, 7);
+test('somente os oito caminhos de desenvolvimento registrados são permitidos', () => {
+  assert.equal(developmentSlugs.length, 8);
   for (const slug of developmentSlugs) {
     assert.equal(isDevelopmentRequest(new URL(`https://site.jumper.dev.br/${slug}/`)), true);
     assert.equal(isDevelopmentRequest(new URL(`https://site.jumper.dev.br/${slug}/assets/file.js`)), true);
@@ -20,6 +20,30 @@ test('somente os sete caminhos de desenvolvimento são permitidos', () => {
     'https://www.izigym.com.br/',
     'https://cerrocora.izigym.com.br/',
   ]) assert.equal(isDevelopmentRequest(new URL(url)), false, url);
+});
+
+test('Pão de Queijo: quatro páginas e assets públicos, sem capturar domínio oficial ou slug vizinho', async () => {
+  const prefix = '/pao-de-queijo-haddock-lobo/';
+  for (const route of ['', 'sobre/', 'lojas/', 'menu/', '_astro/site.js', 'images/hero.webp']) {
+    const url = `https://site.jumper.dev.br${prefix}${route}`;
+    let fetched;
+    const response = await devWorker.fetch(new Request(url), {
+      ASSETS: { fetch: async (request) => { fetched = request.url; return new Response('preview', { headers: { 'Content-Type': route.endsWith('.js') ? 'text/javascript' : 'text/html' } }); } },
+    });
+    assert.equal(fetched, url);
+    assert.equal(response.status, 200);
+    assert.equal(response.headers.get('X-Jumper-Worker'), 'jumper-hoster-dev');
+    assert.equal(response.headers.get('X-Robots-Tag'), 'noindex, nofollow');
+    assert.equal(await response.text(), 'preview');
+  }
+  for (const url of [
+    'https://paodequeijohaddocklobo.com.br/',
+    'https://site.jumper.dev.br/pao-de-queijo-haddock-lobo-v2/',
+    'https://site.jumper.dev.br/briefing/',
+  ]) {
+    assert.equal(isDevelopmentRequest(new URL(url)), false);
+    assert.equal((await devWorker.fetch(new Request(url), {})).status, 404);
+  }
 });
 
 test('responde 404 fora dos caminhos dev antes de acessar qualquer binding', async () => {

@@ -1,0 +1,24 @@
+---
+import Photo from './Photo.astro';
+import Icon from './Icon.astro';
+import { imageData } from '../lib/site';
+const { name, category, categoryId } = Astro.props;
+const image = imageData(name);
+const editorial = ['bebidas','smoothies'].includes(categoryId);
+---
+<button
+  class="category-image menu-photo-button"
+  type="button"
+  disabled
+  data-menu-photo
+  data-zoom-src={image.full}
+  data-zoom-alt={image.alt}
+  data-zoom-caption={`${category}${editorial ? ' · Fotografia editorial do cardápio oficial' : ''}`}
+  data-zoom-crop={categoryId === 'smoothies' ? 'smoothies' : undefined}
+  aria-label={`Ampliar foto: ${category}`}
+  aria-haspopup="dialog"
+  aria-controls="photo-dialog"
+>
+  <Photo name={name} sizes="(max-width:700px) 104px, (max-width:1100px) 120px, 150px"/>
+  <span class="menu-photo-cue" aria-hidden="true"><Icon name="plus" size={14}/><span>Ampliar</span></span>
+</button>

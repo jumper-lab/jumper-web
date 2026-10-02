@@ -1,0 +1,10 @@
+---
+const { label } = Astro.props;
+const text=String(label).normalize('NFC');
+const glyphs=[...new Intl.Segmenter('pt-BR',{granularity:'grapheme'}).segment(text)].map(glyph=>glyph.segment);
+---
+<span class="sr-only">{text}</span>
+<span class="nav-print" aria-hidden="true">
+  <span class="nav-print-original">{glyphs.map((letter,index)=><span class="nav-glyph" style={`--glyph:${index}`}>{letter===' ' ? '\u00a0' : letter}</span>)}</span>
+  <span class="nav-print-impression">{glyphs.map((letter,index)=><span class="nav-glyph" style={`--glyph:${index}`}>{letter===' ' ? '\u00a0' : letter}</span>)}</span>
+</span>

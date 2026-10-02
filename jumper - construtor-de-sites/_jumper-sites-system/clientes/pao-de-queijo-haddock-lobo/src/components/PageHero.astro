@@ -1,0 +1,30 @@
+---
+import Photo from './Photo.astro';
+interface Props {
+  variant: 'story' | 'stores' | 'menu';
+  image: string;
+  alt?: string;
+  titleId: string;
+  lines: string[];
+  eyebrow: string;
+  description: string;
+  actionLabel: string;
+  actionHref: string;
+  caption: string;
+  note?: string;
+}
+const {variant,image,alt,titleId,lines,eyebrow,description,actionLabel,actionHref,caption,note}=Astro.props;
+const sizes=variant==='story'?'(max-width:700px) 100vw, 55vw':'(max-width:700px) 100vw, 57vw';
+---
+<section class:list={['page-hero','split-page-hero',`${variant}-hero`]} aria-labelledby={titleId}>
+  <div class="page-hero-copy">
+    <div class="page-hero-content">
+      <p class="eyebrow">{eyebrow}</p>
+      <h1 id={titleId}>{lines.map((line,index)=><>{index>0&&<br/>}{line}</>)}</h1>
+      <p class="page-hero-description">{description}</p>
+      <a class:list={['page-hero-action',variant==='story'?'text-link':'button']} href={actionHref}>{actionLabel}</a>
+      {note&&<span class="handwritten">{note}</span>}
+    </div>
+  </div>
+  <div class="page-hero-photo"><Photo name={image} alt={alt} priority sizes={sizes}/><span class="photo-label">{caption}</span></div>
+</section>

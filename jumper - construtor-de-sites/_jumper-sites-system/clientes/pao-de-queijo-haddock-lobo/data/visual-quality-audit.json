@@ -1,0 +1,1326 @@
+{
+  "schema_version": "3.0.0",
+  "stage": "visual_quality_audit",
+  "status": "approved_with_fixes",
+  "client": "Pão de Queijo Haddock Lobo",
+  "model": "M5",
+  "review_date": "2026-10-02",
+  "generated_at": "2026-10-02T19:04:04.000Z",
+  "delivery_scope": "isolated_local_preview_for_review_not_official_publication",
+  "first_fold": {
+    "status": "approved",
+    "evidence": "Home, História, Lojas e Cardápio com seção 100vw × 100vh/100svh desde y=0. Só Home mantém foto de fundo/slideshow. Esclarecimento do usuário aplicado às internas: composição dividida papel/navy, História com foto à esquerda, Lojas/Cardápio à direita; mobile texto acima/foto abaixo. Cabeçalho incluído na seção. 33 tamanhos sem colisão/cortes; conteúdo/CTAs e provas preservados.",
+    "signature": "Fotografia da cesta/embalagem, DIN monumental, letras em segunda impressão e filetes/fotos desdobrados."
+  },
+  "success_tests": {
+    "five_seconds": {
+      "status": "passed_self_review",
+      "evidence": "Nova primeira dobra identifica pão de queijo/cafeteria, origem em 1968 e duas ações estáveis: loja e cardápio. Avaliação especializada do agente, não pesquisa com usuários."
+    },
+    "print": {
+      "status": "passed_self_review",
+      "evidence": "Logo ocultado somente no navegador de teste. hero-print-no-logo.png efetivamente examinada: produto, embalagem listrada, DIN e menção à Haddock Lobo mantêm especificidade."
+    },
+    "competitor": {
+      "status": "passed_with_limits",
+      "benchmark": "https://santograo.com.br/",
+      "evidence": "Benchmark Santo Grão da etapa anterior preservado, não refeito nesta revisão. Comparação qualitativa de clareza e intenção; sem ranking universal, premiações ou cópia de layout."
+    }
+  },
+  "visual_checks": {
+    "references": "Referências anexadas orientaram respiro editorial e expressividade gastronômica, sem copiar layout. Cores/logo/DIN do manual; fotos do cliente.",
+    "responsive": {
+      "status": "passed",
+      "evidence": "24 telas gerais e 33 específicas das internas sem overflow ou alvos <44px. Duas revisões efetivamente examinadas em 320/768/1024/1440+, mais landscape e telas curtas. Foto ocupa somente seu painel; escala e proporções mudam pela altura. H1/CTA/foto/legenda cabem na primeira tela. Cardápio adicional examinado em dois passes nas quatro larguras oficiais; 127 checagens em seis larguras, índice horizontal no mobile e vertical no desktop, sem overflow/alvos pequenos. Nova seção/menus conferidos em seis larguras, sem overflow ou alvos <44px; duas revisões de contato nas quatro larguras oficiais. Revisão adicional do formulário em seis larguras; duas revisões reais das quatro larguras oficiais, sem overflow e com campos/labels íntegros."
+    },
+    "spacing": {
+      "status": "passed",
+      "evidence": "Texto navy/papel e foto separados na abertura interna, com alinhamento central editorial no desktop e empilhamento no celular. Respiro e crop conferidos nas duas revisões; header dentro dos 100vh, sem faixa adicional antes da seção ou sobreposição. Conteúdo abaixo preservado. Contato: alinhamento inferior da assinatura Aleo com lista das lojas dá base editorial à coluna curta; espaços revistos em capturas reais. Mobile empilha sem buracos ou nomes cortados. Capturas grandes de elemento traziam header/skip-link fora da viewport; capturas reais esclarecem a composição sem esconder CSS. Novo formulário ocupa a coluna esquerda; campos lado a lado só ≥901px, abaixo empilhados para preservar placeholders/nota. Mensagem integral com textarea redimensionável."
+    },
+    "media": {
+      "status": "passed",
+      "evidence": "105 WebPs: 95 anteriores preservados e 10 derivados de duas fotos do cardápio oficial. Bebidas/Smoothies carregam localmente/lazy, com alt contextual e mesma moldura; recortes examinados em dois passes reais de 320/768/1024/1440. Primeiro frame da Home prioritário, próximos sob demanda/decodificados, demais imagens lazy. Testes históricos de imagem indisponível e resposta tardia preservados."
+    },
+    "type": {
+      "status": "passed",
+      "evidence": "DIN/Poppins/Aleo locais; cinco WOFF2 conservam cmap/glifos dos TTFs. A revisão anterior de DOM/fontes não detectou recortes visuais de Á/Ê/Ç/Ã nas máscaras. Máscaras corrigidas e comparadas a capturas sem clipping em quatro títulos e Home 320/768/1024/1440: nenhum pixel significativo perdido, tolerância RGB de 8 para arredondamento do compositor."
+    },
+    "anti_generic": {
+      "status": "passed",
+      "evidence": "Impressão e listras da embalagem orientam letras, tinta no pointer, moldura/legenda e desdobramento em faixas. Sem cursor falso, biblioteca de animação, IA/Pexels, blobs ou fatos inventados. Gradiente apenas funcional para legibilidade sobre fotos."
+    },
+    "menu_highlight": {
+      "status": "passed",
+      "evidence": "Home claramente intitulada Cardápio da casa com CTA completo e seis atalhos ilustrados; página interna com livro, índice de oito ícones e repetição nos capítulos. Continuidade editorial navy/papel, DIN/Poppins/Aleo e filetes duplos. Desenhos SVG próprios com detalhes impressos em hover/foco; nomes e hitboxes imóveis. Fotos reais da vitrine e hero dividido preservados. Fonte: https://paodequeijohaddocklobo.com.br/menu/, consultada em 02/10/2026."
+    },
+    "menu_lightbox": {
+      "status": "passed",
+      "evidence": "Oito fotos acionáveis com mesmas molduras, indicador de ampliar, filetes duplos e aproximação discreta sem deslocar alvo. Dois exames reais de hover/em-casa/Smoothies em320/768/1024/1440; legenda e fechar cabem no modal navy/papel. Smoothies recortado também ampliado, sem carta antiga legível. Toque/foco/reduced/no-js testados; galerias existentes Home/História preservadas."
+    },
+    "menu_delivery_icons": {
+      "status": "passed",
+      "evidence": "iFood/Rappi oficiais locais28px com nomes, mesma identidade/filetes, foco e alvos44px. Dois exames reais de320/768/1024/1440; seis larguras medidas. Agrupamento corrige Rappi isolada no tablet; nenhum overflow/deslocamento em hover. Destinos e CTA loja preservados."
+    },
+    "store_swipe": {
+      "status": "passed",
+      "evidence": "Dois exames reais320/768/1024/1440, foto/dados/moldura anteriores preservados. Pista pequena no mobile, ausente no desktop, aba atual visível sem puxar página. Toque real emulado passa em seis larguras; sem overflow, dados divergentes ou interferência na rolagem vertical."
+    },
+    "mobile_menu_fullscreen": {
+      "status": "passed",
+      "evidence": "Dois exames reais320/768/1024/1440 e844×390/390×240 em estado estável. Dialog cobre de canto a canto, tipografia/lista sem corte horizontal, close acessível, seis links visíveis nos celulares usuais e rolagem interna nas alturas extremas. Papel/navy/DIN/capítulos/filetes preservados; desktop navbar inalterada."
+    },
+    "history_marks_alignment": {
+      "status": "passed",
+      "evidence": "Dois exames reais de history-marks-pass1/final em320/768/1024/1440. Mobile: três números em uma linha e mesma altura, colunas simétricas/centralizadas, legendas no mesmo topo com quebra natural. Sem sobreposição de filetes/glifos, dados preservados. Desktop mantém tamanho/posição/padding anteriores por comparação geométrica com baseline."
+    },
+    "menu_index_stability": {
+      "status": "passed",
+      "evidence": "Capturas de viewport e índice examinadas em320/768/1024/1440 nos passes visual2/final. Topo e altura do trilho estáveis na rolagem, sem gap sob o cabeçalho; título/foto/preços preservados e Bebidas selecionada, sem categoria anterior destacada. Índice horizontal no mobile/tablet e vertical no desktop. Medição de quadros e gestos CDP, não Safari físico."
+    },
+    "contact": {
+      "status": "passed",
+      "evidence": "Dois passes de capturas realmente examinadas em 320/768/1024/1440+, também 390/1920: três campos com labels/numeração DIN, Poppins, filetes navy e foco/errors vermelho. Corrigidos largura da linha Nome/E-mail e wrap da nota em 768px com empilhamento ≤900px, e foco azul nativo do textarea com foco vermelho visível. Telefones à direita, Instagram/eventos abaixo, sem cards nem ampliação de páginas."
+    },
+    "events": {
+      "status": "passed",
+      "evidence": "Primeiro/segundo passe efetivamente examinados em 320/768/1024/1440, mais 320×500/844×390. Refinamento final de 568×320/667×375/740×360 examinado: CTA inteiro após correção real de recorte de 10px no pequeno landscape. Foto real no próprio painel, DIN com acento íntegro, navy/CTA vermelho e assinatura Aleo preservados."
+    }
+  },
+  "contact_form_functional_checks_history": {
+    "status": "passed_frontend_delivery_pending",
+    "tests": 217,
+    "main_flow_checks": 86,
+    "contact_form_checks": 49,
+    "contact_section_checks": 82,
+    "viewport_page_combinations": 24,
+    "contact_widths": 6,
+    "errors": [],
+    "native_transition_skips": [
+      "Transition was aborted because of invalid state. ViewTransition opt-in disabled",
+      "Transition was aborted because of invalid state. ViewTransition opt-in disabled",
+      "Transition was aborted because of invalid state. ViewTransition opt-in disabled",
+      "Transition was aborted because of invalid state. ViewTransition opt-in disabled",
+      "Transition was aborted because of invalid state. ViewTransition opt-in disabled",
+      "Transition was aborted because of invalid state. ViewTransition opt-in disabled",
+      "Transition was aborted because of invalid state. ViewTransition opt-in disabled",
+      "Transition was aborted because of invalid state. ViewTransition opt-in disabled"
+    ],
+    "evidence": "49 testes frontend do formulário, 82 contatos/canais/16 menus e 86 fluxos gerais/24 telas. HTML/500/JSON vazio/JSON com erros/timeout preservam recado; vazios/espaços/e-mail inválido/honeypot não fazem requisição. POSTs somente interceptados no navegador de teste. 8 avisos nativos exatos ViewTransition opt-in disabled separados, sem falhas de clique/aplicação. Verificação geral antecede o último ajuste CSS de foco do textarea, coberto pelo passe específico final. Não é teste de entrega real nem reexecução das 872 checagens históricas.",
+    "tested_interactions": [
+      "Hero: menu inicial transparente sobre a fotografia",
+      "Hero: foto cobre toda a seção",
+      "Slideshow: exatamente uma fotografia selecionada",
+      "Slideshow: seleção manual mostra o café e sua legenda",
+      "Slideshow: seleção manual pausa a reprodução",
+      "Slideshow: mesa só aparece após a foto carregar",
+      "Slideshow: reprodução automática suave retorna à primeira foto",
+      "Slideshow: controle de pausa interrompe a reprodução",
+      "Home: cabeçalho perde opacidade ao rolar para baixo",
+      "Home: menu volta legível ao rolar para cima fora da hero",
+      "Teclado: primeira parada é Pular para o conteúdo",
+      "Teclado: skip-link leva ao conteúdo principal",
+      "Home: ficha da unidade haddock funciona",
+      "Home: ficha da unidade iguatemi funciona",
+      "Home: ficha da unidade higienopolis funciona",
+      "Home: ficha da unidade sirio funciona",
+      "Home: ficha da unidade leblon funciona",
+      "Home: seletor mostra Shopping Leblon e oculta demais unidades",
+      "Home: uma ficha selecionada por vez",
+      "Home: navegação de abas com Home funciona",
+      "Home: seta vertical seleciona unidade",
+      "Contato: e-mail público usa mailto correto",
+      "Eventos: número público de WhatsApp preservado",
+      "Canal oficial presente: ifood.com.br",
+      "Canal oficial presente: rappi.com.br",
+      "Canal oficial presente: instagram.com",
+      "Contatos: campos disponíveis, envio honestamente inativo sem serviço configurado",
+      "Galeria: abre fotografia real ampliada",
+      "Galeria: Escape fecha o diálogo",
+      "Galeria: foco retorna ao botão de origem",
+      "Lojas: filtro Rio mostra uma unidade",
+      "Lojas: unidade do filtro Rio é Shopping Leblon",
+      "Lojas: filtro São Paulo mostra quatro unidades",
+      "Lojas: limpar filtro restaura cinco unidades",
+      "Lojas: mapa do Sírio não aponta para Higienópolis",
+      "Cardápio: 83 itens/adicionais migrados",
+      "Cardápio: busca sem acentos encontra sete itens de pão de queijo",
+      "Cardápio: busca por ingrediente funciona",
+      "Cardápio: busca pelo nome da categoria funciona",
+      "Cardápio: busca sem resultado mostra estado útil",
+      "Cardápio: reset restaura todos os itens",
+      "Cardápio: âncora de categoria leva ao destino correto",
+      "URL legado: colageno encaminha para Bebidas",
+      "URL legado: sopa encaminha para Tortas",
+      "SEO/semântica: home",
+      "Âncoras internas: home",
+      "SEO/semântica: historia",
+      "Âncoras internas: historia",
+      "SEO/semântica: lojas",
+      "Âncoras internas: lojas",
+      "SEO/semântica: menu",
+      "Âncoras internas: menu",
+      "SEO: títulos e descrições únicos por página",
+      "Rota interna: /",
+      "Rota interna: /sobre/",
+      "Rota interna: /menu/",
+      "Rota interna: /lojas/",
+      "Arquivo técnico: /sitemap.xml",
+      "Arquivo técnico: /robots.txt",
+      "Arquivo técnico: /favicon.png",
+      "Arquivo técnico: /404.html",
+      "URL preservado: / → /",
+      "URL preservado: /menu/ → /menu/",
+      "URL preservado: /#home → /#home",
+      "URL preservado: /#sobre → /#sobre",
+      "URL preservado: /#loja → /#loja",
+      "URL preservado: /#contatos → /#contatos",
+      "URL preservado: /menu/#salgados → /menu/#salgados",
+      "URL preservado: /menu/#tortas → /menu/#tortas",
+      "URL preservado: /menu/#sanduiches → /menu/#sanduiches",
+      "URL preservado: /menu/#doces → /menu/#doces",
+      "URL preservado: /menu/#cafes → /menu/#cafes",
+      "URL preservado: /menu/#bebidas → /menu/#bebidas",
+      "URL preservado: /menu/#sopa → /menu/#tortas",
+      "URL preservado: /menu/#colageno → /menu/#bebidas",
+      "Menu mobile: abre o diálogo",
+      "Menu mobile: Escape fecha",
+      "Menu mobile: foco restaurado",
+      "Menu mobile: navegação real para Cardápio",
+      "Sem JavaScript: catálogo completo permanece no HTML",
+      "Sem JavaScript: navegação alternativa aparece no celular",
+      "Sem JavaScript: primeira fotografia da hero permanece visível",
+      "Sem JavaScript: controles de slideshow inativos não aparecem",
+      "Movimento reduzido: transições desativadas",
+      "Movimento reduzido: slideshow não roda automaticamente",
+      "Movimento reduzido: troca manual instantânea continua disponível",
+      "Form@320: três campos obrigatórios e alvos íntegros",
+      "Form@320: tipos, preenchimento automático e limites",
+      "Form@320: campos empilhados, tamanho de leitura adequado",
+      "Form@320: nenhum mailto/overflow/envio fictício; pendência explícita",
+      "Form@320: foco e filete vermelhos da marca",
+      "Form@390: três campos obrigatórios e alvos íntegros",
+      "Form@390: tipos, preenchimento automático e limites",
+      "Form@390: campos empilhados, tamanho de leitura adequado",
+      "Form@390: nenhum mailto/overflow/envio fictício; pendência explícita",
+      "Form@390: foco e filete vermelhos da marca",
+      "Form@768: três campos obrigatórios e alvos íntegros",
+      "Form@768: tipos, preenchimento automático e limites",
+      "Form@768: campos empilhados, tamanho de leitura adequado",
+      "Form@768: nenhum mailto/overflow/envio fictício; pendência explícita",
+      "Form@768: foco e filete vermelhos da marca",
+      "Form@1024: três campos obrigatórios e alvos íntegros",
+      "Form@1024: tipos, preenchimento automático e limites",
+      "Form@1024: campos lado a lado, tamanho de leitura adequado",
+      "Form@1024: nenhum mailto/overflow/envio fictício; pendência explícita",
+      "Form@1024: foco e filete vermelhos da marca",
+      "Form@1440: três campos obrigatórios e alvos íntegros",
+      "Form@1440: tipos, preenchimento automático e limites",
+      "Form@1440: campos lado a lado, tamanho de leitura adequado",
+      "Form@1440: nenhum mailto/overflow/envio fictício; pendência explícita",
+      "Form@1440: foco e filete vermelhos da marca",
+      "Form@1920: três campos obrigatórios e alvos íntegros",
+      "Form@1920: tipos, preenchimento automático e limites",
+      "Form@1920: campos lado a lado, tamanho de leitura adequado",
+      "Form@1920: nenhum mailto/overflow/envio fictício; pendência explícita",
+      "Form@1920: foco e filete vermelhos da marca",
+      "Sem endpoint: submit programático não simula sucesso",
+      "Vazios: três erros associados, foco no nome, nenhuma requisição",
+      "Espaços/e-mail inválido: envio bloqueado e orientação em português",
+      "Honeypot: preenchimento automatizado bloqueado sem requisição",
+      "Pendente: indicador de envio e bloqueio de duplicatas",
+      "POST mock: somente payload esperado, com valores aparados",
+      "Sucesso JSON explícito: confirmação do serviço e limpeza sem alegar entrega por e-mail",
+      "Acessibilidade: status anunciado e aria-busy liberado",
+      "Nova edição: confirmação anterior escondida",
+      "HTTP 500: sem falso sucesso; mensagem preservada para nova tentativa",
+      "HTML 200: sem falso sucesso; mensagem preservada para nova tentativa",
+      "JSON sem confirmação: sem falso sucesso; mensagem preservada para nova tentativa",
+      "JSON com erros: sem falso sucesso; mensagem preservada para nova tentativa",
+      "Sucesso tardio: edições novas nunca são apagadas",
+      "Configuração insegura: HTTP rejeitado antes de enviar dados",
+      "Timeout 12s: cancela espera, preserva recado e permite tentar novamente",
+      "no-js: campos visíveis e indisponibilidade honesta",
+      "reduced: campos visíveis e indisponibilidade honesta",
+      "Movimento reduzido: filete sem animação",
+      "Contato@320: seção dedicada e âncora única, antes do rodapé",
+      "Contato@320: âncora visível sem header cobrindo ou overflow",
+      "Contato@320: chamada clara, sem corte de texto",
+      "Contato@320: e-mail público visível, formulário com envio inativo sem serviço",
+      "Contato@320: cinco telefones e rótulos oficiais",
+      "Contato@320: todos os alvos >=44px, sem setas decorativas",
+      "Contato@320: Instagram e WhatsApp de eventos preservados",
+      "Contato@320: canais externos protegidos e identificados",
+      "Contato@320: filete/hover na tinta da marca sem mover alvo",
+      "Contato@320: telefone com foco visível",
+      "Contato@390: seção dedicada e âncora única, antes do rodapé",
+      "Contato@390: âncora visível sem header cobrindo ou overflow",
+      "Contato@390: chamada clara, sem corte de texto",
+      "Contato@390: e-mail público visível, formulário com envio inativo sem serviço",
+      "Contato@390: cinco telefones e rótulos oficiais",
+      "Contato@390: todos os alvos >=44px, sem setas decorativas",
+      "Contato@390: Instagram e WhatsApp de eventos preservados",
+      "Contato@390: canais externos protegidos e identificados",
+      "Contato@390: filete/hover na tinta da marca sem mover alvo",
+      "Contato@390: telefone com foco visível",
+      "Contato@768: seção dedicada e âncora única, antes do rodapé",
+      "Contato@768: âncora visível sem header cobrindo ou overflow",
+      "Contato@768: chamada clara, sem corte de texto",
+      "Contato@768: e-mail público visível, formulário com envio inativo sem serviço",
+      "Contato@768: cinco telefones e rótulos oficiais",
+      "Contato@768: todos os alvos >=44px, sem setas decorativas",
+      "Contato@768: Instagram e WhatsApp de eventos preservados",
+      "Contato@768: canais externos protegidos e identificados",
+      "Contato@768: filete/hover na tinta da marca sem mover alvo",
+      "Contato@768: telefone com foco visível",
+      "Contato@1024: seção dedicada e âncora única, antes do rodapé",
+      "Contato@1024: âncora visível sem header cobrindo ou overflow",
+      "Contato@1024: chamada clara, sem corte de texto",
+      "Contato@1024: e-mail público visível, formulário com envio inativo sem serviço",
+      "Contato@1024: cinco telefones e rótulos oficiais",
+      "Contato@1024: todos os alvos >=44px, sem setas decorativas",
+      "Contato@1024: Instagram e WhatsApp de eventos preservados",
+      "Contato@1024: canais externos protegidos e identificados",
+      "Contato@1024: filete/hover na tinta da marca sem mover alvo",
+      "Contato@1024: telefone com foco visível",
+      "Contato@1440: seção dedicada e âncora única, antes do rodapé",
+      "Contato@1440: âncora visível sem header cobrindo ou overflow",
+      "Contato@1440: chamada clara, sem corte de texto",
+      "Contato@1440: e-mail público visível, formulário com envio inativo sem serviço",
+      "Contato@1440: cinco telefones e rótulos oficiais",
+      "Contato@1440: todos os alvos >=44px, sem setas decorativas",
+      "Contato@1440: Instagram e WhatsApp de eventos preservados",
+      "Contato@1440: canais externos protegidos e identificados",
+      "Contato@1440: filete/hover na tinta da marca sem mover alvo",
+      "Contato@1440: telefone com foco visível",
+      "Contato@1920: seção dedicada e âncora única, antes do rodapé",
+      "Contato@1920: âncora visível sem header cobrindo ou overflow",
+      "Contato@1920: chamada clara, sem corte de texto",
+      "Contato@1920: e-mail público visível, formulário com envio inativo sem serviço",
+      "Contato@1920: cinco telefones e rótulos oficiais",
+      "Contato@1920: todos os alvos >=44px, sem setas decorativas",
+      "Contato@1920: Instagram e WhatsApp de eventos preservados",
+      "Contato@1920: canais externos protegidos e identificados",
+      "Contato@1920: filete/hover na tinta da marca sem mover alvo",
+      "Contato@1920: telefone com foco visível",
+      "Menu /@320: Contato leva à seção real e fecha diálogo",
+      "Menu /sobre/@320: Contato leva à seção real e fecha diálogo",
+      "Menu /menu/@320: Contato leva à seção real e fecha diálogo",
+      "Menu /lojas/@320: Contato leva à seção real e fecha diálogo",
+      "Menu /@768: Contato leva à seção real e fecha diálogo",
+      "Menu /sobre/@768: Contato leva à seção real e fecha diálogo",
+      "Menu /menu/@768: Contato leva à seção real e fecha diálogo",
+      "Menu /lojas/@768: Contato leva à seção real e fecha diálogo",
+      "Menu /@1024: Contato leva à seção real e fecha diálogo",
+      "Menu /sobre/@1024: Contato leva à seção real e fecha diálogo",
+      "Menu /menu/@1024: Contato leva à seção real e fecha diálogo",
+      "Menu /lojas/@1024: Contato leva à seção real e fecha diálogo",
+      "Menu /@1440: Contato leva à seção real e fecha diálogo",
+      "Menu /sobre/@1440: Contato leva à seção real e fecha diálogo",
+      "Menu /menu/@1440: Contato leva à seção real e fecha diálogo",
+      "Menu /lojas/@1440: Contato leva à seção real e fecha diálogo",
+      "Teclado: sete ações acionadas para destinos corretos, sem envio externo",
+      "Rodapé interno: atalho Contato abre a seção da Home",
+      "no-js: campos, aviso de envio pendente e cinco telefones disponíveis",
+      "no-js: navegação alternativa chega ao contato",
+      "reduced: campos, aviso de envio pendente e cinco telefones disponíveis",
+      "reduced: filetes sem animação"
+    ]
+  },
+  "accessibility_checks": {
+    "status": "passed_in_local_tests",
+    "contrast": [
+      {
+        "name": "navy/paper",
+        "foreground": "#13273D",
+        "background": "#EEECE8",
+        "ratio": 12.85,
+        "minimum": 4.5
+      },
+      {
+        "name": "paper/navy",
+        "foreground": "#EEECE8",
+        "background": "#13273D",
+        "ratio": 12.85,
+        "minimum": 4.5
+      },
+      {
+        "name": "red/paper",
+        "foreground": "#9F2B34",
+        "background": "#EEECE8",
+        "ratio": 6.2,
+        "minimum": 4.5
+      },
+      {
+        "name": "white/red",
+        "foreground": "#FFFFFF",
+        "background": "#9F2B34",
+        "ratio": 7.32,
+        "minimum": 4.5
+      },
+      {
+        "name": "muted/paper",
+        "foreground": "#53606B",
+        "background": "#EEECE8",
+        "ratio": 5.47,
+        "minimum": 4.5
+      },
+      {
+        "name": "white/navy",
+        "foreground": "#FFFFFF",
+        "background": "#13273D",
+        "ratio": 15.16,
+        "minimum": 4.5
+      },
+      {
+        "name": "red-hover/paper",
+        "foreground": "#83232B",
+        "background": "#EEECE8",
+        "ratio": 7.94,
+        "minimum": 4.5
+      }
+    ],
+    "min_touch_target_px": 44,
+    "small_targets": [],
+    "evidence": "Pares sólidos AA, skip-link, abas/diálogos, foco mantido ao retomar e movimento reduzido testados novamente. Nomes intactos em headings/menus, fallback sem JS clicável. Lighthouse 100 pertence à revisão imersiva anterior, não foi reexecutado nesta correção. Legibilidade conferida visualmente; não é teste assistivo humano completo. Novos ícones são decorativos/aria-hidden e mantêm nomes completos nos links. CTA, seis atalhos, oito categorias e teclado/reduced motion/no-js conferidos pelo verificador específico. Contato: ícones decorativos, nomes de lojas/números nos rótulos tel, min44px, foco visível, externos com aviso de nova aba, teclado/sem JS/movimento reduzido. Formulário sem destino não foi simulado."
+  },
+  "performance_checks": {
+    "status": "passed_preview_budget",
+    "home_mobile": {
+      "scores": {
+        "performance": 91,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcp_ms": 3384.1368,
+      "cls": 0.0004422027740473514,
+      "tbt_ms": 0
+    },
+    "menu_mobile": {
+      "scores": {
+        "performance": 94,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcp_ms": 3007.4314000000004,
+      "cls": 0,
+      "tbt_ms": 0
+    },
+    "woff2_fonts": 5,
+    "webp_files": 105,
+    "js_bytes": 19478,
+    "evidence": "Build do alinhamento da História: JS compartilhado16.889/gzip5.684, formulário Home2.589/gzip1.233, total19.478/gzip6.917 inalterado; CSS Home17.178/gzip3.575, compartilhado56.568/gzip11.456, cardápio9.824/gzip2.451. CSS +467 bytes/+90gzip.105 WebPs/cinco fontes existentes; nenhuma imagem, fonte, biblioteca ou dependência nova. Lighthouse histórico não reexecutado; não são dados atuais de produção. Corrigida soma documentada do total JS anterior do swipe:17.857, não18.257.",
+    "js_gzip_bytes": 6917,
+    "menu_highlight_css_bytes": 9824,
+    "menu_highlight_css_gzip_bytes": 2451,
+    "home_css_bytes": 17178,
+    "home_css_gzip_bytes": 3575,
+    "contact_form_js_bytes": 2589,
+    "contact_form_js_gzip_bytes": 1233
+  },
+  "technical_checks": {
+    "build": {
+      "status": "passed",
+      "evidence": "Astro 7.3.5: npm run build gerou quatro páginas, 404, robots e sitemap sem erros."
+    },
+    "static_assets": {
+      "status": "passed",
+      "evidence": "check-output.mjs: caminhos/srcsets/canonicals válidos; cinco fontes; orçamento de imagens; nenhum dado interno em dist."
+    },
+    "prefix": {
+      "status": "passed",
+      "evidence": "Rebuild real de prefixo na revisão anterior com BASE_PATH=/pao-de-queijo-haddock-lobo e SITE_URL=https://site.jumper.dev.br; check-output passou. Não repetido no refinamento das internas, que não altera rotas ou resolução de assets. Build final atual em /, sem deploy."
+    },
+    "dependency_audit": {
+      "status": "passed",
+      "evidence": "Dependências não alteradas. Consulta npm audit da revisão anterior: zero vulnerabilidades conhecidas; dependency-audit.json. Não reexecutada no refinamento das internas. PNGJS do runtime local é usado somente pelo verificador, sem nova dependência do site."
+    },
+    "global_doctor": "Reexecutado após alinhamento dos indicadores: 5 bloqueios e18 avisos. Três bloqueios por README/AGENTS/package.json ausentes na pasta pai; dois do M5 deste cliente por envio de contato ainda pendente. Gate --delivery mantém essas duas pendências reais; não declarar entrega completa. Sem alterar outros clientes."
+  },
+  "deep_review_passes": [
+    {
+      "pass": 1,
+      "focus": "Hero e direção autoral",
+      "screens": "Home 320/768/1024/1440+, café/mesa e crop mobile",
+      "found": [
+        "Hero split/header opaco/setas da versão anterior.",
+        "Header inicial de 96px sem respiro suficiente para logo.",
+        "Foto clara exigia proteção para o microtexto."
+      ],
+      "fixed": [
+        "100vw × 100vh/100svh, três cenas, copy constante e controles sem setas.",
+        "Header desktop 116px, grid coerente em telas largas.",
+        "Scrim funcional e origem protegida."
+      ],
+      "decision": "Foto real ocupa a tela; movimento ligado à impressão/listras, mantendo minimalismo."
+    },
+    {
+      "pass": 2,
+      "focus": "Responsividade, estados e acessibilidade",
+      "screens": "24 combinações, hovers, cardápio, diálogo e 320×568/320×500/844×390/1440×600",
+      "found": [
+        "aria-label proibido no parágrafo animado do rodapé.",
+        "Descrições mobile pequenas.",
+        "Captura durante abertura do menu parecia recorte.",
+        "Seleções rápidas precisavam invalidar imagens pendentes."
+      ],
+      "fixed": [
+        "Texto sr-only no parágrafo, headings com nomes completos.",
+        "Descrições 12px; nomes/preços mais legíveis.",
+        "Verificador aguarda animações, sem alterar o efeito real.",
+        "Token de seleção e decodificação prévia; falha/atraso de rede testados."
+      ],
+      "decision": "86 fluxos + 15 motion/resiliência passaram; zero overflow ou alvos pequenos."
+    },
+    {
+      "pass": 3,
+      "focus": "Confirmação pós-correções",
+      "screens": "Home final 320/768/1440/1920, história 768, lojas 1024, cardápio 390, menu aberto, eventos, em-casa e print sem logo",
+      "evidence": "Capturas efetivamente examinadas; Lighthouse 100 em acessibilidade/boas práticas/SEO. Backup pré-hero extraído/hash-conferido (30 arquivos). Build normal/prefixo e gate M5 conferidos.",
+      "decision": "Preview para revisão do responsável; WordPress intacto."
+    },
+    {
+      "pass": 4,
+      "focus": "Reprodução de falhas e primeira revisão das correções",
+      "screens": "Home 320/768/1024/1440+, lojas 1920, dissolução e navegação aos 180ms",
+      "found": [
+        "Retomar não iniciava com foco/mouse mantidos no botão.",
+        "Cabeçalho encolhia ao sair da Home; internas desalinhavam em 1920px.",
+        "Zoom anterior resetava ao iniciar a dissolução e duas transparências escureciam a foto.",
+        "Máscara integral da troca somava-se à entrada de fotos/títulos.",
+        "Assinatura restringia a marca a São Paulo e a nova frase invadia controles em altura baixa."
+      ],
+      "fixed": [
+        "Retomar explícito prevalece no próprio botão; outros controles suspendem.",
+        "Geometria fixa e compartilhada em todas as rotas/estados.",
+        "Anterior opaca sob a nova; animação óptica preservada até o fim; última seleção priorizada.",
+        "Dissolução curta sem máscara integral/morph de menu; conteúdo já visível não se oculta.",
+        "Uma pausa com história; assinatura centrada verticalmente."
+      ],
+      "decision": "Preservar identidade e hovers; corrigir gestão de estados e efeitos que se sobrepunham."
+    },
+    {
+      "pass": 5,
+      "focus": "Confirmação visual e funcional no build final",
+      "screens": "Capturas recapturadas das quatro rotas em seis larguras; Home final 320/768/1024/1440+, história 320, lojas 1024/1920, menu 768 e trocas aos 180ms. Assinatura 1280×633 e quatro alturas curtas.",
+      "evidence": "Capturas efetivamente examinadas em dois passes da correção. 86 fluxos + 15 motion/resiliência + 36 navegação/slideshow passaram. Geometria medida, autoplay com foco mantido por um ciclo real, cliques rápidos e histórico após rolagem testados. Backup pré-correções extraído/hash-conferido: 36 arquivos.",
+      "decision": "Prévia local atualizada; sem publicação ou alteração no WordPress. Chrome verificado; outros motores não percorridos."
+    },
+    {
+      "pass": 6,
+      "focus": "Reprodução visual de acentos/cedilha e cobertura do hover",
+      "screens": "CLÁSSICO/GERAÇÕES/VOCÊ/COMEÇOU com e sem clipping; botão acionado pelo canto, menu, botão sobre foto e de visita.",
+      "found": [
+        "Texto/fonte corretos, mas máscaras escondiam partes de Á/Ê/Ç/Ã.",
+        "Diâmetro fixo da tinta deixava área clara descoberta ao entrar pelo canto, com texto claro ilegível.",
+        "Expor o acento exigia redistribuir respiro entre kicker, título e apoio.",
+        "Letter-spacing animado movia links vizinhos no delivery/rodapé."
+      ],
+      "fixed": [
+        "Máscaras em grid com folga vertical e margens compensadas; grafemas Unicode íntegros nos menus.",
+        "Raio até o canto mais distante; base contrastante durante entrada, retorno e reentrada.",
+        "Espaçamento redistribuído sem colisão com a origem ou controles.",
+        "Filetes animados sem alterar a geometria dos alvos."
+      ],
+      "decision": "Preservar a fonte e a identidade; corrigir clipping real e estados intermediários do hover."
+    },
+    {
+      "pass": 7,
+      "focus": "Confirmação visual e regressão no build final de tipografia/hover",
+      "screens": "Home 320/768/1024/1440, 1280×633, hover mobile e recortes de quatro títulos; quatro alturas curtas e 24 telas das quatro rotas recapturadas.",
+      "evidence": "Capturas efetivamente examinadas em dois passes. Comparação de pixels com tolerância RGB de 8: nenhuma perda significativa dos glifos. Cobertura de cantos, pares AA durante entrada/retração/reentrada, foco e alvos estáveis testados. 164 checagens passaram; backup pré-tipografia/hover extraído e hash-conferido: 36 arquivos.",
+      "decision": "Prévia local atualizada sem publicação. Chrome verificado; não alegar revisão humana assistiva ou testes em todos os motores."
+    },
+    {
+      "pass": 8,
+      "focus": "Destaque criativo de pedir em casa",
+      "screens": "Delivery 320/390/768/1024/1440/1920, painel desktop no navegador e ícones oficiais examinados.",
+      "found": [
+        "Delivery tinha apenas nomes pequenos depois de uma chamada sobre congelados; intenção de pedir pouco clara.",
+        "Mobile precisava priorizar o pedido sem confundir as opções para assar.",
+        "Captura longa inicialmente incluiu header/skip-link fora da viewport, e o teste de copy não considerava uppercase do CSS."
+      ],
+      "fixed": [
+        "Mensagem Peça em casa e painel navy com filetes da embalagem, carimbo de casa e dois ícones reais servidos localmente.",
+        "Botões Pedir no iFood/Rappi; congelados com legenda e link próprios; disponibilidade consultada no app pelo endereço.",
+        "Pedido antes de congelados no DOM/teclado; composição visual editorial no desktop e ações empilhadas no celular.",
+        "Captura alinhada ao início real da seção, sem esconder estilos; comparação de copy normalizada."
+      ],
+      "decision": "Destaque comercial explícito usando a própria embalagem como repertório, sem checkout, prazo ou cobertura inventados."
+    },
+    {
+      "pass": 9,
+      "focus": "Confirmação do destaque e regressão",
+      "screens": "Delivery final 320/768/1024/1440 efetivamente examinados, hover desktop e foco 320. Quatro rotas recapturadas nas seis larguras pelo verificador geral.",
+      "evidence": "134 verificações de delivery passam; dois ícones, seis larguras, contraste AA, entradas pelos cantos, reentrada, alvos imóveis, foco, destinos interceptados, categoria em-casa, reduced motion e sem JS. Revisão de tipografia 27 e fluxo geral 86 passam. Backup realmente extraído/hash-conferido: 37 arquivos. O teste de histórico antigo lia a animação suave aos 150ms: medição diagnóstica foi de 260px para 5.559px, restaurando o rodapé; agora aguarda o destino real. Aviso nativo de transição pulada permanece documentado.",
+      "decision": "Prévia local para revisão, sem publicar ou modificar WordPress. Chrome local; checkout de terceiros e Safari/Firefox não percorridos."
+    },
+    {
+      "pass": 10,
+      "focus": "Primeira revisão de aberturas internas imersivas",
+      "screens": "História/Lojas/Cardápio em 320/768/1024/1440+, com História 1280×633 e 1440×600 examinadas.",
+      "found": [
+        "Título de três linhas da História aproximava-se do logo em telas baixas: colisão em 1440×600, também observada em 1280×633."
+      ],
+      "fixed": [
+        "Escala da DIN ajustada pela altura disponível, em vez de somar espaço ao hero. Títulos/CTA mantidos; notas secundárias ocultas em alturas curtas."
+      ],
+      "decision": "Uma foto real por interna, tela inteira desde y=0, menu dentro da composição; preservar conteúdo, rotas e contrato."
+    },
+    {
+      "pass": 11,
+      "focus": "Revisão final das internas e regressão completa",
+      "screens": "Capturas finais efetivamente examinadas em 320/768/1024/1440+, História 1280×633/1440×600 e Cardápio 844×390. 33 combinações de hero interna medidas.",
+      "evidence": "213 checagens específicas passam: largura/altura, foto cover, header transparente, espaços de texto/CTA, âncoras, scroll, reduced motion e sem JS. Verificadores gerais reexecutados no build final: 86+15+36+27+134, sem erros. Backup pré-internas realmente extraído/hash-conferido: 38 arquivos.",
+      "decision": "Prévia local atualizada sem publicar. Chrome verificado; não alegar revisão em Safari/Firefox ou novas métricas Lighthouse."
+    },
+    {
+      "pass": 12,
+      "focus": "Releitura do pedido: seção cheia, foto parcial",
+      "screens": "Backup anterior, navegador História 1280×633; História 320 e 1440, Lojas 320/768, Cardápio 320/1024, História 320×500/844×390 efetivamente examinados.",
+      "found": [
+        "Implementação anterior havia estendido 100vh/100vw à fotografia, mas usuário queria apenas a seção integral."
+      ],
+      "fixed": [
+        "Retorno à composição dividida papel/navy, mantendo mesma foto/legenda por rota; empilhamento mobile cabe na primeira tela.",
+        "Cabeçalho navy/papel preserva geometria e entra no orçamento dos 100vh, sem deslocar início de conteúdo."
+      ],
+      "decision": "Pedido específico supera interpretação anterior. Primeiro passe 213 checagens/33 tamanhos, zero falhas."
+    },
+    {
+      "pass": 13,
+      "focus": "Confirmação visual e regressão das internas divididas",
+      "screens": "Finais Lojas 320/1440, Cardápio 768, História 1024 e fallback sem JS 390; quatro larguras oficiais examinadas.",
+      "evidence": "Segundo passe 213 checagens/33 tamanhos, zero falhas. Regressões 86+15+36+27+134 passam no mesmo build. Foto parcial, conteúdo separado, geometria de header, acentos, hovers, rotas/âncoras e slideshow conferidos. Backup realmente extraído/hash-conferido: 40 arquivos.",
+      "decision": "Prévia local corrigida, Home/WordPress preservados. Não publicar nem alegar novas métricas Lighthouse ou testes em todos os motores."
+    },
+    {
+      "pass": 14,
+      "focus": "Carta da casa: hierarquia e ícones autorais",
+      "screens": "Home 320/768/1024/1440 efetivamente examinada; catálogo 320/768/1024, chamada, índice e posição de Doces.",
+      "found": [
+        "Vitrine anterior não explicitava sua função principal de cardápio; faltavam atalhos visuais.",
+        "Hover herdado girava todos os spans, incluindo os novos rótulos.",
+        "Reserva de header somava scroll-padding e scroll-margin; categoria ficava muito abaixo do índice e o capítulo anterior permanecia selecionado.",
+        "Medição inicial incluía caixas das máscaras expandidas, causando seis falsos alertas de título. Captura maior que viewport omitira rótulos inferiores, presentes no DOM."
+      ],
+      "fixed": [
+        "Chamada Cardápio da casa e CTA completo; faixa contínua de seis desenhos, sem cartões de produto.",
+        "Rótulos imóveis, detalhe de tinta nos ícones e filetes red/navy.",
+        "Margin reserva somente espaço adicional, preservando a reserva do documento e a categoria de destino.",
+        "Verificador mede nós de texto; captura separada da faixa comprova seis rótulos completos."
+      ],
+      "decision": "Conferir grupos no oficial, conservar catálogo/preços e hero; imprimir o cardápio na linguagem da marca."
+    },
+    {
+      "pass": 15,
+      "focus": "Confirmação visual e regressão do cardápio",
+      "screens": "Home/ícones 320, Home e categoria 768, Home/categoria 1024, Home/categoria/toolbar 1440 efetivamente examinados em passes 2 e final; testes também em 390/1920.",
+      "evidence": "menu-highlight-pass2-report.json e menu-highlight-final-report.json: 127 checagens cada, seis larguras, zero falhas/erros. Regressões 86+15+36+27+134+213 passaram. Catálogo e PageHero idênticos ao backup; 40 arquivos realmente extraídos/hash-conferidos.",
+      "decision": "Prévia local pronta para revisar, sem publicar nem alterar o WordPress. Chrome local, Lighthouse e outros motores não reexecutados."
+    },
+    {
+      "pass": 16,
+      "focus": "Contato próprio, canais e hierarquia comercial",
+      "screens": "Contato pass1: intro/lojas/canais 320 e seção 768/1024/1440 efetivamente examinados.",
+      "found": [
+        "Contatos gerais estavam apenas no rodapé, sem item principal de menu e sem lista útil de telefones.",
+        "Site oficial carregou no navegador após timeout da leitura web; contém e-mail, formulário Elementor e telefones no footer.",
+        "Capturas de seção maior que viewport incluíam posições de header/skip-link fora da tela real."
+      ],
+      "fixed": [
+        "Seção Home /#contatos com e-mail geral, cinco lojas/tel e canais de Instagram/eventos; Contato em desktop/mobile/no-js/rodapé.",
+        "Canais públicos conferidos no navegador e mantidos. Contato direto conforme escopo aprovado; backend do formulário não migrado nem envio simulado.",
+        "Segundo passe incluiu capturas reais de viewport e recortes da lista/canais, sem alterar styles para maquiar a captura."
+      ],
+      "decision": "Seção completa de contato na linguagem editorial da marca, sem ampliar páginas/serviços ou usar número de eventos como SAC."
+    },
+    {
+      "pass": 17,
+      "focus": "Confirmação visual e regressão de contato",
+      "screens": "Finais efetivamente examinados em 320/768/1024/1440: capturas reais de viewport, lista 320 e canais 1440; verificador também em 390/1920.",
+      "evidence": "contact-pass1-report.json e contact-final-report.json, 82 checagens cada/6 larguras/zero falhas/erros. Demais sete verificadores reexecutados: 638 checagens; total final720. Primeiro teste de navegação falhou na amostra de 100ms da suspensão; resultado preservado em navigation-contact-first-result.json. JS de slideshow idêntico ao backup; teste passou aguardando a condição real limitada a 3s, observada em 28,6ms. Backup de 42 arquivos extraído/hash-conferido.",
+      "decision": "Prévia local pronta para revisão, sem mensagens/ligação enviadas, sem publicar ou mudar WordPress. Chrome local, sem novo Lighthouse ou Safari/Firefox."
+    },
+    {
+      "pass": 18,
+      "focus": "Eventos: geometria da dobra e âncora",
+      "screens": "Pass1/pass2 efetivamente examinados em 320/768/1024/1440, 320×500 e 844×390; diagnóstico extra de 568×320.",
+      "found": [
+        "Seção anterior usava altura mínima/foto fixa no mobile e herdava reserva da âncora global.",
+        "Empilhamento novo recortava 10px do CTA em 568×320.",
+        "Primeiro verificador encontrou timeout na sincronização no-JS e aviso nativo do Chrome; leitura direta sem JS mostrou top -0,39px/altura500, sem recorte."
+      ],
+      "fixed": [
+        "Altura100vh/100svh, painel cover e proporções por altura. Margin local cancela scroll-padding apenas para Eventos.",
+        "Landscape pequeno usa duas colunas; título, descrição e CTA nunca ocultados.",
+        "Espera simples no fallback sem JS mantém os mesmos limites geométricos; aviso nativo exato registrado separadamente como no verificador de navegação."
+      ],
+      "decision": "Preservar carrinho real/painel navy/CTA vermelho, tipografia e destino do WhatsApp; sem novo JS ou alteração global da navegação."
+    },
+    {
+      "pass": 19,
+      "focus": "Confirmação final de Eventos e regressões",
+      "screens": "Segunda revisão 320/768/1024/1440+; complementos finais 568×320/667×375/740×360/320×500 efetivamente examinados.",
+      "evidence": "events-pass2-report.json:128 checagens/12 dimensões. events-final-report.json:152/15, zero falhas/erros/skips nativos. Oito verificadores anteriores reexecutados, final720, total872. Estado pré-revisão:44 arquivos realmente extraídos/hash-conferidos. Conteúdo/slideshow/motion/page-hero.css idênticos à cópia.",
+      "decision": "Prévia local concluída, sem enviar mensagens/publicar/alterar WordPress. Registrar os resultados transitórios de teste e as limitações reais."
+    },
+    {
+      "pass": 20,
+      "date": "2026-10-02",
+      "focus": "Contato: substituição do mailto pelos campos",
+      "findings": [
+        "Frontend de contato autorizado pelo usuário, sem backend fornecido.",
+        "Primeira revisão de 320/768/1024/1440 mostrou placeholder comprimido/nota em muitas linhas no tablet e foco azul nativo no textarea."
+      ],
+      "changes": [
+        "Campos numerados e filetes na identidade, limites e validação acessíveis; envio inativo com aviso.",
+        "Empilhamento até900px e foco explícito vermelho; sem deslocar alvos ou substituir telefone por WhatsApp de eventos."
+      ],
+      "screenshots": [
+        "data/visual-review/contact-form-pass1-320.png",
+        "data/visual-review/contact-form-pass1-768.png",
+        "data/visual-review/contact-form-pass1-1024.png",
+        "data/visual-review/contact-form-pass1-1440.png"
+      ],
+      "decision": "Frontend pode ser revisado localmente; integração precisa de serviço e destinatário aprovados. Biro/newcopy não aplicados."
+    },
+    {
+      "pass": 21,
+      "date": "2026-10-02",
+      "focus": "Contato: confirmação visual/estados e regressão",
+      "findings": [
+        "Segundo exame real das quatro larguras confirma respiro/labels/foco e telefones preservados.",
+        "Falhas/timeout mantêm recado; somente confirmação JSON explícita anuncia recebimento pelo serviço mock.",
+        "Primeiro relatório específico antecipou leitura do erro anterior. Espera agora exige fim do aria-busy; 8 avisos nativos exatos separados nos menus."
+      ],
+      "changes": [
+        "Refinamento de campos no tablet e foco nativo aprovado após capturas.",
+        "Nada enviado; sem criar provedor ou usar backend WordPress."
+      ],
+      "screenshots": [
+        "data/visual-review/contact-form-final-320.png",
+        "data/visual-review/contact-form-final-768.png",
+        "data/visual-review/contact-form-final-1024.png",
+        "data/visual-review/contact-form-final-1440.png"
+      ],
+      "decision": "217 checagens frontend/contatos/fluxos locais passam; entrega real do formulário e gate M5 correspondente continuam pendentes."
+    },
+    {
+      "pass": 22,
+      "date": "2026-10-02",
+      "focus": "Fotos de Bebidas/Smoothies e reprodução da navegação",
+      "screens": "menu-photos-pass1-{bebidas,smoothies}-{320,768,1024,1440}.png: oito capturas efetivamente examinadas.",
+      "findings": ["Duas referências image:null, não falha de carregamento. Acervo de83 fotos examinado em sete contact sheets, sem foto específica das receitas atuais.", "Bebidas oficial é café/pão de queijo; Smoothies inclui carta antiga. Crop preserva copos sem publicar carta/preços antigos.", "Índice podia continuar em Cafés ao chegar a Bebidas no celular; observer considerava apenas entradas alteradas."],
+      "changes": ["Duas referências locais/alt contextual, dez WebPs e recortes no frame existente.", "Set de categorias intersectantes com prioridade do maior top; preservadas âncoras nativas e filtragem."],
+      "decision": "Preservar83 itens/preços e95 assets anteriores; não apresentar as fotos editoriais como comprovação de receita atual."
+    },
+    {
+      "pass": 23,
+      "date": "2026-10-02",
+      "focus": "Confirmação dos recortes e regressão do índice",
+      "screens": "menu-photos-final-{bebidas,smoothies}-{320,768,1024,1440}.png: oito capturas efetivamente examinadas; navegador CLI1280 também revisado.",
+      "evidence": "64 testes de fotos +127 de destaque/índice +86 fluxos gerais passam; fotos/índice em seis larguras, busca,83 itens, no-js/reduced. Sem falhas/erros de aplicação. Um aviso nativo exato no verificador de destaque separado dos erros. Teste de âncora agora espera posição real/aria-current, não frame intermediário de rolagem. Backup50 arquivos realmente extraído/hash-conferido.",
+      "decision": "Fotos e seleção de categoria corrigidas no preview local. Sem publicação, novo Lighthouse, testes Safari/Firefox ou ativação do envio de contato."
+    },
+    {
+      "pass": 24,
+      "date": "2026-10-02",
+      "focus": "Primeira revisão completa do lightbox e hover",
+      "screens": "menu-lightbox-pass2-{hover,em-casa,smoothies}-{320,768,1024,1440}.png:12 capturas realmente examinadas, mais lightbox CLI1280.",
+      "findings": ["Primeiro teste incompleto teve16 escapes de foco no Tab e timeout numa reabertura:close nativo tardio podia invalidar imagem nova.","Foto de Smoothies não pode revelar a carta antiga ao ampliar."],
+      "changes": ["Tab/Shift+Tab mantidos na ação de fechar, único controle. Handler close não limpa uma abertura nova; decode/revisão impedem foto anterior com legenda nova.","Crop quadrado também no lightbox, sem alterar fotografia original; estado de erro honesto e modal único."],
+      "evidence": "Passe2:434 checagens/48 combinações passam, zero falhas/erros. Hover não desloca alvo, arquivos/alt/legendas, fechamento/foco, imagem indisponível/reabertura, toque, reduced/no-js e galerias anteriores.",
+      "decision": "Preservar marca/molduras e83 produtos; filetes da embalagem, não novo repertório genérico ou biblioteca."
+    },
+    {
+      "pass": 25,
+      "date": "2026-10-02",
+      "focus": "Segundo exame visual e regressão no build final",
+      "screens": "menu-lightbox-final-{hover,em-casa,smoothies}-{320,768,1024,1440}.png:12 capturas realmente examinadas.",
+      "evidence": "434 lightbox +127 destaque/índice +64 fotos/âncoras +86 fluxos =711 checagens atuais, sem falhas/erros de aplicação. Um aviso nativo exato separado no destaque. Catálogo/selections/manifest/slideshow/contato byte a byte iguais ao backup. Recuperação50 arquivos verificada em temporário.",
+      "decision": "Lightbox/hover prontos no preview local; sem publicação ou contato real. Não equivale a testar Safari/Firefox/dispositivo físico, novo Lighthouse ou reexecutar toda a suíte histórica."
+    },
+    {
+      "pass": 26,
+      "date": "2026-10-02",
+      "focus": "Ícones de delivery e agrupamento responsivo",
+      "screens": "menu-icons-pass2-{320,768,1024,1440}.png: quatro capturas realmente examinadas.",
+      "found": ["Primeiro exame antes do agrupamento deixava Rappi em linha isolada no tablet."],
+      "fixed": ["Os dois canais permanecem no mesmo grupo, mantendo nomes e logos oficiais."],
+      "evidence": "38 checagens do passe2 passam; seis larguras, no-js/reduced, destinos, assets, hitbox e foco.",
+      "decision": "Logos visíveis, composição preservada e alinhamento corrigido sem novo repertório visual."
+    },
+    {
+      "pass": 27,
+      "date": "2026-10-02",
+      "focus": "Confirmação dos ícones no build final",
+      "screens": "menu-icons-final-{320,768,1024,1440}.png: quatro capturas realmente examinadas.",
+      "evidence": "38 checagens finais passam, zero erros/falhas; CTA loja/destinos/foco/hover preservados. Backup51 arquivos realmente recuperado/hash-conferido. Conteúdo, mídia e scripts sem alterações.",
+      "decision": "Pronto para revisão local dos ícones; não checkout, entrega completa M5, novo Lighthouse ou outros motores."
+    },
+    {
+      "pass": 28,
+      "date": "2026-10-02",
+      "focus": "Deslize nas fotos de unidades",
+      "screens": "store-swipe-pass1-{320,768,1024,1440}.png: quatro capturas realmente examinadas.",
+      "evidence": "220 checagens passam com eventos CDP de toque, seis larguras: cinco avanços/volta circular, dados correspondentes, aba visível, sem rolagem horizontal da página, vertical nativo, toque curto/diagonal/cancelado/multitouch/mouse e modos no-js/reduced.",
+      "decision": "Pista discreta somente no mobile; composições de foto/dados e identidade mantidas."
+    },
+    {
+      "pass": 29,
+      "date": "2026-10-02",
+      "focus": "Confirmação do gesto e regressões",
+      "screens": "store-swipe-final-{320,768,1024,1440}.png: quatro capturas realmente examinadas.",
+      "evidence": "220 checagens finais +86 fluxos +36 navegação +15 motion:357 sem falhas/erros/avisos nativos. Catálogo/selections/manifest/slideshow/motion/contato/lightbox/menu.astro idênticos ao backup.51 arquivos recuperados/hash-conferidos.",
+      "decision": "Gesto pronto no preview local; não teste Safari/Firefox/dispositivo físico, novo Lighthouse, envio de contato ou publicação."
+    },
+    {
+      "pass": 30,
+      "date": "2026-10-02",
+      "focus": "Menu mobile de canto a canto e uso do teclado",
+      "screens": "mobile-menu-visual1-{320,768,1024,1440,844x390,390x240}.png: seis capturas efetivamente examinadas.",
+      "found": ["Primeiro teste330 deixou foco sair no Tab após último link.","Capturas anteriores registravam o meio da impressão das letras porque o mouse ficava sobre Cardápio após wheel."],
+      "fixed": ["Tab/Shift+Tab circulam entre último link e fechar; Escape/restauração preservados.","Captura move o mouse para canto vazio e espera800ms, sem alterar o hover do site."],
+      "evidence": "Passe2:331 checagens em48 combinações passam. Passe visual1:57 passam, close visível, six links usuais/rolagem interna extrema, duas colunas em landscape largo. Um aviso nativo exato de transição pulada separado de erros.",
+      "decision": "Geometria plena, conteúdo e identidade preservados; não cobrir barras/status do sistema."
+    },
+    {
+      "pass": 31,
+      "date": "2026-10-02",
+      "focus": "Confirmação da composição e navegação final",
+      "screens": "mobile-menu-visual2-{320,768,1024,1440,844x390,390x240}.png: seis capturas efetivamente examinadas.",
+      "evidence": "331 checagens finais +86 fluxos +36 navegação:453 sem falhas/erros de aplicação. Passe visual2:57 passam. Um aviso nativo exato no menu separado; navegação36 sem avisos. Backup52 arquivos realmente recuperado/hash-conferido. Conteúdo/slideshow/swipe/motion/contato/menu.astro intactos.",
+      "decision": "Menu pronto no preview local. Não Safari/iPhone físico/Firefox/novo Lighthouse, entrega completa M5 ou publicação."
+    },
+    {
+      "pass": 32,
+      "date": "2026-10-02",
+      "focus": "Diagnóstico do índice móvel e primeiro exame da correção",
+      "screens": "menu-stability-visual2-viewport-{320,768,1024,1440}.png: quatro capturas realmente examinadas no build final.",
+      "found": ["Baseline17:9 falhas, incluindo salto18px ao cruzar540px e seleção intermediária/errada durante âncora.","Primeiro regressor127:3 atalhos da Home destacados incorretamente porque o fragmento chegou antes de fontes/layout assentarem."],
+      "fixed": ["Altura do cabeçalho de retrato independente da altura disponível; compactação preservada em landscape baixo.","Linha de leitura e destino temporário durante rolagem; liberação em repouso/interrupção.","Realinhamento único do fragmento inicial após load/fontes, sem sobrescrever interação já feita."],
+      "evidence": "visual2:36 sem falhas/erros. Regressores127 finais passam incluindo seis atalhos, teclado, busca83, semJS/reduced. Capturas sem dois destaques de hover residual após colocar mouse fora do trilho; não foi alterado o hover do site.",
+      "decision": "Identidade, alvos, fotos e distribuição horizontal/vertical preservados."
+    },
+    {
+      "pass": 33,
+      "date": "2026-10-02",
+      "focus": "Confirmação de estabilidade e regressão final",
+      "screens": "menu-stability-final-viewport-{320,768,1024,1440}.png: quatro capturas realmente examinadas; mesmo cabeçalho/índice/conteúdo, seleção correta.",
+      "evidence": "41 estabilidade +127 cardápio +86 fluxos +36 navegação +15 motion +213 internas =518 finais. Zero falhas/erros de aplicação; um aviso nativo exato separado em navegação. Delta0px em35 quadros de scroll e gestos CDP;0px nas cinco alturas525–600 em320/390. Backup53 arquivos recuperado/hash-conferido; catálogo/fotos/slideshow/contato/swipe/menu fullscreen intactos.",
+      "decision": "Correção pronta no preview local, sem afirmar Safari/iPhone físico, novo Lighthouse, envio real, M5 completo ou publicação."
+    },
+    {
+      "pass": 34,
+      "date": "2026-10-02",
+      "focus": "Alinhamento da faixa factual na História",
+      "screens": "history-marks-pass1-{320,768,1024,1440}.png: quatro capturas efetivamente examinadas.",
+      "found": ["+3.000 ocupava duas linhas em320/360/390/430, deslocando a legenda; padding assimétrico e números sem eixo comum."],
+      "fixed": ["Três colunas minmax iguais, padding simétrico e alinhamento central somente até700px.","Números DIN numa linha com escala32–48px; legendas com topo comum/quebra natural balanceada, sem colar palavras onde br é oculto."],
+      "evidence": "63 checagens em oito larguras passam, incluindo comparação desktop768/1024/1440 com geometria original e modos no-js/reduced.",
+      "decision": "Mesmo conteúdo/identidade/filetes, sem redesenhar outras seções."
+    },
+    {
+      "pass": 35,
+      "date": "2026-10-02",
+      "focus": "Confirmação do alinhamento e regressão localizada",
+      "screens": "history-marks-final-{320,768,1024,1440}.png: quatro capturas efetivamente examinadas.",
+      "evidence": "63 finais sem falhas/erros +86 fluxos gerais:149. Fontes/cores intactas, números/legendas na mesma altura, glifos dentro das colunas e sem overflow. Desktop idêntico ao baseline. Backup54 arquivos realmente extraído/hash-conferido;13 arquivos de conteúdo/interações idênticos ao backup.",
+      "decision": "Faixa corrigida no preview local; sem Safari/iPhone físico, novas métricas Lighthouse ou publicação. Contato permanece pendente."
+    }
+  ],
+  "known_issues": [
+    {
+      "issue": "Preços, tamanhos e disponibilidade aguardam confirmação comercial antes da publicação.",
+      "why": "Fonte oficial tem duplicações e uma torta ambígua; itens inequívocos migrados, linha ambígua omitida e fonte preservada.",
+      "impact": "Não bloqueia revisar layout, mas não tratar preços como tabela final confirmada."
+    },
+    {
+      "issue": "Horários e ponto interno da loja do Sírio não foram informados.",
+      "why": "Não inventar; manter telefone e pesquisa nominal do hospital.",
+      "impact": "Refinar com informação comprovada da cliente."
+    },
+    {
+      "issue": "LCP mobile local excede 2,5s em algumas medições.",
+      "why": "Mobile local: Home 3,38s, Menu 3,01s; performance 91/94, TBT zero, demais categorias 100. Não são dados de campo.",
+      "impact": "Medir no host real; melhorar cache/CDN se necessário, sem promessa de Core Web Vitals em produção."
+    },
+    {
+      "issue": "Sem backup completo/restauração do WordPress público.",
+      "why": "Escopo é preview isolado; backup local realmente verificado.",
+      "impact": "Exigir backup completo e teste de restauração antes da virada oficial."
+    },
+    {
+      "issue": "Comparação regional qualitativa, não exaustiva.",
+      "why": "Benchmark Santo Grão e referências examinados sem copiar identidade ou alegar ranking.",
+      "impact": "Não afirmar objetivamente melhor site da região."
+    },
+    {
+      "issue": "Doctor geral e comandos globais de gate não estão verdes.",
+      "why": "Estrutura global preexistente incompleta e scripts ausentes; outros clientes fora do escopo.",
+      "impact": "Revisão visual/frontend passa; M5 entrega completa continua pendente especificamente na integração de contato. Regularização global de outros projetos permanece fora do escopo."
+    },
+    {
+      "issue": "Transições entre documentos variam conforme o navegador.",
+      "why": "Progressive enhancement CSS; Chrome pode pular a transição nativa no histórico com aviso ViewTransition opt-in disabled, registrado em navigation-report.json quando ocorre. Teste antigo de retorno aos 150ms lia o início da rolagem suave; agora espera o destino restaurado. Safari/Firefox não percorridos nesta estação.",
+      "impact": "Fallback é navegação normal sem bloqueio de links; motion reduzido respeitado."
+    },
+    {
+      "issue": "Envio do formulário ainda não configurado.",
+      "why": "Solicitação autoriza os campos; endpoint/serviço/destinatário para envio não foram fornecidos ou aprovados. Backend Elementor antigo não é endpoint independente para este preview estático.",
+      "impact": "Botão desabilitado e aviso visível. Visual/validação frontend concluídos; integração e entrega completa M5 pendentes. Não afirmar envio real, criar conta, contratar ou publicar."
+    },
+    {
+      "issue": "Fotografias de Bebidas/Smoothies são editoriais do menu oficial, não comprovam cada receita atual.",
+      "why": "Bebidas mostra café/pão de queijo; Smoothies mostra copos rosados acompanhados de carta antiga, ocultada no recorte. O acervo enviado não contém fotos específicas das duas receitas veganas.",
+      "impact": "Fotos locais válidas para revisão editorial; pedir novas fotos da cliente para representar águas/sucos ou sabores específicos. Não afirmar ingredientes/veganismo do produto fotografado."
+    }
+  ],
+  "reformulation_checks": {
+    "scope": {
+      "status": "passed",
+      "evidence": "Quatro páginas/cinco recursos aprovados em01/10 preservados. Pedidos de02/10 autorizam campos de contato, fotos Bebidas/Smoothies, lightbox/hover, ícones nos links finais do cardápio, deslize nas fotos do localizador Home e menu mobile em tela inteira. DS/prompt atualizados antes de src; gate pré-implementação passou. Sem publicação, conta ou serviço contratado."
+    },
+    "content": {
+      "status": "passed",
+      "evidence": "Briefing/manual/83 fotos/snapshots examinados;83 itens/cinco unidades/mais de3.000 preservados. /menu/ oficial conferido para as duas fotografias. Comparação estrutural com backup pré-fotos comprova somente duas referências image alteradas; itens, preços, descrições e demais informações idênticos. Alt não afirma receitas/ingredientes não verificados. Canais de contato relidos na revisão anterior."
+    },
+    "urls": {
+      "status": "passed",
+      "evidence": "14 mapeamentos percorridos no navegador, incluindo sopa→tortas/colageno→bebidas. Rotas/arquivos técnicos 200; caminhos/srcsets/canonicals testados em build de prefixo. /#contatos agora em seção única na Home; novo atalho percorrido em 16 combinações de rota/menu e em no-js/rodapé interno. Rotas e aliases existentes preservados."
+    },
+    "integrations": {
+      "status": "pending",
+      "evidence": "Canais públicos preservados/verificados. Formulário frontend com validação/estados testado exclusivamente com respostas interceptadas. Serviço/destinatário e envio real ainda não aprovados/configurados; sem endpoint, botão inativo e aviso. Não declarar integração de entrega completa."
+    },
+    "backup": {
+      "status": "passed",
+      "evidence": "estado-pre-menu-fullscreen-2026-10-02.tar.gz; SHA2567676f5653d256f2e95834bf2fe0f828f80f27b51f73a5447f8f803b32e5dcddc;52 arquivos realmente extraídos/hash-conferidos em /private/tmp/jumper-pao-recovery-0l_d1ujz. mobile-menu-recovery-report.json; swipe/ícones/lightbox/contato preservados. Não backup do WordPress."
+    },
+    "rollback": {
+      "status": "passed",
+      "evidence": "verify-recovery.py --menu-fullscreen extraiu/hash-conferiu52 arquivos em temporário. Restaurar seletivamente SiteLayout.astro/site.ts/docs após comparar, sem extrair sobre checkout. Remover mobile-menu.css somente depois de conferir imports. Assets e WordPress intocados; swipe preservado."
+    },
+    "pages": [
+      {
+        "path": "/",
+        "status": "passed",
+        "evidence": "/: compilada/examinada em seis larguras, H1/mídia/navegação/conteúdo/SEO verificados. verification-report.json e capturas correspondentes."
+      },
+      {
+        "path": "/sobre/",
+        "status": "passed",
+        "evidence": "/sobre/: compilada/examinada em seis larguras, H1/mídia/navegação/conteúdo/SEO verificados. verification-report.json e capturas correspondentes."
+      },
+      {
+        "path": "/lojas/",
+        "status": "passed",
+        "evidence": "/lojas/: compilada/examinada em seis larguras, H1/mídia/navegação/conteúdo/SEO verificados. verification-report.json e capturas correspondentes."
+      },
+      {
+        "path": "/menu/",
+        "status": "passed",
+        "evidence": "/menu/: compilada/examinada em seis larguras, H1/mídia/navegação/conteúdo/SEO verificados. verification-report.json e capturas correspondentes."
+      }
+    ],
+    "features": [
+      {
+        "name": "Navegação acessível",
+        "status": "passed",
+        "evidence": "Rotas, diálogo mobile/Escape/foco, skip-link e fallback sem JS passam. Geometria idêntica do menu nas quatro páginas; transparência/scroll só na Home, internas navy/papel como antes. Histórico após restauração real e hovers estáveis. 511 checagens combinadas nos cenários descritos."
+      },
+      {
+        "name": "Cardápio pesquisável",
+        "status": "passed",
+        "evidence": "83 itens/adicionais; pao de queijo encontra sete sem acentos; rosbife encontra um; sanduiches seleciona categoria; vazio/reset e catálogo sem JS."
+      },
+      {
+        "name": "Lojas e rotas",
+        "status": "passed",
+        "evidence": "Cinco abas Home acionadas; Home/setas testados; filtro Rio mostra uma loja, SP quatro, Todas cinco; Sírio não aponta a Higienópolis."
+      },
+      {
+        "name": "Contatos e delivery",
+        "status": "pending",
+        "evidence": "82 checagens de contatos/canais/menus e 49 frontend passam; cinco tel/Instagram/WhatsApp de eventos/iFood/Rappi mantidos. Campos substituem mailto apenas na área geral Home, rodapé preservado. Envio depende de configuração real pendente, não houve contato externo ou checkout."
+      },
+      {
+        "name": "Galeria real",
+        "status": "passed",
+        "evidence": "Fotos reais/srcsets/diálogo/Escape/foco; sem imagem quebrada nas 24 telas. Slideshow pausa/seleção/autoplay e falha/atraso de imagem verificados."
+      }
+    ]
+  },
+  "final_recommendation": "Faixa1968/+3.000/5 da História alinhada no mobile, números inteiros e legendas no mesmo topo. Desktop/conteúdo/identidade e correções anteriores preservados. Contato segue sem envio: solicitar serviço/destinatário/teste real autorizado antes de declarar M5 entregue. Sem publicação; confirmações comerciais/backup do host continuam pendentes.",
+  "revision": "Pedido direto: melhorar alinhamento da faixa factual no mobile. CSS restrito à História até700px; números numa linha, colunas simétricas/centralizadas e legendas em topo comum, com quebra natural. Desktop e demais recursos preservados.",
+  "motion_checks": {
+    "status": "passed",
+    "slideshow": "Retomar com mouse/foco mantidos e Enter, incluindo ciclo automático real. Dissolução com anterior opaca/zoom mantido; cliques rápidos serializados. Foto quebrada/atrasada, diálogo, viewport, movimento reduzido e histórico após rolagem passam. Aba oculta tratada por visibilitychange, sem alegar teste real de ocultação.",
+    "navigation": "Menu com geometria comum nas quatro rotas/estados de scroll. Só Home transparente/fade/retorno; internas usam navy/papel anterior. Navegação sem JS visível fora do header; hovers tipográficos e tinta preservados.",
+    "entry_scroll": "Conteúdo já visível não se oculta ao carregar scripts; máscaras tipográficas preservam acentos e cedilha, com folga compensada em grid. Faixas abaixo da dobra mantidas.",
+    "page_transition": "Dissolução nativa 220ms sem máscara integral ou morph separado do menu. Capturas aos 180ms, medição de frames e histórico no Chrome. Fallback normal/reduced-motion testados; Safari/Firefox não percorridos.",
+    "fallback": "Sem JS, primeira foto/conteúdo presentes, controles inativos ocultos; movimento reduzido cancela autoplay/transições mas preserva seleção manual."
+  },
+  "internal_hero_revision": {
+    "status": "superseded_by_user_clarification",
+    "evidence": "data/visual-review/internal-final-report.json: 213 checagens, 33 combinações (seis larguras e cinco telas baixas por rota), zero falhas/erros; internal-pass1-report.json registra a colisão inicial corrigida.",
+    "photos": "História: fachada Haddock. Lojas: Shopping Iguatemi. Cardápio: mesa real do cliente. Derivados locais/srcsets existentes, sem IA ou mídia nova.",
+    "backup": "estado-pre-internas-2026-10-02.tar.gz; SHA256 0087573bb513408a39b161d1695edcc112279e0bfdfd6cae978dbfb78c537a93; 38 arquivos extraídos/hash-conferidos em /private/tmp/jumper-pao-recovery-846csk4t.",
+    "limits": "100svh para altura segura no celular; abaixo de 740px notas secundárias ocultas e abaixo de 440px descrição ocultada para manter H1/CTA sem colisão. 404 continua utilitária. Chrome local, não todos os motores; nenhuma alteração no WordPress público. Revisão histórica: a foto de fundo nas internas foi superada pelo esclarecimento do usuário; consultar internal_split_revision para estado atual."
+  },
+  "delivery_revision": {
+    "status": "passed_local_review",
+    "evidence": "data/visual-review/delivery-final-report.json; 134 verificações, zero falhas/erros nos cenários descritos. Capturas delivery-pass1-* e delivery-final-* em seis larguras, reduzido, sem JS, hover e foco.",
+    "icons": "Ícones PNG originais dos sites oficiais; fontes/hashes em final-design-system.json. Local/lazy, sem recoloração ou SDK.",
+    "backup": "estado-pre-delivery-2026-10-02.tar.gz; SHA256 f88459a05174a8cf444f55bb1fb9bc1e6dd22a49fda5c0c377510050e107eb7e; 37 arquivos extraídos/hash-conferidos em /private/tmp/jumper-pao-recovery-aa1f0awf.",
+    "limits": "URLs/cliques testados com respostas interceptadas; não confirma cobertura, catálogo, preço ou checkout dos apps. Disponibilidade conforme endereço deve ser consultada no canal oficial."
+  },
+  "typography_hover_regression": {
+    "baseline": "data/visual-review/type-hover-before-report.json e capturas correspondentes: recortes reais nos quatro títulos e tinta insuficiente ao entrar pelo canto.",
+    "after": "data/visual-review/type-hover-after-report.json: 27 checagens, zero falhas/erros nos cenários descritos.",
+    "backup": "estado-pre-tipografia-hover-2026-10-02.tar.gz; SHA256 e52005b6a0d1df338c95c8f8e2861648bfef93bbf17991fbae6a9b0131850ffc; 36 arquivos extraídos/hash-conferidos em /private/tmp/jumper-pao-recovery-5d9pwovh.",
+    "limits": "Chrome local. Busca editorial de termos comuns e Unicode não equivale a revisão profissional de todo o texto ou teste assistivo completo; Safari/Firefox não percorridos."
+  },
+  "bugfix_regression": {
+    "baseline": "data/visual-review/bugs-baseline-report.json: 27 checagens, 13 divergências incluindo assinatura; antes das correções.",
+    "after": "data/visual-review/navigation-report.json: 36 checagens, zero falhas/erros nos cenários testados.",
+    "backup": "estado-pre-correcoes-2026-10-02.tar.gz; SHA256 b8360db153e3cca370393e87839da1d263499323b700ee47881ccda012fd3ca6; 36 arquivos extraídos/hash-conferidos em /private/tmp/jumper-pao-recovery-e47309ys."
+  },
+  "internal_split_revision": {
+    "status": "passed_local_review",
+    "authority": "Esclarecimento do usuário: fotos internas como antes, apenas a seção em 100vh × 100vw no desktop e mobile.",
+    "evidence": "internal-split-pass1-report.json e internal-split-final-report.json: 213 checagens/33 tamanhos cada, zero falhas/erros. Capturas realmente examinadas em dois passes em 320/768/1024/1440+, mais telas baixas/landscape/no-js. Regressão final: 86+15+36+27+134, todos passam.",
+    "composition": "História foto esquerda 55%/texto direita; Lojas/Cardápio texto esquerda 43%/foto direita; mobile texto acima e foto abaixo. Seção desde y=0 com header incluído, imagens cover somente no próprio painel. Home intacta.",
+    "backup": "estado-pre-internas-divididas-2026-10-02.tar.gz; SHA256 2b0c29294ad30ee22fce373bb7d51972c59aaeb82555f7766a49bdfe146e6f79; 40 arquivos extraídos/hash-conferidos em /private/tmp/jumper-pao-recovery-ihixvw67. internal-split-recovery-report.json.",
+    "limits": "Altura segura 100svh no celular; notas ocultas até 740px, descrição em landscape até 440px e fallback sem JS até 580px, preservando título/CTA/foto. 404 utilitária. Chrome local, Safari/Firefox não percorridos; WordPress público intacto."
+  },
+  "menu_highlight_revision": {
+    "status": "passed_local_review",
+    "authority": "Pedido direto de destaque criativo no cardápio com ícones, mantendo a identidade e consultando https://paodequeijohaddocklobo.com.br/menu/.",
+    "official_source": {
+      "url": "https://paodequeijohaddocklobo.com.br/menu/",
+      "consulted_at": "2026-10-02",
+      "verified": "Grupos de produtos conferidos; sem inventar itens de Sopas/Colágeno. Produtos/preços não modificados nesta revisão; confirmação comercial ainda necessária."
+    },
+    "evidence": "menu-highlight-pass2-report.json e menu-highlight-final-report.json, 127 checagens cada/6 larguras/zero falhas. Duas revisões visuais; relatório inicial preservado com seus seis falsos alertas de medição.",
+    "composition": "Home: Carta da casa, CTA completo, seis atalhos, desenhos próprios e fotos reais preservadas. Catálogo: busca/carta, oito categorias com ícones e filetes; índice horizontal no mobile. Internas seguem 100vw × 100vh com fotos parciais em composição dividida.",
+    "content_preservation": "cmp confirma data/content.json e src/components/PageHero.astro idênticos à cópia pré-cardápio. 83 itens/adicionais/oito grupos/quatro páginas; sem nova dependência ou JavaScript.",
+    "backup": "estado-pre-cardapio-2026-10-02.tar.gz; SHA256 45ec3dec2264a6e1d923f25137c254e78dc656f396def3df1acafaa53f00dfde; 40 arquivos extraídos/hash-conferidos em /private/tmp/jumper-pao-recovery-t9oe2zhw. menu-recovery-report.json.",
+    "limits": "Chrome local; não alegar testes em Safari/Firefox, transações de terceiros, novos Lighthouse/CWV ou preços confirmados. Publicação não autorizada."
+  },
+  "contact_revision": {
+    "status": "historical_mailto_revision_superseded_by_contact_form_revision",
+    "authority": "Usuário sentiu falta de área de contato e indicou https://paodequeijohaddocklobo.com.br/#contatos.",
+    "source": {
+      "url": "https://paodequeijohaddocklobo.com.br/#contatos",
+      "consulted_at": "2026-10-02",
+      "method": "agent-browser, página oficial carregada; web.open timeout.",
+      "verified": "E-mail público paodequeijo@paodequeijohaddocklobo.com.br, cinco números coincidem com content.json, Instagram /paodequeijohaddocklobo/, WhatsApp do carrinho +55 11 94328-6072. Formulário Elementor com Nome/Email/Messagem, sem endpoint independente fornecido; sem submissão."
+    },
+    "composition": "Seção Home antes do footer: envelope/06/Contato, Vamos conversar, e-mail geral, cinco telefones numa lista; faixa inferior Instagram e WhatsApp eventos. Paper/navy/red e DIN/Poppins/Aleo, hovers em filetes imóveis.",
+    "navigation": "Contato nos menus desktop/mobile/no-js/rodapé. Um #contatos na Home, footer usa rodape; aliases locais nas internas preservados. Quatro rotas em quatro larguras verificadas por cliques reais para /#contatos.",
+    "evidence": "contact-pass1-report.json e contact-final-report.json: 82 checagens cada/6 larguras/zero falhas. Duas revisões visuais reais; teclado interceptado, sem enviar mensagens/telefonar. Catálogo/slideshow idênticos ao backup.",
+    "backup": "estado-pre-contatos-2026-10-02.tar.gz, SHA256 43ae533ed5823f195951449ee299356358989fdd652f460c9fb8a37a0408d810. 42 arquivos realmente extraídos/hash-conferidos em /private/tmp/jumper-pao-recovery-dslh438a; contact-recovery-report.json.",
+    "limits": "mailto depende de app configurado; não backend/formulário no site. Não alegar envio real ou falha no formulário oficial. Chrome local, sem Safari/Firefox/Lighthouse novos. Preços/horários/Sírio ainda pendentes; WordPress intacto."
+  },
+  "events_revision": {
+    "status": "passed_local_review",
+    "authority": "Pedido do usuário: âncora de Eventos no início da dobra; seção100vh ×100vw.",
+    "geometry": "width100vw/max-width100%; height100vh/100svh; scroll-margin-top cancela somente padding global de header+24px. Âncora no próprio section#eventos, sem JS de scroll ou alteração de outras âncoras.",
+    "composition": "Foto real carrinho48%/copy52% no desktop, ambos com altura integral. Mobile36/64% e proporções compactas por altura; ≤700px/≤440px landscape dividido. Título, descrição e CTA preservados; símbolo/assinatura secundários compactam. Texto fora da área do header.",
+    "evidence": "events-final-report.json:152 checagens/15 dimensões, zero falhas/erros/native-skips. Menus das quatro rotas em quatro larguras, URL direta, rodapé/histórico/teclado/foco/hover/no-js/reduced motion. Duas revisões visuais reais.",
+    "test_notes": [
+      "events-pass1-report.json preserva timeout de espera no-JS e aviso de skip nativo. Diagnóstico direto: top-0,39px/height500, conteúdo inteiro; espera do verificador ajustada sem relaxar limites. Passe2 e final passam.",
+      "menu-highlight-events-first-result.json: timeout de um atalho durante reconstrução paralela; não reproduzido no build estável. menu-highlight-events-native-warnings.json: todos127 checks passam, dois avisos nativos exatos. Verificador agora distingue esse aviso como navigation/events, mantendo todos os erros reais e cliques estritos; final127 sem falhas/erros/skips.",
+      "contact-events-first-result.json:82 checks passam, um aviso nativo de transição. Reexecução sem alteração no site/teste:82, nenhum erro. Não atribuir automaticamente os avisos a bug de aplicação."
+    ],
+    "backup": "estado-pre-eventos-2026-10-02.tar.gz; SHA256 c72438647be80e0a774a20aa4073eede6575406e46fc4de32e115165e0166144;44 arquivos realmente extraídos/hash-conferidos em /private/tmp/jumper-pao-recovery-2df6rt5q. events-recovery-report.json.",
+    "limits": "Chrome local; não Safari/Firefox/dispositivos físicos.100svh usa altura segura no navegador mobile. Sem envio real/novo Lighthouse/publicação; doctor global com3 bloqueios e15 avisos preexistentes."
+  },
+  "delivery_status": "contact_form_delivery_pending_service_and_recipient_confirmation",
+  "previous_functional_checks": {
+    "status": "passed",
+    "tests": 872,
+    "main_flow_checks": 86,
+    "motion_and_resilience_checks": 15,
+    "navigation_and_slideshow_checks": 36,
+    "typography_and_hover_checks": 27,
+    "delivery_checks": 134,
+    "internal_hero_checks": 213,
+    "internal_hero_viewports": 33,
+    "internal_short_hero_viewports": 15,
+    "viewport_page_combinations": 24,
+    "short_hero_viewports": 4,
+    "errors": [],
+    "evidence": "Nesta revisão: 152 Eventos/15 dimensões, 82 contatos/6 larguras, 127 cardápio, 86 fluxos/24 telas, 15 motion, 36 navegação/slideshow, 27 tipografia/hover, 134 delivery e 213 internas/33 combinações: 872 checagens nos relatórios finais, sem falhas/erros. Testes de Eventos incluem tamanho/âncora y=0, texto/foto/CTA/foco/hover, 16 menus, rodapé, histórico, teclado interceptado/no-js/reduced motion. Regressões ocorreram ao longo da revisão; último ajuste afeta apenas celulares horizontais ≤700px/≤440px, coberto pelo passe final específico. Resultados transitórios anteriores preservados separadamente, não apagados nem classificados como passes.",
+    "tested_interactions": [
+      "Hero: menu inicial transparente sobre a fotografia",
+      "Hero: foto cobre toda a seção",
+      "Slideshow: exatamente uma fotografia selecionada",
+      "Slideshow: seleção manual mostra o café e sua legenda",
+      "Slideshow: seleção manual pausa a reprodução",
+      "Slideshow: mesa só aparece após a foto carregar",
+      "Slideshow: reprodução automática suave retorna à primeira foto",
+      "Slideshow: controle de pausa interrompe a reprodução",
+      "Home: cabeçalho perde opacidade ao rolar para baixo",
+      "Home: menu volta legível ao rolar para cima fora da hero",
+      "Teclado: primeira parada é Pular para o conteúdo",
+      "Teclado: skip-link leva ao conteúdo principal",
+      "Home: ficha da unidade haddock funciona",
+      "Home: ficha da unidade iguatemi funciona",
+      "Home: ficha da unidade higienopolis funciona",
+      "Home: ficha da unidade sirio funciona",
+      "Home: ficha da unidade leblon funciona",
+      "Home: seletor mostra Shopping Leblon e oculta demais unidades",
+      "Home: uma ficha selecionada por vez",
+      "Home: navegação de abas com Home funciona",
+      "Home: seta vertical seleciona unidade",
+      "Contato: e-mail público usa mailto correto",
+      "Eventos: número público de WhatsApp preservado",
+      "Canal oficial presente: ifood.com.br",
+      "Canal oficial presente: rappi.com.br",
+      "Canal oficial presente: instagram.com",
+      "Contatos: nenhum formulário sem endpoint simulado",
+      "Galeria: abre fotografia real ampliada",
+      "Galeria: Escape fecha o diálogo",
+      "Galeria: foco retorna ao botão de origem",
+      "Lojas: filtro Rio mostra uma unidade",
+      "Lojas: unidade do filtro Rio é Shopping Leblon",
+      "Lojas: filtro São Paulo mostra quatro unidades",
+      "Lojas: limpar filtro restaura cinco unidades",
+      "Lojas: mapa do Sírio não aponta para Higienópolis",
+      "Cardápio: 83 itens/adicionais migrados",
+      "Cardápio: busca sem acentos encontra sete itens de pão de queijo",
+      "Cardápio: busca por ingrediente funciona",
+      "Cardápio: busca pelo nome da categoria funciona",
+      "Cardápio: busca sem resultado mostra estado útil",
+      "Cardápio: reset restaura todos os itens",
+      "Cardápio: âncora de categoria leva ao destino correto",
+      "URL legado: colageno encaminha para Bebidas",
+      "URL legado: sopa encaminha para Tortas",
+      "SEO/semântica: home",
+      "Âncoras internas: home",
+      "SEO/semântica: historia",
+      "Âncoras internas: historia",
+      "SEO/semântica: lojas",
+      "Âncoras internas: lojas",
+      "SEO/semântica: menu",
+      "Âncoras internas: menu",
+      "SEO: títulos e descrições únicos por página",
+      "Rota interna: /",
+      "Rota interna: /sobre/",
+      "Rota interna: /menu/",
+      "Rota interna: /lojas/",
+      "Arquivo técnico: /sitemap.xml",
+      "Arquivo técnico: /robots.txt",
+      "Arquivo técnico: /favicon.png",
+      "Arquivo técnico: /404.html",
+      "URL preservado: / → /",
+      "URL preservado: /menu/ → /menu/",
+      "URL preservado: /#home → /#home",
+      "URL preservado: /#sobre → /#sobre",
+      "URL preservado: /#loja → /#loja",
+      "URL preservado: /#contatos → /#contatos",
+      "URL preservado: /menu/#salgados → /menu/#salgados",
+      "URL preservado: /menu/#tortas → /menu/#tortas",
+      "URL preservado: /menu/#sanduiches → /menu/#sanduiches",
+      "URL preservado: /menu/#doces → /menu/#doces",
+      "URL preservado: /menu/#cafes → /menu/#cafes",
+      "URL preservado: /menu/#bebidas → /menu/#bebidas",
+      "URL preservado: /menu/#sopa → /menu/#tortas",
+      "URL preservado: /menu/#colageno → /menu/#bebidas",
+      "Menu mobile: abre o diálogo",
+      "Menu mobile: Escape fecha",
+      "Menu mobile: foco restaurado",
+      "Menu mobile: navegação real para Cardápio",
+      "Sem JavaScript: catálogo completo permanece no HTML",
+      "Sem JavaScript: navegação alternativa aparece no celular",
+      "Sem JavaScript: primeira fotografia da hero permanece visível",
+      "Sem JavaScript: controles de slideshow inativos não aparecem",
+      "Movimento reduzido: transições desativadas",
+      "Movimento reduzido: slideshow não roda automaticamente",
+      "Movimento reduzido: troca manual instantânea continua disponível",
+      "Carregamento: apenas a primeira cena tem src no início",
+      "Hover do menu: rótulo acessível único, sem duplicar as letras visuais",
+      "Hover do botão: tinta nasce no ponto real do mouse",
+      "Rolagem: fotografia abre as faixas da embalagem",
+      "Slideshow: seleção rápida respeita a última escolha",
+      "Slideshow: autoplay pausa fora do viewport",
+      "Slideshow: diálogo aberto interrompe autoplay",
+      "Transição de página: navega sem bloquear ou ocultar o cardápio",
+      "Hero baixa 320×568: textos/controles não colidem ou cortam",
+      "Hero baixa 320×500: textos/controles não colidem ou cortam",
+      "Hero baixa 844×390: textos/controles não colidem ou cortam",
+      "Hero baixa 1440×600: textos/controles não colidem ou cortam",
+      "Falha de rede: foto indisponível não apaga a cena atual",
+      "Falha de rede: outra fotografia continua selecionável",
+      "Slideshow: carregamento atrasado não sobrescreve a última escolha",
+      "Eventos: URL direta e 16 menus chegam ao início da dobra y=0",
+      "Eventos: 100vw × 100vh/100svh em 15 dimensões, inclusive 568×320",
+      "Eventos: teclado/hover/foco e WhatsApp preservados sem envio",
+      "Eventos: rodapé, histórico, no-js e reduced motion mantêm a ação dentro da seção"
+    ],
+    "menu_highlight_checks": 127,
+    "menu_highlight_viewports": 6,
+    "contact_checks": 82,
+    "contact_viewports": 6,
+    "events_checks": 152,
+    "events_viewports": 15,
+    "scope": "Historical Events revision: these 872 checks were not all re-run for this form change."
+  },
+  "menu_lightbox_functional_checks_history": {
+    "status": "passed_scoped_menu_lightbox_contact_delivery_pending",
+    "tests": 711,
+    "menu_lightbox_checks": 434,
+    "menu_lightbox_viewport_combinations": 48,
+    "menu_photo_checks": 64,
+    "menu_highlight_checks": 127,
+    "main_flow_checks": 86,
+    "photo_widths": 6,
+    "photo_viewport_combinations": 12,
+    "errors": [],
+    "failures": [],
+    "native_transition_skips": ["Transition was aborted because of invalid state. ViewTransition opt-in disabled"],
+    "evidence": "menu-lightbox-final-report.json:434/48 combinações; menu-highlight-lightbox-final-report.json:127; menu-photos-lightbox-final-report.json:64/12; flow-verification-report.json:86. Zero falhas/erros de aplicação, um aviso nativo exato no destaque. Lightbox/foco/fechamento/decode/falha/reabertura, hover/alvo, crop, oito fotos, busca83, índice/âncoras, toque/no-js/reduced; Home/slideshow/lojas/rotas/SEO e galerias Home/História. Dois exames reais em quatro larguras. Sem recapturar24 telas gerais ou reexecutar217 contato/872 históricos; não envio real/checkout."
+  },
+  "menu_delivery_icons_functional_checks_history": {
+    "status": "passed_scoped_menu_delivery_icons_contact_delivery_pending",
+    "tests": 38,
+    "widths": 6,
+    "failures": [],
+    "errors": [],
+    "evidence": "menu-icons-pass2-report.json e menu-icons-final-report.json:38 cada; seis larguras320/390/768/1024/1440/1920, no-js e reduced. Ícones locais28px, destinos/rel/nova aba, nomes, alvos44px, grupo sem overflow, hover imóvel e foco visível. Dois exames reais de quatro capturas. Suítes históricas711/872/217 não reexecutadas para este patch HTML/CSS; nenhum pedido enviado."
+  },
+  "store_swipe_functional_checks_history": {
+    "status": "passed_scoped_store_swipe_contact_delivery_pending",
+    "tests": 357,
+    "store_swipe_checks": 220,
+    "main_flow_checks": 86,
+    "navigation_checks": 36,
+    "motion_checks": 15,
+    "widths": 6,
+    "failures": [],
+    "errors": [],
+    "native_transition_skips": [],
+    "evidence": "store-swipe-final-report.json220, flow-verification-report.json86, navigation-report.json36 e motion-report.json15. Dois passes220 cada e dois exames reais320/768/1024/1440. Eventos de toque Chrome CDP, não somente dispatchEvent sintético. Sem reexecutar todas as711/872/217 checagens históricas, sem checkout/envio real/novo Lighthouse."
+  },
+  "functional_checks": {
+    "status": "passed_scoped_history_marks_contact_delivery_pending",
+    "tests": 149,
+    "history_marks_checks": 63,
+    "main_flow_checks": 86,
+    "widths": 8,
+    "failures": [],
+    "errors": [],
+    "native_transition_skips": [],
+    "evidence": "history-marks-pass1/final-report.json:63 cada, oito larguras e modos no-js/reduced; números/legendas/glifos e geometria desktop comparada ao baseline. Duas revisões reais nas quatro larguras oficiais. flow-verification-report.json86 reexecutado. Suítes518 índice/331 menu/220 swipe/434 lightbox/217 contato históricas não reexecutadas integralmente para este patch CSS/whitespace; JS idêntico ao backup, sem envios/checkout/publicação."
+  },
+  "history_marks_alignment_revision": {
+    "status": "passed",
+    "date": "2026-10-02",
+    "scope": "Somente indicadores da História em≤700px: três colunas iguais, padding simétrico, números32–48px em uma linha e legendas com topo comum/quebra balanceada. Espaço após br preserva separação das palavras quando oculto; desktop mantém br e geometria original.",
+    "verification": "Dois passes63, oito larguras320/360/390/430/700/768/1024/1440, sem falhas/erros; dois exames reais nas quatro larguras oficiais.86 fluxos reexecutados, total149. Baseline52 com13 reprovações de linha/alinhamento/centro, evidência preservada.",
+    "content": "Dados1968/+3.000/5 e legendas preservados.13 arquivos de conteúdo/manifest/scripts/estilos das interações e páginas Home/Menu idênticos ao backup. Sem novo JS/foto/dependência.",
+    "backup": "estado-pre-alinhamento-numeros-2026-10-02.tar.gz; SHA256eb64d02efa94b6b9ee617269644efb4ff765dda2f0ef56179c67c19848471226;54 arquivos recuperados/hash-conferidos em /private/tmp/jumper-pao-recovery-df7bkavo.",
+    "limits": "Chrome emulado, não Safari/iPhone físico; sem novo Lighthouse/envio real/M5 completo/publicação."
+  },
+  "menu_index_stability_functional_checks_history": {
+    "status": "passed_scoped_menu_index_contact_delivery_pending",
+    "tests": 518,
+    "menu_stability_checks": 41,
+    "menu_highlight_checks": 127,
+    "main_flow_checks": 86,
+    "navigation_checks": 36,
+    "motion_checks": 15,
+    "internal_hero_checks": 213,
+    "failures": [],
+    "errors": [],
+    "native_transition_skips": ["Transition was aborted because of invalid state. ViewTransition opt-in disabled"],
+    "evidence": "menu-stability-final-report.json41/5 larguras; menu-highlight-stability-final-report.json127/6; flow-verification-report.json86; navigation-report.json36; motion-report.json15; internal-split-final-report.json213/33. visual2 também passou36 e final acrescentou5 interrupções por wheel. Duas revisões reais320/768/1024/1440. Motion/internas rodaram após CSS final e antes do último ajuste JS, exclusivo do fragmento inicial do cardápio, coberto127/41 finais. Um aviso nativo exato separado em navegação. Suítes331 menu/220 swipe/434 lightbox/217 contato históricas não reexecutadas integralmente; sem envios reais/checkout."
+  },
+  "menu_index_stability_revision": {
+    "status": "passed",
+    "date": "2026-10-02",
+    "authority": "Usuário relatou tremedeira do índice ancorado no topo do cardápio mobile.",
+    "scope": "atelier.css: cabeçalho compacto só em landscape baixo. menu-index.ts substitui scrollspy percentual por linha de leitura; mantém destino da âncora até repouso/interrupção, sem interceptar link/hash/histórico. Realinha fragmento inicial após load/fontes somente se não houve interação.",
+    "verification": "Baseline17 com9 falhas: salto18px e categoria errada/intermediária. Final41 sem falhas; topo delta0px nas medidas de scroll/gestos e alturas525–600. Cliques rápidos, teclado e interrupção por wheel.127 categorias/atalhos,86 fluxos,36 navegação,15 motion e213 internas, total518; um aviso nativo separado em navegação. Dois exames reais nas quatro larguras oficiais.",
+    "content": "content.json/photo-selections/manifest/slideshow/motion/swipe/contact-form/mobile-menu.css/menu-highlight.css/menu.astro/MenuPhoto.astro/SiteLayout.astro byte a byte iguais ao backup. Sem imagens/fontes/dependências novas.",
+    "backup": "estado-pre-estabilidade-indice-2026-10-02.tar.gz; SHA2568eb9b5307d1e0d4161c8f46a96ce172449ba51f9eb7eca2b1fc093a0568f86ab;53 arquivos extraídos/hash-conferidos em /private/tmp/jumper-pao-recovery-v17mjx4v.",
+    "limits": "Chrome local: viewport variável e toque CDP emulados, não Safari/iPhone físico/Firefox. Sem novo Lighthouse/publicação. Contato/envio real e entrega completa M5 continuam pendentes."
+  },
+  "mobile_menu_fullscreen_functional_checks_history": {
+    "status": "passed_scoped_mobile_menu_contact_delivery_pending",
+    "tests": 453,
+    "mobile_menu_checks": 331,
+    "mobile_menu_viewport_combinations": 48,
+    "main_flow_checks": 86,
+    "navigation_checks": 36,
+    "failures": [],
+    "errors": [],
+    "native_transition_skips": ["Transition was aborted because of invalid state. ViewTransition opt-in disabled"],
+    "evidence": "mobile-menu-final-report.json331, flow-verification-report.json86 e navigation-report.json36. Dois passes331 cada/48 combinações das quatro páginas/12 tamanhos, dois exames reais de seis capturas com57 verificações cada em visual1/visual2. Primeiro teste330 apontou escape de Tab, corrigido. Um aviso nativo exato separado no menu, sem erro de destino/fechamento. Suítes históricas220 swipe/711 lightbox/217 contato não reexecutadas integralmente; nenhum envio/checkout."
+  },
+  "mobile_menu_fullscreen_revision": {
+    "status": "passed",
+    "date": "2026-10-02",
+    "authority": "Pedido direto de menu mobile sempre100vw ×100vh.",
+    "scope": "Dialog compartilhado fixed/inset0 sem largura máxima/margem,100dvh fallback100vh. Tipografia/respiro por altura, close fora da lista rolável e landscape largo em duas colunas; identidade/navbar desktop/destinos preservados.",
+    "verification": "Dois passes331 cada,48 combinações e regressores86+36:453 finais. Dois exames reais de seis capturas320/768/1024/1440+844×390/390×240,57 verificações por passe visual. Corrigida saída de foco ao Tab; captura aguarda animação antes de registrar estado estável. Aviso nativo exato registrado à parte, não falha de links.",
+    "content": "Catálogo/selections/manifest/slideshow/motion/swipe/contact-form/menu.astro byte a byte iguais ao backup. HTML do layout idêntico exceto import CSS; site.ts acrescenta somente ciclo de foco do menu. Sem fotos/fontes/dependências novas.",
+    "backup": "estado-pre-menu-fullscreen-2026-10-02.tar.gz; SHA2567676f5653d256f2e95834bf2fe0f828f80f27b51f73a5447f8f803b32e5dcddc;52 arquivos extraídos/hash-conferidos em /private/tmp/jumper-pao-recovery-0l_d1ujz.",
+    "limits": "Chrome local com tamanhos/redimensionamento emulados, não Safari/iPhone físico/Firefox. CSS cobre viewport visível, não barra do navegador/status do sistema. Sem novo Lighthouse/publicação; integração de contato/entrega completa M5 continuam pendentes."
+  },
+  "store_swipe_revision": {
+    "status": "passed",
+    "date": "2026-10-02",
+    "authority": "Pedido direto de trocar as unidades no mobile arrastando o dedo nas fotos além dos botões.",
+    "scope": "Localizador Home: horizontal avança/volta uma unidade, circular nas cinco. Mesmo seletor para foto/dados/aba, faixa revelada sem rolar página. Mouse não ativa gesto; botões/teclado preservados.",
+    "verification": "Dois passes220 cada com toque CDP, seis larguras, no-js/reduced; dois exames reais320/768/1024/1440. Vertical real rola documento, não troca; curto/diagonal/cancelamento/multi-touch não selecionam loja. Regressores86+36+15 passam:357 finais.",
+    "content": "Catálogo/selections/manifest/slideshow/motion/contact-form/MenuPhoto/Contact/menu.astro byte a byte iguais ao backup. Sem imagem, dependência ou biblioteca nova.",
+    "backup": "estado-pre-swipe-lojas-2026-10-02.tar.gz; SHA2563fd3ea746ff62c91b76aebdcecd33a30f35fcf5e8f4f7095a7882b3198c2d97a;51 arquivos extraídos/hash-conferidos em /private/tmp/jumper-pao-recovery-r_t4pm4t.",
+    "limits": "Chrome local com toque/tamanhos emulados; não Safari/Firefox/dispositivo físico. Pinch permitido por touch-action e multi-touch não seleciona loja; não medição de zoom óptico real. Sem novo Lighthouse ou publicação; integração de contato/entrega completa M5 pendentes."
+  },
+  "menu_delivery_icons_revision": {
+    "status": "passed",
+    "date": "2026-10-02",
+    "authority": "Usuário pediu ícones das empresas nos links do screenshot do cardápio.",
+    "scope": "Somente dois links finais de /menu/ e estilo restrito; PNGs oficiais já existentes,28px, nomes completos e nova aba anunciada. Canais agrupados, alvo≥44px e hover/foco existentes preservados.",
+    "verification": "38 checagens por passe2/final, zero falhas/erros; duas revisões reais de320/768/1024/1440. Primeiro exame encontrou Rappi isolada em768, agrupamento corrigido antes dos passes finais.",
+    "content": "content.json/selections/public/images/manifest.json/site.ts/slideshow.ts/MenuPhoto.astro/Contact.astro/contact.css idênticos ao backup;83 itens e lightbox preservados.",
+    "backup": "estado-pre-icones-cardapio-2026-10-02.tar.gz; SHA256724fc645f5bffd20ac744709524680384d5f043083ad81ef22a27c6645d80d77;51 arquivos extraídos/hash-conferidos em /private/tmp/jumper-pao-recovery-5t6cuf2b.",
+    "limits": "Chrome local e tamanhos emulados, não Safari/Firefox/dispositivo físico. Sem novo Lighthouse/checkout/deploy; sem novo JS/asset/dependência. Envio de contato e entrega completa M5 continuam pendentes."
+  },
+  "menu_lightbox_revision": {
+    "status": "passed",
+    "date": "2026-10-02",
+    "authority": "Usuário pediu imagens clicáveis em lightbox e animação de hover.",
+    "scope": "Oito fotografias dos capítulos de /menu/, mesmo dialog existente; maior WebP local sob demanda. Hover de moldura dupla, aproximação2,5% e indicador; alvo fixo e foco vermelho.",
+    "verification": "Dois passes completos434 cada/48 combinações e dois exames reais de12 capturas. Regressões127+64+86 passam, total711 atual. Primeiro passe137/incompleto com16 escapes de foco e timeout preservado; guard de close tardio e Tab corrigidos. Espera de foco mede retorno real, não instante anterior ao evento nativo.",
+    "content": "content.json/photo-selections/manifest/slideshow/contact.css/Contact.astro idênticos ao backup. Smoothies continua editorial com crop dos copos, sem carta antiga legível; não prova receita atual.",
+    "backup": "estado-pre-lightbox-cardapio-2026-10-02.tar.gz; SHA256 c78575ac028ce18850943185cfcffefc3ad6dda06698b5da8298be0d3f503f87;50 arquivos extraídos/hash-conferidos em /private/tmp/jumper-pao-recovery-hg53zw4t.",
+    "limits": "Chrome local e emulação de toque/tamanhos; sem dispositivo físico, Safari/Firefox ou novo Lighthouse. Sem JS, foto permanece e botão fica inativo. Suíte histórica não toda reexecutada; envio de contato/entrega completa M5 continuam pendentes."
+  },
+  "menu_drinks_photos_revision": {
+    "status": "passed_with_editorial_limits",
+    "date": "2026-10-02",
+    "source": "https://paodequeijohaddocklobo.com.br/menu/",
+    "bebidas_sha256": "27b2829fa4feb55208db9555187c8e0af8fb20a872a7fd4ae83e67b1d64b29a8",
+    "smoothies_sha256": "b3dd9d6b5b159c130762fd2e4a6859ba6a994bd6682495f0cc2f374946a18810",
+    "content": "Somente duas referências image mudaram;83 itens/preços/descrições idênticos ao backup. Manifest anterior95 entradas preservado; agora105.",
+    "index_fix": "Observer acompanha todas as categorias intersectantes, prioriza maior top e exclui hidden. Primeiros passes registraram6 e3 seleções erradas de Bebidas; reproduzida falha mobile, corrigida no site. Espera do teste mede posição de destino e aria-current para não aprovar a seleção transitória do click.",
+    "verification": "277 checagens atuais passam; dois exames reais em320/768/1024/1440 de ambas as categorias; um aviso nativo exato separado. Build/check-output passam.",
+    "limits": "Bebidas é foto editorial café/pão de queijo; Smoothies não comprova receitas veganas atuais, carta antiga excluída no recorte. Não usar IA/Pexels, não publicar, não ativar contato. Chrome local; sem Safari/Firefox/Lighthouse novos."
+  },
+  "contact_form_revision": {
+    "status": "frontend_passed_delivery_pending",
+    "authority": "Pedido direto: campos Nome/E-mail/Mensagem em lugar de abrir email, na identidade do site.",
+    "date": "2026-10-02",
+    "composition": "Papel/navy/filetes/números DIN/vermelho; ≥901px dois campos por linha, abaixo empilhados; Poppins16px no celular, mensagem integral com foco red.",
+    "frontend_evidence": "contact-form-pass1-report.json e contact-form-final-report.json:49 checagens cada, zero falhas/erros nos passes corrigidos. contact-with-fields-final-report.json:82, zero falhas/erros de aplicação,8 avisos nativos exatos. verification-report.json:86/24 telas, sem erros. Duas revisões visuais efetivamente examinadas.",
+    "delivery": "Missing PUBLIC_CONTACT_FORM_ENDPOINT/service/approved recipient; inactive button and visible note. No real delivery or external submission, account creation, contract, WordPress write or publication.",
+    "backup": "estado-pre-form-contato-2026-10-02.tar.gz; SHA256 ad0b56fff67c6b86cb9feb61829c520620b2533435ce2f6e4e1d13356c25306c; 47 arquivos realmente extraídos/hash-conferidos em /private/tmp/jumper-pao-recovery-vylvpqpn. contact-form-recovery-report.json.",
+    "limits": "Chrome local; sem Safari/Firefox/dispositivo físico, no novo Lighthouse. JSON mock prova estados frontend, não recebimento por destinatário real. Histórico872 não todo reexecutado nesta revisão."
+  }
+}

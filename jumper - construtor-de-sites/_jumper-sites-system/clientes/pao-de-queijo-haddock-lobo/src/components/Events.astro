@@ -1,0 +1,9 @@
+---
+import Photo from './Photo.astro';
+import { content, href } from '../lib/site';
+import '../styles/events.css';
+---
+<section class="events-section full-screen-events" id="eventos" aria-labelledby="events-heading">
+  <div class="events-photo"><Photo name="carrinho" alt="Carrinho itinerante do Pão de Queijo Haddock Lobo para festas e eventos" sizes="(max-width:700px) 100vw, 48vw"/></div>
+  <div class="events-copy"><p class="eyebrow">04 / O clássico vai à festa</p><img class="section-symbol" src={href('/brand/symbol-white.png')} alt="" width="198" height="189" loading="lazy"/><h2 id="events-heading">SEU EVENTO.<br/>NOSSO CLÁSSICO.</h2><p>O carrinho da Haddock Lobo leva o nosso pão de queijo para a sua festa ou evento. Conte a sua ideia para a gente.</p><a class="button button-red" href={content.conversion.event_whatsapp_href} target="_blank" rel="noopener noreferrer">Conversar sobre meu evento</a><span class="handwritten">a gente leva a pausa até você.</span></div>
+</section>

@@ -1,0 +1,13 @@
+---
+import Photo from './Photo.astro';
+import Icon from './Icon.astro';
+import { imageData } from '../lib/site';
+const { name, alt, caption, class: className = '', sizes } = Astro.props;
+const image = imageData(name);
+---
+<figure class:list={['gallery-figure', className]}>
+  <button class="photo-button" type="button" data-zoom-src={image.full} data-zoom-alt={alt ?? image.alt} data-zoom-caption={caption || alt || image.alt} aria-label={`Ampliar foto: ${caption || alt || image.alt}`}>
+    <Photo name={name} alt={alt} sizes={sizes}/><span class="zoom-icon"><Icon name="plus" /></span>
+  </button>
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>

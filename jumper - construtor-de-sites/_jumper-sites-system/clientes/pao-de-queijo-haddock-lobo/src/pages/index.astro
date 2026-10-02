@@ -1,0 +1,64 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Photo from '../components/Photo.astro';
+import GalleryPhoto from '../components/GalleryPhoto.astro';
+import StoreFinder from '../components/StoreFinder.astro';
+import Events from '../components/Events.astro';
+import HomeHero from '../components/HomeHero.astro';
+import FoodIcon from '../components/FoodIcon.astro';
+import Contact from '../components/Contact.astro';
+import { content, href } from '../lib/site';
+import '../styles/delivery.css';
+import '../styles/menu-highlight.css';
+---
+<SiteLayout title="O clássico, todo dia. Desde 1968" description="O pão de queijo da Haddock Lobo desde 1968. Conheça o cardápio, encontre nossas lojas em São Paulo e no Rio e leve o clássico para o seu evento." current="home">
+  <HomeHero/>
+  <section class="home-story section-space" id="sobre" aria-labelledby="history-heading"><div class="container story-intro-grid"><div class="story-intro-copy"><p class="eyebrow">01 / A nossa história</p><h2 id="history-heading">UMA PAUSA QUE<br/>ATRAVESSA GERAÇÕES.</h2><p>{content.home.history_text}</p><a class="text-link" href={href('/sobre/')}>Conhecer a nossa história</a><div class="story-origin"><img src={href('/brand/symbol-navy.png')} alt="" width="198" height="189" loading="lazy"/><span class="handwritten">a primeira casa.<br/>o mesmo convite.</span></div></div><figure class="story-intro-photo"><Photo name="loja-haddock" alt="Fachada atual da primeira loja, na Rua Haddock Lobo, nos Jardins" sizes="(max-width:700px) 90vw, 45vw"/><figcaption><span>Rua Haddock Lobo, 1408</span><span>Jardins / São Paulo</span></figcaption></figure></div></section>
+  <section class="vitrine-section section-space menu-home-section" id="cardapio" aria-labelledby="vitrine-heading"><div class="container">
+    <div class="menu-highlight-top">
+      <div class="menu-home-head">
+        <div><div class="menu-home-kicker"><FoodIcon name="carta" size={42}/><p class="eyebrow">02 / A sua próxima escolha</p></div><h2 id="vitrine-heading">CARDÁPIO<br/>DA CASA.</h2></div>
+        <div class="menu-home-invitation"><span class="handwritten">Do primeiro café ao último doce.</span><p>Pão de queijo, cafés, salgados, sanduíches, tortas e doces. Encontre o favorito da sua próxima pausa.</p><a class="button" data-menu-complete href={href('/menu/')}>Ver cardápio completo</a></div>
+      </div>
+      <nav class="menu-home-categories" aria-label="Explore o cardápio da casa">{content.menu.categories.filter(category=>!['smoothies','em-casa'].includes(category.id)).map((category,index)=><a class="menu-taste-link" data-menu-shortcut={category.id} href={href(`/menu/#${category.id}`)} aria-label={category.name}><span class="menu-taste-number" aria-hidden="true">0{index+1}</span><FoodIcon name={category.id} size={44}/><span>{category.name}</span></a>)}</nav>
+    </div>
+    <div class="editorial-gallery"><div class="vitrine-item"><GalleryPhoto name="cafe" caption="01 / O café da pausa" sizes="(max-width:700px) 78vw, 28vw"/><h3>Começa com uma xícara.</h3><a class="text-link" href={href('/menu/#cafes')}>Ver os cafés</a></div><div class="vitrine-item"><GalleryPhoto name="coxinha" caption="02 / O balcão de favoritos" sizes="(max-width:700px) 78vw, 28vw"/><h3>Mais um bom motivo.</h3><a class="text-link" href={href('/menu/#salgados')}>Explorar os salgados</a></div><div class="vitrine-item"><GalleryPhoto name="quindim" caption="03 / O doce desfecho" sizes="(max-width:700px) 78vw, 28vw"/><h3>Deixa espaço para o doce.</h3><a class="text-link" href={href('/menu/#doces')}>Escolher um doce</a></div></div><p class="mobile-swipe-note">Deslize para ver os favoritos</p>
+  </div></section>
+  <StoreFinder/>
+  <Events/>
+  <section class="take-home-section section-space" id="delivery" aria-labelledby="take-home-heading">
+    <div class="container take-home-grid">
+      <div class="take-home-copy">
+        <p class="eyebrow">05 / Peça em casa</p>
+        <h2 id="take-home-heading">DA HADDOCK<br/>PARA A SUA CASA.</h2>
+        <p class="take-home-intro">A sua pausa não precisa esperar a próxima visita. Escolha um app e peça seus favoritos para receber em casa.</p>
+        <div class="delivery-order" role="group" aria-labelledby="delivery-order-heading">
+          <div class="delivery-order-top">
+            <div><p class="delivery-label">Delivery / faça seu pedido</p><h3 id="delivery-order-heading">Hoje, a mesa é sua.</h3></div>
+            <span class="delivery-house" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M5 14 16 5l11 9M8 12v14h16V12M13 26v-9h6v9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+          <p class="delivery-choice">Peça pelo seu app favorito.</p>
+          <div class="delivery-links">
+            <a class="delivery-app" href={content.delivery.ifood_url} target="_blank" rel="noopener noreferrer" aria-label="Pedir no iFood — abre em nova aba">
+              <span class="delivery-app-icon"><img src={href('/brand/delivery-ifood.png')} width="52" height="52" alt="" loading="lazy" decoding="async"/></span>
+              <span class="delivery-app-copy"><span>Pedir no</span><strong>iFood</strong></span>
+            </a>
+            <a class="delivery-app" href={content.delivery.rappi_url} target="_blank" rel="noopener noreferrer" aria-label="Pedir no Rappi — abre em nova aba">
+              <span class="delivery-app-icon"><img src={href('/brand/delivery-rappi.png')} width="52" height="52" alt="" loading="lazy" decoding="async"/></span>
+              <span class="delivery-app-copy"><span>Pedir no</span><strong>Rappi</strong></span>
+            </a>
+          </div>
+          <p class="delivery-availability">Consulte no app a disponibilidade e a entrega para o seu endereço. Os links abrem em uma nova aba.</p>
+        </div>
+      </div>
+      <figure class="take-home-figure">
+        <div class="take-home-photo"><Photo name="em-casa" sizes="(max-width:700px) 90vw, 38vw"/></div>
+        <figcaption class="take-home-caption">
+          <div><span class="eyebrow">Para assar em casa</span><span class="handwritten">O clássico, no seu forno.</span></div>
+          <a class="text-link" href={href('/menu/#em-casa')}>Ver opções para levar</a>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+  <Contact/>
+</SiteLayout>

@@ -31,7 +31,7 @@ test('bloqueia diferenças em qualquer outro site e ignora só o site autorizado
       });
     };
     const clean = await compareUntouchedSites({ allowedSlug: 'izigym', root, fetchPublished: published, inventory });
-    assert.equal(clean.checked, 12);
+    assert.equal(clean.checked, 14);
     assert.deepEqual(clean.differences, []);
 
     await writeFile(join(root, 'rodeio', 'site.css'), 'Rodeio mudou sem autorização');
@@ -65,14 +65,14 @@ test('bloqueia quando outro Worker responde no lugar do dev', async () => {
       allowedSlug: 'izigym', root, inventory,
       fetchPublished: async () => new Response('igual'),
     });
-    assert.equal(result.differences.length, 6);
+    assert.equal(result.differences.length, 7);
     assert.ok(result.differences.every((difference) => difference.includes('não veio do jumper-hoster-dev')));
   } finally {
     await rm(root, { recursive: true, force: true });
   }
 });
 
-test('deploy somente do código confere os sete sites, sem exceção', async () => {
+test('deploy somente do código confere os oito sites, sem exceção', async () => {
   const root = await mkdtemp(join(tmpdir(), 'hoster-dev-worker-only-'));
   try {
     const inventory = {};
@@ -83,7 +83,7 @@ test('deploy somente do código confere os sete sites, sem exceção', async () 
     }
     const fetchPublished = async () => new Response('igual', { headers: { 'X-Jumper-Worker': 'jumper-hoster-dev' } });
     const clean = await compareUntouchedSites({ allowedSlug: null, root, inventory, baselineInventory: inventory, fetchPublished });
-    assert.equal(clean.checked, 7);
+    assert.equal(clean.checked, 8);
     assert.deepEqual(clean.differences, []);
     await writeFile(join(root, 'izigym', 'index.html'), 'alterado');
     const blocked = await compareUntouchedSites({ allowedSlug: null, root, inventory, baselineInventory: inventory, fetchPublished });

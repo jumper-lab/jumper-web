@@ -1,0 +1,737 @@
+[
+  {
+    "file": "hero-pao-320.webp",
+    "width": 320,
+    "height": 480,
+    "bytes": 19858,
+    "source_id": "agosto-54"
+  },
+  {
+    "file": "hero-pao-640.webp",
+    "width": 640,
+    "height": 960,
+    "bytes": 51070,
+    "source_id": "agosto-54"
+  },
+  {
+    "file": "hero-pao-960.webp",
+    "width": 960,
+    "height": 1440,
+    "bytes": 89960,
+    "source_id": "agosto-54"
+  },
+  {
+    "file": "hero-pao-1100.webp",
+    "width": 1100,
+    "height": 1650,
+    "bytes": 110316,
+    "source_id": "agosto-54"
+  },
+  {
+    "file": "hero-pao-1800.webp",
+    "width": 1800,
+    "height": 2700,
+    "bytes": 218866,
+    "source_id": "agosto-54"
+  },
+  {
+    "file": "pao-na-cesta-320.webp",
+    "width": 320,
+    "height": 480,
+    "bytes": 19558,
+    "source_id": "junho-07"
+  },
+  {
+    "file": "pao-na-cesta-640.webp",
+    "width": 640,
+    "height": 960,
+    "bytes": 49984,
+    "source_id": "junho-07"
+  },
+  {
+    "file": "pao-na-cesta-960.webp",
+    "width": 960,
+    "height": 1440,
+    "bytes": 87612,
+    "source_id": "junho-07"
+  },
+  {
+    "file": "pao-na-cesta-1100.webp",
+    "width": 1100,
+    "height": 1650,
+    "bytes": 108212,
+    "source_id": "junho-07"
+  },
+  {
+    "file": "pao-na-cesta-1800.webp",
+    "width": 1800,
+    "height": 2700,
+    "bytes": 224696,
+    "source_id": "junho-07"
+  },
+  {
+    "file": "cafe-320.webp",
+    "width": 320,
+    "height": 480,
+    "bytes": 20616,
+    "source_id": "agosto-50"
+  },
+  {
+    "file": "cafe-640.webp",
+    "width": 640,
+    "height": 960,
+    "bytes": 55342,
+    "source_id": "agosto-50"
+  },
+  {
+    "file": "cafe-960.webp",
+    "width": 960,
+    "height": 1440,
+    "bytes": 99758,
+    "source_id": "agosto-50"
+  },
+  {
+    "file": "cafe-1100.webp",
+    "width": 1100,
+    "height": 1650,
+    "bytes": 123646,
+    "source_id": "agosto-50"
+  },
+  {
+    "file": "cafe-1800.webp",
+    "width": 1800,
+    "height": 2700,
+    "bytes": 266584,
+    "source_id": "agosto-50"
+  },
+  {
+    "file": "bolo-320.webp",
+    "width": 320,
+    "height": 400,
+    "bytes": 14398,
+    "source_id": "agosto-49"
+  },
+  {
+    "file": "bolo-640.webp",
+    "width": 640,
+    "height": 800,
+    "bytes": 38076,
+    "source_id": "agosto-49"
+  },
+  {
+    "file": "bolo-960.webp",
+    "width": 960,
+    "height": 1200,
+    "bytes": 68080,
+    "source_id": "agosto-49"
+  },
+  {
+    "file": "bolo-1100.webp",
+    "width": 1100,
+    "height": 1375,
+    "bytes": 83174,
+    "source_id": "agosto-49"
+  },
+  {
+    "file": "bolo-1800.webp",
+    "width": 1800,
+    "height": 2250,
+    "bytes": 168780,
+    "source_id": "agosto-49"
+  },
+  {
+    "file": "coxinha-320.webp",
+    "width": 320,
+    "height": 480,
+    "bytes": 16782,
+    "source_id": "junho-02"
+  },
+  {
+    "file": "coxinha-640.webp",
+    "width": 640,
+    "height": 960,
+    "bytes": 46114,
+    "source_id": "junho-02"
+  },
+  {
+    "file": "coxinha-960.webp",
+    "width": 960,
+    "height": 1440,
+    "bytes": 86688,
+    "source_id": "junho-02"
+  },
+  {
+    "file": "coxinha-1100.webp",
+    "width": 1100,
+    "height": 1650,
+    "bytes": 106568,
+    "source_id": "junho-02"
+  },
+  {
+    "file": "coxinha-1800.webp",
+    "width": 1800,
+    "height": 2700,
+    "bytes": 230610,
+    "source_id": "junho-02"
+  },
+  {
+    "file": "quindim-320.webp",
+    "width": 320,
+    "height": 400,
+    "bytes": 21298,
+    "source_id": "junho-10"
+  },
+  {
+    "file": "quindim-640.webp",
+    "width": 640,
+    "height": 800,
+    "bytes": 56984,
+    "source_id": "junho-10"
+  },
+  {
+    "file": "quindim-960.webp",
+    "width": 960,
+    "height": 1200,
+    "bytes": 106274,
+    "source_id": "junho-10"
+  },
+  {
+    "file": "quindim-1100.webp",
+    "width": 1100,
+    "height": 1375,
+    "bytes": 131844,
+    "source_id": "junho-10"
+  },
+  {
+    "file": "quindim-1800.webp",
+    "width": 1800,
+    "height": 2250,
+    "bytes": 281648,
+    "source_id": "junho-10"
+  },
+  {
+    "file": "torta-320.webp",
+    "width": 320,
+    "height": 400,
+    "bytes": 22018,
+    "source_id": "junho-12"
+  },
+  {
+    "file": "torta-640.webp",
+    "width": 640,
+    "height": 800,
+    "bytes": 58840,
+    "source_id": "junho-12"
+  },
+  {
+    "file": "torta-960.webp",
+    "width": 960,
+    "height": 1200,
+    "bytes": 101486,
+    "source_id": "junho-12"
+  },
+  {
+    "file": "torta-1100.webp",
+    "width": 1100,
+    "height": 1375,
+    "bytes": 122746,
+    "source_id": "junho-12"
+  },
+  {
+    "file": "torta-1800.webp",
+    "width": 1800,
+    "height": 2250,
+    "bytes": 237652,
+    "source_id": "junho-12"
+  },
+  {
+    "file": "sanduiche-320.webp",
+    "width": 320,
+    "height": 213,
+    "bytes": 8956,
+    "source_id": "agosto-35"
+  },
+  {
+    "file": "sanduiche-640.webp",
+    "width": 640,
+    "height": 427,
+    "bytes": 21750,
+    "source_id": "agosto-35"
+  },
+  {
+    "file": "sanduiche-960.webp",
+    "width": 960,
+    "height": 640,
+    "bytes": 36416,
+    "source_id": "agosto-35"
+  },
+  {
+    "file": "sanduiche-1100.webp",
+    "width": 1100,
+    "height": 733,
+    "bytes": 43836,
+    "source_id": "agosto-35"
+  },
+  {
+    "file": "sanduiche-1800.webp",
+    "width": 1800,
+    "height": 1200,
+    "bytes": 83746,
+    "source_id": "agosto-35"
+  },
+  {
+    "file": "em-casa-320.webp",
+    "width": 320,
+    "height": 400,
+    "bytes": 34962,
+    "source_id": "junho-01"
+  },
+  {
+    "file": "em-casa-640.webp",
+    "width": 640,
+    "height": 800,
+    "bytes": 117928,
+    "source_id": "junho-01"
+  },
+  {
+    "file": "em-casa-960.webp",
+    "width": 960,
+    "height": 1200,
+    "bytes": 219552,
+    "source_id": "junho-01"
+  },
+  {
+    "file": "em-casa-1100.webp",
+    "width": 1100,
+    "height": 1375,
+    "bytes": 270862,
+    "source_id": "junho-01"
+  },
+  {
+    "file": "em-casa-1800.webp",
+    "width": 1800,
+    "height": 2250,
+    "bytes": 364386,
+    "source_id": "junho-01"
+  },
+  {
+    "file": "mesa-320.webp",
+    "width": 320,
+    "height": 400,
+    "bytes": 23352,
+    "source_id": "junho-23"
+  },
+  {
+    "file": "mesa-640.webp",
+    "width": 640,
+    "height": 800,
+    "bytes": 70096,
+    "source_id": "junho-23"
+  },
+  {
+    "file": "mesa-960.webp",
+    "width": 960,
+    "height": 1200,
+    "bytes": 132036,
+    "source_id": "junho-23"
+  },
+  {
+    "file": "mesa-1100.webp",
+    "width": 1100,
+    "height": 1375,
+    "bytes": 162490,
+    "source_id": "junho-23"
+  },
+  {
+    "file": "mesa-1800.webp",
+    "width": 1800,
+    "height": 2250,
+    "bytes": 348348,
+    "source_id": "junho-23"
+  },
+  {
+    "file": "doces-320.webp",
+    "width": 320,
+    "height": 480,
+    "bytes": 20080,
+    "source_id": "junho-24"
+  },
+  {
+    "file": "doces-640.webp",
+    "width": 640,
+    "height": 960,
+    "bytes": 56048,
+    "source_id": "junho-24"
+  },
+  {
+    "file": "doces-960.webp",
+    "width": 960,
+    "height": 1440,
+    "bytes": 100620,
+    "source_id": "junho-24"
+  },
+  {
+    "file": "doces-1100.webp",
+    "width": 1100,
+    "height": 1650,
+    "bytes": 124162,
+    "source_id": "junho-24"
+  },
+  {
+    "file": "doces-1800.webp",
+    "width": 1800,
+    "height": 2700,
+    "bytes": 255602,
+    "source_id": "junho-24"
+  },
+  {
+    "file": "quindao-campanha-320.webp",
+    "width": 320,
+    "height": 400,
+    "bytes": 17862,
+    "source_id": "maio-01"
+  },
+  {
+    "file": "quindao-campanha-640.webp",
+    "width": 640,
+    "height": 800,
+    "bytes": 65210,
+    "source_id": "maio-01"
+  },
+  {
+    "file": "quindao-campanha-960.webp",
+    "width": 960,
+    "height": 1200,
+    "bytes": 168078,
+    "source_id": "maio-01"
+  },
+  {
+    "file": "quindao-campanha-1100.webp",
+    "width": 1100,
+    "height": 1375,
+    "bytes": 226692,
+    "source_id": "maio-01"
+  },
+  {
+    "file": "quindao-campanha-1800.webp",
+    "width": 1800,
+    "height": 2250,
+    "bytes": 368582,
+    "source_id": "maio-01"
+  },
+  {
+    "file": "loja-leblon-320.webp",
+    "width": 320,
+    "height": 480,
+    "bytes": 12750,
+    "source": "briefing/entrada/site-atual/loja-leblon.jpg"
+  },
+  {
+    "file": "loja-leblon-640.webp",
+    "width": 640,
+    "height": 961,
+    "bytes": 34886,
+    "source": "briefing/entrada/site-atual/loja-leblon.jpg"
+  },
+  {
+    "file": "loja-leblon-960.webp",
+    "width": 960,
+    "height": 1441,
+    "bytes": 59808,
+    "source": "briefing/entrada/site-atual/loja-leblon.jpg"
+  },
+  {
+    "file": "loja-leblon-1100.webp",
+    "width": 1066,
+    "height": 1600,
+    "bytes": 71530,
+    "source": "briefing/entrada/site-atual/loja-leblon.jpg"
+  },
+  {
+    "file": "loja-leblon-1800.webp",
+    "width": 1066,
+    "height": 1600,
+    "bytes": 71530,
+    "source": "briefing/entrada/site-atual/loja-leblon.jpg"
+  },
+  {
+    "file": "loja-sirio-320.webp",
+    "width": 320,
+    "height": 480,
+    "bytes": 16500,
+    "source": "briefing/entrada/site-atual/loja-sirio.jpg"
+  },
+  {
+    "file": "loja-sirio-640.webp",
+    "width": 640,
+    "height": 960,
+    "bytes": 43730,
+    "source": "briefing/entrada/site-atual/loja-sirio.jpg"
+  },
+  {
+    "file": "loja-sirio-960.webp",
+    "width": 960,
+    "height": 1440,
+    "bytes": 81048,
+    "source": "briefing/entrada/site-atual/loja-sirio.jpg"
+  },
+  {
+    "file": "loja-sirio-1100.webp",
+    "width": 1066,
+    "height": 1599,
+    "bytes": 100814,
+    "source": "briefing/entrada/site-atual/loja-sirio.jpg"
+  },
+  {
+    "file": "loja-sirio-1800.webp",
+    "width": 1066,
+    "height": 1599,
+    "bytes": 100814,
+    "source": "briefing/entrada/site-atual/loja-sirio.jpg"
+  },
+  {
+    "file": "carrinho-320.webp",
+    "width": 320,
+    "height": 480,
+    "bytes": 34074,
+    "source": "briefing/entrada/site-atual/carrinho.jpg"
+  },
+  {
+    "file": "carrinho-640.webp",
+    "width": 640,
+    "height": 960,
+    "bytes": 90436,
+    "source": "briefing/entrada/site-atual/carrinho.jpg"
+  },
+  {
+    "file": "carrinho-960.webp",
+    "width": 960,
+    "height": 1440,
+    "bytes": 153762,
+    "source": "briefing/entrada/site-atual/carrinho.jpg"
+  },
+  {
+    "file": "carrinho-1100.webp",
+    "width": 1067,
+    "height": 1600,
+    "bytes": 182278,
+    "source": "briefing/entrada/site-atual/carrinho.jpg"
+  },
+  {
+    "file": "carrinho-1800.webp",
+    "width": 1067,
+    "height": 1600,
+    "bytes": 182278,
+    "source": "briefing/entrada/site-atual/carrinho.jpg"
+  },
+  {
+    "file": "loja-higienopolis-320.webp",
+    "width": 320,
+    "height": 480,
+    "bytes": 11942,
+    "source": "briefing/entrada/site-atual/loja-higienopolis.jpg"
+  },
+  {
+    "file": "loja-higienopolis-640.webp",
+    "width": 640,
+    "height": 961,
+    "bytes": 33480,
+    "source": "briefing/entrada/site-atual/loja-higienopolis.jpg"
+  },
+  {
+    "file": "loja-higienopolis-960.webp",
+    "width": 960,
+    "height": 1441,
+    "bytes": 58850,
+    "source": "briefing/entrada/site-atual/loja-higienopolis.jpg"
+  },
+  {
+    "file": "loja-higienopolis-1100.webp",
+    "width": 1066,
+    "height": 1600,
+    "bytes": 71770,
+    "source": "briefing/entrada/site-atual/loja-higienopolis.jpg"
+  },
+  {
+    "file": "loja-higienopolis-1800.webp",
+    "width": 1066,
+    "height": 1600,
+    "bytes": 71770,
+    "source": "briefing/entrada/site-atual/loja-higienopolis.jpg"
+  },
+  {
+    "file": "loja-haddock-320.webp",
+    "width": 320,
+    "height": 481,
+    "bytes": 24688,
+    "source": "briefing/entrada/site-atual/loja-haddock.jpg"
+  },
+  {
+    "file": "loja-haddock-640.webp",
+    "width": 640,
+    "height": 962,
+    "bytes": 85896,
+    "source": "briefing/entrada/site-atual/loja-haddock.jpg"
+  },
+  {
+    "file": "loja-haddock-960.webp",
+    "width": 960,
+    "height": 1444,
+    "bytes": 165424,
+    "source": "briefing/entrada/site-atual/loja-haddock.jpg"
+  },
+  {
+    "file": "loja-haddock-1100.webp",
+    "width": 1064,
+    "height": 1600,
+    "bytes": 201992,
+    "source": "briefing/entrada/site-atual/loja-haddock.jpg"
+  },
+  {
+    "file": "loja-haddock-1800.webp",
+    "width": 1064,
+    "height": 1600,
+    "bytes": 201992,
+    "source": "briefing/entrada/site-atual/loja-haddock.jpg"
+  },
+  {
+    "file": "historia-320.webp",
+    "width": 320,
+    "height": 320,
+    "bytes": 6820,
+    "source": "briefing/entrada/site-atual/historia.jpg"
+  },
+  {
+    "file": "historia-640.webp",
+    "width": 640,
+    "height": 640,
+    "bytes": 21530,
+    "source": "briefing/entrada/site-atual/historia.jpg"
+  },
+  {
+    "file": "historia-960.webp",
+    "width": 960,
+    "height": 960,
+    "bytes": 42088,
+    "source": "briefing/entrada/site-atual/historia.jpg"
+  },
+  {
+    "file": "historia-1100.webp",
+    "width": 1100,
+    "height": 1100,
+    "bytes": 52358,
+    "source": "briefing/entrada/site-atual/historia.jpg"
+  },
+  {
+    "file": "historia-1800.webp",
+    "width": 1500,
+    "height": 1500,
+    "bytes": 86852,
+    "source": "briefing/entrada/site-atual/historia.jpg"
+  },
+  {
+    "file": "loja-iguatemi-320.webp",
+    "width": 320,
+    "height": 481,
+    "bytes": 18040,
+    "source": "briefing/entrada/site-atual/loja-iguatemi.jpg"
+  },
+  {
+    "file": "loja-iguatemi-640.webp",
+    "width": 640,
+    "height": 962,
+    "bytes": 58760,
+    "source": "briefing/entrada/site-atual/loja-iguatemi.jpg"
+  },
+  {
+    "file": "loja-iguatemi-960.webp",
+    "width": 960,
+    "height": 1444,
+    "bytes": 115626,
+    "source": "briefing/entrada/site-atual/loja-iguatemi.jpg"
+  },
+  {
+    "file": "loja-iguatemi-1100.webp",
+    "width": 1064,
+    "height": 1600,
+    "bytes": 137796,
+    "source": "briefing/entrada/site-atual/loja-iguatemi.jpg"
+  },
+  {
+    "file": "loja-iguatemi-1800.webp",
+    "width": 1064,
+    "height": 1600,
+    "bytes": 137796,
+    "source": "briefing/entrada/site-atual/loja-iguatemi.jpg"
+  },
+  {
+    "file": "smoothies-320.webp",
+    "width": 320,
+    "height": 320,
+    "bytes": 12168,
+    "source": "briefing/entrada/site-atual/smoothies.jpg"
+  },
+  {
+    "file": "smoothies-640.webp",
+    "width": 640,
+    "height": 640,
+    "bytes": 38538,
+    "source": "briefing/entrada/site-atual/smoothies.jpg"
+  },
+  {
+    "file": "smoothies-960.webp",
+    "width": 960,
+    "height": 960,
+    "bytes": 69886,
+    "source": "briefing/entrada/site-atual/smoothies.jpg"
+  },
+  {
+    "file": "smoothies-1100.webp",
+    "width": 1080,
+    "height": 1080,
+    "bytes": 84472,
+    "source": "briefing/entrada/site-atual/smoothies.jpg"
+  },
+  {
+    "file": "smoothies-1800.webp",
+    "width": 1080,
+    "height": 1080,
+    "bytes": 84472,
+    "source": "briefing/entrada/site-atual/smoothies.jpg"
+  },
+  {
+    "file": "bebidas-320.webp",
+    "width": 320,
+    "height": 480,
+    "bytes": 21856,
+    "source": "briefing/entrada/site-atual/bebidas.jpg"
+  },
+  {
+    "file": "bebidas-640.webp",
+    "width": 640,
+    "height": 961,
+    "bytes": 70144,
+    "source": "briefing/entrada/site-atual/bebidas.jpg"
+  },
+  {
+    "file": "bebidas-960.webp",
+    "width": 960,
+    "height": 1441,
+    "bytes": 138182,
+    "source": "briefing/entrada/site-atual/bebidas.jpg"
+  },
+  {
+    "file": "bebidas-1100.webp",
+    "width": 1066,
+    "height": 1600,
+    "bytes": 171552,
+    "source": "briefing/entrada/site-atual/bebidas.jpg"
+  },
+  {
+    "file": "bebidas-1800.webp",
+    "width": 1066,
+    "height": 1600,
+    "bytes": 171552,
+    "source": "briefing/entrada/site-atual/bebidas.jpg"
+  }
+]

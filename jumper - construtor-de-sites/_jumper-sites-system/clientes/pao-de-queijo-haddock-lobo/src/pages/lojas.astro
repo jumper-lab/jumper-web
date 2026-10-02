@@ -1,0 +1,13 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Photo from '../components/Photo.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import { content } from '../lib/site';
+---
+<SiteLayout title="Nossas lojas em São Paulo e no Rio" description="Encontre as cinco lojas do Pão de Queijo Haddock Lobo: Jardins, Iguatemi, Pátio Higienópolis, Sírio-Libanês e Shopping Leblon. Telefones e rotas." current="lojas" image="loja-iguatemi">
+  <PageHero variant="stores" image="loja-iguatemi" alt="Balcão da unidade Shopping Iguatemi do Pão de Queijo Haddock Lobo" titleId="locations-title" lines={['O CLÁSSICO,','BEM PERTO.']} eyebrow="Nossas lojas / São Paulo & Rio" description="Cinco endereços. Um bom motivo para fazer uma pausa no caminho." actionLabel="Encontrar minha loja" actionHref="#unidades" note="escolha o caminho. a gente se encontra." caption="Shopping Iguatemi / São Paulo"/>
+  <section class="locations-section section-space" id="unidades"><div class="container"><div class="locations-toolbar"><div><p class="eyebrow">Escolha onde fazer a pausa</p><h2>CADA CASA,<br/>UM ENCONTRO.</h2></div><div><div class="filter-buttons" role="group" aria-label="Filtrar lojas por cidade"><button type="button" data-city="all" aria-pressed="true">Todas</button><button type="button" data-city="sp" aria-pressed="false">São Paulo</button><button type="button" data-city="rj" aria-pressed="false">Rio de Janeiro</button></div><p class="result-count" data-location-count aria-live="polite">5 lojas para visitar</p></div></div><div class="locations-list">
+    {content.locations.map((store,index)=><article class="location-row" id={store.id} data-location-region={store.region}><div class="location-image"><Photo name={store.image} alt={`Unidade ${store.name} do Pão de Queijo Haddock Lobo`} sizes="(max-width:700px) 90vw, 40vw"/></div><div class="location-copy"><p class="eyebrow">0{index+1} / {store.city}</p><h3>{store.name}</h3><p class="location-description">{store.description}</p><address><Icon name="location" size={18}/><div>{store.address}<br/><span>{store.detail}</span></div></address><div class="location-links"><a class="button button-small" href={store.map} target="_blank" rel="noopener noreferrer">Como chegar</a><a class="phone-link" href={`tel:${store.tel}`}><Icon name="phone" size={18}/>{store.phone}</a></div><p class="location-note">Fale com a unidade para confirmar os horários e a disponibilidade dos produtos.</p></div></article>)}
+  </div></div></section>
+</SiteLayout>

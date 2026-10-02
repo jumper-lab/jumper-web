@@ -12,6 +12,7 @@ const workerName = 'jumper-hoster';
 
 // These pages are outside the hub. A hub-only deploy must preserve their bodies.
 export const protectedPages = [
+  ['Pão de Queijo dev', 'https://site.jumper.dev.br/pao-de-queijo-haddock-lobo/', 'pao-de-queijo-haddock-lobo/index.html'],
   ['Rodeio dev', 'https://site.jumper.dev.br/rodeio/', 'rodeio/index.html'],
   ['IZI Gym dev', 'https://site.jumper.dev.br/izigym/', 'izigym/index.html'],
   ['IZI Gym LP v1', 'https://site.jumper.dev.br/izigym-lp/', 'izigym-lp/index.html'],

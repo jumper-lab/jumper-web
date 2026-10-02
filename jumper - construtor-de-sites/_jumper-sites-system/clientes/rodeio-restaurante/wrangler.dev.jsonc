@@ -22,6 +22,7 @@
     { "pattern": "site.jumper.dev.br/izigym-lp-vilaromana/*", "zone_name": "jumper.dev.br" },
     { "pattern": "site.jumper.dev.br/casabelie/*", "zone_name": "jumper.dev.br" },
     { "pattern": "site.jumper.dev.br/casabelie-2/*", "zone_name": "jumper.dev.br" },
-    { "pattern": "site.jumper.dev.br/casabelie-3/*", "zone_name": "jumper.dev.br" }
+    { "pattern": "site.jumper.dev.br/casabelie-3/*", "zone_name": "jumper.dev.br" },
+    { "pattern": "site.jumper.dev.br/pao-de-queijo-haddock-lobo/*", "zone_name": "jumper.dev.br" }
   ]
 }

@@ -1,0 +1,25 @@
+/* The open mobile menu is the viewport, not a narrower side sheet. */
+.mobile-navigation{
+  position:fixed;inset:0;margin:0;width:100vw;max-width:none;
+  height:100vh;height:100dvh;max-height:none;overflow:hidden;
+  padding:max(16px,env(safe-area-inset-top)) max(var(--gutter),env(safe-area-inset-right)) max(16px,env(safe-area-inset-bottom)) max(var(--gutter),env(safe-area-inset-left));
+}
+.mobile-navigation[open]{display:flex;flex-direction:column}
+.mobile-navigation-top{flex:none;padding-bottom:clamp(12px,3dvh,28px)}
+.mobile-navigation-top .icon-button{flex:none}
+.mobile-navigation nav{
+  flex:1;min-height:0;overflow-x:hidden;overflow-y:auto;
+  overscroll-behavior-y:contain;scrollbar-width:thin;
+  padding:8px;margin:0 -8px;
+}
+.mobile-navigation nav a{
+  flex:1 0 auto;min-height:44px;font-size:clamp(26px,5.2dvh,42px);
+  padding:clamp(8px,1.7dvh,18px) 0;
+}
+.mobile-navigation .handwritten{
+  flex:none;margin:clamp(12px,2.5dvh,24px) 0 0;font-size:clamp(15px,2.6dvh,21px);
+}
+@media(orientation:landscape) and (min-width:600px) and (max-height:500px){
+  .mobile-navigation nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px}
+  .mobile-navigation nav a{font-size:28px}
+}

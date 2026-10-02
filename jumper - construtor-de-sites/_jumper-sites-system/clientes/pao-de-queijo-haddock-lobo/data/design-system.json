@@ -1,0 +1,51 @@
+{
+  "schema_version": "3.0.0",
+  "stage": "initial_design_system",
+  "status": "current_m5",
+  "client_name": "Pão de Queijo Haddock Lobo",
+  "model": "M5",
+  "personality": "A",
+  "source": "Briefing, decisões da conversa, manual de marca e referências anexadas",
+  "client_truth": {
+    "business": "Cafeteria clássica fundada em 1968, originada na Haddock Lobo",
+    "goal": "Produtos, visita às cinco unidades e contratação do carrinho para eventos",
+    "media_permissions": {
+      "ai_images": false,
+      "pexels": false
+    },
+    "materials": "Manual, logo, DIN Condensed, Poppins/Aleo e 83 fotografias recebidos e conferidos",
+    "claim": ">3.000 pães de queijo por dia, autorizado pelo usuário"
+  },
+  "visual_feeling": "Minimalismo editorial acolhedor com detalhes expressivos da embalagem e cesta da marca",
+  "colors": {
+    "navy": "#13273D",
+    "paper": "#EEECE8",
+    "red": "#9F2B34",
+    "white": "#FFFFFF"
+  },
+  "typography": {
+    "display": "DIN Condensed Bold",
+    "body": "Poppins Regular/Medium/Bold",
+    "detail": "Aleo Italic",
+    "not_used": "Poiret One não pertence à hierarquia do manual; Biro Script não fornecida e não necessária para a direção escolhida"
+  },
+  "references": [
+    "referencia-cafe.jpeg: produto protagonista e expressividade pontual",
+    "referencia-editorial.jpeg: hierarquia, ritmo e respiro"
+  ],
+  "hero": "Título curto em DIN, cesta real de pães em escala dominante, duas ações claras e prova desde 1968.",
+  "sections": [
+    "Abertura",
+    "História curta",
+    "Vitrine editorial",
+    "Localizador de lojas",
+    "Carrinho de eventos",
+    "Em casa/delivery",
+    "Contato"
+  ],
+  "motion": "Microinterações e diálogo de galeria; sem autoplay e com movimento reduzido.",
+  "risks": [
+    "Horários não publicados na fonte: omitidos.",
+    "Algumas quantidades/preços ambíguos do cardápio exigem revisão editorial antes da publicação."
+  ]
+}

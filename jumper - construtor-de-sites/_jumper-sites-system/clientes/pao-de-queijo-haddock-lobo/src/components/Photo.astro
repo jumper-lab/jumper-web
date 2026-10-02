@@ -1,0 +1,6 @@
+---
+import { imageData } from '../lib/site';
+const { name, alt, class: className = '', sizes = '(max-width: 700px) 100vw, 50vw', priority = false } = Astro.props;
+const image = imageData(name);
+---
+<img class:list={['photo', className]} src={image.src} srcset={image.srcset} sizes={sizes} alt={alt ?? image.alt} width={image.width} height={image.height} loading={priority ? 'eager' : 'lazy'} fetchpriority={priority ? 'high' : 'auto'} decoding="async" />

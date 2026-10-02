@@ -1,0 +1,65 @@
+---
+import Icon from './Icon.astro';
+import {content,href} from '../lib/site';
+import '../styles/contact.css';
+// Public URL only. Delivery credentials belong to the receiving service, never this bundle.
+const candidate=import.meta.env.PUBLIC_CONTACT_FORM_ENDPOINT?.trim();
+let endpoint='';
+if(candidate){
+  const url=new URL(candidate);
+  if(url.protocol!=='https:'||url.username||url.password||url.search||url.hash)throw new Error('PUBLIC_CONTACT_FORM_ENDPOINT deve ser uma URL HTTPS pública, sem credenciais, query ou fragmento.');
+  endpoint=url.href;
+}
+---
+<section class="contact-section" id="contatos" aria-labelledby="contact-heading">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-intro">
+        <div class="contact-kicker"><Icon name="mail" size={38}/><p class="eyebrow">06 / Contato</p></div>
+        <h2 id="contact-heading">VAMOS<br/>CONVERSAR.</h2>
+        <p class="contact-lead">Uma dúvida, uma sugestão ou um recado?<br/>A gente se encontra por aqui também.</p>
+        <div class="contact-general">
+          <p class="contact-label" id="contact-form-title">Seu recado para a Haddock Lobo</p>
+          <form class="contact-form" data-contact-form data-endpoint={endpoint} action={endpoint||undefined} method="post" aria-labelledby="contact-form-title" aria-describedby="contact-form-note">
+            <div class="contact-form-errors" data-contact-errors role="alert" hidden>Confira os campos destacados antes de enviar.</div>
+            <div class="contact-form-grid">
+              <div class="contact-field">
+                <label for="contact-name"><span aria-hidden="true">01</span> Nome</label>
+                <div class="contact-input-line"><input id="contact-name" name="name" type="text" autocomplete="name" maxlength="100" required placeholder="Como podemos chamar você?" aria-describedby="contact-name-error"/></div>
+                <p id="contact-name-error" class="contact-field-error" data-field-error hidden></p>
+              </div>
+              <div class="contact-field">
+                <label for="contact-email"><span aria-hidden="true">02</span> E-mail</label>
+                <div class="contact-input-line"><input id="contact-email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" required placeholder="seu@email.com" aria-describedby="contact-email-error"/></div>
+                <p id="contact-email-error" class="contact-field-error" data-field-error hidden></p>
+              </div>
+              <div class="contact-field contact-field-message">
+                <label for="contact-message"><span aria-hidden="true">03</span> Mensagem</label>
+                <div class="contact-input-line"><textarea id="contact-message" name="message" rows="5" maxlength="4000" required placeholder="Conte o que gostaria de compartilhar." aria-describedby="contact-message-error"></textarea></div>
+                <p id="contact-message-error" class="contact-field-error" data-field-error hidden></p>
+              </div>
+            </div>
+            <div class="contact-honeypot" aria-hidden="true"><label for="contact-company">Deixe este campo vazio</label><input id="contact-company" name="_gotcha" type="text" tabindex="-1" autocomplete="off"/></div>
+            <div class="contact-form-action"><button class="button" type="submit" data-contact-submit disabled={!endpoint}>Enviar mensagem</button><span class="contact-form-note" id="contact-form-note">{endpoint?'Sua mensagem será encaminhada à equipe.':'O envio será ativado após a configuração do serviço de contato.'}</span></div>
+            <p class="contact-form-status" data-contact-status role="status" aria-live="polite" aria-atomic="true" hidden></p>
+          </form>
+          <p class="contact-address">{content.conversion.public_email}</p>
+        </div>
+        <span class="handwritten contact-signature">pode chamar.</span>
+      </div>
+      <div class="contact-local">
+        <div class="contact-local-heading"><Icon name="phone" size={28}/><div><h3>Fale com a sua loja.</h3><p>Horários e disponibilidade, diretamente com a unidade.</p></div></div>
+        <ul class="contact-stores">{content.locations.map((store,index)=><li><a class="contact-store" data-contact-store={store.id} href={`tel:${store.tel}`} aria-label={`Ligar para ${store.name}: ${store.phone}`}><span class="contact-store-number" aria-hidden="true">0{index+1}</span><span class="contact-store-name"><strong>{store.name}</strong><span>{store.city}</span></span><span class="contact-store-phone">{store.phone}</span></a></li>)}</ul>
+        <a class="text-link contact-location-link" href={href('/lojas/')}>Ver endereços das lojas</a>
+      </div>
+    </div>
+    <div class="contact-channels">
+      <a class="contact-channel" data-contact-instagram href={content.instagram} target="_blank" rel="noopener noreferrer" aria-label="Acompanhar no Instagram — abre em nova aba"><Icon name="instagram" size={28}/><span><span class="contact-label">Perto, mesmo de longe</span><strong>Acompanhar no Instagram</strong></span><span class="contact-channel-note">Fotos e novidades da casa.</span></a>
+      <a class="contact-channel" data-contact-event href={content.conversion.event_whatsapp_href} target="_blank" rel="noopener noreferrer" aria-label="Falar sobre meu evento no WhatsApp — abre em nova aba"><Icon name="chat" size={28}/><span><span class="contact-label">Carrinho para festas e eventos</span><strong>Falar sobre meu evento</strong></span><span class="contact-channel-note">Converse pelo WhatsApp.</span></a>
+    </div>
+  </div>
+</section>
+<script>
+  import {initContactForm} from '../scripts/contact-form';
+  initContactForm();
+</script>

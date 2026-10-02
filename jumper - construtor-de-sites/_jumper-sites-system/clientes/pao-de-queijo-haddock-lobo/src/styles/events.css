@@ -1,0 +1,62 @@
+/* The fragment begins the fold, rather than inheriting the header offset twice. */
+.events-section.full-screen-events{width:100vw;max-width:100%;height:100vh;height:100svh;min-height:0;grid-template-columns:48% 52%;grid-template-rows:minmax(0,1fr);scroll-margin-top:calc(-1 * (var(--header) + 24px));overflow:hidden}
+.full-screen-events .events-photo{position:relative;min-width:0;min-height:0;width:100%;height:100%;overflow:hidden}
+.full-screen-events .events-photo>.photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+.full-screen-events .events-copy{min-width:0;min-height:0;padding:calc(var(--header) + 32px) clamp(28px,5vw,80px) 32px}
+.full-screen-events .events-copy>*{flex-shrink:0}
+.full-screen-events .events-copy>.eyebrow{font-size:10px;margin:0 0 20px}
+.full-screen-events .section-symbol{width:40px}
+.full-screen-events .events-copy h2{font-size:clamp(46px,6vw,104px);margin:20px 0 24px;text-wrap:nowrap}
+.full-screen-events .events-copy>p:not(.eyebrow){font-size:14px;line-height:1.8;margin:0 0 28px}
+.full-screen-events .events-copy .button{min-height:48px;font-size:13px;padding:14px 24px;max-width:100%}
+.full-screen-events .events-copy .handwritten{font-size:18px;margin-top:24px}
+@media(max-height:740px){
+  .full-screen-events .events-copy{padding-top:calc(var(--header) + 20px);padding-bottom:20px}
+  .full-screen-events .events-copy>.eyebrow{margin-bottom:12px}
+  .full-screen-events .section-symbol{width:30px}
+  .full-screen-events .events-copy h2{font-size:clamp(44px,5.5vw,76px);margin:12px 0 18px}
+  .full-screen-events .events-copy>p:not(.eyebrow){font-size:12px;margin-bottom:20px}
+  .full-screen-events .events-copy .handwritten{display:none}
+}
+@media(max-width:700px){
+  .events-section.full-screen-events{grid-template-columns:1fr;grid-template-rows:minmax(0,36fr) minmax(0,64fr)}
+  .full-screen-events .events-copy{padding:24px var(--gutter);justify-content:center}
+  .full-screen-events .events-copy>.eyebrow{font-size:9px;margin-bottom:16px}
+  .full-screen-events .section-symbol{width:32px}
+  .full-screen-events .events-copy h2{font-size:clamp(44px,12vw,72px);margin:16px 0 20px}
+  .full-screen-events .events-copy>p:not(.eyebrow){font-size:12px;line-height:1.75;margin-bottom:20px}
+  .full-screen-events .events-copy .button{min-height:48px;font-size:12px;padding:14px 18px}
+  .full-screen-events .events-copy .handwritten{font-size:16px;margin-top:20px}
+}
+@media(max-width:700px) and (max-height:740px){
+  .events-section.full-screen-events{grid-template-rows:minmax(0,30fr) minmax(0,70fr)}
+  .full-screen-events .events-copy{padding:20px var(--gutter)}
+  .full-screen-events .events-copy>.eyebrow{margin-bottom:12px}
+  .full-screen-events .section-symbol{width:28px}
+  .full-screen-events .events-copy h2{font-size:clamp(44px,11vw,62px);margin:12px 0 16px}
+}
+@media(max-width:700px) and (max-height:580px){
+  .events-section.full-screen-events{grid-template-rows:minmax(0,27fr) minmax(0,73fr)}
+  .full-screen-events .events-copy{padding:14px var(--gutter)}
+  .full-screen-events .section-symbol{display:none}
+  .full-screen-events .events-copy h2{font-size:42px;margin:8px 0 14px}
+  .full-screen-events .events-copy>p:not(.eyebrow){font-size:11px;line-height:1.65;margin-bottom:16px}
+  .full-screen-events .events-copy .button{font-size:11px;min-height:44px;padding-block:12px}
+}
+@media(min-width:701px) and (max-height:440px){
+  .full-screen-events .events-copy{padding:calc(var(--header) + 16px) 24px 16px}
+  .full-screen-events .section-symbol{display:none}
+  .full-screen-events .events-copy>.eyebrow{font-size:9px;margin-bottom:10px}
+  .full-screen-events .events-copy h2{font-size:40px;margin:6px 0 12px}
+  .full-screen-events .events-copy>p:not(.eyebrow){font-size:11px;line-height:1.65;margin-bottom:14px}
+  .full-screen-events .events-copy .button{font-size:11px;min-height:44px;padding:12px 18px}
+}
+/* Small phones in landscape: give the action its own full-height text panel. */
+@media(max-width:700px) and (max-height:440px) and (orientation:landscape){
+  .events-section.full-screen-events{grid-template-columns:48% 52%;grid-template-rows:minmax(0,1fr)}
+  .full-screen-events .events-copy{padding:calc(var(--header) + 12px) 20px 12px}
+  .full-screen-events .events-copy>.eyebrow{font-size:8px;letter-spacing:.1em;margin-bottom:8px}
+  .full-screen-events .events-copy h2{font-size:32px;margin:6px 0 10px}
+  .full-screen-events .events-copy>p:not(.eyebrow){font-size:10px;line-height:1.65;margin-bottom:12px}
+  .full-screen-events .events-copy .button{font-size:10px;min-height:44px;padding:12px 14px}
+}
