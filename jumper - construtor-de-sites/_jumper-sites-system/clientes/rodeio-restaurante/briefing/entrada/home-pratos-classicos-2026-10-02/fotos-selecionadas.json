@@ -1,0 +1,34 @@
+[
+  {
+    "key": "homePicanhaFatiada",
+    "dish": "Picanha Fatiada",
+    "identification": "Nome e imagem vinculados ao mesmo item do cardápio digital indicado na página 3 do PDF aprovado.",
+    "menu": "https://beta.livemenu.app/pt/menu/56c778030896b3cd13c609e5?v=01a001de-0878-7649-a974-b309344afd79&menu=624dcb633c567c0011617fed&category=624dcd0ff89304001186d9a1",
+    "itemId": "624dd73af6272300115fc643",
+    "source": "https://static.tagme.com.br/pubimg/thumbs/MenuItem/90575720-b5d4-11ec-97e7-bd3758eb7c13.jpg",
+    "sourceSha256": "c09aa44ec758a6340a42551ce7b1d91b401a6176657593cd8cf0c233deb63627",
+    "original": [
+      522,
+      522
+    ],
+    "master": "briefing/entrada/matrizes/home-picanha-fatiada.webp",
+    "masterBytes": 319996,
+    "note": "Original 522×522 preservado em proporção, sem ampliar pixels na geração dos derivados. Substituível por original maior quando disponível."
+  },
+  {
+    "key": "homeArrozRodeio",
+    "dish": "Arroz Rodeio",
+    "identification": "Nome e imagem vinculados ao mesmo item do cardápio digital indicado na página 3 do PDF aprovado.",
+    "menu": "https://beta.livemenu.app/pt/menu/56c778030896b3cd13c609e5?v=01a001de-0878-7649-a974-b309344afd79&menu=624dcb633c567c0011617fed&category=624dcd0ff89304001186d9a1",
+    "itemId": "624dd9603c567c0011618116",
+    "source": "https://static.tagme.com.br/pubimg/thumbs/MenuItem/e3946ee0-b5d5-11ec-bb78-0518192717fb.jpg",
+    "sourceSha256": "358549eaddf705d4934605d0067c6e637c47569af25b3ad8596f08f6763135c7",
+    "original": [
+      522,
+      522
+    ],
+    "master": "briefing/entrada/matrizes/home-arroz-rodeio.webp",
+    "masterBytes": 313764,
+    "note": "Original 522×522 preservado em proporção, sem ampliar pixels na geração dos derivados. Substituível por original maior quando disponível."
+  }
+]

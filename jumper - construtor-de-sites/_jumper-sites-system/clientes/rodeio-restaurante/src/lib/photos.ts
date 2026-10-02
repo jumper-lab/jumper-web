@@ -1,3 +1,5 @@
+import homePicanhaFatiada from '../../briefing/entrada/matrizes/home-picanha-fatiada.webp';
+import homeArrozRodeio from '../../briefing/entrada/matrizes/home-arroz-rodeio.webp';
 import menuCortes from '../../briefing/entrada/matrizes/menuCortes.webp';
 import menuArrozRodeio from '../../briefing/entrada/matrizes/menuArrozRodeio.webp';
 import jardinsNovoEncontro from '../../briefing/entrada/matrizes/jardinsNovoEncontro.webp';
@@ -42,5 +44,5 @@ import homeAperitivosAcervo2024 from '../../briefing/entrada/matrizes/home-aperi
 import homeCosteletasAcervo2024 from '../../briefing/entrada/matrizes/home-costeletas-acervo-2024.webp';
 import homeMarcaAcervo2024 from '../../briefing/entrada/matrizes/home-marca-acervo-2024.webp';
 import homeSobremesaAcervo2023 from '../../briefing/entrada/matrizes/home-sobremesa-acervo-2023.webp';
-export const photos = {menuCortes,menuArrozRodeio,jardinsNovoEncontro,jardinsNovoAmbiente,iguatemiMesa,fachada,jardins,iguatemi,mesa,picanha,servico,sobremesa,historia,origem,bar,reservas,jardinsHero,historiaHero,cardapioHero,livroCardapio,carneDetalhe,sobremesaServico,mesaDetalhe,jardinsDirectory,iguatemiDirectory,jardinsGallery,jardinsSala,iguatemiHero,iguatemiAcervo,reservasHero,jardinsJanela,jardinsMesaDois,jardinsMesaNoite,jardinsPassagem,jardinsLounge,historiaFamilia,historiaRetrato,historiaFachadaAcervo,homeSalaAcervo2024,homeBifeAcervo2024,homeAperitivosAcervo2024,homeCosteletasAcervo2024,homeMarcaAcervo2024,homeSobremesaAcervo2023};
+export const photos = {homePicanhaFatiada,homeArrozRodeio,menuCortes,menuArrozRodeio,jardinsNovoEncontro,jardinsNovoAmbiente,iguatemiMesa,fachada,jardins,iguatemi,mesa,picanha,servico,sobremesa,historia,origem,bar,reservas,jardinsHero,historiaHero,cardapioHero,livroCardapio,carneDetalhe,sobremesaServico,mesaDetalhe,jardinsDirectory,iguatemiDirectory,jardinsGallery,jardinsSala,iguatemiHero,iguatemiAcervo,reservasHero,jardinsJanela,jardinsMesaDois,jardinsMesaNoite,jardinsPassagem,jardinsLounge,historiaFamilia,historiaRetrato,historiaFachadaAcervo,homeSalaAcervo2024,homeBifeAcervo2024,homeAperitivosAcervo2024,homeCosteletasAcervo2024,homeMarcaAcervo2024,homeSobremesaAcervo2023};
 export type PhotoName = keyof typeof photos;
