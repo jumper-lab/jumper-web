@@ -1,0 +1,71 @@
+.digital-menu-dialog {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(1040px, 86vw);
+  max-width: none;
+  height: min(800px, 86vh);
+  height: min(800px, 86dvh);
+  max-height: none;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--paper);
+  color: var(--brown);
+  box-shadow: 0 24px 80px rgb(0 0 0 / .3);
+}
+.digital-menu-dialog[open] { display: flex; flex-direction: column; }
+.digital-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 24px;
+  flex: 0 0 auto;
+  border-bottom: 1px solid var(--line);
+}
+.digital-menu-header h2 { font: 500 28px/1.15 var(--serif); letter-spacing: -.02em; margin: 0; }
+.digital-menu-close {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  border: 0;
+  padding: 8px 4px 8px 12px;
+  background: transparent;
+  color: var(--brown);
+  font-size: 12px;
+}
+.digital-menu-close span { font-size: 26px; line-height: 1; }
+.digital-menu-content { position: relative; flex: 1; min-height: 0; background: white; }
+.digital-menu-content iframe { position: absolute; inset: 0; display: block; width: 100%; height: 100%; border: 0; }
+.digital-menu-status {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-content: center;
+  padding: 24px;
+  margin: 0;
+  background: var(--paper);
+  text-align: center;
+  font-size: 14px;
+  pointer-events: none;
+}
+.digital-menu-status[hidden] { display: none; }
+.digital-menu-footer { display: flex; justify-content: flex-end; padding-inline: 24px; flex: 0 0 auto; border-top: 1px solid var(--line); }
+.digital-menu-footer a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 11px; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 1199px) {
+  .digital-menu-dialog {
+    width: calc(100vw - 16px);
+    height: calc(100vh - 16px);
+    height: calc(100dvh - 16px);
+  }
+  .digital-menu-header { padding: max(6px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) 6px max(16px, env(safe-area-inset-left)); }
+  .digital-menu-header h2 { font-size: 24px; }
+  .digital-menu-footer { padding: 0 max(16px, env(safe-area-inset-right)) env(safe-area-inset-bottom) max(16px, env(safe-area-inset-left)); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .digital-menu-dialog[open] { animation: menu-page-in 240ms ease-out; }
+}

@@ -1,0 +1,642 @@
+{
+  "date": "2026-10-02T18:58:38.837Z",
+  "base": "https://site.jumper.dev.br/rodeio",
+  "note": "Real LiveMenu iframe integration in desktop browser engines with emulated viewports; no physical-device test. Third-party frame content is outside the host accessibility audit.",
+  "checks": [
+    {
+      "engine": "chromium",
+      "width": 320,
+      "height": 568,
+      "route": "/cardapio/",
+      "state": {
+        "x": 8,
+        "y": 8,
+        "width": 304,
+        "height": 552,
+        "frame": {
+          "x": 8,
+          "y": 76.1875,
+          "width": 304,
+          "height": 438.8125
+        },
+        "close": {
+          "x": 215.96875,
+          "y": 19.59375,
+          "width": 80.03125,
+          "height": 44
+        },
+        "overflow": false,
+        "locked": true
+      },
+      "liveMenuLoaded": true,
+      "categoryInteraction": false,
+      "thirdPartyErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 844,
+      "route": "/cardapio/",
+      "state": {
+        "x": 8,
+        "y": 8,
+        "width": 374,
+        "height": 828,
+        "frame": {
+          "x": 8,
+          "y": 65,
+          "width": 374,
+          "height": 726
+        },
+        "close": {
+          "x": 285.96875,
+          "y": 14,
+          "width": 80.03125,
+          "height": 44
+        },
+        "overflow": false,
+        "locked": true
+      },
+      "liveMenuLoaded": true,
+      "categoryInteraction": true,
+      "thirdPartyErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 844,
+      "height": 390,
+      "route": "/cardapio/",
+      "state": {
+        "x": 8,
+        "y": 8,
+        "width": 828,
+        "height": 374,
+        "frame": {
+          "x": 8,
+          "y": 65,
+          "width": 828,
+          "height": 272
+        },
+        "close": {
+          "x": 739.96875,
+          "y": 14,
+          "width": 80.03125,
+          "height": 44
+        },
+        "overflow": false,
+        "locked": true
+      },
+      "liveMenuLoaded": true,
+      "categoryInteraction": false,
+      "thirdPartyErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "height": 900,
+      "route": "/cardapio/",
+      "state": {
+        "x": 200,
+        "y": 63,
+        "width": 1040,
+        "height": 774,
+        "frame": {
+          "x": 200,
+          "y": 124,
+          "width": 1040,
+          "height": 668
+        },
+        "close": {
+          "x": 1135.96875,
+          "y": 71,
+          "width": 80.03125,
+          "height": 44
+        },
+        "overflow": false,
+        "locked": true
+      },
+      "liveMenuLoaded": true,
+      "categoryInteraction": false,
+      "thirdPartyErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 844,
+      "route": "/restaurantes/jardins/",
+      "state": {
+        "x": 8,
+        "y": 8,
+        "width": 374,
+        "height": 828,
+        "frame": {
+          "x": 8,
+          "y": 65,
+          "width": 374,
+          "height": 726
+        },
+        "close": {
+          "x": 285.96875,
+          "y": 14,
+          "width": 80.03125,
+          "height": 44
+        },
+        "overflow": false,
+        "locked": true
+      },
+      "liveMenuLoaded": true,
+      "categoryInteraction": false,
+      "thirdPartyErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 844,
+      "route": "/restaurantes/iguatemi/",
+      "state": {
+        "x": 8,
+        "y": 8,
+        "width": 374,
+        "height": 828,
+        "frame": {
+          "x": 8,
+          "y": 65,
+          "width": 374,
+          "height": 726
+        },
+        "close": {
+          "x": 285.96875,
+          "y": 14,
+          "width": 80.03125,
+          "height": 44
+        },
+        "overflow": false,
+        "locked": true
+      },
+      "liveMenuLoaded": true,
+      "categoryInteraction": false,
+      "thirdPartyErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 844,
+      "route": "/em-breve/",
+      "state": {
+        "x": 8,
+        "y": 8,
+        "width": 374,
+        "height": 828,
+        "frame": {
+          "x": 8,
+          "y": 65,
+          "width": 374,
+          "height": 726
+        },
+        "close": {
+          "x": 285.96875,
+          "y": 14,
+          "width": 80.03125,
+          "height": 44
+        },
+        "overflow": false,
+        "locked": true
+      },
+      "liveMenuLoaded": true,
+      "categoryInteraction": false,
+      "thirdPartyErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 320,
+      "height": 568,
+      "route": "/cardapio/",
+      "state": {
+        "x": 8,
+        "y": 8,
+        "width": 304,
+        "height": 552,
+        "frame": {
+          "x": 8,
+          "y": 76.19999694824219,
+          "width": 304,
+          "height": 438.79998779296875
+        },
+        "close": {
+          "x": 215.98333740234375,
+          "y": 19.600006103515625,
+          "width": 80.01666259765625,
+          "height": 44
+        },
+        "overflow": false,
+        "locked": true
+      },
+      "liveMenuLoaded": true,
+      "categoryInteraction": false,
+      "thirdPartyErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "height": 844,
+      "route": "/cardapio/",
+      "state": {
+        "x": 8,
+        "y": 8,
+        "width": 374,
+        "height": 828,
+        "frame": {
+          "x": 8,
+          "y": 65,
+          "width": 374,
+          "height": 726
+        },
+        "close": {
+          "x": 285.98333740234375,
+          "y": 14,
+          "width": 80.01666259765625,
+          "height": 44
+        },
+        "overflow": false,
+        "locked": true
+      },
+      "liveMenuLoaded": true,
+      "categoryInteraction": true,
+      "thirdPartyErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 844,
+      "height": 390,
+      "route": "/cardapio/",
+      "state": {
+        "x": 8,
+        "y": 8,
+        "width": 828,
+        "height": 374,
+        "frame": {
+          "x": 8,
+          "y": 65,
+          "width": 828,
+          "height": 272
+        },
+        "close": {
+          "x": 739.9833374023438,
+          "y": 14,
+          "width": 80.01666259765625,
+          "height": 44
+        },
+        "overflow": false,
+        "locked": true
+      },
+      "liveMenuLoaded": true,
+      "categoryInteraction": false,
+      "thirdPartyErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "height": 900,
+      "route": "/cardapio/",
+      "state": {
+        "x": 200,
+        "y": 63,
+        "width": 1040,
+        "height": 774,
+        "frame": {
+          "x": 200,
+          "y": 124,
+          "width": 1040,
+          "height": 668
+        },
+        "close": {
+          "x": 1135.9833984375,
+          "y": 71,
+          "width": 80.01666259765625,
+          "height": 44
+        },
+        "overflow": false,
+        "locked": true
+      },
+      "liveMenuLoaded": true,
+      "categoryInteraction": false,
+      "thirdPartyErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "height": 844,
+      "route": "/restaurantes/jardins/",
+      "state": {
+        "x": 8,
+        "y": 8,
+        "width": 374,
+        "height": 828,
+        "frame": {
+          "x": 8,
+          "y": 65,
+          "width": 374,
+          "height": 726
+        },
+        "close": {
+          "x": 285.98333740234375,
+          "y": 14,
+          "width": 80.01666259765625,
+          "height": 44
+        },
+        "overflow": false,
+        "locked": true
+      },
+      "liveMenuLoaded": true,
+      "categoryInteraction": false,
+      "thirdPartyErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "height": 844,
+      "route": "/restaurantes/iguatemi/",
+      "state": {
+        "x": 8,
+        "y": 8,
+        "width": 374,
+        "height": 828,
+        "frame": {
+          "x": 8,
+          "y": 65,
+          "width": 374,
+          "height": 726
+        },
+        "close": {
+          "x": 285.98333740234375,
+          "y": 14,
+          "width": 80.01666259765625,
+          "height": 44
+        },
+        "overflow": false,
+        "locked": true
+      },
+      "liveMenuLoaded": true,
+      "categoryInteraction": false,
+      "thirdPartyErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "height": 844,
+      "route": "/em-breve/",
+      "state": {
+        "x": 8,
+        "y": 8,
+        "width": 374,
+        "height": 828,
+        "frame": {
+          "x": 8,
+          "y": 65,
+          "width": 374,
+          "height": 726
+        },
+        "close": {
+          "x": 285.98333740234375,
+          "y": 14,
+          "width": 80.01666259765625,
+          "height": 44
+        },
+        "overflow": false,
+        "locked": true
+      },
+      "liveMenuLoaded": true,
+      "categoryInteraction": false,
+      "thirdPartyErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "height": 568,
+      "route": "/cardapio/",
+      "state": {
+        "x": 8,
+        "y": 8,
+        "width": 304,
+        "height": 552,
+        "frame": {
+          "x": 8,
+          "y": 76.1875,
+          "width": 304,
+          "height": 438.8125
+        },
+        "close": {
+          "x": 215.96875,
+          "y": 19.59375,
+          "width": 80.03125,
+          "height": 44
+        },
+        "overflow": false,
+        "locked": true
+      },
+      "liveMenuLoaded": true,
+      "categoryInteraction": false,
+      "thirdPartyErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 844,
+      "route": "/cardapio/",
+      "state": {
+        "x": 8,
+        "y": 8,
+        "width": 374,
+        "height": 828,
+        "frame": {
+          "x": 8,
+          "y": 65,
+          "width": 374,
+          "height": 726
+        },
+        "close": {
+          "x": 285.96875,
+          "y": 14,
+          "width": 80.03125,
+          "height": 44
+        },
+        "overflow": false,
+        "locked": true
+      },
+      "liveMenuLoaded": true,
+      "categoryInteraction": true,
+      "thirdPartyErrors": [
+        "/h.clarity.ms/collect due to access control checks."
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 844,
+      "height": 390,
+      "route": "/cardapio/",
+      "state": {
+        "x": 8,
+        "y": 8,
+        "width": 828,
+        "height": 374,
+        "frame": {
+          "x": 8,
+          "y": 65,
+          "width": 828,
+          "height": 272
+        },
+        "close": {
+          "x": 739.96875,
+          "y": 14,
+          "width": 80.03125,
+          "height": 44
+        },
+        "overflow": false,
+        "locked": true
+      },
+      "liveMenuLoaded": true,
+      "categoryInteraction": false,
+      "thirdPartyErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "height": 900,
+      "route": "/cardapio/",
+      "state": {
+        "x": 200,
+        "y": 63,
+        "width": 1040,
+        "height": 774,
+        "frame": {
+          "x": 200,
+          "y": 124,
+          "width": 1040,
+          "height": 668
+        },
+        "close": {
+          "x": 1135.96875,
+          "y": 71,
+          "width": 80.03125,
+          "height": 44
+        },
+        "overflow": false,
+        "locked": true
+      },
+      "liveMenuLoaded": true,
+      "categoryInteraction": false,
+      "thirdPartyErrors": [
+        "/a.clarity.ms/collect due to access control checks."
+      ],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 844,
+      "route": "/restaurantes/jardins/",
+      "state": {
+        "x": 8,
+        "y": 8,
+        "width": 374,
+        "height": 828,
+        "frame": {
+          "x": 8,
+          "y": 65,
+          "width": 374,
+          "height": 726
+        },
+        "close": {
+          "x": 285.96875,
+          "y": 14,
+          "width": 80.03125,
+          "height": 44
+        },
+        "overflow": false,
+        "locked": true
+      },
+      "liveMenuLoaded": true,
+      "categoryInteraction": false,
+      "thirdPartyErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 844,
+      "route": "/restaurantes/iguatemi/",
+      "state": {
+        "x": 8,
+        "y": 8,
+        "width": 374,
+        "height": 828,
+        "frame": {
+          "x": 8,
+          "y": 65,
+          "width": 374,
+          "height": 726
+        },
+        "close": {
+          "x": 285.96875,
+          "y": 14,
+          "width": 80.03125,
+          "height": 44
+        },
+        "overflow": false,
+        "locked": true
+      },
+      "liveMenuLoaded": true,
+      "categoryInteraction": false,
+      "thirdPartyErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 844,
+      "route": "/em-breve/",
+      "state": {
+        "x": 8,
+        "y": 8,
+        "width": 374,
+        "height": 828,
+        "frame": {
+          "x": 8,
+          "y": 65,
+          "width": 374,
+          "height": 726
+        },
+        "close": {
+          "x": 285.96875,
+          "y": 14,
+          "width": 80.03125,
+          "height": 44
+        },
+        "overflow": false,
+        "locked": true
+      },
+      "liveMenuLoaded": true,
+      "categoryInteraction": false,
+      "thirdPartyErrors": [],
+      "passed": true
+    }
+  ],
+  "noScriptFallback": true
+}
