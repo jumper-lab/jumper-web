@@ -1,0 +1,1625 @@
+{
+  "date": "2026-10-02T19:17:01.882Z",
+  "folder": "https://drive.google.com/drive/folders/1e1TphGOaZol86XfKk3k1hU9TjLuszrLu",
+  "scope": "Galeria dos Jardins, conforme escolha do cliente. Outros usos aguardam instrução específica.",
+  "method": "Prévias de todas as 77 fotos revisadas. Matrizes originais verificadas por bytes e SHA-256; novas matrizes WebP qualidade 95, maior lado 2400 px, orientação EXIF respeitada, sem ampliar, cortar ou distorcer. BMM_35 e BMM_88 reaproveitam matrizes existentes. Derivados responsivos AVIF do componente GalleryPhoto/Photo, lazy loading.",
+  "photos": [
+    {
+      "number": 12,
+      "file": "BMM_12.jpg",
+      "id": "1bM9moK7LllNUsWAG3R-nea4cKh1AHGUc",
+      "source": "https://drive.google.com/file/d/1bM9moK7LllNUsWAG3R-nea4cKh1AHGUc/view?usp=drivesdk",
+      "originalBytes": 20586081,
+      "originalSha256": "4c07029e9da73a3bba14a9f71b2f9a83f67930e421de7b3fa1a45cea1867bd71",
+      "originalDimensions": {
+        "width": 5472,
+        "height": 3648,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm12",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-12.webp",
+      "masterDimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "masterBytes": 1373856,
+      "reused": false
+    },
+    {
+      "number": 13,
+      "file": "BMM_13.jpg",
+      "id": "1pZqEWKSo-yLNdERr6inMssA1imgt-qBY",
+      "source": "https://drive.google.com/file/d/1pZqEWKSo-yLNdERr6inMssA1imgt-qBY/view?usp=drivesdk",
+      "originalBytes": 14017453,
+      "originalSha256": "f5b2d3ee20da9b8797b6d4a9fc729b819755235082d601379189631c47e2dfb7",
+      "originalDimensions": {
+        "width": 3438,
+        "height": 5156,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm13",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-13.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 780642,
+      "reused": false
+    },
+    {
+      "number": 14,
+      "file": "BMM_14.jpg",
+      "id": "1r9K3gKfw3eIGfYMrb1Y5zOJoy0vgyxwK",
+      "source": "https://drive.google.com/file/d/1r9K3gKfw3eIGfYMrb1Y5zOJoy0vgyxwK/view?usp=drivesdk",
+      "originalBytes": 15701521,
+      "originalSha256": "47434bf2c06d928d4e8ed73985ef1f925c7adb558ebf666c51c4b5a7b7e0a2c2",
+      "originalDimensions": {
+        "width": 5472,
+        "height": 3648,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm14",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-14.webp",
+      "masterDimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "masterBytes": 718038,
+      "reused": false
+    },
+    {
+      "number": 15,
+      "file": "BMM_15.jpg",
+      "id": "1tTyf6xho_hCyo6arKFBArXy7_ccQ9IM4",
+      "source": "https://drive.google.com/file/d/1tTyf6xho_hCyo6arKFBArXy7_ccQ9IM4/view?usp=drivesdk",
+      "originalBytes": 19116390,
+      "originalSha256": "f6022d22f2d7b847852f373c91eb76738b99bdc282600f37df7c5f21711307eb",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm15",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-15.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 1116042,
+      "reused": false
+    },
+    {
+      "number": 16,
+      "file": "BMM_16.jpg",
+      "id": "1Vu6erBds8OTV--Sji8n_BdoJbxvms77M",
+      "source": "https://drive.google.com/file/d/1Vu6erBds8OTV--Sji8n_BdoJbxvms77M/view?usp=drivesdk",
+      "originalBytes": 17115598,
+      "originalSha256": "24dd9f0ebd60129665ec1744597d77ec2893ca304bb868d740de18bef06be265",
+      "originalDimensions": {
+        "width": 3582,
+        "height": 5373,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm16",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-16.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 1099254,
+      "reused": false
+    },
+    {
+      "number": 17,
+      "file": "BMM_17.jpg",
+      "id": "1z_PooXafy5gM90FIsQ6bqwqwja41iV5z",
+      "source": "https://drive.google.com/file/d/1z_PooXafy5gM90FIsQ6bqwqwja41iV5z/view?usp=drivesdk",
+      "originalBytes": 16560083,
+      "originalSha256": "6fe7455f2f05ee94468ab72ec12292a3c58ac98acbf37799acd50c0ca720a8a7",
+      "originalDimensions": {
+        "width": 5472,
+        "height": 3648,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm17",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-17.webp",
+      "masterDimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "masterBytes": 883410,
+      "reused": false
+    },
+    {
+      "number": 18,
+      "file": "BMM_18.jpg",
+      "id": "1if2fTuyUMsZpqo3Z-0cFXNzBNhH_m7dV",
+      "source": "https://drive.google.com/file/d/1if2fTuyUMsZpqo3Z-0cFXNzBNhH_m7dV/view?usp=drivesdk",
+      "originalBytes": 11233585,
+      "originalSha256": "2dc21374fe20e8a699d35b4aabad732cbd821624bc773c0fbf76808cc1ba1f62",
+      "originalDimensions": {
+        "width": 4510,
+        "height": 3007,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm18",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-18.webp",
+      "masterDimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "masterBytes": 856678,
+      "reused": false
+    },
+    {
+      "number": 19,
+      "file": "BMM_19.jpg",
+      "id": "1tf4SiUQiQvR8Hil7VgVMyp7vBrb73mZB",
+      "source": "https://drive.google.com/file/d/1tf4SiUQiQvR8Hil7VgVMyp7vBrb73mZB/view?usp=drivesdk",
+      "originalBytes": 15446814,
+      "originalSha256": "39b2da233fda5d5556713d3a24273346a882f52ea341f366818183a7078511bb",
+      "originalDimensions": {
+        "width": 5463,
+        "height": 3642,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm19",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-19.webp",
+      "masterDimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "masterBytes": 679522,
+      "reused": false
+    },
+    {
+      "number": 20,
+      "file": "BMM_20.jpg",
+      "id": "1fuXanPOM2zmhfZECWt2bSzeXbvUWxiIV",
+      "source": "https://drive.google.com/file/d/1fuXanPOM2zmhfZECWt2bSzeXbvUWxiIV/view?usp=drivesdk",
+      "originalBytes": 16386241,
+      "originalSha256": "47a273f45df8712693c7bd57eff36f1140c0f818cf4e2074f010f721c4fe7730",
+      "originalDimensions": {
+        "width": 5472,
+        "height": 3648,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm20",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-20.webp",
+      "masterDimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "masterBytes": 897836,
+      "reused": false
+    },
+    {
+      "number": 21,
+      "file": "BMM_21.jpg",
+      "id": "1vHQOUSJ9iZoeaLWyYXfHy8LatOdTzRU2",
+      "source": "https://drive.google.com/file/d/1vHQOUSJ9iZoeaLWyYXfHy8LatOdTzRU2/view?usp=drivesdk",
+      "originalBytes": 17425034,
+      "originalSha256": "ef278cc33bb181fb65026445ff4bc4da83dcef988b75fceb81b63e8381f87ded",
+      "originalDimensions": {
+        "width": 5472,
+        "height": 3648,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm21",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-21.webp",
+      "masterDimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "masterBytes": 924472,
+      "reused": false
+    },
+    {
+      "number": 22,
+      "file": "BMM_22.jpg",
+      "id": "1IU8OGmymBoPC0INQJz8ctyRI0DT3KJpx",
+      "source": "https://drive.google.com/file/d/1IU8OGmymBoPC0INQJz8ctyRI0DT3KJpx/view?usp=drivesdk",
+      "originalBytes": 16635433,
+      "originalSha256": "a577a462fa72ab377329b58df9e2b3b9b110c7fe60fc9855fa00f1bb7aecad29",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm22",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-22.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 863168,
+      "reused": false
+    },
+    {
+      "number": 23,
+      "file": "BMM_23.jpg",
+      "id": "17MrN-yKgfVp1CS34Tov_z0Qnd5wWtOC5",
+      "source": "https://drive.google.com/file/d/17MrN-yKgfVp1CS34Tov_z0Qnd5wWtOC5/view?usp=drivesdk",
+      "originalBytes": 15814036,
+      "originalSha256": "89c3adf2acaffe9e311065bbe1b1e8be9e5d3f776db5047dd60df98569743881",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm23",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-23.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 858004,
+      "reused": false
+    },
+    {
+      "number": 24,
+      "file": "BMM_24.jpg",
+      "id": "1CODjizwgALbi6VakV43GeAAQBXNCF0F9",
+      "source": "https://drive.google.com/file/d/1CODjizwgALbi6VakV43GeAAQBXNCF0F9/view?usp=drivesdk",
+      "originalBytes": 17692251,
+      "originalSha256": "5933b0dab36de067808f86190130752d1212ecf5adaf42d6be203b6ee3a22e7c",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm24",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-24.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 923736,
+      "reused": false
+    },
+    {
+      "number": 25,
+      "file": "BMM_25.jpg",
+      "id": "1vmzVCO2IytfNIVyDmIaWTHYq0fah4KLN",
+      "source": "https://drive.google.com/file/d/1vmzVCO2IytfNIVyDmIaWTHYq0fah4KLN/view?usp=drivesdk",
+      "originalBytes": 15613997,
+      "originalSha256": "1c4058082a42eb3a763a4e61431cfd937bbf63e879eba40b7188b457276d5e97",
+      "originalDimensions": {
+        "width": 5401,
+        "height": 3601,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm25",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-25.webp",
+      "masterDimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "masterBytes": 724428,
+      "reused": false
+    },
+    {
+      "number": 26,
+      "file": "BMM_26.jpg",
+      "id": "1svacPp6CQbnNaMirP0_5s6PUisv01pDA",
+      "source": "https://drive.google.com/file/d/1svacPp6CQbnNaMirP0_5s6PUisv01pDA/view?usp=drivesdk",
+      "originalBytes": 15547822,
+      "originalSha256": "7790bdff92b9481f4a44fbdc94ecfd357ef8aec725a7f0ab9557d9784a5553c0",
+      "originalDimensions": {
+        "width": 3563,
+        "height": 5345,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm26",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-26.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 777062,
+      "reused": false
+    },
+    {
+      "number": 27,
+      "file": "BMM_27.jpg",
+      "id": "1UCyVcpPw-a0pgN3M2SZWFLQVprzEAMuz",
+      "source": "https://drive.google.com/file/d/1UCyVcpPw-a0pgN3M2SZWFLQVprzEAMuz/view?usp=drivesdk",
+      "originalBytes": 15212891,
+      "originalSha256": "920c1cf41947a6ddcfeae280a81c94ff4e90cc4f80518af776590f467514c8d8",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm27",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-27.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 660732,
+      "reused": false
+    },
+    {
+      "number": 28,
+      "file": "BMM_28.jpg",
+      "id": "1N1HqE8K72gMb4Yqr2eW2Ox9nMcvzr41s",
+      "source": "https://drive.google.com/file/d/1N1HqE8K72gMb4Yqr2eW2Ox9nMcvzr41s/view?usp=drivesdk",
+      "originalBytes": 14769543,
+      "originalSha256": "4ee71fc4c24dcf64a9d889c443fcbc33906538c7a8ff273e223fc3ad772d0667",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm28",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-28.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 637176,
+      "reused": false
+    },
+    {
+      "number": 29,
+      "file": "BMM_29.jpg",
+      "id": "1dYmO4vuAHNWiTvWFMCN0jXNUcTnJIpuo",
+      "source": "https://drive.google.com/file/d/1dYmO4vuAHNWiTvWFMCN0jXNUcTnJIpuo/view?usp=drivesdk",
+      "originalBytes": 14443525,
+      "originalSha256": "c2f86a2145375ff510d8083ab7136e062572153311228cf04b1dcc387ceb4f30",
+      "originalDimensions": {
+        "width": 5323,
+        "height": 3549,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm29",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-29.webp",
+      "masterDimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "masterBytes": 631606,
+      "reused": false
+    },
+    {
+      "number": 30,
+      "file": "BMM_30.jpg",
+      "id": "17YAN-p0aksT1ZvTd1DwAu574JNHT4xsy",
+      "source": "https://drive.google.com/file/d/17YAN-p0aksT1ZvTd1DwAu574JNHT4xsy/view?usp=drivesdk",
+      "originalBytes": 15335404,
+      "originalSha256": "9decc3389413c47f910cac16f80e4f6f725aec76d79334c08179cd65eb3e1515",
+      "originalDimensions": {
+        "width": 5472,
+        "height": 3648,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm30",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-30.webp",
+      "masterDimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "masterBytes": 706320,
+      "reused": false
+    },
+    {
+      "number": 31,
+      "file": "BMM_31.jpg",
+      "id": "1oKOTeJP0NYhDElAs3GRGhftivpbAjlan",
+      "source": "https://drive.google.com/file/d/1oKOTeJP0NYhDElAs3GRGhftivpbAjlan/view?usp=drivesdk",
+      "originalBytes": 15483857,
+      "originalSha256": "d30cdcbdf5532d261ba89ec1eae6ba81baf47313615f2dd911ad6863c83410d1",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm31",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-31.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 764162,
+      "reused": false
+    },
+    {
+      "number": 32,
+      "file": "BMM_32.jpg",
+      "id": "1e958F8ZSoTgyHacFL4BscEWUTlUoy6bJ",
+      "source": "https://drive.google.com/file/d/1e958F8ZSoTgyHacFL4BscEWUTlUoy6bJ/view?usp=drivesdk",
+      "originalBytes": 15040350,
+      "originalSha256": "2d1148d6291f2a692b7a88ad0cbc70bec98f262d422539b6a28aca8ac6cffd5a",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm32",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-32.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 613794,
+      "reused": false
+    },
+    {
+      "number": 33,
+      "file": "BMM_33.jpg",
+      "id": "1lLXsVA5Lh_1ByrUianR3dt2TsDykR8yb",
+      "source": "https://drive.google.com/file/d/1lLXsVA5Lh_1ByrUianR3dt2TsDykR8yb/view?usp=drivesdk",
+      "originalBytes": 18056545,
+      "originalSha256": "134a1ba003281249c98c2a152524744c22c17e02dec70a4aaefcb8cd646816d8",
+      "originalDimensions": {
+        "width": 5472,
+        "height": 3648,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm33",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-33.webp",
+      "masterDimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "masterBytes": 1047460,
+      "reused": false
+    },
+    {
+      "number": 34,
+      "file": "BMM_34.jpg",
+      "id": "1_57C05khuQYjnG_iOg6J1TqAz1TqgLLX",
+      "source": "https://drive.google.com/file/d/1_57C05khuQYjnG_iOg6J1TqAz1TqgLLX/view?usp=drivesdk",
+      "originalBytes": 16733203,
+      "originalSha256": "030ff3159aa272b324c748d65633b605d4724f1744d44adbfd81bbde0e8d8212",
+      "originalDimensions": {
+        "width": 5350,
+        "height": 3567,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm34",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-34.webp",
+      "masterDimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "masterBytes": 906594,
+      "reused": false
+    },
+    {
+      "number": 35,
+      "file": "BMM_35.jpg",
+      "id": "1jjEzq8fiLJ5vvIE9WTg1IKYA3aiV8ypk",
+      "source": "https://drive.google.com/file/d/1jjEzq8fiLJ5vvIE9WTg1IKYA3aiV8ypk/view?usp=drivesdk",
+      "originalBytes": 18727468,
+      "originalSha256": "77930b5478e0f23e74a71270a40d9c36b930c438c03eb1b271da432223fb6986",
+      "originalDimensions": {
+        "width": 3572,
+        "height": 5358,
+        "orientation": 1
+      },
+      "name": "jardinsNovoAmbiente",
+      "master": "briefing/entrada/matrizes/jardinsNovoAmbiente.webp",
+      "masterDimensions": {
+        "width": 2560,
+        "height": 3840
+      },
+      "masterBytes": 11581576,
+      "reused": true
+    },
+    {
+      "number": 36,
+      "file": "BMM_36.jpg",
+      "id": "1t1LIymgOWefDVfNEsmqod5gtO77Gi2Vs",
+      "source": "https://drive.google.com/file/d/1t1LIymgOWefDVfNEsmqod5gtO77Gi2Vs/view?usp=drivesdk",
+      "originalBytes": 18677193,
+      "originalSha256": "0fa9a0e679ebeb052268dbc6e9ff406510c76a2bb858fbc336e6fcce2ed7ed12",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm36",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-36.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 1186458,
+      "reused": false
+    },
+    {
+      "number": 37,
+      "file": "BMM_37.jpg",
+      "id": "1SEneFr38kJwTB2fxcXD03KLdlv0KSSGf",
+      "source": "https://drive.google.com/file/d/1SEneFr38kJwTB2fxcXD03KLdlv0KSSGf/view?usp=drivesdk",
+      "originalBytes": 19215209,
+      "originalSha256": "fed1af0d24ac6996111074f148b370f7b8d6e5d491f0dfd7229e87a4484101b6",
+      "originalDimensions": {
+        "width": 5472,
+        "height": 3648,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm37",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-37.webp",
+      "masterDimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "masterBytes": 1232298,
+      "reused": false
+    },
+    {
+      "number": 38,
+      "file": "BMM_38.jpg",
+      "id": "19A8nDP_UsNTm5MpQpOmZliNB55R5zvWA",
+      "source": "https://drive.google.com/file/d/19A8nDP_UsNTm5MpQpOmZliNB55R5zvWA/view?usp=drivesdk",
+      "originalBytes": 16410332,
+      "originalSha256": "ddadcdacf0103c2bf55e1eb187a932f53d56571cb7ba99e6b34cc25705bcc615",
+      "originalDimensions": {
+        "width": 5472,
+        "height": 3648,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm38",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-38.webp",
+      "masterDimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "masterBytes": 791434,
+      "reused": false
+    },
+    {
+      "number": 39,
+      "file": "BMM_39.jpg",
+      "id": "1UVfyYFY2t62f-WDt32DgorG9-VQd0e_G",
+      "source": "https://drive.google.com/file/d/1UVfyYFY2t62f-WDt32DgorG9-VQd0e_G/view?usp=drivesdk",
+      "originalBytes": 16915597,
+      "originalSha256": "63614e9c5785a06a53badfd3c85238e925bf350dc21455b51f1cddf605c0d1b2",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm39",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-39.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 967626,
+      "reused": false
+    },
+    {
+      "number": 40,
+      "file": "BMM_40.jpg",
+      "id": "1sYOTHXcf_0l4hYoJvMhbrRpUf0TohsEL",
+      "source": "https://drive.google.com/file/d/1sYOTHXcf_0l4hYoJvMhbrRpUf0TohsEL/view?usp=drivesdk",
+      "originalBytes": 16265814,
+      "originalSha256": "da1d4e0ecef6bb0ac24a296bcd913cd2825ef0032bc542af6caba2889497ba48",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm40",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-40.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 894406,
+      "reused": false
+    },
+    {
+      "number": 41,
+      "file": "BMM_41.jpg",
+      "id": "1EbsA6SafnTs0oVpx3ZwEAJhcbZqdr1Ge",
+      "source": "https://drive.google.com/file/d/1EbsA6SafnTs0oVpx3ZwEAJhcbZqdr1Ge/view?usp=drivesdk",
+      "originalBytes": 16965892,
+      "originalSha256": "5d55601b99f3fc136d947d241e96adfbbccd2c3f66e544ab01e59cf19d967fc9",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm41",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-41.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 935218,
+      "reused": false
+    },
+    {
+      "number": 42,
+      "file": "BMM_42.jpg",
+      "id": "1jin1i-5kZpMrBuPiMfoWo-bMLiSCIY7l",
+      "source": "https://drive.google.com/file/d/1jin1i-5kZpMrBuPiMfoWo-bMLiSCIY7l/view?usp=drivesdk",
+      "originalBytes": 17477575,
+      "originalSha256": "139ecf12f655c25e4dbec385b124d9da5a688dee0b501d3c1ab22e189b322cb0",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm42",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-42.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 980150,
+      "reused": false
+    },
+    {
+      "number": 43,
+      "file": "BMM_43.jpg",
+      "id": "1wfscMCuvMnoxIw3S-7yaSCop9VQpNDtn",
+      "source": "https://drive.google.com/file/d/1wfscMCuvMnoxIw3S-7yaSCop9VQpNDtn/view?usp=drivesdk",
+      "originalBytes": 16977612,
+      "originalSha256": "9c3a82a54169ea524df93f0a5f006beffb61d18a44a3275868da08f99f50f3bc",
+      "originalDimensions": {
+        "width": 5472,
+        "height": 3648,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm43",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-43.webp",
+      "masterDimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "masterBytes": 898444,
+      "reused": false
+    },
+    {
+      "number": 44,
+      "file": "BMM_44.jpg",
+      "id": "1UPifQLdLIc93TAD5Prm4Rl9pJ0vK3G3M",
+      "source": "https://drive.google.com/file/d/1UPifQLdLIc93TAD5Prm4Rl9pJ0vK3G3M/view?usp=drivesdk",
+      "originalBytes": 15770601,
+      "originalSha256": "7a0a75f51de60e9b7691086892c455e15205c9543eba1c172da90f66597fb1e2",
+      "originalDimensions": {
+        "width": 3587,
+        "height": 5381,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm44",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-44.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 781020,
+      "reused": false
+    },
+    {
+      "number": 45,
+      "file": "BMM_45.jpg",
+      "id": "1HHE9XhPQrHudrxCsp2F5aYA3pXQrKUEE",
+      "source": "https://drive.google.com/file/d/1HHE9XhPQrHudrxCsp2F5aYA3pXQrKUEE/view?usp=drivesdk",
+      "originalBytes": 14301699,
+      "originalSha256": "c2fa5a26e422c808667519b7189ecead4fb7f61fcfe4495d7c5fec1fbf11b000",
+      "originalDimensions": {
+        "width": 3405,
+        "height": 5108,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm45",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-45.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 737930,
+      "reused": false
+    },
+    {
+      "number": 46,
+      "file": "BMM_46.jpg",
+      "id": "1b1-nJeRkWjMXGnT8ovyFch8hx5kD8k9D",
+      "source": "https://drive.google.com/file/d/1b1-nJeRkWjMXGnT8ovyFch8hx5kD8k9D/view?usp=drivesdk",
+      "originalBytes": 16832137,
+      "originalSha256": "3645ec311f76d53ca3ede8ce1a58e026b66a401d434d8314a09d530dcef749d3",
+      "originalDimensions": {
+        "width": 5373,
+        "height": 3582,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm46",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-46.webp",
+      "masterDimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "masterBytes": 979778,
+      "reused": false
+    },
+    {
+      "number": 47,
+      "file": "BMM_47.jpg",
+      "id": "1omKlK_ExPu4azr2ZJPmRitdN-W5QCWVJ",
+      "source": "https://drive.google.com/file/d/1omKlK_ExPu4azr2ZJPmRitdN-W5QCWVJ/view?usp=drivesdk",
+      "originalBytes": 16406889,
+      "originalSha256": "9ab5234a8bd692a8e4337c28a3c3b549ef97d8db0b4332b31226ba1fb04c8ae6",
+      "originalDimensions": {
+        "width": 5373,
+        "height": 3582,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm47",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-47.webp",
+      "masterDimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "masterBytes": 939662,
+      "reused": false
+    },
+    {
+      "number": 48,
+      "file": "BMM_48.jpg",
+      "id": "1pWw8xoulxom8nx04CYCB3NmREh4vwSW1",
+      "source": "https://drive.google.com/file/d/1pWw8xoulxom8nx04CYCB3NmREh4vwSW1/view?usp=drivesdk",
+      "originalBytes": 11481748,
+      "originalSha256": "96996038654daafbcf1f98897b5db6a8ae4f9a0dffba67bb53974d282d085029",
+      "originalDimensions": {
+        "width": 5472,
+        "height": 3648,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm48",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-48.webp",
+      "masterDimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "masterBytes": 238748,
+      "reused": false
+    },
+    {
+      "number": 49,
+      "file": "BMM_49.jpg",
+      "id": "1A0bqPDXpR4B26Y-Gj37Tm_7aje4_qvhu",
+      "source": "https://drive.google.com/file/d/1A0bqPDXpR4B26Y-Gj37Tm_7aje4_qvhu/view?usp=drivesdk",
+      "originalBytes": 12307584,
+      "originalSha256": "144247ee7396b84b21efae469d605dfc1e4516261c0e60f2120bf112044128a5",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm49",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-49.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 296328,
+      "reused": false
+    },
+    {
+      "number": 50,
+      "file": "BMM_50.jpg",
+      "id": "1TDlC9Us7TMcsMDuL5PCu90cvvAsIpLTg",
+      "source": "https://drive.google.com/file/d/1TDlC9Us7TMcsMDuL5PCu90cvvAsIpLTg/view?usp=drivesdk",
+      "originalBytes": 14946101,
+      "originalSha256": "37c63078eddbdc48f2fb0d4d25c8d066d05f4cc7266ba07b0da146aba11295b6",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm50",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-50.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 461122,
+      "reused": false
+    },
+    {
+      "number": 51,
+      "file": "BMM_51.jpg",
+      "id": "1lrDWEfL9dUhUuKW-ZYEt8khwtK9Oz29p",
+      "source": "https://drive.google.com/file/d/1lrDWEfL9dUhUuKW-ZYEt8khwtK9Oz29p/view?usp=drivesdk",
+      "originalBytes": 14164289,
+      "originalSha256": "6c7112134ed3f91afb998023f4958be7f220ad3bca29d38d26afe0093c64a904",
+      "originalDimensions": {
+        "width": 5401,
+        "height": 3601,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm51",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-51.webp",
+      "masterDimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "masterBytes": 467116,
+      "reused": false
+    },
+    {
+      "number": 52,
+      "file": "BMM_52.jpg",
+      "id": "1So3INdUS2e6_wIuKGsmA4kNLmmzm8UcF",
+      "source": "https://drive.google.com/file/d/1So3INdUS2e6_wIuKGsmA4kNLmmzm8UcF/view?usp=drivesdk",
+      "originalBytes": 14433873,
+      "originalSha256": "be616ab33559270d3398b367b070c12b3c3d87c2612718ebab063a0baa44d434",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm52",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-52.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 418072,
+      "reused": false
+    },
+    {
+      "number": 53,
+      "file": "BMM_53.jpg",
+      "id": "1LX5T574bM_kf-v2aacmHI_b6iLclPx3C",
+      "source": "https://drive.google.com/file/d/1LX5T574bM_kf-v2aacmHI_b6iLclPx3C/view?usp=drivesdk",
+      "originalBytes": 15013944,
+      "originalSha256": "971ba87c24774c729368346da88de5a533e6387fbee0551bc7701fd9d8156ac1",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm53",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-53.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 603454,
+      "reused": false
+    },
+    {
+      "number": 54,
+      "file": "BMM_54.jpg",
+      "id": "1w2vTvtlRCjBl-T7DhPF5i3ajoevVjs9z",
+      "source": "https://drive.google.com/file/d/1w2vTvtlRCjBl-T7DhPF5i3ajoevVjs9z/view?usp=drivesdk",
+      "originalBytes": 15178257,
+      "originalSha256": "316b0d12db7bac7f1fcb64eea6d8599451282829655fc84a20c4aa8b56d87ff2",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm54",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-54.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 679608,
+      "reused": false
+    },
+    {
+      "number": 55,
+      "file": "BMM_55.jpg",
+      "id": "1E0O0cYXf4MuGLj8KH6GYjVXUpGQH4S3S",
+      "source": "https://drive.google.com/file/d/1E0O0cYXf4MuGLj8KH6GYjVXUpGQH4S3S/view?usp=drivesdk",
+      "originalBytes": 15711494,
+      "originalSha256": "e821eb4db8532037d9704588f682535cf80e6df5af3bb27cb948f3de53a6b4b0",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm55",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-55.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 689128,
+      "reused": false
+    },
+    {
+      "number": 56,
+      "file": "BMM_56.jpg",
+      "id": "12Nh89vRuMKRIf8Esz8nwQDXLMIBf31yo",
+      "source": "https://drive.google.com/file/d/12Nh89vRuMKRIf8Esz8nwQDXLMIBf31yo/view?usp=drivesdk",
+      "originalBytes": 15558282,
+      "originalSha256": "fa75e8ca229f1447f80dfc15873eb6f8de18f0196ff8ade57c18cc4818dabf22",
+      "originalDimensions": {
+        "width": 5472,
+        "height": 3648,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm56",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-56.webp",
+      "masterDimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "masterBytes": 711848,
+      "reused": false
+    },
+    {
+      "number": 57,
+      "file": "BMM_57.jpg",
+      "id": "1OkCcRPJuPAG1dAVaYErXPZ4govWyP4no",
+      "source": "https://drive.google.com/file/d/1OkCcRPJuPAG1dAVaYErXPZ4govWyP4no/view?usp=drivesdk",
+      "originalBytes": 14598632,
+      "originalSha256": "5e0073b67e68d3f6e37cb483807efd7230e5fc3ff08645a827bc1385f1eacaf2",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm57",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-57.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 548400,
+      "reused": false
+    },
+    {
+      "number": 58,
+      "file": "BMM_58.jpg",
+      "id": "11PE49TXxzbfg_pIfjHFofEnmv9BupW6h",
+      "source": "https://drive.google.com/file/d/11PE49TXxzbfg_pIfjHFofEnmv9BupW6h/view?usp=drivesdk",
+      "originalBytes": 13816409,
+      "originalSha256": "cf90aab5aa03c765ace27206503e0f53e700bca7f476e1db0c8713aad21145d0",
+      "originalDimensions": {
+        "width": 3397,
+        "height": 5095,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm58",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-58.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 716230,
+      "reused": false
+    },
+    {
+      "number": 59,
+      "file": "BMM_59.jpg",
+      "id": "1Hpp-wElO8g5sL0JXi9YrAVChPkVrDiYw",
+      "source": "https://drive.google.com/file/d/1Hpp-wElO8g5sL0JXi9YrAVChPkVrDiYw/view?usp=drivesdk",
+      "originalBytes": 17402157,
+      "originalSha256": "161d4d7ee44daa37da78d96e1d67a51e84ea870586154d978a234a128822c1c4",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm59",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-59.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 892196,
+      "reused": false
+    },
+    {
+      "number": 60,
+      "file": "BMM_60.jpg",
+      "id": "18NnECbpNq86CpYVh5thZZOoF0ATB7LjC",
+      "source": "https://drive.google.com/file/d/18NnECbpNq86CpYVh5thZZOoF0ATB7LjC/view?usp=drivesdk",
+      "originalBytes": 17561673,
+      "originalSha256": "c4d393b937ab13b7a681f9eba75cc8a99381cc176bb9d809af92d49803ef7656",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm60",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-60.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 944390,
+      "reused": false
+    },
+    {
+      "number": 61,
+      "file": "BMM_61.jpg",
+      "id": "1Jf63Trh3ZxaM-Sj4OOSVWRfLUn6Mo8Qg",
+      "source": "https://drive.google.com/file/d/1Jf63Trh3ZxaM-Sj4OOSVWRfLUn6Mo8Qg/view?usp=drivesdk",
+      "originalBytes": 13745476,
+      "originalSha256": "ef8f2401d7c725019c33d99decd0085996eb2c5a78506cf287653dce63caccfc",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm61",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-61.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 387028,
+      "reused": false
+    },
+    {
+      "number": 62,
+      "file": "BMM_62.jpg",
+      "id": "1DebKnC02CBAv30JnazIuJoeLP9PuXZhf",
+      "source": "https://drive.google.com/file/d/1DebKnC02CBAv30JnazIuJoeLP9PuXZhf/view?usp=drivesdk",
+      "originalBytes": 13686135,
+      "originalSha256": "10d18abd0feeee801f784cacf4c5d93afa40f546c6d90625c57eb0c6d2ac4834",
+      "originalDimensions": {
+        "width": 3427,
+        "height": 5140,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm62",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-62.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 747990,
+      "reused": false
+    },
+    {
+      "number": 63,
+      "file": "BMM_63.jpg",
+      "id": "1NfLlqGD4GomuH0HT5Up0U9aoRU6vRky-",
+      "source": "https://drive.google.com/file/d/1NfLlqGD4GomuH0HT5Up0U9aoRU6vRky-/view?usp=drivesdk",
+      "originalBytes": 12246274,
+      "originalSha256": "50047b2af2b1bd1d916ac6d8bee591b144eeaf597ecdb6ef4f26a3d7a10eeb42",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm63",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-63.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 285746,
+      "reused": false
+    },
+    {
+      "number": 64,
+      "file": "BMM_64.jpg",
+      "id": "1BMaJoys6GQkHS50fZVljVdQjV9AI2jsG",
+      "source": "https://drive.google.com/file/d/1BMaJoys6GQkHS50fZVljVdQjV9AI2jsG/view?usp=drivesdk",
+      "originalBytes": 11609285,
+      "originalSha256": "968ddb1d0a68f2bcb1880ec01903e537f2d9c4756825cc649bc6b5e67338de64",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm64",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-64.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 267416,
+      "reused": false
+    },
+    {
+      "number": 65,
+      "file": "BMM_65.jpg",
+      "id": "1dbZMEWJU0Ujr-fsEZqc0cG1z2F-KfgEa",
+      "source": "https://drive.google.com/file/d/1dbZMEWJU0Ujr-fsEZqc0cG1z2F-KfgEa/view?usp=drivesdk",
+      "originalBytes": 12582281,
+      "originalSha256": "75d4d95b65322027c14f7f08eced1b3981d27c2f107266300187518016c448e0",
+      "originalDimensions": {
+        "width": 5472,
+        "height": 3648,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm65",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-65.webp",
+      "masterDimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "masterBytes": 311858,
+      "reused": false
+    },
+    {
+      "number": 66,
+      "file": "BMM_66.jpg",
+      "id": "18uAZWZTZdNQaSABZsZKPPX-ZPs9wxf9h",
+      "source": "https://drive.google.com/file/d/18uAZWZTZdNQaSABZsZKPPX-ZPs9wxf9h/view?usp=drivesdk",
+      "originalBytes": 16186520,
+      "originalSha256": "6f1dbc0593c77cd53186a8337a15ada68d25adb8ba1dd4bc57d93a1fcf08235b",
+      "originalDimensions": {
+        "width": 3602,
+        "height": 5404,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm66",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-66.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 991288,
+      "reused": false
+    },
+    {
+      "number": 67,
+      "file": "BMM_67.jpg",
+      "id": "1du82XtTCcvI0Sr5UnfIJxvD8tMaATRdF",
+      "source": "https://drive.google.com/file/d/1du82XtTCcvI0Sr5UnfIJxvD8tMaATRdF/view?usp=drivesdk",
+      "originalBytes": 17400091,
+      "originalSha256": "b269c73ce5665487ded88ecacfc0648dbb68fb3b0a2c031ce8c4ef3351518ef7",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm67",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-67.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 1093876,
+      "reused": false
+    },
+    {
+      "number": 68,
+      "file": "BMM_68.jpg",
+      "id": "1k_5AoW_KvSCSr85Q4AcBgxhd_c680aTy",
+      "source": "https://drive.google.com/file/d/1k_5AoW_KvSCSr85Q4AcBgxhd_c680aTy/view?usp=drivesdk",
+      "originalBytes": 14697575,
+      "originalSha256": "3fb0a07173664744cac9903c4b30996963773c23e4827593c1a617ab6a154b32",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm68",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-68.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 767938,
+      "reused": false
+    },
+    {
+      "number": 69,
+      "file": "BMM_69.jpg",
+      "id": "1XqSx885QKEWyVfRRx56ZorXISir4JyAF",
+      "source": "https://drive.google.com/file/d/1XqSx885QKEWyVfRRx56ZorXISir4JyAF/view?usp=drivesdk",
+      "originalBytes": 15018873,
+      "originalSha256": "09420fd56fc79e82d3ccc0d95a9cdcd6808988b20a597aba7cbeec55aab9036a",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm69",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-69.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 823524,
+      "reused": false
+    },
+    {
+      "number": 70,
+      "file": "BMM_70.jpg",
+      "id": "1SkdsNoawBWO1Qi1kK3uaKDEK4F7g_wgq",
+      "source": "https://drive.google.com/file/d/1SkdsNoawBWO1Qi1kK3uaKDEK4F7g_wgq/view?usp=drivesdk",
+      "originalBytes": 12808187,
+      "originalSha256": "fbe18effb838e33a92e220cace87cb8e6a801dac7508663355da1f6f0cf76c25",
+      "originalDimensions": {
+        "width": 5472,
+        "height": 3648,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm70",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-70.webp",
+      "masterDimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "masterBytes": 262698,
+      "reused": false
+    },
+    {
+      "number": 71,
+      "file": "BMM_71.jpg",
+      "id": "1nj_z0hc_CpPxA6evxpHHjEl2xfW9gvSN",
+      "source": "https://drive.google.com/file/d/1nj_z0hc_CpPxA6evxpHHjEl2xfW9gvSN/view?usp=drivesdk",
+      "originalBytes": 16307821,
+      "originalSha256": "ca50e92851c8c5fbc50ed534add74e285631f1922b3daea78a1bc9ad97077bc3",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm71",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-71.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 786458,
+      "reused": false
+    },
+    {
+      "number": 72,
+      "file": "BMM_72.jpg",
+      "id": "1RcNquDMlVCuecX4kc6vXQwGQZ8iUyMZ-",
+      "source": "https://drive.google.com/file/d/1RcNquDMlVCuecX4kc6vXQwGQZ8iUyMZ-/view?usp=drivesdk",
+      "originalBytes": 15401565,
+      "originalSha256": "903077fcb556e5f06940424d51c5e2bd724a41cfb9c5782fd07cd17f1e59da02",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm72",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-72.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 689080,
+      "reused": false
+    },
+    {
+      "number": 73,
+      "file": "BMM_73.jpg",
+      "id": "16ILk_VpGcC2A-mq3CtGwMK-rz62UUUqU",
+      "source": "https://drive.google.com/file/d/16ILk_VpGcC2A-mq3CtGwMK-rz62UUUqU/view?usp=drivesdk",
+      "originalBytes": 13763760,
+      "originalSha256": "e6bdc58f7895ae880af02533c4f2e5042ecdf69215ac2d471625de60bba22c9d",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm73",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-73.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 400370,
+      "reused": false
+    },
+    {
+      "number": 74,
+      "file": "BMM_74.jpg",
+      "id": "1xe6aGd9J0nN57epH-0r5CaMbiHOlAIEr",
+      "source": "https://drive.google.com/file/d/1xe6aGd9J0nN57epH-0r5CaMbiHOlAIEr/view?usp=drivesdk",
+      "originalBytes": 13985556,
+      "originalSha256": "4e402bb5f2eb7c5eb12de6144bc98ab288da3f93622bb07c7e2a94cdf05f55b7",
+      "originalDimensions": {
+        "width": 3618,
+        "height": 5427,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm74",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-74.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 423844,
+      "reused": false
+    },
+    {
+      "number": 75,
+      "file": "BMM_75.jpg",
+      "id": "1tO69g2dUcgn1lyx-3YiV5g7HELW7r_Wm",
+      "source": "https://drive.google.com/file/d/1tO69g2dUcgn1lyx-3YiV5g7HELW7r_Wm/view?usp=drivesdk",
+      "originalBytes": 14871473,
+      "originalSha256": "18d38d185bd74a57898ee12b12fa2d9c8ce5bedde6c5b794edb2d372aa038120",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm75",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-75.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 660690,
+      "reused": false
+    },
+    {
+      "number": 76,
+      "file": "BMM_76.jpg",
+      "id": "1U8FgV7N9xEM8RXDxKrBL0VeiBxjLNvMs",
+      "source": "https://drive.google.com/file/d/1U8FgV7N9xEM8RXDxKrBL0VeiBxjLNvMs/view?usp=drivesdk",
+      "originalBytes": 15186193,
+      "originalSha256": "13fc50bd77a242df5203c394e682b7cbe90faf1dd3504d4bec602016519c2e23",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm76",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-76.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 556832,
+      "reused": false
+    },
+    {
+      "number": 77,
+      "file": "BMM_77.jpg",
+      "id": "13SUE0xR6FUxOreSPVQ_nnTCb4hPUsy2e",
+      "source": "https://drive.google.com/file/d/13SUE0xR6FUxOreSPVQ_nnTCb4hPUsy2e/view?usp=drivesdk",
+      "originalBytes": 13838267,
+      "originalSha256": "54b41ed81e9b02e4e467b1c754988294359604d0dd8cf0b73faf88b06a9157a9",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm77",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-77.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 498216,
+      "reused": false
+    },
+    {
+      "number": 78,
+      "file": "BMM_78.jpg",
+      "id": "1Wym2Nw1vqCrFwMocDpgUoJe-6IJjVjHC",
+      "source": "https://drive.google.com/file/d/1Wym2Nw1vqCrFwMocDpgUoJe-6IJjVjHC/view?usp=drivesdk",
+      "originalBytes": 14910448,
+      "originalSha256": "a6129dbcedd895da09cb93c2bf6221098978168ba56541156cac99acd4d16cc5",
+      "originalDimensions": {
+        "width": 5472,
+        "height": 3648,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm78",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-78.webp",
+      "masterDimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "masterBytes": 678660,
+      "reused": false
+    },
+    {
+      "number": 79,
+      "file": "BMM_79.jpg",
+      "id": "19tEsAHc8Df-Uy8YJ_m5KZOrn5YXIOk9J",
+      "source": "https://drive.google.com/file/d/19tEsAHc8Df-Uy8YJ_m5KZOrn5YXIOk9J/view?usp=drivesdk",
+      "originalBytes": 16147903,
+      "originalSha256": "a00060623c8ceff25bf8eb40b295882f11d7909ab9af7e6700304175b3424eb6",
+      "originalDimensions": {
+        "width": 5396,
+        "height": 3597,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm79",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-79.webp",
+      "masterDimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "masterBytes": 867592,
+      "reused": false
+    },
+    {
+      "number": 80,
+      "file": "BMM_80.jpg",
+      "id": "1Ks2ig7UGGTR2IlWbcQK5Y0C4e5-70q8m",
+      "source": "https://drive.google.com/file/d/1Ks2ig7UGGTR2IlWbcQK5Y0C4e5-70q8m/view?usp=drivesdk",
+      "originalBytes": 16357709,
+      "originalSha256": "792d0fdf0316804cd68cb0ed0e648f4e967619d2d58bb1cb3e1435f3f7986247",
+      "originalDimensions": {
+        "width": 5428,
+        "height": 3618,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm80",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-80.webp",
+      "masterDimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "masterBytes": 856850,
+      "reused": false
+    },
+    {
+      "number": 81,
+      "file": "BMM_81.jpg",
+      "id": "1gjqHoTyMb9W16-yHq1GFhZ4baJuWc3aE",
+      "source": "https://drive.google.com/file/d/1gjqHoTyMb9W16-yHq1GFhZ4baJuWc3aE/view?usp=drivesdk",
+      "originalBytes": 16266420,
+      "originalSha256": "dd3922a977f8e7a655ff931d65a6bddb69a8e7416b275d436140267dbc533be7",
+      "originalDimensions": {
+        "width": 5427,
+        "height": 3618,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm81",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-81.webp",
+      "masterDimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "masterBytes": 843390,
+      "reused": false
+    },
+    {
+      "number": 82,
+      "file": "BMM_82.jpg",
+      "id": "1F1bTge2fRLn3SN3F0qNqJbixIUnYIa1g",
+      "source": "https://drive.google.com/file/d/1F1bTge2fRLn3SN3F0qNqJbixIUnYIa1g/view?usp=drivesdk",
+      "originalBytes": 16380581,
+      "originalSha256": "4f746105b4839ea8d1ffa2d71b7d499f8e398ca7281e11948432857a5d7f7d1d",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm82",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-82.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 853080,
+      "reused": false
+    },
+    {
+      "number": 83,
+      "file": "BMM_83.jpg",
+      "id": "1FSgJBABwJ20gJEzVTufrr6qQwzFNHzWU",
+      "source": "https://drive.google.com/file/d/1FSgJBABwJ20gJEzVTufrr6qQwzFNHzWU/view?usp=drivesdk",
+      "originalBytes": 15432278,
+      "originalSha256": "440d260039b8753680934a148414d796c18e57ad4543155f73c2830b28031d86",
+      "originalDimensions": {
+        "width": 3585,
+        "height": 5378,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm83",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-83.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 799970,
+      "reused": false
+    },
+    {
+      "number": 84,
+      "file": "BMM_84.jpg",
+      "id": "1vvF8nSsVkmcxN7hsufaxSKCa4nIx_xx0",
+      "source": "https://drive.google.com/file/d/1vvF8nSsVkmcxN7hsufaxSKCa4nIx_xx0/view?usp=drivesdk",
+      "originalBytes": 17955777,
+      "originalSha256": "6123644193090acd7ee8ed1e1c00c609a8c17e2a5f18db1eb4ceae53f6efe810",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm84",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-84.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 962274,
+      "reused": false
+    },
+    {
+      "number": 85,
+      "file": "BMM_85.jpg",
+      "id": "1wbs5A6M7YVGIQQKy9CAKIeRVx6ffOv3Q",
+      "source": "https://drive.google.com/file/d/1wbs5A6M7YVGIQQKy9CAKIeRVx6ffOv3Q/view?usp=drivesdk",
+      "originalBytes": 18720268,
+      "originalSha256": "2237ea32b83a1201100cdf7b096a8729ea9a516f4e388051b501116977356cbf",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm85",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-85.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 1074898,
+      "reused": false
+    },
+    {
+      "number": 86,
+      "file": "BMM_86.jpg",
+      "id": "1ZNYF5z0m-bIrbe3f3SWQVcpr32c3BZy-",
+      "source": "https://drive.google.com/file/d/1ZNYF5z0m-bIrbe3f3SWQVcpr32c3BZy-/view?usp=drivesdk",
+      "originalBytes": 18051380,
+      "originalSha256": "89c554bc793c7f6f8560e2f008b0ad58b2656c01d7a1f61b7b881ae082893cee",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm86",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-86.webp",
+      "masterDimensions": {
+        "width": 1600,
+        "height": 2400
+      },
+      "masterBytes": 997670,
+      "reused": false
+    },
+    {
+      "number": 87,
+      "file": "BMM_87.jpg",
+      "id": "123ZI1PxADIM_qwbZO_912BCVUTueipIe",
+      "source": "https://drive.google.com/file/d/123ZI1PxADIM_qwbZO_912BCVUTueipIe/view?usp=drivesdk",
+      "originalBytes": 18630060,
+      "originalSha256": "ea10235e4c19e485a061a8bff0a280dc01ed1e47b02b24789dbd1339ef243f01",
+      "originalDimensions": {
+        "width": 5388,
+        "height": 3592,
+        "orientation": 1
+      },
+      "name": "jardinsAcervoBmm87",
+      "master": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-87.webp",
+      "masterDimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "masterBytes": 1139374,
+      "reused": false
+    },
+    {
+      "number": 88,
+      "file": "BMM_88.jpg",
+      "id": "1N0tYDcj7G2mDuULd9-TpTiP-6Ew_Zpod",
+      "source": "https://drive.google.com/file/d/1N0tYDcj7G2mDuULd9-TpTiP-6Ew_Zpod/view?usp=drivesdk",
+      "originalBytes": 18779070,
+      "originalSha256": "6db1a4c86a99fdf5982acb15617664d996c0883d0e65481ea024e24f87f5c1b4",
+      "originalDimensions": {
+        "width": 3648,
+        "height": 5472,
+        "orientation": 1
+      },
+      "name": "jardinsNovoEncontro",
+      "master": "briefing/entrada/matrizes/jardinsNovoEncontro.webp",
+      "masterDimensions": {
+        "width": 2560,
+        "height": 3840
+      },
+      "masterBytes": 11531162,
+      "reused": true
+    }
+  ]
+}

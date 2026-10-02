@@ -1,0 +1,40 @@
+---
+import GalleryPhoto from './GalleryPhoto.astro';
+import type {PhotoName} from '../lib/photos';
+interface Props {photos:{name:PhotoName;caption:string}[];}
+const {photos}=Astro.props;
+const pageSize=12;
+---
+<div class="gallery-grid visit-gallery restaurant-gallery archive-gallery" data-paginated-gallery id="jardins-gallery-grid">
+ {photos.map((photo,index)=><GalleryPhoto name={photo.name} alt={`${photo.caption} · Rodeio Jardins`} caption={photo.caption} sizes="(max-width:599px) calc(100vw - 48px), (max-width:959px) 44vw, 29vw" hidden={index>=pageSize}/>)}
+</div>
+<div class="gallery-more" data-gallery-more>
+ <p aria-live="polite"><span data-gallery-shown>{Math.min(pageSize,photos.length)}</span> de {photos.length} fotografias</p>
+ <button type="button" data-show-more-photos aria-controls="jardins-gallery-grid">Ver mais fotografias <span aria-hidden="true">↓</span></button>
+</div>
+<noscript><style>.archive-gallery [data-gallery][hidden]{display:block!important}.gallery-more{display:none!important}</style></noscript>
+<style>
+ .archive-gallery :global([data-gallery][hidden]){display:none}
+ .gallery-more{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:36px;border-top:1px solid var(--line);margin-top:40px}
+ .gallery-more p{font-size:13px;color:var(--muted)}
+ .gallery-more button{display:flex;align-items:center;gap:24px;min-height:48px;padding:10px 0;border:0;border-bottom:1px solid currentColor;background:none;color:var(--brown);font:inherit;font-size:14px;cursor:pointer}
+ .gallery-more button span{font-size:20px}
+ .gallery-more button:hover{color:var(--orange)}
+ .gallery-more button:focus-visible{outline:2px solid var(--orange);outline-offset:6px}
+ .gallery-more button[hidden]{display:none}
+ @media(max-width:599px){.gallery-more{align-items:flex-start;flex-direction:column;gap:12px}.gallery-more p{margin:0}}
+</style>
+<script>
+ const grid=document.querySelector<HTMLElement>('[data-paginated-gallery]');
+ const button=document.querySelector<HTMLButtonElement>('[data-show-more-photos]');
+ const counter=document.querySelector<HTMLElement>('[data-gallery-shown]');
+ button?.addEventListener('click',()=>{
+  if(!grid)return;
+  const pending=Array.from(grid.querySelectorAll<HTMLAnchorElement>('[data-gallery][hidden]'));
+  const next=pending.slice(0,12);
+  next.forEach(photo=>{photo.hidden=false;});
+  if(counter)counter.textContent=String(grid.querySelectorAll('[data-gallery]:not([hidden])').length);
+  if(pending.length<=12)button.hidden=true;
+  next[0]?.focus({preventScroll:true});
+ });
+</script>

@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-02T19:36:26.953Z",
+  "method": "Lighthouse local CLI; mobile Slow 4G, CPU 4x; desktop preset. Lab metrics, not PSI or CrUX.",
+  "runs": [
+    {
+      "url": "http://127.0.0.1:4326/rodeio/restaurantes/jardins/",
+      "formFactor": "mobile",
+      "filename": "restaurantesjardins-mobile.json",
+      "scores": {
+        "performance": 92,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 66
+      },
+      "lcpMs": 3235.0031,
+      "tbtMs": 0,
+      "cls": 0,
+      "bytes": 520226
+    }
+  ]
+}
