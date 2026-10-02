@@ -1,6 +1,16 @@
 # Pão de Queijo Haddock Lobo — M5
 
-Site reconstruído do zero pelo fluxo Jumper v3. Preview local pronto para revisão; o WordPress oficial NÃO foi substituído. A aprovação de 01/10/2026 e o contrato fechado estão em `jumper.config.json`. O rascunho M2 original está preservado, mas foi superado pelas decisões desta conversa.
+Site reconstruído do zero pelo fluxo Jumper v3. Preview publicado para revisão no Jumper Hoster; o WordPress oficial NÃO foi substituído. A aprovação de construção de 01/10/2026, a autorização de publicação no hub de 02/10/2026 e o contrato fechado estão em `jumper.config.json`. O rascunho M2 original está preservado, mas foi superado pelas decisões desta conversa.
+
+## Publicação no hub — 02/10/2026
+
+Preview público: https://site.jumper.dev.br/pao-de-queijo-haddock-lobo/ — Worker `jumper-hoster-dev`, versão `f7ae0ade-0889-459c-89b0-796a0d54cfb7`, fonte `bae94fb6888006aa1b9c38f4bce5549bc949088d`, PR #89. O pedido do usuário autoriza o preview e o card do hub com links separados; não autoriza a substituição do site oficial em https://paodequeijohaddocklobo.com.br/.
+
+Build com `SITE_URL=https://site.jumper.dev.br BASE_PATH=/pao-de-queijo-haddock-lobo`. Quatro páginas e 132 arquivos públicos conferidos byte a byte com o build, sem erros; noindex no HTML e no Worker, robots do preview bloqueado. Antes e depois do deploy dev, 840 arquivos dos sete outros previews permaneceram idênticos à publicação anterior; hub, briefing, APIs e oficiais preservados. 86 fluxos locais prefixados e 37 testes de Worker/preflight/hub aprovados; revisão visual pública desktop/mobile sem erros de JavaScript. A checagem integral pública aguarda o redirect sem barra, incluído na atualização live do card.
+
+Card gerado com “Site em desenvolvimento” e “Site oficial”; publicação do painel protegido será feita separadamente após merge e preflight live. Segredos, briefings preenchidos, ZIPs, backups e relatórios visuais não entram no pacote público. O formulário de contato continua explicitamente com envio inativo: serviço/destinatário pendentes, sem simular sucesso. Propostas de trocar seções e animar a vitrine no scroll não foram aplicadas sem aprovação.
+
+Recuperação: versão dev anterior `04dfb8f2-71e0-4644-959f-716cb61f10fd`; hub live anterior `4208472f-8f40-456d-a2c7-fe72fe834dc5`. Uma reversão exige nova auditoria contra eventuais deploys posteriores, preservando outros clientes e removendo apenas a rota recém-adicionada quando apropriado; não promover cegamente um pacote antigo. Evidências locais em `data/visual-review/hub-publication/`; auditoria de arquivos por `tools/verify-hub-publication.mjs`.
 
 ## Abrir e construir
 

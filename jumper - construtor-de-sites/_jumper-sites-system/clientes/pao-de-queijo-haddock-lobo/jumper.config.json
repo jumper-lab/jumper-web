@@ -15,12 +15,16 @@
   "intake_status": "construction_approved_2026_10_01",
   "preview_url": "http://127.0.0.1:4327/",
   "official_url": "https://paodequeijohaddocklobo.com.br/",
-  "publication_status": "hub_preview_approved_pending_deploy",
+  "publication_status": "hub_preview_published_card_pending",
   "hub_publication": {
     "approved_at": "2026-10-02",
     "approval_evidence": "pode subir o site para o nosso hub; nao se esqueça de colocar tambem o link do site oficial no hub",
     "scope": "Publicar a versão atual no jumper-hoster-dev e incluir no hub protegido os links de desenvolvimento e do site oficial existente, sem substituir o oficial.",
     "preview_url": "https://site.jumper.dev.br/pao-de-queijo-haddock-lobo/",
+    "worker": "jumper-hoster-dev",
+    "worker_version_id": "f7ae0ade-0889-459c-89b0-796a0d54cfb7",
+    "source_commit": "bae94fb6888006aa1b9c38f4bce5549bc949088d",
+    "pull_request": "https://github.com/jumper-lab/jumper-web/pull/89",
     "official_site_change": "not_authorized",
     "contact_delivery": "pending_service_and_recipient_confirmation"
   },
