@@ -1,0 +1,47 @@
+{
+  "sourceDimensions": [
+    522,
+    522
+  ],
+  "format": "AVIF",
+  "noUpscalingDuringGeneration": true,
+  "variants": [
+    {
+      "file": "home-arroz-rodeio.Byf4c3NE_1vvvf0.avif",
+      "width": 522,
+      "height": 522,
+      "bytes": 36149
+    },
+    {
+      "file": "home-arroz-rodeio.Byf4c3NE_Z1s4vdO.avif",
+      "width": 480,
+      "height": 480,
+      "bytes": 26876
+    },
+    {
+      "file": "home-arroz-rodeio.Byf4c3NE_qU6yv.avif",
+      "width": 320,
+      "height": 320,
+      "bytes": 14981
+    },
+    {
+      "file": "home-picanha-fatiada.B6Dirw2w_17cQ0Y.avif",
+      "width": 522,
+      "height": 522,
+      "bytes": 45289
+    },
+    {
+      "file": "home-picanha-fatiada.B6Dirw2w_Z1pQ3Yn.avif",
+      "width": 320,
+      "height": 320,
+      "bytes": 14990
+    },
+    {
+      "file": "home-picanha-fatiada.B6Dirw2w_Z1yOb1p.avif",
+      "width": 480,
+      "height": 480,
+      "bytes": 31126
+    }
+  ],
+  "maxBytes": 45289
+}

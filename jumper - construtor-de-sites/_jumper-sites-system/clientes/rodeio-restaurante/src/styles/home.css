@@ -74,8 +74,8 @@
   height: clamp(280px, 28vw, 440px);
   object-fit: cover;
 }
-.cuisine-main img { object-position: 50% 45%; }
-.cuisine-detail img { object-position: 50% 60%; }
+.cuisine-main img { object-position: 50% 65%; }
+.cuisine-detail img { object-position: 50% 55%; }
 .cuisine-main figcaption, .cuisine-detail figcaption {
   margin: 12px 0 0;
   padding: 0;
@@ -83,6 +83,12 @@
   line-height: 1.6;
   color: var(--muted);
 }
+.cuisine-main figcaption h3, .cuisine-detail figcaption h3 {
+  margin: 0;
+  font: 400 clamp(22px, 2vw, 28px)/1.25 var(--serif);
+  color: var(--brown);
+}
+.cuisine-detail figcaption span { display: block; margin-top: 4px; }
 .home-houses {
   padding-block: clamp(72px, 9vw, 144px);
 }
