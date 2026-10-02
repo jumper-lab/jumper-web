@@ -125,10 +125,10 @@
     }
   },
   "hero_direction": {
-    "home": "Fachada real de ponta a ponta abaixo do cabeçalho; leitura sobre camada escura à esquerda, título claro com itálico, reserva em laranja, legenda factual e descida discreta na base. Altura total exata de 100vh.",
-    "message": "Um clássico que se renova, desde 1958.",
+    "home": "Slideshow de seis fotos na ordem aprovada; O clássico que se renova. Preservar 100vh e apresentação atual das unidades.",
+    "message": "O clássico que se renova.",
     "primary_cta": "Reservar uma mesa",
-    "secondary_cta": "Conhecer o cardápio",
+    "secondary_cta": "Conheça nossos cardápios",
     "crop": "Home: recortes de entrega centralizados preservam a fachada e o letreiro no portrait; CSS cover se adapta à proporção exata. Desktop mantém a foto inteira com cobertura. A posição e a nitidez são conferidas em screenshots reais.",
     "viewport_coverage": {
       "mobile": "100vw de largura útil × 100vh, incluindo cabeçalho fixo; sem largura máxima.",
@@ -140,28 +140,28 @@
     "interiors": "Fotografia real de ponta a ponta, cobrindo 100% da largura e 100vh, atrás do cabeçalho fixo. Texto sobre camada escura, sem moldura ou coluna de foto. Descida discreta em todas as páginas para a próxima seção real."
   },
   "navigation_direction": {
-    "desktop": "Marca centralizada entre dois grupos de links; reserva explícita na extremidade direita. Cabeçalho de aparência editorial, com ritmo e distribuição equilibrados.",
-    "mobile": "Marca, reserva e Menu; painel marrom com grandes links em creme, índices discretos e assinatura da casa, topo sticky, Escape e foco contido.",
+    "desktop": "Logo central; História/Cardápio/Eventos à esquerda e links diretos Rodeio Jardins/Rodeio Iguatemi à direita, reserva explícita.",
+    "mobile": "Sete destinos explícitos na ordem do PDF, diálogo acessível.",
     "scroll": "Cabeçalho fixo:96px a partir1200px,80px abaixo1200px e64px em alturas até550px; sem blur. Compensação de âncoras usa altura real.",
     "current": "aria-current e sublinhado no link atual"
   },
   "media_direction": {
-    "primary": "Acervo real do Drive com inventário e originais em briefing/entrada; derivados WebP no pipeline Astro.",
+    "primary": "Acervo real do Drive; matrizes preservadas em briefing/entrada/matrizes e derivados AVIF responsivos no Astro.",
     "ai": "Não necessária nesta entrega. Se faltar mídia futura, IA apenas provisória identificada; nunca inventar instalações.",
     "pexels": "Somente fallback autorizado quando foto real e IA não resolverem; não utilizado.",
     "video": "Sem vídeo no briefing; não acrescentar autoplay.",
     "fallback": "Cor sólida de fundo com dimensões reservadas; imagem com alt honesto.",
-    "brand": "Logo branco oficial com tratamento CSS escuro em fundo claro; laranja interpretado do briefing, manual inacessível.",
-    "unique_photography": "Cada posição editorial utiliza uma fotografia distinta do acervo. Heros exclusivos por página, sem repetir em galeria ou chamadas da home. História usa luz e ambiente contemporâneo no hero, preservando imagens antigas apenas no conteúdo. Foto da fachada continua exclusiva da home."
+    "brand": "Logo sem símbolo no site, versões com/sem símbolo em branco/escuro preservadas; variantes compactas para navegação e rodapé.",
+    "unique_photography": "Slideshow preservado, novo BMM_88 no contexto do novo Jardins; álbum completo pode repetir a respectiva foto editorial. Página em breve usa foto de arquitetura da pasta novo Rodeio."
   },
   "section_system": [
     {
       "name": "hero",
-      "anatomy": "Fachada imersiva e texto sobreposto à esquerda"
+      "anatomy": "Slideshow imersivo de seis fotos na ordem aprovada, com texto sobreposto à esquerda."
     },
     {
       "name": "experiência",
-      "anatomy": "Título editorial à esquerda, serviço à direita, manifesto integrado na mesma composição"
+      "anatomy": "Título e introdução do novo momento à esquerda; novo registro BMM_88 do Jardins à direita."
     },
     {
       "name": "gastronomia",
@@ -273,5 +273,20 @@
     "source": "Pastas específicas das unidades no Drive do briefing",
     "layout": "Grade uniforme3colunas desktop,2tablet,1mobile; ampliação com navegação e contador",
     "exception": "Galeria completa pode repetir fotos editoriais da respectiva unidade, por pedido explícito."
+  },
+  "current_briefing": {
+    "date": "2026-10-02",
+    "source": "briefing/entrada/diretrizes-2026-10-02/RODEIO SITE (2).pdf",
+    "scope": "Novos textos, sete destinos no menu, duas unidades, manutenção independente e refinamento editorial."
+  },
+  "maintenance_page": {
+    "route": "/em-breve/",
+    "active_on_home": false,
+    "exports": [
+      "2560x1440",
+      "1920x1080"
+    ],
+    "reference": "Página 3 do PDF vigente",
+    "photo": "BMM_35.jpg, pasta Novo Rodeio do PDF"
   }
 }

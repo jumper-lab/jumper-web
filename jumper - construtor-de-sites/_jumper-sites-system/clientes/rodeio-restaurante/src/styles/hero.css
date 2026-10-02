@@ -311,8 +311,8 @@
 }
 .hero-home .hero-title-line > * { display: block; }
 @media (prefers-reduced-motion: no-preference) {
-  .hero-home .hero-figure img {
-    animation: home-photograph-arrive 1800ms cubic-bezier(.2,.65,.25,1) backwards;
+  .hero-home .hero-slide:first-child img {
+    animation: home-photograph-arrive 1300ms cubic-bezier(.2,.65,.25,1) backwards;
   }
   .hero-home .hero-copy > .eyebrow {
     animation: home-detail-arrive 650ms 100ms ease-out backwards;
@@ -340,11 +340,11 @@
   to { transform: scale(1); }
 }
 @keyframes home-title-arrive {
-  from { opacity: 0; transform: translateY(65%); }
+  from { opacity: 1; transform: translateY(18%); }
   to { opacity: 1; transform: none; }
 }
 @keyframes home-detail-arrive {
-  from { opacity: 0; transform: translateY(8px); }
+  from { transform: translateY(8px); }
   to { opacity: 1; transform: none; }
 }
 .hero.hero-photo {
@@ -363,18 +363,87 @@
   height: 100%;
   object-position: 50% 58%;
 }
+.home-slideshow,
+.home-slideshow-frames,
+.hero-slide,
+.hero-slide picture {
+  position: absolute;
+  inset: 0;
+}
+.hero-slide {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1400ms cubic-bezier(.22,.7,.2,1), visibility 0s linear 1400ms;
+}
+.hero-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+.hero-slide img {
+  transform: scale(1.035);
+  transition: transform 7600ms cubic-bezier(.18,.7,.25,1);
+}
+.hero-slide.is-active img {
+  transform: scale(1);
+}
+.home-slideshow-controls {
+  position: absolute;
+  z-index: 3;
+  right: var(--gutter);
+  bottom: 66px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--paper);
+  font-size: 9px;
+  letter-spacing: .12em;
+  font-variant-numeric: tabular-nums;
+}
+.home-slideshow-dots {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.home-slideshow-dot {
+  width: 28px;
+  height: 44px;
+  padding: 0 5px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.home-slideshow-dot span {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,.38);
+  transition: background-color 300ms, transform 300ms;
+  transform-origin: center;
+}
+.home-slideshow-dot:hover span,
+.home-slideshow-dot:focus-visible span,
+.home-slideshow-dot.is-active span {
+  background: var(--paper);
+  transform: scaleY(2);
+}
+.home-slideshow-dot:focus-visible {
+  outline: 1px solid var(--paper);
+  outline-offset: -6px;
+}
 .hero-photo .hero-figure::after {
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(29, 22, 17, 0.9) 0%,
-      rgba(29, 22, 17, 0.73) 36%,
-      rgba(29, 22, 17, 0.16) 76%
-    ),
-    linear-gradient(0deg, rgba(29, 22, 17, 0.66), transparent 30%);
+  /* Preserve the facade's light; shade only the left editorial column. */
+  background: linear-gradient(
+    90deg,
+    rgba(29, 22, 17, 0.98) 0%,
+    rgba(29, 22, 17, 0.92) 18%,
+    rgba(29, 22, 17, 0.62) 32%,
+    rgba(29, 22, 17, 0.18) 47%,
+    rgba(29, 22, 17, 0) 62%
+  );
 }
 .hero-photo .hero-copy {
   position: relative;
@@ -384,6 +453,12 @@
   width: 100%;
   padding: 40px var(--gutter) 96px;
   justify-content: safe center;
+}
+.hero-home .hero-copy {
+  pointer-events: none;
+}
+.hero-home .hero-copy a {
+  pointer-events: auto;
 }
 .hero-photo h1 {
   font-size: clamp(42px, min(7.6vw, 11vh), 116px);
@@ -507,6 +582,13 @@
       rgba(29, 22, 17, 0.25)
     );
   }
+  .home-slideshow-controls {
+    right: var(--gutter);
+    bottom: 58px;
+  }
+  .home-slideshow-count {
+    display: none;
+  }
 }
 @media (min-width: 600px) and (max-height: 550px) {
   .hero-photo .hero-copy {
@@ -591,10 +673,23 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide,
+  .hero-slide img,
+  .home-slideshow-dot span {
+    transition: none;
+  }
+}
+
 /* Home copy follows the approved editorial line breaks on larger screens. */
 @media (min-width: 760px) {
   .hero-home .hero-description {
     white-space: pre-line;
     max-width: 100%;
   }
+}
+
+/* Current approved copy uses natural wrapping inside the shaded reading area. */
+@media(min-width:760px) {
+  .hero-home .hero-description { white-space:normal; max-width:37ch; }
 }

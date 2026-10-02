@@ -1,0 +1,30 @@
+---
+import SeoHead from '../components/SeoHead.astro';
+import HeroPhoto from '../components/HeroPhoto.astro';
+import Arrow from '../components/Arrow.astro';
+import content from '../../data/content.json';
+import '../styles/global.css';
+import '../styles/coming-soon.css';
+import bodoni from '../assets/fonts/bodoni-normal.woff2?url';
+import sans from '../assets/fonts/dm-sans.woff2?url';
+const base=import.meta.env.BASE_URL.replace(/\/$/,'');
+const copy=content.pages.coming_soon;
+const canonical=new URL(Astro.url.pathname,Astro.site);
+const organization={id:new URL(`${base}/#organization`,Astro.site).href,name:content.client.name,url:new URL(`${base}/`,Astro.site).href,logo:new URL(`${base}/logos/logo-sem-simbolo.png`,Astro.site).href};
+---
+<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#30231c"/>
+<SeoHead title="Em breve — novo site do Rodeio" description={copy.description} canonical={canonical} ogImage={new URL(`${base}/og.jpg`,Astro.site)} favicon="/logos/logo-sem-simbolo.svg" siteName="Rodeio Restaurante" noindex={true} organization={organization}/>
+<link rel="preload" href={bodoni} as="font" type="font/woff2" crossorigin/><link rel="preload" href={sans} as="font" type="font/woff2" crossorigin/></head><body class="launch-page">
+<main class="launch" id="conteudo">
+  <div class="launch-photograph"><HeroPhoto quality={55} name="jardinsNovoAmbiente" alt="Novo Rodeio Jardins: mesas postas, luz acolhedora e cortina dourada no salão"/></div>
+  <div class="launch-content">
+    <img class="launch-brand" src={`${base}/logos/logo-sem-simbolo-branca-compacta.webp`} alt="Rodeio — desde 1958" width="420" height="117"/>
+    <p class="eyebrow launch-eyebrow">{copy.eyebrow}</p>
+    <h1>{copy.title}<br/>{copy.accent}</h1>
+    <p class="launch-intro">{copy.description}</p>
+    <div class="launch-houses">{content.units.map(unit=><section aria-labelledby={`launch-${unit.slug}`}><h2 id={`launch-${unit.slug}`}>{unit.slug==='jardins'?'Conheça o novo Rodeio Jardins':unit.display_name}</h2><address>{unit.address}<br/>{unit.district}</address><a href={`${base}/reservas/?unidade=${unit.slug}`}>Reservar mesa<Arrow/></a></section>)}</div>
+    <a class="action button launch-menu" href={content.menu_url}>Cardápio<Arrow/></a>
+  </div>
+  <footer class="launch-footer"><span>São Paulo · desde 1958</span><a href="https://www.instagram.com/rodeiorestaurante/">@rodeiorestaurante</a></footer>
+</main>
+</body></html>

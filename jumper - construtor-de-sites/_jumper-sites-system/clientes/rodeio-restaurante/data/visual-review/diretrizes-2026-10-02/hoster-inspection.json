@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-02T13:49:25.764Z",
+  "mode": "read-only inspection before official branch preflight",
+  "checked": 432,
+  "differences": [],
+  "live": {
+    "snapshot": {
+      "hub": "401:b056a6fccf2f0de12392e0dab92158e75626bc7f0b2bc5d7da6f09ee28856858",
+      "briefing": "200:ee3c75d37c8a720a659dbd094949997a598a175c08a2ffc9ca54fe836db97331",
+      "briefing CSS": "200:2b0d2128e0c0abc800e6da284aa1c3a6f690412cc90288c21cfff97f877eead2",
+      "briefing JS": "200:3bfb7cc751014a76ac204b0dff91d920ffd78f774b393b169c134c607e8dc128",
+      "briefing API": "405:e3933184560739b70b60e2d0e48a6c7d7e18f76d95362e11f4155267700ac3a7",
+      "autenticação": "401:a094f7d8c8dc2fbe59dfc843570a8446073d5bd1aefcba5119f80a059914c583",
+      "API de leads": "401:a094f7d8c8dc2fbe59dfc843570a8446073d5bd1aefcba5119f80a059914c583",
+      "IZI Gym oficial": "200:b258d820541a921e8113427ef1e2178c84d817bf4584a84d6bfc87c6f9dcf76b",
+      "LP Cerro Corá oficial": "200:f8ae388b542c2a6e337211e64cdb32be58a6e566a578dde9103069edef7ab9dd"
+    },
+    "differences": []
+  }
+}

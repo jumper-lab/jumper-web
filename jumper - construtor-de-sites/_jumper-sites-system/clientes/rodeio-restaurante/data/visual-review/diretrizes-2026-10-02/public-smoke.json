@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-02T14:06:51.489Z",
+  "versionId": "1ca0ce0f-5064-4cf4-a400-c5f8e73a1869",
+  "routes": [
+    {
+      "route": "/rodeio/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "noindex": true
+    },
+    {
+      "route": "/rodeio/historia/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "noindex": true
+    },
+    {
+      "route": "/rodeio/cardapio/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "noindex": true
+    },
+    {
+      "route": "/rodeio/eventos/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "noindex": true
+    },
+    {
+      "route": "/rodeio/reservas/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "noindex": true
+    },
+    {
+      "route": "/rodeio/restaurantes/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "noindex": true
+    },
+    {
+      "route": "/rodeio/restaurantes/jardins/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "noindex": true
+    },
+    {
+      "route": "/rodeio/restaurantes/iguatemi/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "noindex": true
+    },
+    {
+      "route": "/rodeio/em-breve/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "noindex": true
+    },
+    {
+      "route": "/rodeio/privacidade/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "noindex": true
+    }
+  ]
+}

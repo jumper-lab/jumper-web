@@ -1,3 +1,5 @@
+import jardinsNovoEncontro from '../../briefing/entrada/matrizes/jardinsNovoEncontro.webp';
+import jardinsNovoAmbiente from '../../briefing/entrada/matrizes/jardinsNovoAmbiente.webp';
 import iguatemiMesa from '../../briefing/entrada/matrizes/iguatemiMesa.webp';
 import fachada from '../../briefing/entrada/matrizes/fachada.webp';
 import jardins from '../../briefing/entrada/matrizes/jardins.webp';
@@ -29,5 +31,14 @@ import jardinsMesaDois from '../../briefing/entrada/matrizes/jardinsMesaDois.web
 import jardinsMesaNoite from '../../briefing/entrada/matrizes/jardinsMesaNoite.webp';
 import jardinsPassagem from '../../briefing/entrada/matrizes/jardinsPassagem.webp';
 import jardinsLounge from '../../briefing/entrada/matrizes/jardinsLounge.webp';
-export const photos = {iguatemiMesa,fachada,jardins,iguatemi,mesa,picanha,servico,sobremesa,historia,origem,bar,reservas,jardinsHero,historiaHero,cardapioHero,livroCardapio,carneDetalhe,sobremesaServico,mesaDetalhe,jardinsDirectory,iguatemiDirectory,jardinsGallery,jardinsSala,iguatemiHero,iguatemiAcervo,reservasHero,jardinsJanela,jardinsMesaDois,jardinsMesaNoite,jardinsPassagem,jardinsLounge};
+import historiaFamilia from '../../briefing/entrada/matrizes/historia-familia.jpg';
+import historiaRetrato from '../../briefing/entrada/matrizes/historia-retrato.jpg';
+import historiaFachadaAcervo from '../../briefing/entrada/matrizes/historia-fachada-acervo.jpg';
+import homeSalaAcervo2024 from '../../briefing/entrada/matrizes/home-sala-acervo-2024.webp';
+import homeBifeAcervo2024 from '../../briefing/entrada/matrizes/home-bife-acervo-2024.webp';
+import homeAperitivosAcervo2024 from '../../briefing/entrada/matrizes/home-aperitivos-acervo-2024.webp';
+import homeCosteletasAcervo2024 from '../../briefing/entrada/matrizes/home-costeletas-acervo-2024.webp';
+import homeMarcaAcervo2024 from '../../briefing/entrada/matrizes/home-marca-acervo-2024.webp';
+import homeSobremesaAcervo2023 from '../../briefing/entrada/matrizes/home-sobremesa-acervo-2023.webp';
+export const photos = {jardinsNovoEncontro,jardinsNovoAmbiente,iguatemiMesa,fachada,jardins,iguatemi,mesa,picanha,servico,sobremesa,historia,origem,bar,reservas,jardinsHero,historiaHero,cardapioHero,livroCardapio,carneDetalhe,sobremesaServico,mesaDetalhe,jardinsDirectory,iguatemiDirectory,jardinsGallery,jardinsSala,iguatemiHero,iguatemiAcervo,reservasHero,jardinsJanela,jardinsMesaDois,jardinsMesaNoite,jardinsPassagem,jardinsLounge,historiaFamilia,historiaRetrato,historiaFachadaAcervo,homeSalaAcervo2024,homeBifeAcervo2024,homeAperitivosAcervo2024,homeCosteletasAcervo2024,homeMarcaAcervo2024,homeSobremesaAcervo2023};
 export type PhotoName = keyof typeof photos;

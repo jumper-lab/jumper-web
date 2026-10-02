@@ -1,0 +1,176 @@
+{
+  "url": "https://site.jumper.dev.br/rodeio",
+  "provider": "cloudflare-workers-static-assets",
+  "worker": "jumper-hoster",
+  "versionId": "cd5dad4e-dbaa-40e5-aba9-75ff508f5913",
+  "status": "READY",
+  "indexing": "noindex",
+  "results": [
+    {
+      "route": "/rodeio/",
+      "status": 200
+    },
+    {
+      "route": "/rodeio/historia/",
+      "status": 200
+    },
+    {
+      "route": "/rodeio/cardapio/",
+      "status": 200
+    },
+    {
+      "route": "/rodeio/restaurantes/",
+      "status": 200
+    },
+    {
+      "route": "/rodeio/restaurantes/jardins/",
+      "status": 200
+    },
+    {
+      "route": "/rodeio/restaurantes/iguatemi/",
+      "status": 200
+    },
+    {
+      "route": "/rodeio/eventos/",
+      "status": 200
+    },
+    {
+      "route": "/rodeio/reservas/",
+      "status": 200
+    },
+    {
+      "route": "/rodeio/privacidade/",
+      "status": 200
+    },
+    {
+      "route": "/izigym/",
+      "status": 200
+    },
+    {
+      "route": "/casabelie/",
+      "status": 200
+    },
+    {
+      "route": "/casabelie/sobre/",
+      "status": 200
+    },
+    {
+      "route": "/casabelie/festas/",
+      "status": 200
+    },
+    {
+      "route": "/casabelie/espaco/",
+      "status": 200
+    },
+    {
+      "route": "/casabelie/blog/",
+      "status": 200
+    },
+    {
+      "route": "/casabelie/contato/",
+      "status": 200
+    },
+    {
+      "route": "/casabelie-2/",
+      "status": 200
+    },
+    {
+      "route": "/casabelie-2/sobre/",
+      "status": 200
+    },
+    {
+      "route": "/casabelie-2/festas/",
+      "status": 200
+    },
+    {
+      "route": "/casabelie-2/espaco/",
+      "status": 200
+    },
+    {
+      "route": "/casabelie-2/blog/",
+      "status": 200
+    },
+    {
+      "route": "/casabelie-2/blog/por-que-a-casa-belie-nao-tem-telas/",
+      "status": 200
+    },
+    {
+      "route": "/casabelie-2/contato/",
+      "status": 200
+    }
+  ],
+  "dashboard": {
+    "route": "/",
+    "unauthenticatedStatus": 401,
+    "authenticatedStatus": 200,
+    "projects": [
+      "rodeio",
+      "izigym",
+      "casabelie",
+      "casabelie-2"
+    ],
+    "clients": [
+      "rodeio",
+      "izigym",
+      "casabelie"
+    ],
+    "developmentSites": [
+      "rodeio",
+      "izigym",
+      "casabelie",
+      "casabelie-2"
+    ],
+    "officialSites": [
+      "https://rodeiosp.com.br/",
+      "https://www.izigym.com.br/",
+      "https://casabelie.com.br/"
+    ],
+    "registrySchemaVersion": "2.0.0"
+  },
+  "notFoundStatus": 404,
+  "heroAndScroll": "passed",
+  "dns": {
+    "zone": "jumper.dev.br",
+    "cloudflareStatus": "active",
+    "currentNameservers": [
+      "alfred.ns.cloudflare.com",
+      "marge.ns.cloudflare.com"
+    ],
+    "requiredNameservers": [
+      "alfred.ns.cloudflare.com",
+      "marge.ns.cloudflare.com"
+    ]
+  },
+  "date": "2026-09-10T10:41:00.000Z",
+  "access": {
+    "dashboard": "password",
+    "clientSites": "public",
+    "sessionHours": 12
+  },
+  "migrationSources": {
+    "izigym": {
+      "previousProvider": "Vercel",
+      "previousDeployment": "dpl_6iVzKY6PyjrBRuVzsDA1kfttyxMD",
+      "sourceRepository": "https://github.com/jumper-lab/izigym",
+      "sourceCommit": "ccbb564"
+    },
+    "casabelie": "Vercel production dpl_2WmSNKtRWW4C9S14y9Yuw671KXij",
+    "casabelie-2": "Vercel production dpl_Ci3DrqUKHE7e9uP9UxCHNNNHY4i2"
+  },
+  "officialDeployments": {
+    "izigym": {
+      "canonicalUrl": "https://www.izigym.com.br/",
+      "apexRedirect": "https://izigym.com.br/ -> https://www.izigym.com.br/",
+      "provider": "cloudflare-workers-static-assets",
+      "worker": "jumper-hoster",
+      "indexing": "index"
+    }
+  },
+  "consolidation": {
+    "singleWorker": "jumper-hoster",
+    "removedStandaloneWorkers": [
+      "izigym"
+    ],
+    "verifiedAt": "2026-09-10T10:44:00.000Z"
+  }
+}

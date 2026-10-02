@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-02T13:39:43.095Z",
+  "method": "Two mobile lab baselines before title animation optimization. Slow 4G / CPU 4x; no desktop run in this baseline.",
+  "runs": [
+    {
+      "url": "http://127.0.0.1:4326/rodeio/",
+      "formFactor": "mobile",
+      "filename": "home-mobile.json",
+      "scores": {
+        "performance": 92,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 66
+      },
+      "lcpMs": 3312.6283000000003,
+      "tbtMs": 0,
+      "cls": 0,
+      "bytes": 574944
+    },
+    {
+      "url": "http://127.0.0.1:4326/rodeio/",
+      "formFactor": "mobile",
+      "filename": "home-mobile-repeat.json",
+      "scores": {
+        "performance": 92,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 66
+      },
+      "lcpMs": 3306.2761,
+      "tbtMs": 0,
+      "cls": 0,
+      "bytes": 574944
+    }
+  ]
+}

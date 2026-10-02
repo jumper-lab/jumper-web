@@ -428,3 +428,13 @@
     width: 79.5px;
   }
 }
+
+/* The two houses now belong to the primary navigation. */
+@media (min-width:1200px) {
+  .site-header { column-gap:clamp(24px,3vw,48px); }
+  .header-left { justify-content:flex-end; }
+  .desktop-nav { gap:clamp(18px,1.7vw,32px); }
+  .header-right { gap:clamp(18px,1.8vw,32px); }
+  .header-right .desktop-nav a { font-size:13px; }
+}
+.navigation-dialog nav a { font-size:clamp(26px,4vw,34px); min-height:64px; }

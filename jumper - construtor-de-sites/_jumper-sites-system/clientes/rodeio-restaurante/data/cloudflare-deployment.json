@@ -1,176 +1,95 @@
 {
-  "url": "https://site.jumper.dev.br/rodeio",
+  "url": "https://site.jumper.dev.br/rodeio/",
   "provider": "cloudflare-workers-static-assets",
-  "worker": "jumper-hoster",
-  "versionId": "cd5dad4e-dbaa-40e5-aba9-75ff508f5913",
+  "worker": "jumper-hoster-dev",
+  "versionId": "1ca0ce0f-5064-4cf4-a400-c5f8e73a1869",
+  "sourceCommit": "6fb174c7285b01f559f1a0a83046f6cac9fae5b5",
+  "sourceBranch": "codex/rodeio-diretrizes-outubro",
+  "pullRequest": "https://github.com/jumper-lab/jumper-web/pull/82",
   "status": "READY",
   "indexing": "noindex",
+  "date": "2026-10-02T14:10:55.440Z",
+  "access": "public without cookies",
   "results": [
     {
       "route": "/rodeio/",
-      "status": 200
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "noindex": true
     },
     {
       "route": "/rodeio/historia/",
-      "status": 200
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "noindex": true
     },
     {
       "route": "/rodeio/cardapio/",
-      "status": 200
-    },
-    {
-      "route": "/rodeio/restaurantes/",
-      "status": 200
-    },
-    {
-      "route": "/rodeio/restaurantes/jardins/",
-      "status": 200
-    },
-    {
-      "route": "/rodeio/restaurantes/iguatemi/",
-      "status": 200
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "noindex": true
     },
     {
       "route": "/rodeio/eventos/",
-      "status": 200
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "noindex": true
     },
     {
       "route": "/rodeio/reservas/",
-      "status": 200
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "noindex": true
+    },
+    {
+      "route": "/rodeio/restaurantes/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "noindex": true
+    },
+    {
+      "route": "/rodeio/restaurantes/jardins/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "noindex": true
+    },
+    {
+      "route": "/rodeio/restaurantes/iguatemi/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "noindex": true
+    },
+    {
+      "route": "/rodeio/em-breve/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "noindex": true
     },
     {
       "route": "/rodeio/privacidade/",
-      "status": 200
-    },
-    {
-      "route": "/izigym/",
-      "status": 200
-    },
-    {
-      "route": "/casabelie/",
-      "status": 200
-    },
-    {
-      "route": "/casabelie/sobre/",
-      "status": 200
-    },
-    {
-      "route": "/casabelie/festas/",
-      "status": 200
-    },
-    {
-      "route": "/casabelie/espaco/",
-      "status": 200
-    },
-    {
-      "route": "/casabelie/blog/",
-      "status": 200
-    },
-    {
-      "route": "/casabelie/contato/",
-      "status": 200
-    },
-    {
-      "route": "/casabelie-2/",
-      "status": 200
-    },
-    {
-      "route": "/casabelie-2/sobre/",
-      "status": 200
-    },
-    {
-      "route": "/casabelie-2/festas/",
-      "status": 200
-    },
-    {
-      "route": "/casabelie-2/espaco/",
-      "status": 200
-    },
-    {
-      "route": "/casabelie-2/blog/",
-      "status": 200
-    },
-    {
-      "route": "/casabelie-2/blog/por-que-a-casa-belie-nao-tem-telas/",
-      "status": 200
-    },
-    {
-      "route": "/casabelie-2/contato/",
-      "status": 200
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "noindex": true
     }
   ],
-  "dashboard": {
-    "route": "/",
-    "unauthenticatedStatus": 401,
-    "authenticatedStatus": 200,
-    "projects": [
-      "rodeio",
-      "izigym",
-      "casabelie",
-      "casabelie-2"
-    ],
-    "clients": [
-      "rodeio",
-      "izigym",
-      "casabelie"
-    ],
-    "developmentSites": [
-      "rodeio",
-      "izigym",
-      "casabelie",
-      "casabelie-2"
-    ],
-    "officialSites": [
-      "https://rodeiosp.com.br/",
-      "https://www.izigym.com.br/",
-      "https://casabelie.com.br/"
-    ],
-    "registrySchemaVersion": "2.0.0"
+  "preflight": {
+    "allowedSlug": "rodeio",
+    "untouchedDevAssetsCompared": 432,
+    "differences": 0,
+    "liveBoundariesPreserved": true
   },
-  "notFoundStatus": 404,
-  "heroAndScroll": "passed",
-  "dns": {
-    "zone": "jumper.dev.br",
-    "cloudflareStatus": "active",
-    "currentNameservers": [
-      "alfred.ns.cloudflare.com",
-      "marge.ns.cloudflare.com"
-    ],
-    "requiredNameservers": [
-      "alfred.ns.cloudflare.com",
-      "marge.ns.cloudflare.com"
-    ]
-  },
-  "date": "2026-09-10T10:41:00.000Z",
-  "access": {
-    "dashboard": "password",
-    "clientSites": "public",
-    "sessionHours": 12
-  },
-  "migrationSources": {
-    "izigym": {
-      "previousProvider": "Vercel",
-      "previousDeployment": "dpl_6iVzKY6PyjrBRuVzsDA1kfttyxMD",
-      "sourceRepository": "https://github.com/jumper-lab/izigym",
-      "sourceCommit": "ccbb564"
-    },
-    "casabelie": "Vercel production dpl_2WmSNKtRWW4C9S14y9Yuw671KXij",
-    "casabelie-2": "Vercel production dpl_Ci3DrqUKHE7e9uP9UxCHNNNHY4i2"
-  },
-  "officialDeployments": {
-    "izigym": {
-      "canonicalUrl": "https://www.izigym.com.br/",
-      "apexRedirect": "https://izigym.com.br/ -> https://www.izigym.com.br/",
-      "provider": "cloudflare-workers-static-assets",
-      "worker": "jumper-hoster",
-      "indexing": "index"
-    }
-  },
-  "consolidation": {
-    "singleWorker": "jumper-hoster",
-    "removedStandaloneWorkers": [
-      "izigym"
-    ],
-    "verifiedAt": "2026-09-10T10:44:00.000Z"
-  }
+  "previousDevVersionId": "4e81e77d-a0e0-4e97-a6d6-74e0fc94baa0",
+  "maintenancePage": "https://site.jumper.dev.br/rodeio/em-breve/",
+  "maintenanceActiveOnHome": false,
+  "performanceReport": "data/visual-review/diretrizes-2026-10-02/performance-published/summary.json"
 }
