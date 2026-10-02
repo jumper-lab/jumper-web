@@ -1,0 +1,118 @@
+{
+  "date": "2026-10-02T20:44:07.469Z",
+  "format": "avif",
+  "quality": 68,
+  "loading": "lazy",
+  "aiUsed": false,
+  "newPhotos": 2,
+  "variants": 15,
+  "privateMastersPublished": false,
+  "images": [
+    {
+      "file": "home-arroz-rodeio-acervo-2024.B6yPQxjq_1ogs96.avif",
+      "width": 640,
+      "height": 640,
+      "bytes": 63344,
+      "publicMatchesBuild": true
+    },
+    {
+      "file": "home-arroz-rodeio-acervo-2024.B6yPQxjq_21NzRw.avif",
+      "width": 960,
+      "height": 960,
+      "bytes": 114864,
+      "publicMatchesBuild": true
+    },
+    {
+      "file": "home-arroz-rodeio-acervo-2024.B6yPQxjq_KIkpF.avif",
+      "width": 320,
+      "height": 320,
+      "bytes": 22520,
+      "publicMatchesBuild": true
+    },
+    {
+      "file": "home-arroz-rodeio-acervo-2024.B6yPQxjq_WsQec.avif",
+      "width": 480,
+      "height": 480,
+      "bytes": 41635,
+      "publicMatchesBuild": true
+    },
+    {
+      "file": "home-arroz-rodeio-acervo-2024.B6yPQxjq_Z1bv5lv.avif",
+      "width": 1600,
+      "height": 1600,
+      "bytes": 234964,
+      "publicMatchesBuild": true
+    },
+    {
+      "file": "home-arroz-rodeio-acervo-2024.B6yPQxjq_Z2mQRwP.avif",
+      "width": 768,
+      "height": 768,
+      "bytes": 82046,
+      "publicMatchesBuild": true
+    },
+    {
+      "file": "home-arroz-rodeio-acervo-2024.B6yPQxjq_ZDH02g.avif",
+      "width": 1200,
+      "height": 1200,
+      "bytes": 166891,
+      "publicMatchesBuild": true
+    },
+    {
+      "file": "home-picanha-fatiada-acervo-2024.L0fMOGxw_1wuS8k.avif",
+      "width": 320,
+      "height": 213,
+      "bytes": 9894,
+      "publicMatchesBuild": true
+    },
+    {
+      "file": "home-picanha-fatiada-acervo-2024.L0fMOGxw_2bmBe9.avif",
+      "width": 768,
+      "height": 512,
+      "bytes": 41522,
+      "publicMatchesBuild": true
+    },
+    {
+      "file": "home-picanha-fatiada-acervo-2024.L0fMOGxw_aYq5c.avif",
+      "width": 480,
+      "height": 320,
+      "bytes": 18826,
+      "publicMatchesBuild": true
+    },
+    {
+      "file": "home-picanha-fatiada-acervo-2024.L0fMOGxw_Z1lvS2k.avif",
+      "width": 1600,
+      "height": 1067,
+      "bytes": 143752,
+      "publicMatchesBuild": true
+    },
+    {
+      "file": "home-picanha-fatiada-acervo-2024.L0fMOGxw_Z1N6rNL.avif",
+      "width": 960,
+      "height": 640,
+      "bytes": 63099,
+      "publicMatchesBuild": true
+    },
+    {
+      "file": "home-picanha-fatiada-acervo-2024.L0fMOGxw_Z1tw2vG.avif",
+      "width": 1200,
+      "height": 800,
+      "bytes": 96883,
+      "publicMatchesBuild": true
+    },
+    {
+      "file": "home-picanha-fatiada-acervo-2024.L0fMOGxw_ZXiDqz.avif",
+      "width": 1920,
+      "height": 1280,
+      "bytes": 178874,
+      "publicMatchesBuild": true
+    },
+    {
+      "file": "home-picanha-fatiada-acervo-2024.L0fMOGxw_ZYMzaI.avif",
+      "width": 640,
+      "height": 427,
+      "bytes": 30480,
+      "publicMatchesBuild": true
+    }
+  ],
+  "publicAvifFilesVerified": 15
+}
