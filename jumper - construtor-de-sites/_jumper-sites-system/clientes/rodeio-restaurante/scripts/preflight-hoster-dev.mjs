@@ -202,7 +202,7 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
       process.exitCode = 1;
     } else {
       console.log(allowedSlug === null
-        ? 'Preflight dev aprovado: todos os sete sites preservados. Nenhum deploy foi feito.'
+        ? `Preflight dev aprovado: todos os ${developmentSlugs.length} sites preservados. Nenhum deploy foi feito.`
         : `Preflight dev aprovado somente para ${allowedSlug}. Nenhum deploy foi feito.`);
     }
   } catch (error) {

@@ -1,0 +1,7 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { href } from '../lib/site';
+---
+<SiteLayout title="Página não encontrada" description="Esse caminho não foi encontrado. Volte ao início ou encontre sua próxima pausa no cardápio da Haddock Lobo." noindex>
+  <section class="not-found hero"><div class="container"><p class="eyebrow">404 / Esse caminho mudou</p><h1>A PAUSA ESTÁ<br/>LOGO ALI.</h1><p>Não encontramos esta página. Mas o seu próximo favorito continua por aqui.</p><div class="hero-actions"><a class="button" href={href('/')}>Voltar ao início</a><a class="text-link" href={href('/menu/')}>Abrir o cardápio</a></div></div></section>
+</SiteLayout>

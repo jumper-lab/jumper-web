@@ -12,6 +12,7 @@ export const developmentSlugs = Object.freeze([
   'casabelie',
   'casabelie-2',
   'casabelie-3',
+  'pao-de-queijo-haddock-lobo',
 ]);
 
 export function isDevelopmentRequest(url) {

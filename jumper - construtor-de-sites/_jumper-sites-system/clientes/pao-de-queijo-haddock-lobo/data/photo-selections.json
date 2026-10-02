@@ -1,0 +1,16 @@
+{
+  "hero-pao": {"id":"agosto-54","alt":"Cesta de pães de queijo da Haddock Lobo, sobre o papel listrado azul da marca"},
+  "pao-na-cesta": {"id":"junho-07","alt":"Pães de queijo em uma cesta azul na mesa da cafeteria"},
+  "cafe": {"id":"agosto-50","alt":"Xícara de cappuccino sobre a mesa de madeira"},
+  "bolo": {"id":"agosto-49","alt":"Bolo de cenoura com cobertura de chocolate, acompanhado de café"},
+  "coxinha": {"id":"junho-02","alt":"Coxinhas douradas em uma travessa de madeira"},
+  "quindim": {"id":"junho-10","alt":"Quindins da Haddock Lobo em prato azul e embalagens listradas"},
+  "torta": {"id":"junho-12","alt":"Fatia de torta salgada em um prato claro com talheres"},
+  "sanduiche": {"id":"agosto-35","alt":"Sanduíche de pão de queijo em prato azul, com xícara de café ao fundo"},
+  "em-casa": {"id":"junho-01","alt":"Embalagens de pão de queijo congelado da Haddock Lobo"},
+  "mesa": {"id":"junho-23","alt":"Mesa com pães de queijo, doces, salgados e cafés da Haddock Lobo"},
+  "doces": {"id":"junho-24","alt":"Brigadeiros e doces apresentados em uma mesa da Haddock Lobo"},
+  "quindao-campanha": {"id":"maio-01","alt":"Quindão e caixas da campanha de Dia das Mães da Haddock Lobo"},
+  "bebidas": {"source":"briefing/entrada/site-atual/bebidas.jpg","source_url":"https://paodequeijohaddocklobo.com.br/wp-content/uploads/2025/03/bebidas.jpeg","alt":"Café no copo da Haddock Lobo acompanhado de pães de queijo em prato azul"},
+  "smoothies": {"source":"briefing/entrada/site-atual/smoothies.jpg","source_url":"https://paodequeijohaddocklobo.com.br/wp-content/uploads/2024/04/selvs.jpeg","alt":"Copos de smoothie rosado sobre a mesa, fotografia do cardápio oficial"}
+}

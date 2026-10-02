@@ -1,0 +1,32 @@
+[
+  {
+    "font": "aleo-italic",
+    "original_bytes": 75944,
+    "woff2_bytes": 27968,
+    "glyphs_preserved": 675
+  },
+  {
+    "font": "din-condensed-bold",
+    "original_bytes": 81704,
+    "woff2_bytes": 23868,
+    "glyphs_preserved": 255
+  },
+  {
+    "font": "poppins-bold",
+    "original_bytes": 153944,
+    "woff2_bytes": 50608,
+    "glyphs_preserved": 1059
+  },
+  {
+    "font": "poppins-medium",
+    "original_bytes": 156520,
+    "woff2_bytes": 50488,
+    "glyphs_preserved": 1059
+  },
+  {
+    "font": "poppins-regular",
+    "original_bytes": 158240,
+    "woff2_bytes": 51048,
+    "glyphs_preserved": 1059
+  }
+]

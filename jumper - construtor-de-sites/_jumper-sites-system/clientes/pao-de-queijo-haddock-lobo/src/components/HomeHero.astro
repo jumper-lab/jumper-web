@@ -1,0 +1,39 @@
+---
+import Photo from './Photo.astro';
+import Icon from './Icon.astro';
+import { href, imageData } from '../lib/site';
+const scenes=[
+  {image:'hero-pao',label:'O clássico da casa',name:'Pão de queijo'},
+  {image:'cafe',label:'O tempo de um café',name:'Café da pausa'},
+  {image:'mesa',label:'Uma mesa. Muitos encontros.',name:'Mesa de favoritos'}
+];
+const first=imageData(scenes[0].image);
+---
+<section class="home-hero immersive-hero" id="home" aria-labelledby="home-title" data-slideshow>
+  <div class="hero-gallery">
+    {scenes.map((scene,index)=>{
+      const photo=imageData(scene.image);
+      return <figure class:list={['hero-slide',`hero-slide-${index+1}`,{'is-active':index===0}]} data-scene={index} data-scene-full={photo.full} aria-hidden={index!==0}>
+        {index===0 ? <Photo name={scene.image} priority sizes="100vw"/> : <img class="photo" data-src={photo.src} data-srcset={photo.srcset} sizes="100vw" alt={photo.alt} width={photo.width} height={photo.height} decoding="async"/>}
+      </figure>;
+    })}
+  </div>
+  <div class="hero-light-shield" aria-hidden="true"></div>
+  <div class="immersive-copy">
+    <p class="eyebrow immersive-kicker">Desde 1968, boas pausas</p>
+    <h1 class="immersive-title" id="home-title"><span class="hero-line"><span>O CLÁSSICO.</span></span><span class="hero-line"><span>TODO DIA.</span></span></h1>
+    <div class="immersive-support"><p>O pão de queijo da Haddock Lobo.<br/>Uma pausa que faz parte do seu dia.</p><span class="handwritten">pode chegar. a pausa é sua.</span></div>
+    <div class="immersive-actions"><a class="button hero-primary" href={href('/lojas/')}>Escolher uma loja</a><a class="text-link" href={href('/menu/')}>Ver o cardápio</a></div>
+  </div>
+  <div class="hero-edition" aria-hidden="true"><span class="edition-line"></span><span>Uma pausa com história.</span></div>
+  <div class="hero-bottom">
+    <div class="scene-caption"><span data-scene-number>01</span><span class="scene-caption-line"></span><span data-scene-caption>{scenes[0].label}</span></div>
+    <div class="hero-controls" data-hero-controls>
+      <div class="scene-selectors" role="group" aria-label="Escolher fotografia do slideshow">{scenes.map((scene,index)=><button type="button" class:list={['scene-selector',{'is-selected':index===0}]} data-scene-select={index} data-scene-label={scene.label} aria-label={`Mostrar foto ${index+1}: ${scene.name}`} aria-pressed={index===0}><span aria-hidden="true">0{index+1}</span><span class="scene-timer" aria-hidden="true"><span></span></span></button>)}</div>
+      <button type="button" class="slideshow-pause" data-slideshow-pause aria-label="Pausar slideshow" aria-pressed="false"><span class="playback-mark" aria-hidden="true"><i></i><i></i></span></button>
+      <button class="hero-detail" type="button" data-zoom-src={first.full} data-zoom-alt={first.alt} data-zoom-caption="O pão de queijo da Haddock Lobo" aria-label="Ampliar a foto da cesta de pães de queijo"><Icon name="plus" size={18}/></button>
+    </div>
+  </div>
+  <p class="sr-only" data-slideshow-status aria-live="polite"></p>
+</section>
+<div class="brand-proof"><span><strong>1968</strong> O começo de tudo</span><span><strong>+ 3.000</strong> pães de queijo por dia</span><a href={href('/lojas/')}><strong>5 lojas</strong> São Paulo & Rio</a></div>

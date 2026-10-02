@@ -1,0 +1,628 @@
+{
+  "schema_version": "3.0.0",
+  "status": "ready_for_preview",
+  "client": "Pão de Queijo Haddock Lobo",
+  "language": "pt-BR",
+  "source": [
+    "briefing/briefing-payload.json",
+    "Decisões e OK do usuário em 01/10/2026",
+    "briefing/entrada/site-atual/home.html",
+    "briefing/entrada/site-atual/menu.html"
+  ],
+  "voice": "Acolhedora, curta, paulistana e direta. A tradição é factual; o convite é leve.",
+  "facts_from_briefing": {
+    "business": "Cafeteria com origem na Haddock Lobo",
+    "since": 1968,
+    "origin": "Primeira loja na Rua Haddock Lobo",
+    "service": "Balcão ou mesa, conforme unidade",
+    "daily_cheese_breads": ">3000",
+    "daily_claim_authority": "Usuário confirmou a manutenção em 01/10/2026"
+  },
+  "home": {
+    "eyebrow": "Pão de queijo Haddock Lobo · desde 1968",
+    "hero_title": "O CLÁSSICO. TODO DIA.",
+    "hero_description": "O pão de queijo da Haddock Lobo. Uma pausa que faz parte do seu dia.",
+    "history_title": "Uma pausa que atravessa gerações.",
+    "history_text": "Tudo começou na Rua Haddock Lobo, nos Jardins, em 1968. De lá para cá, o pão de queijo ganhou companhia: cafés, salgados e doces que fazem parte das pausas da cidade.",
+    "events_title": "Seu evento. Nosso clássico."
+  },
+  "conversion": {
+    "public_email": "paodequeijo@paodequeijohaddocklobo.com.br",
+    "event_whatsapp": "5511943286072",
+    "event_whatsapp_href": "https://api.whatsapp.com/send?phone=5511943286072&text=Ol%C3%A1%21%20Quero%20saber%20sobre%20o%20carrinho%20da%20Haddock%20Lobo%20para%20meu%20evento.",
+    "contact_form_destination": null,
+    "permission": "Canais publicamente apresentados no site oficial, fonte autorizada pelo usuário. E-mail privado do briefing não publicado."
+  },
+  "locations": [
+    {
+      "id": "haddock",
+      "name": "Haddock Lobo",
+      "city": "São Paulo",
+      "region": "sp",
+      "neighborhood": "Jardins",
+      "address": "Rua Haddock Lobo, 1408",
+      "detail": "Jardins · São Paulo, SP · 01414-002",
+      "phone": "(11) 3088-3087",
+      "tel": "+551130883087",
+      "image": "loja-haddock",
+      "map": "https://maps.app.goo.gl/ELxF6oLZ7Q6kkW3k8",
+      "description": "A loja onde a nossa história começou."
+    },
+    {
+      "id": "iguatemi",
+      "name": "Shopping Iguatemi",
+      "city": "São Paulo",
+      "region": "sp",
+      "neighborhood": "Jardim Paulistano",
+      "address": "Av. Brigadeiro Faria Lima, 2232",
+      "detail": "Jardim Paulistano · São Paulo, SP · 01451-000",
+      "phone": "(11) 91129-1600",
+      "tel": "+5511911291600",
+      "image": "loja-iguatemi",
+      "map": "https://maps.app.goo.gl/ipoXwvjRKomN1yjm9",
+      "description": "Uma pausa entre os caminhos do seu dia."
+    },
+    {
+      "id": "higienopolis",
+      "name": "Shopping Pátio Higienópolis",
+      "city": "São Paulo",
+      "region": "sp",
+      "neighborhood": "Higienópolis",
+      "address": "Av. Higienópolis, 618",
+      "detail": "Higienópolis · São Paulo, SP · 01238-000",
+      "phone": "(11) 96900-1600",
+      "tel": "+5511969001600",
+      "image": "loja-higienopolis",
+      "map": "https://maps.app.goo.gl/VZfT5Ss51VXMQUtZ9",
+      "description": "Nosso clássico também tem endereço em Higienópolis."
+    },
+    {
+      "id": "sirio",
+      "name": "Hospital Sírio-Libanês",
+      "city": "São Paulo",
+      "region": "sp",
+      "neighborhood": "Hospital Sírio-Libanês",
+      "address": "Unidade Hospital Sírio-Libanês",
+      "detail": "São Paulo, SP",
+      "phone": "(11) 91837-1600",
+      "tel": "+5511918371600",
+      "image": "loja-sirio",
+      "map": "https://www.google.com/maps/search/?api=1&query=Hospital+Sirio+Libanes+Sao+Paulo",
+      "description": "Um lugar para fazer uma pausa.",
+      "address_note": "O site oficial não especifica o endereço interno. Telefone da unidade disponível."
+    },
+    {
+      "id": "leblon",
+      "name": "Shopping Leblon",
+      "city": "Rio de Janeiro",
+      "region": "rj",
+      "neighborhood": "Leblon",
+      "address": "Av. Afrânio de Melo Franco, 290 · piso L1",
+      "detail": "Leblon · Rio de Janeiro, RJ · 22430-060",
+      "phone": "(21) 99723-8554",
+      "tel": "+5521997238554",
+      "image": "loja-leblon",
+      "map": "https://www.google.com/maps/search/?api=1&query=Shopping+Leblon+Av+Afranio+de+Melo+Franco+290",
+      "description": "Da Haddock Lobo para uma pausa no Rio."
+    }
+  ],
+  "opening_hours": null,
+  "menu": {
+    "categories": [
+      {
+        "id": "salgados",
+        "name": "Salgados",
+        "image": "coxinha",
+        "intro": "O pão de queijo da casa e os companheiros de balcão.",
+        "items": [
+          {
+            "name": "Pão de queijo",
+            "price": 15,
+            "description": ""
+          },
+          {
+            "name": "Pão de queijo vegano",
+            "price": 48,
+            "description": "Mini · 12 unidades"
+          },
+          {
+            "name": "Pão de queijo na chapa",
+            "price": 20,
+            "description": ""
+          },
+          {
+            "name": "Pão francês na chapa",
+            "price": 20,
+            "description": ""
+          },
+          {
+            "name": "Manteiga ou requeijão",
+            "price": 5,
+            "description": "Adicional"
+          },
+          {
+            "name": "Geleia",
+            "price": 8,
+            "description": "Adicional"
+          },
+          {
+            "name": "Broa",
+            "price": 17,
+            "description": ""
+          },
+          {
+            "name": "Coxinha",
+            "price": 20,
+            "description": ""
+          },
+          {
+            "name": "Risoles",
+            "price": 20,
+            "description": ""
+          },
+          {
+            "name": "Croquete",
+            "price": 22,
+            "description": ""
+          },
+          {
+            "name": "Empada de frango",
+            "price": 20,
+            "description": ""
+          },
+          {
+            "name": "Empada de palmito",
+            "price": 20,
+            "description": ""
+          },
+          {
+            "name": "Empada de queijo",
+            "price": 20,
+            "description": ""
+          },
+          {
+            "name": "Empada de camarão",
+            "price": 26,
+            "description": ""
+          },
+          {
+            "name": "Empadas mini",
+            "price": 32,
+            "description": "9 unidades"
+          },
+          {
+            "name": "Coxinhas mini",
+            "price": 32,
+            "description": "9 unidades"
+          },
+          {
+            "name": "Placa de pão de queijo com mix de sementes",
+            "price": 28,
+            "description": ""
+          }
+        ]
+      },
+      {
+        "id": "tortas",
+        "name": "Tortas & saladas",
+        "image": "torta",
+        "intro": "Para esticar a pausa e sentar à mesa.",
+        "items": [
+          {
+            "name": "Fatia de torta de frango",
+            "price": 45,
+            "description": ""
+          },
+          {
+            "name": "Fatia de torta de palmito",
+            "price": 45,
+            "description": ""
+          },
+          {
+            "name": "Fatia de torta de espinafre com queijo de cabra",
+            "price": 45,
+            "description": ""
+          },
+          {
+            "name": "Fatia de torta de cebola",
+            "price": 45,
+            "description": ""
+          },
+          {
+            "name": "Fatia de torta + salada mix",
+            "price": 58,
+            "description": ""
+          },
+          {
+            "name": "Salada mix",
+            "price": 20,
+            "description": "Folhas verdes, cenoura, tomate cereja, molho mostarda e mel"
+          },
+          {
+            "name": "Salada mediterrânea com burrata",
+            "price": 50,
+            "description": "Mix de folhas, burrata, tomate cereja fresco, figo, noz pecan, molho mostarda e mel"
+          }
+        ]
+      },
+      {
+        "id": "sanduiches",
+        "name": "Sanduíches",
+        "image": "sanduiche",
+        "intro": "Combinações para acompanhar o seu dia.",
+        "items": [
+          {
+            "name": "Sanduíche caprese",
+            "price": 48,
+            "description": "Pão baguete, rúcula, burrata, tomate e pesto"
+          },
+          {
+            "name": "Sanduíche de frango e alface",
+            "price": 42,
+            "description": "Pão branco, frango, alface e maionese"
+          },
+          {
+            "name": "Sanduíche de peru",
+            "price": 42,
+            "description": "Pão branco, peru e maionese"
+          },
+          {
+            "name": "Sanduíche de frango e cenoura",
+            "price": 42,
+            "description": "Pão integral, frango, maionese, cenoura e passas"
+          },
+          {
+            "name": "Sanduíche de peru com rúcula",
+            "price": 42,
+            "description": "Pão integral, peru, rúcula, tomate e maionese"
+          },
+          {
+            "name": "Sanduíche de atum",
+            "price": 42,
+            "description": "Pão integral, atum, maionese e alface"
+          },
+          {
+            "name": "Sanduíche de rosbife",
+            "price": 42,
+            "description": "Pão integral, rosbife, queijo, alface e maionese"
+          },
+          {
+            "name": "Sanduíche de ricota",
+            "price": 42,
+            "description": "Pão integral sem maionese, ricota e espinafre"
+          },
+          {
+            "name": "Sanduíche de salmão",
+            "price": 46,
+            "description": "Pão integral sem maionese, salmão defumado com cream cheese e dill"
+          },
+          {
+            "name": "Misto quente",
+            "price": 29.5,
+            "description": ""
+          }
+        ]
+      },
+      {
+        "id": "doces",
+        "name": "Doces",
+        "image": "quindim",
+        "intro": "A última mordida também merece ser a favorita.",
+        "items": [
+          {
+            "name": "Quindim",
+            "price": 22,
+            "description": "Unidade"
+          },
+          {
+            "name": "Torta de limão mini",
+            "price": 24,
+            "description": ""
+          },
+          {
+            "name": "Torta de limão pequena",
+            "price": 38,
+            "description": ""
+          },
+          {
+            "name": "Pão de mel",
+            "price": 18,
+            "description": ""
+          },
+          {
+            "name": "Pão de mel grande",
+            "price": 27,
+            "description": "Recheado com doce de leite"
+          },
+          {
+            "name": "Bombocado",
+            "price": 20,
+            "description": "Unidade"
+          },
+          {
+            "name": "Bombocado",
+            "price": 56,
+            "description": "Caixa · 6 ou 15 unidades, conforme cardápio vigente"
+          },
+          {
+            "name": "Bala de ovo ou chocolate",
+            "price": 18,
+            "description": ""
+          },
+          {
+            "name": "Bem-casado",
+            "price": 18,
+            "description": ""
+          },
+          {
+            "name": "Wafer",
+            "price": 18,
+            "description": ""
+          },
+          {
+            "name": "Palha italiana",
+            "price": 18,
+            "description": ""
+          },
+          {
+            "name": "Brigadeiro",
+            "price": 18,
+            "description": ""
+          },
+          {
+            "name": "Fatia de bolo de cenoura",
+            "price": 32,
+            "description": "Com calda de chocolate"
+          },
+          {
+            "name": "Fatia de bolo de chocolate",
+            "price": 28,
+            "description": "Com calda de chocolate"
+          },
+          {
+            "name": "Salada de fruta",
+            "price": 34,
+            "description": ""
+          }
+        ]
+      },
+      {
+        "id": "cafes",
+        "name": "Cafés",
+        "image": "cafe",
+        "intro": "Uma xícara, um pão de queijo e um tempo para você.",
+        "items": [
+          {
+            "name": "Café espresso Illy",
+            "price": 13,
+            "description": ""
+          },
+          {
+            "name": "Espresso",
+            "price": 12,
+            "description": ""
+          },
+          {
+            "name": "Espresso duplo",
+            "price": 18,
+            "description": ""
+          },
+          {
+            "name": "Cappuccino",
+            "price": 12,
+            "description": ""
+          },
+          {
+            "name": "Cappuccino grande",
+            "price": 18,
+            "description": ""
+          },
+          {
+            "name": "Illycrema",
+            "price": 25,
+            "description": ""
+          },
+          {
+            "name": "Chocolate pequeno",
+            "price": 12,
+            "description": ""
+          },
+          {
+            "name": "Chocolate grande",
+            "price": 18,
+            "description": ""
+          },
+          {
+            "name": "Chá do dia",
+            "price": 18,
+            "description": ""
+          },
+          {
+            "name": "Leite vegano",
+            "price": 4,
+            "description": "Adicional"
+          }
+        ]
+      },
+      {
+        "id": "bebidas",
+        "name": "Bebidas",
+        "image": "bebidas",
+        "intro": "Para refrescar a pausa.",
+        "items": [
+          {
+            "name": "Água Prata",
+            "price": 10,
+            "description": "370 ml"
+          },
+          {
+            "name": "Água na caixa",
+            "price": 12,
+            "description": "330 ml"
+          },
+          {
+            "name": "Água São Lourenço",
+            "price": 10,
+            "description": "330 ml"
+          },
+          {
+            "name": "Água com gás São Lourenço",
+            "price": 10,
+            "description": "330 ml"
+          },
+          {
+            "name": "Acqua Panna",
+            "price": 23,
+            "description": "250 ml"
+          },
+          {
+            "name": "Água San Pellegrino",
+            "price": 23,
+            "description": "250 ml"
+          },
+          {
+            "name": "Água de coco Vero",
+            "price": 21,
+            "description": ""
+          },
+          {
+            "name": "Suco Villa Piva",
+            "price": 22,
+            "description": "300 ml"
+          },
+          {
+            "name": "Refrigerante",
+            "price": 14,
+            "description": "350 ml"
+          }
+        ]
+      },
+      {
+        "id": "smoothies",
+        "name": "Smoothies",
+        "image": "smoothies",
+        "intro": "As opções veganas do cardápio.",
+        "items": [
+          {
+            "name": "Cacau Energy vegano",
+            "price": 24,
+            "description": "Leite vegetal com cacau e ultracoffee"
+          },
+          {
+            "name": "Baunilha Power vegano",
+            "price": 24,
+            "description": "Leite de aveia, baunilha, banana e morango"
+          }
+        ]
+      },
+      {
+        "id": "em-casa",
+        "name": "Pão de queijo em casa",
+        "image": "em-casa",
+        "intro": "Leve a pausa com você. Consulte a unidade para encomendas.",
+        "items": [
+          {
+            "name": "Pão de queijo congelado · 1 kg",
+            "price": 120,
+            "description": "40 unidades de 25 g"
+          },
+          {
+            "name": "Pão de queijo congelado · 1 kg",
+            "price": 120,
+            "description": "20 unidades de 50 g"
+          },
+          {
+            "name": "Massa de pão de queijo vegano · 500 g",
+            "price": 60,
+            "description": "25 unidades de 20 g"
+          },
+          {
+            "name": "Torta de frango · 600 g",
+            "price": 120,
+            "description": ""
+          },
+          {
+            "name": "Torta de palmito · 1,4 kg",
+            "price": 156,
+            "description": ""
+          },
+          {
+            "name": "Quindim",
+            "price": 62,
+            "description": "Caixa · 6 ou 15 unidades, conforme cardápio vigente"
+          },
+          {
+            "name": "Quindim",
+            "price": 42,
+            "description": "8 unidades"
+          },
+          {
+            "name": "Quindão · 400 g",
+            "price": 82,
+            "description": ""
+          },
+          {
+            "name": "Quindão · 600 g",
+            "price": 126,
+            "description": ""
+          },
+          {
+            "name": "Quindão · 900 g",
+            "price": 192,
+            "description": ""
+          },
+          {
+            "name": "Quindão · 1,2 kg",
+            "price": 260,
+            "description": ""
+          },
+          {
+            "name": "Torta de limão · 300 g",
+            "price": 42,
+            "description": ""
+          },
+          {
+            "name": "Torta de limão · 1 kg",
+            "price": 300,
+            "description": ""
+          }
+        ]
+      }
+    ],
+    "source_url": "https://paodequeijohaddocklobo.com.br/menu/",
+    "captured_at": "2026-10-01",
+    "note": "Preços e disponibilidade podem variar entre unidades. Consulte a loja.",
+    "item_count": 83,
+    "editorial_actions": [
+      "Duplicações literais de atum e peru com rúcula unificadas, preservando descrição e preço.",
+      "Grafias padronizadas para cappuccino e wafer.",
+      "Torta de 2,6 kg/R$330 não exibida: a fonte mistura espinafre/queijo de cabra/cebola e não estabelece o sabor de forma inequívoca. O dado original permanece no snapshot."
+    ]
+  },
+  "delivery": {
+    "ifood_url": "https://www.ifood.com.br/delivery/sao-paulo-sp/pao-de-queijo-haddock-lobo-cerqueira-cesar/f9758a28-0033-404e-b62e-06bccaa4a6ac",
+    "rappi_url": "https://www.rappi.com.br/restaurantes/900016401-pao-de-queijo-haddock-lobo"
+  },
+  "instagram": "https://www.instagram.com/paodequeijohaddocklobo/",
+  "event_cart": {
+    "requested": true,
+    "description": "Carrinho itinerante de pão de queijo para festas e eventos, conforme o site oficial.",
+    "image": "carrinho"
+  },
+  "testimonials": [],
+  "blog": {
+    "enabled": false
+  },
+  "gallery_items": [
+    "pao-na-cesta",
+    "cafe",
+    "coxinha",
+    "quindim",
+    "torta",
+    "sanduiche",
+    "bolo",
+    "doces",
+    "em-casa"
+  ],
+  "publication_status": "preview_before_review_and_publication"
+}

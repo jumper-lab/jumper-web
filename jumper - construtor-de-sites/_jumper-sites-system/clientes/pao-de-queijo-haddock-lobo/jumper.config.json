@@ -1,0 +1,226 @@
+{
+  "schema_version": "3.0.0",
+  "client_name": "Pão de Queijo Haddock Lobo",
+  "client_slug": "pao-de-queijo-haddock-lobo",
+  "model": "M5",
+  "model_description": "Reformulação de site institucional existente",
+  "personality": "A",
+  "personality_name": "Acolhedor e familiar",
+  "engine": "ds-autoral",
+  "framework": "astro",
+  "output_mode": "static",
+  "build_command": "npm run build",
+  "dev_command": "npm run dev",
+  "preview_command": "npm run preview",
+  "intake_status": "construction_approved_2026_10_01",
+  "preview_url": "http://127.0.0.1:4327/",
+  "official_url": "https://paodequeijohaddocklobo.com.br/",
+  "publication_status": "hub_preview_approved_pending_deploy",
+  "hub_publication": {
+    "approved_at": "2026-10-02",
+    "approval_evidence": "pode subir o site para o nosso hub; nao se esqueça de colocar tambem o link do site oficial no hub",
+    "scope": "Publicar a versão atual no jumper-hoster-dev e incluir no hub protegido os links de desenvolvimento e do site oficial existente, sem substituir o oficial.",
+    "preview_url": "https://site.jumper.dev.br/pao-de-queijo-haddock-lobo/",
+    "official_site_change": "not_authorized",
+    "contact_delivery": "pending_service_and_recipient_confirmation"
+  },
+  "gate_budget": {
+    "max_image_kb": 400,
+    "max_font_files": 5,
+    "max_video_mb": 5
+  },
+  "site": {
+    "model": "M5",
+    "engine": "ds-autoral",
+    "reformulation": {
+      "existing_site_url": "https://paodequeijohaddocklobo.com.br/",
+      "scope_status": "approved",
+      "approved_by": "Usuário responsável pelo projeto, nesta conversa",
+      "approved_at": "2026-10-01",
+      "approval_evidence": "Após proposta de quatro páginas e pedido de OK, o usuário respondeu: 'Ok. faça o seu melhor use o processo do construtor de site e faça o melhor site possivel para o cliente'. Autoriza construir e preparar preview, com revisão antes de publicação.",
+      "pages": [
+        {
+          "path": "/",
+          "purpose": "Home: produto, tradição, vitrine, cinco lojas, carrinho de eventos, delivery e contato."
+        },
+        {
+          "path": "/sobre/",
+          "purpose": "História própria da marca, baseada em 1968, na loja original e em fotos reais."
+        },
+        {
+          "path": "/lojas/",
+          "purpose": "As cinco unidades atuais, filtro São Paulo/Rio, telefones e rotas, sem horários inventados."
+        },
+        {
+          "path": "/menu/",
+          "purpose": "Cardápio navegável com 83 itens/adicionais comprovados, oito categorias, busca e preços do snapshot autorizado. Sem pedidos próprios."
+        }
+      ],
+      "features": [
+        {
+          "name": "Navegação acessível",
+          "acceptance": "Quatro rotas, menu mobile, Escape, retorno de foco, skip-link, estados ativos e 404."
+        },
+        {
+          "name": "Cardápio pesquisável",
+          "acceptance": "Busca sem acentos, categorias, contador e estado vazio. Dados acessíveis sem JavaScript."
+        },
+        {
+          "name": "Lojas e rotas",
+          "acceptance": "Cinco unidades, seletor Home, filtro de cidades em Lojas, telefones tel e mapa correspondente, com Sírio corrigido."
+        },
+        {
+          "name": "Contatos e delivery",
+          "acceptance": "Telefone/Instagram/eventos/delivery oficiais preservados. Home com formulário Nome/E-mail/Mensagem e validação acessível, na identidade. Envio real exige serviço/destinatário confirmados; até configuração, ação desativada e pendência explícita, sem simulação."
+        },
+        {
+          "name": "Galeria real",
+          "acceptance": "Fotos selecionadas dos anexos e do próprio site, responsivas, identificadas e ampliáveis por diálogo acessível."
+        }
+      ],
+      "inventory": [
+        {
+          "item": "Marca e tradição desde 1968",
+          "action": "keep",
+          "reason": "Manual oficial, logo, briefing e fonte atual; identidade reconhecível."
+        },
+        {
+          "item": "Home e textos densos",
+          "action": "replace",
+          "reason": "Nova composição editorial e copy concisa, fatos conservados."
+        },
+        {
+          "item": "Cardápio /menu/",
+          "action": "update",
+          "reason": "Categorias claras, busca, legibilidade mobile, retirada de duplicações e preservação de preços."
+        },
+        {
+          "item": "Cinco lojas e imagens",
+          "action": "keep",
+          "reason": "Usuário designou #loja como fonte."
+        },
+        {
+          "item": "Mapa do Hospital Sírio-Libanês",
+          "action": "replace",
+          "reason": "Fonte reutiliza mapa de Higienópolis; novo destino pesquisa o hospital nominalmente."
+        },
+        {
+          "item": "Carrinho, iFood, Rappi, Instagram e e-mail",
+          "action": "update",
+          "reason": "Links existentes mantidos; e-mail corrigido para mailto."
+        },
+        {
+          "item": "Formulário antigo de contato",
+          "action": "replace",
+          "reason": "Contato direto pelos canais oficiais; nenhum endpoint de envio foi entregue."
+        },
+        {
+          "item": "Número antigo de 1.000 pães/dia",
+          "action": "replace",
+          "reason": "Usuário autorizou mais de 3.000/dia."
+        },
+        {
+          "item": "Blog, reservas, e-commerce e admin",
+          "action": "remove",
+          "reason": "Não solicitados; não compõem o escopo M5 aprovado."
+        }
+      ],
+      "url_map": [
+        {
+          "from": "/",
+          "action": "keep",
+          "to": "/",
+          "reason": "Home preservada."
+        },
+        {
+          "from": "/menu/",
+          "action": "keep",
+          "to": "/menu/",
+          "reason": "Endereço existente do cardápio conservado."
+        },
+        {
+          "from": "/#home",
+          "action": "keep",
+          "to": "/#home",
+          "reason": "Âncora existente."
+        },
+        {
+          "from": "/#sobre",
+          "action": "keep",
+          "to": "/#sobre",
+          "reason": "Resumo da história na Home, além da página nova."
+        },
+        {
+          "from": "/#loja",
+          "action": "keep",
+          "to": "/#loja",
+          "reason": "Localizador na Home."
+        },
+        {
+          "from": "/#contatos",
+          "action": "keep",
+          "to": "/#contatos",
+          "reason": "Contato público no rodapé."
+        },
+        {
+          "from": "/menu/#salgados",
+          "action": "keep",
+          "to": "/menu/#salgados",
+          "reason": "Categoria existente conservada."
+        },
+        {
+          "from": "/menu/#tortas",
+          "action": "keep",
+          "to": "/menu/#tortas",
+          "reason": "Categoria existente conservada."
+        },
+        {
+          "from": "/menu/#sanduiches",
+          "action": "keep",
+          "to": "/menu/#sanduiches",
+          "reason": "Categoria existente conservada."
+        },
+        {
+          "from": "/menu/#doces",
+          "action": "keep",
+          "to": "/menu/#doces",
+          "reason": "Categoria existente conservada."
+        },
+        {
+          "from": "/menu/#cafes",
+          "action": "keep",
+          "to": "/menu/#cafes",
+          "reason": "Categoria existente conservada."
+        },
+        {
+          "from": "/menu/#bebidas",
+          "action": "keep",
+          "to": "/menu/#bebidas",
+          "reason": "Categoria existente conservada."
+        },
+        {
+          "from": "/menu/#sopa",
+          "action": "redirect",
+          "to": "/menu/#tortas",
+          "reason": "Origem não especifica produtos de sopa com preço; alias preservado sem inventar catálogo."
+        },
+        {
+          "from": "/menu/#colageno",
+          "action": "redirect",
+          "to": "/menu/#bebidas",
+          "reason": "Origem não apresenta produtos com colágeno identificáveis; direcionar a bebidas sem inventar ingredientes."
+        }
+      ],
+      "backup_plan": "Construção em pasta isolada. Arquivos locais anteriores preservados em briefing/entrada/estado-pre-construcao-2026-10-01.tar.gz; HTML de Home/Menu e fotos públicas preservados em briefing/entrada/site-atual. ZIPs brutos nos caminhos originais, manifest com SHA-256. Nenhuma substituição pública neste escopo. Backup completo de WordPress, banco, uploads e configuração do host é obrigatório antes de uma futura virada, ainda não autorizada.",
+      "rollback_plan": "Preview local é independente do site oficial. Para recuperar os artefatos anteriores, validar tar e extrair em diretório temporário, conferir hashes e aplicar apenas os arquivos necessários. A virada oficial dependerá de acesso ao host e teste de restauração de WordPress; não usar o snapshot HTML como se fosse um backup do banco."
+    }
+  },
+  "contact_form_revision": {
+    "requested_by": "Usuário responsável nesta conversa",
+    "requested_at": "2026-10-02",
+    "approval_evidence": "aqui em vez de abrir o email pode ser campos para preenchimento com nome email e mensagem. tudo na identidade do site",
+    "frontend": "approved",
+    "delivery": "pending_service_and_recipient_confirmation",
+    "account_creation_or_publication": "not_authorized"
+  }
+}

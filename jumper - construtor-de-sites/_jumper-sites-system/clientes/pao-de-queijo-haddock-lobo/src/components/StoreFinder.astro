@@ -1,0 +1,23 @@
+---
+import { content, href } from '../lib/site';
+import Photo from './Photo.astro';
+import Icon from './Icon.astro';
+---
+<section class="store-section section-space" id="loja" aria-labelledby="store-heading">
+  <div class="container">
+    <div class="section-heading"><div><p class="eyebrow">03 / Perto de você</p><h2 id="store-heading">A SUA PRÓXIMA<br/>PAUSA TEM ENDEREÇO.</h2></div><a class="text-link" href={href('/lojas/')}>Conhecer todas as lojas</a></div>
+    <div class="store-finder" data-store-finder>
+      <div class="store-tabs" role="tablist" aria-label="Escolha uma unidade" aria-orientation="vertical">
+        {content.locations.map((store, index) => <button type="button" class:list={['store-tab', {'is-selected':index===0}]} role="tab" id={`tab-${store.id}`} aria-controls={`panel-${store.id}`} aria-selected={index===0 ? 'true':'false'} tabindex={index===0 ? 0:-1} data-store-id={store.id}><span class="store-number">0{index+1}</span><span><strong>{store.name}</strong><small>{store.city}</small></span></button>)}
+      </div>
+      <div class="store-panels">
+        <p id="store-swipe-help" class="mobile-swipe-note store-swipe-note" data-store-swipe-note hidden>Deslize a foto para mudar de unidade.</p>
+        <p class="sr-only" role="status" aria-live="polite" aria-atomic="true" data-store-swipe-status></p>
+        {content.locations.map((store,index) => <div id={`panel-${store.id}`} role="tabpanel" aria-labelledby={`tab-${store.id}`} class="store-panel" hidden={index!==0} tabindex="0">
+          <div class="store-photo"><Photo name={store.image} alt={`Unidade ${store.name} do Pão de Queijo Haddock Lobo`} sizes="(max-width: 700px) calc(100vw - 48px), 55vw"/><span class="photo-label">{store.neighborhood}</span></div>
+          <div class="store-panel-info"><div><h3>{store.name}</h3><p>{store.address}<br/><span>{store.detail}</span></p></div><div class="store-actions"><a href={store.map} target="_blank" rel="noopener noreferrer" class="button button-small">Como chegar</a><a class="phone-link" href={`tel:${store.tel}`}><Icon name="phone" size={16}/>{store.phone}</a></div></div>
+        </div>)}
+      </div>
+    </div>
+  </div>
+</section>

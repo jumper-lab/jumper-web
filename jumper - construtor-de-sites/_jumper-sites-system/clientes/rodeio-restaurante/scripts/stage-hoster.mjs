@@ -26,6 +26,8 @@ const iziLandingSource = resolve(projectRoot, '../izigym-lp/dist');
 const iziLandingTarget = join(target, 'izigym-lp');
 const iziVilaRomanaTarget = join(target, 'izigym-lp-vilaromana');
 const iziCerroCoraTarget = join(target, 'cerrocora');
+const paoDeQueijoSource = resolve(projectRoot, '../pao-de-queijo-haddock-lobo/dist');
+const paoDeQueijoTarget = join(target, 'pao-de-queijo-haddock-lobo');
 
 const textExtensions = new Set(['.html', '.css', '.js', '.mjs', '.xml', '.txt', '.webmanifest']);
 
@@ -45,6 +47,7 @@ async function rewriteTree(root, replacements) {
 await rm(target, { recursive: true, force: true });
 await mkdir(clientTarget, { recursive: true });
 await cp(source, clientTarget, { recursive: true });
+await cp(paoDeQueijoSource, paoDeQueijoTarget, { recursive: true });
 await cp(join(projectRoot, 'cloudflare', 'fonts'), fontsTarget, { recursive: true });
 await cp(join(projectRoot, 'cloudflare', 'favicon-jumper.png'), join(target, 'favicon-jumper.png'));
 await cp(join(projectRoot, 'cloudflare', 'design-system', '3.15.0'), join(target, 'hub-design-system', '3.15.0'), { recursive: true });

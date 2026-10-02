@@ -1,0 +1,514 @@
+{
+  "schema_version": "3.0.0",
+  "stage": "final_design_system",
+  "status": "resolved_for_approved_m5_preview",
+  "design_system_name": "Haddock Lobo — O clássico, todo dia",
+  "client_truth": {
+    "name": "Pão de Queijo Haddock Lobo",
+    "model": "M5",
+    "personality": "A — acolhedor e familiar",
+    "facts": [
+      "Origem na Haddock Lobo desde 1968",
+      "Cinco unidades do site oficial, incluindo Rio",
+      "Mais de 3.000 pães/dia autorizado pelo usuário",
+      "Carrinho, delivery e produtos reais"
+    ],
+    "visual_request": "Minimalista, com algo fun",
+    "brand": "Manual 2024 e logo extraído do PDF, sem reconstruir lettering",
+    "media_permission": {
+      "ai": false,
+      "pexels": false
+    },
+    "construction_approval": "OK explícito do usuário em 01/10/2026 após proposta de quatro páginas",
+    "contact": "Somente os contatos públicos da fonte autorizada"
+  },
+  "visual_thesis": "A cesta de pães de queijo sobre as listras azuis das próprias embalagens encontra a DIN monumental e curta do manual: uma cafeteria paulistana de 1968 mostrada com o apetite das fotos de 2026. Off-white, navy e vermelho pontual mantêm a tradição reconhecível sem linguagem de restaurante de luxo ou café genérico.",
+  "signature_element": {
+    "name": "Cesta e listras da pausa",
+    "description": "Símbolo oficial em detalhes e filetes duplos ligados às listras da embalagem; fotografia reta e escala DIN em vez de ornamentos emprestados.",
+    "appearances": [
+      "Navegação",
+      "Hero da cesta",
+      "Detalhe da história",
+      "Módulo de eventos",
+      "Rodapé"
+    ]
+  },
+  "repertoire_used": [
+    {
+      "source": "01-1-padaria-artesanal-warm.json",
+      "principle": "História e fotografia real criam proximidade; sem adotar paleta/estrutura."
+    },
+    {
+      "source": "01-2-clinica-pediatrica-friendly.json",
+      "principle": "Ações claras e informação prática reduzem esforço."
+    },
+    {
+      "source": "01-3-floricultura-delicada.json",
+      "principle": "Vitrine com mudança de escala e proporção, sem copiar máscara/estrutura."
+    }
+  ],
+  "global_reference_repertoire": [
+    {
+      "source": "referencia-cafe.jpeg",
+      "principle": "Apetite e expressividade pontual."
+    },
+    {
+      "source": "referencia-editorial.jpeg",
+      "principle": "Hierarquia, disciplina, respiro com função."
+    },
+    {
+      "source": "https://santograo.com.br/",
+      "phase": "final_review_only",
+      "principle": "Benchmark local de clareza comercial e navegação, examinado ao fim da construção. Sem copiar layout, premiações ou recursos de outro negócio.",
+      "evidence": "data/visual-review/benchmark-santo-grao-desktop.png"
+    }
+  ],
+  "anti_generic_decisions": [
+    "Sem IA/Pexels, blobs ou gradientes decorativos.",
+    "Sem prêmios/depoimentos/horários inventados.",
+    "Sem garantia de temperatura ou frequência de fornadas.",
+    "Sem campanha Dia das Mães na Home permanente.",
+    "Sem formulário simulado.",
+    "Sem repetir anatomia de três cartões por toda a página."
+  ],
+  "tokens": {
+    "colors": {
+      "navy": "#13273D",
+      "paper": "#EEECE8",
+      "red": "#9F2B34",
+      "white": "#FFFFFF",
+      "muted": "#53606B",
+      "red_hover": "#83232B"
+    },
+    "contrast_verification": [
+      {
+        "name": "navy/paper",
+        "foreground": "#13273D",
+        "background": "#EEECE8",
+        "ratio": 12.85,
+        "minimum": 4.5
+      },
+      {
+        "name": "paper/navy",
+        "foreground": "#EEECE8",
+        "background": "#13273D",
+        "ratio": 12.85,
+        "minimum": 4.5
+      },
+      {
+        "name": "red/paper",
+        "foreground": "#9F2B34",
+        "background": "#EEECE8",
+        "ratio": 6.2,
+        "minimum": 4.5
+      },
+      {
+        "name": "white/red",
+        "foreground": "#FFFFFF",
+        "background": "#9F2B34",
+        "ratio": 7.32,
+        "minimum": 4.5
+      },
+      {
+        "name": "muted/paper",
+        "foreground": "#53606B",
+        "background": "#EEECE8",
+        "ratio": 5.47,
+        "minimum": 4.5
+      },
+      {
+        "name": "white/navy",
+        "foreground": "#FFFFFF",
+        "background": "#13273D",
+        "ratio": 15.16,
+        "minimum": 4.5
+      },
+      {
+        "name": "red-hover/paper",
+        "foreground": "#83232B",
+        "background": "#EEECE8",
+        "ratio": 7.94,
+        "minimum": 4.5
+      }
+    ],
+    "typography": {
+      "display": {
+        "family": "DIN Condensed",
+        "weight": 700,
+        "size": "clamp(88px,9.4vw,160px); mobile 70–106px",
+        "line_height": 0.89,
+        "tracking": "-.015em",
+        "rationale": "Fonte dominante do manual, curta e monumental."
+      },
+      "heading": {
+        "family": "DIN Condensed",
+        "weight": 700,
+        "size": "clamp(3rem,5.6vw,6rem)",
+        "line_height": 0.98
+      },
+      "body": {
+        "family": "Poppins",
+        "weights": [
+          400,
+          500,
+          700
+        ],
+        "size": "clamp(.9375rem,.85rem + .18vw,1rem)",
+        "line_height": 1.7,
+        "max_line": "54ch"
+      },
+      "detail": {
+        "family": "Aleo",
+        "weight": 400,
+        "style": "italic",
+        "usage": "Pequenos convites, não título substituto"
+      },
+      "self_hosted": true
+    },
+    "spacing": {
+      "unit": 8,
+      "scale": [
+        4,
+        8,
+        16,
+        24,
+        32,
+        48,
+        64,
+        96,
+        128
+      ],
+      "gutter": "clamp(20px,4vw,72px)",
+      "section": "clamp(64px,8vw,128px)",
+      "container": 1320
+    },
+    "radius": {
+      "photo": 0,
+      "button": "2px, corte editorial sem pílula",
+      "dialog": 4
+    },
+    "shadows": "Apenas diálogo/menu; sem cartões elevados.",
+    "motion": {
+      "fast": 180,
+      "standard": 530,
+      "image": 1200,
+      "slideshow": 1600,
+      "easing": "cubic-bezier(.22,.75,.15,1)",
+      "reduced_motion": true
+    }
+  },
+  "hero_direction": {
+    "composition": "Seções de abertura das quatro páginas em 100vh/100vw desde y=0, incluindo o espaço do header; altura segura no celular. Somente a Home tem fotografia de fundo integral.",
+    "internal_pages": "Composição anterior dividida em papel/navy: História com fachada à esquerda (55%) e texto à direita; Lojas/Iguatemi e Cardápio/mesa à direita (57%), texto à esquerda. Mobile com texto acima e foto abaixo dentro dos mesmos 100vh. A foto não ocupa a tela inteira; H1/CTA/legendas preservados e 404 utilitária.",
+    "message": "O CLÁSSICO. TODO DIA.",
+    "media": "Três cenas reais: cesta, café e mesa. Dissolução 1600ms com foto anterior opaca sob a nova, zoom mantido até o fim e última escolha preservada.",
+    "conversion": "Escolher uma loja e Ver o cardápio; provas na faixa seguinte.",
+    "controls": "Três seletores diretos e pausa, sem setas. Retomar funciona com foco/mouse no próprio botão; outros controles suspendem; histórico preserva estado; preferência reduzida congela movimento.",
+    "signature_copy": "Uma pausa com história. — São Paulo e Rio incluídos; origem histórica preservada.",
+    "legibility": "Home: logo branco/copy off-white e camada navy funcional sobre fotos. Internas: logo navy/texto navy sobre papel, fotografia em painel separado com legenda protegida."
+  },
+  "navigation_direction": {
+    "home": "Home transparente sobre a fotografia, perde opacidade na descida e retorna ao subir/focar; papel/navy fora do hero. Internas mantêm o menu papel/navy anterior, sem alterar geometria ou somar altura fora da seção.",
+    "geometry": "Cabeçalho fixo com mesma altura, marca, margens e linha de menu em todas as rotas. Heros começam em y=0 e reservam espaço para o menu dentro da composição; 404 mantém espaçamento convencional.",
+    "hover": "Impressão tipográfica em duas camadas com grafemas Unicode íntegros; acentos/cedilha não se fragmentam. Filetes ligados às embalagens, sem mover alvos.",
+    "mobile": "Dialog editorial com números de capítulo, Escape/foco; sem setas.",
+    "contact": "Contato aparece no desktop/mobile/sem JS/rodapé e aponta para /#contatos. Home transfere id do rodapé para seção única; demais rodapés conservam alias legado local. Numerar lojas após Contato no diálogo, mantendo geometria."
+  },
+  "media_direction": {
+    "primary": "Fotos próprias dos anexos e do site oficial, fontes registradas.",
+    "ai": false,
+    "pexels": false,
+    "video": false,
+    "formats": "WebP320/640/960/1100/1800, srcset sem larguras duplicadas, dimensões/alt reais e crop por breakpoint",
+    "loading": "Primeira cena prioritária; próximas cenas decodificadas sob demanda, uma antecipação por vez; demais fotos lazy.",
+    "logo": "PNG transparente extraído do PDF oficial, versões navy/branco permitidas",
+    "delivery_icons": [
+      {
+        "name": "iFood",
+        "local": "public/brand/delivery-ifood.png",
+        "source": "https://institucional.ifood.com.br/wp-content/uploads/2026/08/ifood-favicon-v2026-300x300.png",
+        "sha256": "39a53d858ca8192d75c9062d7e9270f51fdda682f51402d11cf9aabf1c74b603",
+        "use": "Ícone oficial intacto, identificação do canal, servido localmente"
+      },
+      {
+        "name": "Rappi",
+        "local": "public/brand/delivery-rappi.png",
+        "source": "https://www.rappi.com.br/pwa-icons/192x192.png",
+        "sha256": "4422fb9e50e054fc3b0615915f6d6ee0695d1621184302a2d7c27594b4b45c68",
+        "use": "Ícone oficial intacto, identificação do canal, servido localmente"
+      }
+    ],
+    "campaign": "Maio preservado; sem campanha sazonal na Home"
+  },
+  "section_system": [
+    {
+      "name": "hero",
+      "anatomy": "Texto curto monumental e produto dominante."
+    },
+    {
+      "name": "historia",
+      "anatomy": "Foto de fachada, numeração e narrativa enxuta."
+    },
+    {
+      "name": "vitrine",
+      "anatomy": "Cardápio da casa: chamada DIN, carta aberta ilustrada, ação Ver cardápio completo e seis atalhos com desenhos lineares de alimentos numa carta contínua de filetes. Galeria real escalonada preservada; não um grid de cards genéricos."
+    },
+    {
+      "name": "lojas",
+      "anatomy": "Lista seletora e grande painel de imagem/endereço."
+    },
+    {
+      "name": "eventos",
+      "anatomy": "Seção integral 100vw × 100vh/100svh. Âncora no início exato da dobra y=0; foto real do carrinho e painel navy lado a lado, empilhados no celular com proporções responsivas à altura. DIN e CTA vermelho preservados, sem texto sob o header."
+    },
+    {
+      "name": "em-casa",
+      "anatomy": "Peça em casa como mensagem explícita; faixa navy de pedido com fechamento listrado da embalagem e ícones reais locais de iFood/Rappi. Foto de congelados com legenda e caminho secundário para assar; consultar disponibilidade no app conforme endereço."
+    },
+    {
+      "name": "contato",
+      "anatomy": "Seção /#contatos com DIN/envelope e formulário Nome/E-mail/Mensagem em carta editorial de filetes navy, papel e foco vermelho. Telefones/canais preservados. Substitui mailto principal; endpoint ausente mantém envio inativo e informado, nunca simulado."
+    },
+    {
+      "name": "footer",
+      "anatomy": "Fecho tipográfico, símbolo e navegação útil."
+    }
+  ],
+  "component_language": {
+    "menu_highlight": "Carta da casa: ícones SVG lineares próprios em navy/vermelho, filetes da embalagem e detalhes que se imprimem em hover/foco, sem mover hitboxes. Home com seis atalhos oficiais e CTA completo; catálogo com oito categorias/ícones e busca preservados. Sem novas fontes, bibliotecas, produtos ou preços.",
+    "delivery": "Painel editorial navy/papel com filetes de embalagem, dois canais nomeados com ícones oficiais sem recoloração. Hitbox imóvel; filetes se desenrolam no hover/foco, palavra pedir já visível sem mouse. Canais empilhados no mobile, nova aba sinalizada, sem SDK, prazo inventado ou checkout próprio.",
+    "button": "Área estável >=44px, raio2px, tinta radial originada no pointer e calculada até o canto mais distante. Fundo/texto com contraste durante entrada/retorno/reentrada; sem setas. Filetes em vez de letter-spacing que desloque links.",
+    "locations": "Abas reais com numeração; rota, telefone e endereço disponível.",
+    "menu": "Lista nome/descrição/preço sem pontilhado; busca sem acentos e contador.",
+    "gallery": "Revelação em cinco faixas; moldura e rótulo de proximidade no hover; diálogo/Escape/foco restaurado.",
+    "form": "Somente busca local, sem formulário de contato presumido.",
+    "contact": "Contato geral em e-mail e contato local em cinco linhas tel, sem misturar WhatsApp de eventos com SAC. Ícones lineares úteis; filetes respondem a hover/foco sem mover links. Composição em duas colunas/empilhada mobile, nomes e endereço públicos visíveis."
+  },
+  "responsive_rules": {
+    "320": "Hero único full-bleed, copy inferior, controles em uma linha própria; CTAs e menus sem corte.",
+    "768": "Hero full-bleed e header transparente; composições em duas colunas onde couber, índice horizontal.",
+    "1024": "Header completo, localizador dividido e índice do cardápio lateral.",
+    "1440_plus": "Max1320 para leitura, foto hero full-bleed; alturas intencionais.",
+    "internal_heroes": "Seção 100vw × 100vh/100svh desde y=0, header incluído. Desktop em duas colunas com foto parcial; mobile texto acima/foto abaixo, ajustando proporções pela altura. Notas cedem espaço até 740px e descrição em landscape até 440px; H1/CTA e fotografia continuam visíveis."
+  },
+  "empty_space_review": "Inspecionar hero, transições, seletor de lojas e zero-resultados; respiro deve valorizar título/produto, nunca sugerir asset ausente.",
+  "accessibility_floor": {
+    "contrast": [
+      {
+        "name": "navy/paper",
+        "foreground": "#13273D",
+        "background": "#EEECE8",
+        "ratio": 12.85,
+        "minimum": 4.5
+      },
+      {
+        "name": "paper/navy",
+        "foreground": "#EEECE8",
+        "background": "#13273D",
+        "ratio": 12.85,
+        "minimum": 4.5
+      },
+      {
+        "name": "red/paper",
+        "foreground": "#9F2B34",
+        "background": "#EEECE8",
+        "ratio": 6.2,
+        "minimum": 4.5
+      },
+      {
+        "name": "white/red",
+        "foreground": "#FFFFFF",
+        "background": "#9F2B34",
+        "ratio": 7.32,
+        "minimum": 4.5
+      },
+      {
+        "name": "muted/paper",
+        "foreground": "#53606B",
+        "background": "#EEECE8",
+        "ratio": 5.47,
+        "minimum": 4.5
+      },
+      {
+        "name": "white/navy",
+        "foreground": "#FFFFFF",
+        "background": "#13273D",
+        "ratio": 15.16,
+        "minimum": 4.5
+      },
+      {
+        "name": "red-hover/paper",
+        "foreground": "#83232B",
+        "background": "#EEECE8",
+        "ratio": 7.94,
+        "minimum": 4.5
+      }
+    ],
+    "focus": "Outline3px, offset4px.",
+    "targets": "44px mínimo, padrão48px",
+    "semantics": "Um h1, títulos hierárquicos, landmarks, skip-link.",
+    "dialog": "Escape, foco contido e restaurado",
+    "no_js": "Conteúdo, catálogo, lojas e contatos presentes no HTML",
+    "reduced_motion": true
+  },
+  "performance_floor": {
+    "images": "Até 400 KB por derivado, srcset em cinco larguras.",
+    "fonts": "Cinco arquivos WOFF2 locais sem modificar glifos, swap; preload DIN/Poppins Regular. Originais TTF preservados.",
+    "js": "Módulos pequenos, nenhuma biblioteca decorativa.",
+    "third_parties": "Links apenas, sem embeds."
+  },
+  "quality_gate": [
+    "Quatro páginas e83 itens/adicionais comprovados",
+    "Screenshots320/390/768/1024/1440/1920 e duas revisões",
+    "Busca/filtro/menu/galeria/abas testados",
+    "Zero overflow, mídia íntegra e contrasteAA",
+    "URLs antigas/âncoras mantidas",
+    "Build, gateM5 e auditoria honesta"
+  ],
+  "boldness_budget": [
+    "Hero fotográfico imersivo e escala DIN",
+    "Letras em duas impressões nos menus",
+    "Fotos reveladas em faixas e filetes duplos",
+    "Slideshow com respiração óptica discreta, sem disputa com os CTAs"
+  ],
+  "known_tensions": [
+    "Paleta p14 do manual resolve navy divergente da p7.",
+    "Biro reduced recebida em 02/10/2026, mas sem acentos/ç/números/pontuação; aguarda versão completa e autorização web. Aleo permanece provisoriamente nos detalhes.",
+    "Horários e endereço interno doSírio ausentes: omitir sem inventar."
+  ],
+  "revision": {
+    "date": "2026-10-02",
+    "authority": "Pedido direto e esclarecimento do usuário: Home imersiva/motion e correções; destaque de delivery; internas com seção integral e fotos divididas; destaque criativo do cardápio com ícones, conferindo a página oficial /menu/. Pedido de área dedicada de contato, baseado em /#contatos oficial. Eventos: seção integral e âncora no início da dobra.",
+    "scope": "Correções e refinamento nas quatro páginas existentes, assinatura inclusiva; sem ampliar contrato ou publicar."
+  },
+  "motion_direction": {
+    "principle": "Impressão e desdobramento das listras da própria embalagem, não fade-up universal.",
+    "entry": "Máscaras DIN expandidas para acentos e cedilha, com margens compensadas para preservar baselines. Home mantém entrada por linhas; internas não ocultam conteúdo já visível. Comparação raster com/sem máscara valida glifos completos.",
+    "scroll": "Fotos abertas por faixas, títulos por linhas e filetes desenrolados; parallax muito discreto só em desktop.",
+    "page": "Dissolução nativa curta de 220ms, sem máscara integral ou morph separado do cabeçalho; View Transitions CSS progressiva e fallback normal.",
+    "hover": "Tinta pontual de cobertura integral e contraste constante, retorno suave e reentrada segura. Rótulos em grafemas íntegros, filetes que não alteram layout, moldura/legenda editorial nas fotos.",
+    "floor": "Sem alterar hitboxes, sem cursor falso, sem ocultar conteúdo sem JS; movimento reduzido cancela autoplay/transições."
+  },
+  "menu_highlight_revision": {
+    "date": "2026-10-02",
+    "concept": "Carta da casa",
+    "source": "https://paodequeijohaddocklobo.com.br/menu/",
+    "composition": "Chamada explícita e seis atalhos na Home; índice/capítulos com oito ícones no catálogo. Papel/navy, DIN/Poppins/Aleo, filetes duplos da embalagem. Hero dividido anterior preservado.",
+    "icon_language": "Nove desenhos SVG próprios, traço linear arredondado 1.6: carta, pão de queijo, torta, sanduíche, quindim, café, bebida, smoothie e sacola. Rótulos textuais acessíveis; ícones decorativos.",
+    "motion": "Segunda impressão dos detalhes em 700ms e filete vermelho no hover/foco, sem girar rótulos ou deslocar alvos. Reduced motion desliga animação. Sem JavaScript adicional.",
+    "responsive": "Seis colunas desktop; três no tablet; duas no celular. Índice de categorias lateral acima de 900px e trilho horizontal abaixo, com instrução de deslizar. Scroll margin desconta header já reservado no documento.",
+    "verification": "127 checagens específicas por passe em seis larguras, teclado, sem JS e reduced motion; duas revisões visuais em 320/768/1024/1440+. Regressão local de 638 checagens; fonte/conteúdo e backup verificados.",
+    "limits": "Catálogo/preços atuais preservados, não confirmados comercialmente. WordPress intacto, sem deploy. Chrome local, sem novas métricas Lighthouse."
+  },
+  "contact_revision": {
+    "date": "2026-10-02",
+    "status": "passed_local_review",
+    "source": "https://paodequeijohaddocklobo.com.br/#contatos",
+    "verified": "Navegador oficial carregou e-mail/cinco telefones/Instagram/WhatsApp de eventos; leitura web falhou por timeout. Canais correspondem aos dados locais existentes.",
+    "scope": "Seção Home e atalhos nas quatro páginas; contato direto conforme contrato aprovado, sem backend/envio simulado/publicação.",
+    "verification": "82 checagens específicas em seis larguras por passe, duas revisões efetivamente examinadas em 320/768/1024/1440+, menus das quatro rotas, foco/hover, teclado sem envio, no-js/reduced motion. Regressões locais reexecutadas, total 720; Chrome local sem novas métricas Lighthouse."
+  },
+  "events_revision": {
+    "date": "2026-10-02",
+    "status": "passed_local_review",
+    "geometry": "100vw (limitado à largura útil) × 100vh/100svh; scroll-margin local cancela exclusivamente o scroll-padding global para #eventos.",
+    "responsive": "Foto à esquerda no desktop e acima no celular, em proporções por altura; celulares pequenos horizontais voltam a duas colunas. Chamada/descrição/CTA nunca removidos, ornamentos secundários compactam.",
+    "preserved": "Carrinho, texto/CTA e WhatsApp públicos, fontes, header, slideshow e outras âncoras. Sem JS novo.",
+    "verification": "152 checagens finais, 15 dimensões entre 320×500/320×844/568×320 e 1920×1080; URL direta, menus de quatro rotas em quatro larguras, rodapé, histórico, teclado, hover/foco, no-js/reduced motion. Duas revisões visuais em 320/768/1024/1440+, mais landscape pequeno. Âncora y=0 (tolerância subpixel de 1px), seção ocupa viewport sem overflow. Chrome local; sem envio/deploy."
+  },
+  "font_receipt": {
+    "date": "2026-10-02",
+    "authority": "ZIP enviado pelo usuário + recorte do manual: Biro Script reduced para títulos menores/usos especiais.",
+    "status": "received_pending_complete_font_and_web_authorization",
+    "archive": "briefing/entrada/fontes/biro_script.zip",
+    "sha256": "b5f3f0cecd4b4864cd749dc8393602f2e16593c83f557f53a7d18d8e38cfe28f",
+    "inspection": "TTF:61 glifos, cmap A–Z/a–z/espaço e códigos privados; faltam acentos/ç/dígitos/pontuação. fsType256 (no subsetting). Não converter/subsettar/fabricar glifos.",
+    "official_source": "https://www.ingofonts.de/en/product-page/bir%C3%B3-script",
+    "official_verified": "Reduced é fonte gratuita de teste somente A–Z/a–z. Pacote completo oferece Latin1/ExtendedA e licença web; nenhum pagamento/licença do cliente foi presumido.",
+    "application": "Sem alterações em src/public/dist neste recebimento. Biro prevista para títulos menores/manuscritos; DIN/Poppins e tipografia atual preservadas até receber arquivo adequado."
+  },
+  "contact_form_revision": {
+    "date": "2026-10-02",
+    "status": "frontend_implemented_delivery_pending_configuration",
+    "authority": "Pedido direto do usuário: substituir botão mailto por campos de nome, e-mail e mensagem, na identidade do site.",
+    "endpoint": "PUBLIC_CONTACT_FORM_ENDPOINT: URL pública HTTPS sem segredos, POST FormData; resposta JSON com ok:true ou success:true. Destinatário/serviço aguardam confirmação.",
+    "visual": "Filete duplo de carta, labels numerados, campos sem cards/ícones genéricos. Nome/e-mail lado a lado ≥901px, uma coluna ≤900px, textarea integral; 16px no celular, outline/filete/error red, botão navy sem setas. Envio inativo transparente com nota enquanto não configurado.",
+    "honesty": "Sem endpoint: envio desativado/aviso visível. Não abrir app de e-mail nem anunciar sucesso falso. Não enviar dados em testes reais, criar serviço ou modificar WordPress."
+  },
+  "history_marks_alignment_revision": {
+    "date": "2026-10-02",
+    "authority": "Pedido direto para melhorar o alinhamento da faixa1968/+3.000/5 da História no mobile.",
+    "scope": "Somente faixa de indicadores na página Nossa história; conteúdo e desktop preservados.",
+    "direction": "Três colunas iguais, números numa única linha com mesma altura e centralização; legendas com topo comum, espaçamento simétrico e quebra natural. Manter DIN/Poppins/papel/navy/filetes e todos os dados, incluindo mais de3.000.",
+    "verification": "63 checagens por passe em oito larguras320/360/390/430/700/768/1024/1440, dois exames reais320/768/1024/1440, mais86 fluxos:149 finais sem falhas/erros. Números inteiros, legendas alinhadas, glifos dentro da coluna e geometria desktop idêntica ao baseline.",
+    "performance": "Somente CSS/whitespace de três legendas: CSS compartilhado56.568/gzip11.456, +467 bytes/+90gzip. JavaScript19.478/gzip6.917 e demais assets inalterados.",
+    "limits": "Chrome emulado, não iPhone/Safari físico; somente alinhamento, sem envio real ou publicação."
+  },
+  "menu_index_stability_revision": {
+    "date": "2026-10-02",
+    "authority": "Pedido direto: índice do cardápio treme quando ancorado no topo no mobile.",
+    "diagnosis": "Baseline: salto18px quando altura cruza540px; destaque intermediário durante âncora suave e destino errado em320/390px.",
+    "scope": "Estabilidade de altura do cabeçalho em retrato e sincronização das categorias; conteúdo, identidade, imagens e demais interações preservados.",
+    "direction": "Cabeçalho compacto só em landscape baixo. Linha de leitura fixa abaixo da navegação, destino mantido durante âncora e liberação em fim/interrupção; links nativos sem interceptação.",
+    "verification": "41 estabilidade/gestos/cliques/teclado +127 cardápio/atalhos +86 fluxos +36 navegação +15 motion +213 internas =518, sem falhas/erros; um aviso nativo exato separado em navegação. Dois exames reais320/768/1024/1440. Salto18px do baseline eliminado: delta0px nas alturas525–600 e na rolagem medida.",
+    "initial_fragment": "Realinhar uma vez após load/fontes, somente sem interação anterior; não alterar URL, foco ou histórico.",
+    "performance": "JS compartilhado16.889/gzip5.684; total19.478/gzip6.917. CSS compartilhado56.101/gzip11.366; demais assets/fontes intactos, sem biblioteca nova.",
+    "limits": "Variação de viewport e toque emulados em Chrome, não teste em iPhone/Safari físico. Preview local, sem publicação."
+  },
+  "mobile_menu_fullscreen_revision": {
+    "date": "2026-10-02",
+    "authority": "Pedido direto: menu aberto no mobile sempre100vw ×100vh.",
+    "direction": "Dialog fixo em toda a área visível,100vw ×100dvh com fallback100vh, sem limite600px ou margem nativa. Papel/navy/DIN/numeração/filetes e animação de abertura preservados.",
+    "responsive": "Altura acompanha barras do navegador e rotação. Close fora da área rolável; links se ajustam à altura e rolam internamente só quando necessário. Landscape largo/baixo em duas colunas, alvos≥44px e safe-area respeitada.",
+    "scope": "Mesmo menu compartilhado em Home/História/Cardápio/Lojas; navbar desktop/rotas/textos/Escape/fechamento preservados. Tab/Shift+Tab circulam entre fechar e links sem escapar para fora do dialog. Sem biblioteca/asset/publicação.",
+    "verification": "Dois passes331 checagens cada em48 combinações das quatro rotas/12 tamanhos; fluxos86+navegação36 passam. Dois exames reais de seis capturas estáveis:320/768/1024/1440,844×390 e390×240.57 verificações por passe visual. Primeiro passe apontou escape do foco Tab, corrigido; aviso nativo exato de transição pulada separado de erros.",
+    "performance": "JS compartilhado15.565/gzip5.209; total18.154/gzip6.442. CSS compartilhado56.049/gzip11.359; Home17.178/gzip3.575 e cardápio9.824/gzip2.451 inalterados. Sem biblioteca/asset/dependência nova.",
+    "limits": "Chrome local com viewports emulados/redimensionados; não Safari/iPhone físico ou Firefox. CSS100dvh acompanha área visível, não cobre barras/status do sistema. Sem novo Lighthouse ou publicação; contato ainda sem serviço de envio."
+  },
+  "store_swipe_revision": {
+    "date": "2026-10-02",
+    "authority": "Pedido direto: trocar as unidades no mobile arrastando o dedo sobre as fotos, além dos botões.",
+    "direction": "Gesto horizontal de toque avança/volta uma unidade, circular nas cinco lojas. Seleção única atualiza foto, nome, endereço, telefone e rota pelo mesmo seletor; aba ativa é revelada sem rolar a página.",
+    "safety": "Foto libera pan-y e pinch-zoom. Toques curtos, vertical/diagonal, cancelamento e múltiplos dedos não trocam lojas; mouse não aciona swipe. Botões/teclado preservados, anúncio discreto de unidade e pista mobile somente com JS.",
+    "scope": "Localizador da Home, fotos/dados atuais e animação existente. Sem biblioteca, asset, página nova, mudança na copy principal ou publicação.",
+    "verification": "Dois passes220 checagens cada com toque Chrome CDP, seis larguras, cancelamento/multitouch/vertical/diagonal/curto/mouse, seleção única e dados correspondentes. Dois exames reais320/768/1024/1440. Regressões86 fluxos,36 navegação e15 motion passam:357 finais, sem falhas/erros.",
+    "performance": "JS compartilhado15.268/gzip5.133; total com contato17.857/gzip6.366. CSS compartilhado54.999/gzip11.101; Home17.178/gzip3.575 e cardápio9.824/gzip2.451 inalterados. Sem biblioteca, dependência ou asset novo.",
+    "limits": "Chrome local com toque/tamanhos emulados; não dispositivo físico ou Safari/Firefox. Sem novo Lighthouse, envio de contato ou publicação."
+  },
+  "menu_delivery_icons_revision": {
+    "date": "2026-10-02",
+    "authority": "Usuário pediu ícones das empresas nos links finais do cardápio.",
+    "direction": "iFood e Rappi oficiais existentes,28px, sem recoloração, ao lado de nomes completos. Alvos≥44px, nova aba anunciada, alt decorativo; hover/filetes existentes e alvo imóvel.",
+    "scope": "Somente links finais de /menu/ e estilo restrito. PreservarCTA/links/conteúdo/lightbox/contato; sem novos assets/scripts/bibliotecas ou publicação.",
+    "responsive": "Dois canais no mesmo grupo, sem separar Rappi em outra linha; respiro24px no desktop e16px no mobile.",
+    "verification": "38 checagens por passe em seis larguras320/390/768/1024/1440/1920, sem JS e movimento reduzido. Passes2/final sem falhas; dois exames reais de quatro capturas cada. Arquivos locais, destinos, foco visível e alvo imóvel confirmados.",
+    "performance": "Sem novo JavaScript; total16.047/gzip5.809. CSS cardápio9.824/gzip2.451; dois PNGs já existentes reutilizados.",
+    "limits": "Chrome local, não Safari/Firefox ou dispositivo físico. Sem novo Lighthouse, pedido em apps ou publicação. Envio de contato permanece pendente."
+  },
+  "menu_lightbox_revision": {
+    "date": "2026-10-02",
+    "authority": "Pedido direto de clicar nas imagens do cardápio, ampliar em lightbox e adicionar hover.",
+    "scope": "Oito fotos de capítulos /menu/. Mesmo dialog existente e mesma moldura; sem ampliar seção ou alterar83 itens.",
+    "hover": "Dois filetes de enquadramento se imprimem, pista de ampliar e aproximação óptica discreta; alvo fixo. Papel/navy/vermelho, não cursor falso. Toque com pista visível, foco AA e reduced motion sem zoom/animação.",
+    "lightbox": "Dialog nativo único navy/papel, fechar/Escape/backdrop, foco contido/restaurado. Foto normal inteira; Smoothies em crop quadrado dos copos sem carta antiga. Estado de carregamento/erro e invalidação de abertura anterior.",
+    "fallback": "Fotos presentes no HTML; botões somente habilitados pelo handler. Sem JavaScript não sugerir interação ativa.",
+    "performance": "Maior derivado local sob demanda; nenhuma biblioteca, foto ou fonte nova. JS compartilhado13.458/gzip4.576; CSS cardápio9.291/gzip2.335;105 WebPs existentes.",
+    "verification": "Dois passes434 cada,48 combinações; dois exames reais hover/em-casa/Smoothies em320/768/1024/1440. Regressões127+64+86, total711 atual; zero falhas/erros de aplicação e um aviso nativo exato separado. Corrigidos Tab e evento close tardio antes da revisão final.",
+    "limits": "Chrome local, emulação de toque; não Safari/Firefox/dispositivo físico ou novo Lighthouse. Contato permanece sem serviço de envio; não publicar."
+  },
+  "menu_drinks_photos_revision": {
+    "date": "2026-10-02",
+    "authority": "Usuário apontou ausência de fotos em Smoothies e Bebidas.",
+    "media": "Duas fotografias examinadas do /menu/ oficial: bebidas.jpeg (café/copo com pães de queijo, editorial) e selvs.jpeg (copos rosados e carta antiga). Sem IA/Pexels.",
+    "framing": "Mesma moldura e posição das demais categorias. Bebidas object-position50%22%; Smoothies zoom220%/translateX-10%/clip na área dos copos, sem apresentar preços/alegações da carta antiga.",
+    "content": "Alterar somente duas referências category.image; manter todos os produtos/preços/intro. Alt contextual não afirma água/suco ou receita vegana da fotografia.",
+    "performance": "10 derivados WebP locais de duas imagens, sem hotlink, novas bibliotecas ou arquivo de script. Manifest105 entradas; JS compartilhado12.687/gzip4.329; CSS cardápio6.493/gzip1.768.",
+    "index": "Observer considera todas as categorias intersectantes e prioriza maior top, excluindo hidden; evita manter Cafés ao chegar a Bebidas sob índice fixo mobile. Âncoras nativas/layout preservados.",
+    "verification": "64 fotos +127 destaque/índice +86 fluxos =277 checagens atuais; dois exames reais de ambas as fotos em320/768/1024/1440. Zero falhas/erros de aplicação; um aviso nativo exato separado. Sem novas métricas Lighthouse.",
+    "source_hashes": {
+      "bebidas": "27b2829fa4feb55208db9555187c8e0af8fb20a872a7fd4ae83e67b1d64b29a8",
+      "smoothies": "b3dd9d6b5b159c130762fd2e4a6859ba6a994bd6682495f0cc2f374946a18810"
+    }
+  }
+}

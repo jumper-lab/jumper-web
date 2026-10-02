@@ -19,9 +19,10 @@ assert.equal(dev.preview_urls, false);
 assert.deepEqual(dev.routes, [
   'rodeio', 'izigym', 'izigym-lp', 'izigym-lp-vilaromana',
   'casabelie', 'casabelie-2', 'casabelie-3',
+  'pao-de-queijo-haddock-lobo',
 ].map((slug) => ({ pattern: `site.jumper.dev.br/${slug}/*`, zone_name: 'jumper.dev.br' })),
-'somente os sete caminhos dev podem ser roteados');
+'somente os oito caminhos dev registrados podem ser roteados');
 for (const key of ['d1_databases', 'kv_namespaces', 'ratelimits', 'services', 'vars', 'triggers']) {
   assert.equal(dev[key], undefined, `o Worker dev não pode herdar ${key} de produção`);
 }
-console.log('Config do jumper-hoster-dev validada: mesmos assets, apenas sete rotas dev, sem dados de produção.');
+console.log('Config do jumper-hoster-dev validada: mesmos assets, apenas oito rotas dev, sem dados de produção.');

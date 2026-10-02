@@ -83,7 +83,7 @@ segunda lista de regras naquele manual.
   e continua proibido como atalho para contornar as verificações.
 - Para publicar **só código compartilhado** no Worker dev, sem alterar nenhum
   cliente, parta de `main` limpo após a PR e use `npm run deploy:dev:worker`.
-  Esse fluxo compara os **sete** sites dev com a publicação ativa; qualquer
+  Esse fluxo compara os **oito** sites dev com a publicação ativa; qualquer
   diferença bloqueia. Não escolha um slug fictício para pular a comparação.
 - A autorização de deploy dev **não** autoriza deploy live. Antes de publicar
   no live, confira as páginas e funções afetadas, domínios oficiais, hub,
