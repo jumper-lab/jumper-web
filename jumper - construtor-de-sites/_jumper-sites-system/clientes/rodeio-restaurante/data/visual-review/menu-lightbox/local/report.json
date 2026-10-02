@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-02T18:45:34.914Z",
+  "date": "2026-10-02T18:53:20.135Z",
   "base": "http://127.0.0.1:4326/rodeio",
   "note": "Real LiveMenu iframe integration in desktop browser engines with emulated viewports; no physical-device test. Third-party frame content is outside the host accessibility audit.",
   "checks": [

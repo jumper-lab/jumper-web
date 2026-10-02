@@ -6,6 +6,7 @@ const status=dialog?.querySelector<HTMLElement>('[data-menu-status]');
 const menuUrl=dialog?.dataset.menuUrl;
 let opener:HTMLAnchorElement|null=null;
 let frame:HTMLIFrameElement|null=null;
+let pageScroll={x:0,y:0};
 let loadingTimer:ReturnType<typeof setTimeout>|undefined;
 function clearLoadingTimer(){if(loadingTimer!==undefined){clearTimeout(loadingTimer);loadingTimer=undefined;}}
 if(dialog&&closeButton&&slot&&status&&menuUrl&&typeof dialog.showModal==='function'){
@@ -19,6 +20,7 @@ if(dialog&&closeButton&&slot&&status&&menuUrl&&typeof dialog.showModal==='functi
    if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
    event.preventDefault();opener=link;
    if(dialog.open)return;
+   pageScroll={x:window.scrollX,y:window.scrollY};
    showStatus('Carregando o cardápio…');dialog.showModal();closeButton.focus();
    const incoming=document.createElement('iframe');frame=incoming;frame.title='Cardápio digital do Rodeio';frame.referrerPolicy='strict-origin-when-cross-origin';
    frame.addEventListener('load',()=>{if(frame!==incoming||!dialog.open)return;clearLoadingTimer();status.hidden=true;},{once:true});
@@ -33,7 +35,7 @@ if(dialog&&closeButton&&slot&&status&&menuUrl&&typeof dialog.showModal==='functi
   const rect=dialog.getBoundingClientRect();
   if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)dialog.close();
  });
- dialog.addEventListener('close',()=>{clearLoadingTimer();frame?.remove();frame=null;status.hidden=true;opener?.focus({preventScroll:true});});
+ dialog.addEventListener('close',()=>{clearLoadingTimer();frame?.remove();frame=null;status.hidden=true;window.scrollTo({left:pageScroll.x,top:pageScroll.y,behavior:'instant'});opener?.focus({preventScroll:true});});
  // Include the frame in the tab sequence; the close control stays outside it.
  dialog.addEventListener('keydown',event=>{
   if(event.key!=='Tab')return;
