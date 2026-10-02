@@ -7,7 +7,7 @@ As diretrizes e os textos desta revisão vêm de `briefing/entrada/diretrizes-20
 - Home: “O clássico que se renova”, apresentação do novo momento e das duas casas, com novos registros do Jardins.
 - Slideshow: seis fotos reais do acervo; mantida a ordem anteriormente aprovada (2, 5, 1, 3, 4, 6). Troca suave, carregamento progressivo e alternativa sem movimento.
 - Menu: história, cardápio, eventos, reservas e as duas unidades; Home está acessível pela marca e aparece no menu móvel e no rodapé.
-- História: narrativa integral do novo PDF distribuída na cronologia, incluindo certificação de 2001, inauguração do Iguatemi em 2011 e mudança do Jardins em 2026. Acervo com três fotos adicionais.
+- História: sete parágrafos integrais do texto aprovado, juntos e na ordem original, incluindo os clássicos, certificação de 2001, inauguração do Iguatemi em 2011 e mudança do Jardins em 2026. Linha do tempo resumida após a narrativa, sem repetir os parágrafos. Acervo com três fotos adicionais.
 - Cardápio: texto simples, poucos pratos em destaque e link exato do LiveMenu recebido no PDF. Removida a fotografia do cardápio físico desatualizado.
 - Jardins: Rua Haddock Lobo, 1448, Jardins. Iguatemi: Av. Brig. Faria Lima, 2232, Jardim Paulistano. Textos e ações por unidade.
 - Eventos: um ambiente de cada unidade, sem apresentar fotografia de salão como registro de evento.
@@ -49,4 +49,11 @@ A pasta Eventos recebida está vazia: faltam fotografias de eventos representati
 Reservas usam Tagme por unidade, carregado por interação, com alternativa de link direto. Não foram enviadas reservas ou solicitações de orçamento durante os testes. Conteúdo de terceiros e disponibilidade real são responsabilidade dos serviços externos. Fontes e fotos são locais; mapas são carregados por interação. Arquivos `data/visual-review/` são evidências internas e não entram no pacote publicado.
 
 ## Publicação verificada — 02/10/2026
-Worker dev versão `1ca0ce0f-5064-4cf4-a400-c5f8e73a1869`, fonte `6fb174c7285b01f559f1a0a83046f6cac9fae5b5`. Os commits finais de evidências não alteram o pacote do site. A publicação oficial continua separada. Registro completo: `data/cloudflare-deployment.json`.
+Worker dev versão `53b67b6c-baa9-4d97-be97-a930a4251809`, fonte `27360cba7a89dfa2a947a11a5c6a18a7aedb7b7f` (correção da História integral, PR #83). Os commits finais de evidências não alteram o pacote do site. A publicação oficial continua separada. Registro completo: `data/cloudflare-deployment.json`.
+
+## Correção editorial da História — 02/10/2026
+O texto estava fragmentado entre a cronologia e a seção dos clássicos. Agora os sete parágrafos aparecem integralmente antes do acervo, sob “Uma história que atravessa gerações.”. `pages.history.paragraphs` e `positioning.story` guardam a mesma narrativa completa. O trecho dos clássicos ocupa o terceiro parágrafo, conforme a aprovação no chat. Datas permanecem como referência compacta, sem repetir a narrativa.
+
+Verificação específica: `node scripts/verify-history-integral.mjs` compara o texto renderizado com o conteúdo aprovado (fingerprint SHA-256), exige sete parágrafos na ordem correta e confere a narrativa antes do acervo. Também verifica imagens, reflow, erros JavaScript, título visível após animação e acessibilidade, em Chrome, Firefox e WebKit. Evidências em `data/visual-review/historia-integral/`.
+
+A correção foi validada em dez cenários locais e dez públicos (Chrome, Firefox, WebKit): sete parágrafos exatos e ordenados, título visível, imagens carregadas, sem overflow, erros JavaScript ou violações axe nos cenários auditados. Dez rotas públicas retornaram 200 sem cookies e HTML idêntico ao build. Preflight antes/depois preservou 432 assets dos outros clientes e áreas live. Lighthouse da História publicada: desempenho 97 mobile / 100 desktop; acessibilidade e boas práticas 100; SEO 69 pelo noindex intencional da prévia. Relatórios brutos em `data/visual-review/historia-integral/performance-published/`; métricas de laboratório, não API PageSpeed Insights nem CrUX.

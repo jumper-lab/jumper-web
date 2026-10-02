@@ -1,0 +1,217 @@
+{
+  "date": "2026-10-02T17:06:10.688Z",
+  "base": "http://127.0.0.1:4326/rodeio",
+  "approvedSha256": "64696d40fd8fbaf9b403f5cb29793e9ab548ce3fae2ee140deab03abd60c2a6e",
+  "checks": [
+    {
+      "engine": "chromium",
+      "width": 320,
+      "paragraphs": 7,
+      "exactApprovedCopy": true,
+      "overflow": false,
+      "brokenImages": [],
+      "landmarks": [
+        "1958",
+        "1959",
+        "1986",
+        "2001",
+        "2011",
+        "2026"
+      ],
+      "narrativeBeforeArchive": true,
+      "heading": "Uma história que atravessa gerações.",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "paragraphs": 7,
+      "exactApprovedCopy": true,
+      "overflow": false,
+      "brokenImages": [],
+      "landmarks": [
+        "1958",
+        "1959",
+        "1986",
+        "2001",
+        "2011",
+        "2026"
+      ],
+      "narrativeBeforeArchive": true,
+      "heading": "Uma história que atravessa gerações.",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 768,
+      "paragraphs": 7,
+      "exactApprovedCopy": true,
+      "overflow": false,
+      "brokenImages": [],
+      "landmarks": [
+        "1958",
+        "1959",
+        "1986",
+        "2001",
+        "2011",
+        "2026"
+      ],
+      "narrativeBeforeArchive": true,
+      "heading": "Uma história que atravessa gerações.",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 1024,
+      "paragraphs": 7,
+      "exactApprovedCopy": true,
+      "overflow": false,
+      "brokenImages": [],
+      "landmarks": [
+        "1958",
+        "1959",
+        "1986",
+        "2001",
+        "2011",
+        "2026"
+      ],
+      "narrativeBeforeArchive": true,
+      "heading": "Uma história que atravessa gerações.",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "paragraphs": 7,
+      "exactApprovedCopy": true,
+      "overflow": false,
+      "brokenImages": [],
+      "landmarks": [
+        "1958",
+        "1959",
+        "1986",
+        "2001",
+        "2011",
+        "2026"
+      ],
+      "narrativeBeforeArchive": true,
+      "heading": "Uma história que atravessa gerações.",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 1920,
+      "paragraphs": 7,
+      "exactApprovedCopy": true,
+      "overflow": false,
+      "brokenImages": [],
+      "landmarks": [
+        "1958",
+        "1959",
+        "1986",
+        "2001",
+        "2011",
+        "2026"
+      ],
+      "narrativeBeforeArchive": true,
+      "heading": "Uma história que atravessa gerações.",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "paragraphs": 7,
+      "exactApprovedCopy": true,
+      "overflow": false,
+      "brokenImages": [],
+      "landmarks": [
+        "1958",
+        "1959",
+        "1986",
+        "2001",
+        "2011",
+        "2026"
+      ],
+      "narrativeBeforeArchive": true,
+      "heading": "Uma história que atravessa gerações.",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "paragraphs": 7,
+      "exactApprovedCopy": true,
+      "overflow": false,
+      "brokenImages": [],
+      "landmarks": [
+        "1958",
+        "1959",
+        "1986",
+        "2001",
+        "2011",
+        "2026"
+      ],
+      "narrativeBeforeArchive": true,
+      "heading": "Uma história que atravessa gerações.",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "paragraphs": 7,
+      "exactApprovedCopy": true,
+      "overflow": false,
+      "brokenImages": [],
+      "landmarks": [
+        "1958",
+        "1959",
+        "1986",
+        "2001",
+        "2011",
+        "2026"
+      ],
+      "narrativeBeforeArchive": true,
+      "heading": "Uma história que atravessa gerações.",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "paragraphs": 7,
+      "exactApprovedCopy": true,
+      "overflow": false,
+      "brokenImages": [],
+      "landmarks": [
+        "1958",
+        "1959",
+        "1986",
+        "2001",
+        "2011",
+        "2026"
+      ],
+      "narrativeBeforeArchive": true,
+      "heading": "Uma história que atravessa gerações.",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    }
+  ]
+}

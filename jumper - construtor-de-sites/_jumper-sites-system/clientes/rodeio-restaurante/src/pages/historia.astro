@@ -9,13 +9,18 @@ import '../styles/interiors.css';
 <section id="proxima-secao" class="wrap interior-section history-chapter" aria-labelledby="history-chapter-title">
   <div class="history-chapter-heading">
     <p class="eyebrow">1958 — hoje</p>
-    <h2 id="history-chapter-title">Uma casa.<br/><em>Muitas histórias.</em></h2>
-    <p>Uma história que atravessa gerações.</p>
+    <h2 id="history-chapter-title">Uma história<br/>que atravessa <em>gerações.</em></h2>
     <span class="history-date-note">Haddock Lobo, São Paulo</span>
   </div>
-  <div class="history-timeline">
-    {milestones.map(m=><article class="timeline-item history-milestone"><span class="timeline-date">{m.year}</span><div><h3>{m.title}</h3><p>{m.text}</p></div></article>)}
+  <div class="history-narrative">
+    {copy.paragraphs.map(paragraph=><p>{paragraph}</p>)}
   </div>
+</section>
+<section class="wrap history-landmarks" aria-labelledby="history-landmarks-title">
+  <p class="eyebrow" id="history-landmarks-title">Marcos da nossa história</p>
+  <ol>
+    {milestones.map(m=><li><span>{m.year}</span><h3>{m.title}</h3></li>)}
+  </ol>
 </section>
 <section class="history-archive" aria-labelledby="history-archive-title">
   <div class="wrap history-archive-grid">
@@ -33,7 +38,7 @@ import '../styles/interiors.css';
 <section class="history-taste interior-section">
   <div class="wrap history-taste-grid">
     <figure><Photo name="origem" sizes="(max-width:759px) 74vw, 30vw" alt="Registro de acervo da antiga entrada do Rodeio e seu letreiro"/><figcaption>Fotografia preservada no acervo do Rodeio.</figcaption></figure>
-    <div class="history-taste-copy"><p class="eyebrow">Clássicos que nasceram aqui</p><h2>A história<br/>também tem <em>sabor.</em></h2><p>{copy.classics}</p><Link href="/cardapio/">Conhecer os clássicos da casa</Link></div>
+    <div class="history-taste-copy"><p class="eyebrow">Clássicos que nasceram aqui</p><h2>A história<br/>também tem <em>sabor.</em></h2><Link href="/cardapio/">Conhecer os clássicos da casa</Link></div>
   </div>
 </section>
 </Layout>

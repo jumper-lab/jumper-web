@@ -2,13 +2,13 @@
   "url": "https://site.jumper.dev.br/rodeio/",
   "provider": "cloudflare-workers-static-assets",
   "worker": "jumper-hoster-dev",
-  "versionId": "1ca0ce0f-5064-4cf4-a400-c5f8e73a1869",
-  "sourceCommit": "6fb174c7285b01f559f1a0a83046f6cac9fae5b5",
-  "sourceBranch": "codex/rodeio-diretrizes-outubro",
-  "pullRequest": "https://github.com/jumper-lab/jumper-web/pull/82",
+  "versionId": "53b67b6c-baa9-4d97-be97-a930a4251809",
+  "sourceCommit": "27360cba7a89dfa2a947a11a5c6a18a7aedb7b7f",
+  "sourceBranch": "codex/rodeio-historia-integral",
+  "pullRequest": "https://github.com/jumper-lab/jumper-web/pull/83",
   "status": "READY",
   "indexing": "noindex",
-  "date": "2026-10-02T14:10:55.440Z",
+  "date": "2026-10-02T17:11:02.071394+00:00",
   "access": "public without cookies",
   "results": [
     {
@@ -88,8 +88,11 @@
     "differences": 0,
     "liveBoundariesPreserved": true
   },
-  "previousDevVersionId": "4e81e77d-a0e0-4e97-a6d6-74e0fc94baa0",
+  "previousDevVersionId": "1ca0ce0f-5064-4cf4-a400-c5f8e73a1869",
   "maintenancePage": "https://site.jumper.dev.br/rodeio/em-breve/",
   "maintenanceActiveOnHome": false,
-  "performanceReport": "data/visual-review/diretrizes-2026-10-02/performance-published/summary.json"
+  "performanceReport": "data/visual-review/diretrizes-2026-10-02/performance-published/summary.json",
+  "change": "Narrativa integral de Nossa História: sete parágrafos aprovados, na ordem original, antes do acervo.",
+  "historyPerformanceReport": "data/visual-review/historia-integral/performance-published/summary.json",
+  "historyBrowserReport": "data/visual-review/historia-integral/published/report.json"
 }
