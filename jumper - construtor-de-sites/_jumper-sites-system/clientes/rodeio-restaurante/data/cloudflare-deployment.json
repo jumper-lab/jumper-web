@@ -2,13 +2,13 @@
   "url": "https://site.jumper.dev.br/rodeio/",
   "provider": "cloudflare-workers-static-assets",
   "worker": "jumper-hoster-dev",
-  "versionId": "a620f51b-fb12-425e-9fc4-27ba21b0c86e",
-  "sourceCommit": "63ae9ed8558c4fa1145a426a9787dc380fdda8d0",
-  "sourceBranch": "codex/rodeio-cardapio-classicos",
-  "pullRequest": "https://github.com/jumper-lab/jumper-web/pull/84",
+  "versionId": "43417780-83f7-4ede-a70b-47a357e21f9f",
+  "sourceCommit": "e81dbc9b84c84eba963eeec60da64bd0132cbebc",
+  "sourceBranch": "codex/rodeio-slideshow-swipe",
+  "pullRequest": "https://github.com/jumper-lab/jumper-web/pull/85",
   "status": "READY",
   "indexing": "noindex",
-  "date": "2026-10-02T17:33:37.170534+00:00",
+  "date": "2026-10-02T17:56:20.386358+00:00",
   "access": "public without cookies",
   "results": [
     {
@@ -88,13 +88,15 @@
     "differences": 0,
     "liveBoundariesPreserved": true
   },
-  "previousDevVersionId": "53b67b6c-baa9-4d97-be97-a930a4251809",
+  "previousDevVersionId": "a620f51b-fb12-425e-9fc4-27ba21b0c86e",
   "maintenancePage": "https://site.jumper.dev.br/rodeio/em-breve/",
   "maintenanceActiveOnHome": false,
   "performanceReport": "data/visual-review/diretrizes-2026-10-02/performance-published/summary.json",
-  "change": "Página Cardápio refeita: textos aprovados, nomes dos clássicos, duas novas fotos do Drive, composição alinhada e acesso ao cardápio digital.",
+  "change": "Swipe horizontal na hero da home: navegação manual circular no celular, rolagem vertical preservada, autoplay pausado durante contato e troca somente após decodificar a foto.",
   "historyPerformanceReport": "data/visual-review/historia-integral/performance-published/summary.json",
   "historyBrowserReport": "data/visual-review/historia-integral/published/report.json",
   "menuPerformanceReport": "data/visual-review/cardapio-classicos/performance-published/summary.json",
-  "menuBrowserReport": "data/visual-review/cardapio-classicos/published/report.json"
+  "menuBrowserReport": "data/visual-review/cardapio-classicos/published/report.json",
+  "swipeBrowserReport": "data/visual-review/home-swipe/published/report.json",
+  "homePerformanceReport": "data/visual-review/home-swipe/performance-published/summary.json"
 }

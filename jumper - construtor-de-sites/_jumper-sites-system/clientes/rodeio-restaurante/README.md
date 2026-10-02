@@ -49,7 +49,7 @@ A pasta Eventos recebida está vazia: faltam fotografias de eventos representati
 Reservas usam Tagme por unidade, carregado por interação, com alternativa de link direto. Não foram enviadas reservas ou solicitações de orçamento durante os testes. Conteúdo de terceiros e disponibilidade real são responsabilidade dos serviços externos. Fontes e fotos são locais; mapas são carregados por interação. Arquivos `data/visual-review/` são evidências internas e não entram no pacote publicado.
 
 ## Publicação verificada — 02/10/2026
-Worker dev versão `a620f51b-fb12-425e-9fc4-27ba21b0c86e`, fonte `63ae9ed8558c4fa1145a426a9787dc380fdda8d0` (novo Cardápio, PR #84). Os commits finais de evidências não alteram o pacote do site. A publicação oficial continua separada. Registro completo: `data/cloudflare-deployment.json`.
+Worker dev versão `43417780-83f7-4ede-a70b-47a357e21f9f`, fonte `e81dbc9b84c84eba963eeec60da64bd0132cbebc` (swipe da home, PR #85). Os commits finais de evidências não alteram o pacote do site. A publicação oficial continua separada. Registro completo: `data/cloudflare-deployment.json`.
 
 ## Correção editorial da História — 02/10/2026
 O texto estava fragmentado entre a cronologia e a seção dos clássicos. Agora os sete parágrafos aparecem integralmente antes do acervo, sob “Uma história que atravessa gerações.”. `pages.history.paragraphs` e `positioning.story` guardam a mesma narrativa completa. O trecho dos clássicos ocupa o terceiro parágrafo, conforme a aprovação no chat. Datas permanecem como referência compacta, sem repetir a narrativa.
@@ -71,3 +71,5 @@ A hero da home aceita arrastar para esquerda (avançar) e direita (voltar), com 
 A foto atual permanece até a próxima imagem estar decodificada. Pedidos rápidos mantêm a última intenção, sem mostrar uma resposta antiga de download ou quadro vazio. Carregamento progressivo preservado: não há pré-carregamento inicial das seis fotos nem biblioteca nova.
 
 Validação: `scripts/verify-home-swipe.mjs`, 30 verificações. Chrome com toque nativo CDP, incluindo rolagem real; Firefox/WebKit com PointerEvents simulados (não substituem testes em aparelhos físicos). Direções, retorno circular, limites de gesto, cancelamento, multitouch, caneta, mouse, botões, teclado, conexão lenta/falha de imagem e autoplay conferidos. Evidências em `data/visual-review/home-swipe/`.
+
+Versão publicada: as mesmas 30 verificações de swipe passaram no endereço público; dez páginas retornaram HTTP 200 sem cookies, com HTML idêntico ao build. Preflight antes e depois preservou os 432 assets dos outros clientes e as fronteiras live. Lighthouse da home publicada: desempenho 94 mobile / 100 desktop; acessibilidade e boas práticas 100; CLS e TBT zero. SEO 69 devido ao noindex intencional da prévia. Medição de laboratório, não API PageSpeed Insights nem CrUX. Relatórios brutos em `data/visual-review/home-swipe/performance-published/`.
