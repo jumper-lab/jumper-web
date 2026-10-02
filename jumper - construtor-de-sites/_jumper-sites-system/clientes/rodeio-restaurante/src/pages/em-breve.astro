@@ -1,5 +1,6 @@
 ---
 import SeoHead from '../components/SeoHead.astro';
+import MenuDialog from '../components/MenuDialog.astro';
 import HeroPhoto from '../components/HeroPhoto.astro';
 import Arrow from '../components/Arrow.astro';
 import content from '../../data/content.json';
@@ -27,4 +28,5 @@ const organization={id:new URL(`${base}/#organization`,Astro.site).href,name:con
   </div>
   <footer class="launch-footer"><span>São Paulo · desde 1958</span><a href="https://www.instagram.com/rodeiorestaurante/">@rodeiorestaurante</a></footer>
 </main>
+<MenuDialog/>
 </body></html>

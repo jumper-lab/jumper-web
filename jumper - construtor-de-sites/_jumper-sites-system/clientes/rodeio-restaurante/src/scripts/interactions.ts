@@ -91,7 +91,7 @@ document.querySelectorAll<HTMLButtonElement>('[data-map]').forEach(button=>butto
 }));
 
 // Keep keyboard focus within open dialogs, including the browser-chrome boundary.
-document.querySelectorAll<HTMLDialogElement>('dialog').forEach(dialog=>dialog.addEventListener('keydown',event=>{
+document.querySelectorAll<HTMLDialogElement>('dialog:not(#digital-menu-dialog)').forEach(dialog=>dialog.addEventListener('keydown',event=>{
  if(event.key!=='Tab')return;
  const items=Array.from(dialog.querySelectorAll<HTMLElement>('a[href],button:not([disabled]),input,select,textarea,[tabindex="0"]')).filter(el=>el.getClientRects().length>0);
  const first=items[0],last=items.at(-1);if(!first||!last)return;

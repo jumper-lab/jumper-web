@@ -1,0 +1,15 @@
+---
+import content from '../../data/content.json';
+import '../styles/menu-dialog.css';
+---
+<dialog id="digital-menu-dialog" class="digital-menu-dialog" aria-labelledby="digital-menu-title" data-menu-url={content.menu_url}>
+  <div class="digital-menu-header">
+    <h2 id="digital-menu-title">Cardápio Rodeio</h2>
+    <button type="button" class="digital-menu-close" data-close-digital-menu autofocus>Fechar <span aria-hidden="true">×</span></button>
+  </div>
+  <div class="digital-menu-content" data-menu-frame-slot>
+    <p class="digital-menu-status" data-menu-status role="status" hidden>Carregando o cardápio…</p>
+  </div>
+  <div class="digital-menu-footer"><a href={content.menu_url} target="_blank" rel="noopener noreferrer">Abrir em outra aba <span aria-hidden="true">↗</span></a></div>
+</dialog>
+<script src="../scripts/menu-dialog.ts"></script>
