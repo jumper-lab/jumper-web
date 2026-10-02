@@ -1,0 +1,26 @@
+[
+  {
+    "key": "menuCortes",
+    "file": "rodeio (16) (1).jpg",
+    "id": "1eqJuSUVO1VbHUysd-lPBGXgXKdfXmlBc",
+    "source": "https://drive.google.com/file/d/1eqJuSUVO1VbHUysd-lPBGXgXKdfXmlBc/view",
+    "original": [
+      3840,
+      5760
+    ],
+    "master": "briefing/entrada/matrizes/menuCortes.webp",
+    "use": "Cortes e acompanhamentos; legenda não identifica o corte como picanha."
+  },
+  {
+    "key": "menuArrozRodeio",
+    "file": "3M7A6213.jpg",
+    "id": "1-fqloUlHh9dAvnd88c7rpl7rMxH8MirM",
+    "source": "https://drive.google.com/file/d/1-fqloUlHh9dAvnd88c7rpl7rMxH8MirM/view",
+    "original": [
+      5792,
+      8688
+    ],
+    "master": "briefing/entrada/matrizes/menuArrozRodeio.webp",
+    "use": "Serviço do Arroz Rodeio, tradicional Biro-Biro."
+  }
+]

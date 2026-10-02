@@ -2,13 +2,13 @@
   "url": "https://site.jumper.dev.br/rodeio/",
   "provider": "cloudflare-workers-static-assets",
   "worker": "jumper-hoster-dev",
-  "versionId": "53b67b6c-baa9-4d97-be97-a930a4251809",
-  "sourceCommit": "27360cba7a89dfa2a947a11a5c6a18a7aedb7b7f",
-  "sourceBranch": "codex/rodeio-historia-integral",
-  "pullRequest": "https://github.com/jumper-lab/jumper-web/pull/83",
+  "versionId": "a620f51b-fb12-425e-9fc4-27ba21b0c86e",
+  "sourceCommit": "63ae9ed8558c4fa1145a426a9787dc380fdda8d0",
+  "sourceBranch": "codex/rodeio-cardapio-classicos",
+  "pullRequest": "https://github.com/jumper-lab/jumper-web/pull/84",
   "status": "READY",
   "indexing": "noindex",
-  "date": "2026-10-02T17:11:02.071394+00:00",
+  "date": "2026-10-02T17:33:37.170534+00:00",
   "access": "public without cookies",
   "results": [
     {
@@ -88,11 +88,13 @@
     "differences": 0,
     "liveBoundariesPreserved": true
   },
-  "previousDevVersionId": "1ca0ce0f-5064-4cf4-a400-c5f8e73a1869",
+  "previousDevVersionId": "53b67b6c-baa9-4d97-be97-a930a4251809",
   "maintenancePage": "https://site.jumper.dev.br/rodeio/em-breve/",
   "maintenanceActiveOnHome": false,
   "performanceReport": "data/visual-review/diretrizes-2026-10-02/performance-published/summary.json",
-  "change": "Narrativa integral de Nossa História: sete parágrafos aprovados, na ordem original, antes do acervo.",
+  "change": "Página Cardápio refeita: textos aprovados, nomes dos clássicos, duas novas fotos do Drive, composição alinhada e acesso ao cardápio digital.",
   "historyPerformanceReport": "data/visual-review/historia-integral/performance-published/summary.json",
-  "historyBrowserReport": "data/visual-review/historia-integral/published/report.json"
+  "historyBrowserReport": "data/visual-review/historia-integral/published/report.json",
+  "menuPerformanceReport": "data/visual-review/cardapio-classicos/performance-published/summary.json",
+  "menuBrowserReport": "data/visual-review/cardapio-classicos/published/report.json"
 }

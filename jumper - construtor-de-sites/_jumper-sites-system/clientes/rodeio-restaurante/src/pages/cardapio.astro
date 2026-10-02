@@ -5,22 +5,46 @@ import Photo from '../components/Photo.astro';
 import Link from '../components/Link.astro';
 import content from '../../data/content.json';
 import '../styles/interiors.css';
+import '../styles/cardapio.css';
 const copy=content.pages.menu;
 ---
 <Layout title="Cardápio — os clássicos do Rodeio" description={copy.description}>
-  <Hero eyebrow="Cardápio · Rodeio" title={copy.title} accent={copy.accent} description={copy.intro} photo="cardapioHero" alt="Carne e arroz servidos à mesa no Rodeio" caption="Gastronomia Rodeio" cta={copy.cta} href={content.menu_url} secondary="Reservar uma mesa" secondaryHref="/reservas/"/>
-  <section id="proxima-secao" class="wrap interior-section menu-editorial" aria-labelledby="menu-editorial-title">
-    <div class="menu-editorial-copy">
-      <p class="eyebrow">Da nossa história, à sua mesa</p>
-      <h2 id="menu-editorial-title">Os sabores<br/><em>que ficam.</em></h2>
-      <p>{copy.description}</p>
-      <ul class="menu-signatures"><li><span>Picanha fatiada</span><small>Clássico do Rodeio</small></li><li><span>Arroz Rodeio</span><small>O tradicional Biro-Biro</small></li></ul>
-      <Link href={content.menu_url} primary>{copy.cta}</Link>
+  <Hero eyebrow="Cardápio · Rodeio" title={copy.title} accent={copy.accent} description={copy.description} photo="cardapioHero" alt="Corte de carne à mesa com acompanhamentos do Rodeio" caption="Os sabores da casa" cta={copy.cta} href={content.menu_url} secondary="Reservar uma mesa" secondaryHref="/reservas/"/>
+  <section id="proxima-secao" class="menu-classics" aria-labelledby="menu-classics-title">
+    <div class="wrap">
+      <div class="menu-classics-heading">
+        <div>
+          <p class="eyebrow">Os clássicos do Rodeio</p>
+          <h2 id="menu-classics-title">Uma seleção de sabores<br/><em>que atravessa gerações.</em></h2>
+        </div>
+        <div class="menu-classics-access">
+          <p>{copy.description}</p>
+          <Link href={content.menu_url}>{copy.cta}</Link>
+        </div>
+      </div>
+      <div class="menu-classics-layout">
+        <figure class="menu-cuts-photo">
+          <Photo name="menuCortes" sizes="(max-width:759px) 90vw, (max-width:1199px) 48vw, 50vw" alt="Carnes grelhadas servidas com batata e acompanhamentos em uma mesa do Rodeio"/>
+          <figcaption><span>Cortes e acompanhamentos</span><span>À mesa no Rodeio</span></figcaption>
+        </figure>
+        <div class="menu-classics-companion">
+          <div class="menu-classics-names" aria-label="Clássicos reconhecidos do Rodeio">
+            <p class="eyebrow">Clássicos que nasceram aqui</p>
+            <div class="menu-classic-name"><h3>Picanha fatiada</h3><span>Carnes</span></div>
+            <div class="menu-classic-name"><h3>Arroz Rodeio</h3><span>O tradicional Biro-Biro</span></div>
+          </div>
+          <figure class="menu-rice-photo">
+            <Photo name="menuArrozRodeio" sizes="(max-width:759px) 90vw, (max-width:1199px) 44vw, 43vw" alt="Arroz Rodeio sendo servido em uma frigideira à mesa"/>
+            <figcaption><span>Arroz Rodeio</span><span>O tradicional Biro-Biro</span></figcaption>
+          </figure>
+        </div>
+      </div>
     </div>
-    <figure><Photo name="carneDetalhe" sizes="(max-width:759px) 88vw, 44vw" alt="Detalhe de um prato de carne do Rodeio"/><figcaption>Os clássicos, em cada detalhe.</figcaption></figure>
   </section>
-  <section class="menu-finish interior-section"><div class="wrap menu-finish-layout">
-    <figure><Photo name="sobremesaServico" sizes="(max-width:759px) 76vw, 32vw" alt="Sobremesa do Rodeio finalizada em uma taça"/><figcaption>Para encerrar o encontro.</figcaption></figure>
-    <div><p class="eyebrow">Para o seu próximo encontro</p><h2>Escolha a casa.<br/><em>Reserve sua mesa.</em></h2><p>Rodeio Jardins ou Rodeio Shopping Iguatemi.</p><Link href="/reservas/">Reservar uma mesa</Link></div>
-  </div></section>
+  <section class="menu-invitation" aria-labelledby="menu-invitation-title">
+    <div class="wrap menu-invitation-layout">
+      <div><p class="eyebrow">Do primeiro corte ao último sabor</p><h2 id="menu-invitation-title">Conheça o<br/><em>cardápio completo.</em></h2></div>
+      <div class="menu-invitation-access"><p>Rodeio Jardins.<br/>Rodeio Shopping Iguatemi.</p><div class="menu-invitation-actions"><Link href={content.menu_url} primary>{copy.cta}</Link><Link href="/reservas/" light>Reservar uma mesa</Link></div></div>
+    </div>
+  </section>
 </Layout>
