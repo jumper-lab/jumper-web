@@ -454,6 +454,9 @@
   padding: 40px var(--gutter) 96px;
   justify-content: safe center;
 }
+.hero-home {
+  touch-action: pan-y pinch-zoom;
+}
 .hero-home .hero-copy {
   pointer-events: none;
 }

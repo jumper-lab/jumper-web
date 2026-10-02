@@ -130,6 +130,7 @@ const preparedSlides = await Promise.all(slides.map(async (slide) => {
 
   if (slideshow && slideshow.dataset.ready !== 'true') {
     slideshow.dataset.ready = 'true';
+    const hero = slideshow.closest<HTMLElement>('.hero-home');
     const frames = [...slideshow.querySelectorAll<HTMLElement>('[data-hero-slide]')];
     const controls = [...slideshow.querySelectorAll<HTMLButtonElement>('[data-slide-control]')];
     const currentLabel = slideshow.querySelector<HTMLElement>('[data-slide-current]');
@@ -138,6 +139,8 @@ const preparedSlides = await Promise.all(slides.map(async (slide) => {
     const connection = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
     const limitedConnection = Boolean(connection?.saveData || connection?.effectiveType === 'slow-2g' || connection?.effectiveType === '2g');
     let activeIndex = 0;
+    let requestedIndex = 0;
+    let gesture: { pointerId: number; startX: number; startY: number; intent: 'undecided' | 'horizontal' | 'vertical' } | null = null;
     let timer = 0;
     let transitionToken = 0;
 
@@ -150,6 +153,8 @@ const preparedSlides = await Promise.all(slides.map(async (slide) => {
       });
       const image = frame.querySelector<HTMLImageElement>('img[data-src]');
       if (image) {
+        // Only the requested/preloaded frame becomes eager, never all six photos.
+        image.loading = 'eager';
         image.srcset = image.dataset.srcset || '';
         image.src = image.dataset.src || '';
         image.removeAttribute('data-srcset');
@@ -172,7 +177,7 @@ const preparedSlides = await Promise.all(slides.map(async (slide) => {
 
     const schedule = () => {
       window.clearTimeout(timer);
-      if (reducedMotion || limitedConnection || document.hidden) return;
+      if (reducedMotion || limitedConnection || document.hidden || gesture) return;
       timer = window.setTimeout(() => showFrame((activeIndex + 1) % frames.length), 6500);
     };
 
@@ -184,7 +189,7 @@ const preparedSlides = await Promise.all(slides.map(async (slide) => {
         if (isActive) control.setAttribute('aria-current', 'true');
         else control.removeAttribute('aria-current');
       });
-      activeIndex = index;
+      activeIndex = requestedIndex = index;
       if (currentLabel) currentLabel.textContent = String(index + 1).padStart(2, '0');
       if (caption) caption.textContent = frames[index]?.dataset.caption || '';
       preloadFollowingFrame();
@@ -193,23 +198,87 @@ const preparedSlides = await Promise.all(slides.map(async (slide) => {
 
     const showFrame = async (index: number) => {
       const normalizedIndex = (index + frames.length) % frames.length;
-      if (normalizedIndex === activeIndex) return;
+      requestedIndex = normalizedIndex;
       const token = ++transitionToken;
+      window.clearTimeout(timer);
+      if (normalizedIndex === activeIndex) {
+        schedule();
+        return;
+      }
       loadFrame(normalizedIndex);
       const image = frames[normalizedIndex]?.querySelector('img');
-      if (image && !image.complete) {
-        await Promise.race([
-          image.decode().catch(() => undefined),
-          new Promise((resolve) => window.setTimeout(resolve, 1600)),
-        ]);
+      try {
+        // Retain the current photograph until the requested one can be painted.
+        // Slow or failed downloads must never expose an empty slide.
+        if (image) await image.decode();
+      } catch {
+        if (token === transitionToken) {
+          requestedIndex = activeIndex;
+          schedule();
+        }
+        return;
       }
-      if (token === transitionToken) commitFrame(normalizedIndex);
+      if (token === transitionToken && !gesture) commitFrame(normalizedIndex);
     };
+
+    const resume = () => {
+      if (requestedIndex !== activeIndex) void showFrame(requestedIndex);
+      else schedule();
+    };
+
+    // Touch/pens retain their native vertical scroll and pinch zoom. Tracking
+    // on window also receives the end of a gesture that leaves the hero.
+    hero?.addEventListener('pointerdown', (event) => {
+      if (event.pointerType !== 'touch' && event.pointerType !== 'pen') return;
+      if (!event.isPrimary) {
+        gesture = null;
+        resume();
+        return;
+      }
+      if (event.target instanceof Element && event.target.closest('a, button, input, select, textarea, [contenteditable="true"]')) return;
+      gesture = { pointerId: event.pointerId, startX: event.clientX, startY: event.clientY, intent: 'undecided' };
+      window.clearTimeout(timer);
+    }, { passive: true });
+
+    window.addEventListener('pointermove', (event) => {
+      if (!gesture || event.pointerId !== gesture.pointerId || gesture.intent !== 'undecided') return;
+      const dx = Math.abs(event.clientX - gesture.startX);
+      const dy = Math.abs(event.clientY - gesture.startY);
+      if (Math.max(dx, dy) < 10) return;
+      gesture.intent = dx > dy * 1.2 ? 'horizontal' : 'vertical';
+    }, { passive: true });
+
+    window.addEventListener('pointerup', (event) => {
+      if (!gesture || event.pointerId !== gesture.pointerId) return;
+      const { startX, startY, intent } = gesture;
+      gesture = null;
+      const dx = event.clientX - startX;
+      const dy = event.clientY - startY;
+      const threshold = Math.min(90, Math.max(40, (hero?.clientWidth || innerWidth) * 0.1));
+      if (intent !== 'vertical' && Math.abs(dx) >= threshold && Math.abs(dx) > Math.abs(dy) * 1.2) {
+        void showFrame(requestedIndex + (dx < 0 ? 1 : -1));
+      } else resume();
+    }, { passive: true });
+
+    window.addEventListener('pointercancel', (event) => {
+      if (!gesture || event.pointerId !== gesture.pointerId) return;
+      gesture = null;
+      resume();
+    }, { passive: true });
+
+    window.addEventListener('blur', () => {
+      if (!gesture) return;
+      gesture = null;
+      resume();
+    });
 
     const queueInitialPreload = () => globalThis.setTimeout(preloadFollowingFrame, 3200);
 
     controls.forEach((control, index) => control.addEventListener('click', () => showFrame(index)));
-    document.addEventListener('visibilitychange', () => document.hidden ? window.clearTimeout(timer) : schedule());
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) { gesture = null; window.clearTimeout(timer); }
+      else resume();
+    });
     if (document.readyState === 'complete') queueInitialPreload();
     else window.addEventListener('load', queueInitialPreload, { once: true });
     schedule();
