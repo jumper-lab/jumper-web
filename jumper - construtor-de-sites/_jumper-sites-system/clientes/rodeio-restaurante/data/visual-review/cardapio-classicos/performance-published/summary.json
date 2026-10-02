@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-02T17:34:51.065Z",
+  "method": "Lighthouse local CLI; mobile Slow 4G, CPU 4x; desktop preset. Lab metrics, not PSI or CrUX.",
+  "runs": [
+    {
+      "url": "https://site.jumper.dev.br/rodeio/cardapio/",
+      "formFactor": "mobile",
+      "filename": "cardapio-mobile.json",
+      "scores": {
+        "performance": 94,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "lcpMs": 2987.4200000000005,
+      "tbtMs": 0,
+      "cls": 0,
+      "bytes": 419874
+    },
+    {
+      "url": "https://site.jumper.dev.br/rodeio/cardapio/",
+      "formFactor": "desktop",
+      "filename": "cardapio-desktop.json",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "lcpMs": 830.3999999999999,
+      "tbtMs": 0,
+      "cls": 0,
+      "bytes": 491457
+    }
+  ]
+}

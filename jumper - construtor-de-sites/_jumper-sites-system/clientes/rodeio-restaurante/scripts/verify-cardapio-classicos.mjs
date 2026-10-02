@@ -10,7 +10,7 @@ const report = { date: new Date().toISOString(), base, checks: [] };
 for (const [engine, type] of Object.entries({ chromium, firefox, webkit })) {
   const executablePath = process.env[`REVIEW_${engine.toUpperCase()}_EXECUTABLE`];
   const browser = await type.launch({ headless: true, ...(engine === 'chromium' ? { channel: 'chrome' } : {}), ...(executablePath ? { executablePath } : {}) });
-  const sizes = engine === 'chromium' ? [[320,740],[390,844],[768,1024],[1024,768],[1440,900],[1920,1080]] : [[390,844],[1440,900]];
+  const sizes = process.env.REVIEW_SIZES?.split(',').map(size => size.split('x').map(Number)) || (engine === 'chromium' ? [[320,740],[390,844],[768,1024],[1024,768],[1440,900],[1920,1080]] : [[390,844],[1440,900]]);
   for (const [width,height] of sizes) {
     const context = await browser.newContext({ viewport: { width, height } });
     const page = await context.newPage();
