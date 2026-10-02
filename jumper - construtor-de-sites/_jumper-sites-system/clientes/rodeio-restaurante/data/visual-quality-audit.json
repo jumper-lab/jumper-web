@@ -2,7 +2,7 @@
   "schema_version": "4.0.0",
   "client": "Rodeio Restaurante",
   "date": "2026-10-02",
-  "status": "ready_for_development_publication",
+  "status": "published_and_verified_on_development",
   "source": "briefing/entrada/diretrizes-2026-10-02/RODEIO SITE (2).pdf",
   "scope": "Revisão editorial e visual por página; página e artes Em breve; apenas a rota dev Rodeio.",
   "validation": {
@@ -22,7 +22,9 @@
       "WebKit"
     ],
     "axe": "WCAG A/AA; 20 combinações Chrome",
-    "worker_tests_passed": 21
+    "worker_tests_passed": 21,
+    "normal_motion_checks": 6,
+    "normal_motion_report": "data/visual-review/diretrizes-2026-10-02/public-heading.json"
   },
   "local_lighthouse": "data/visual-review/diretrizes-2026-10-02/performance-optimized/summary.json",
   "delivery": {
@@ -45,5 +47,36 @@
     "Prévia permanece noindex; não afirmar SEO todo verde.",
     "Lighthouse é medição de laboratório, sem CrUX ou garantia de resultado futuro.",
     "Página Em breve entregue sem substituir automaticamente a home ou o domínio oficial."
-  ]
+  ],
+  "publication": {
+    "worker": "jumper-hoster-dev",
+    "versionId": "1ca0ce0f-5064-4cf4-a400-c5f8e73a1869",
+    "sourceCommit": "6fb174c7285b01f559f1a0a83046f6cac9fae5b5",
+    "url": "https://site.jumper.dev.br/rodeio/",
+    "publicRoutesVerified": 10,
+    "otherDevAssetsPreserved": 432
+  },
+  "performance": {
+    "method": "Lighthouse local CLI; mobile Slow 4G, CPU 4x; desktop preset. Lab metrics, not PSI or CrUX.",
+    "report": "data/visual-review/diretrizes-2026-10-02/performance-published/summary.json",
+    "runs": 10,
+    "range": {
+      "min": 93,
+      "max": 100
+    },
+    "homeMobile": {
+      "performance": 97,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 69
+    },
+    "homeDesktop": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 69
+    },
+    "allMeasuredPerformanceGreen": true,
+    "previousRunsPreserved": "data/visual-review/diretrizes-2026-10-02/performance-before-h1-fix/"
+  }
 }

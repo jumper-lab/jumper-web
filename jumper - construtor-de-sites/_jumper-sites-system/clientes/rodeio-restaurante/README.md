@@ -19,9 +19,9 @@ As diretrizes e os textos desta revisão vêm de `briefing/entrada/diretrizes-20
 `npm run check`: 29 arquivos, zero erros, avisos e hints. Build: 11 páginas.
 `scripts/verify-current-briefing.mjs`: 126 verificações de páginas e interações em Chrome, Firefox e WebKit; zero falhas, imagens quebradas, overflow ou títulos cortados. Chrome em 320, 390, 768, 1024, 1440 e 1920 px; Firefox/WebKit em 390 e 1440 px. Menu, seleção de unidade e lightbox verificados. Contraste auditado com axe em desktop e celular. Cabeçalho também conferido em 1199, 1200, 1280 e 1366 px.
 
-Lighthouse de laboratório local após otimização: home mobile 95, desktop 100; acessibilidade e boas práticas 100. Relatórios brutos e amostras anteriores preservados em `data/visual-review/diretrizes-2026-10-02/`. A medição do site publicado será registrada após o deploy. Não são dados de campo/CrUX nem uma execução da API PageSpeed Insights. A prévia mantém noindex; SEO não deve ser anunciado como verde.
+Lighthouse de laboratório local após otimização: home mobile 95, desktop 100; acessibilidade e boas práticas 100. Relatórios brutos e amostras anteriores preservados em `data/visual-review/diretrizes-2026-10-02/`. Medição da versão publicada: desempenho 93–100 nas nove páginas mobile e na home desktop; acessibilidade e boas práticas 100 em todas as dez amostras. SEO 69 pelo noindex intencional da prévia. Resultados em `performance-published/summary.json`; as amostras anteriores foram preservadas. Não são dados de campo/CrUX nem uma execução da API PageSpeed Insights. A prévia mantém noindex; SEO não deve ser anunciado como verde.
 
-Os 21 testes do Worker dev e do preflight passaram; a publicação ainda exige a comparação remota do pacote completo.
+Os 21 testes do Worker dev/preflight passaram. O preflight antes e depois do deploy comparou 432 assets dos demais clientes: zero diferenças; hub, briefing, APIs e oficiais preservados. Dez rotas públicas retornaram 200 e HTML idêntico ao build.
 
 ## Publicação
 Prévia pública: https://site.jumper.dev.br/rodeio/ . Worker: `jumper-hoster-dev`. Hub, briefing e oficiais permanecem no Worker live. A publicação desta revisão é exclusivamente da prévia da Rodeio.
@@ -47,3 +47,6 @@ A pasta Eventos recebida está vazia: faltam fotografias de eventos representati
 
 ## Operação do site
 Reservas usam Tagme por unidade, carregado por interação, com alternativa de link direto. Não foram enviadas reservas ou solicitações de orçamento durante os testes. Conteúdo de terceiros e disponibilidade real são responsabilidade dos serviços externos. Fontes e fotos são locais; mapas são carregados por interação. Arquivos `data/visual-review/` são evidências internas e não entram no pacote publicado.
+
+## Publicação verificada — 02/10/2026
+Worker dev versão `1ca0ce0f-5064-4cf4-a400-c5f8e73a1869`, fonte `6fb174c7285b01f559f1a0a83046f6cac9fae5b5`. Os commits finais de evidências não alteram o pacote do site. A publicação oficial continua separada. Registro completo: `data/cloudflare-deployment.json`.
