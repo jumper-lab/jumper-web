@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-02T20:39:34.171Z",
+  "reviewed": {
+    "clientArchivePhotos": 212,
+    "cardapioFolderPhotos": 9,
+    "liveMenuSources": "Previous 522 × 522 previews rejected for desktop resolution"
+  },
+  "photos": [
+    {
+      "file": "Captura sem título1313.jpg",
+      "destination": "home-picanha-fatiada-acervo-2024.webp",
+      "dish": "Picanha fatiada",
+      "crop": null,
+      "master": "briefing/entrada/matrizes/home-picanha-fatiada-acervo-2024.webp",
+      "original": {
+        "width": 6240,
+        "height": 4160,
+        "bytes": 3709919,
+        "sha256": "9e7fe5c90223676c2a1e82f703bd69a679ad75728a694178fd779089149d728c"
+      },
+      "optimized": {
+        "width": 2400,
+        "height": 1600,
+        "bytes": 756146
+      },
+      "sourceDocument": "https://docs.google.com/document/d/1v-bGPrw1EdHvaqqZIcIPzWM6PDdJgbYSx8a6PHPgxGM/edit",
+      "sourceArchive": "LINK ULTIMAS FOTOS ABRIL 2024 — acervo do cliente",
+      "aiUsed": false,
+      "notes": "Fotografia completa, sem recorte, deformação ou ampliação."
+    },
+    {
+      "file": "IMG_9573.jpg",
+      "destination": "home-arroz-rodeio-acervo-2024.webp",
+      "dish": "Arroz Rodeio — Biro-Biro",
+      "crop": {
+        "left": 0,
+        "top": 1500,
+        "width": 5464,
+        "height": 5464
+      },
+      "master": "briefing/entrada/matrizes/home-arroz-rodeio-acervo-2024.webp",
+      "original": {
+        "width": 5464,
+        "height": 8192,
+        "bytes": 36075475,
+        "sha256": "fe4da27ef0e153779f55b596fccea9621f760412863858a8f23c7a2437a1d443"
+      },
+      "optimized": {
+        "width": 2400,
+        "height": 2400,
+        "bytes": 955940
+      },
+      "sourceDocument": "https://docs.google.com/document/d/1v-bGPrw1EdHvaqqZIcIPzWM6PDdJgbYSx8a6PHPgxGM/edit",
+      "sourceArchive": "LINK ULTIMAS FOTOS ABRIL 2024 — acervo do cliente",
+      "aiUsed": false,
+      "notes": "Recorte quadrado preserva toda a porção de arroz e o corpo da frigideira; remove somente espaço superior e base inferior do suporte. Sem deformação ou ampliação."
+    }
+  ]
+}
