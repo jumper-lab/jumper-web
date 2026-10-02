@@ -2,6 +2,7 @@ import type {PhotoName} from './photos';
 type GalleryEntry={name:PhotoName;caption:string};
 export const restaurantGalleries:Record<string,GalleryEntry[]>={
  jardins:[
+  {name:'jardinsNovoAmbiente',caption:'As mesas do novo Jardins'},
   {name:'jardins',caption:'O salão dos Jardins'},
   {name:'jardinsHero',caption:'Mesas preparadas para receber'},
   {name:'jardinsDirectory',caption:'Madeira, luz e acolhimento'},

@@ -102,6 +102,75 @@
 .history-taste-copy .action {
   margin-top: 28px;
 }
+.history-archive {
+  background: var(--brown);
+  color: var(--cream);
+  padding-block: clamp(72px, 9vw, 144px);
+}
+.history-archive-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(20px, 2.4vw, 40px);
+  align-items: start;
+}
+.history-archive .eyebrow,
+.history-archive figcaption,
+.history-archive-note span {
+  color: rgba(250, 246, 238, 0.66);
+}
+.history-archive-intro {
+  grid-column: span 5;
+  padding-top: clamp(8px, 2vw, 34px);
+}
+.history-archive-intro h2 {
+  margin-block: 22px;
+  max-width: 10ch;
+}
+.history-archive-intro > p:not(.eyebrow) {
+  max-width: 32ch;
+  color: rgba(250, 246, 238, 0.72);
+  font-size: 15px;
+}
+.history-archive-facade {
+  grid-column: span 7;
+}
+.history-archive-facade img {
+  aspect-ratio: 1.35 / 1;
+  object-fit: cover;
+}
+.history-archive-family {
+  grid-column: 1 / span 5;
+  margin-top: clamp(32px, 6vw, 90px);
+}
+.history-archive-family img {
+  aspect-ratio: 0.82 / 1;
+  object-fit: cover;
+}
+.history-archive-note {
+  grid-column: 6 / span 3;
+  align-self: center;
+  margin-top: clamp(32px, 8vw, 126px);
+  padding-top: 18px;
+  border-top: 1px solid rgba(250, 246, 238, 0.26);
+}
+.history-archive-note span {
+  font: 500 10px/1.4 var(--sans);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.history-archive-note p {
+  margin-top: 16px;
+  font: 400 clamp(22px, 2.15vw, 32px)/1.08 var(--serif);
+  letter-spacing: -.035em;
+}
+.history-archive-portrait {
+  grid-column: 10 / span 3;
+  margin-top: clamp(20px, 3vw, 48px);
+}
+.history-archive-portrait img {
+  aspect-ratio: .9 / 1;
+  object-fit: cover;
+}
 /* Service, names and two photographic scales. */
 .menu-service {
   display: grid;
@@ -538,6 +607,43 @@
   .interior-section {
     padding-block: 56px;
   }
+  .history-archive {
+    padding-block: 64px;
+  }
+  .history-archive-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 16px;
+  }
+  .history-archive-intro,
+  .history-archive-facade {
+    grid-column: 1 / -1;
+  }
+  .history-archive-intro {
+    padding-top: 0;
+  }
+  .history-archive-intro h2 {
+    margin-block: 18px;
+  }
+  .history-archive-facade img {
+    aspect-ratio: 1.2 / 1;
+  }
+  .history-archive-family {
+    grid-column: 1 / span 1;
+    margin-top: 8px;
+  }
+  .history-archive-note {
+    grid-column: 2 / span 1;
+    align-self: end;
+    margin-top: 0;
+    padding-top: 14px;
+  }
+  .history-archive-note p {
+    font-size: 23px;
+  }
+  .history-archive-portrait {
+    grid-column: 2 / span 1;
+    margin-top: -6px;
+  }
   .interior-section-heading {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -819,3 +925,22 @@
 .gallery-grid.visit-gallery.restaurant-gallery .gallery-item > span { font-size: 12px; line-height: 1.5; gap: 12px; }
 @media(max-width:959px){.gallery-grid.visit-gallery.restaurant-gallery {grid-template-columns:repeat(2,minmax(0,1fr));}}
 @media(max-width:599px){.gallery-grid.visit-gallery.restaurant-gallery {grid-template-columns:1fr;gap:28px;}}
+
+/* The printed menu supplies the rhythm: plain names, a few selected photographs. */
+.history-archive h2 em { color:var(--paper); }
+.menu-editorial { display:grid; grid-template-columns:1fr 1fr; gap:clamp(40px,8vw,120px); align-items:center; }
+.menu-editorial-copy h2 { margin:24px 0; }
+.menu-editorial-copy > p:not(.eyebrow) { max-width:40ch; color:var(--muted); font-size:15px; }
+.menu-editorial .menu-signatures { margin-block:32px; }
+.menu-editorial .menu-signatures span { font:500 clamp(20px,2vw,28px)/1.3 var(--sans); letter-spacing:-.02em; }
+.menu-editorial figure img { width:100%; aspect-ratio:4/5; object-fit:cover; }
+.menu-finish { background:var(--cream); }
+.menu-finish-layout { display:grid; grid-template-columns:.75fr 1fr; gap:clamp(40px,10vw,160px); align-items:center; }
+.menu-finish figure { max-width:480px; }
+.menu-finish figure img { width:100%; aspect-ratio:4/5; object-fit:cover; }
+.menu-finish h2 { margin-block:24px; }
+.menu-finish .action { margin-top:24px; }
+@media(max-width:759px) {
+  .menu-editorial,.menu-finish-layout { grid-template-columns:1fr; gap:36px; }
+  .menu-finish figure { width:82%; }
+}

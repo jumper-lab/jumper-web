@@ -1,11 +1,11 @@
 ---
 import {getImage} from 'astro:assets';
 import {photos, type PhotoName} from '../lib/photos';
-interface Props {name:PhotoName;alt:string;}
-const {name,alt}=Astro.props;
+interface Props {name:PhotoName;alt:string;quality?:number;}
+const {name,alt,quality=60}=Astro.props;
 const source=photos[name];
 const crop=async(widths:number[],ratio:number)=>{
- const images=await Promise.all(widths.map(width=>getImage({src:source,width,height:Math.round(width/ratio),fit:'cover',position:'centre',format:'avif',quality:60})));
+ const images=await Promise.all(widths.map(width=>getImage({src:source,width,height:Math.round(width/ratio),fit:'cover',position:'centre',format:'avif',quality})));
  return {src:images[0].src,srcset:images.map((image,i)=>`${image.src} ${widths[i]}w`).join(', ')};
 };
 const [phone,tablet,desktop]=await Promise.all([

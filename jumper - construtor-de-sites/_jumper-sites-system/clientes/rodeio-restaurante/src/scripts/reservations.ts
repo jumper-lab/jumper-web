@@ -16,6 +16,7 @@ function select(unit: HTMLButtonElement, updateURL = true) {
   current = unit;
   options.forEach(option => option.setAttribute('aria-pressed', String(option === unit)));
   document.querySelector('#selected-address')!.textContent = unit.dataset.address!;
+  document.querySelector('#selected-district')!.textContent = unit.dataset.district!;
   document.querySelector('#reservation-title')!.textContent = 'Reserva no Rodeio ' + unit.dataset.name;
   document.querySelector<HTMLAnchorElement>('#reservation-fallback')!.href = unit.dataset.url!;
   slot.replaceChildren();

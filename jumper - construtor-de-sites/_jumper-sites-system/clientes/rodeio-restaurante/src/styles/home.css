@@ -268,3 +268,14 @@
     scroll-behavior: auto;
   }
 }
+
+/* A more direct presentation of the new Jardins, followed by its two addresses. */
+.home-experience { grid-template-columns:1fr 1.1fr; }
+.experience-body { margin-left:0; border-left:0; padding-left:0; max-width:39ch; }
+.experience-photo { width:100%; }
+.experience-photo img { aspect-ratio:4/5; object-position:50% 65%; }
+.cuisine-heading h2 { max-width:18ch; }
+@media(max-width:759px) {
+  .home-experience { grid-template-columns:1fr; }
+  .experience-photo { width:100%; margin:0; }
+}
