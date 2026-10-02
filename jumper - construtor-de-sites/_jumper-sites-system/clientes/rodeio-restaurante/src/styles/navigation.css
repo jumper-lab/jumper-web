@@ -165,8 +165,9 @@
   margin: 0;
   width: min(580px, 100%);
   max-width: 100%;
+  height: 100vh;
   height: 100dvh;
-  max-height: 100%;
+  max-height: none;
   border: 0;
   padding: 0 clamp(24px, 4.4vw, 56px) 28px;
   background: var(--brown);
@@ -323,6 +324,19 @@
   .menu-toggle {
     display: inline-flex;
   }
+  /* Fill the viewport, including tablets and landscape phones. */
+  .navigation-dialog {
+    inset: 0;
+    width: 100vw;
+    max-width: none;
+    overflow-x: hidden;
+    padding-left: max(clamp(24px, 4.4vw, 56px), env(safe-area-inset-left));
+    padding-right: max(clamp(24px, 4.4vw, 56px), env(safe-area-inset-right));
+    padding-bottom: max(28px, env(safe-area-inset-bottom));
+  }
+  .navigation-dialog .dialog-top {
+    padding-top: env(safe-area-inset-top);
+  }
 }
 @media (max-width: 599px) {
   .site-header {
@@ -402,7 +416,7 @@
     min-height: 44px;
   }
   .navigation-dialog {
-    padding-bottom: 16px;
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
   }
   .navigation-dialog .dialog-top {
     min-height: 64px;
@@ -438,3 +452,10 @@
   .header-right .desktop-nav a { font-size:13px; }
 }
 .navigation-dialog nav a { font-size:clamp(26px,4vw,34px); min-height:64px; }
+
+/* Fade the panel without moving its full-screen edges. */
+@media (prefers-reduced-motion: no-preference) {
+  .navigation-dialog[open] {
+    animation: menu-page-in 280ms ease-out;
+  }
+}
