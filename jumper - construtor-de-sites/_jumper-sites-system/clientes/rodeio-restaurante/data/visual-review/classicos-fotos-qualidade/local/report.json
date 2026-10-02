@@ -1,0 +1,573 @@
+{
+  "date": "2026-10-02T20:42:49.507Z",
+  "base": "http://127.0.0.1:4326/rodeio",
+  "checks": [
+    {
+      "engine": "chromium",
+      "width": 320,
+      "height": 740,
+      "status": 200,
+      "photos": [
+        {
+          "alt": "Picanha fatiada do Rodeio servida em prato branco",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-picanha-fatiada-acervo-2024.L0fMOGxw_ZYMzaI.avif",
+          "loading": "lazy",
+          "width": 288,
+          "height": 192,
+          "ready": true,
+          "display": {
+            "width": 272,
+            "height": 181.328125
+          },
+          "fit": "contain",
+          "ratio": 1.5027624309392265,
+          "encoded": {
+            "width": 640,
+            "height": 427,
+            "bytes": 30480
+          }
+        },
+        {
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, servido em uma frigideira",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-arroz-rodeio-acervo-2024.B6yPQxjq_1ogs96.avif",
+          "loading": "lazy",
+          "width": 288,
+          "height": 288,
+          "ready": true,
+          "display": {
+            "width": 272,
+            "height": 272
+          },
+          "fit": "contain",
+          "ratio": 1,
+          "encoded": {
+            "width": 640,
+            "height": 640,
+            "bytes": 63344
+          }
+        }
+      ],
+      "layout": [
+        {
+          "x": 24,
+          "y": 223.3125,
+          "width": 272,
+          "height": 181.328125
+        },
+        {
+          "x": 24,
+          "y": 468.140625,
+          "width": 272,
+          "height": 272
+        }
+      ],
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "photos": [
+        {
+          "alt": "Picanha fatiada do Rodeio servida em prato branco",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-picanha-fatiada-acervo-2024.L0fMOGxw_2bmBe9.avif",
+          "loading": "lazy",
+          "width": 350,
+          "height": 233,
+          "ready": true,
+          "display": {
+            "width": 342,
+            "height": 228
+          },
+          "fit": "contain",
+          "ratio": 1.5,
+          "encoded": {
+            "width": 768,
+            "height": 512,
+            "bytes": 41522
+          }
+        },
+        {
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, servido em uma frigideira",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-arroz-rodeio-acervo-2024.B6yPQxjq_Z2mQRwP.avif",
+          "loading": "lazy",
+          "width": 350,
+          "height": 350,
+          "ready": true,
+          "display": {
+            "width": 342,
+            "height": 342
+          },
+          "fit": "contain",
+          "ratio": 1,
+          "encoded": {
+            "width": 768,
+            "height": 768,
+            "bytes": 82046
+          }
+        }
+      ],
+      "layout": [
+        {
+          "x": 24,
+          "y": 210.703125,
+          "width": 342,
+          "height": 228
+        },
+        {
+          "x": 24,
+          "y": 502.203125,
+          "width": 342,
+          "height": 342
+        }
+      ],
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "photos": [
+        {
+          "alt": "Picanha fatiada do Rodeio servida em prato branco",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-picanha-fatiada-acervo-2024.L0fMOGxw_Z1N6rNL.avif",
+          "loading": "lazy",
+          "width": 422,
+          "height": 281,
+          "ready": true,
+          "display": {
+            "width": 401.0625,
+            "height": 267.375
+          },
+          "fit": "contain",
+          "ratio": 1.5018726591760299,
+          "encoded": {
+            "width": 960,
+            "height": 640,
+            "bytes": 63099
+          }
+        },
+        {
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, servido em uma frigideira",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-arroz-rodeio-acervo-2024.B6yPQxjq_1ogs96.avif",
+          "loading": "lazy",
+          "width": 284,
+          "height": 284,
+          "ready": true,
+          "display": {
+            "width": 267.375,
+            "height": 267.375
+          },
+          "fit": "contain",
+          "ratio": 1,
+          "encoded": {
+            "width": 640,
+            "height": 640,
+            "bytes": 63344
+          }
+        }
+      ],
+      "layout": [
+        {
+          "x": 33.78125,
+          "y": 425.9375,
+          "width": 401.0625,
+          "height": 267.375
+        },
+        {
+          "x": 466.84375,
+          "y": 425.9375,
+          "width": 267.375,
+          "height": 267.375
+        }
+      ],
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "height": 900,
+      "status": 200,
+      "photos": [
+        {
+          "alt": "Picanha fatiada do Rodeio servida em prato branco",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-picanha-fatiada-acervo-2024.L0fMOGxw_Z1lvS2k.avif",
+          "loading": "lazy",
+          "width": 792,
+          "height": 528,
+          "ready": true,
+          "display": {
+            "width": 768.765625,
+            "height": 512.5
+          },
+          "fit": "contain",
+          "ratio": 1.4990253411306043,
+          "encoded": {
+            "width": 1600,
+            "height": 1067,
+            "bytes": 143752
+          }
+        },
+        {
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, servido em uma frigideira",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-arroz-rodeio-acervo-2024.B6yPQxjq_ZDH02g.avif",
+          "loading": "lazy",
+          "width": 532,
+          "height": 532,
+          "ready": true,
+          "display": {
+            "width": 512.515625,
+            "height": 512.515625
+          },
+          "fit": "contain",
+          "ratio": 1,
+          "encoded": {
+            "width": 1200,
+            "height": 1200,
+            "bytes": 166891
+          }
+        }
+      ],
+      "layout": [
+        {
+          "x": 63.359375,
+          "y": 249.65625,
+          "width": 768.765625,
+          "height": 512.5
+        },
+        {
+          "x": 864.125,
+          "y": 249.65625,
+          "width": 512.515625,
+          "height": 512.515625
+        }
+      ],
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 1920,
+      "height": 1080,
+      "status": 200,
+      "photos": [
+        {
+          "alt": "Picanha fatiada do Rodeio servida em prato branco",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-picanha-fatiada-acervo-2024.L0fMOGxw_ZXiDqz.avif",
+          "loading": "lazy",
+          "width": 893,
+          "height": 595,
+          "ready": true,
+          "display": {
+            "width": 892.796875,
+            "height": 595.1875
+          },
+          "fit": "contain",
+          "ratio": 1.5008403361344538,
+          "encoded": {
+            "width": 1920,
+            "height": 1280,
+            "bytes": 178874
+          }
+        },
+        {
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, servido em uma frigideira",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-arroz-rodeio-acervo-2024.B6yPQxjq_ZDH02g.avif",
+          "loading": "lazy",
+          "width": 594,
+          "height": 594,
+          "ready": true,
+          "display": {
+            "width": 595.203125,
+            "height": 595.203125
+          },
+          "fit": "contain",
+          "ratio": 1,
+          "encoded": {
+            "width": 1200,
+            "height": 1200,
+            "bytes": 166891
+          }
+        }
+      ],
+      "layout": [
+        {
+          "x": 200,
+          "y": 297.953125,
+          "width": 892.796875,
+          "height": 595.1875
+        },
+        {
+          "x": 1124.796875,
+          "y": 297.953125,
+          "width": 595.203125,
+          "height": 595.203125
+        }
+      ],
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "photos": [
+        {
+          "alt": "Picanha fatiada do Rodeio servida em prato branco",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-picanha-fatiada-acervo-2024.L0fMOGxw_2bmBe9.avif",
+          "loading": "lazy",
+          "width": 351,
+          "height": 234,
+          "ready": true,
+          "display": {
+            "width": 342,
+            "height": 228
+          },
+          "fit": "contain",
+          "ratio": 1.5,
+          "encoded": {
+            "width": 768,
+            "height": 512,
+            "bytes": 41522
+          }
+        },
+        {
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, servido em uma frigideira",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-arroz-rodeio-acervo-2024.B6yPQxjq_Z2mQRwP.avif",
+          "loading": "lazy",
+          "width": 351,
+          "height": 351,
+          "ready": true,
+          "display": {
+            "width": 342,
+            "height": 342
+          },
+          "fit": "contain",
+          "ratio": 1,
+          "encoded": {
+            "width": 768,
+            "height": 768,
+            "bytes": 82046
+          }
+        }
+      ],
+      "layout": [
+        {
+          "x": 24,
+          "y": 7.73333740234375,
+          "width": 342,
+          "height": 228
+        },
+        {
+          "x": 24,
+          "y": 299.23333740234375,
+          "width": 342,
+          "height": 342
+        }
+      ],
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "height": 900,
+      "status": 200,
+      "photos": [
+        {
+          "alt": "Picanha fatiada do Rodeio servida em prato branco",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-picanha-fatiada-acervo-2024.L0fMOGxw_Z1lvS2k.avif",
+          "loading": "lazy",
+          "width": 792,
+          "height": 528,
+          "ready": true,
+          "display": {
+            "width": 768.7833251953125,
+            "height": 512.5166625976562
+          },
+          "fit": "contain",
+          "ratio": 1.4990253411306043,
+          "encoded": {
+            "width": 1600,
+            "height": 1067,
+            "bytes": 143752
+          }
+        },
+        {
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, servido em uma frigideira",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-arroz-rodeio-acervo-2024.B6yPQxjq_ZDH02g.avif",
+          "loading": "lazy",
+          "width": 533,
+          "height": 533,
+          "ready": true,
+          "display": {
+            "width": 512.5166625976562,
+            "height": 512.5166625976562
+          },
+          "fit": "contain",
+          "ratio": 1,
+          "encoded": {
+            "width": 1200,
+            "height": 1200,
+            "bytes": 166891
+          }
+        }
+      ],
+      "layout": [
+        {
+          "x": 63.350006103515625,
+          "y": 249.63333129882812,
+          "width": 768.7833251953125,
+          "height": 512.5166625976562
+        },
+        {
+          "x": 864.13330078125,
+          "y": 249.63333129882812,
+          "width": 512.5166625976562,
+          "height": 512.5166625976562
+        }
+      ],
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "photos": [
+        {
+          "alt": "Picanha fatiada do Rodeio servida em prato branco",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-picanha-fatiada-acervo-2024.L0fMOGxw_2bmBe9.avif",
+          "loading": "lazy",
+          "width": 350,
+          "height": 233,
+          "ready": true,
+          "display": {
+            "width": 342,
+            "height": 228
+          },
+          "fit": "contain",
+          "ratio": 1.5,
+          "encoded": {
+            "width": 768,
+            "height": 512,
+            "bytes": 41522
+          }
+        },
+        {
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, servido em uma frigideira",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-arroz-rodeio-acervo-2024.B6yPQxjq_Z2mQRwP.avif",
+          "loading": "lazy",
+          "width": 350,
+          "height": 350,
+          "ready": true,
+          "display": {
+            "width": 342,
+            "height": 342
+          },
+          "fit": "contain",
+          "ratio": 1,
+          "encoded": {
+            "width": 768,
+            "height": 768,
+            "bytes": 82046
+          }
+        }
+      ],
+      "layout": [
+        {
+          "x": 24,
+          "y": 209.703125,
+          "width": 342,
+          "height": 228
+        },
+        {
+          "x": 24,
+          "y": 501.203125,
+          "width": 342,
+          "height": 342
+        }
+      ],
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "height": 900,
+      "status": 200,
+      "photos": [
+        {
+          "alt": "Picanha fatiada do Rodeio servida em prato branco",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-picanha-fatiada-acervo-2024.L0fMOGxw_Z1lvS2k.avif",
+          "loading": "lazy",
+          "width": 792,
+          "height": 528,
+          "ready": true,
+          "display": {
+            "width": 768.765625,
+            "height": 512.5
+          },
+          "fit": "contain",
+          "ratio": 1.4990253411306043,
+          "encoded": {
+            "width": 1600,
+            "height": 1067,
+            "bytes": 143752
+          }
+        },
+        {
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, servido em uma frigideira",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-arroz-rodeio-acervo-2024.B6yPQxjq_ZDH02g.avif",
+          "loading": "lazy",
+          "width": 532,
+          "height": 532,
+          "ready": true,
+          "display": {
+            "width": 512.515625,
+            "height": 512.515625
+          },
+          "fit": "contain",
+          "ratio": 1,
+          "encoded": {
+            "width": 1200,
+            "height": 1200,
+            "bytes": 166891
+          }
+        }
+      ],
+      "layout": [
+        {
+          "x": 63.359375,
+          "y": 249.625,
+          "width": 768.765625,
+          "height": 512.5
+        },
+        {
+          "x": 864.125,
+          "y": 249.625,
+          "width": 512.515625,
+          "height": 512.515625
+        }
+      ],
+      "violations": [],
+      "errors": [],
+      "passed": true
+    }
+  ]
+}

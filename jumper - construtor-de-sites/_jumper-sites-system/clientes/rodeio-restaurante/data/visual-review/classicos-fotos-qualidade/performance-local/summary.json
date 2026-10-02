@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-02T20:43:34.945Z",
+  "method": "Lighthouse local CLI; mobile Slow 4G, CPU 4x; desktop preset. Lab metrics, not PSI or CrUX.",
+  "runs": [
+    {
+      "url": "http://127.0.0.1:4326/rodeio/",
+      "formFactor": "mobile",
+      "filename": "home-mobile.json",
+      "scores": {
+        "performance": 92,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 66
+      },
+      "lcpMs": 3389.6753,
+      "tbtMs": 0,
+      "cls": 0,
+      "bytes": 574949
+    },
+    {
+      "url": "http://127.0.0.1:4326/rodeio/",
+      "formFactor": "desktop",
+      "filename": "home-desktop.json",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 66
+      },
+      "lcpMs": 748.2365,
+      "tbtMs": 0,
+      "cls": 0,
+      "bytes": 603273
+    }
+  ]
+}

@@ -1,11 +1,11 @@
 ---
 import { Image } from 'astro:assets';
 import {photos, type PhotoName} from '../lib/photos';
-interface Props {name:PhotoName; alt:string; class?:string; eager?:boolean;sizes?:string;}
-const {name,alt,class:className='',eager=false,sizes='(max-width: 759px) 100vw, 55vw'}=Astro.props;
+interface Props {name:PhotoName; alt:string; class?:string; eager?:boolean;sizes?:string; quality?:number; maxWidth?:number;}
+const {name,alt,class:className='',eager=false,sizes='(max-width: 759px) 100vw, 55vw',quality=60,maxWidth=1600}=Astro.props;
 const photo=photos[name];
 ---
-<div class="photo-viewport"><Image data-photo-entrance src={photo} alt={alt} width={Math.min(photo.width,1600)} class={className} widths={[320,480,640,768,960,1200,1600].filter((w,i,a)=>w<=photo.width && a.indexOf(w)===i)} sizes={sizes} format="avif" quality={60} loading={eager?'eager':'lazy'} fetchpriority={eager?'high':'low'} decoding="async" /></div>
+<div class="photo-viewport"><Image data-photo-entrance src={photo} alt={alt} width={Math.min(photo.width,maxWidth)} class={className} widths={[320,480,640,768,960,1200,1600,maxWidth].filter((w,i,a)=>w<=photo.width && w<=maxWidth && a.indexOf(w)===i)} sizes={sizes} format="avif" quality={quality} loading={eager?'eager':'lazy'} fetchpriority={eager?'high':'low'} decoding="async" /></div>
 
 <style>
 .photo-viewport { display: block; width: 100%; overflow: clip; overflow-anchor: none; }

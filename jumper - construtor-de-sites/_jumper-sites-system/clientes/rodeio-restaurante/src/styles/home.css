@@ -46,7 +46,7 @@
 }
 .cuisine-layout {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: 1.5fr 1fr;
   gap: 28px 32px;
   align-items: start;
 }
@@ -71,11 +71,13 @@
 .cuisine-main, .cuisine-detail { min-width: 0; margin: 0; }
 .cuisine-main img, .cuisine-detail img {
   width: 100%;
-  height: clamp(280px, 28vw, 440px);
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
 }
-.cuisine-main img { object-position: 50% 65%; }
-.cuisine-detail img { object-position: 50% 55%; }
+/* Native 3:2 and square photographs keep the full dishes visible.
+   The 3:2 column proportion aligns both photograph bottoms on desktop. */
+.cuisine-main img { aspect-ratio: 3 / 2; }
+.cuisine-detail img { aspect-ratio: 1; }
 .cuisine-main figcaption, .cuisine-detail figcaption {
   margin: 12px 0 0;
   padding: 0;
@@ -219,7 +221,6 @@
   .cuisine-heading h2 { font-size: clamp(40px, 10vw, 56px); }
   .cuisine-intro { padding: 0; }
   .cuisine-intro p { font-size: 14px; }
-  .cuisine-main img, .cuisine-detail img { height: auto; aspect-ratio: 4 / 3; }
   .home-houses {
     padding-block: 64px;
   }
