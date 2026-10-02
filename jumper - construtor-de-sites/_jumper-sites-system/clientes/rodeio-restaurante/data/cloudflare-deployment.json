@@ -2,13 +2,13 @@
   "url": "https://site.jumper.dev.br/rodeio/",
   "provider": "cloudflare-workers-static-assets",
   "worker": "jumper-hoster-dev",
-  "versionId": "891df15d-3973-47b3-b2bc-e29c12a374ce",
-  "sourceCommit": "cb6e67395ea1cc6cae43d0b5e42160004150a264",
-  "sourceBranch": "codex/rodeio-home-pratos-classicos",
-  "pullRequest": "https://github.com/jumper-lab/jumper-web/pull/86",
+  "versionId": "10be748f-df69-4e6a-b295-14e62e3a5f28",
+  "sourceCommit": "2c91b0b37c703638a27479c0b9a714c72e55c1a4",
+  "sourceBranch": "codex/rodeio-menu-mobile-viewport",
+  "pullRequest": "https://github.com/jumper-lab/jumper-web/pull/87",
   "status": "READY",
   "indexing": "noindex",
-  "date": "2026-10-02T18:22:11.814855+00:00",
+  "date": "2026-10-02T18:34:18.124227+00:00",
   "access": "public without cookies",
   "results": [
     {
@@ -88,17 +88,18 @@
     "differences": 0,
     "liveBoundariesPreserved": true
   },
-  "previousDevVersionId": "43417780-83f7-4ede-a70b-47a357e21f9f",
+  "previousDevVersionId": "891df15d-3973-47b3-b2bc-e29c12a374ce",
   "maintenancePage": "https://site.jumper.dev.br/rodeio/em-breve/",
   "maintenanceActiveOnHome": false,
   "performanceReport": "data/visual-review/diretrizes-2026-10-02/performance-published/summary.json",
-  "change": "Home: fotos identificadas de picanha fatiada e Arroz Rodeio (Biro-Biro) nos clássicos, com legendas, alt e AVIF responsivo.",
+  "change": "Menu mobile: largura total até 1199 px, altura dinâmica do viewport, entrada sem deslocar bordas e rolagem interna.",
   "historyPerformanceReport": "data/visual-review/historia-integral/performance-published/summary.json",
   "historyBrowserReport": "data/visual-review/historia-integral/published/report.json",
   "menuPerformanceReport": "data/visual-review/cardapio-classicos/performance-published/summary.json",
   "menuBrowserReport": "data/visual-review/cardapio-classicos/published/report.json",
   "swipeBrowserReport": "data/visual-review/home-swipe/published/report.json",
-  "homePerformanceReport": "data/visual-review/home-pratos-classicos/performance-published/summary.json",
+  "homePerformanceReport": "data/visual-review/menu-mobile-viewport/performance-published/summary.json",
   "classicsBrowserReport": "data/visual-review/home-pratos-classicos/published/report.json",
-  "classicsAssetReport": "data/visual-review/home-pratos-classicos/assets.json"
+  "classicsAssetReport": "data/visual-review/home-pratos-classicos/assets.json",
+  "menuViewportBrowserReport": "data/visual-review/menu-mobile-viewport/published/report.json"
 }

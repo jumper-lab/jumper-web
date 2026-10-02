@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-02T18:35:06.979Z",
+  "method": "Lighthouse local CLI; mobile Slow 4G, CPU 4x; desktop preset. Lab metrics, not PSI or CrUX.",
+  "runs": [
+    {
+      "url": "https://site.jumper.dev.br/rodeio/",
+      "formFactor": "mobile",
+      "filename": "home-mobile.json",
+      "scores": {
+        "performance": 95,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "lcpMs": 2818.936,
+      "tbtMs": 14,
+      "cls": 0,
+      "bytes": 450002
+    },
+    {
+      "url": "https://site.jumper.dev.br/rodeio/",
+      "formFactor": "desktop",
+      "filename": "home-desktop.json",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "lcpMs": 800.03,
+      "tbtMs": 0,
+      "cls": 0,
+      "bytes": 496956
+    }
+  ]
+}
