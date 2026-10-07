@@ -22,19 +22,15 @@ const copy=content.pages.menu;
           <Link href={content.menu_url}>{copy.cta}</Link>
         </div>
       </div>
-      <div class="menu-classics-names" aria-label="Clássicos reconhecidos do Rodeio">
-        <p class="eyebrow">Clássicos que nasceram aqui</p>
-        <div class="menu-classic-name"><h3>Picanha fatiada</h3><span>Carnes</span></div>
-        <div class="menu-classic-name"><h3>Arroz Rodeio</h3><span>O tradicional Biro-Biro</span></div>
-      </div>
+      <p class="eyebrow menu-classics-label">Clássicos que nasceram aqui</p>
       <div class="menu-classics-layout">
-        <figure class="menu-cuts-photo">
-          <Photo name="menuCortes" quality={68} maxWidth={1920} sizes="(max-width:759px) 90vw, (min-width:1680px) 728px, 45vw" alt="Corte grelhado servido com batata em um prato branco do Rodeio"/>
-          <figcaption><span>Cortes e acompanhamentos</span><span>À mesa no Rodeio</span></figcaption>
+        <figure class="menu-cuts-photo" aria-labelledby="menu-picanha-title">
+          <Photo name="menuPicanhaFatiada" quality={68} maxWidth={1920} sizes="(max-width:999px) 90vw, (min-width:1680px) 1008px, 61vw" alt="Picanha fatiada servida com acompanhamentos em um prato branco do Rodeio"/>
+          <figcaption class="menu-classic-name"><h3 id="menu-picanha-title">Picanha fatiada</h3><span>Carnes</span></figcaption>
         </figure>
-        <figure class="menu-dessert-photo">
-          <Photo name="menuSobremesa" quality={68} maxWidth={1920} sizes="(max-width:759px) 90vw, (min-width:1680px) 728px, 45vw" alt="Sobremesa cremosa servida em uma taça sobre a mesa de madeira do Rodeio"/>
-          <figcaption><span>Para terminar</span><span>Um último sabor</span></figcaption>
+        <figure class="menu-rice-photo" aria-labelledby="menu-arroz-title">
+          <Photo name="menuArrozRodeio" quality={68} maxWidth={1920} sizes="(max-width:999px) 90vw, (min-width:1680px) 448px, 27vw" alt="Arroz Rodeio, o tradicional Biro-Biro, sendo servido em uma frigideira à mesa"/>
+          <figcaption class="menu-classic-name"><h3 id="menu-arroz-title">Arroz Rodeio</h3><span>O tradicional Biro-Biro</span></figcaption>
         </figure>
       </div>
     </div>

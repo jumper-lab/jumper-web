@@ -1,4 +1,4 @@
-/* The menu pairs a photographic plate with the names of Rodeio's signatures. */
+/* Each signature dish keeps its photograph and name in the same figure. */
 .menu-classics {
   background: var(--cream);
   padding-block: clamp(64px, 7.2vw, 112px);
@@ -22,21 +22,13 @@
   color: var(--muted);
 }
 .menu-classics-access .action { margin-top: 28px; }
-.menu-classics-names {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
-  gap: 28px;
-  align-items: center;
-  border-block: 1px solid var(--line);
-  padding-block: 24px;
-  margin-bottom: 40px;
-}
+.menu-classics-label { border-top: 1px solid var(--line); padding-top: 24px; margin-bottom: 32px; }
 .menu-classic-name { display: grid; gap: 6px; }
 .menu-classic-name h3 { font-size: clamp(25px, 2.4vw, 36px); line-height: 1.15; }
 .menu-classic-name > span { font: 400 11px/1.5 var(--sans); color: var(--muted); }
 .menu-classics-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 2.25fr) minmax(0, 1fr);
   gap: clamp(28px, 4vw, 56px);
   align-items: start;
 }
@@ -46,17 +38,9 @@
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 4 / 5;
   object-fit: contain;
 }
-.menu-classics-layout figcaption {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  margin-top: 16px;
-  font: 400 11px/1.5 var(--sans);
-  color: var(--muted);
-}
+.menu-classics-layout figcaption { margin-top: 18px; }
 .menu-invitation {
   padding-block: clamp(64px, 7vw, 112px);
   background: var(--brown);
@@ -87,16 +71,14 @@
 
   .menu-invitation-actions { align-items: flex-start; flex-direction: column; }
 }
+@media (max-width: 999px) {
+  .menu-classics-layout { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+}
 @media (max-width: 759px) {
   .menu-classics-heading, .menu-classics-layout, .menu-invitation-layout { grid-template-columns: minmax(0, 1fr); }
   .menu-classics-heading { align-items: start; gap: 28px; }
   .menu-classics-heading h2 { margin-top: 18px; }
   .menu-classics-access p { max-width: none; }
   .menu-classics-access .action { margin-top: 22px; }
-  .menu-classics-names { grid-template-columns: minmax(0,1fr); gap: 24px; }
   .menu-invitation h2 { margin-top: 18px; }
-}
-@media (max-width: 359px) {
-
-  .menu-classics-layout figcaption { flex-direction: column; gap: 2px; }
 }

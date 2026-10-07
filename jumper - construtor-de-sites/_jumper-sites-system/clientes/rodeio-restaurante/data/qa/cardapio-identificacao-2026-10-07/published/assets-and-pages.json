@@ -1,0 +1,297 @@
+{
+  "date": "2026-10-07T21:29:37.718508+00:00",
+  "url": "https://site.jumper.dev.br/rodeio/",
+  "pages": [
+    {
+      "path": "/rodeio/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 80924,
+      "sha256": "22fce3a189323f01ef47cdfa3159fa97ac65e9149e5734d963b7724fd125c70a",
+      "noindex": true
+    },
+    {
+      "path": "/rodeio/historia/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 76489,
+      "sha256": "2237dcaf0a4d0ebb43a937f3e94f7f25766d2ad2e48a494192bedbd509ec4752",
+      "noindex": true
+    },
+    {
+      "path": "/rodeio/cardapio/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 77410,
+      "sha256": "8a146f177707c0938841b494a7f17b27043db5041208ad705a0261ead499e70f",
+      "noindex": true
+    },
+    {
+      "path": "/rodeio/restaurantes/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 75422,
+      "sha256": "fc0297ce293ddc6e95ed183b84bf3ecff5c3b0286b4fdbefe6a2490055b409f8",
+      "noindex": true
+    },
+    {
+      "path": "/rodeio/restaurantes/jardins/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 153097,
+      "sha256": "378d5acecfb6af5da6d9ee1312b31a0427952820afbb96e7e532a0238087fe95",
+      "noindex": true
+    },
+    {
+      "path": "/rodeio/restaurantes/iguatemi/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 92739,
+      "sha256": "93e484cc02c864c4f3247ca675a68d8530c0b9b46c7d9ef0c68c41a322c52a08",
+      "noindex": true
+    },
+    {
+      "path": "/rodeio/eventos/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 73756,
+      "sha256": "c89cf6108a3bb1b06d0987ce92b0d90949491cd9cab647649b10b0238fa36d15",
+      "noindex": true
+    },
+    {
+      "path": "/rodeio/reservas/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 74776,
+      "sha256": "2788dabb1cfe2214d31d6089978de266fd6cfc59d4c3c3255a15ff8bfe084171",
+      "noindex": true
+    },
+    {
+      "path": "/rodeio/privacidade/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 70179,
+      "sha256": "0e8ba009205f659945cd318b27664abe3aef3e69d5a1d8880f0ed5e710418db4",
+      "noindex": true
+    },
+    {
+      "path": "/rodeio/em-breve/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 42178,
+      "sha256": "64c2778d72e1cb9b98470b25366b55c1f0aa0b6eb5bee042b2a019361ab82f45",
+      "noindex": true
+    }
+  ],
+  "newAssets": [
+    {
+      "path": "/rodeio/_astro/home-picanha-fatiada-acervo-2024.L0fMOGxw_1wuS8k.avif",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": false,
+      "bytes": 9894,
+      "sha256": "108502606c04a0a0eeee60313f5ce3926d91514d3bd6208f341f5ca5fdcb96fa",
+      "noindex": null
+    },
+    {
+      "path": "/rodeio/_astro/home-picanha-fatiada-acervo-2024.L0fMOGxw_2bmBe9.avif",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": false,
+      "bytes": 41522,
+      "sha256": "18dae8b163f06eadb69327477aa897f30b0f4cc47a7ad6591c35d2b5dbde2262",
+      "noindex": null
+    },
+    {
+      "path": "/rodeio/_astro/home-picanha-fatiada-acervo-2024.L0fMOGxw_Z1N6rNL.avif",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": false,
+      "bytes": 63099,
+      "sha256": "66fb0d992f96f2b597ed12bef2e1ab8c44ef7282ecfb554a02197eae19da612a",
+      "noindex": null
+    },
+    {
+      "path": "/rodeio/_astro/home-picanha-fatiada-acervo-2024.L0fMOGxw_Z1lvS2k.avif",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": false,
+      "bytes": 143752,
+      "sha256": "a7a9d5f488bd7bff4bde382ddc4d0560995e37b0ee10ee7be9e0ab348e73b56f",
+      "noindex": null
+    },
+    {
+      "path": "/rodeio/_astro/home-picanha-fatiada-acervo-2024.L0fMOGxw_Z1tw2vG.avif",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": false,
+      "bytes": 96883,
+      "sha256": "a3d89b9c14a72ccb45f4cbf6c2424b1ac6d1840fef3d99f3226ef954bf5d0f53",
+      "noindex": null
+    },
+    {
+      "path": "/rodeio/_astro/home-picanha-fatiada-acervo-2024.L0fMOGxw_ZXiDqz.avif",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": false,
+      "bytes": 178874,
+      "sha256": "3a4aca0268c506b039157e8ab9819f8c0c8e4b49875ae0a93e31f4d4ee96fddd",
+      "noindex": null
+    },
+    {
+      "path": "/rodeio/_astro/home-picanha-fatiada-acervo-2024.L0fMOGxw_ZYMzaI.avif",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": false,
+      "bytes": 30480,
+      "sha256": "ebaf1580be9df175729e3cd20b60daeada112580f2a185de62a3dd58b5325d5d",
+      "noindex": null
+    },
+    {
+      "path": "/rodeio/_astro/home-picanha-fatiada-acervo-2024.L0fMOGxw_aYq5c.avif",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": false,
+      "bytes": 18826,
+      "sha256": "eb0967cff9acdc4a39930d37606a2f05b8ce91f8ae72afe12b85ba2f50a93954",
+      "noindex": null
+    },
+    {
+      "path": "/rodeio/_astro/menuArrozRodeio.BytR_RZm_5vTTh.avif",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": false,
+      "bytes": 20741,
+      "sha256": "ad09cc7d6612106132d4907b1f28ad97ef471eca99df76315bff856e3987bbad",
+      "noindex": null
+    },
+    {
+      "path": "/rodeio/_astro/menuArrozRodeio.BytR_RZm_Z1KtvM9.avif",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": false,
+      "bytes": 139444,
+      "sha256": "2414556665d36e4743178934bd162bb5ab86fdd3e9bdbcf669d3cc87a3e273d6",
+      "noindex": null
+    },
+    {
+      "path": "/rodeio/_astro/menuArrozRodeio.BytR_RZm_Z1UVG8u.avif",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": false,
+      "bytes": 73123,
+      "sha256": "c540a4c9ffb5f5c51502858b0b498ae0f00ef2af6c948339072a05a67f09a860",
+      "noindex": null
+    },
+    {
+      "path": "/rodeio/_astro/menuArrozRodeio.BytR_RZm_Z1oxVuO.avif",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": false,
+      "bytes": 36735,
+      "sha256": "19f18548e5ed10098462f085672d75801380c4107b51a94e0ff25f970680ce26",
+      "noindex": null
+    },
+    {
+      "path": "/rodeio/_astro/menuArrozRodeio.BytR_RZm_Z7bC4z.avif",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": false,
+      "bytes": 56464,
+      "sha256": "98339bfd235305c5f1b32dab6c513571ae2997603afb90884ea0b05a7e1d3919",
+      "noindex": null
+    },
+    {
+      "path": "/rodeio/_astro/menuArrozRodeio.BytR_RZm_ZovThr.avif",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": false,
+      "bytes": 101202,
+      "sha256": "0000523ed885ee5769d326983b7504d80b32427eca850efa8c369aa84228696f",
+      "noindex": null
+    },
+    {
+      "path": "/rodeio/_astro/menuArrozRodeio.BytR_RZm_fwWQV.avif",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": false,
+      "bytes": 245344,
+      "sha256": "db85efb90db90efbff94b7b1d3496cae927b6b2ae58410719e2e238f580517f3",
+      "noindex": null
+    },
+    {
+      "path": "/rodeio/_astro/menuArrozRodeio.BytR_RZm_oEcDI.avif",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": false,
+      "bytes": 198902,
+      "sha256": "e235a2b984d5f8af4bb5ce893600730c8873b50d953b63e015e30e8f8866c593",
+      "noindex": null
+    }
+  ],
+  "newAssetCount": 16,
+  "allMatched": true,
+  "access": "public without cookies"
+}

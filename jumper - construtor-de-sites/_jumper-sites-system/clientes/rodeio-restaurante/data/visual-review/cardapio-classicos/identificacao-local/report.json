@@ -1,0 +1,346 @@
+{
+  "date": "2026-10-07T21:23:56.613Z",
+  "base": "http://127.0.0.1:4326/rodeio",
+  "checks": [
+    {
+      "engine": "chromium",
+      "width": 320,
+      "height": 740,
+      "status": 200,
+      "clipped": false,
+      "heading": "1",
+      "overflow": false,
+      "brokenImages": [],
+      "heroImage": 322.24664306640625,
+      "newPhotos": 2,
+      "photoBottomAlignment": 517.25,
+      "dishes": [
+        {
+          "name": "Picanha fatiada",
+          "alt": "Picanha fatiada servida com acompanhamentos em um prato branco do Rodeio",
+          "source": "/rodeio/_astro/home-picanha-fatiada-acervo-2024.L0fMOGxw_ZXiDqz.avif",
+          "ratio": 1.5023734758220748,
+          "intrinsicRatio": 1.5
+        },
+        {
+          "name": "Arroz Rodeio",
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, sendo servido em uma frigideira à mesa",
+          "source": "/rodeio/_astro/menuArrozRodeio.BytR_RZm_fwWQV.avif",
+          "ratio": 0.6666667603104629,
+          "intrinsicRatio": 0.666796875
+        }
+      ],
+      "menuLinks": 3,
+      "approvedCopy": true,
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "clipped": false,
+      "heading": "1",
+      "overflow": false,
+      "brokenImages": [],
+      "heroImage": 393.1474609375,
+      "newPhotos": 2,
+      "photoBottomAlignment": 622.25,
+      "dishes": [
+        {
+          "name": "Picanha fatiada",
+          "alt": "Picanha fatiada servida com acompanhamentos em um prato branco do Rodeio",
+          "source": "/rodeio/_astro/home-picanha-fatiada-acervo-2024.L0fMOGxw_ZXiDqz.avif",
+          "ratio": 1.4999994972807917,
+          "intrinsicRatio": 1.5
+        },
+        {
+          "name": "Arroz Rodeio",
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, sendo servido em uma frigideira à mesa",
+          "source": "/rodeio/_astro/menuArrozRodeio.BytR_RZm_fwWQV.avif",
+          "ratio": 0.6666668156205894,
+          "intrinsicRatio": 0.666796875
+        }
+      ],
+      "menuLinks": 3,
+      "approvedCopy": true,
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "clipped": false,
+      "heading": "1",
+      "overflow": false,
+      "brokenImages": [],
+      "heroImage": 774.197021484375,
+      "newPhotos": 2,
+      "photoBottomAlignment": 1159.90625,
+      "dishes": [
+        {
+          "name": "Picanha fatiada",
+          "alt": "Picanha fatiada servida com acompanhamentos em um prato branco do Rodeio",
+          "source": "/rodeio/_astro/home-picanha-fatiada-acervo-2024.L0fMOGxw_ZXiDqz.avif",
+          "ratio": 1.500016691523946,
+          "intrinsicRatio": 1.5
+        },
+        {
+          "name": "Arroz Rodeio",
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, sendo servido em uma frigideira à mesa",
+          "source": "/rodeio/_astro/menuArrozRodeio.BytR_RZm_fwWQV.avif",
+          "ratio": 0.6666666666666666,
+          "intrinsicRatio": 0.666796875
+        }
+      ],
+      "menuLinks": 3,
+      "approvedCopy": true,
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 1024,
+      "height": 768,
+      "status": 200,
+      "clipped": false,
+      "heading": "1",
+      "overflow": false,
+      "brokenImages": [],
+      "heroImage": 1032.264892578125,
+      "newPhotos": 2,
+      "photoBottomAlignment": 0.296875,
+      "dishes": [
+        {
+          "name": "Picanha fatiada",
+          "alt": "Picanha fatiada servida com acompanhamentos em um prato branco do Rodeio",
+          "source": "/rodeio/_astro/home-picanha-fatiada-acervo-2024.L0fMOGxw_ZXiDqz.avif",
+          "ratio": 1.4988630754933436,
+          "intrinsicRatio": 1.5
+        },
+        {
+          "name": "Arroz Rodeio",
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, sendo servido em uma frigideira à mesa",
+          "source": "/rodeio/_astro/menuArrozRodeio.BytR_RZm_fwWQV.avif",
+          "ratio": 0.6666793669793354,
+          "intrinsicRatio": 0.666796875
+        }
+      ],
+      "menuLinks": 3,
+      "approvedCopy": true,
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "height": 900,
+      "status": 200,
+      "clipped": false,
+      "heading": "1",
+      "overflow": false,
+      "brokenImages": [],
+      "heroImage": 1452.17236328125,
+      "newPhotos": 2,
+      "photoBottomAlignment": 0,
+      "dishes": [
+        {
+          "name": "Picanha fatiada",
+          "alt": "Picanha fatiada servida com acompanhamentos em um prato branco do Rodeio",
+          "source": "/rodeio/_astro/home-picanha-fatiada-acervo-2024.L0fMOGxw_ZXiDqz.avif",
+          "ratio": 1.5,
+          "intrinsicRatio": 1.5
+        },
+        {
+          "name": "Arroz Rodeio",
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, sendo servido em uma frigideira à mesa",
+          "source": "/rodeio/_astro/menuArrozRodeio.BytR_RZm_fwWQV.avif",
+          "ratio": 0.6666757857344333,
+          "intrinsicRatio": 0.666796875
+        }
+      ],
+      "menuLinks": 3,
+      "approvedCopy": true,
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 1920,
+      "height": 1080,
+      "status": 200,
+      "clipped": false,
+      "heading": "1",
+      "overflow": false,
+      "brokenImages": [],
+      "heroImage": 1934.1220703125,
+      "newPhotos": 2,
+      "photoBottomAlignment": 0.015625,
+      "dishes": [
+        {
+          "name": "Picanha fatiada",
+          "alt": "Picanha fatiada servida com acompanhamentos em um prato branco do Rodeio",
+          "source": "/rodeio/_astro/home-picanha-fatiada-acervo-2024.L0fMOGxw_ZXiDqz.avif",
+          "ratio": 1.4999999151826888,
+          "intrinsicRatio": 1.5
+        },
+        {
+          "name": "Arroz Rodeio",
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, sendo servido em uma frigideira à mesa",
+          "source": "/rodeio/_astro/menuArrozRodeio.BytR_RZm_fwWQV.avif",
+          "ratio": 0.6666666666666666,
+          "intrinsicRatio": 0.666796875
+        }
+      ],
+      "menuLinks": 3,
+      "approvedCopy": true,
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "clipped": false,
+      "heading": "1",
+      "overflow": false,
+      "brokenImages": [],
+      "heroImage": 391.3333435058594,
+      "newPhotos": 2,
+      "photoBottomAlignment": 622.25,
+      "dishes": [
+        {
+          "name": "Picanha fatiada",
+          "alt": "Picanha fatiada servida com acompanhamentos em um prato branco do Rodeio",
+          "source": "/rodeio/_astro/home-picanha-fatiada-acervo-2024.L0fMOGxw_ZXiDqz.avif",
+          "ratio": 1.5000343424871614,
+          "intrinsicRatio": 1.5
+        },
+        {
+          "name": "Arroz Rodeio",
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, sendo servido em uma frigideira à mesa",
+          "source": "/rodeio/_astro/menuArrozRodeio.BytR_RZm_fwWQV.avif",
+          "ratio": 0.6666667039047979,
+          "intrinsicRatio": 0.666796875
+        }
+      ],
+      "menuLinks": 3,
+      "approvedCopy": true,
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "height": 900,
+      "status": 200,
+      "clipped": false,
+      "heading": "1",
+      "overflow": false,
+      "brokenImages": [],
+      "heroImage": 1449.7333984375,
+      "newPhotos": 2,
+      "photoBottomAlignment": 0.01666259765625,
+      "dishes": [
+        {
+          "name": "Picanha fatiada",
+          "alt": "Picanha fatiada servida com acompanhamentos em um prato branco do Rodeio",
+          "source": "/rodeio/_astro/home-picanha-fatiada-acervo-2024.L0fMOGxw_ZXiDqz.avif",
+          "ratio": 1.5000269621321298,
+          "intrinsicRatio": 1.5
+        },
+        {
+          "name": "Arroz Rodeio",
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, sendo servido em uma frigideira à mesa",
+          "source": "/rodeio/_astro/menuArrozRodeio.BytR_RZm_fwWQV.avif",
+          "ratio": 0.666675653801731,
+          "intrinsicRatio": 0.666796875
+        }
+      ],
+      "menuLinks": 3,
+      "approvedCopy": true,
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "clipped": false,
+      "heading": "1",
+      "overflow": false,
+      "brokenImages": [],
+      "heroImage": 403.6500244140625,
+      "newPhotos": 2,
+      "photoBottomAlignment": 622.25,
+      "dishes": [
+        {
+          "name": "Picanha fatiada",
+          "alt": "Picanha fatiada servida com acompanhamentos em um prato branco do Rodeio",
+          "source": "/rodeio/_astro/home-picanha-fatiada-acervo-2024.L0fMOGxw_ZXiDqz.avif",
+          "ratio": 1.4999994972807917,
+          "intrinsicRatio": 1.5
+        },
+        {
+          "name": "Arroz Rodeio",
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, sendo servido em uma frigideira à mesa",
+          "source": "/rodeio/_astro/menuArrozRodeio.BytR_RZm_fwWQV.avif",
+          "ratio": 0.6666665177128106,
+          "intrinsicRatio": 0.666796875
+        }
+      ],
+      "menuLinks": 3,
+      "approvedCopy": true,
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "height": 900,
+      "status": 200,
+      "clipped": false,
+      "heading": "1",
+      "overflow": false,
+      "brokenImages": [],
+      "heroImage": 1446.9462890625,
+      "newPhotos": 2,
+      "photoBottomAlignment": 0.03125,
+      "dishes": [
+        {
+          "name": "Picanha fatiada",
+          "alt": "Picanha fatiada servida com acompanhamentos em um prato branco do Rodeio",
+          "source": "/rodeio/_astro/home-picanha-fatiada-acervo-2024.L0fMOGxw_ZXiDqz.avif",
+          "ratio": 1.5000000987624669,
+          "intrinsicRatio": 1.5
+        },
+        {
+          "name": "Arroz Rodeio",
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, sendo servido em uma frigideira à mesa",
+          "source": "/rodeio/_astro/menuArrozRodeio.BytR_RZm_fwWQV.avif",
+          "ratio": 0.6666847740953413,
+          "intrinsicRatio": 0.666796875
+        }
+      ],
+      "menuLinks": 3,
+      "approvedCopy": true,
+      "violations": [],
+      "errors": [],
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-07T21:26:08.302Z",
+  "base": "http://127.0.0.1:4326/rodeio",
+  "reports": [
+    {
+      "mode": "mobile",
+      "route": "/cardapio/",
+      "categories": {
+        "performance": 91,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 66
+      },
+      "metrics": {
+        "first-contentful-paint": 1441.3914,
+        "largest-contentful-paint": 3380.3913999999995,
+        "total-blocking-time": 104,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1441.3914
+      }
+    },
+    {
+      "mode": "desktop",
+      "route": "/cardapio/",
+      "categories": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 66
+      },
+      "metrics": {
+        "first-contentful-paint": 407.11697361070674,
+        "largest-contentful-paint": 748.1169736107067,
+        "total-blocking-time": 12,
+        "cumulative-layout-shift": 0,
+        "speed-index": 514.0638262787097
+      }
+    }
+  ]
+}

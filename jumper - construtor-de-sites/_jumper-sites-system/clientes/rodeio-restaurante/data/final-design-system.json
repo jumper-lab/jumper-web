@@ -152,7 +152,7 @@
     "video": "Sem vídeo no briefing; não acrescentar autoplay.",
     "fallback": "Cor sólida de fundo com dimensões reservadas; imagem com alt honesto.",
     "brand": "Logo sem símbolo no site, versões com/sem símbolo em branco/escuro preservadas; variantes compactas para navegação e rodapé.",
-    "unique_photography": "Cinco fotos de pratos do ensaio de setembro, 16 fotos atuais do Iguatemi, evento identificado dessa unidade. Jardins reutiliza por SHA-256 as fotos já disponíveis; galeria completa pode repetir o destaque editorial. Slideshow mantém a sequência dos seis temas, atualizando o salão do Iguatemi."
+    "unique_photography": "Home: duas fotos de pratos do ensaio de setembro. Cardápio: fotografias distintas de picanha fatiada (acervo 2024) e serviço do Arroz Rodeio (3M7A6213), cada uma identificada na própria legenda, sem recorte. Iguatemi: 16 fotos atuais e evento identificado dessa unidade. Jardins reutiliza por SHA-256 as fotos já disponíveis; galeria completa pode repetir o destaque editorial. Slideshow mantém a sequência dos seis temas, atualizando o salão do Iguatemi."
   },
   "section_system": [
     {
@@ -297,5 +297,20 @@
     ],
     "reference": "Página 3 do PDF vigente",
     "photo": "BMM_35.jpg, pasta Novo Rodeio do PDF"
+  },
+  "menu_dish_identification": {
+    "reviewed_date": "2026-10-07",
+    "picanha": {
+      "photo": "menuPicanhaFatiada",
+      "source": "Captura sem título1313.jpg",
+      "native_ratio": "3:2"
+    },
+    "arroz": {
+      "photo": "menuArrozRodeio",
+      "source": "3M7A6213.jpg",
+      "native_ratio": "2:3"
+    },
+    "layout": "Nome e descrição na legenda da própria foto; desktop 2,25:1, mobile uma coluna; sem recortes ou distorção. Fotos distintas das da home.",
+    "supersedes": "Faixa de nomes separada seguida de corte genérico e sobremesa."
   }
 }
