@@ -214,7 +214,7 @@
   },
   "history_timeline_restoration": {
     "date": "2026-10-07",
-    "status": "validated_local",
+    "status": "published_and_verified_on_development",
     "scope": "Retorno da composição vertical anterior; sete parágrafos íntegros e na ordem aprovada.",
     "source_layout_commit": "7ff903cd",
     "browser_report": "data/visual-review/historia-integral/timeline-restaurada-local/report.json",
@@ -237,6 +237,30 @@
     ],
     "known_issues": [
       "O espaço à esquerda em capturas longas da seção corresponde à coluna de título sticky que acompanha a rolagem no desktop."
-    ]
+    ],
+    "public_browser_report": "data/visual-review/historia-integral/timeline-restaurada-publicada/report.json",
+    "public_checks": 10,
+    "public_pages_report": "data/qa/historia-timeline-2026-10-07/published/assets-and-pages.json",
+    "public_lighthouse": "data/qa/historia-timeline-2026-10-07/published/summary.json",
+    "publication": {
+      "worker": "jumper-hoster-dev",
+      "versionId": "b1a164fc-0de0-413e-a25a-4f9713820ae3",
+      "sourceCommit": "f2dae212341938b3ef2386d231722e574d71ca95",
+      "otherDevAssetsPreserved": 564
+    },
+    "performance": {
+      "mobile": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "desktop": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      }
+    }
   }
 }

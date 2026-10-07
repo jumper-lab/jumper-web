@@ -2,13 +2,13 @@
   "url": "https://site.jumper.dev.br/rodeio/",
   "provider": "cloudflare-workers-static-assets",
   "worker": "jumper-hoster-dev",
-  "versionId": "98f79e7d-b98e-4ffa-a484-fd7c7e22e3b4",
-  "sourceCommit": "53b6e1b4ce6ac62e1f8b6e5fa62d748cbabe8f49",
-  "sourceBranch": "codex/rodeio-cardapio-hero-enquadramento",
-  "pullRequest": "https://github.com/jumper-lab/jumper-web/pull/95",
+  "versionId": "b1a164fc-0de0-413e-a25a-4f9713820ae3",
+  "sourceCommit": "f2dae212341938b3ef2386d231722e574d71ca95",
+  "sourceBranch": "codex/rodeio-historia-linha-do-tempo",
+  "pullRequest": "https://github.com/jumper-lab/jumper-web/pull/96",
   "status": "READY",
   "indexing": "noindex",
-  "date": "2026-10-07T21:49:08.394537+00:00",
+  "date": "2026-10-07T21:59:23.827416+00:00",
   "access": "public without cookies",
   "results": [
     {
@@ -29,8 +29,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 76489,
-      "sha256": "2237dcaf0a4d0ebb43a937f3e94f7f25766d2ad2e48a494192bedbd509ec4752",
+      "bytes": 76098,
+      "sha256": "4b1fc131cd20e5ea460a8965b467b609d3efec8a6dc84d19699cf275191a074d",
       "noindex": true
     },
     {
@@ -40,8 +40,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 77562,
-      "sha256": "fa5875c2c117d577c019bb961ab30a6cf923d5930d6aa8a96d06871ec519a630",
+      "bytes": 76876,
+      "sha256": "f4368e13f94f45146684613982f88fd9e0675ab52f4f980937f48fbd9a3c8ce2",
       "noindex": true
     },
     {
@@ -51,8 +51,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 75422,
-      "sha256": "fc0297ce293ddc6e95ed183b84bf3ecff5c3b0286b4fdbefe6a2490055b409f8",
+      "bytes": 74736,
+      "sha256": "c80bf2eb682bc23fea8432c0b37a6c0507ad468db4ffd39b021707e14e9a8a3c",
       "noindex": true
     },
     {
@@ -62,8 +62,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 153097,
-      "sha256": "378d5acecfb6af5da6d9ee1312b31a0427952820afbb96e7e532a0238087fe95",
+      "bytes": 152411,
+      "sha256": "6eb329d90344bd3927e123763a94c0c54eb76ec56d13910f1bbe3432dc89cc5e",
       "noindex": true
     },
     {
@@ -73,8 +73,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 92739,
-      "sha256": "93e484cc02c864c4f3247ca675a68d8530c0b9b46c7d9ef0c68c41a322c52a08",
+      "bytes": 92053,
+      "sha256": "7c524479fb9cfa584bba2f7d8b6d230c389f29962d404d84c24464fc0d110ff3",
       "noindex": true
     },
     {
@@ -84,8 +84,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 73756,
-      "sha256": "c89cf6108a3bb1b06d0987ce92b0d90949491cd9cab647649b10b0238fa36d15",
+      "bytes": 73070,
+      "sha256": "ecec3aabb3ffbbf0ccb4fc0616c1d59947e80447237006f3649315dc9c31d28f",
       "noindex": true
     },
     {
@@ -95,8 +95,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 74776,
-      "sha256": "2788dabb1cfe2214d31d6089978de266fd6cfc59d4c3c3255a15ff8bfe084171",
+      "bytes": 74090,
+      "sha256": "3f8190544f85ed03f6bef1dbcc6de9e430039981781d213a1d0c6296072ed6bc",
       "noindex": true
     },
     {
@@ -106,8 +106,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 70179,
-      "sha256": "0e8ba009205f659945cd318b27664abe3aef3e69d5a1d8880f0ed5e710418db4",
+      "bytes": 69493,
+      "sha256": "c5f20d544048423afd4dfa395fe039eb1f528098f2cc00a452ba701962fcb9cc",
       "noindex": true
     },
     {
@@ -129,11 +129,11 @@
     "beforeAndAfter": true,
     "liveBoundariesPreserved": true
   },
-  "previousDevVersionId": "7abd0a7a-2419-4e45-8fc1-6fc7eb927c72",
-  "previousSourceCommit": "a0532ceceec6b65dce402852305467aa175d556b",
+  "previousDevVersionId": "98f79e7d-b98e-4ffa-a484-fd7c7e22e3b4",
+  "previousSourceCommit": "53b6e1b4ce6ac62e1f8b6e5fa62d748cbabe8f49",
   "maintenancePage": "/rodeio/em-breve/",
   "maintenanceActiveOnHome": false,
-  "change": "Hero Cardápio: recorte horizontal prioriza carne e folhas, com posicionamento 50% 85% em landscape. Mesma foto 354, sem distorção; derivados portrait, overlay e animação preservados.",
+  "change": "História: linha do tempo vertical anterior restaurada com anos em terracota, título lateral e os sete parágrafos aprovados completos na ordem original; grade resumida removida.",
   "galleryPhotos": {
     "jardins": 77,
     "iguatemi": 16
@@ -143,10 +143,10 @@
     "iguatemi": 6
   },
   "assetVerification": {
-    "report": "data/qa/cardapio-hero-foco-2026-10-07/published/assets-and-pages.json",
-    "newAssetsVerified": 4,
+    "report": "data/qa/historia-timeline-2026-10-07/published/assets-and-pages.json",
+    "newAssetsVerified": 0,
     "allMatched": true,
-    "note": "Quatro novos AVIF idênticos ao pacote; dez páginas HTML idênticas após remover somente o beacon inserido pela Cloudflare."
+    "note": "Dez páginas idênticas ao pacote após remover somente o beacon Cloudflare; nenhum novo asset."
   },
   "performanceReport": "data/qa/acervo-atualizado-2026-10-07/published/summary.json",
   "galleryBrowserReport": "data/visual-review/acervo-atualizado-2026-10-07/published/report.json",
@@ -173,10 +173,13 @@
     "menuDishIdentificationAssetReport": "data/qa/cardapio-identificacao-2026-10-07/published/assets-and-pages.json",
     "menuDishIdentificationPerformanceReport": "data/qa/cardapio-identificacao-2026-10-07/published/summary.json",
     "menuCtaAssetReport": "data/qa/cardapio-cta-2026-10-07/published/assets-and-pages.json",
-    "menuCtaPerformanceReport": "data/qa/cardapio-cta-2026-10-07/published/summary.json"
+    "menuCtaPerformanceReport": "data/qa/cardapio-cta-2026-10-07/published/summary.json",
+    "menuHeroAssetReport": "data/qa/cardapio-hero-foco-2026-10-07/published/assets-and-pages.json"
   },
   "menuBrowserReport": "data/visual-review/cardapio-classicos/identificacao-publicada/report.json",
   "menuPerformanceReport": "data/qa/cardapio-hero-foco-2026-10-07/published/summary.json",
   "menuCtaBrowserReport": "data/visual-review/cardapio-cta/published/report.json",
-  "menuHeroBrowserReport": "data/visual-review/cardapio-hero-foco/published/report.json"
+  "menuHeroBrowserReport": "data/visual-review/cardapio-hero-foco/published/report.json",
+  "historyTimelineBrowserReport": "data/visual-review/historia-integral/timeline-restaurada-publicada/report.json",
+  "historyPerformanceReport": "data/qa/historia-timeline-2026-10-07/published/summary.json"
 }
