@@ -161,3 +161,5 @@ Destaque publicado no `jumper-hoster-dev`, versão `7abd0a7a-2419-4e45-8fc1-6fc7
 
 ## Hero Cardápio: foco na comida — 07/10/2026
 A mesma fotografia 354 recebe um recorte horizontal que prioriza a carne e as folhas, em lugar da borda vazia do prato. Derivados desktop usam `entropy`, e telas horizontais alinham a imagem em 50% 85%. Mobile/tablet conservam os enquadramentos anteriores. Overlay, textos e animação permanecem iguais; a foto não foi esticada ou deformada.
+
+Enquadramento publicado no `jumper-hoster-dev`, versão `98f79e7d-b98e-4ffa-a484-fd7c7e22e3b4`, fonte `53b6e1b4`, PR #95. Nove cenários locais em Chrome/Firefox/WebKit e conferência pública em 390/1822px aprovados. Dez páginas HTTP 200 sem cookies e quatro novos AVIF idênticos ao build; 564 assets dos outros sete sites preservados pelo preflight antes/depois. Lighthouse Cardápio publicado: desempenho **95 mobile / 100 desktop**, acessibilidade e boas práticas **100**, CLS **0**; SEO **69** pelo noindex intencional. Evidências em `data/visual-review/cardapio-hero-foco/` e `data/qa/cardapio-hero-foco-2026-10-07/published/`.

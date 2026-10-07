@@ -1,0 +1,165 @@
+{
+  "date": "2026-10-07T21:49:08.394537+00:00",
+  "url": "https://site.jumper.dev.br/rodeio/",
+  "pages": [
+    {
+      "path": "/rodeio/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 80924,
+      "sha256": "22fce3a189323f01ef47cdfa3159fa97ac65e9149e5734d963b7724fd125c70a",
+      "noindex": true
+    },
+    {
+      "path": "/rodeio/historia/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 76489,
+      "sha256": "2237dcaf0a4d0ebb43a937f3e94f7f25766d2ad2e48a494192bedbd509ec4752",
+      "noindex": true
+    },
+    {
+      "path": "/rodeio/cardapio/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 77562,
+      "sha256": "fa5875c2c117d577c019bb961ab30a6cf923d5930d6aa8a96d06871ec519a630",
+      "noindex": true
+    },
+    {
+      "path": "/rodeio/restaurantes/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 75422,
+      "sha256": "fc0297ce293ddc6e95ed183b84bf3ecff5c3b0286b4fdbefe6a2490055b409f8",
+      "noindex": true
+    },
+    {
+      "path": "/rodeio/restaurantes/jardins/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 153097,
+      "sha256": "378d5acecfb6af5da6d9ee1312b31a0427952820afbb96e7e532a0238087fe95",
+      "noindex": true
+    },
+    {
+      "path": "/rodeio/restaurantes/iguatemi/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 92739,
+      "sha256": "93e484cc02c864c4f3247ca675a68d8530c0b9b46c7d9ef0c68c41a322c52a08",
+      "noindex": true
+    },
+    {
+      "path": "/rodeio/eventos/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 73756,
+      "sha256": "c89cf6108a3bb1b06d0987ce92b0d90949491cd9cab647649b10b0238fa36d15",
+      "noindex": true
+    },
+    {
+      "path": "/rodeio/reservas/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 74776,
+      "sha256": "2788dabb1cfe2214d31d6089978de266fd6cfc59d4c3c3255a15ff8bfe084171",
+      "noindex": true
+    },
+    {
+      "path": "/rodeio/privacidade/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 70179,
+      "sha256": "0e8ba009205f659945cd318b27664abe3aef3e69d5a1d8880f0ed5e710418db4",
+      "noindex": true
+    },
+    {
+      "path": "/rodeio/em-breve/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 42178,
+      "sha256": "64c2778d72e1cb9b98470b25366b55c1f0aa0b6eb5bee042b2a019361ab82f45",
+      "noindex": true
+    }
+  ],
+  "newAssets": [
+    {
+      "path": "/rodeio/_astro/menu-hero-setembro-2026.BmNxlzjV_21NUd7.avif",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": false,
+      "bytes": 58693,
+      "sha256": "67c32062f270e2399ce07766c3cae472fd0f41ccd45daa96131e8e4069097691",
+      "noindex": null
+    },
+    {
+      "path": "/rodeio/_astro/menu-hero-setembro-2026.BmNxlzjV_ZBmnBq.avif",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": false,
+      "bytes": 166600,
+      "sha256": "2b389c181fca7224be1d11ad75a5c8b6a8a0ebe1f63ae088701493394364a826",
+      "noindex": null
+    },
+    {
+      "path": "/rodeio/_astro/menu-hero-setembro-2026.BmNxlzjV_ZQTcQb.avif",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": false,
+      "bytes": 108640,
+      "sha256": "a23e65a1b4056797f370759c217751347f675b6db5c567bbc53e2dba5a2ef3b3",
+      "noindex": null
+    },
+    {
+      "path": "/rodeio/_astro/menu-hero-setembro-2026.BmNxlzjV_Zkg81l.avif",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": false,
+      "bytes": 249379,
+      "sha256": "30084771293abd4f6402507b05995deb921699c66b1dabc65523527d23bc3d4e",
+      "noindex": null
+    }
+  ],
+  "newAssetCount": 4,
+  "allMatched": true,
+  "access": "public without cookies"
+}

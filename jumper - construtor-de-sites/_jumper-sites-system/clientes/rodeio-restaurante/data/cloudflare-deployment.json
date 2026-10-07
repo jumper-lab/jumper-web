@@ -2,13 +2,13 @@
   "url": "https://site.jumper.dev.br/rodeio/",
   "provider": "cloudflare-workers-static-assets",
   "worker": "jumper-hoster-dev",
-  "versionId": "7abd0a7a-2419-4e45-8fc1-6fc7eb927c72",
-  "sourceCommit": "a0532ceceec6b65dce402852305467aa175d556b",
-  "sourceBranch": "codex/rodeio-cardapio-cta-destaque",
-  "pullRequest": "https://github.com/jumper-lab/jumper-web/pull/94",
+  "versionId": "98f79e7d-b98e-4ffa-a484-fd7c7e22e3b4",
+  "sourceCommit": "53b6e1b4ce6ac62e1f8b6e5fa62d748cbabe8f49",
+  "sourceBranch": "codex/rodeio-cardapio-hero-enquadramento",
+  "pullRequest": "https://github.com/jumper-lab/jumper-web/pull/95",
   "status": "READY",
   "indexing": "noindex",
-  "date": "2026-10-07T21:39:21.126627+00:00",
+  "date": "2026-10-07T21:49:08.394537+00:00",
   "access": "public without cookies",
   "results": [
     {
@@ -40,8 +40,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 77431,
-      "sha256": "dff7e56bb75f5e98a28895a3b8e04a9a4f83cfac834cefabd28c2339d905a1a0",
+      "bytes": 77562,
+      "sha256": "fa5875c2c117d577c019bb961ab30a6cf923d5930d6aa8a96d06871ec519a630",
       "noindex": true
     },
     {
@@ -129,11 +129,11 @@
     "beforeAndAfter": true,
     "liveBoundariesPreserved": true
   },
-  "previousDevVersionId": "479a4a69-0d52-4406-bdc5-90ec4be4ae4c",
-  "previousSourceCommit": "80d3077df002f69a5730a1e1bca0f9f4ac08f804",
+  "previousDevVersionId": "7abd0a7a-2419-4e45-8fc1-6fc7eb927c72",
+  "previousSourceCommit": "a0532ceceec6b65dce402852305467aa175d556b",
   "maintenancePage": "/rodeio/em-breve/",
   "maintenanceActiveOnHome": false,
-  "change": "Botão preenchido terracota na introdução dos clássicos; três acessos da página com texto Conferir cardápio completo, mantendo popup LiveMenu.",
+  "change": "Hero Cardápio: recorte horizontal prioriza carne e folhas, com posicionamento 50% 85% em landscape. Mesma foto 354, sem distorção; derivados portrait, overlay e animação preservados.",
   "galleryPhotos": {
     "jardins": 77,
     "iguatemi": 16
@@ -143,10 +143,10 @@
     "iguatemi": 6
   },
   "assetVerification": {
-    "report": "data/qa/cardapio-cta-2026-10-07/published/assets-and-pages.json",
-    "newAssetsVerified": 0,
+    "report": "data/qa/cardapio-hero-foco-2026-10-07/published/assets-and-pages.json",
+    "newAssetsVerified": 4,
     "allMatched": true,
-    "note": "Alteração somente no HTML Cardápio; dez páginas idênticas ao pacote após remoção apenas do beacon Cloudflare, sem novos assets."
+    "note": "Quatro novos AVIF idênticos ao pacote; dez páginas HTML idênticas após remover somente o beacon inserido pela Cloudflare."
   },
   "performanceReport": "data/qa/acervo-atualizado-2026-10-07/published/summary.json",
   "galleryBrowserReport": "data/visual-review/acervo-atualizado-2026-10-07/published/report.json",
@@ -171,9 +171,12 @@
     "octoberArchivePerformanceReport": "data/qa/acervo-atualizado-2026-10-07/published/summary.json",
     "octoberArchiveAssetReport": "data/qa/acervo-atualizado-2026-10-07/published/assets-and-pages.json",
     "menuDishIdentificationAssetReport": "data/qa/cardapio-identificacao-2026-10-07/published/assets-and-pages.json",
-    "menuDishIdentificationPerformanceReport": "data/qa/cardapio-identificacao-2026-10-07/published/summary.json"
+    "menuDishIdentificationPerformanceReport": "data/qa/cardapio-identificacao-2026-10-07/published/summary.json",
+    "menuCtaAssetReport": "data/qa/cardapio-cta-2026-10-07/published/assets-and-pages.json",
+    "menuCtaPerformanceReport": "data/qa/cardapio-cta-2026-10-07/published/summary.json"
   },
   "menuBrowserReport": "data/visual-review/cardapio-classicos/identificacao-publicada/report.json",
-  "menuPerformanceReport": "data/qa/cardapio-cta-2026-10-07/published/summary.json",
-  "menuCtaBrowserReport": "data/visual-review/cardapio-cta/published/report.json"
+  "menuPerformanceReport": "data/qa/cardapio-hero-foco-2026-10-07/published/summary.json",
+  "menuCtaBrowserReport": "data/visual-review/cardapio-cta/published/report.json",
+  "menuHeroBrowserReport": "data/visual-review/cardapio-hero-foco/published/report.json"
 }
