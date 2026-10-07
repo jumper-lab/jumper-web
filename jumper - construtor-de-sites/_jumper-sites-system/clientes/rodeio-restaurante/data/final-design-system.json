@@ -312,5 +312,14 @@
     },
     "layout": "Nome e descrição na legenda da própria foto; desktop 2,25:1, mobile uma coluna; sem recortes ou distorção. Fotos distintas das da home.",
     "supersedes": "Faixa de nomes separada seguida de corte genérico e sobremesa."
+  },
+  "hero_photo_focal_points": {
+    "cardapio": {
+      "source": "rodeo_2026set_354.jpg",
+      "desktop_derivative_crop": "entropy",
+      "landscape_object_position": "50% 85%",
+      "portrait": "Derivados mobile/tablet anteriores preservados.",
+      "preserved": "Proporções, cores da foto, overlay e animação; sem upscale."
+    }
   }
 }

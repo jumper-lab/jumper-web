@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-07T21:49:07.884Z",
+  "base": "https://site.jumper.dev.br/rodeio",
+  "checks": [
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 844,
+      "src": "https://site.jumper.dev.br/rodeio/_astro/menu-hero-setembro-2026.BmNxlzjV_1IDijf.avif",
+      "fit": "cover",
+      "position": "50% 50%",
+      "transform": "none",
+      "naturalWidth": 474,
+      "naturalHeight": 844,
+      "coverage": true,
+      "overflow": false,
+      "clippedCopy": false,
+      "errors": [],
+      "violations": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 1822,
+      "height": 833,
+      "src": "https://site.jumper.dev.br/rodeio/_astro/menu-hero-setembro-2026.BmNxlzjV_ZBmnBq.avif",
+      "fit": "cover",
+      "position": "50% 85%",
+      "transform": "none",
+      "naturalWidth": 1822,
+      "naturalHeight": 1024,
+      "coverage": true,
+      "overflow": false,
+      "clippedCopy": false,
+      "errors": [],
+      "violations": [],
+      "passed": true
+    }
+  ]
+}

@@ -82,3 +82,8 @@
   .menu-classics-access .action { margin-top: 22px; }
   .menu-invitation h2 { margin-top: 18px; }
 }
+
+/* Keep the food visible when a wide viewport crops the 16:9 derivative. */
+@media (orientation: landscape) {
+  .hero.hero-photo .hero-figure img[data-menu-hero] { object-position: 50% 85%; }
+}

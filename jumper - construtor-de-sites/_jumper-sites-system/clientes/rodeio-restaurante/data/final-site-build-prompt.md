@@ -49,3 +49,6 @@ No Cardápio, apresentar Picanha fatiada e Arroz Rodeio com o nome dentro da leg
 
 ### Destaque do cardápio completo — 07/10/2026
 Na página Cardápio, usar “Conferir cardápio completo” nos três acessos ao menu digital. O acesso na introdução dos clássicos recebe o botão preenchido terracota da identidade, com texto branco, seta e hover padrão. Manter popup LiveMenu, foco e botão de fechar existentes.
+
+### Hero Cardápio com foco na comida — 07/10/2026
+Preservar foto 354, overlay, textos e animação aprovados. Nos derivados desktop 16:9, usar o recorte `entropy` para selecionar a área de carne/folhas; em telas horizontais, posicionar a imagem em 50% 85% para manter a comida visível dentro do banner mais largo. Derivados mobile/tablet conservam os enquadramentos anteriores. Não deformar, ampliar a matriz ou editar o conteúdo da fotografia. Conferir desktop 1440/1822/1920 e mobile 390; AVIF responsivo, qualidade desktop 60/mobile 55.
