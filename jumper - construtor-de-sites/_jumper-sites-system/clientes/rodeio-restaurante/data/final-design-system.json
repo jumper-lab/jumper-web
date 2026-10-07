@@ -146,13 +146,13 @@
     "current": "aria-current e sublinhado no link atual"
   },
   "media_direction": {
-    "primary": "Acervo real do Drive; matrizes preservadas em briefing/entrada/matrizes e derivados AVIF responsivos no Astro.",
+    "primary": "Acervo real do cliente; atualização de 07/10/2026 em briefing/entrada/acervo-atualizado-2026-10-07. Matrizes WebP de alta qualidade fora do pacote público; AVIF responsivo no Astro.",
     "ai": "Não necessária nesta entrega. Se faltar mídia futura, IA apenas provisória identificada; nunca inventar instalações.",
     "pexels": "Somente fallback autorizado quando foto real e IA não resolverem; não utilizado.",
     "video": "Sem vídeo no briefing; não acrescentar autoplay.",
     "fallback": "Cor sólida de fundo com dimensões reservadas; imagem com alt honesto.",
     "brand": "Logo sem símbolo no site, versões com/sem símbolo em branco/escuro preservadas; variantes compactas para navegação e rodapé.",
-    "unique_photography": "Slideshow preservado, novo BMM_88 no contexto do novo Jardins; álbum completo pode repetir a respectiva foto editorial. Página em breve usa foto de arquitetura da pasta novo Rodeio."
+    "unique_photography": "Cinco fotos de pratos do ensaio de setembro, 16 fotos atuais do Iguatemi, evento identificado dessa unidade. Jardins reutiliza por SHA-256 as fotos já disponíveis; galeria completa pode repetir o destaque editorial. Slideshow mantém a sequência dos seis temas, atualizando o salão do Iguatemi."
   },
   "section_system": [
     {
@@ -211,7 +211,7 @@
     "semantics": "1 h1 por página, h2/h3 sequenciais, lang pt-BR"
   },
   "performance_floor": {
-    "media": "Derivados AVIF quality60 diretamente de matrizes lossless, preservadas fora do artefato público. Heros com picture e recortes9:16/4:5/16:9, sem ampliar fotos de acervo histórico na primeira dobra. Loading eager/high apenas no hero; lazy/low no conteúdo.",
+    "media": "AVIF responsivo: conteúdo padrão qualidade 60, pratos 68; heros mobile Cardápio/Iguatemi 55, desktop 60. Matrizes WebP 94/95 preservadas fora do pacote público. Prioridade alta apenas no primeiro hero, lazy/low no conteúdo. Pratos em proporção nativa, sem ampliar ou deformar.",
     "fonts": "Três WOFF2 locais em src/assets/fonts, com fingerprint gerado no build e preload compatível. Cache immutable preparado para /_astro/.",
     "js": "JS apenas para navegação, dialog, mapa e iframe. Astro estático, nenhum framework cliente.",
     "integrations": "Tagme e Google Maps apenas por intenção explícita",
@@ -245,7 +245,7 @@
   ],
   "motion_direction": {
     "concept": "Ritmo de serviço à mesa: elementos entram em sequência e permanecem estáveis.",
-    "elements": "Textos preservam entrada sequenciada. Fotografias fazem dissolução de opacidade de 25% a 100% em 1000ms após decode, sem deslocar molduras ou blocos. Zoom de hover nas unidades limitado a 1,015; galeria abre só com fade.",
+    "elements": "Textos preservam entrada sequenciada. Fotografias de conteúdo revelam com um único recuo de zoom após decode, 1.065→1 em 1600 ms; galerias 1.035→1 em 1100 ms. Molduras preenchidas, sem opacity/clip; rearmar somente após saída completa da tela. Ler posições em lote antes de escrever transforms. Heros preservam sua animação existente.",
     "pages": "Transição nativa de documentos, fade e deslocamento vertical discreto; cabeçalho preservado. Navegação padrão em browsers sem suporte.",
     "accessibility": "prefers-reduced-motion desativa movimento; conteúdo nunca depende de CSS oculto para aparecer."
   },
@@ -268,16 +268,25 @@
     ]
   },
   "restaurant_galleries": {
-    "jardins": 15,
-    "iguatemi": 5,
-    "source": "Pastas específicas das unidades no Drive do briefing",
+    "jardins": 77,
+    "iguatemi": 16,
+    "source": "Acervo recebido em 07/10/2026, complementando o álbum Jardins de 02/10/2026",
     "layout": "Grade uniforme3colunas desktop,2tablet,1mobile; ampliação com navegação e contador",
-    "exception": "Galeria completa pode repetir fotos editoriais da respectiva unidade, por pedido explícito."
+    "exception": "Galeria completa pode repetir fotos editoriais da respectiva unidade, por pedido explícito.",
+    "progressive": {
+      "jardins": 12,
+      "iguatemi": 6
+    },
+    "lightbox": "Todas as imagens desde a primeira abertura; Iguatemi AVIF qualidade 68 até 2400 px; fallback completo sem JavaScript."
   },
   "current_briefing": {
     "date": "2026-10-02",
     "source": "briefing/entrada/diretrizes-2026-10-02/RODEIO SITE (2).pdf",
-    "scope": "Novos textos, sete destinos no menu, duas unidades, manutenção independente e refinamento editorial."
+    "scope": "Novos textos, sete destinos no menu, duas unidades, manutenção independente e refinamento editorial.",
+    "reviewed_date": "2026-10-07",
+    "presentation": "briefing/entrada/acervo-atualizado-2026-10-07/apresentacao.json",
+    "photo_selection": "briefing/entrada/acervo-atualizado-2026-10-07/fotos-selecionadas.json",
+    "pending_event_photo": "Jardins"
   },
   "maintenance_page": {
     "route": "/em-breve/",

@@ -1,0 +1,6 @@
+
+> rodeio-restaurante@1.0.0 preflight:dev
+> node scripts/preflight-hoster-dev.mjs --allow=rodeio
+
+Worker dev ativo: dab45303-d5d8-4fe2-a27e-2f9cc8d8c107; 564 assets de outros sites conferidos.
+Preflight dev aprovado somente para rodeio. Nenhum deploy foi feito.
