@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-07T21:39:21.011Z",
+  "base": "https://site.jumper.dev.br/rodeio",
+  "checks": [
+    {
+      "browser": "Chrome",
+      "width": 320,
+      "normal": {
+        "x": 24,
+        "right": 290.578125,
+        "width": 266.578125,
+        "height": 56,
+        "background": "rgb(187, 75, 32)",
+        "color": "rgb(255, 255, 255)"
+      },
+      "hover": "rgb(48, 35, 28)",
+      "popupOpensWithoutNavigation": true,
+      "closeRestoresFocus": true,
+      "violations": [],
+      "passed": true
+    },
+    {
+      "browser": "Chrome",
+      "width": 390,
+      "normal": {
+        "x": 24,
+        "right": 290.578125,
+        "width": 266.578125,
+        "height": 56,
+        "background": "rgb(187, 75, 32)",
+        "color": "rgb(255, 255, 255)"
+      },
+      "hover": "rgb(48, 35, 28)",
+      "popupOpensWithoutNavigation": true,
+      "closeRestoresFocus": true,
+      "violations": [],
+      "passed": true
+    },
+    {
+      "browser": "Chrome",
+      "width": 1440,
+      "normal": {
+        "x": 992.421875,
+        "right": 1259,
+        "width": 266.578125,
+        "height": 56,
+        "background": "rgb(187, 75, 32)",
+        "color": "rgb(255, 255, 255)"
+      },
+      "hover": "rgb(48, 35, 28)",
+      "popupOpensWithoutNavigation": true,
+      "closeRestoresFocus": true,
+      "violations": [],
+      "passed": true
+    }
+  ]
+}
