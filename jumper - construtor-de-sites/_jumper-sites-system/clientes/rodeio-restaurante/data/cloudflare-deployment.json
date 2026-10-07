@@ -2,13 +2,13 @@
   "url": "https://site.jumper.dev.br/rodeio/",
   "provider": "cloudflare-workers-static-assets",
   "worker": "jumper-hoster-dev",
-  "versionId": "479a4a69-0d52-4406-bdc5-90ec4be4ae4c",
-  "sourceCommit": "80d3077df002f69a5730a1e1bca0f9f4ac08f804",
-  "sourceBranch": "codex/rodeio-cardapio-identificacao-pratos",
-  "pullRequest": "https://github.com/jumper-lab/jumper-web/pull/93",
+  "versionId": "7abd0a7a-2419-4e45-8fc1-6fc7eb927c72",
+  "sourceCommit": "a0532ceceec6b65dce402852305467aa175d556b",
+  "sourceBranch": "codex/rodeio-cardapio-cta-destaque",
+  "pullRequest": "https://github.com/jumper-lab/jumper-web/pull/94",
   "status": "READY",
   "indexing": "noindex",
-  "date": "2026-10-07T21:29:37.718508+00:00",
+  "date": "2026-10-07T21:39:21.126627+00:00",
   "access": "public without cookies",
   "results": [
     {
@@ -40,8 +40,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 77410,
-      "sha256": "8a146f177707c0938841b494a7f17b27043db5041208ad705a0261ead499e70f",
+      "bytes": 77431,
+      "sha256": "dff7e56bb75f5e98a28895a3b8e04a9a4f83cfac834cefabd28c2339d905a1a0",
       "noindex": true
     },
     {
@@ -129,11 +129,11 @@
     "beforeAndAfter": true,
     "liveBoundariesPreserved": true
   },
-  "previousDevVersionId": "3e7e0ba5-a22e-4a5b-a010-1ba5fa69e33c",
-  "previousSourceCommit": "e3a8b06289f4659aad08b5ea55dfd84956c5d767",
+  "previousDevVersionId": "479a4a69-0d52-4406-bdc5-90ec4be4ae4c",
+  "previousSourceCommit": "80d3077df002f69a5730a1e1bca0f9f4ac08f804",
   "maintenancePage": "/rodeio/em-breve/",
   "maintenanceActiveOnHome": false,
-  "change": "Cardápio: Picanha fatiada e Arroz Rodeio com fotos reais correspondentes, distintas da home, e nome na própria legenda; retirada a faixa de nomes junto à sobremesa. Proporções nativas preservadas.",
+  "change": "Botão preenchido terracota na introdução dos clássicos; três acessos da página com texto Conferir cardápio completo, mantendo popup LiveMenu.",
   "galleryPhotos": {
     "jardins": 77,
     "iguatemi": 16
@@ -143,10 +143,10 @@
     "iguatemi": 6
   },
   "assetVerification": {
-    "report": "data/qa/cardapio-identificacao-2026-10-07/published/assets-and-pages.json",
-    "newAssetsVerified": 16,
-    "note": "16 novos derivados AVIF idênticos ao pacote; 10 HTML idênticos após remover somente o beacon Cloudflare.",
-    "allMatched": true
+    "report": "data/qa/cardapio-cta-2026-10-07/published/assets-and-pages.json",
+    "newAssetsVerified": 0,
+    "allMatched": true,
+    "note": "Alteração somente no HTML Cardápio; dez páginas idênticas ao pacote após remoção apenas do beacon Cloudflare, sem novos assets."
   },
   "performanceReport": "data/qa/acervo-atualizado-2026-10-07/published/summary.json",
   "galleryBrowserReport": "data/visual-review/acervo-atualizado-2026-10-07/published/report.json",
@@ -169,8 +169,11 @@
     "jardinsGalleryPerformanceReport": "data/visual-review/jardins-novo-acervo/performance-published/summary.json",
     "jardinsGalleryAssetReport": "data/visual-review/jardins-novo-acervo/assets-published.json",
     "octoberArchivePerformanceReport": "data/qa/acervo-atualizado-2026-10-07/published/summary.json",
-    "octoberArchiveAssetReport": "data/qa/acervo-atualizado-2026-10-07/published/assets-and-pages.json"
+    "octoberArchiveAssetReport": "data/qa/acervo-atualizado-2026-10-07/published/assets-and-pages.json",
+    "menuDishIdentificationAssetReport": "data/qa/cardapio-identificacao-2026-10-07/published/assets-and-pages.json",
+    "menuDishIdentificationPerformanceReport": "data/qa/cardapio-identificacao-2026-10-07/published/summary.json"
   },
   "menuBrowserReport": "data/visual-review/cardapio-classicos/identificacao-publicada/report.json",
-  "menuPerformanceReport": "data/qa/cardapio-identificacao-2026-10-07/published/summary.json"
+  "menuPerformanceReport": "data/qa/cardapio-cta-2026-10-07/published/summary.json",
+  "menuCtaBrowserReport": "data/visual-review/cardapio-cta/published/report.json"
 }

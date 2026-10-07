@@ -156,3 +156,5 @@ Correção publicada exclusivamente no `jumper-hoster-dev`, versão `479a4a69-0d
 
 ## Botão do cardápio completo — 07/10/2026
 O acesso ao cardápio na introdução dos clássicos agora usa o botão terracota preenchido, e os três acessos da página exibem “Conferir cardápio completo”. O menu digital continua abrindo no popup existente.
+
+Destaque publicado no `jumper-hoster-dev`, versão `7abd0a7a-2419-4e45-8fc1-6fc7eb927c72`, fonte `a0532cec`, PR #94. Botão e popup conferidos na versão pública em 320, 390 e 1440px; dez páginas HTTP 200 sem cookies e idênticas ao build. Preflight antes/depois preservou os 564 assets dos outros sete sites. Lighthouse Cardápio publicado: desempenho **95 mobile / 100 desktop**, acessibilidade e boas práticas **100**, CLS **0**; SEO **69** pelo noindex intencional. Evidências em `data/visual-review/cardapio-cta/published/` e `data/qa/cardapio-cta-2026-10-07/published/`.
