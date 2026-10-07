@@ -46,3 +46,6 @@ Conferida integralmente a apresentação Google Slides (11 slides), sem nova mud
 
 ### Correção de identificação — 07/10/2026
 No Cardápio, apresentar Picanha fatiada e Arroz Rodeio com o nome dentro da legenda da própria foto. Usar `menuPicanhaFatiada` (acervo 2024, Captura sem título1313.jpg) e `menuArrozRodeio` (3M7A6213.jpg). As fotos são diferentes das usadas na home. Remover a faixa de nomes desvinculada das imagens; não associar sobremesa ao arroz. Manter proporções originais 3:2 e 2:3, sem recorte; composição desktop 2,25:1 para alinhar a base das fotografias e mobile em uma coluna. A seleção anterior 067/384 permanece armazenada, mas não é mais aplicada aos clássicos do Cardápio. Hero e cardápio digital permanecem como aprovados.
+
+### Destaque do cardápio completo — 07/10/2026
+Na página Cardápio, usar “Conferir cardápio completo” nos três acessos ao menu digital. O acesso na introdução dos clássicos recebe o botão preenchido terracota da identidade, com texto branco, seta e hover padrão. Manter popup LiveMenu, foco e botão de fechar existentes.

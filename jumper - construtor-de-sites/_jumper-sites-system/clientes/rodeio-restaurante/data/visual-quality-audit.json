@@ -129,5 +129,24 @@
         "seo": 69
       }
     }
+  },
+  "cardapio_cta_review": {
+    "date": "2026-10-07",
+    "status": "validated_local",
+    "scope": "Destaque do acesso ao cardápio completo na introdução dos clássicos; texto dos três acessos ao LiveMenu.",
+    "report": "data/visual-review/cardapio-cta/local/report.json",
+    "viewports": [
+      320,
+      390,
+      1440
+    ],
+    "checks": [
+      "Botão dentro do viewport, altura mínima 48px e ausência de overflow.",
+      "Contraste WCAG A/AA sem violações na seção.",
+      "Hover altera fundo; popup abre sem sair da página e fechar devolve foco."
+    ],
+    "known_issues": [
+      "Medição em navegador desktop com viewport mobile; não substitui teste em aparelho físico."
+    ]
   }
 }
