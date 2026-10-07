@@ -12,14 +12,8 @@ import '../styles/interiors.css';
     <h2 id="history-chapter-title">Uma história<br/>que atravessa <em>gerações.</em></h2>
     <span class="history-date-note">Haddock Lobo, São Paulo</span>
   </div>
-  <div class="history-narrative">
-    {copy.paragraphs.map(paragraph=><p>{paragraph}</p>)}
-  </div>
-</section>
-<section class="wrap history-landmarks" aria-labelledby="history-landmarks-title">
-  <p class="eyebrow" id="history-landmarks-title">Marcos da nossa história</p>
-  <ol>
-    {milestones.map(m=><li><span>{m.year}</span><h3>{m.title}</h3></li>)}
+  <ol class="history-timeline" aria-label="Linha do tempo do Rodeio">
+    {milestones.map(m=><li class="timeline-item history-milestone"><span class="timeline-date">{m.year}</span><div><h3>{m.title}</h3><p>{m.text}</p>{m.year==='1959'&&<p>{copy.classics}</p>}</div></li>)}
   </ol>
 </section>
 <section class="history-archive" aria-labelledby="history-archive-title">
