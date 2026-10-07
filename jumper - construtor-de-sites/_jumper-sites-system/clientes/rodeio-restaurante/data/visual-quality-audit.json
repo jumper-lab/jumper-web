@@ -78,5 +78,31 @@
     },
     "allMeasuredPerformanceGreen": true,
     "previousRunsPreserved": "data/visual-review/diretrizes-2026-10-02/performance-before-h1-fix/"
+  },
+  "cardapio_identification_correction": {
+    "date": "2026-10-07",
+    "status": "validated_local",
+    "scope": "Somente /rodeio/cardapio/, associação nome-fotografia dos clássicos.",
+    "browser_report": "data/visual-review/cardapio-classicos/identificacao-local/report.json",
+    "browser_checks": 10,
+    "engines": [
+      "Chrome",
+      "Firefox",
+      "WebKit"
+    ],
+    "failures": 0,
+    "visual_review": "Capturas mobile 390px e desktop 1440px examinadas; base das fotos alinhada no desktop e legendas junto às respectivas imagens. Proporções preservadas em 320, 390, 768, 1024, 1440 e 1920px.",
+    "astro_check": {
+      "files": 34,
+      "errors": 0,
+      "warnings": 0
+    },
+    "worker_tests": 16,
+    "preflight_tests": 6,
+    "known_issues": [
+      "Arroz servido em foto vertical e picanha em horizontal; composição desktop de larguras diferentes preserva as fotos completas.",
+      "Prévia mantém noindex; Lighthouse SEO não ficará todo verde."
+    ],
+    "local_lighthouse": "data/qa/cardapio-identificacao-2026-10-07/local/summary.json"
   }
 }

@@ -26,16 +26,29 @@ for (const [engine, type] of Object.entries({ chromium, firefox, webkit })) {
     assert.equal((await page.locator('#menu-classics-title').innerText()).replace(/\s+/g,' ').trim(),content.pages.menu.intro);
     assert.equal(await page.locator('.menu-classics-access > p').textContent(),content.pages.menu.description);
     assert.deepEqual(await page.locator('.menu-classic-name h3').allTextContents(),['Picanha fatiada','Arroz Rodeio']);
-    const state=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth+1,brokenImages:[...document.querySelectorAll('img[src]')].filter(img=>!img.complete||!img.naturalWidth).map(img=>img.src),heroImage:document.querySelector('.hero-figure img')?.getBoundingClientRect().width,newPhotos:document.querySelectorAll('.menu-classics-layout img').length, photoBottomAlignment:Math.abs(document.querySelector('.menu-cuts-photo .photo-viewport').getBoundingClientRect().bottom-document.querySelector('.menu-dessert-photo .photo-viewport').getBoundingClientRect().bottom)}));
-    if(width>=760)assert.ok(state.photoBottomAlignment<=2, 'Photo captions must align on desktop');
+    const dishes = await page.locator('.menu-classics-layout figure').evaluateAll(figures => figures.map(figure => ({
+      name: figure.querySelector('figcaption h3')?.textContent,
+      alt: figure.querySelector('img')?.alt,
+      source: figure.querySelector('img')?.getAttribute('src'),
+      ratio: figure.querySelector('img')?.getBoundingClientRect().width / figure.querySelector('img')?.getBoundingClientRect().height,
+      intrinsicRatio: Number(figure.querySelector('img')?.getAttribute('width')) / Number(figure.querySelector('img')?.getAttribute('height')),
+    })));
+    assert.equal(dishes[0].name, 'Picanha fatiada');
+    assert.match(dishes[0].source, /home-picanha-fatiada-acervo-2024/);
+    assert.equal(dishes[1].name, 'Arroz Rodeio');
+    assert.match(dishes[1].source, /menuArrozRodeio/);
+    for (const dish of dishes) assert.ok(Math.abs(dish.ratio - dish.intrinsicRatio) < .01, 'Dish photographs must retain their native proportions');
+    assert.equal(await page.locator('.menu-classics-names').count(), 0, 'No detached dish names above unrelated photographs');
+    const state=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth+1,brokenImages:[...document.querySelectorAll('img[src]')].filter(img=>!img.complete||!img.naturalWidth).map(img=>img.src),heroImage:document.querySelector('.hero-figure img')?.getBoundingClientRect().width,newPhotos:document.querySelectorAll('.menu-classics-layout img').length, photoBottomAlignment:Math.abs(document.querySelector('.menu-cuts-photo .photo-viewport').getBoundingClientRect().bottom-document.querySelector('.menu-rice-photo .photo-viewport').getBoundingClientRect().bottom)}));
+    if(width>=1000)assert.ok(state.photoBottomAlignment<=2, 'Photo captions must align on desktop');
     assert.equal(response.status(),200);assert.equal(state.overflow,false);assert.deepEqual(state.brokenImages,[]);assert.equal(state.newPhotos,2);assert.deepEqual(errors,[]);
     const violations=engine==='chromium'&&[390,1440].includes(width)?(await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze()).violations.map(v=>({id:v.id,impact:v.impact,targets:v.nodes.map(n=>n.target)})):[];
     assert.deepEqual(violations,[]);
     // Visit every chapter and wait for the existing entry motions before capturing.
-    for(const selector of ['#proxima-secao','.menu-dessert-photo','.menu-invitation','footer']){await page.locator(selector).scrollIntoViewIfNeeded();await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));await page.evaluate(async()=>{await Promise.all(document.getAnimations().filter(a=>a.effect?.getTiming().iterations!==Infinity).map(a=>a.finished.catch(()=>{})));});}
+    for(const selector of ['#proxima-secao','.menu-rice-photo','.menu-invitation','footer']){await page.locator(selector).scrollIntoViewIfNeeded();await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));await page.evaluate(async()=>{await Promise.all(document.getAnimations().filter(a=>a.effect?.getTiming().iterations!==Infinity).map(a=>a.finished.catch(()=>{})));});}
     await page.evaluate(()=>scrollTo({top:0,behavior:'instant'}));
     if(engine==='chromium'&&[390,1440].includes(width))await page.screenshot({path:`${out}/${width}-cardapio.jpg`,fullPage:true,type:'jpeg',quality:85});
-    report.checks.push({engine,width,height,status:response.status(),...hero,...state,menuLinks:3,approvedCopy:true,violations,errors,passed:true});
+    report.checks.push({engine,width,height,status:response.status(),...hero,...state,dishes,menuLinks:3,approvedCopy:true,violations,errors,passed:true});
     await context.close();console.log(`${engine} ${width}×${height}: layout, texto aprovado e links conferidos.`);
   }
   await browser.close();

@@ -1,5 +1,6 @@
 import {octoberArchivePhotos} from './october-archive-photos';
 import {jardinsArchivePhotos} from './jardins-archive-photos';
+import menuPicanhaFatiada from '../../briefing/entrada/matrizes/home-picanha-fatiada-acervo-2024.webp';
 import menuArrozRodeio from '../../briefing/entrada/matrizes/menuArrozRodeio.webp';
 import jardinsNovoEncontro from '../../briefing/entrada/matrizes/jardinsNovoEncontro.webp';
 import jardinsNovoAmbiente from '../../briefing/entrada/matrizes/jardinsNovoAmbiente.webp';
@@ -43,5 +44,5 @@ const jardins=jardinsArchivePhotos.jardinsAcervoBmm21;
 const jardinsHero=jardinsArchivePhotos.jardinsAcervoBmm17;
 const jardinsDirectory=jardinsArchivePhotos.jardinsAcervoBmm33;
 const reservasHero=jardinsArchivePhotos.jardinsAcervoBmm87;
-export const photos = {...octoberArchivePhotos,...jardinsArchivePhotos,homePicanhaFatiada,homeArrozRodeio,menuCortes,menuArrozRodeio,jardinsNovoEncontro,jardinsNovoAmbiente,iguatemiMesa,fachada,jardins,iguatemi,mesa,picanha,servico,sobremesa,historia,origem,bar,reservas,jardinsHero,historiaHero,cardapioHero,livroCardapio,carneDetalhe,sobremesaServico,mesaDetalhe,jardinsDirectory,iguatemiDirectory,jardinsGallery,jardinsSala,iguatemiHero,iguatemiAcervo,reservasHero,jardinsJanela,jardinsMesaDois,jardinsMesaNoite,jardinsPassagem,jardinsLounge,historiaFamilia,historiaRetrato,historiaFachadaAcervo,homeSalaAcervo2024,homeBifeAcervo2024,homeAperitivosAcervo2024,homeCosteletasAcervo2024,homeMarcaAcervo2024,homeSobremesaAcervo2023};
+export const photos = {...octoberArchivePhotos,...jardinsArchivePhotos,homePicanhaFatiada,homeArrozRodeio,menuCortes,menuPicanhaFatiada,menuArrozRodeio,jardinsNovoEncontro,jardinsNovoAmbiente,iguatemiMesa,fachada,jardins,iguatemi,mesa,picanha,servico,sobremesa,historia,origem,bar,reservas,jardinsHero,historiaHero,cardapioHero,livroCardapio,carneDetalhe,sobremesaServico,mesaDetalhe,jardinsDirectory,iguatemiDirectory,jardinsGallery,jardinsSala,iguatemiHero,iguatemiAcervo,reservasHero,jardinsJanela,jardinsMesaDois,jardinsMesaNoite,jardinsPassagem,jardinsLounge,historiaFamilia,historiaRetrato,historiaFachadaAcervo,homeSalaAcervo2024,homeBifeAcervo2024,homeAperitivosAcervo2024,homeCosteletasAcervo2024,homeMarcaAcervo2024,homeSobremesaAcervo2023};
 export type PhotoName = keyof typeof photos;
