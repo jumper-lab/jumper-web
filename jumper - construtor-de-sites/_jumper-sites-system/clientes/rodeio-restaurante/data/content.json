@@ -110,7 +110,7 @@
   "publication_notes": [
     "Rua Haddock Lobo, 1448 e os nomes/endereço das unidades confirmados pelo PDF RODEIO SITE (2), recebido em 02/10/2026.",
     "Horários e atribuição de telefone por unidade ainda dependem de confirmação comercial.",
-    "Pasta EVENTOS do Drive vazia na leitura de 02/10/2026: usar legendas de ambiente; nenhuma foto deve ser apresentada como registro de evento.",
+    "Foto de evento do Iguatemi recebida e aplicada em 07/10/2026. Ainda falta registro identificado de evento dos Jardins.",
     "Cardápio físico atualizado não identificado: retirar foto do impresso anterior e consultar cardápio digital indicado no PDF.",
     "Página de manutenção preparada em /em-breve/, sem substituir o site completo em desenvolvimento."
   ],
@@ -196,5 +196,6 @@
       "accent": "Rodeio no ar.",
       "description": "Enquanto isso, esperamos você em nossas unidades."
     }
-  }
+  },
+  "photo_source": "briefing/entrada/acervo-atualizado-2026-10-07/fotos-selecionadas.json"
 }

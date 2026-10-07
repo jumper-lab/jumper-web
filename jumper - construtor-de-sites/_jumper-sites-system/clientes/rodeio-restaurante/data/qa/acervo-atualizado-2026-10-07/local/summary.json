@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-07T19:23:38.558Z",
+  "base": "http://127.0.0.1:4326/rodeio",
+  "reports": [
+    {
+      "mode": "mobile",
+      "route": "/cardapio/",
+      "categories": {
+        "performance": 91,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 66
+      },
+      "metrics": {
+        "first-contentful-paint": 1274.0301,
+        "largest-contentful-paint": 3538.0301,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1274.0301
+      }
+    },
+    {
+      "mode": "mobile",
+      "route": "/restaurantes/iguatemi/",
+      "categories": {
+        "performance": 91,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 66
+      },
+      "metrics": {
+        "first-contentful-paint": 1215.0286999999998,
+        "largest-contentful-paint": 3465.0287,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1215.0286999999998
+      }
+    },
+    {
+      "mode": "mobile",
+      "route": "/restaurantes/jardins/",
+      "categories": {
+        "performance": 89,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 66
+      },
+      "metrics": {
+        "first-contentful-paint": 1638.1963999999998,
+        "largest-contentful-paint": 3608.1964,
+        "total-blocking-time": 80,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1638.1963999999998
+      }
+    }
+  ]
+}

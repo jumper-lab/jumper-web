@@ -1,0 +1,573 @@
+{
+  "date": "2026-10-07T19:11:54.637Z",
+  "base": "http://127.0.0.1:4326/rodeio",
+  "checks": [
+    {
+      "engine": "chromium",
+      "width": 320,
+      "height": 740,
+      "status": 200,
+      "photos": [
+        {
+          "alt": "Picanha fatiada do Rodeio servida em prato branco",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-picanha-fatiada-setembro-2026.Dmls91Tt_aM1tP.avif",
+          "loading": "lazy",
+          "width": 288,
+          "height": 432,
+          "ready": true,
+          "display": {
+            "width": 272,
+            "height": 408
+          },
+          "fit": "contain",
+          "ratio": 0.6666666666666666,
+          "encoded": {
+            "width": 640,
+            "height": 960,
+            "bytes": 106017
+          }
+        },
+        {
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, servido em uma frigideira",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-arroz-rodeio-setembro-2026.DrvuaIKD_Z1RfqU6.avif",
+          "loading": "lazy",
+          "width": 288,
+          "height": 432,
+          "ready": true,
+          "display": {
+            "width": 272,
+            "height": 408
+          },
+          "fit": "contain",
+          "ratio": 0.6666666666666666,
+          "encoded": {
+            "width": 640,
+            "height": 960,
+            "bytes": 83079
+          }
+        }
+      ],
+      "layout": [
+        {
+          "x": 24,
+          "y": -139.6875,
+          "width": 272,
+          "height": 408
+        },
+        {
+          "x": 24,
+          "y": 331.8125,
+          "width": 272,
+          "height": 408
+        }
+      ],
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "photos": [
+        {
+          "alt": "Picanha fatiada do Rodeio servida em prato branco",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-picanha-fatiada-setembro-2026.Dmls91Tt_2dguK9.avif",
+          "loading": "lazy",
+          "width": 350,
+          "height": 526,
+          "ready": true,
+          "display": {
+            "width": 342,
+            "height": 513
+          },
+          "fit": "contain",
+          "ratio": 0.6666666666666666,
+          "encoded": {
+            "width": 768,
+            "height": 1152,
+            "bytes": 141670
+          }
+        },
+        {
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, servido em uma frigideira",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-arroz-rodeio-setembro-2026.DrvuaIKD_Z2wbzFX.avif",
+          "loading": "lazy",
+          "width": 350,
+          "height": 526,
+          "ready": true,
+          "display": {
+            "width": 342,
+            "height": 513
+          },
+          "fit": "contain",
+          "ratio": 0.6666666666666666,
+          "encoded": {
+            "width": 768,
+            "height": 1152,
+            "bytes": 107024
+          }
+        }
+      ],
+      "layout": [
+        {
+          "x": 24,
+          "y": -245.296875,
+          "width": 342,
+          "height": 513
+        },
+        {
+          "x": 24,
+          "y": 331.203125,
+          "width": 342,
+          "height": 513
+        }
+      ],
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "photos": [
+        {
+          "alt": "Picanha fatiada do Rodeio servida em prato branco",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-picanha-fatiada-setembro-2026.Dmls91Tt_2dguK9.avif",
+          "loading": "lazy",
+          "width": 345,
+          "height": 518,
+          "ready": true,
+          "display": {
+            "width": 334.21875,
+            "height": 501.328125
+          },
+          "fit": "contain",
+          "ratio": 0.6666666666666666,
+          "encoded": {
+            "width": 768,
+            "height": 1152,
+            "bytes": 141670
+          }
+        },
+        {
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, servido em uma frigideira",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-arroz-rodeio-setembro-2026.DrvuaIKD_Z2wbzFX.avif",
+          "loading": "lazy",
+          "width": 345,
+          "height": 518,
+          "ready": true,
+          "display": {
+            "width": 334.21875,
+            "height": 501.328125
+          },
+          "fit": "contain",
+          "ratio": 0.6666666666666666,
+          "encoded": {
+            "width": 768,
+            "height": 1152,
+            "bytes": 107024
+          }
+        }
+      ],
+      "layout": [
+        {
+          "x": 33.78125,
+          "y": 308.9375,
+          "width": 334.21875,
+          "height": 501.328125
+        },
+        {
+          "x": 400,
+          "y": 308.9375,
+          "width": 334.21875,
+          "height": 501.328125
+        }
+      ],
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "height": 900,
+      "status": 200,
+      "photos": [
+        {
+          "alt": "Picanha fatiada do Rodeio servida em prato branco",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-picanha-fatiada-setembro-2026.Dmls91Tt_2gyi5s.avif",
+          "loading": "lazy",
+          "width": 648,
+          "height": 972,
+          "ready": true,
+          "display": {
+            "width": 640.640625,
+            "height": 960.953125
+          },
+          "fit": "contain",
+          "ratio": 0.6670135275754423,
+          "encoded": {
+            "width": 1600,
+            "height": 2400,
+            "bytes": 441551
+          }
+        },
+        {
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, servido em uma frigideira",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-arroz-rodeio-setembro-2026.DrvuaIKD_Mv71C.avif",
+          "loading": "lazy",
+          "width": 648,
+          "height": 972,
+          "ready": true,
+          "display": {
+            "width": 640.640625,
+            "height": 960.953125
+          },
+          "fit": "contain",
+          "ratio": 0.6670135275754423,
+          "encoded": {
+            "width": 1600,
+            "height": 2400,
+            "bytes": 307204
+          }
+        }
+      ],
+      "layout": [
+        {
+          "x": 63.359375,
+          "y": 25.65625,
+          "width": 640.640625,
+          "height": 960.953125
+        },
+        {
+          "x": 736,
+          "y": 25.65625,
+          "width": 640.640625,
+          "height": 960.953125
+        }
+      ],
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 1920,
+      "height": 1080,
+      "status": 200,
+      "photos": [
+        {
+          "alt": "Picanha fatiada do Rodeio servida em prato branco",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-picanha-fatiada-setembro-2026.Dmls91Tt_2gyi5s.avif",
+          "loading": "lazy",
+          "width": 743,
+          "height": 1115,
+          "ready": true,
+          "display": {
+            "width": 744,
+            "height": 1116
+          },
+          "fit": "contain",
+          "ratio": 0.6666666666666666,
+          "encoded": {
+            "width": 1600,
+            "height": 2400,
+            "bytes": 441551
+          }
+        },
+        {
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, servido em uma frigideira",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-arroz-rodeio-setembro-2026.DrvuaIKD_Mv71C.avif",
+          "loading": "lazy",
+          "width": 743,
+          "height": 1115,
+          "ready": true,
+          "display": {
+            "width": 744,
+            "height": 1116
+          },
+          "fit": "contain",
+          "ratio": 0.6666666666666666,
+          "encoded": {
+            "width": 1600,
+            "height": 2400,
+            "bytes": 307204
+          }
+        }
+      ],
+      "layout": [
+        {
+          "x": 200,
+          "y": 37.953125,
+          "width": 744,
+          "height": 1116
+        },
+        {
+          "x": 976,
+          "y": 37.953125,
+          "width": 744,
+          "height": 1116
+        }
+      ],
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "photos": [
+        {
+          "alt": "Picanha fatiada do Rodeio servida em prato branco",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-picanha-fatiada-setembro-2026.Dmls91Tt_2dguK9.avif",
+          "loading": "lazy",
+          "width": 351,
+          "height": 527,
+          "ready": true,
+          "display": {
+            "width": 342,
+            "height": 513
+          },
+          "fit": "contain",
+          "ratio": 0.6666666666666666,
+          "encoded": {
+            "width": 768,
+            "height": 1152,
+            "bytes": 141670
+          }
+        },
+        {
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, servido em uma frigideira",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-arroz-rodeio-setembro-2026.DrvuaIKD_Z2wbzFX.avif",
+          "loading": "lazy",
+          "width": 351,
+          "height": 527,
+          "ready": true,
+          "display": {
+            "width": 342,
+            "height": 513
+          },
+          "fit": "contain",
+          "ratio": 0.6666666666666666,
+          "encoded": {
+            "width": 768,
+            "height": 1152,
+            "bytes": 107024
+          }
+        }
+      ],
+      "layout": [
+        {
+          "x": 24,
+          "y": -363.26666259765625,
+          "width": 342,
+          "height": 513
+        },
+        {
+          "x": 24,
+          "y": 213.23333740234375,
+          "width": 342,
+          "height": 513
+        }
+      ],
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "height": 900,
+      "status": 200,
+      "photos": [
+        {
+          "alt": "Picanha fatiada do Rodeio servida em prato branco",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-picanha-fatiada-setembro-2026.Dmls91Tt_2gyi5s.avif",
+          "loading": "lazy",
+          "width": 648,
+          "height": 972,
+          "ready": true,
+          "display": {
+            "width": 640.6500244140625,
+            "height": 960.9833374023438
+          },
+          "fit": "contain",
+          "ratio": 0.6670135275754423,
+          "encoded": {
+            "width": 1600,
+            "height": 2400,
+            "bytes": 441551
+          }
+        },
+        {
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, servido em uma frigideira",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-arroz-rodeio-setembro-2026.DrvuaIKD_Mv71C.avif",
+          "loading": "lazy",
+          "width": 648,
+          "height": 972,
+          "ready": true,
+          "display": {
+            "width": 640.6500244140625,
+            "height": 960.9833374023438
+          },
+          "fit": "contain",
+          "ratio": 0.6670135275754423,
+          "encoded": {
+            "width": 1600,
+            "height": 2400,
+            "bytes": 307204
+          }
+        }
+      ],
+      "layout": [
+        {
+          "x": 63.350006103515625,
+          "y": 25.5,
+          "width": 640.6500244140625,
+          "height": 960.9833374023438
+        },
+        {
+          "x": 736,
+          "y": 25.5,
+          "width": 640.6500244140625,
+          "height": 960.9833374023438
+        }
+      ],
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "photos": [
+        {
+          "alt": "Picanha fatiada do Rodeio servida em prato branco",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-picanha-fatiada-setembro-2026.Dmls91Tt_2dguK9.avif",
+          "loading": "lazy",
+          "width": 350,
+          "height": 526,
+          "ready": true,
+          "display": {
+            "width": 342,
+            "height": 513
+          },
+          "fit": "contain",
+          "ratio": 0.6666666666666666,
+          "encoded": {
+            "width": 768,
+            "height": 1152,
+            "bytes": 141670
+          }
+        },
+        {
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, servido em uma frigideira",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-arroz-rodeio-setembro-2026.DrvuaIKD_Z2wbzFX.avif",
+          "loading": "lazy",
+          "width": 350,
+          "height": 526,
+          "ready": true,
+          "display": {
+            "width": 342,
+            "height": 513
+          },
+          "fit": "contain",
+          "ratio": 0.6666666666666666,
+          "encoded": {
+            "width": 768,
+            "height": 1152,
+            "bytes": 107024
+          }
+        }
+      ],
+      "layout": [
+        {
+          "x": 24,
+          "y": -246.296875,
+          "width": 342,
+          "height": 513
+        },
+        {
+          "x": 24,
+          "y": 330.203125,
+          "width": 342,
+          "height": 513
+        }
+      ],
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "height": 900,
+      "status": 200,
+      "photos": [
+        {
+          "alt": "Picanha fatiada do Rodeio servida em prato branco",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-picanha-fatiada-setembro-2026.Dmls91Tt_2gyi5s.avif",
+          "loading": "lazy",
+          "width": 648,
+          "height": 972,
+          "ready": true,
+          "display": {
+            "width": 640.640625,
+            "height": 960.953125
+          },
+          "fit": "contain",
+          "ratio": 0.6670135275754423,
+          "encoded": {
+            "width": 1600,
+            "height": 2400,
+            "bytes": 441551
+          }
+        },
+        {
+          "alt": "Arroz Rodeio, o tradicional Biro-Biro, servido em uma frigideira",
+          "currentSrc": "http://127.0.0.1:4326/rodeio/_astro/home-arroz-rodeio-setembro-2026.DrvuaIKD_Mv71C.avif",
+          "loading": "lazy",
+          "width": 648,
+          "height": 972,
+          "ready": true,
+          "display": {
+            "width": 640.640625,
+            "height": 960.953125
+          },
+          "fit": "contain",
+          "ratio": 0.6670135275754423,
+          "encoded": {
+            "width": 1600,
+            "height": 2400,
+            "bytes": 307204
+          }
+        }
+      ],
+      "layout": [
+        {
+          "x": 63.359375,
+          "y": 25.625,
+          "width": 640.640625,
+          "height": 960.953125
+        },
+        {
+          "x": 736,
+          "y": 25.625,
+          "width": 640.640625,
+          "height": 960.953125
+        }
+      ],
+      "violations": [],
+      "errors": [],
+      "passed": true
+    }
+  ]
+}

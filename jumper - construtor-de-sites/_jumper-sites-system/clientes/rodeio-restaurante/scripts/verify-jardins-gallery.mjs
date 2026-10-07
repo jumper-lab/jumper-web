@@ -70,8 +70,8 @@ for(const [engine,type]of Object.entries({chromium,firefox,webkit})){
  await browser.close();
 }
 const browser=await chromium.launch({channel:'chrome',headless:true}),page=await browser.newPage();
-await page.goto(base+'/restaurantes/iguatemi/',{waitUntil:'networkidle'});assert.equal(await page.locator('#galeria [data-gallery]').count(),5);
-await browser.close();report.iguatemiCount=5;
+await page.goto(base+'/restaurantes/iguatemi/',{waitUntil:'networkidle'});assert.equal(await page.locator('#galeria [data-gallery]').count(),16);
+await browser.close();report.iguatemiCount=16;
 const fallback=await chromium.launch({channel:'chrome',headless:true}),noScript=await fallback.newContext({javaScriptEnabled:false}),fallbackPage=await noScript.newPage();
 await fallbackPage.goto(base+'/restaurantes/jardins/',{waitUntil:'networkidle'});assert.equal(await fallbackPage.locator('#galeria [data-gallery]').filter({visible:true}).count(),77);assert.equal(await fallbackPage.locator('[data-show-more-photos]').isHidden(),true);await fallback.close();report.noScriptAllPhotos=true;
 await fs.writeFile(out+'/report.json',JSON.stringify(report,null,2));

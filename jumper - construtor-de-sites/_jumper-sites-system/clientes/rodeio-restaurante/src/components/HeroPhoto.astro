@@ -1,15 +1,15 @@
 ---
 import {getImage} from 'astro:assets';
 import {photos, type PhotoName} from '../lib/photos';
-interface Props {name:PhotoName;alt:string;quality?:number;}
-const {name,alt,quality=60}=Astro.props;
+interface Props {name:PhotoName;alt:string;quality?:number;phoneQuality?:number;}
+const {name,alt,quality=60,phoneQuality=quality}=Astro.props;
 const source=photos[name];
-const crop=async(widths:number[],ratio:number)=>{
- const images=await Promise.all(widths.map(width=>getImage({src:source,width,height:Math.round(width/ratio),fit:'cover',position:'centre',format:'avif',quality})));
+const crop=async(widths:number[],ratio:number,cropQuality=quality)=>{
+ const images=await Promise.all(widths.map(width=>getImage({src:source,width,height:Math.round(width/ratio),fit:'cover',position:'centre',format:'avif',quality:cropQuality})));
  return {src:images[0].src,srcset:images.map((image,i)=>`${image.src} ${widths[i]}w`).join(', ')};
 };
 const [phone,tablet,desktop]=await Promise.all([
- crop([360,540,720,900],9/16),crop([640,840,1080],4/5),crop([960,1440,1920,2560],16/9)
+ crop([360,540,720,900],9/16,phoneQuality),crop([640,840,1080],4/5),crop([960,1440,1920,2560],16/9)
 ]);
 ---
 <picture>

@@ -9,7 +9,7 @@ import '../styles/cardapio.css';
 const copy=content.pages.menu;
 ---
 <Layout title="Cardápio — os clássicos do Rodeio" description={copy.description}>
-  <Hero eyebrow="Cardápio · Rodeio" title={copy.title} accent={copy.accent} description={copy.description} photo="cardapioHero" alt="Corte de carne à mesa com acompanhamentos do Rodeio" caption="Os sabores da casa" cta={copy.cta} href={content.menu_url} secondary="Reservar uma mesa" secondaryHref="/reservas/"/>
+  <Hero eyebrow="Cardápio · Rodeio" title={copy.title} accent={copy.accent} description={copy.description} photo="cardapioHero" phoneQuality={55} alt="Corte grelhado e folhas verdes servidos à mesa no Rodeio" caption="Os sabores da casa" cta={copy.cta} href={content.menu_url} secondary="Reservar uma mesa" secondaryHref="/reservas/"/>
   <section id="proxima-secao" class="menu-classics" aria-labelledby="menu-classics-title">
     <div class="wrap">
       <div class="menu-classics-heading">
@@ -22,22 +22,20 @@ const copy=content.pages.menu;
           <Link href={content.menu_url}>{copy.cta}</Link>
         </div>
       </div>
+      <div class="menu-classics-names" aria-label="Clássicos reconhecidos do Rodeio">
+        <p class="eyebrow">Clássicos que nasceram aqui</p>
+        <div class="menu-classic-name"><h3>Picanha fatiada</h3><span>Carnes</span></div>
+        <div class="menu-classic-name"><h3>Arroz Rodeio</h3><span>O tradicional Biro-Biro</span></div>
+      </div>
       <div class="menu-classics-layout">
         <figure class="menu-cuts-photo">
-          <Photo name="menuCortes" sizes="(max-width:759px) 90vw, (max-width:1199px) 48vw, 50vw" alt="Carnes grelhadas servidas com batata e acompanhamentos em uma mesa do Rodeio"/>
+          <Photo name="menuCortes" quality={68} maxWidth={1920} sizes="(max-width:759px) 90vw, (min-width:1680px) 728px, 45vw" alt="Corte grelhado servido com batata em um prato branco do Rodeio"/>
           <figcaption><span>Cortes e acompanhamentos</span><span>À mesa no Rodeio</span></figcaption>
         </figure>
-        <div class="menu-classics-companion">
-          <div class="menu-classics-names" aria-label="Clássicos reconhecidos do Rodeio">
-            <p class="eyebrow">Clássicos que nasceram aqui</p>
-            <div class="menu-classic-name"><h3>Picanha fatiada</h3><span>Carnes</span></div>
-            <div class="menu-classic-name"><h3>Arroz Rodeio</h3><span>O tradicional Biro-Biro</span></div>
-          </div>
-          <figure class="menu-rice-photo">
-            <Photo name="menuArrozRodeio" sizes="(max-width:759px) 90vw, (max-width:1199px) 44vw, 43vw" alt="Arroz Rodeio sendo servido em uma frigideira à mesa"/>
-            <figcaption><span>Arroz Rodeio</span><span>O tradicional Biro-Biro</span></figcaption>
-          </figure>
-        </div>
+        <figure class="menu-dessert-photo">
+          <Photo name="menuSobremesa" quality={68} maxWidth={1920} sizes="(max-width:759px) 90vw, (min-width:1680px) 728px, 45vw" alt="Sobremesa cremosa servida em uma taça sobre a mesa de madeira do Rodeio"/>
+          <figcaption><span>Para terminar</span><span>Um último sabor</span></figcaption>
+        </figure>
       </div>
     </div>
   </section>

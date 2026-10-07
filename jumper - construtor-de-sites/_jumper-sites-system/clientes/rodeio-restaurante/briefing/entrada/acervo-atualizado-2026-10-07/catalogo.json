@@ -1,0 +1,659 @@
+[
+  {
+    "source": "FOTOS SITE/EVENTOS/RODEIO IGUATEMI - EVENTO.jpg",
+    "theme": "EVENTOS",
+    "file": "RODEIO IGUATEMI - EVENTO.jpg",
+    "width": 1440,
+    "height": 1920,
+    "bytes": 209360,
+    "sha256": "6b858476876d4cf317f9448c48e2e54a8eea8d3d930b8dd6f7a420036a37eb5f"
+  },
+  {
+    "source": "FOTOS SITE/NOSSA HISTÓRIA/Captura de tela 2026-07-06 184313.png",
+    "theme": "NOSSA-HISTORIA",
+    "file": "Captura de tela 2026-07-06 184313.png",
+    "width": 636,
+    "height": 831,
+    "bytes": 1126942,
+    "sha256": "6c7c04acc33db19e5c2d3544673bbc0b2f869c4166a5c5f3c9e3bbc558eb322c"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO JARDINS/BMM_29.jpg",
+    "theme": "RODEIO-JARDINS",
+    "file": "BMM_29.jpg",
+    "width": 5323,
+    "height": 3549,
+    "bytes": 14443525,
+    "sha256": "c2f86a2145375ff510d8083ab7136e062572153311228cf04b1dcc387ceb4f30"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_229.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_229.jpg",
+    "width": 3035,
+    "height": 3794,
+    "bytes": 11200951,
+    "sha256": "d96250b4664b1fcb9a4331f771be3d0e009f2f8e3ce058a5c90798f70ecfb675"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_250.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_250.jpg",
+    "width": 4015,
+    "height": 4015,
+    "bytes": 8024919,
+    "sha256": "f8910d1d696c72af7694409b8d1f005ebdeb1cd873b40adb08413f7bb8ad1405"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO JARDINS/BMM_17.jpg",
+    "theme": "RODEIO-JARDINS",
+    "file": "BMM_17.jpg",
+    "width": 5472,
+    "height": 3648,
+    "bytes": 16560083,
+    "sha256": "6fe7455f2f05ee94468ab72ec12292a3c58ac98acbf37799acd50c0ca720a8a7"
+  },
+  {
+    "source": "FOTOS SITE/RESERVAS/BMM_87.jpg",
+    "theme": "RESERVAS",
+    "file": "BMM_87.jpg",
+    "width": 5388,
+    "height": 3592,
+    "bytes": 18630060,
+    "sha256": "ea10235e4c19e485a061a8bff0a280dc01ed1e47b02b24789dbd1339ef243f01"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO JARDINS/BMM_65.jpg",
+    "theme": "RODEIO-JARDINS",
+    "file": "BMM_65.jpg",
+    "width": 5472,
+    "height": 3648,
+    "bytes": 12582281,
+    "sha256": "75d4d95b65322027c14f7f08eced1b3981d27c2f107266300187518016c448e0"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO JARDINS/BMM_30.jpg",
+    "theme": "RODEIO-JARDINS",
+    "file": "BMM_30.jpg",
+    "width": 5472,
+    "height": 3648,
+    "bytes": 15335404,
+    "sha256": "9decc3389413c47f910cac16f80e4f6f725aec76d79334c08179cd65eb3e1515"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO JARDINS/BMM_70.jpg",
+    "theme": "RODEIO-JARDINS",
+    "file": "BMM_70.jpg",
+    "width": 5472,
+    "height": 3648,
+    "bytes": 12808187,
+    "sha256": "fbe18effb838e33a92e220cace87cb8e6a801dac7508663355da1f6f0cf76c25"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_235.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_235.jpg",
+    "width": 4672,
+    "height": 5840,
+    "bytes": 18183026,
+    "sha256": "29c518cabfe5dff0b71363b198d57973241cf52a7e6ec78ef9156baf43288428"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_269.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_269.jpg",
+    "width": 4672,
+    "height": 5840,
+    "bytes": 14367861,
+    "sha256": "56eeb0bcc5668e838283d4b2be1041adcbb2dd3b766dfd08988d3c996217de09"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO JARDINS/BMM_21.jpg",
+    "theme": "RODEIO-JARDINS",
+    "file": "BMM_21.jpg",
+    "width": 5472,
+    "height": 3648,
+    "bytes": 17425034,
+    "sha256": "ef278cc33bb181fb65026445ff4bc4da83dcef988b75fceb81b63e8381f87ded"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO JARDINS/BMM_12.jpg",
+    "theme": "RODEIO-JARDINS",
+    "file": "BMM_12.jpg",
+    "width": 5472,
+    "height": 3648,
+    "bytes": 20586081,
+    "sha256": "4c07029e9da73a3bba14a9f71b2f9a83f67930e421de7b3fa1a45cea1867bd71"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO JARDINS/BMM_16.jpg",
+    "theme": "RODEIO-JARDINS",
+    "file": "BMM_16.jpg",
+    "width": 3582,
+    "height": 5373,
+    "bytes": 17115598,
+    "sha256": "24dd9f0ebd60129665ec1744597d77ec2893ca304bb868d740de18bef06be265"
+  },
+  {
+    "source": "FOTOS SITE/NOSSA HISTÓRIA/Captura de tela 2026-07-06 184652.png",
+    "theme": "NOSSA-HISTORIA",
+    "file": "Captura de tela 2026-07-06 184652.png",
+    "width": 837,
+    "height": 940,
+    "bytes": 931911,
+    "sha256": "5b79ce5aaf98643b880ae792cf3ea22b27198df25d6a320063f08d11ae6cfb58"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_354.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_354.jpg",
+    "width": 4672,
+    "height": 5840,
+    "bytes": 24559998,
+    "sha256": "784fc0223c63512a3fbae888bf5180d5e5a79994af51265ffc7ed9727cd4b3e2"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO JARDINS/BMM_51.jpg",
+    "theme": "RODEIO-JARDINS",
+    "file": "BMM_51.jpg",
+    "width": 5401,
+    "height": 3601,
+    "bytes": 14164289,
+    "sha256": "6c7112134ed3f91afb998023f4958be7f220ad3bca29d38d26afe0093c64a904"
+  },
+  {
+    "source": "FOTOS SITE/NOSSA HISTÓRIA/Cópia de 1.jpg",
+    "theme": "NOSSA-HISTORIA",
+    "file": "Cópia de 1.jpg",
+    "width": 980,
+    "height": 766,
+    "bytes": 154912,
+    "sha256": "58dc6587eea608395b91d38f4be869dcdcab62b1b20ae0ad508ead49a3b51623"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_376.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_376.jpg",
+    "width": 4672,
+    "height": 5840,
+    "bytes": 24064069,
+    "sha256": "0343198ad01d17494f3bca438b918dc639c9f88a516ee766c1eaeae099715bda"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_260.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_260.jpg",
+    "width": 4672,
+    "height": 5840,
+    "bytes": 18110251,
+    "sha256": "37fc44aeb713c98d151e3157e4993b4fea0043b73214dfa67775230af0139e9a"
+  },
+  {
+    "source": "FOTOS SITE/NOSSA HISTÓRIA/Captura de tela 2026-07-06 184422.png",
+    "theme": "NOSSA-HISTORIA",
+    "file": "Captura de tela 2026-07-06 184422.png",
+    "width": 736,
+    "height": 1132,
+    "bytes": 734175,
+    "sha256": "7254ab403ca25819a2bf6ed2b8b22f57dd4a1d2dc983650ad26f1fa618d977a5"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO JARDINS/BMM_14.jpg",
+    "theme": "RODEIO-JARDINS",
+    "file": "BMM_14.jpg",
+    "width": 5472,
+    "height": 3648,
+    "bytes": 15701521,
+    "sha256": "47434bf2c06d928d4e8ed73985ef1f925c7adb558ebf666c51c4b5a7b7e0a2c2"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO JARDINS/BMM_33.jpg",
+    "theme": "RODEIO-JARDINS",
+    "file": "BMM_33.jpg",
+    "width": 5472,
+    "height": 3648,
+    "bytes": 18056545,
+    "sha256": "134a1ba003281249c98c2a152524744c22c17e02dec70a4aaefcb8cd646816d8"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO JARDINS/BMM_58.jpg",
+    "theme": "RODEIO-JARDINS",
+    "file": "BMM_58.jpg",
+    "width": 3397,
+    "height": 5095,
+    "bytes": 13816409,
+    "sha256": "cf90aab5aa03c765ace27206503e0f53e700bca7f476e1db0c8713aad21145d0"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO JARDINS/BMM_61.jpg",
+    "theme": "RODEIO-JARDINS",
+    "file": "BMM_61.jpg",
+    "width": 3648,
+    "height": 5472,
+    "bytes": 13745476,
+    "sha256": "ef8f2401d7c725019c33d99decd0085996eb2c5a78506cf287653dce63caccfc"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO JARDINS/BMM_60.jpg",
+    "theme": "RODEIO-JARDINS",
+    "file": "BMM_60.jpg",
+    "width": 3648,
+    "height": 5472,
+    "bytes": 17561673,
+    "sha256": "c4d393b937ab13b7a681f9eba75cc8a99381cc176bb9d809af92d49803ef7656"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_053.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_053.jpg",
+    "width": 4312,
+    "height": 5390,
+    "bytes": 15486619,
+    "sha256": "65d8641a129703af0d745a8cae17aa27eb57337c9c921be392c36d01ab053d89"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_001.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_001.jpg",
+    "width": 4672,
+    "height": 7008,
+    "bytes": 19105257,
+    "sha256": "57fa7a01ac249387248187acd22653ecdd04a8be0b032d61a15fdff9ec9027cf"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_384.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_384.jpg",
+    "width": 4672,
+    "height": 5840,
+    "bytes": 24815678,
+    "sha256": "615b04fdd3d3bb7524df40c8e6f0bd09db1fdf8f788224d9362c0e4b04c75446"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_128.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_128.jpg",
+    "width": 4026,
+    "height": 5032,
+    "bytes": 17531565,
+    "sha256": "e75a928ca8a9590c7fd81dc025ec4cc4b429837c20a05cd815812db436f8ab40"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_292.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_292.jpg",
+    "width": 4672,
+    "height": 7008,
+    "bytes": 27075850,
+    "sha256": "800e4971f299302f25eca6838980b57dd9831183675b410982232da541f37734"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO JARDINS/BMM_37.jpg",
+    "theme": "RODEIO-JARDINS",
+    "file": "BMM_37.jpg",
+    "width": 5472,
+    "height": 3648,
+    "bytes": 19215209,
+    "sha256": "fed1af0d24ac6996111074f148b370f7b8d6e5d491f0dfd7229e87a4484101b6"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_345.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_345.jpg",
+    "width": 4672,
+    "height": 5840,
+    "bytes": 23214719,
+    "sha256": "d291dc48e25df1b7a691fde482b6b499d6732153ad55e9011f5d41add7e2c01e"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO JARDINS/BMM_87.jpg",
+    "theme": "RODEIO-JARDINS",
+    "file": "BMM_87.jpg",
+    "width": 5388,
+    "height": 3592,
+    "bytes": 18630060,
+    "sha256": "ea10235e4c19e485a061a8bff0a280dc01ed1e47b02b24789dbd1339ef243f01"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9443.jpg",
+    "theme": "RODEIO-IGUATEMI",
+    "file": "_DSC9443.jpg",
+    "width": 6812,
+    "height": 4541,
+    "bytes": 28004434,
+    "sha256": "a137257eee0b3ef7dc195e0d520e63699abe3c9643c1da3d08b7c5ff0dbfd556"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_346.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_346.jpg",
+    "width": 4672,
+    "height": 5840,
+    "bytes": 25897317,
+    "sha256": "c4edda47b1bef49f27fad593bdb831188a7597b56f197f7326af4bab2c364eba"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_152.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_152.jpg",
+    "width": 3647,
+    "height": 5470,
+    "bytes": 17758077,
+    "sha256": "fda6165216f7ccdcd4845acbe157d53115520e1f8837755f5f72569b06b0d2cf"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_113.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_113.jpg",
+    "width": 4672,
+    "height": 7008,
+    "bytes": 20204276,
+    "sha256": "c7d479ae32e39757cbab5ee4ccf41f407eac636f9824b4f43b500ab23adac48c"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_370.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_370.jpg",
+    "width": 4672,
+    "height": 5840,
+    "bytes": 25651246,
+    "sha256": "4ea87cf5380ff8edd7fa3657908340b4ec5789d007352b18a5e2708f56c25072"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_237.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_237.jpg",
+    "width": 4672,
+    "height": 5840,
+    "bytes": 13459908,
+    "sha256": "2b55e10daac31bf6bcf1f953513a650a5010347979427135ec19486671b537b6"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_113 (1).jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_113 (1).jpg",
+    "width": 4672,
+    "height": 7008,
+    "bytes": 20204276,
+    "sha256": "c7d479ae32e39757cbab5ee4ccf41f407eac636f9824b4f43b500ab23adac48c"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_141.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_141.jpg",
+    "width": 4672,
+    "height": 7008,
+    "bytes": 19407890,
+    "sha256": "6abdce820fc3422213eae6d210029ee8e6c1044bcbbb69f87f88a0af386c0eca"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_196.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_196.jpg",
+    "width": 4672,
+    "height": 5840,
+    "bytes": 16028287,
+    "sha256": "cb4b29e7a6d02592c06dd803d7e8718a4b7d8865a059f4a323058be9a850a18b"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_225.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_225.jpg",
+    "width": 4672,
+    "height": 7008,
+    "bytes": 20565055,
+    "sha256": "bfa2c841053e76c109dbec751d23c6572eeaae7925b5dc007d3fa6dda3c7f68a"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_275.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_275.jpg",
+    "width": 4672,
+    "height": 5840,
+    "bytes": 22977365,
+    "sha256": "d30cd7b024ededb6cf3ab25a53fb9c26d52b1a296c4da33464d1416178f91320"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_391.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_391.jpg",
+    "width": 4204,
+    "height": 5255,
+    "bytes": 17945650,
+    "sha256": "bf78a8d7ed459c24cf3dd9ec8d1135d29917f9689d106500459a57e6fdaea2e7"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_093.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_093.jpg",
+    "width": 4169,
+    "height": 5211,
+    "bytes": 11793749,
+    "sha256": "308b5bd5e02444e8aa22aaa5dd6a5ab1088cfbe93d1ff19c2446b69fe6b095cc"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_127.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_127.jpg",
+    "width": 4483,
+    "height": 5604,
+    "bytes": 19689917,
+    "sha256": "a0e2d17ec013e1691a0d93f6c3baf3fe4f4815a57ef218f852c5d9ddc27e31cb"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_407.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_407.jpg",
+    "width": 3915,
+    "height": 4894,
+    "bytes": 17859285,
+    "sha256": "8052b12835dedf3d32215a53ba496964f957bd62ed18514f2e7034c5fc83bfd1"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_037.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_037.jpg",
+    "width": 4672,
+    "height": 7008,
+    "bytes": 21895802,
+    "sha256": "14edce80dd599ae197cf8cb2eb73d3e8bada73a3bc82927177742fdb8c9914ea"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9461.jpg",
+    "theme": "RODEIO-IGUATEMI",
+    "file": "_DSC9461.jpg",
+    "width": 7008,
+    "height": 4672,
+    "bytes": 34772673,
+    "sha256": "e041e3fba464710ea33cf9ab0cc1f3ddb76f9f4a19b3790931259064d67fbb43"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9454.jpg",
+    "theme": "RODEIO-IGUATEMI",
+    "file": "_DSC9454.jpg",
+    "width": 7008,
+    "height": 4672,
+    "bytes": 35362821,
+    "sha256": "6d415da8e7f36f77ac7d0529d3453c7a2b050cb8255d2d0e9055f147bae6786c"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9474.jpg",
+    "theme": "RODEIO-IGUATEMI",
+    "file": "_DSC9474.jpg",
+    "width": 6637,
+    "height": 4424,
+    "bytes": 27022749,
+    "sha256": "9b272af79888e24fb3e6e22a2487dc1e388417a9af347572571e7cedecc288f6"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9361.jpg",
+    "theme": "RODEIO-IGUATEMI",
+    "file": "_DSC9361.jpg",
+    "width": 7008,
+    "height": 4672,
+    "bytes": 35558473,
+    "sha256": "191dd65cdd77ffff584470150401c61d7858f6c2d65bc351803a70d60018bb98"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_082.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_082.jpg",
+    "width": 4672,
+    "height": 7008,
+    "bytes": 17407578,
+    "sha256": "c3c321cade33edbc63f740f70d1c8d077044bd391fb3084dc2bf9553da0ea616"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9444.jpg",
+    "theme": "RODEIO-IGUATEMI",
+    "file": "_DSC9444.jpg",
+    "width": 6812,
+    "height": 4541,
+    "bytes": 30333276,
+    "sha256": "8b6af5969edcc4c9dc9577e652a9b76dcdd41352320c5b6b6549be226620f661"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_067.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_067.jpg",
+    "width": 4672,
+    "height": 5840,
+    "bytes": 19680620,
+    "sha256": "8752906dbb51fdfc35487e0fec47046547c38157719a01fa81faf1b036225ba7"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_108.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_108.jpg",
+    "width": 3901,
+    "height": 5852,
+    "bytes": 13388149,
+    "sha256": "a729064aa73b8294041ff15b1c414ab03e02cf7055ea9317ddae4c0be3026e38"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9419.jpg",
+    "theme": "RODEIO-IGUATEMI",
+    "file": "_DSC9419.jpg",
+    "width": 4672,
+    "height": 7008,
+    "bytes": 36201980,
+    "sha256": "34fea43c602eaa9485d13e967465be71bd9c222e25f2492011cd5b72f7947211"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_291.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_291.jpg",
+    "width": 4672,
+    "height": 7008,
+    "bytes": 20204071,
+    "sha256": "f02fc243d51193025ee9b11feaf0026befedce3bbf83cfc4204e38b2b7a3752c"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_315.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_315.jpg",
+    "width": 4672,
+    "height": 7008,
+    "bytes": 29559275,
+    "sha256": "7b7cf44348e244974f239c13ba40fe22a2d6b79f495fe71ea0a8cf7fd9ffd318"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9458.jpg",
+    "theme": "RODEIO-IGUATEMI",
+    "file": "_DSC9458.jpg",
+    "width": 7008,
+    "height": 4672,
+    "bytes": 34729681,
+    "sha256": "e14547d4e8e0392300a0f63a7611bc915118efeb07427f12ff81ba853d5445fc"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9377.jpg",
+    "theme": "RODEIO-IGUATEMI",
+    "file": "_DSC9377.jpg",
+    "width": 4672,
+    "height": 7008,
+    "bytes": 36928422,
+    "sha256": "3ea600cf2e786d94f3aefef64c03926c378196a153d111786703dea3ad91c3c0"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9452.jpg",
+    "theme": "RODEIO-IGUATEMI",
+    "file": "_DSC9452.jpg",
+    "width": 7008,
+    "height": 4672,
+    "bytes": 32475236,
+    "sha256": "8c13f71f8f694ee93c917516ac44d6f3f9157f9686e31e5dc6bd6a964a6e77d0"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_180.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_180.jpg",
+    "width": 4672,
+    "height": 5840,
+    "bytes": 19208091,
+    "sha256": "83324a88c246a777ee958ad66c319245de8de8d6332f60125f6d4df296c842a0"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9423.jpg",
+    "theme": "RODEIO-IGUATEMI",
+    "file": "_DSC9423.jpg",
+    "width": 4672,
+    "height": 7008,
+    "bytes": 35698111,
+    "sha256": "82d9f94699f132aa1612831ec9df43a581cd222c590b664cfa1309855b37fd48"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9426.jpg",
+    "theme": "RODEIO-IGUATEMI",
+    "file": "_DSC9426.jpg",
+    "width": 4672,
+    "height": 7008,
+    "bytes": 31166244,
+    "sha256": "3b17d94915b881a05e283a48a4141f988d5a11663295d49800921c4754f09c00"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9396.jpg",
+    "theme": "RODEIO-IGUATEMI",
+    "file": "_DSC9396.jpg",
+    "width": 4565,
+    "height": 6847,
+    "bytes": 38272199,
+    "sha256": "b80aed3c0a4734bc1ccdc0e6cc6ec75bc6813d0460c6a737f0def60abea50950"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9442.jpg",
+    "theme": "RODEIO-IGUATEMI",
+    "file": "_DSC9442.jpg",
+    "width": 6812,
+    "height": 4541,
+    "bytes": 30981014,
+    "sha256": "fac08f80219aa438c3a3a67e91497866381c1e78f70631f49f66a1fa00dbaa76"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9420.jpg",
+    "theme": "RODEIO-IGUATEMI",
+    "file": "_DSC9420.jpg",
+    "width": 4672,
+    "height": 7008,
+    "bytes": 35681469,
+    "sha256": "cefb6c2c35ea9bfcfbb39665955f00226f38fa4ae73c5aec5b539e02d45bd988"
+  },
+  {
+    "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9416.jpg",
+    "theme": "RODEIO-IGUATEMI",
+    "file": "_DSC9416.jpg",
+    "width": 4565,
+    "height": 6847,
+    "bytes": 37638307,
+    "sha256": "44eab81077a511d88e40d0b7edb2be087d8469e1772d4c36404c829b2ba4f3f4"
+  },
+  {
+    "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_045.jpg",
+    "theme": "CARDAPIO",
+    "file": "rodeo_2026set_045.jpg",
+    "width": 3640,
+    "height": 5460,
+    "bytes": 15085113,
+    "sha256": "60ed1df16ea9113a10431ada0b5d23c9e275d0a43fec2ae41b54e2afaa688f2f"
+  }
+]

@@ -46,7 +46,7 @@
 }
 .cuisine-layout {
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 28px 32px;
   align-items: start;
 }
@@ -74,10 +74,8 @@
   height: auto;
   object-fit: contain;
 }
-/* Native 3:2 and square photographs keep the full dishes visible.
-   The 3:2 column proportion aligns both photograph bottoms on desktop. */
-.cuisine-main img { aspect-ratio: 3 / 2; }
-.cuisine-detail img { aspect-ratio: 1; }
+/* Both complete photographs keep their native portrait proportions. */
+.cuisine-main img, .cuisine-detail img { aspect-ratio: 2 / 3; }
 .cuisine-main figcaption, .cuisine-detail figcaption {
   margin: 12px 0 0;
   padding: 0;
