@@ -171,5 +171,21 @@
         "seo": 69
       }
     }
+  },
+  "cardapio_hero_food_focus": {
+    "date": "2026-10-07",
+    "status": "validated_local",
+    "scope": "Recorte horizontal do hero Cardápio, conservando fotografia, proporção, overlay e animação.",
+    "browser_report": "data/visual-review/cardapio-hero-foco/local/report.json",
+    "browser_checks": 9,
+    "engines": [
+      "Chrome",
+      "Firefox",
+      "WebKit"
+    ],
+    "visual_review": "Capturas examinadas em 390, 1440 e 1822px; carne visível no centro do banner. Cobertura sem faixas, texto sem cortes e animação original preservada. Tablet 768 e desktop 1920 também conferidos.",
+    "known_issues": [
+      "O enquadramento mobile conserva o espaço de mesa abaixo da comida para legibilidade do texto. Heros usam recorte responsivo, sem deformação."
+    ]
   }
 }
