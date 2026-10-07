@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-07T21:31:16.873Z",
+  "base": "https://site.jumper.dev.br/rodeio",
+  "reports": [
+    {
+      "mode": "mobile",
+      "route": "/cardapio/",
+      "categories": {
+        "performance": 94,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "first-contentful-paint": 2152.1585,
+        "largest-contentful-paint": 2805.9275,
+        "total-blocking-time": 48,
+        "cumulative-layout-shift": 0,
+        "speed-index": 2152.1585
+      }
+    },
+    {
+      "mode": "desktop",
+      "route": "/cardapio/",
+      "categories": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "first-contentful-paint": 507.0565,
+        "largest-contentful-paint": 672.5165000000001,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "speed-index": 507.0565
+      }
+    }
+  ]
+}

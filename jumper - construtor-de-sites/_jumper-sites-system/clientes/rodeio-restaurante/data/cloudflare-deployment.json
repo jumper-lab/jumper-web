@@ -2,13 +2,13 @@
   "url": "https://site.jumper.dev.br/rodeio/",
   "provider": "cloudflare-workers-static-assets",
   "worker": "jumper-hoster-dev",
-  "versionId": "3e7e0ba5-a22e-4a5b-a010-1ba5fa69e33c",
-  "sourceCommit": "e3a8b06289f4659aad08b5ea55dfd84956c5d767",
-  "sourceBranch": "codex/rodeio-acervo-atualizado-outubro",
-  "pullRequest": "https://github.com/jumper-lab/jumper-web/pull/92",
+  "versionId": "479a4a69-0d52-4406-bdc5-90ec4be4ae4c",
+  "sourceCommit": "80d3077df002f69a5730a1e1bca0f9f4ac08f804",
+  "sourceBranch": "codex/rodeio-cardapio-identificacao-pratos",
+  "pullRequest": "https://github.com/jumper-lab/jumper-web/pull/93",
   "status": "READY",
   "indexing": "noindex",
-  "date": "2026-10-07T19:44:30.926897+00:00",
+  "date": "2026-10-07T21:29:37.718508+00:00",
   "access": "public without cookies",
   "results": [
     {
@@ -40,8 +40,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 77879,
-      "sha256": "509dfdc93a06cd44273ae936674a66b70ad83eb576bb918207016da32908cfdc",
+      "bytes": 77410,
+      "sha256": "8a146f177707c0938841b494a7f17b27043db5041208ad705a0261ead499e70f",
       "noindex": true
     },
     {
@@ -129,11 +129,11 @@
     "beforeAndAfter": true,
     "liveBoundariesPreserved": true
   },
-  "previousDevVersionId": "dab45303-d5d8-4fe2-a27e-2f9cc8d8c107",
-  "previousSourceCommit": "2b5990cee3b673a814cb640660c65289f296336d",
+  "previousDevVersionId": "3e7e0ba5-a22e-4a5b-a010-1ba5fa69e33c",
+  "previousSourceCommit": "e3a8b06289f4659aad08b5ea55dfd84956c5d767",
   "maintenancePage": "/rodeio/em-breve/",
   "maintenanceActiveOnHome": false,
-  "change": "Acervo atualizado de 07/10: cinco fotos de pratos, 16 novos ambientes e evento do Iguatemi; galerias progressivas, enquadramentos nativos e inicialização de animação em lote.",
+  "change": "Cardápio: Picanha fatiada e Arroz Rodeio com fotos reais correspondentes, distintas da home, e nome na própria legenda; retirada a faixa de nomes junto à sobremesa. Proporções nativas preservadas.",
   "galleryPhotos": {
     "jardins": 77,
     "iguatemi": 16
@@ -143,9 +143,10 @@
     "iguatemi": 6
   },
   "assetVerification": {
-    "report": "data/qa/acervo-atualizado-2026-10-07/published/assets-and-pages.json",
-    "newAssetsVerified": 222,
-    "note": "AVIF/JS/CSS idênticos ao pacote. HTML idêntico após remover somente o beacon e a quebra de linha inseridos pela Cloudflare Web Analytics; Analytics preservado."
+    "report": "data/qa/cardapio-identificacao-2026-10-07/published/assets-and-pages.json",
+    "newAssetsVerified": 16,
+    "note": "16 novos derivados AVIF idênticos ao pacote; 10 HTML idênticos após remover somente o beacon Cloudflare.",
+    "allMatched": true
   },
   "performanceReport": "data/qa/acervo-atualizado-2026-10-07/published/summary.json",
   "galleryBrowserReport": "data/visual-review/acervo-atualizado-2026-10-07/published/report.json",
@@ -166,6 +167,10 @@
     "menuDialogPerformanceReport": "data/visual-review/menu-lightbox/performance-published/summary.json",
     "jardinsGalleryBrowserReport": "data/visual-review/jardins-novo-acervo/published/report.json",
     "jardinsGalleryPerformanceReport": "data/visual-review/jardins-novo-acervo/performance-published/summary.json",
-    "jardinsGalleryAssetReport": "data/visual-review/jardins-novo-acervo/assets-published.json"
-  }
+    "jardinsGalleryAssetReport": "data/visual-review/jardins-novo-acervo/assets-published.json",
+    "octoberArchivePerformanceReport": "data/qa/acervo-atualizado-2026-10-07/published/summary.json",
+    "octoberArchiveAssetReport": "data/qa/acervo-atualizado-2026-10-07/published/assets-and-pages.json"
+  },
+  "menuBrowserReport": "data/visual-review/cardapio-classicos/identificacao-publicada/report.json",
+  "menuPerformanceReport": "data/qa/cardapio-identificacao-2026-10-07/published/summary.json"
 }

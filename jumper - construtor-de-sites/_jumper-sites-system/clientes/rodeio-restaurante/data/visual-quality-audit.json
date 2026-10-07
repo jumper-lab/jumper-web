@@ -81,7 +81,7 @@
   },
   "cardapio_identification_correction": {
     "date": "2026-10-07",
-    "status": "validated_local",
+    "status": "published_and_verified_on_development",
     "scope": "Somente /rodeio/cardapio/, associação nome-fotografia dos clássicos.",
     "browser_report": "data/visual-review/cardapio-classicos/identificacao-local/report.json",
     "browser_checks": 10,
@@ -103,6 +103,31 @@
       "Arroz servido em foto vertical e picanha em horizontal; composição desktop de larguras diferentes preserva as fotos completas.",
       "Prévia mantém noindex; Lighthouse SEO não ficará todo verde."
     ],
-    "local_lighthouse": "data/qa/cardapio-identificacao-2026-10-07/local/summary.json"
+    "local_lighthouse": "data/qa/cardapio-identificacao-2026-10-07/local/summary.json",
+    "public_browser_report": "data/visual-review/cardapio-classicos/identificacao-publicada/report.json",
+    "public_browser_checks": 6,
+    "public_asset_report": "data/qa/cardapio-identificacao-2026-10-07/published/assets-and-pages.json",
+    "public_lighthouse": "data/qa/cardapio-identificacao-2026-10-07/published/summary.json",
+    "publication": {
+      "worker": "jumper-hoster-dev",
+      "versionId": "479a4a69-0d52-4406-bdc5-90ec4be4ae4c",
+      "sourceCommit": "80d3077df002f69a5730a1e1bca0f9f4ac08f804",
+      "url": "https://site.jumper.dev.br/rodeio/cardapio/",
+      "otherDevAssetsPreserved": 564
+    },
+    "performance": {
+      "mobile": {
+        "performance": 94,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "desktop": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      }
+    }
   }
 }
