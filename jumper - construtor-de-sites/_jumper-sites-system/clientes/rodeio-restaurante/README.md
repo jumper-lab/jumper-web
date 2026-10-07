@@ -1,21 +1,21 @@
 # Rodeio Restaurante — revisão de outubro de 2026
 
 ## Fonte vigente
-As diretrizes e os textos desta revisão vêm de `briefing/entrada/diretrizes-2026-10-02/RODEIO SITE (2).pdf`, lido nas 11 páginas, incluindo os links embutidos. Texto, links e seleção fotográfica estão arquivados na mesma pasta. `data/content.json` centraliza os textos aprovados e os dados das unidades.
+As diretrizes e os textos desta revisão vêm de `briefing/entrada/diretrizes-2026-10-02/RODEIO SITE (2).pdf`, lido nas 11 páginas, incluindo os links embutidos. A apresentação Google Slides foi relida integralmente em 07/10/2026 e coincide com a narrativa aprovada. O acervo atualizado, sua seleção e a leitura dos 11 slides estão registrados em `briefing/entrada/acervo-atualizado-2026-10-07/`. `data/content.json` centraliza os textos aprovados e os dados das unidades.
 
 ## Entrega
 - Home: “O clássico que se renova”, apresentação do novo momento e das duas casas, com novos registros do Jardins.
 - Slideshow: seis fotos reais do acervo; mantida a ordem anteriormente aprovada (2, 5, 1, 3, 4, 6). Troca suave, carregamento progressivo e alternativa sem movimento.
 - Menu: história, cardápio, eventos, reservas e as duas unidades; Home está acessível pela marca e aparece no menu móvel e no rodapé.
 - História: sete parágrafos integrais do texto aprovado, juntos e na ordem original, incluindo os clássicos, certificação de 2001, inauguração do Iguatemi em 2011 e mudança do Jardins em 2026. Linha do tempo resumida após a narrativa, sem repetir os parágrafos. Acervo com três fotos adicionais.
-- Cardápio: composição fotográfica dos cortes e do serviço do Arroz Rodeio, com nomes dos clássicos em Bodoni Moda, duas novas fotos do Drive e textos exatos da diretriz. Link recebido do LiveMenu em três pontos e convite para reserva. Fotografia do cardápio físico desatualizado permanece removida.
+- Cardápio: corte com batata e sobremesa do ensaio de setembro de 2026, fotografias completas na proporção nativa; nomes dos clássicos em Bodoni Moda e textos exatos da diretriz. Link recebido do LiveMenu em três pontos e convite para reserva. Fotografia do cardápio físico desatualizado permanece removida.
 - Jardins: Rua Haddock Lobo, 1448, Jardins. Iguatemi: Av. Brig. Faria Lima, 2232, Jardim Paulistano. Textos e ações por unidade.
-- Eventos: um ambiente de cada unidade, sem apresentar fotografia de salão como registro de evento.
+- Eventos: registro de evento do Iguatemi recebido em 07/10/2026; hero dos Jardins identificado como ambiente, sem inventar registro de evento dessa unidade.
 - `/em-breve/`: página independente de manutenção com fotografia BMM_35 do novo link, logo branca sem cowboy, endereços, reservas e cardápio. O site completo continua na home da prévia.
 - Artes de manutenção: `data/deliverables/em-breve/rodeio-em-breve-2560x1440.jpg` e `rodeio-em-breve-1920x1080.jpg`.
-- Fotos proporcionais, com recorte `cover`, sem esticar nem distorcer. Derivados AVIF responsivos; matrizes e documentos não são enviados como conteúdo do site.
+- Fotos proporcionais: pratos e registro de evento completos, com `contain`; recortes responsivos somente nos heros e nas miniaturas das galerias, sem esticar nem distorcer. Derivados AVIF responsivos; matrizes e documentos não são enviados como conteúdo do site.
 
-## Validação atual
+## Validação da revisão de 02/10/2026 (histórico)
 `npm run check`: 29 arquivos, zero erros, avisos e hints. Build: 11 páginas.
 `scripts/verify-current-briefing.mjs`: 126 verificações de páginas e interações em Chrome, Firefox e WebKit; zero falhas, imagens quebradas, overflow ou títulos cortados. Chrome em 320, 390, 768, 1024, 1440 e 1920 px; Firefox/WebKit em 390 e 1440 px. Menu, seleção de unidade e lightbox verificados. Contraste auditado com axe em desktop e celular. Cabeçalho também conferido em 1199, 1200, 1280 e 1366 px.
 
@@ -43,7 +43,7 @@ npm run deploy:dev -- --allow=rodeio
 O inventário só deve ser atualizado para Rodeio; qualquer diferença em outro site bloqueia a publicação. A prévia tem noindex e os links dos clientes são públicos. Não publicar no domínio oficial por inferência.
 
 ## Materiais ainda pendentes
-A pasta Eventos recebida está vazia: faltam fotografias de eventos representativas de cada unidade. Ainda falta o novo material do cardápio físico. A nova diretriz resolve o número do endereço Jardins (1448); horários e telefone individual do Iguatemi continuam aguardando confirmação comercial e não foram inventados. Os assets de marca com e sem símbolo, escuros e brancos, ficam armazenados em `public/logos/`.
+Recebida a foto de evento do Iguatemi; ainda falta um registro identificado de evento dos Jardins. Ainda falta o novo material do cardápio físico. A nova diretriz resolve o número do endereço Jardins (1448); horários e telefone individual do Iguatemi continuam aguardando confirmação comercial e não foram inventados. Os assets de marca com e sem símbolo, escuros e brancos, ficam armazenados em `public/logos/`.
 
 ## Operação do site
 Reservas usam Tagme por unidade, carregado por interação, com alternativa de link direto. Não foram enviadas reservas ou solicitações de orçamento durante os testes. Conteúdo de terceiros e disponibilidade real são responsabilidade dos serviços externos. Fontes e fotos são locais; mapas são carregados por interação. Arquivos `data/visual-review/` são evidências internas e não entram no pacote publicado.
@@ -130,3 +130,21 @@ Lighthouse local da home: desempenho 92 mobile / 100 desktop, acessibilidade e b
 
 Publicado: os mesmos nove cenários passaram no endereço público, com AVIF adequado para DPR2 e sem recortes adicionais do CSS. Os quinze AVIFs públicos são idênticos ao build. Dez rotas Rodeio continuam HTTP 200 sem cookies e noindex. Preflight conferiu os 564 assets dos outros sete sites e preservou as áreas live após upload. Versão dev dab45303-d5d8-4fe2-a27e-2f9cc8d8c107, fonte 2b5990cee3b673a814cb640660c65289f296336d, PR #91.
 Lighthouse publicado da home: desempenho 95 mobile / 100 desktop, acessibilidade e boas práticas 100. TBT e CLS zero. SEO 69 pelo noindex intencional da prévia. Métricas de laboratório, não API PageSpeed Insights nem CrUX. Relatórios brutos em data/visual-review/classicos-fotos-qualidade/performance-published/.
+
+## Atualização de acervo — 07/10/2026
+
+73 entradas revisadas, 71 fotos únicas. Aplicadas cinco fotos de pratos, dezesseis fotos do Iguatemi e um evento dessa unidade. Os 16 arquivos dos Jardins coincidem por SHA-256 com as fotos já disponíveis na galeria de 77 imagens; reutilizados sem duplicar matrizes. Heros e diretórios mostram os ambientes atuais, e o slideshow preserva a sequência de seis temas, agora com o novo registro do salão do Iguatemi.
+
+Os clássicos da home usam retratos completos da picanha fatiada e do Arroz Rodeio, em duas colunas iguais no desktop e uma coluna no celular. Cardápio mantém os nomes dos clássicos e mostra somente dois destaques em proporção nativa. O LiveMenu continua em popup, sem sair do site. As animações e o swipe foram preservados.
+
+Originais não foram ampliados ou deformados. Matrizes WebP qualidade 94 e derivados AVIF responsivos, lazy fora dos heros; ampliações da nova galeria do Iguatemi em AVIF qualidade 68 até 2400 px, carregadas ao abrir. Não foi necessário usar IA.
+
+A galeria do Iguatemi é progressiva (6 → 12 → 16), com todas as fotografias disponíveis no lightbox desde a primeira abertura e fallback completo sem JavaScript. As variantes mobile dos heros Cardápio/Iguatemi usam AVIF qualidade 55, mantendo dimensão responsiva e qualidade desktop. A primeira medição local ficou em 89 no Cardápio e 88 no Iguatemi; preservada em data/qa/acervo-atualizado-2026-10-07/before-progressive/.
+
+Validação final local de 07/10: Astro check de 34 arquivos sem diagnósticos; build completo; 22 testes Worker/preflight. Cenários em Chrome, Firefox e WebKit para imagens em DPR2, proporções e alinhamento, todas as 16 ampliações, galerias progressivas, swipe, LiveMenu real em 21 cenários e animação única ao subir/descer (duas entradas repetidas em cada navegador). Auditorias axe sem violações nas amostras auditadas.
+
+Lighthouse local final: desempenho home 92 mobile / 100 desktop; Cardápio 91, Iguatemi 91, Jardins 94, Eventos 99, Reservas 93 no mobile. Acessibilidade e boas práticas 100; CLS zero. SEO 66 pelo noindex intencional da prévia. São métricas de laboratório Lighthouse, não API PageSpeed Insights ou dados de campo. Relatórios em data/qa/acervo-atualizado-2026-10-07/local-batched/. Leituras iniciais e intermediárias preservadas. A inicialização das imagens agora lê todas as posições antes de alterar os transforms, reduzindo recálculos sem mudar a animação.
+
+Publicação de 07/10 verificada: https://site.jumper.dev.br/rodeio/ . Worker jumper-hoster-dev versão 3e7e0ba5-a22e-4a5b-a010-1ba5fa69e33c; fonte e3a8b06289f4659aad08b5ea55dfd84956c5d767, PR #92. Dez páginas públicas HTTP 200 sem cookies, conteúdo igual ao pacote após contabilizar apenas o beacon de Analytics acrescentado pela Cloudflare; 222 novos AVIF/JS/CSS idênticos byte a byte. Pré/postflight: 564 assets dos outros sete sites iguais; áreas live preservadas. Nenhuma alteração de Analytics ou autenticação.
+
+Lighthouse publicado: home 97 mobile / 100 desktop; Cardápio, Iguatemi, Jardins, Eventos e Reservas 98 mobile. Acessibilidade e boas práticas 100; CLS zero. SEO 69 pelo noindex da prévia. Relatórios reais de laboratório, não API PageSpeed Insights ou CrUX. Os seis cenários públicos da nova galeria passaram em Chrome, Firefox e WebKit, incluindo todas as 16 ampliações, botão progressivo e fallback sem JavaScript. Evidências em data/qa/acervo-atualizado-2026-10-07/published/ e data/visual-review/acervo-atualizado-2026-10-07/published/.

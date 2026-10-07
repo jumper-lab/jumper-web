@@ -1,0 +1,333 @@
+{
+  "date": "2026-10-07T19:21:43.663Z",
+  "base": "http://127.0.0.1:4326/rodeio",
+  "note": "Desktop browser engines with emulated viewports; no physical device test. Gallery-only change.",
+  "checks": [
+    {
+      "engine": "chromium",
+      "width": 320,
+      "height": 568,
+      "count": 77,
+      "uniqueLightboxImages": 77,
+      "initiallyLoaded": 0,
+      "dialog": {
+        "x": 19,
+        "y": 17.046875,
+        "width": 282,
+        "height": 533.90625
+      },
+      "first": {
+        "src": "http://127.0.0.1:4326/rodeio/_astro/jardins-bmm-12.DZAgj9cJ_ZuP6mX.avif",
+        "width": 1600,
+        "height": 1067,
+        "alt": "A fachada do novo Jardins · Rodeio Jardins"
+      },
+      "last": {
+        "src": "http://127.0.0.1:4326/rodeio/_astro/jardinsNovoEncontro.CjBRKjN5_ZdcglF.avif",
+        "width": 1600,
+        "height": 2400,
+        "alt": "Encontros à mesa no novo Jardins · Rodeio Jardins"
+      },
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 844,
+      "count": 77,
+      "uniqueLightboxImages": 77,
+      "initiallyLoaded": 0,
+      "dialog": {
+        "x": 19,
+        "y": 112.703125,
+        "width": 352,
+        "height": 618.59375
+      },
+      "first": {
+        "src": "http://127.0.0.1:4326/rodeio/_astro/jardins-bmm-12.DZAgj9cJ_ZuP6mX.avif",
+        "width": 1600,
+        "height": 1067,
+        "alt": "A fachada do novo Jardins · Rodeio Jardins"
+      },
+      "last": {
+        "src": "http://127.0.0.1:4326/rodeio/_astro/jardinsNovoEncontro.CjBRKjN5_ZdcglF.avif",
+        "width": 1600,
+        "height": 2400,
+        "alt": "Encontros à mesa no novo Jardins · Rodeio Jardins"
+      },
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 768,
+      "height": 1024,
+      "count": 77,
+      "uniqueLightboxImages": 77,
+      "initiallyLoaded": 2,
+      "dialog": {
+        "x": 23.046875,
+        "y": 57.046875,
+        "width": 721.90625,
+        "height": 909.90625
+      },
+      "first": {
+        "src": "http://127.0.0.1:4326/rodeio/_astro/jardins-bmm-12.DZAgj9cJ_ZuP6mX.avif",
+        "width": 1600,
+        "height": 1067,
+        "alt": "A fachada do novo Jardins · Rodeio Jardins"
+      },
+      "last": {
+        "src": "http://127.0.0.1:4326/rodeio/_astro/jardinsNovoEncontro.CjBRKjN5_ZdcglF.avif",
+        "width": 1600,
+        "height": 2400,
+        "alt": "Encontros à mesa no novo Jardins · Rodeio Jardins"
+      },
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "height": 900,
+      "count": 77,
+      "uniqueLightboxImages": 77,
+      "initiallyLoaded": 3,
+      "dialog": {
+        "x": 220,
+        "y": 31,
+        "width": 1000,
+        "height": 838
+      },
+      "first": {
+        "src": "http://127.0.0.1:4326/rodeio/_astro/jardins-bmm-12.DZAgj9cJ_ZuP6mX.avif",
+        "width": 1600,
+        "height": 1067,
+        "alt": "A fachada do novo Jardins · Rodeio Jardins"
+      },
+      "last": {
+        "src": "http://127.0.0.1:4326/rodeio/_astro/jardinsNovoEncontro.CjBRKjN5_ZdcglF.avif",
+        "width": 1600,
+        "height": 2400,
+        "alt": "Encontros à mesa no novo Jardins · Rodeio Jardins"
+      },
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 320,
+      "height": 568,
+      "count": 77,
+      "uniqueLightboxImages": 77,
+      "initiallyLoaded": 0,
+      "dialog": {
+        "x": 19,
+        "y": 17.033340454101562,
+        "width": 282,
+        "height": 533.9166259765625
+      },
+      "first": {
+        "src": "http://127.0.0.1:4326/rodeio/_astro/jardins-bmm-12.DZAgj9cJ_ZuP6mX.avif",
+        "width": 1600,
+        "height": 1067,
+        "alt": "A fachada do novo Jardins · Rodeio Jardins"
+      },
+      "last": {
+        "src": "http://127.0.0.1:4326/rodeio/_astro/jardinsNovoEncontro.CjBRKjN5_ZdcglF.avif",
+        "width": 1600,
+        "height": 2400,
+        "alt": "Encontros à mesa no novo Jardins · Rodeio Jardins"
+      },
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "height": 844,
+      "count": 77,
+      "uniqueLightboxImages": 77,
+      "initiallyLoaded": 0,
+      "dialog": {
+        "x": 19,
+        "y": 112.69999694824219,
+        "width": 352,
+        "height": 618.5999755859375
+      },
+      "first": {
+        "src": "http://127.0.0.1:4326/rodeio/_astro/jardins-bmm-12.DZAgj9cJ_ZuP6mX.avif",
+        "width": 1600,
+        "height": 1067,
+        "alt": "A fachada do novo Jardins · Rodeio Jardins"
+      },
+      "last": {
+        "src": "http://127.0.0.1:4326/rodeio/_astro/jardinsNovoEncontro.CjBRKjN5_ZdcglF.avif",
+        "width": 1600,
+        "height": 2400,
+        "alt": "Encontros à mesa no novo Jardins · Rodeio Jardins"
+      },
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 768,
+      "height": 1024,
+      "count": 77,
+      "uniqueLightboxImages": 77,
+      "initiallyLoaded": 0,
+      "dialog": {
+        "x": 23.033340454101562,
+        "y": 57.03334045410156,
+        "width": 721.9166259765625,
+        "height": 909.9166259765625
+      },
+      "first": {
+        "src": "http://127.0.0.1:4326/rodeio/_astro/jardins-bmm-12.DZAgj9cJ_ZuP6mX.avif",
+        "width": 1600,
+        "height": 1067,
+        "alt": "A fachada do novo Jardins · Rodeio Jardins"
+      },
+      "last": {
+        "src": "http://127.0.0.1:4326/rodeio/_astro/jardinsNovoEncontro.CjBRKjN5_ZdcglF.avif",
+        "width": 1600,
+        "height": 2400,
+        "alt": "Encontros à mesa no novo Jardins · Rodeio Jardins"
+      },
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "height": 900,
+      "count": 77,
+      "uniqueLightboxImages": 77,
+      "initiallyLoaded": 0,
+      "dialog": {
+        "x": 220,
+        "y": 31,
+        "width": 1000,
+        "height": 838
+      },
+      "first": {
+        "src": "http://127.0.0.1:4326/rodeio/_astro/jardins-bmm-12.DZAgj9cJ_ZuP6mX.avif",
+        "width": 1600,
+        "height": 1067,
+        "alt": "A fachada do novo Jardins · Rodeio Jardins"
+      },
+      "last": {
+        "src": "http://127.0.0.1:4326/rodeio/_astro/jardinsNovoEncontro.CjBRKjN5_ZdcglF.avif",
+        "width": 1600,
+        "height": 2400,
+        "alt": "Encontros à mesa no novo Jardins · Rodeio Jardins"
+      },
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "height": 568,
+      "count": 77,
+      "uniqueLightboxImages": 77,
+      "initiallyLoaded": 0,
+      "dialog": {
+        "x": 19,
+        "y": 17.046875,
+        "width": 282,
+        "height": 533.90625
+      },
+      "first": {
+        "src": "http://127.0.0.1:4326/rodeio/_astro/jardins-bmm-12.DZAgj9cJ_ZuP6mX.avif",
+        "width": 1600,
+        "height": 1067,
+        "alt": "A fachada do novo Jardins · Rodeio Jardins"
+      },
+      "last": {
+        "src": "http://127.0.0.1:4326/rodeio/_astro/jardinsNovoEncontro.CjBRKjN5_ZdcglF.avif",
+        "width": 1600,
+        "height": 2400,
+        "alt": "Encontros à mesa no novo Jardins · Rodeio Jardins"
+      },
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 844,
+      "count": 77,
+      "uniqueLightboxImages": 77,
+      "initiallyLoaded": 0,
+      "dialog": {
+        "x": 19,
+        "y": 112.703125,
+        "width": 352,
+        "height": 618.59375
+      },
+      "first": {
+        "src": "http://127.0.0.1:4326/rodeio/_astro/jardins-bmm-12.DZAgj9cJ_ZuP6mX.avif",
+        "width": 1600,
+        "height": 1067,
+        "alt": "A fachada do novo Jardins · Rodeio Jardins"
+      },
+      "last": {
+        "src": "http://127.0.0.1:4326/rodeio/_astro/jardinsNovoEncontro.CjBRKjN5_ZdcglF.avif",
+        "width": 1600,
+        "height": 2400,
+        "alt": "Encontros à mesa no novo Jardins · Rodeio Jardins"
+      },
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 768,
+      "height": 1024,
+      "count": 77,
+      "uniqueLightboxImages": 77,
+      "initiallyLoaded": 2,
+      "dialog": {
+        "x": 23.046875,
+        "y": 57.046875,
+        "width": 721.90625,
+        "height": 909.90625
+      },
+      "first": {
+        "src": "http://127.0.0.1:4326/rodeio/_astro/jardins-bmm-12.DZAgj9cJ_ZuP6mX.avif",
+        "width": 1600,
+        "height": 1067,
+        "alt": "A fachada do novo Jardins · Rodeio Jardins"
+      },
+      "last": {
+        "src": "http://127.0.0.1:4326/rodeio/_astro/jardinsNovoEncontro.CjBRKjN5_ZdcglF.avif",
+        "width": 1600,
+        "height": 2400,
+        "alt": "Encontros à mesa no novo Jardins · Rodeio Jardins"
+      },
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "height": 900,
+      "count": 77,
+      "uniqueLightboxImages": 77,
+      "initiallyLoaded": 0,
+      "dialog": {
+        "x": 220,
+        "y": 31,
+        "width": 1000,
+        "height": 838
+      },
+      "first": {
+        "src": "http://127.0.0.1:4326/rodeio/_astro/jardins-bmm-12.DZAgj9cJ_ZuP6mX.avif",
+        "width": 1600,
+        "height": 1067,
+        "alt": "A fachada do novo Jardins · Rodeio Jardins"
+      },
+      "last": {
+        "src": "http://127.0.0.1:4326/rodeio/_astro/jardinsNovoEncontro.CjBRKjN5_ZdcglF.avif",
+        "width": 1600,
+        "height": 2400,
+        "alt": "Encontros à mesa no novo Jardins · Rodeio Jardins"
+      },
+      "passed": true
+    }
+  ],
+  "iguatemiCount": 16,
+  "noScriptAllPhotos": true
+}

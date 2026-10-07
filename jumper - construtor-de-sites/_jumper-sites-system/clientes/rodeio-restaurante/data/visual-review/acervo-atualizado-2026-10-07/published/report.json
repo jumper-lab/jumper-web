@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-07T19:39:39.424Z",
+  "base": "https://site.jumper.dev.br/rodeio",
+  "checks": [
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 844,
+      "iguatemiPhotos": 16,
+      "unique": 16,
+      "allLightboxImagesOpened": true,
+      "nativeFoodAndEventAspect": true,
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "height": 900,
+      "iguatemiPhotos": 16,
+      "unique": 16,
+      "allLightboxImagesOpened": true,
+      "nativeFoodAndEventAspect": true,
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "height": 844,
+      "iguatemiPhotos": 16,
+      "unique": 16,
+      "allLightboxImagesOpened": true,
+      "nativeFoodAndEventAspect": true,
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "height": 900,
+      "iguatemiPhotos": 16,
+      "unique": 16,
+      "allLightboxImagesOpened": true,
+      "nativeFoodAndEventAspect": true,
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 844,
+      "iguatemiPhotos": 16,
+      "unique": 16,
+      "allLightboxImagesOpened": true,
+      "nativeFoodAndEventAspect": true,
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "height": 900,
+      "iguatemiPhotos": 16,
+      "unique": 16,
+      "allLightboxImagesOpened": true,
+      "nativeFoodAndEventAspect": true,
+      "errors": [],
+      "passed": true
+    }
+  ],
+  "note": "Browser engines with emulated mobile viewports, not physical devices.",
+  "noScriptAll16Photos": true
+}

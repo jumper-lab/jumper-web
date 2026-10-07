@@ -173,10 +173,12 @@ const photoObserver=new IntersectionObserver(entries=>{
   }
  });
 },{threshold:[0,0.08]});
+// Read all frame positions before changing transforms to avoid repeated layout work.
+const initialPhotoPositions=new Map(Array.from(media,element=>[element,element.getBoundingClientRect()]));
 media.forEach(element=>{
  const state:PhotoMotionState={armed:true,prepared:false,request:0};
  photoMotion.set(element,state);
- const rect=element.getBoundingClientRect();
+ const rect=initialPhotoPositions.get(element)!;
  if(rect.bottom<=0||rect.top>=innerHeight)preparePhoto(element,state);
  photoObserver.observe(element.closest('.photo-viewport')!);
 });

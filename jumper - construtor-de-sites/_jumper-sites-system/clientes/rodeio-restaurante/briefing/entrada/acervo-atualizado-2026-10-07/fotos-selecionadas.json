@@ -1,0 +1,597 @@
+{
+  "date": "2026-10-07T19:02:35.476Z",
+  "sourceArchive": "FOTOS SITE-20261007T184040Z-1-001.zip",
+  "reviewed": 73,
+  "uniquePhotos": 71,
+  "method": "Originais completos, orientação EXIF, WebP qualidade 94 até 2560 px (2880 px nos clássicos da home e 4096 px na matriz do hero do cardápio para evitar ampliação dos recortes); sem ampliação, corte ou distorção. AVIF responsivo no build; carregamento tardio fora dos heros. Sem IA.",
+  "photos": [
+    {
+      "name": "homePicanhaFatiada",
+      "file": "rodeo_2026set_037.jpg",
+      "stem": "home-picanha-fatiada-setembro-2026",
+      "use": "Home / Picanha fatiada",
+      "theme": "CARDAPIO",
+      "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_037.jpg",
+      "original": {
+        "width": 4672,
+        "height": 7008,
+        "bytes": 21895802,
+        "sha256": "14edce80dd599ae197cf8cb2eb73d3e8bada73a3bc82927177742fdb8c9914ea"
+      },
+      "master": "briefing/entrada/acervo-atualizado-2026-10-07/matrizes/home-picanha-fatiada-setembro-2026.webp",
+      "optimized": {
+        "width": 1920,
+        "height": 2880,
+        "bytes": 1450506
+      },
+      "crop": null,
+      "aiUsed": false
+    },
+    {
+      "name": "homeArrozRodeio",
+      "file": "rodeo_2026set_001.jpg",
+      "stem": "home-arroz-rodeio-setembro-2026",
+      "use": "Home / Arroz Rodeio",
+      "theme": "CARDAPIO",
+      "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_001.jpg",
+      "original": {
+        "width": 4672,
+        "height": 7008,
+        "bytes": 19105257,
+        "sha256": "57fa7a01ac249387248187acd22653ecdd04a8be0b032d61a15fdff9ec9027cf"
+      },
+      "master": "briefing/entrada/acervo-atualizado-2026-10-07/matrizes/home-arroz-rodeio-setembro-2026.webp",
+      "optimized": {
+        "width": 1920,
+        "height": 2880,
+        "bytes": 1055752
+      },
+      "crop": null,
+      "aiUsed": false
+    },
+    {
+      "name": "menuCortes",
+      "file": "rodeo_2026set_067.jpg",
+      "stem": "menu-corte-setembro-2026",
+      "use": "Cardápio / corte com batata",
+      "theme": "CARDAPIO",
+      "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_067.jpg",
+      "original": {
+        "width": 4672,
+        "height": 5840,
+        "bytes": 19680620,
+        "sha256": "8752906dbb51fdfc35487e0fec47046547c38157719a01fa81faf1b036225ba7"
+      },
+      "master": "briefing/entrada/acervo-atualizado-2026-10-07/matrizes/menu-corte-setembro-2026.webp",
+      "optimized": {
+        "width": 2048,
+        "height": 2560,
+        "bytes": 1762066
+      },
+      "crop": null,
+      "aiUsed": false
+    },
+    {
+      "name": "menuSobremesa",
+      "file": "rodeo_2026set_384.jpg",
+      "stem": "menu-sobremesa-setembro-2026",
+      "use": "Cardápio / sobremesa",
+      "theme": "CARDAPIO",
+      "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_384.jpg",
+      "original": {
+        "width": 4672,
+        "height": 5840,
+        "bytes": 24815678,
+        "sha256": "615b04fdd3d3bb7524df40c8e6f0bd09db1fdf8f788224d9362c0e4b04c75446"
+      },
+      "master": "briefing/entrada/acervo-atualizado-2026-10-07/matrizes/menu-sobremesa-setembro-2026.webp",
+      "optimized": {
+        "width": 2048,
+        "height": 2560,
+        "bytes": 1079976
+      },
+      "crop": null,
+      "aiUsed": false
+    },
+    {
+      "name": "cardapioHero",
+      "file": "rodeo_2026set_354.jpg",
+      "stem": "menu-hero-setembro-2026",
+      "use": "Hero Cardápio / corte grelhado e folhas",
+      "theme": "CARDAPIO",
+      "source": "FOTOS SITE/CARDÁPIO/rodeo_2026set_354.jpg",
+      "original": {
+        "width": 4672,
+        "height": 5840,
+        "bytes": 24559998,
+        "sha256": "784fc0223c63512a3fbae888bf5180d5e5a79994af51265ffc7ed9727cd4b3e2"
+      },
+      "master": "briefing/entrada/acervo-atualizado-2026-10-07/matrizes/menu-hero-setembro-2026.webp",
+      "optimized": {
+        "width": 3277,
+        "height": 4096,
+        "bytes": 2954882
+      },
+      "crop": null,
+      "aiUsed": false
+    },
+    {
+      "name": "iguatemiAcervoDsc9361",
+      "file": "_DSC9361.jpg",
+      "stem": "iguatemi-dsc-9361",
+      "use": "Galeria Iguatemi",
+      "caption": "A entrada do Rodeio Iguatemi",
+      "theme": "RODEIO-IGUATEMI",
+      "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9361.jpg",
+      "original": {
+        "width": 7008,
+        "height": 4672,
+        "bytes": 35558473,
+        "sha256": "191dd65cdd77ffff584470150401c61d7858f6c2d65bc351803a70d60018bb98"
+      },
+      "master": "briefing/entrada/acervo-atualizado-2026-10-07/matrizes/iguatemi-dsc-9361.webp",
+      "optimized": {
+        "width": 2560,
+        "height": 1707,
+        "bytes": 1368178
+      },
+      "crop": null,
+      "aiUsed": false
+    },
+    {
+      "name": "iguatemiAcervoDsc9377",
+      "file": "_DSC9377.jpg",
+      "stem": "iguatemi-dsc-9377",
+      "use": "Galeria Iguatemi",
+      "caption": "Texturas e luz no lounge",
+      "theme": "RODEIO-IGUATEMI",
+      "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9377.jpg",
+      "original": {
+        "width": 4672,
+        "height": 7008,
+        "bytes": 36928422,
+        "sha256": "3ea600cf2e786d94f3aefef64c03926c378196a153d111786703dea3ad91c3c0"
+      },
+      "master": "briefing/entrada/acervo-atualizado-2026-10-07/matrizes/iguatemi-dsc-9377.webp",
+      "optimized": {
+        "width": 1707,
+        "height": 2560,
+        "bytes": 1136740
+      },
+      "crop": null,
+      "aiUsed": false
+    },
+    {
+      "name": "iguatemiAcervoDsc9396",
+      "file": "_DSC9396.jpg",
+      "stem": "iguatemi-dsc-9396",
+      "use": "Galeria Iguatemi",
+      "caption": "O balcão e a coleção do bar",
+      "theme": "RODEIO-IGUATEMI",
+      "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9396.jpg",
+      "original": {
+        "width": 4565,
+        "height": 6847,
+        "bytes": 38272199,
+        "sha256": "b80aed3c0a4734bc1ccdc0e6cc6ec75bc6813d0460c6a737f0def60abea50950"
+      },
+      "master": "briefing/entrada/acervo-atualizado-2026-10-07/matrizes/iguatemi-dsc-9396.webp",
+      "optimized": {
+        "width": 1707,
+        "height": 2560,
+        "bytes": 1507872
+      },
+      "crop": null,
+      "aiUsed": false
+    },
+    {
+      "name": "iguatemiAcervoDsc9416",
+      "file": "_DSC9416.jpg",
+      "stem": "iguatemi-dsc-9416",
+      "use": "Galeria Iguatemi",
+      "caption": "As mesas junto ao lounge",
+      "theme": "RODEIO-IGUATEMI",
+      "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9416.jpg",
+      "original": {
+        "width": 4565,
+        "height": 6847,
+        "bytes": 37638307,
+        "sha256": "44eab81077a511d88e40d0b7edb2be087d8469e1772d4c36404c829b2ba4f3f4"
+      },
+      "master": "briefing/entrada/acervo-atualizado-2026-10-07/matrizes/iguatemi-dsc-9416.webp",
+      "optimized": {
+        "width": 1707,
+        "height": 2560,
+        "bytes": 1414378
+      },
+      "crop": null,
+      "aiUsed": false
+    },
+    {
+      "name": "iguatemiAcervoDsc9419",
+      "file": "_DSC9419.jpg",
+      "stem": "iguatemi-dsc-9419",
+      "use": "Galeria Iguatemi",
+      "caption": "Madeira e luz entre as mesas",
+      "theme": "RODEIO-IGUATEMI",
+      "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9419.jpg",
+      "original": {
+        "width": 4672,
+        "height": 7008,
+        "bytes": 36201980,
+        "sha256": "34fea43c602eaa9485d13e967465be71bd9c222e25f2492011cd5b72f7947211"
+      },
+      "master": "briefing/entrada/acervo-atualizado-2026-10-07/matrizes/iguatemi-dsc-9419.webp",
+      "optimized": {
+        "width": 1707,
+        "height": 2560,
+        "bytes": 1472010
+      },
+      "crop": null,
+      "aiUsed": false
+    },
+    {
+      "name": "iguatemiAcervoDsc9420",
+      "file": "_DSC9420.jpg",
+      "stem": "iguatemi-dsc-9420",
+      "use": "Galeria Iguatemi",
+      "caption": "O encontro entre o bar e o lounge",
+      "theme": "RODEIO-IGUATEMI",
+      "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9420.jpg",
+      "original": {
+        "width": 4672,
+        "height": 7008,
+        "bytes": 35681469,
+        "sha256": "cefb6c2c35ea9bfcfbb39665955f00226f38fa4ae73c5aec5b539e02d45bd988"
+      },
+      "master": "briefing/entrada/acervo-atualizado-2026-10-07/matrizes/iguatemi-dsc-9420.webp",
+      "optimized": {
+        "width": 1707,
+        "height": 2560,
+        "bytes": 1498932
+      },
+      "crop": null,
+      "aiUsed": false
+    },
+    {
+      "name": "iguatemiAcervoDsc9423",
+      "file": "_DSC9423.jpg",
+      "stem": "iguatemi-dsc-9423",
+      "use": "Galeria Iguatemi",
+      "caption": "À mesa, junto ao bar",
+      "theme": "RODEIO-IGUATEMI",
+      "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9423.jpg",
+      "original": {
+        "width": 4672,
+        "height": 7008,
+        "bytes": 35698111,
+        "sha256": "82d9f94699f132aa1612831ec9df43a581cd222c590b664cfa1309855b37fd48"
+      },
+      "master": "briefing/entrada/acervo-atualizado-2026-10-07/matrizes/iguatemi-dsc-9423.webp",
+      "optimized": {
+        "width": 1707,
+        "height": 2560,
+        "bytes": 1333570
+      },
+      "crop": null,
+      "aiUsed": false
+    },
+    {
+      "name": "iguatemiAcervoDsc9426",
+      "file": "_DSC9426.jpg",
+      "stem": "iguatemi-dsc-9426",
+      "use": "Galeria Iguatemi",
+      "caption": "A luz do dia no salão",
+      "theme": "RODEIO-IGUATEMI",
+      "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9426.jpg",
+      "original": {
+        "width": 4672,
+        "height": 7008,
+        "bytes": 31166244,
+        "sha256": "3b17d94915b881a05e283a48a4141f988d5a11663295d49800921c4754f09c00"
+      },
+      "master": "briefing/entrada/acervo-atualizado-2026-10-07/matrizes/iguatemi-dsc-9426.webp",
+      "optimized": {
+        "width": 1707,
+        "height": 2560,
+        "bytes": 1550468
+      },
+      "crop": null,
+      "aiUsed": false
+    },
+    {
+      "name": "iguatemiAcervoDsc9442",
+      "file": "_DSC9442.jpg",
+      "stem": "iguatemi-dsc-9442",
+      "use": "Galeria Iguatemi",
+      "caption": "O cuidado nos detalhes à mesa",
+      "theme": "RODEIO-IGUATEMI",
+      "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9442.jpg",
+      "original": {
+        "width": 6812,
+        "height": 4541,
+        "bytes": 30981014,
+        "sha256": "fac08f80219aa438c3a3a67e91497866381c1e78f70631f49f66a1fa00dbaa76"
+      },
+      "master": "briefing/entrada/acervo-atualizado-2026-10-07/matrizes/iguatemi-dsc-9442.webp",
+      "optimized": {
+        "width": 2560,
+        "height": 1707,
+        "bytes": 1248458
+      },
+      "crop": null,
+      "aiUsed": false
+    },
+    {
+      "name": "iguatemiAcervoDsc9443",
+      "file": "_DSC9443.jpg",
+      "stem": "iguatemi-dsc-9443",
+      "use": "Galeria Iguatemi",
+      "caption": "Mesa posta à luz da janela",
+      "theme": "RODEIO-IGUATEMI",
+      "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9443.jpg",
+      "original": {
+        "width": 6812,
+        "height": 4541,
+        "bytes": 28004434,
+        "sha256": "a137257eee0b3ef7dc195e0d520e63699abe3c9643c1da3d08b7c5ff0dbfd556"
+      },
+      "master": "briefing/entrada/acervo-atualizado-2026-10-07/matrizes/iguatemi-dsc-9443.webp",
+      "optimized": {
+        "width": 2560,
+        "height": 1707,
+        "bytes": 1142376
+      },
+      "crop": null,
+      "aiUsed": false
+    },
+    {
+      "name": "iguatemiAcervoDsc9444",
+      "file": "_DSC9444.jpg",
+      "stem": "iguatemi-dsc-9444",
+      "use": "Galeria Iguatemi",
+      "caption": "À mesa, entre luz e vegetação",
+      "theme": "RODEIO-IGUATEMI",
+      "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9444.jpg",
+      "original": {
+        "width": 6812,
+        "height": 4541,
+        "bytes": 30333276,
+        "sha256": "8b6af5969edcc4c9dc9577e652a9b76dcdd41352320c5b6b6549be226620f661"
+      },
+      "master": "briefing/entrada/acervo-atualizado-2026-10-07/matrizes/iguatemi-dsc-9444.webp",
+      "optimized": {
+        "width": 2560,
+        "height": 1707,
+        "bytes": 1142486
+      },
+      "crop": null,
+      "aiUsed": false
+    },
+    {
+      "name": "iguatemiAcervoDsc9452",
+      "file": "_DSC9452.jpg",
+      "stem": "iguatemi-dsc-9452",
+      "use": "Galeria Iguatemi",
+      "caption": "O salão preparado para receber",
+      "theme": "RODEIO-IGUATEMI",
+      "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9452.jpg",
+      "original": {
+        "width": 7008,
+        "height": 4672,
+        "bytes": 32475236,
+        "sha256": "8c13f71f8f694ee93c917516ac44d6f3f9157f9686e31e5dc6bd6a964a6e77d0"
+      },
+      "master": "briefing/entrada/acervo-atualizado-2026-10-07/matrizes/iguatemi-dsc-9452.webp",
+      "optimized": {
+        "width": 2560,
+        "height": 1707,
+        "bytes": 1399502
+      },
+      "crop": null,
+      "aiUsed": false
+    },
+    {
+      "name": "iguatemiAcervoDsc9454",
+      "file": "_DSC9454.jpg",
+      "stem": "iguatemi-dsc-9454",
+      "use": "Galeria Iguatemi",
+      "caption": "As mesas sob o teto de madeira",
+      "theme": "RODEIO-IGUATEMI",
+      "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9454.jpg",
+      "original": {
+        "width": 7008,
+        "height": 4672,
+        "bytes": 35362821,
+        "sha256": "6d415da8e7f36f77ac7d0529d3453c7a2b050cb8255d2d0e9055f147bae6786c"
+      },
+      "master": "briefing/entrada/acervo-atualizado-2026-10-07/matrizes/iguatemi-dsc-9454.webp",
+      "optimized": {
+        "width": 2560,
+        "height": 1707,
+        "bytes": 1474820
+      },
+      "crop": null,
+      "aiUsed": false
+    },
+    {
+      "name": "iguatemiAcervoDsc9458",
+      "file": "_DSC9458.jpg",
+      "stem": "iguatemi-dsc-9458",
+      "use": "Galeria Iguatemi",
+      "caption": "Um olhar pelo salão",
+      "theme": "RODEIO-IGUATEMI",
+      "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9458.jpg",
+      "original": {
+        "width": 7008,
+        "height": 4672,
+        "bytes": 34729681,
+        "sha256": "e14547d4e8e0392300a0f63a7611bc915118efeb07427f12ff81ba853d5445fc"
+      },
+      "master": "briefing/entrada/acervo-atualizado-2026-10-07/matrizes/iguatemi-dsc-9458.webp",
+      "optimized": {
+        "width": 2560,
+        "height": 1707,
+        "bytes": 1341584
+      },
+      "crop": null,
+      "aiUsed": false
+    },
+    {
+      "name": "iguatemiAcervoDsc9461",
+      "file": "_DSC9461.jpg",
+      "stem": "iguatemi-dsc-9461",
+      "use": "Galeria Iguatemi",
+      "caption": "Luz e verde ao redor das mesas",
+      "theme": "RODEIO-IGUATEMI",
+      "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9461.jpg",
+      "original": {
+        "width": 7008,
+        "height": 4672,
+        "bytes": 34772673,
+        "sha256": "e041e3fba464710ea33cf9ab0cc1f3ddb76f9f4a19b3790931259064d67fbb43"
+      },
+      "master": "briefing/entrada/acervo-atualizado-2026-10-07/matrizes/iguatemi-dsc-9461.webp",
+      "optimized": {
+        "width": 2560,
+        "height": 1707,
+        "bytes": 1396910
+      },
+      "crop": null,
+      "aiUsed": false
+    },
+    {
+      "name": "iguatemiAcervoDsc9474",
+      "file": "_DSC9474.jpg",
+      "stem": "iguatemi-dsc-9474",
+      "use": "Galeria Iguatemi",
+      "caption": "A passagem entre os ambientes",
+      "theme": "RODEIO-IGUATEMI",
+      "source": "FOTOS SITE/RODEIO IGUATEMI/_DSC9474.jpg",
+      "original": {
+        "width": 6637,
+        "height": 4424,
+        "bytes": 27022749,
+        "sha256": "9b272af79888e24fb3e6e22a2487dc1e388417a9af347572571e7cedecc288f6"
+      },
+      "master": "briefing/entrada/acervo-atualizado-2026-10-07/matrizes/iguatemi-dsc-9474.webp",
+      "optimized": {
+        "width": 2560,
+        "height": 1706,
+        "bytes": 1112902
+      },
+      "crop": null,
+      "aiUsed": false
+    },
+    {
+      "name": "iguatemiEvento",
+      "file": "RODEIO IGUATEMI - EVENTO.jpg",
+      "stem": "iguatemi-evento-outubro-2026",
+      "use": "Página Eventos / registro do Iguatemi",
+      "theme": "EVENTOS",
+      "source": "FOTOS SITE/EVENTOS/RODEIO IGUATEMI - EVENTO.jpg",
+      "original": {
+        "width": 1440,
+        "height": 1920,
+        "bytes": 209360,
+        "sha256": "6b858476876d4cf317f9448c48e2e54a8eea8d3d930b8dd6f7a420036a37eb5f"
+      },
+      "master": "briefing/entrada/acervo-atualizado-2026-10-07/matrizes/iguatemi-evento-outubro-2026.webp",
+      "optimized": {
+        "width": 1440,
+        "height": 1920,
+        "bytes": 307604
+      },
+      "crop": null,
+      "aiUsed": false
+    }
+  ],
+  "reused": [
+    {
+      "source": "FOTOS SITE/RODEIO JARDINS/BMM_29.jpg",
+      "sha256": "c2f86a2145375ff510d8083ab7136e062572153311228cf04b1dcc387ceb4f30",
+      "reused": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-29.webp"
+    },
+    {
+      "source": "FOTOS SITE/RODEIO JARDINS/BMM_17.jpg",
+      "sha256": "6fe7455f2f05ee94468ab72ec12292a3c58ac98acbf37799acd50c0ca720a8a7",
+      "reused": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-17.webp"
+    },
+    {
+      "source": "FOTOS SITE/RESERVAS/BMM_87.jpg",
+      "sha256": "ea10235e4c19e485a061a8bff0a280dc01ed1e47b02b24789dbd1339ef243f01",
+      "reused": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-87.webp"
+    },
+    {
+      "source": "FOTOS SITE/RODEIO JARDINS/BMM_65.jpg",
+      "sha256": "75d4d95b65322027c14f7f08eced1b3981d27c2f107266300187518016c448e0",
+      "reused": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-65.webp"
+    },
+    {
+      "source": "FOTOS SITE/RODEIO JARDINS/BMM_30.jpg",
+      "sha256": "9decc3389413c47f910cac16f80e4f6f725aec76d79334c08179cd65eb3e1515",
+      "reused": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-30.webp"
+    },
+    {
+      "source": "FOTOS SITE/RODEIO JARDINS/BMM_70.jpg",
+      "sha256": "fbe18effb838e33a92e220cace87cb8e6a801dac7508663355da1f6f0cf76c25",
+      "reused": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-70.webp"
+    },
+    {
+      "source": "FOTOS SITE/RODEIO JARDINS/BMM_21.jpg",
+      "sha256": "ef278cc33bb181fb65026445ff4bc4da83dcef988b75fceb81b63e8381f87ded",
+      "reused": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-21.webp"
+    },
+    {
+      "source": "FOTOS SITE/RODEIO JARDINS/BMM_12.jpg",
+      "sha256": "4c07029e9da73a3bba14a9f71b2f9a83f67930e421de7b3fa1a45cea1867bd71",
+      "reused": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-12.webp"
+    },
+    {
+      "source": "FOTOS SITE/RODEIO JARDINS/BMM_16.jpg",
+      "sha256": "24dd9f0ebd60129665ec1744597d77ec2893ca304bb868d740de18bef06be265",
+      "reused": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-16.webp"
+    },
+    {
+      "source": "FOTOS SITE/RODEIO JARDINS/BMM_51.jpg",
+      "sha256": "6c7112134ed3f91afb998023f4958be7f220ad3bca29d38d26afe0093c64a904",
+      "reused": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-51.webp"
+    },
+    {
+      "source": "FOTOS SITE/RODEIO JARDINS/BMM_14.jpg",
+      "sha256": "47434bf2c06d928d4e8ed73985ef1f925c7adb558ebf666c51c4b5a7b7e0a2c2",
+      "reused": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-14.webp"
+    },
+    {
+      "source": "FOTOS SITE/RODEIO JARDINS/BMM_33.jpg",
+      "sha256": "134a1ba003281249c98c2a152524744c22c17e02dec70a4aaefcb8cd646816d8",
+      "reused": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-33.webp"
+    },
+    {
+      "source": "FOTOS SITE/RODEIO JARDINS/BMM_58.jpg",
+      "sha256": "cf90aab5aa03c765ace27206503e0f53e700bca7f476e1db0c8713aad21145d0",
+      "reused": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-58.webp"
+    },
+    {
+      "source": "FOTOS SITE/RODEIO JARDINS/BMM_61.jpg",
+      "sha256": "ef8f2401d7c725019c33d99decd0085996eb2c5a78506cf287653dce63caccfc",
+      "reused": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-61.webp"
+    },
+    {
+      "source": "FOTOS SITE/RODEIO JARDINS/BMM_60.jpg",
+      "sha256": "c4d393b937ab13b7a681f9eba75cc8a99381cc176bb9d809af92d49803ef7656",
+      "reused": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-60.webp"
+    },
+    {
+      "source": "FOTOS SITE/RODEIO JARDINS/BMM_37.jpg",
+      "sha256": "fed1af0d24ac6996111074f148b370f7b8d6e5d491f0dfd7229e87a4484101b6",
+      "reused": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-37.webp"
+    },
+    {
+      "source": "FOTOS SITE/RODEIO JARDINS/BMM_87.jpg",
+      "sha256": "ea10235e4c19e485a061a8bff0a280dc01ed1e47b02b24789dbd1339ef243f01",
+      "reused": "briefing/entrada/jardins-novo-acervo-2026-10-02/matrizes/jardins-bmm-87.webp"
+    }
+  ],
+  "pending": "Foto de evento dos Jardins não recebida; imagem Iguatemi classificada como evento pela pasta/nome fornecidos pelo cliente."
+}

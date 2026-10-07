@@ -1,16 +1,15 @@
 ---
 import GalleryPhoto from './GalleryPhoto.astro';
 import type {PhotoName} from '../lib/photos';
-interface Props {photos:{name:PhotoName;caption:string}[];}
-const {photos}=Astro.props;
-const pageSize=12;
+interface Props {photos:{name:PhotoName;caption:string}[];unitName?:string;galleryId?:string;pageSize?:number;detailWidth?:number;detailQuality?:number;}
+const {photos,unitName='Jardins',galleryId='jardins-gallery-grid',pageSize=12,detailWidth=1600,detailQuality=55}=Astro.props;
 ---
-<div class="gallery-grid visit-gallery restaurant-gallery archive-gallery" data-paginated-gallery id="jardins-gallery-grid">
- {photos.map((photo,index)=><GalleryPhoto name={photo.name} alt={`${photo.caption} · Rodeio Jardins`} caption={photo.caption} sizes="(max-width:599px) calc(100vw - 48px), (max-width:959px) 44vw, 29vw" hidden={index>=pageSize}/>)}
+<div class="gallery-grid visit-gallery restaurant-gallery archive-gallery" data-paginated-gallery data-page-size={pageSize} id={galleryId}>
+ {photos.map((photo,index)=><GalleryPhoto name={photo.name} alt={`${photo.caption} · Rodeio ${unitName}`} caption={photo.caption} sizes="(max-width:599px) calc(100vw - 48px), (max-width:959px) 44vw, 29vw" hidden={index>=pageSize} detailWidth={detailWidth} detailQuality={detailQuality}/>)}
 </div>
 <div class="gallery-more" data-gallery-more>
  <p aria-live="polite"><span data-gallery-shown>{Math.min(pageSize,photos.length)}</span> de {photos.length} fotografias</p>
- <button type="button" data-show-more-photos aria-controls="jardins-gallery-grid">Ver mais fotografias <span aria-hidden="true">↓</span></button>
+ <button type="button" data-show-more-photos aria-controls={galleryId}>Ver mais fotografias <span aria-hidden="true">↓</span></button>
 </div>
 <noscript><style>.archive-gallery [data-gallery][hidden]{display:block!important}.gallery-more{display:none!important}</style></noscript>
 <style>
@@ -31,10 +30,11 @@ const pageSize=12;
  button?.addEventListener('click',()=>{
   if(!grid)return;
   const pending=Array.from(grid.querySelectorAll<HTMLAnchorElement>('[data-gallery][hidden]'));
-  const next=pending.slice(0,12);
+  const pageSize=Number(grid.dataset.pageSize)||12;
+  const next=pending.slice(0,pageSize);
   next.forEach(photo=>{photo.hidden=false;});
   if(counter)counter.textContent=String(grid.querySelectorAll('[data-gallery]:not([hidden])').length);
-  if(pending.length<=12)button.hidden=true;
+  if(pending.length<=pageSize)button.hidden=true;
   next[0]?.focus({preventScroll:true});
  });
 </script>

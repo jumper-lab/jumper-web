@@ -1,0 +1,157 @@
+{
+  "date": "2026-10-07T19:12:51.182Z",
+  "base": "http://127.0.0.1:4326/rodeio",
+  "checks": [
+    {
+      "engine": "chromium",
+      "interaction": "native swipe left",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "interaction": "native right and wrapping both directions",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "interaction": "short movement ignored",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "interaction": "native vertical page scroll preserved",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "interaction": "swipe after scroll/cancel",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "interaction": "indicator tap",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "interaction": "short, vertical, diagonal, cancelled, multitouch, mouse and button gestures ignored",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "interaction": "pen gesture and existing indicator",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "interaction": "keyboard navigation",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "interaction": "reserve link tap unaffected",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "interaction": "rapid swipes with delayed photo; no stale commit",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "interaction": "failed download retains visible decoded photo",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "interaction": "no JavaScript errors",
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "interaction": "PointerEvents left/right/wrap",
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "interaction": "short, vertical, diagonal, cancelled, multitouch, mouse and button gestures ignored",
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "interaction": "pen gesture and existing indicator",
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "interaction": "keyboard navigation",
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "interaction": "reserve link tap unaffected",
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "interaction": "rapid swipes with delayed photo; no stale commit",
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "interaction": "failed download retains visible decoded photo",
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "interaction": "no JavaScript errors",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "interaction": "PointerEvents left/right/wrap",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "interaction": "short, vertical, diagonal, cancelled, multitouch, mouse and button gestures ignored",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "interaction": "pen gesture and existing indicator",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "interaction": "keyboard navigation",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "interaction": "reserve link tap unaffected",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "interaction": "rapid swipes with delayed photo; no stale commit",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "interaction": "failed download retains visible decoded photo",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "interaction": "no JavaScript errors",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "interaction": "autoplay paused during contact and resumes after release",
+      "passed": true
+    }
+  ],
+  "note": "Chrome CDP native touch input verifies horizontal swipe and actual vertical scrolling. Firefox/WebKit checks dispatch PointerEvents; they do not replace physical-device testing."
+}

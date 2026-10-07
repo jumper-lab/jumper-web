@@ -988,3 +988,6 @@
   .menu-editorial,.menu-finish-layout { grid-template-columns:1fr; gap:36px; }
   .menu-finish figure { width:82%; }
 }
+
+/* The client event record is shown complete, including the decorated table. */
+.event-record-photo img {height:auto;aspect-ratio:3/4;object-fit:contain;}
