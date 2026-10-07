@@ -321,5 +321,20 @@
       "portrait": "Derivados mobile/tablet anteriores preservados.",
       "preserved": "Proporções, cores da foto, overlay e animação; sem upscale."
     }
+  },
+  "history_timeline_direction": {
+    "reviewed_date": "2026-10-07",
+    "source": "Composição anterior da página em 7ff903cd, restaurada a pedido do usuário.",
+    "layout": "Coluna de título sticky à esquerda e cronologia vertical à direita; anos grandes em terracota, texto ao lado e linhas finas. Mobile linear.",
+    "copy": "Sete parágrafos aprovados completos e na ordem original; texto dos clássicos após a família Macedo, junto à etapa 1959.",
+    "years": [
+      "1958",
+      "1959",
+      "1986",
+      "2001",
+      "2011",
+      "2026"
+    ],
+    "no_duplicate_summary": true
   }
 }

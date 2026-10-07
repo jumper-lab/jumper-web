@@ -30,12 +30,12 @@ for (const [engine, type] of Object.entries({ chromium, firefox, webkit })) {
       for (const img of document.querySelectorAll('img[src]')) { img.loading = 'eager'; await img.decode().catch(() => {}); }
     });
     assert.equal(response.status(), 200);
-    assert.deepEqual(await page.locator('.history-narrative > p').allTextContents(), expected);
+    assert.deepEqual(await page.locator('.history-timeline .history-milestone p').allTextContents(), expected);
     const state = await page.evaluate(() => ({
       overflow: document.documentElement.scrollWidth > innerWidth + 1,
       brokenImages: [...document.querySelectorAll('img[src]')].filter(img => !img.complete || !img.naturalWidth).map(img => img.src),
-      landmarks: [...document.querySelectorAll('.history-landmarks li > span')].map(el => el.textContent),
-      narrativeBeforeArchive: Boolean(document.querySelector('.history-narrative').compareDocumentPosition(document.querySelector('.history-archive')) & Node.DOCUMENT_POSITION_FOLLOWING),
+      landmarks: [...document.querySelectorAll('.history-timeline .timeline-date')].map(el => el.textContent),
+      narrativeBeforeArchive: Boolean(document.querySelector('.history-timeline').compareDocumentPosition(document.querySelector('.history-archive')) & Node.DOCUMENT_POSITION_FOLLOWING),
       heading: document.querySelector('#history-chapter-title').innerText.replace(/\s+/g, ' ').trim()
     }));
     assert.equal(state.overflow, false);
@@ -51,6 +51,7 @@ for (const [engine, type] of Object.entries({ chromium, firefox, webkit })) {
     await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
     await page.evaluate(async () => { await Promise.all(document.querySelector('#history-chapter-title').getAnimations().map(animation => animation.finished.catch(() => {}))); });
     assert.equal(await page.locator('#history-chapter-title').evaluate(el => getComputedStyle(el).opacity), '1');
+    if(engine==='chromium'&&[390,1440].includes(width)) await page.locator('.history-chapter').screenshot({path:`${out}/${width}-timeline.jpg`,type:'jpeg',quality:85});
     await page.screenshot({ path: `${out}/${engine}-${width}-narrative.jpg`, type: 'jpeg', quality: 85 });
     report.checks.push({ engine, width, paragraphs: 7, exactApprovedCopy: true, ...state, violations, errors, passed: true });
     await context.close();

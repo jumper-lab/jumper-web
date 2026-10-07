@@ -52,3 +52,6 @@ Na página Cardápio, usar “Conferir cardápio completo” nos três acessos a
 
 ### Hero Cardápio com foco na comida — 07/10/2026
 Preservar foto 354, overlay, textos e animação aprovados. Nos derivados desktop 16:9, usar o recorte `entropy` para selecionar a área de carne/folhas; em telas horizontais, posicionar a imagem em 50% 85% para manter a comida visível dentro do banner mais largo. Derivados mobile/tablet conservam os enquadramentos anteriores. Não deformar, ampliar a matriz ou editar o conteúdo da fotografia. Conferir desktop 1440/1822/1920 e mobile 390; AVIF responsivo, qualidade desktop 60/mobile 55.
+
+### Retorno da linha do tempo — 07/10/2026
+Restaurar a composição vertical anterior da História: título à esquerda, seis anos grandes em terracota e títulos/textos ao lado, separados por linhas finas. Manter literalmente os sete parágrafos aprovados na ordem original: 1958; 1959 com o parágrafo dos clássicos em seguida; 1986; 2001; 2011; 2026. Remover a narrativa corrida seguida pela grade resumida de marcos. Mobile mantém sequência cronológica e títulos legíveis. Preservar hero e acervo fotográfico.

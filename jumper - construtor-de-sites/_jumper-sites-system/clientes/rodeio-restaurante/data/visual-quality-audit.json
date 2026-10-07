@@ -211,5 +211,56 @@
         "seo": 69
       }
     }
+  },
+  "history_timeline_restoration": {
+    "date": "2026-10-07",
+    "status": "published_and_verified_on_development",
+    "scope": "Retorno da composição vertical anterior; sete parágrafos íntegros e na ordem aprovada.",
+    "source_layout_commit": "7ff903cd",
+    "browser_report": "data/visual-review/historia-integral/timeline-restaurada-local/report.json",
+    "browser_checks": 10,
+    "approved_copy_sha256": "64696d40fd8fbaf9b403f5cb29793e9ab548ce3fae2ee140deab03abd60c2a6e",
+    "paragraphs": 7,
+    "years": [
+      "1958",
+      "1959",
+      "1986",
+      "2001",
+      "2011",
+      "2026"
+    ],
+    "visual_review": "Capturas completas da seção em 390/1440px examinadas; hierarquia, datas, separadores e espaçamento coerentes com a composição anterior. Mobile sequencial; título lateral sticky no desktop.",
+    "engines": [
+      "Chrome",
+      "Firefox",
+      "WebKit"
+    ],
+    "known_issues": [
+      "O espaço à esquerda em capturas longas da seção corresponde à coluna de título sticky que acompanha a rolagem no desktop."
+    ],
+    "public_browser_report": "data/visual-review/historia-integral/timeline-restaurada-publicada/report.json",
+    "public_checks": 10,
+    "public_pages_report": "data/qa/historia-timeline-2026-10-07/published/assets-and-pages.json",
+    "public_lighthouse": "data/qa/historia-timeline-2026-10-07/published/summary.json",
+    "publication": {
+      "worker": "jumper-hoster-dev",
+      "versionId": "b1a164fc-0de0-413e-a25a-4f9713820ae3",
+      "sourceCommit": "f2dae212341938b3ef2386d231722e574d71ca95",
+      "otherDevAssetsPreserved": 564
+    },
+    "performance": {
+      "mobile": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "desktop": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      }
+    }
   }
 }
