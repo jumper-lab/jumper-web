@@ -1,9 +1,9 @@
 {
   "scope": "izi-franquias-admin",
-  "approvedRequest": "Criar painel de franquias igual ao Cerro Corá, com filtros e exportação CSV e acesso no hub. Solicitação de 08/10/2026 neste chat.",
-  "baselineMain": "0ffec562",
-  "baselineWorkerVersion": "5fccb640-136c-486e-a697-276ee697201f",
-  "workerSha256": "1047ced2d8c56ed161eb4168598590da7732b1888363a21b16639875e519f162",
+  "approvedRequest": "Criar painel de franquias igual ao Cerro Corá, com filtros e exportação CSV e acesso no hub. Solicitação de 08/10/2026 neste chat. Ajustar o layout de filtros e ações para uma linha no desktop, como Cerro Corá.",
+  "baselineMain": "e5ff2699",
+  "baselineWorkerVersion": "50782b7a-3746-4d8f-8abf-6435454c5ae3",
+  "workerSha256": "524a9941779ca57ce91e3594d8dd9baef5ea4ad90c625cc23ea3d3ffc78197d7",
   "pages": [
     {
       "asset": "cerrocora/index.html",
