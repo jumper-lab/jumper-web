@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-08T05:03:17.390Z",
+  "base": "https://site.jumper.dev.br/rodeio",
+  "reports": [
+    {
+      "mode": "mobile",
+      "route": "/eventos/",
+      "categories": {
+        "performance": 97,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "first-contentful-paint": 1762.351,
+        "largest-contentful-paint": 2347.94,
+        "total-blocking-time": 19,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1762.351
+      }
+    },
+    {
+      "mode": "desktop",
+      "route": "/eventos/",
+      "categories": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "first-contentful-paint": 498.708,
+        "largest-contentful-paint": 589.91,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "speed-index": 498.708
+      }
+    }
+  ]
+}

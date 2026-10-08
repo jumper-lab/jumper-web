@@ -1,9 +1,12 @@
 export {};
-const dialog=document.querySelector<HTMLDialogElement>('#digital-menu-dialog');
+// One controller per external page keeps menu and events state independent.
+for(const dialog of document.querySelectorAll<HTMLDialogElement>('.digital-menu-dialog')){
 const closeButton=dialog?.querySelector<HTMLButtonElement>('[data-close-digital-menu]');
 const slot=dialog?.querySelector<HTMLElement>('[data-menu-frame-slot]');
 const status=dialog?.querySelector<HTMLElement>('[data-menu-status]');
 const menuUrl=dialog?.dataset.menuUrl;
+const pageLabel=dialog.dataset.pageLabel||'o cardápio';
+const frameTitle=dialog.dataset.frameTitle||'Cardápio digital do Rodeio';
 let opener:HTMLAnchorElement|null=null;
 let frame:HTMLIFrameElement|null=null;
 let pageScroll={x:0,y:0};
@@ -11,7 +14,7 @@ let loadingTimer:ReturnType<typeof setTimeout>|undefined;
 function clearLoadingTimer(){if(loadingTimer!==undefined){clearTimeout(loadingTimer);loadingTimer=undefined;}}
 if(dialog&&closeButton&&slot&&status&&menuUrl&&typeof dialog.showModal==='function'){
  const showStatus=(text:string)=>{status.textContent=text;status.hidden=false;};
- const slowMessage='O cardápio está demorando a carregar. Você também pode abri-lo em outra aba.';
+ const slowMessage=`O conteúdo está demorando a carregar. Você também pode abri-lo em outra aba.`;
  // Keep the original href working without JavaScript and for modified clicks.
  document.querySelectorAll<HTMLAnchorElement>('a[href]').forEach(link=>{
   if(link.href!==menuUrl||dialog.contains(link))return;
@@ -21,10 +24,10 @@ if(dialog&&closeButton&&slot&&status&&menuUrl&&typeof dialog.showModal==='functi
    event.preventDefault();opener=link;
    if(dialog.open)return;
    pageScroll={x:window.scrollX,y:window.scrollY};
-   showStatus('Carregando o cardápio…');dialog.showModal();closeButton.focus();
-   const incoming=document.createElement('iframe');frame=incoming;frame.title='Cardápio digital do Rodeio';frame.referrerPolicy='strict-origin-when-cross-origin';
+   showStatus(`Carregando ${pageLabel}…`);dialog.showModal();closeButton.focus();
+   const incoming=document.createElement('iframe');frame=incoming;frame.title=frameTitle;frame.referrerPolicy='strict-origin-when-cross-origin';
    frame.addEventListener('load',()=>{if(frame!==incoming||!dialog.open)return;clearLoadingTimer();status.hidden=true;},{once:true});
-   frame.addEventListener('error',()=>{if(frame!==incoming||!dialog.open)return;clearLoadingTimer();showStatus('Não foi possível carregar o cardápio. Use o link abaixo para abrir em outra aba.');},{once:true});
+   frame.addEventListener('error',()=>{if(frame!==incoming||!dialog.open)return;clearLoadingTimer();showStatus('Não foi possível carregar a página. Use o link abaixo para abrir em outra aba.');},{once:true});
    loadingTimer=setTimeout(()=>showStatus(slowMessage),15000);
    frame.src=menuUrl;slot.append(frame);
   });
@@ -43,4 +46,5 @@ if(dialog&&closeButton&&slot&&status&&menuUrl&&typeof dialog.showModal==='functi
   if(event.shiftKey&&document.activeElement===closeButton){event.preventDefault();last?.focus();}
   else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();closeButton.focus();}
  });
+}
 }

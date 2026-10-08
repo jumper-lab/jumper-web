@@ -1,0 +1,14 @@
+---
+import content from '../../data/content.json';
+import '../styles/menu-dialog.css';
+---
+<dialog id="events-page-dialog" class="digital-menu-dialog" aria-labelledby="events-page-title" data-menu-url={content.events_url} data-page-label="a página de eventos" data-frame-title="Eventos e orçamento — Rodeio">
+  <div class="digital-menu-header">
+    <h2 id="events-page-title">Eventos Rodeio</h2>
+    <button type="button" class="digital-menu-close" data-close-digital-menu autofocus>Fechar <span aria-hidden="true">×</span></button>
+  </div>
+  <div class="digital-menu-content" data-menu-frame-slot>
+    <p class="digital-menu-status" data-menu-status role="status" hidden>Carregando a página de eventos…</p>
+  </div>
+  <div class="digital-menu-footer"><a href={content.events_url} target="_blank" rel="noopener noreferrer">Abrir em outra aba <span aria-hidden="true">↗</span></a></div>
+</dialog>

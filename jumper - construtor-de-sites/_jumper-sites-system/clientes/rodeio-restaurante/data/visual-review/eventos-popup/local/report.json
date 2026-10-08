@@ -1,0 +1,104 @@
+{
+  "date": "2026-10-08T04:57:18.915Z",
+  "base": "http://127.0.0.1:4326/rodeio",
+  "note": "Real official-page iframe in three desktop browser engines with mobile viewports. Form fields inspected; no request sent to the client.",
+  "checks": [
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 844,
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 374,
+        "height": 828,
+        "locked": true
+      },
+      "officialFormLoaded": true,
+      "allThreeButtons": true,
+      "menuRegressionPassed": true,
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "height": 900,
+      "bounds": {
+        "x": 200,
+        "y": 63,
+        "width": 1040,
+        "height": 774,
+        "locked": true
+      },
+      "officialFormLoaded": true,
+      "allThreeButtons": true,
+      "menuRegressionPassed": true,
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "height": 844,
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 374,
+        "height": 828,
+        "locked": true
+      },
+      "officialFormLoaded": true,
+      "allThreeButtons": true,
+      "menuRegressionPassed": true,
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "height": 900,
+      "bounds": {
+        "x": 200,
+        "y": 63,
+        "width": 1040,
+        "height": 774,
+        "locked": true
+      },
+      "officialFormLoaded": true,
+      "allThreeButtons": true,
+      "menuRegressionPassed": true,
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 844,
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 374,
+        "height": 828,
+        "locked": true
+      },
+      "officialFormLoaded": true,
+      "allThreeButtons": true,
+      "menuRegressionPassed": true,
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "height": 900,
+      "bounds": {
+        "x": 200,
+        "y": 63,
+        "width": 1040,
+        "height": 774,
+        "locked": true
+      },
+      "officialFormLoaded": true,
+      "allThreeButtons": true,
+      "menuRegressionPassed": true,
+      "passed": true
+    }
+  ],
+  "noScriptFallback": true
+}

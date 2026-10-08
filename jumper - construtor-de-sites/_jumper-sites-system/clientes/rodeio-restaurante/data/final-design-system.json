@@ -336,5 +336,19 @@
       "2026"
     ],
     "no_duplicate_summary": true
+  },
+  "events_popup_direction": {
+    "url": "https://rodeiosp.com.br/eventos/",
+    "container": "Same responsive dialog as digital menu: 16px mobile gutters, desktop maximum 1040 × 800px",
+    "loading": "Iframe created only on unmodified click; removed on close",
+    "controls": [
+      "Close button",
+      "Escape",
+      "Desktop backdrop click",
+      "Return focus and scroll",
+      "Open in another tab fallback"
+    ],
+    "internalNavigation": "Events navigation continues to the new site’s own Events page",
+    "form": "Unchanged official form. No submission in QA."
   }
 }
