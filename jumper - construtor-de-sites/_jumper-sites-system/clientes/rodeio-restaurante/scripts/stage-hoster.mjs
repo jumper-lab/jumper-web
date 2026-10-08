@@ -148,7 +148,8 @@ for (const client of registry.clients) {
     }
   }
   const linksData = escapeHtml(JSON.stringify(links));
-  cards.push(`<article class="card" style="--project:${escapeHtml(client.accent)}"><button class="card-open" type="button" aria-haspopup="dialog" aria-controls="client-links-dialog" data-client="${escapeHtml(client.name)}" data-category="${escapeHtml(client.category)}" data-accent="${escapeHtml(client.accent)}" data-links="${linksData}"><span class="tag">${escapeHtml(client.sourceLabel)}</span><h2>${escapeHtml(client.name)}</h2><span class="card-action"><span>Abrir links</span><span class="arrow" aria-hidden="true">→</span></span></button></article>`);
+  const sourceTagClass = client.sourceLabel.split('·').some((source) => source.trim().toLowerCase() === 'kinsta') ? ' tag-kinsta' : '';
+  cards.push(`<article class="card" style="--project:${escapeHtml(client.accent)}"><button class="card-open" type="button" aria-haspopup="dialog" aria-controls="client-links-dialog" data-client="${escapeHtml(client.name)}" data-category="${escapeHtml(client.category)}" data-accent="${escapeHtml(client.accent)}" data-links="${linksData}"><span class="tag${sourceTagClass}">${escapeHtml(client.sourceLabel)}</span><h2>${escapeHtml(client.name)}</h2><span class="card-action"><span>Abrir links</span><span class="arrow" aria-hidden="true">→</span></span></button></article>`);
 }
 const dashboard = dashboardTemplate.replace('<!-- JUMPER_CLIENT_CARDS -->', cards.join('\n'));
 if (dashboard === dashboardTemplate) throw new Error('O marcador de cards não foi encontrado no template do hub.');
