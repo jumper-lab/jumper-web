@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-08T17:30:43.124Z",
+  "baselineDevVersion": "8d53e244-b7b4-48ab-9c76-851ceae1368b",
+  "note": "Preserve the existing IZI development pages when changes approved only for the official Cerro Corá build enter main. No live Worker or official source is restored.",
+  "replacements": [
+    {
+      "slug": "izigym-lp",
+      "path": "izigym-lp/simple/index.html",
+      "snapshot": "izigym-lp/simple/index.html",
+      "snapshotSha256": "cf641c8494aa8b4c17a108404678bdb9022be90ec70531170ec2cd368e410f16",
+      "generatedSha256": "9b0966d3489a7567a843410a41eeaf41282f8a0b10c4186ba0c2da117849800e",
+      "sourceUrl": "https://site.jumper.dev.br/izigym-lp/simple/"
+    },
+    {
+      "slug": "izigym-lp",
+      "path": "izigym-lp/_astro/simple.astro_astro_type_script_index_0_lang.BA7KMD1M.js",
+      "snapshot": "izigym-lp/_astro/simple.astro_astro_type_script_index_0_lang.BA7KMD1M.js",
+      "snapshotSha256": "9a7b2477fcc41f2231998831dd3067deee9bbde5b3d83e5d20cb8ce9a8f707e6",
+      "generatedSha256": null,
+      "sourceUrl": "https://site.jumper.dev.br/izigym-lp/_astro/simple.astro_astro_type_script_index_0_lang.BA7KMD1M.js"
+    },
+    {
+      "slug": "izigym-lp-vilaromana",
+      "path": "izigym-lp-vilaromana/index.html",
+      "snapshot": "izigym-lp-vilaromana/index.html",
+      "snapshotSha256": "f4fd8685e2b899c49b44d13f4cd738215c6b6d506dc5c2031400c2c6ddbfc3ea",
+      "generatedSha256": "ea4c9006c189f1822be0f05090233be659e95680d24316e52cd9079f26af1803",
+      "sourceUrl": "https://site.jumper.dev.br/izigym-lp-vilaromana/"
+    },
+    {
+      "slug": "izigym-lp-vilaromana",
+      "path": "izigym-lp-vilaromana/simple/index.html",
+      "snapshot": "izigym-lp-vilaromana/simple/index.html",
+      "snapshotSha256": "f4fd8685e2b899c49b44d13f4cd738215c6b6d506dc5c2031400c2c6ddbfc3ea",
+      "generatedSha256": "ea4c9006c189f1822be0f05090233be659e95680d24316e52cd9079f26af1803",
+      "sourceUrl": "https://site.jumper.dev.br/izigym-lp-vilaromana/simple/"
+    },
+    {
+      "slug": "izigym-lp-vilaromana",
+      "path": "izigym-lp-vilaromana/_astro/simple.astro_astro_type_script_index_0_lang.BA7KMD1M.js",
+      "snapshot": "izigym-lp-vilaromana/_astro/simple.astro_astro_type_script_index_0_lang.BA7KMD1M.js",
+      "snapshotSha256": "9a7b2477fcc41f2231998831dd3067deee9bbde5b3d83e5d20cb8ce9a8f707e6",
+      "generatedSha256": null,
+      "sourceUrl": "https://site.jumper.dev.br/izigym-lp-vilaromana/_astro/simple.astro_astro_type_script_index_0_lang.BA7KMD1M.js"
+    }
+  ],
+  "remove": [
+    {
+      "slug": "izigym-lp",
+      "path": "izigym-lp/_astro/simple.astro_astro_type_script_index_0_lang.CAcxM-NK.js",
+      "generatedSha256": "b8dd7df4260b638fbd732d73141e7535cf69ec8f1ad9c164c92d91053e7bd4bc"
+    },
+    {
+      "slug": "izigym-lp-vilaromana",
+      "path": "izigym-lp-vilaromana/_astro/simple.astro_astro_type_script_index_0_lang.CAcxM-NK.js",
+      "generatedSha256": "b8dd7df4260b638fbd732d73141e7535cf69ec8f1ad9c164c92d91053e7bd4bc"
+    }
+  ]
+}

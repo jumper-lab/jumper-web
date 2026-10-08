@@ -98,3 +98,8 @@ Após o deploy, confira o hub e a autenticação, o formulário e sua API, os si
 ### Reconciliação de 29/09/2026
 
 A primeira auditoria encontrou recursos de Cerro Corá, leads IZI e briefing que faltavam no `main`. A PR #37 integrou esses recursos ao GitHub. Um novo build do `main` passou no preflight contra a versão Cloudflare `282b6913-c6de-4b31-af96-128b007ecd99`: todas as páginas iniciais protegidas e os domínios conferiram. Esse resultado é uma fotografia datada; qualquer novo deploy, commit ou mudança de assets exige reconstrução e nova auditoria antes da publicação.
+
+### Build dev com prévias IZI preservadas — 08/10/2026
+A promoção oficial Cerro Corá da PR #100 alterou o fonte usado também pelas prévias IZI, sem publicar essas prévias. Para um deploy dev, monte o pacote com `npm run build:cloudflare:dev -- --allow=<slug>` (ou `--worker-only` no fluxo próprio). `deploy:dev` e `deploy:dev:worker` já selecionam esse build. Ele conserva os cinco arquivos públicos das prévias IZI anteriores em snapshots versionados com SHA-256; remove das prévias somente os dois assets novos reconhecidos por hash. Não restaura o Worker live nem os domínios oficiais. O build/promoção live continua em `build:cloudflare`.
+
+O slug explicitamente autorizado não recebe a restauração de snapshot; uma edição futura de uma LP IZI deve atualizar somente seu inventário e passar no preflight correspondente. Snapshot alterado, build novo não reconhecido ou diferença contra a prévia publicada bloqueiam. Os outros sete sites e as fronteiras live continuam na comparação estrita; nenhuma diferença foi liberada. Após uma nova publicação dev da IZI, reconciliar seus snapshots por PR antes de outro deploy compartilhado.
