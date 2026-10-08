@@ -7,6 +7,20 @@ const root = new URL('../../', import.meta.url);
 const slug = 'pao-de-queijo-haddock-lobo';
 const registry = JSON.parse(await readFile(new URL('../../jumper-hoster.registry.json', root), 'utf8'));
 
+test('Pão de Queijo entra no final e o hub preserva a ordem do registro', async () => {
+  const previousClients = [
+    'jumper-studio', 'rodeio', 'izigym', 'casabelie', 'almeida-prado',
+    'boiler', 'madame-girafa', 'mundo-mariana-xavier', 'seven',
+    'trama-casa', 'tyaro-studio',
+  ];
+  const ids = registry.clients.map(client => client.id);
+  assert.deepEqual(ids.slice(0, previousClients.length), previousClients);
+  assert.equal(ids[previousClients.length], slug);
+  const html = await readFile(new URL('hoster-dist/index.html', root), 'utf8');
+  const names = [...html.matchAll(/<button[^>]*class="card-open"[^>]*data-client="([^"]+)"/g)].map(match => match[1]);
+  assert.deepEqual(names, registry.clients.map(client => client.name));
+});
+
 test('card Pão de Queijo separa a prévia do site oficial externo', async () => {
   const clients = registry.clients.filter(client => client.id === slug);
   assert.equal(clients.length, 1);

@@ -6,25 +6,6 @@
   "clientRoutesAccess": "public",
   "clients": [
     {
-      "id": "pao-de-queijo-haddock-lobo",
-      "name": "Pão de Queijo Haddock Lobo",
-      "category": "Cafeteria",
-      "sourceLabel": "jumper-web · jumper-hoster-dev",
-      "description": "Site M5 em revisão: história desde 1968, cardápio, cinco lojas, eventos e delivery.",
-      "accent": "#13273d",
-      "developmentSites": [
-        {
-          "slug": "pao-de-queijo-haddock-lobo",
-          "label": "Site em desenvolvimento",
-          "url": "https://site.jumper.dev.br/pao-de-queijo-haddock-lobo/"
-        }
-      ],
-      "officialSite": {
-        "label": "Site oficial",
-        "url": "https://paodequeijohaddocklobo.com.br/"
-      }
-    },
-    {
       "id": "jumper-studio",
       "name": "Jumper Studio",
       "category": "Jumper",
@@ -349,6 +330,25 @@
           "url": "https://tyarostudio.com.br/"
         }
       ]
+    },
+    {
+      "id": "pao-de-queijo-haddock-lobo",
+      "name": "Pão de Queijo Haddock Lobo",
+      "category": "Cafeteria",
+      "sourceLabel": "jumper-web · jumper-hoster-dev",
+      "description": "Site M5 em revisão: história desde 1968, cardápio, cinco lojas, eventos e delivery.",
+      "accent": "#13273d",
+      "developmentSites": [
+        {
+          "slug": "pao-de-queijo-haddock-lobo",
+          "label": "Site em desenvolvimento",
+          "url": "https://site.jumper.dev.br/pao-de-queijo-haddock-lobo/"
+        }
+      ],
+      "officialSite": {
+        "label": "Site oficial",
+        "url": "https://paodequeijohaddocklobo.com.br/"
+      }
     }
   ]
 }
