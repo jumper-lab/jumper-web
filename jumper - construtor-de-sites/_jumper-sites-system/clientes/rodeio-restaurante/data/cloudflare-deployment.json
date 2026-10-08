@@ -2,13 +2,13 @@
   "url": "https://site.jumper.dev.br/rodeio/",
   "provider": "cloudflare-workers-static-assets",
   "worker": "jumper-hoster-dev",
-  "versionId": "b322c56d-f924-45c5-9539-5a482ee05c05",
-  "sourceCommit": "a8d2765bb7dd76095b6cca6d0cc34d039ca34ba3",
-  "sourceBranch": "codex/rodeio-menu-desktop-anterior",
-  "pullRequest": "https://github.com/jumper-lab/jumper-web/pull/98",
+  "versionId": "8d53e244-b7b4-48ab-9c76-851ceae1368b",
+  "sourceCommit": "0d8243818722c2cee743cb2257bb5a3d6904b8ef",
+  "sourceBranch": "codex/rodeio-menu-altura-total",
+  "pullRequest": "https://github.com/jumper-lab/jumper-web/pull/99",
   "status": "READY",
   "indexing": "noindex",
-  "date": "2026-10-08T05:13:12.039828+00:00",
+  "date": "2026-10-08T05:32:42.322977+00:00",
   "access": "public without cookies",
   "results": [
     {
@@ -18,8 +18,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 81734,
-      "sha256": "9ae9b3d586364e08ddd212822cd5db5365bf05fae0618975f7ac99d2865f006e",
+      "bytes": 82007,
+      "sha256": "e4d123ee811e8e867ec48ed30269e026ed927788bf36b770cc6d1c54ab5d9ede",
       "noindex": true
     },
     {
@@ -29,8 +29,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 76908,
-      "sha256": "a6d6e31efc1eafb699c68b2233d47472f2c1514de21378acb83984c8134a4703",
+      "bytes": 77181,
+      "sha256": "4f502567bb1a83655cb9ccb1c3b7b09918c7b8378962966ce21b860663df7656",
       "noindex": true
     },
     {
@@ -40,8 +40,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 77686,
-      "sha256": "eb90d45cfcd3381da715cc77971a8dc9671f9443f41bbf13114c592f410ad263",
+      "bytes": 77959,
+      "sha256": "2afc925196e8e827e9ea62e3ef59ac2b4743dab3afe8eb7082120ed3bde8fa79",
       "noindex": true
     },
     {
@@ -51,8 +51,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 75566,
-      "sha256": "9aa01f8dbaa2a1ae4b6f5c1b466bfbcff6e10481b7b44a64a6fc2e32a5b43645",
+      "bytes": 75839,
+      "sha256": "a6ff8d5310a3a75256a98ff2f7e38627ab9479ed61ea2c1ec35c232bc5055406",
       "noindex": true
     },
     {
@@ -62,8 +62,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 153221,
-      "sha256": "671abf32871ede3a4a0ff623a2537459004e64a76d1a083a0d3fdb2680b3820d",
+      "bytes": 153494,
+      "sha256": "f5fc07af2187649d0742191f8d7aa2a66a2cab72f66addaeed21d1b5861e73d4",
       "noindex": true
     },
     {
@@ -73,8 +73,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 92863,
-      "sha256": "e9270d3758a19f83b91ee0f7070c452004a3ce03caf222445222ec55c5a36ae7",
+      "bytes": 93136,
+      "sha256": "663f094ec6d88c07bfb21ba95bc75604550d776b3bb4d571464df299032b05a3",
       "noindex": true
     },
     {
@@ -84,8 +84,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 73880,
-      "sha256": "a5ce5b46fddcc66aff9d9de38e22cd2290c46a94bcf2dd02f60f1a69eb4cbedd",
+      "bytes": 74153,
+      "sha256": "ff2876131f38e0b90f5fee433f1213307323b3ed891498335d67813f7ae0e053",
       "noindex": true
     },
     {
@@ -95,8 +95,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 74900,
-      "sha256": "7e9bb2b9bcf0dbd43bd2e6ddf75dacd42698cac701772572d5b3e8731101e220",
+      "bytes": 75173,
+      "sha256": "d1c97152c30f1656986a2a566ea0edd2eff055c61b1004f4cb4cf9b84de4c51b",
       "noindex": true
     },
     {
@@ -106,8 +106,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 70303,
-      "sha256": "a9c1e575ce46e982ebe34d1ef76ac7f4aadebbaf07476fe6eaf5fb4bd4a60b29",
+      "bytes": 70576,
+      "sha256": "7d1373c7ffbd61e33cf514f2ac88264fbf21414d32ffa6860f219b879608ea5e",
       "noindex": true
     },
     {
@@ -117,8 +117,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 42248,
-      "sha256": "39d71945cc39d97be670cc5a2c322d30c267c7e53ae5e696fbf9cb7bd28d3a88",
+      "bytes": 42521,
+      "sha256": "ec76af755bd13953ceee2575cb2cedf63e0f438af0774f2327ef7381ecc5d687",
       "noindex": true
     }
   ],
@@ -129,11 +129,11 @@
     "beforeAndAfter": true,
     "liveBoundariesPreserved": true
   },
-  "previousDevVersionId": "1ae436f6-fc36-4133-a0aa-12300cfde0d1",
-  "previousSourceCommit": "175683a16c60f5aa2e261af39ac6e20cfd612287",
+  "previousDevVersionId": "b322c56d-f924-45c5-9539-5a482ee05c05",
+  "previousSourceCommit": "a8d2765bb7dd76095b6cca6d0cc34d039ca34ba3",
   "maintenancePage": "/rodeio/em-breve/",
   "maintenanceActiveOnHome": false,
-  "change": "Menu desktop restaurado: Nossa história/Cardápio à esquerda e Restaurantes/Eventos à direita do logo central. Reserva, mobile e popup de eventos preservados.",
+  "change": "Menu mobile com cobertura integral: altura mínima 100dvh/fallback 100vh, viewport-fit=cover durante abertura, safe-area, canvas/backdrop marrom contínuo desde a entrada e restauração de viewport/theme-color/foco/rolagem ao fechar.",
   "galleryPhotos": {
     "jardins": 77,
     "iguatemi": 16
@@ -143,10 +143,10 @@
     "iguatemi": 6
   },
   "assetVerification": {
-    "report": "data/qa/menu-desktop-2026-10-08/published/assets-and-pages.json",
-    "newAssetsVerified": 0,
+    "report": "data/qa/menu-altura-2026-10-08/published/assets-and-pages.json",
+    "newAssetsVerified": 1,
     "allMatched": true,
-    "note": "Dez páginas idênticas ao build após contabilizar somente o beacon injetado pela Cloudflare. Inventário de assets sem alteração."
+    "note": "Dez páginas idênticas ao build após contabilizar somente o beacon injetado pela Cloudflare; novo JS idêntico ao pacote."
   },
   "performanceReport": "data/qa/acervo-atualizado-2026-10-07/published/summary.json",
   "galleryBrowserReport": "data/visual-review/acervo-atualizado-2026-10-07/published/report.json",
@@ -176,7 +176,8 @@
     "menuCtaPerformanceReport": "data/qa/cardapio-cta-2026-10-07/published/summary.json",
     "menuHeroAssetReport": "data/qa/cardapio-hero-foco-2026-10-07/published/assets-and-pages.json",
     "historyTimelineAssetReport": "data/qa/historia-timeline-2026-10-07/published/assets-and-pages.json",
-    "eventsPopupAssetReport": "data/qa/eventos-popup-2026-10-08/published/assets-and-pages.json"
+    "eventsPopupAssetReport": "data/qa/eventos-popup-2026-10-08/published/assets-and-pages.json",
+    "desktopNavigationAssetReport": "data/qa/menu-desktop-2026-10-08/published/assets-and-pages.json"
   },
   "menuBrowserReport": "data/visual-review/cardapio-classicos/identificacao-publicada/report.json",
   "menuPerformanceReport": "data/qa/cardapio-hero-foco-2026-10-07/published/summary.json",
@@ -187,5 +188,7 @@
   "eventsPopupBrowserReport": "data/visual-review/eventos-popup/published/report.json",
   "eventsPopupPerformanceReport": "data/qa/eventos-popup-2026-10-08/published/summary.json",
   "desktopNavigationBrowserReport": "data/visual-review/menu-desktop-anterior/published/report.json",
-  "desktopNavigationPerformanceReport": "data/qa/menu-desktop-2026-10-08/published/summary.json"
+  "desktopNavigationPerformanceReport": "data/qa/menu-desktop-2026-10-08/published/summary.json",
+  "mobileMenuFullHeightBrowserReport": "data/visual-review/menu-mobile-viewport/altura-integral-publicada/report.json",
+  "mobileMenuFullHeightPerformanceReport": "data/qa/menu-altura-2026-10-08/published/summary.json"
 }

@@ -1,0 +1,132 @@
+{
+  "date": "2026-10-08T05:29:53.604050+00:00",
+  "url": "https://site.jumper.dev.br/rodeio/",
+  "pages": [
+    {
+      "path": "/rodeio/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 82007,
+      "sha256": "e4d123ee811e8e867ec48ed30269e026ed927788bf36b770cc6d1c54ab5d9ede",
+      "noindex": true
+    },
+    {
+      "path": "/rodeio/historia/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 77181,
+      "sha256": "4f502567bb1a83655cb9ccb1c3b7b09918c7b8378962966ce21b860663df7656",
+      "noindex": true
+    },
+    {
+      "path": "/rodeio/cardapio/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 77959,
+      "sha256": "2afc925196e8e827e9ea62e3ef59ac2b4743dab3afe8eb7082120ed3bde8fa79",
+      "noindex": true
+    },
+    {
+      "path": "/rodeio/restaurantes/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 75839,
+      "sha256": "a6ff8d5310a3a75256a98ff2f7e38627ab9479ed61ea2c1ec35c232bc5055406",
+      "noindex": true
+    },
+    {
+      "path": "/rodeio/restaurantes/jardins/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 153494,
+      "sha256": "f5fc07af2187649d0742191f8d7aa2a66a2cab72f66addaeed21d1b5861e73d4",
+      "noindex": true
+    },
+    {
+      "path": "/rodeio/restaurantes/iguatemi/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 93136,
+      "sha256": "663f094ec6d88c07bfb21ba95bc75604550d776b3bb4d571464df299032b05a3",
+      "noindex": true
+    },
+    {
+      "path": "/rodeio/eventos/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 74153,
+      "sha256": "ff2876131f38e0b90f5fee433f1213307323b3ed891498335d67813f7ae0e053",
+      "noindex": true
+    },
+    {
+      "path": "/rodeio/reservas/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 75173,
+      "sha256": "d1c97152c30f1656986a2a566ea0edd2eff055c61b1004f4cb4cf9b84de4c51b",
+      "noindex": true
+    },
+    {
+      "path": "/rodeio/privacidade/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 70576,
+      "sha256": "7d1373c7ffbd61e33cf514f2ac88264fbf21414d32ffa6860f219b879608ea5e",
+      "noindex": true
+    },
+    {
+      "path": "/rodeio/em-breve/",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": false,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": true,
+      "bytes": 42521,
+      "sha256": "ec76af755bd13953ceee2575cb2cedf63e0f438af0774f2327ef7381ecc5d687",
+      "noindex": true
+    }
+  ],
+  "newAssets": [
+    {
+      "path": "/rodeio/_astro/Layout.astro_astro_type_script_index_0_lang.DTMqCxNn.js",
+      "status": 200,
+      "worker": "jumper-hoster-dev",
+      "matchesBuild": true,
+      "matchesBuildAfterCloudflareBeacon": true,
+      "cloudflareBeaconInjected": false,
+      "bytes": 7068,
+      "sha256": "66ff609aeb4066627e3c3acf980a67baaa9d392c1c2fa91554a4349f02453b3d",
+      "noindex": null
+    }
+  ],
+  "newAssetCount": 1,
+  "allMatched": true,
+  "access": "public without cookies"
+}
