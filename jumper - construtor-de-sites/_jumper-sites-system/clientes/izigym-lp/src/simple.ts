@@ -1,3 +1,5 @@
+import { setupCheckoutLinks } from './checkout-attribution';
+setupCheckoutLinks();
 const reducedMotion=matchMedia('(prefers-reduced-motion:reduce)');
 const mobile=matchMedia('(max-width:767px)');
 const nav=document.querySelector<HTMLElement>('#navigation')!;
@@ -93,57 +95,3 @@ const resetRail=()=>{const{group}=railMetrics();jumpRail(group);updateRail();};
 const railWarmObserver=new IntersectionObserver(entries=>{if(entries.some(entry=>entry.isIntersecting)){resetRail();railWarmObserver.disconnect();}},{rootMargin:'1600px 0px'});railWarmObserver.observe(track);
 window.addEventListener('resize',resetRail,{passive:true});
 document.querySelectorAll('details').forEach(d=>d.addEventListener('toggle',()=>{if(d.open)animate(d.querySelector('p')!);}));
-const attribution=new URLSearchParams(location.search);
-const campaignKeys=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'];
-const primeCheckout='https://vendas.online.sistemapacto.com.br/checkout?un=1&k=6e2660773cc378e250e6a8731d6830e5&pl=2&cupom=0,99_IZI';
-const planSelection='https://vendas.online.sistemapacto.com.br/planos?un=1&k=6e2660773cc378e250e6a8731d6830e5';
-const modal=document.querySelector<HTMLDialogElement>('#enrollment')!;
-let opener:HTMLElement|null=null;
-const leadForm=document.querySelector<HTMLFormElement>('#lead-form')!;
-const leadStatus=document.querySelector<HTMLElement>('#lead-status')!;
-const leadSubmit=leadForm.querySelector<HTMLButtonElement>('[type="submit"]')!;
-const startedAt=leadForm.querySelector<HTMLInputElement>('[name="startedAt"]')!;
-document.querySelectorAll<HTMLElement>('[data-enroll]').forEach(button=>button.addEventListener('click',()=>{
- const w=window as Window & {dataLayer?:unknown[];fbq?:(action:string,event:string)=>void};
- w.dataLayer=w.dataLayer||[];
- w.fbq?.('track','InitiateCheckout');
- w.dataLayer.push({event:'enrollment_open',plan:button.dataset.enroll,...Object.fromEntries(campaignKeys.map(key=>[key,attribution.get(key)]))});
- opener=button;
- leadForm.dataset.plan=button.dataset.enroll||'Primeiro mês';
- leadStatus.textContent='';
- startedAt.value=String(Date.now());
- document.querySelector<HTMLElement>('.modal-coupon')!.hidden=button.dataset.enroll==='One';
- document.querySelector('#enrollment-title')!.textContent=`Sua matrícula · ${button.dataset.enroll}`;
- modal.showModal();
- document.body.classList.add('modal-open');
- leadForm.querySelector<HTMLInputElement>('[name="name"]')?.focus();
-}));
-leadForm.addEventListener('submit',async event=>{
- event.preventDefault();
- if(!leadForm.reportValidity())return;
- const data=new FormData(leadForm);
- const campaign=Object.fromEntries(campaignKeys.map(key=>[key,attribution.get(key)]).filter(([,value])=>value));
- leadSubmit.disabled=true;
- leadSubmit.textContent='Enviando…';
- leadStatus.textContent='';
- try{
-  const response=await fetch('/api/izigym/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:data.get('name'),phone:data.get('phone'),email:data.get('email'),consent:data.get('consent')==='on',website:data.get('website'),startedAt:Number(data.get('startedAt')),plan:leadForm.dataset.plan,campaign})});
-  const result=await response.json();
-  if(!response.ok||!result.ok||!result.id)throw new Error(result.error||'Não foi possível salvar seu cadastro.');
-  const w=window as Window & {dataLayer?:unknown[];fbq?:(action:string,event:string)=>void};
-  w.dataLayer=w.dataLayer||[];
-  w.dataLayer.push({event:'lead_submit',plan:leadForm.dataset.plan,lead_id:result.id});
-  w.fbq?.('track','Lead');
-  leadStatus.textContent='Cadastro recebido. Redirecionando para concluir sua matrícula…';
-  leadForm.reset();
-  window.setTimeout(()=>location.assign(leadForm.dataset.plan==='One'?planSelection:primeCheckout),700);
- }catch(error){
-  leadStatus.textContent=error instanceof Error?error.message:'Não foi possível concluir o cadastro. Tente novamente.';
-  leadSubmit.disabled=false;
-  leadSubmit.textContent='Próxima etapa →';
-  startedAt.value=String(Date.now());
- }
-});
-modal.addEventListener('cancel',event=>{event.preventDefault();modal.close();});
-modal.querySelector('.close')!.addEventListener('click',()=>modal.close());modal.addEventListener('click',event=>{if(event.target===modal){const box=modal.getBoundingClientRect();if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)modal.close();}});modal.addEventListener('close',()=>{document.body.classList.remove('modal-open');opener?.focus();});
-document.addEventListener('keydown',event=>{if(event.key==='Escape'&&modal.open)modal.close();});

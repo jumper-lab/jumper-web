@@ -35,7 +35,7 @@ const criticalWorkerFeatures = [
 
 const digest = (bytes) => createHash('sha256').update(bytes).digest('hex');
 
-export async function compareProtectedPages(readCandidate, fetchLive = fetch) {
+export async function compareProtectedPages(readCandidate, fetchLive = fetch, promotion = null) {
   const differences = [];
   for (const [name, url, asset] of protectedPages) {
     let candidate;
@@ -52,7 +52,12 @@ export async function compareProtectedPages(readCandidate, fetchLive = fetch) {
         continue;
       }
       const current = Buffer.from(await response.arrayBuffer());
-      if (digest(candidate) !== digest(current)) {
+      const approved = promotion?.pages?.find(page => page.asset === asset);
+      if (approved) {
+        if (digest(candidate) !== approved.candidateSha256 || !approved.publishedSha256.includes(digest(current))) {
+          differences.push(`${name}: pacote ou publicação difere da promoção revisada`);
+        }
+      } else if (digest(candidate) !== digest(current)) {
         differences.push(`${name}: conteúdo publicado difere do pacote (${digest(current).slice(0, 12)} ≠ ${digest(candidate).slice(0, 12)})`);
       }
     } catch (error) {
@@ -157,10 +162,32 @@ async function liveWorkerFeatures() {
   return module.text();
 }
 
-export async function runPreflight({ enforceGit = true, candidateAssets = assetsRoot } = {}) {
+export async function readPromotion(args = []) {
+  const flags = args.filter(arg => arg !== '--audit');
+  if (!flags.length) return null;
+  if (flags.length !== 1 || flags[0] !== '--promote=cerrocora-direct-checkout-2026-10-08') {
+    throw new Error('Promoção live desconhecida. Use uma revisão de escopo versionada.');
+  }
+  const promotion = JSON.parse(await readFile(join(projectRoot, 'data/releases/cerrocora-direct-checkout-2026-10-08.json'), 'utf8'));
+  const assets = promotion.pages?.map(page => page.asset).sort();
+  if (promotion.scope !== 'cerrocora' || JSON.stringify(assets) !== JSON.stringify(['cerrocora/index.html', 'izigym-lp-vilaromana/index.html'])) {
+    throw new Error('A promoção deve conter somente a LP Cerro Corá e seu pacote de assets Vila Romana.');
+  }
+  for (const page of promotion.pages) {
+    if (!/^[a-f0-9]{64}$/.test(page.candidateSha256) || !Array.isArray(page.publishedSha256) || !page.publishedSha256.length || page.publishedSha256.some(hash => !/^[a-f0-9]{64}$/.test(hash))) {
+      throw new Error('Promoção sem hashes de origem e destino válidos.');
+    }
+  }
+  return promotion;
+}
+
+export async function runPreflight({ enforceGit = true, candidateAssets = assetsRoot, promotion = null } = {}) {
   if (enforceGit) assertGitHubFirst();
   const before = await activeVersion();
   const candidateWorker = await readFile(join(projectRoot, 'cloudflare/worker.mjs'), 'utf8');
+  if (promotion && digest(Buffer.from(candidateWorker)) !== promotion.workerSha256) {
+    throw new Error('Código compartilhado do Worker difere do revisado para esta promoção de LP.');
+  }
   const differences = criticalWorkerFeatures
     .filter((feature) => !candidateWorker.includes(feature))
     .map((feature) => `Worker: recurso crítico ausente no código candidato (${feature})`);
@@ -172,7 +199,7 @@ export async function runPreflight({ enforceGit = true, candidateAssets = assets
     differences.push(...await domainDifferences());
   }
   differences.push(...await bindingDifferences(before.versionId));
-  differences.push(...await compareProtectedPages((asset) => readFile(join(candidateAssets, asset))));
+  differences.push(...await compareProtectedPages((asset) => readFile(join(candidateAssets, asset)), fetch, promotion));
   const after = await activeVersion();
   if (before.versionId !== after.versionId || before.deploymentId !== after.deploymentId) {
     differences.push('Cloudflare recebeu outro deploy durante a verificação. Recomece a auditoria.');
@@ -182,7 +209,7 @@ export async function runPreflight({ enforceGit = true, candidateAssets = assets
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   try {
-    const result = await runPreflight({ enforceGit: !process.argv.includes('--audit') });
+    const result = await runPreflight({ enforceGit: !process.argv.includes('--audit'), promotion: await readPromotion(process.argv.slice(2)) });
     console.log(`Worker ativo: ${result.activeVersion}`);
     if (result.differences.length) {
       for (const difference of result.differences) console.error(`BLOQUEADO: ${difference}`);
