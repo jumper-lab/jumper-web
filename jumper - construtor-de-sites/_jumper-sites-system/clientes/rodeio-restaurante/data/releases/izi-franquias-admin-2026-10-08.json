@@ -1,0 +1,29 @@
+{
+  "scope": "izi-franquias-admin",
+  "approvedRequest": "Criar painel de franquias igual ao Cerro Corá, com filtros e exportação CSV e acesso no hub. Solicitação de 08/10/2026 neste chat.",
+  "baselineMain": "0ffec562",
+  "baselineWorkerVersion": "5fccb640-136c-486e-a697-276ee697201f",
+  "workerSha256": "1047ced2d8c56ed161eb4168598590da7732b1888363a21b16639875e519f162",
+  "pages": [
+    {
+      "asset": "cerrocora/index.html",
+      "candidateSha256": "9f3fa179d3a28aaead741edc2f58014452760b6bd4fa505d3f90ddcf95da104d",
+      "publishedSha256": [
+        "f8ae388b542c2a6e337211e64cdb32be58a6e566a578dde9103069edef7ab9dd",
+        "9f3fa179d3a28aaead741edc2f58014452760b6bd4fa505d3f90ddcf95da104d"
+      ]
+    },
+    {
+      "asset": "izigym-lp-vilaromana/index.html",
+      "candidateSha256": "ea4c9006c189f1822be0f05090233be659e95680d24316e52cd9079f26af1803",
+      "publishedSha256": [
+        "f4fd8685e2b899c49b44d13f4cd738215c6b6d506dc5c2031400c2c6ddbfc3ea",
+        "ea4c9006c189f1822be0f05090233be659e95680d24316e52cd9079f26af1803"
+      ]
+    }
+  ],
+  "franchiseDatabase": {
+    "binding": "IZI_FRANCHISE_DB",
+    "database_id": "4553bc65-eeb8-4404-aa57-e44692bcc9a3"
+  }
+}
