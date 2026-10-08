@@ -1,0 +1,363 @@
+{
+  "date": "2026-10-08T05:07:25.859Z",
+  "base": "http://127.0.0.1:4326/rodeio",
+  "note": "Desktop engines and emulated mobile viewport; no physical-device test.",
+  "checks": [
+    {
+      "engine": "chromium",
+      "width": 390,
+      "overflow": false,
+      "logoCenter": 65.546875,
+      "bounds": [
+        {
+          "label": "",
+          "x": 20,
+          "y": 26.703125,
+          "width": 91.09375,
+          "height": 25.578125
+        },
+        {
+          "label": "Reservar uma mesa",
+          "x": 158.15625,
+          "y": 17.5,
+          "width": 125.15625,
+          "height": 44
+        }
+      ],
+      "restaurantsRoute": true,
+      "eventsRoute": true,
+      "eventsPopup": true,
+      "mobileUnchanged": true,
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 1200,
+      "overflow": false,
+      "logoCenter": 599.9921875,
+      "bounds": [
+        {
+          "label": "Nossa história",
+          "x": 338.3125,
+          "y": 25.046875,
+          "width": 87.140625,
+          "height": 44.890625
+        },
+        {
+          "label": "Cardápio",
+          "x": 445.84375,
+          "y": 25.046875,
+          "width": 57.703125,
+          "height": 44.890625
+        },
+        {
+          "label": "",
+          "x": 539.546875,
+          "y": 30.515625,
+          "width": 120.890625,
+          "height": 33.953125
+        },
+        {
+          "label": "Restaurantes",
+          "x": 696.4375,
+          "y": 25.046875,
+          "width": 80.859375,
+          "height": 44.890625
+        },
+        {
+          "label": "Eventos",
+          "x": 797.6875,
+          "y": 25.046875,
+          "width": 48.03125,
+          "height": 44.890625
+        },
+        {
+          "label": "Reservar uma mesa",
+          "x": 986.046875,
+          "y": 23.5,
+          "width": 161.15625,
+          "height": 48
+        }
+      ],
+      "restaurantsRoute": true,
+      "eventsRoute": true,
+      "eventsPopup": true,
+      "mobileUnchanged": false,
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "overflow": false,
+      "logoCenter": 719.9921875,
+      "bounds": [
+        {
+          "label": "Nossa história",
+          "x": 434.421875,
+          "y": 24.890625,
+          "width": 88.75,
+          "height": 45.203125
+        },
+        {
+          "label": "Cardápio",
+          "x": 547.640625,
+          "y": 24.890625,
+          "width": 58.765625,
+          "height": 45.203125
+        },
+        {
+          "label": "",
+          "x": 649.59375,
+          "y": 27.71875,
+          "width": 140.796875,
+          "height": 39.546875
+        },
+        {
+          "label": "Restaurantes",
+          "x": 833.578125,
+          "y": 25.046875,
+          "width": 80.859375,
+          "height": 44.890625
+        },
+        {
+          "label": "Eventos",
+          "x": 938.90625,
+          "y": 25.046875,
+          "width": 48.03125,
+          "height": 44.890625
+        },
+        {
+          "label": "Reservar uma mesa",
+          "x": 1201.484375,
+          "y": 23.5,
+          "width": 175.15625,
+          "height": 48
+        }
+      ],
+      "restaurantsRoute": true,
+      "eventsRoute": true,
+      "eventsPopup": true,
+      "mobileUnchanged": false,
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 1920,
+      "overflow": false,
+      "logoCenter": 959.9921875,
+      "bounds": [
+        {
+          "label": "Nossa história",
+          "x": 653.609375,
+          "y": 24.40625,
+          "width": 93.84375,
+          "height": 46.1875
+        },
+        {
+          "label": "Cardápio",
+          "x": 779.453125,
+          "y": 24.40625,
+          "width": 62.140625,
+          "height": 46.1875
+        },
+        {
+          "label": "",
+          "x": 889.59375,
+          "y": 27.71875,
+          "width": 140.796875,
+          "height": 39.546875
+        },
+        {
+          "label": "Restaurantes",
+          "x": 1078.390625,
+          "y": 25.046875,
+          "width": 80.859375,
+          "height": 44.890625
+        },
+        {
+          "label": "Eventos",
+          "x": 1191.25,
+          "y": 25.046875,
+          "width": 48.03125,
+          "height": 44.890625
+        },
+        {
+          "label": "Reservar uma mesa",
+          "x": 1664.84375,
+          "y": 23.5,
+          "width": 175.15625,
+          "height": 48
+        }
+      ],
+      "restaurantsRoute": true,
+      "eventsRoute": true,
+      "eventsPopup": true,
+      "mobileUnchanged": false,
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "overflow": false,
+      "logoCenter": 65.55000305175781,
+      "bounds": [
+        {
+          "label": "",
+          "x": 20,
+          "y": 26.699996948242188,
+          "width": 91.10000610351562,
+          "height": 25.600006103515625
+        },
+        {
+          "label": "Reservar uma mesa",
+          "x": 158.18333435058594,
+          "y": 17.5,
+          "width": 125.13333129882812,
+          "height": 44
+        }
+      ],
+      "restaurantsRoute": true,
+      "eventsRoute": true,
+      "eventsPopup": true,
+      "mobileUnchanged": true,
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "overflow": false,
+      "logoCenter": 719.9999694824219,
+      "bounds": [
+        {
+          "label": "Nossa história",
+          "x": 434.45001220703125,
+          "y": 24.899993896484375,
+          "width": 88.7166748046875,
+          "height": 45.20001220703125
+        },
+        {
+          "label": "Cardápio",
+          "x": 547.63330078125,
+          "y": 24.899993896484375,
+          "width": 58.76666259765625,
+          "height": 45.20001220703125
+        },
+        {
+          "label": "",
+          "x": 649.5999755859375,
+          "y": 27.716659545898438,
+          "width": 140.79998779296875,
+          "height": 39.55000305175781
+        },
+        {
+          "label": "Restaurantes",
+          "x": 833.5999755859375,
+          "y": 25.050003051757812,
+          "width": 80.84999084472656,
+          "height": 44.899993896484375
+        },
+        {
+          "label": "Eventos",
+          "x": 938.9166870117188,
+          "y": 25.050003051757812,
+          "width": 48.06666564941406,
+          "height": 44.899993896484375
+        },
+        {
+          "label": "Reservar uma mesa",
+          "x": 1201.5166015625,
+          "y": 23.5,
+          "width": 175.13333129882812,
+          "height": 48
+        }
+      ],
+      "restaurantsRoute": true,
+      "eventsRoute": true,
+      "eventsPopup": true,
+      "mobileUnchanged": false,
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "overflow": false,
+      "logoCenter": 65.546875,
+      "bounds": [
+        {
+          "label": "",
+          "x": 20,
+          "y": 26.703125,
+          "width": 91.09375,
+          "height": 25.578125
+        },
+        {
+          "label": "Reservar uma mesa",
+          "x": 158.15625,
+          "y": 17.5,
+          "width": 125.15625,
+          "height": 44
+        }
+      ],
+      "restaurantsRoute": true,
+      "eventsRoute": true,
+      "eventsPopup": true,
+      "mobileUnchanged": true,
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "overflow": false,
+      "logoCenter": 719.9921875,
+      "bounds": [
+        {
+          "label": "Nossa história",
+          "x": 434.40625,
+          "y": 24.890625,
+          "width": 88.75,
+          "height": 45.203125
+        },
+        {
+          "label": "Cardápio",
+          "x": 547.625,
+          "y": 24.890625,
+          "width": 58.78125,
+          "height": 45.203125
+        },
+        {
+          "label": "",
+          "x": 649.59375,
+          "y": 27.71875,
+          "width": 140.796875,
+          "height": 39.546875
+        },
+        {
+          "label": "Restaurantes",
+          "x": 833.578125,
+          "y": 25.046875,
+          "width": 80.859375,
+          "height": 44.890625
+        },
+        {
+          "label": "Eventos",
+          "x": 938.90625,
+          "y": 25.046875,
+          "width": 48.03125,
+          "height": 44.890625
+        },
+        {
+          "label": "Reservar uma mesa",
+          "x": 1201.484375,
+          "y": 23.5,
+          "width": 175.15625,
+          "height": 48
+        }
+      ],
+      "restaurantsRoute": true,
+      "eventsRoute": true,
+      "eventsPopup": true,
+      "mobileUnchanged": false,
+      "passed": true
+    }
+  ]
+}
