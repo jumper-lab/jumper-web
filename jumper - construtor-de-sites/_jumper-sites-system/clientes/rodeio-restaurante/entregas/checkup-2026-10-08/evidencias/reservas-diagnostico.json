@@ -1,0 +1,234 @@
+[
+  {
+    "engine": "chromium",
+    "text": "PT-BR\nO\nOnline\n\nundefined • undefined\n\nFazer reserva de mesa\n\nEscolha a data e venha ao restaurante\n\nAlterar\n\nDia da Reserva\n\nSelecione\n\nSalão, ambiente ou atividade\n\nSelecione\n\nPessoas\n\nSelecione\n\nHorário\n\nSelecione\n\nPrecisa de algo especial? (opcional)\n\n\n\nContinuar\n\nVoltar\n\nVoltar",
+    "notes": [
+      "Access to fetch at 'https://public.tagme.com.br/venues/56c778030896b3cd13c609e5' from origin 'https://reservation-widget.tagme.com.br' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+      "Access to XMLHttpRequest at 'https://public.tagme.com.br/themes/56c778030896b3cd13c609e5' from origin 'https://reservation-widget.tagme.com.br' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+      "Access to XMLHttpRequest at 'https://public.tagme.com.br/venues/56c778030896b3cd13c609e5' from origin 'https://reservation-widget.tagme.com.br' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+      "Access to XMLHttpRequest at 'https://public.tagme.com.br/venues/56c778030896b3cd13c609e5/availability-for-app/reservationWidget' from origin 'https://reservation-widget.tagme.com.br' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource."
+    ],
+    "requests": [
+      {
+        "path": "/venues/56c778030896b3cd13c609e5",
+        "method": "GET",
+        "headerNames": [
+          "sec-ch-ua-platform",
+          "referer",
+          "user-agent",
+          "sec-ch-ua",
+          "sec-ch-ua-mobile"
+        ]
+      },
+      {
+        "path": "/themes/56c778030896b3cd13c609e5",
+        "method": "GET",
+        "headerNames": [
+          "sec-ch-ua-platform",
+          "apitoken",
+          "referer",
+          "user-agent",
+          "accept",
+          "sec-ch-ua",
+          "sec-ch-ua-mobile"
+        ]
+      },
+      {
+        "path": "/venues/56c778030896b3cd13c609e5",
+        "method": "GET",
+        "headerNames": [
+          "sec-ch-ua-platform",
+          "apitoken",
+          "referer",
+          "user-agent",
+          "accept",
+          "sec-ch-ua",
+          "sec-ch-ua-mobile"
+        ]
+      },
+      {
+        "path": "/venues/56c778030896b3cd13c609e5/availability-for-app/reservationWidget",
+        "method": "GET",
+        "headerNames": [
+          "sec-ch-ua-platform",
+          "apitoken",
+          "referer",
+          "user-agent",
+          "accept",
+          "sec-ch-ua",
+          "sec-ch-ua-mobile"
+        ]
+      }
+    ]
+  },
+  {
+    "engine": "firefox",
+    "text": "EN-US\nRodeio Jardins\n\nJardim Paulista • São Paulo\n\nReservations\n\nPick a date and come to the restaurant\n\nChange\n\nOn Saturdays and Sundays, service is provided exclusively on a first-come, first-served basis.\n\nReservation Day\n\nSelect\n\nSection or activity\n\nSelect\n\nParty Size\n\nSelect\n\nSchedule\n\nSelect\n\nDo you need something special? (optional)\n\n\n\nNext",
+    "notes": [
+      "[JavaScript Error: \"Cookie “_ga” has been rejected for invalid domain.\" {file: \"https://reservation-widget.tagme.com.br/reservation/schedule/56c778030896b3cd13c609e5/reservationWidget\" line: 0}]",
+      "[JavaScript Error: \"Cookie “_clck” has been rejected for invalid domain.\" {file: \"https://reservation-widget.tagme.com.br/reservation/schedule/56c778030896b3cd13c609e5/reservationWidget\" line: 0}]",
+      "[JavaScript Error: \"Cookie “_ga_EKDHDQ9TRP” has been rejected for invalid domain.\" {file: \"https://reservation-widget.tagme.com.br/reservation/schedule/56c778030896b3cd13c609e5/reservationWidget\" line: 0}]",
+      "[JavaScript Error: \"Cookie “_ga_EKDHDQ9TRP” has been rejected for invalid domain.\" {file: \"https://reservation-widget.tagme.com.br/reservation/schedule/56c778030896b3cd13c609e5/reservationWidget\" line: 0}]",
+      "[JavaScript Error: \"Cookie “_ga” has been rejected for invalid domain.\" {file: \"https://reservation-widget.tagme.com.br/reservation/schedule/56c778030896b3cd13c609e5/reservationWidget\" line: 0}]",
+      "[JavaScript Error: \"Cookie “_ga_EKDHDQ9TRP” has been rejected for invalid domain.\" {file: \"https://reservation-widget.tagme.com.br/reservation/schedule/56c778030896b3cd13c609e5/reservationWidget\" line: 0}]",
+      "[JavaScript Error: \"Cookie “_ga_EKDHDQ9TRP” has been rejected for invalid domain.\" {file: \"https://reservation-widget.tagme.com.br/reservation/schedule/56c778030896b3cd13c609e5/reservationWidget\" line: 0}]"
+    ],
+    "requests": [
+      {
+        "path": "/venues/56c778030896b3cd13c609e5",
+        "method": "GET",
+        "headerNames": [
+          "host",
+          "user-agent",
+          "accept",
+          "accept-language",
+          "accept-encoding",
+          "origin",
+          "connection",
+          "sec-fetch-dest",
+          "sec-fetch-mode",
+          "sec-fetch-site"
+        ]
+      },
+      {
+        "path": "/themes/56c778030896b3cd13c609e5",
+        "method": "GET",
+        "headerNames": [
+          "host",
+          "user-agent",
+          "accept",
+          "accept-language",
+          "accept-encoding",
+          "apitoken",
+          "origin",
+          "connection",
+          "sec-fetch-dest",
+          "sec-fetch-mode",
+          "sec-fetch-site"
+        ]
+      },
+      {
+        "path": "/venues/56c778030896b3cd13c609e5",
+        "method": "GET",
+        "headerNames": [
+          "host",
+          "user-agent",
+          "accept",
+          "accept-language",
+          "accept-encoding",
+          "apitoken",
+          "origin",
+          "connection",
+          "sec-fetch-dest",
+          "sec-fetch-mode",
+          "sec-fetch-site"
+        ]
+      },
+      {
+        "path": "/venues/56c778030896b3cd13c609e5/availability-for-app/reservationWidget",
+        "method": "GET",
+        "headerNames": [
+          "host",
+          "user-agent",
+          "accept",
+          "accept-language",
+          "accept-encoding",
+          "apitoken",
+          "origin",
+          "connection",
+          "sec-fetch-dest",
+          "sec-fetch-mode",
+          "sec-fetch-site"
+        ]
+      },
+      {
+        "path": "/apps/58ffa0a9c710f90fec72b077",
+        "method": "GET",
+        "headerNames": [
+          "host",
+          "user-agent",
+          "accept",
+          "accept-language",
+          "accept-encoding",
+          "apitoken",
+          "origin",
+          "connection",
+          "sec-fetch-dest",
+          "sec-fetch-mode",
+          "sec-fetch-site"
+        ]
+      }
+    ]
+  },
+  {
+    "engine": "webkit",
+    "text": "PT-BR\n \nRodeio Jardins\n\nJardim Paulista • São Paulo\n\nFazer reserva de mesa\n\nEscolha a data e venha ao restaurante\n\nAlterar\n\nAos sábados e domingos, o atendimento é realizado exclusivamente por ordem de chegada.\n\nDia da Reserva\n\nSelecione\n\nSalão, ambiente ou atividade\n\nSelecione\n\nPessoas\n\nSelecione\n\nHorário\n\nSelecione\n\nPrecisa de algo especial? (opcional)\n\n\nContinuar",
+    "notes": [],
+    "requests": [
+      {
+        "path": "/venues/56c778030896b3cd13c609e5",
+        "method": "GET",
+        "headerNames": [
+          "origin",
+          "accept",
+          "sec-fetch-dest",
+          "sec-fetch-mode",
+          "sec-fetch-site",
+          "user-agent"
+        ]
+      },
+      {
+        "path": "/themes/56c778030896b3cd13c609e5",
+        "method": "GET",
+        "headerNames": [
+          "accept",
+          "origin",
+          "sec-fetch-dest",
+          "sec-fetch-mode",
+          "sec-fetch-site",
+          "user-agent",
+          "apitoken"
+        ]
+      },
+      {
+        "path": "/venues/56c778030896b3cd13c609e5",
+        "method": "GET",
+        "headerNames": [
+          "accept",
+          "origin",
+          "sec-fetch-dest",
+          "sec-fetch-mode",
+          "sec-fetch-site",
+          "user-agent",
+          "apitoken"
+        ]
+      },
+      {
+        "path": "/venues/56c778030896b3cd13c609e5/availability-for-app/reservationWidget",
+        "method": "GET",
+        "headerNames": [
+          "accept",
+          "origin",
+          "sec-fetch-dest",
+          "sec-fetch-mode",
+          "sec-fetch-site",
+          "user-agent",
+          "apitoken"
+        ]
+      },
+      {
+        "path": "/apps/58ffa0a9c710f90fec72b077",
+        "method": "GET",
+        "headerNames": [
+          "accept",
+          "origin",
+          "sec-fetch-dest",
+          "sec-fetch-mode",
+          "sec-fetch-site",
+          "user-agent",
+          "apitoken"
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,371 @@
+{
+  "date": "2026-10-08T16:58:04.762Z",
+  "checks": [
+    {
+      "slug": "jardins",
+      "kind": "dev",
+      "widgetLoaded": true,
+      "text": "PT-BR\nO\nOnline\n\nundefined • undefined\n\nFazer reserva de mesa\n\nEscolha a data e venha ao restaurante\n\nAlterar\n\nDia da Reserva\n\nSelecione\n\nSalão, ambiente ou atividade\n\nSelecione\n\nPessoas\n\nSelecione\n\nHorário\n\nSelecione\n\nPrecisa de algo especial? (opcional)\n\n\n\nContinuar\n\nVoltar\n\nVoltar",
+      "failed": [
+        {
+          "host": "public.tagme.com.br",
+          "path": "/venues/56c778030896b3cd13c609e5",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "host": "public.tagme.com.br",
+          "path": "/themes/56c778030896b3cd13c609e5",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "host": "public.tagme.com.br",
+          "path": "/venues/56c778030896b3cd13c609e5",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "host": "public.tagme.com.br",
+          "path": "/venues/56c778030896b3cd13c609e5/availability-for-app/reservationWidget",
+          "error": "net::ERR_FAILED"
+        }
+      ],
+      "responses": [
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/reservation/schedule/56c778030896b3cd13c609e5/reservationWidget",
+          "status": 200
+        },
+        {
+          "host": "tagmepub.azureedge.net",
+          "path": "/pubfiles/moip-2.8.0.min.js",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/runtime.eef7ff4eacfa6f63.js",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/polyfills.edc4b05de1869b37.js",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/styles.41d61b8484337457.css",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/scripts.01bda3edebbcdf4b.js",
+          "status": 200
+        },
+        {
+          "host": "www.googletagmanager.com",
+          "path": "/td",
+          "status": 204
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/main.57d4dc5dc03dcaa1.js",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/assets/i18n/pt-br.json",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/assets/images/header-placeholder.png",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/assets/images/pt-br.svg",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/assets/images/ilustra-desconectado.svg",
+          "status": 200
+        },
+        {
+          "host": "trc-events.taboola.com",
+          "path": "/1653908/log/3/unip",
+          "status": 204
+        }
+      ]
+    },
+    {
+      "slug": "jardins",
+      "kind": "official",
+      "widgetLoaded": true,
+      "text": "PT-BR\nO\nOnline\n\nundefined • undefined\n\nFazer reserva de mesa\n\nEscolha a data e venha ao restaurante\n\nAlterar\n\nDia da Reserva\n\nSelecione\n\nSalão, ambiente ou atividade\n\nSelecione\n\nPessoas\n\nSelecione\n\nHorário\n\nSelecione\n\nPrecisa de algo especial? (opcional)\n\n\n\nContinuar\n\nVoltar\n\nVoltar",
+      "failed": [
+        {
+          "host": "public.tagme.com.br",
+          "path": "/venues/56c778030896b3cd13c609e5",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "host": "public.tagme.com.br",
+          "path": "/themes/56c778030896b3cd13c609e5",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "host": "public.tagme.com.br",
+          "path": "/venues/56c778030896b3cd13c609e5",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "host": "public.tagme.com.br",
+          "path": "/venues/56c778030896b3cd13c609e5/availability-for-app/reservationWidget",
+          "error": "net::ERR_FAILED"
+        }
+      ],
+      "responses": [
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/reservation/schedule/56c778030896b3cd13c609e5/reservationWidget",
+          "status": 200
+        },
+        {
+          "host": "tagmepub.azureedge.net",
+          "path": "/pubfiles/moip-2.8.0.min.js",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/runtime.eef7ff4eacfa6f63.js",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/polyfills.edc4b05de1869b37.js",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/styles.41d61b8484337457.css",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/scripts.01bda3edebbcdf4b.js",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/main.57d4dc5dc03dcaa1.js",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/assets/i18n/pt-br.json",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/assets/images/header-placeholder.png",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/assets/images/pt-br.svg",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/assets/images/ilustra-desconectado.svg",
+          "status": 200
+        },
+        {
+          "host": "trc-events.taboola.com",
+          "path": "/1653908/log/3/unip",
+          "status": 204
+        }
+      ]
+    },
+    {
+      "slug": "iguatemi",
+      "kind": "dev",
+      "widgetLoaded": true,
+      "text": "PT-BR\nO\nOnline\n\nundefined • undefined\n\nFazer reserva de mesa\n\nEscolha a data e venha ao restaurante\n\nAlterar\n\nDia da Reserva\n\nSelecione\n\nSalão, ambiente ou atividade\n\nSelecione\n\nPessoas\n\nSelecione\n\nHorário\n\nSelecione\n\nPrecisa de algo especial? (opcional)\n\n\n\nContinuar\n\nVoltar\n\nVoltar",
+      "failed": [
+        {
+          "host": "public.tagme.com.br",
+          "path": "/venues/56c778010896b3cd13c609d2",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "host": "public.tagme.com.br",
+          "path": "/themes/56c778010896b3cd13c609d2",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "host": "public.tagme.com.br",
+          "path": "/venues/56c778010896b3cd13c609d2",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "host": "public.tagme.com.br",
+          "path": "/venues/56c778010896b3cd13c609d2/availability-for-app/reservationWidget",
+          "error": "net::ERR_FAILED"
+        }
+      ],
+      "responses": [
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/reservation/schedule/56c778010896b3cd13c609d2/reservationWidget",
+          "status": 200
+        },
+        {
+          "host": "tagmepub.azureedge.net",
+          "path": "/pubfiles/moip-2.8.0.min.js",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/runtime.eef7ff4eacfa6f63.js",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/polyfills.edc4b05de1869b37.js",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/styles.41d61b8484337457.css",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/scripts.01bda3edebbcdf4b.js",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/main.57d4dc5dc03dcaa1.js",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/assets/i18n/pt-br.json",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/assets/images/header-placeholder.png",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/assets/images/pt-br.svg",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/assets/images/ilustra-desconectado.svg",
+          "status": 200
+        },
+        {
+          "host": "trc-events.taboola.com",
+          "path": "/1653908/log/3/unip",
+          "status": 204
+        }
+      ]
+    },
+    {
+      "slug": "iguatemi",
+      "kind": "official",
+      "widgetLoaded": true,
+      "text": "PT-BR\nO\nOnline\n\nundefined • undefined\n\nFazer reserva de mesa\n\nEscolha a data e venha ao restaurante\n\nAlterar\n\nDia da Reserva\n\nSelecione\n\nSalão, ambiente ou atividade\n\nSelecione\n\nPessoas\n\nSelecione\n\nHorário\n\nSelecione\n\nPrecisa de algo especial? (opcional)\n\n\n\nContinuar\n\nVoltar\n\nVoltar",
+      "failed": [
+        {
+          "host": "public.tagme.com.br",
+          "path": "/venues/56c778010896b3cd13c609d2",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "host": "public.tagme.com.br",
+          "path": "/themes/56c778010896b3cd13c609d2",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "host": "public.tagme.com.br",
+          "path": "/venues/56c778010896b3cd13c609d2/availability-for-app/reservationWidget",
+          "error": "net::ERR_FAILED"
+        },
+        {
+          "host": "public.tagme.com.br",
+          "path": "/venues/56c778010896b3cd13c609d2",
+          "error": "net::ERR_FAILED"
+        }
+      ],
+      "responses": [
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/reservation/schedule/56c778010896b3cd13c609d2/reservationWidget",
+          "status": 200
+        },
+        {
+          "host": "tagmepub.azureedge.net",
+          "path": "/pubfiles/moip-2.8.0.min.js",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/runtime.eef7ff4eacfa6f63.js",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/polyfills.edc4b05de1869b37.js",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/styles.41d61b8484337457.css",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/scripts.01bda3edebbcdf4b.js",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/main.57d4dc5dc03dcaa1.js",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/assets/i18n/pt-br.json",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/assets/images/header-placeholder.png",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/assets/images/pt-br.svg",
+          "status": 200
+        },
+        {
+          "host": "reservation-widget.tagme.com.br",
+          "path": "/assets/images/ilustra-desconectado.svg",
+          "status": 200
+        },
+        {
+          "host": "trc-events.taboola.com",
+          "path": "/1653908/log/3/unip",
+          "status": 204
+        }
+      ]
+    }
+  ],
+  "note": "Read-only loading of widgets and official reservation pages; no customer data entered or booking submitted."
+}

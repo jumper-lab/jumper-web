@@ -1,0 +1,42 @@
+[
+  {
+    "engine": "chromium",
+    "slug": "jardins",
+    "locale": "pt-BR",
+    "standardChromeUserAgent": true,
+    "text": "PT-BR\nRodeio Jardins\n\nJardim Paulista • São Paulo\n\nFazer reserva de mesa\n\nEscolha a data e venha ao restaurante\n\nAlterar\n\nAos sábados e domingos, o atendimento é realizado exclusivamente por ordem de chegada.\n\nDia da Reserva\n\nSelecione\n\nSalão, ambiente ou atividade\n\nSelecione\n\nPessoas\n\nSelecione\n\nHorário\n\nSelecione\n\nPrecisa de algo especial? (opcional)\n\n\n\nContinuar",
+    "cors": [],
+    "passed": true,
+    "bookingSubmitted": false
+  },
+  {
+    "engine": "chromium",
+    "slug": "iguatemi",
+    "locale": "pt-BR",
+    "standardChromeUserAgent": true,
+    "text": "PT-BR\nRodeio Iguatemi\n\nJardim Paulistano • São Paulo\n\nFazer reserva de mesa\n\nEscolha a data e venha ao restaurante\n\nAlterar\n\nAos sábados e domingos, o atendimento é realizado exclusivamente por ordem de chegada.\n\nDia da Reserva\n\nSelecione\n\nSalão, ambiente ou atividade\n\nSelecione\n\nPessoas\n\nSelecione\n\nHorário\n\nSelecione\n\nPrecisa de algo especial? (opcional)\n\n\n\nContinuar",
+    "cors": [],
+    "passed": true,
+    "bookingSubmitted": false
+  },
+  {
+    "engine": "firefox",
+    "slug": "iguatemi",
+    "locale": "pt-BR",
+    "standardChromeUserAgent": false,
+    "text": "PT-BR\nRodeio Iguatemi\n\nJardim Paulistano • São Paulo\n\nFazer reserva de mesa\n\nEscolha a data e venha ao restaurante\n\nAlterar\n\nAos sábados e domingos, o atendimento é realizado exclusivamente por ordem de chegada.\n\nDia da Reserva\n\nSelecione\n\nSalão, ambiente ou atividade\n\nSelecione\n\nPessoas\n\nSelecione\n\nHorário\n\nSelecione\n\nPrecisa de algo especial? (opcional)\n\n\n\nContinuar",
+    "cors": [],
+    "passed": true,
+    "bookingSubmitted": false
+  },
+  {
+    "engine": "webkit",
+    "slug": "iguatemi",
+    "locale": "pt-BR",
+    "standardChromeUserAgent": false,
+    "text": "PT-BR\n \nRodeio Iguatemi\n\nJardim Paulistano • São Paulo\n\nFazer reserva de mesa\n\nEscolha a data e venha ao restaurante\n\nAlterar\n\nAos sábados e domingos, o atendimento é realizado exclusivamente por ordem de chegada.\n\nDia da Reserva\n\nSelecione\n\nSalão, ambiente ou atividade\n\nSelecione\n\nPessoas\n\nSelecione\n\nHorário\n\nSelecione\n\nPrecisa de algo especial? (opcional)\n\n\nContinuar",
+    "cors": [],
+    "passed": true,
+    "bookingSubmitted": false
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "suite": "verify-events-popup",
+    "scenarios": 6,
+    "passed": true
+  },
+  {
+    "suite": "verify-cardapio-classicos",
+    "scenarios": 10,
+    "passed": true
+  },
+  {
+    "suite": "verify-home-swipe",
+    "scenarios": 30,
+    "passed": true
+  },
+  {
+    "suite": "verify-menu-mobile-viewport",
+    "scenarios": 27,
+    "passed": true
+  },
+  {
+    "suite": "verify-jardins-gallery",
+    "scenarios": 12,
+    "passed": true
+  },
+  {
+    "suite": "verify-history-integral",
+    "scenarios": 10,
+    "passed": true
+  },
+  {
+    "suite": "desktop-nav",
+    "scenarios": 8,
+    "passed": true
+  },
+  {
+    "suite": "general",
+    "scenarios": 60,
+    "passed": true
+  },
+  {
+    "suite": "reservations-standard-browser-identification",
+    "scenarios": 4,
+    "passed": true
+  }
+]
