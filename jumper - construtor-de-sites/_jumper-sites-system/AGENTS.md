@@ -47,6 +47,9 @@ segunda lista de regras naquele manual.
 - O menu **CONSTRUTOR DE SITES JUMPER STUDIO®** é uma interação neste chat.
   `https://site.jumper.dev.br/briefing/` é o formulário público de entrada;
   não é o endereço de publicação do site criado pelo construtor.
+- Novos cards entram **no final** do hub, nunca no início. Acrescente novos
+  clientes ao final de `clients` em `jumper-hoster.registry.json` e preserve
+  a ordem relativa dos cards existentes, salvo pedido explícito de reordenação.
 - Todo site novo criado pelo construtor vai **primeiro** a uma rota de cliente
   no Worker `jumper-hoster-dev`, para revisão. Nunca publique um site novo
   diretamente no `jumper-hoster` live ou em seu domínio oficial por inferência.
