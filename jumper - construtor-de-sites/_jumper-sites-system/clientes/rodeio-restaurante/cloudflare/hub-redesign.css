@@ -65,9 +65,10 @@ html { background: var(--jumper-black); scroll-behavior: smooth; }
 .painel .card-open { width: 100%; height: 100%; min-height: 0; padding: 19px 20px 17px; border-radius: inherit; color: var(--fg); }
 .painel .card-open { appearance: none; display: flex; flex-direction: column; align-items: stretch; border: 0; background: transparent; text-align: left; font: inherit; cursor: pointer; }
 .painel .card-open:focus-visible { outline: 2px solid var(--apoio); outline-offset: -2px; }
-.painel .card .tag { width: fit-content; max-width: 100%; padding: 6px 8px; border-radius: 5px; background: color-mix(in srgb, var(--apoio) 9%, transparent); color: var(--apoio); font-size: 9px; line-height: 1.25; letter-spacing: .03em; overflow-wrap: anywhere; }
-.painel .card .tag-kinsta { background: #fff0df; color: #a44d0a; }
+.painel .card .tag { width: fit-content; max-width: 100%; padding: 5px 9px; border: 1px solid color-mix(in srgb, var(--apoio) 16%, transparent); border-radius: 100px; background: color-mix(in srgb, var(--apoio) 8%, transparent); color: var(--apoio); font-size: 8.5px; line-height: 1.2; letter-spacing: .02em; overflow-wrap: anywhere; }
+.painel .card .tag-kinsta { border-color: #ff571833; background: #fff0e8; color: #a72f00; }
 .painel .card .tag::before { width: 4px; height: 4px; }
+.painel .card .tag-kinsta::before { background: #ff5718; }
 .painel .card h2 { margin: 16px 0 0; font: 780 clamp(21px, 2vw, 26px)/1.08 var(--font-sans); letter-spacing: -.045em; overflow-wrap: anywhere; }
 .painel .description { margin: 0; }
 .painel .card-action { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; min-height: 42px; margin-top: auto; padding: 13px 0 0; border: 0; border-top: 1px solid var(--linha-1); border-radius: 0; color: var(--fg); font: 650 11px/1 var(--font-sans); letter-spacing: .01em; text-transform: none; transition: color var(--duration) ease; }
