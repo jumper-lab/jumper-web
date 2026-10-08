@@ -2,6 +2,7 @@ import { spawn, execFileSync } from 'node:child_process';
 import { randomUUID } from 'node:crypto';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { readPromotion } from './preflight-hoster.mjs';
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const repositoryRoot = resolve(projectRoot, '../../../..');
@@ -9,7 +10,8 @@ const operationsBinding = 'JUMPER_HUB_OPERATIONS';
 const mode = process.argv[2];
 const suppliedFlags = process.argv.slice(3);
 if (!['live', 'dev', 'dev-worker'].includes(mode)) throw new Error('Modo de deploy inválido.');
-if (mode !== 'dev' && suppliedFlags.length) throw new Error('Este modo não aceita flags adicionais.');
+if (mode === 'live') await readPromotion(suppliedFlags);
+if (mode === 'dev-worker' && suppliedFlags.length) throw new Error('Este modo não aceita flags adicionais.');
 const worker = mode === 'live' ? 'jumper-hoster' : 'jumper-hoster-dev';
 const flags = mode === 'dev-worker' ? ['--worker-only'] : suppliedFlags;
 const key = `deploy/${worker}/${randomUUID()}`;

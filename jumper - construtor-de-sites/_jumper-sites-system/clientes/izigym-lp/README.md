@@ -42,3 +42,14 @@ Build aprovado. Revisão em 390×844 e 1440×900 sem overflow; hero ocupa a view
 
 - A origem chama o plano promocional de Premium e a tabela o nomeia Prime. Confirmar a nomenclatura antes de mídia em escala.
 - Validade exata da oferta e regras adicionais não foram fornecidas e não foram inventadas.
+
+
+## Checkout direto Cerro Corá — 08/10/2026
+
+A LP Simple usada no domínio Cerro Corá não exibe formulário nem modal de matrícula. Os oito CTAs comerciais abrem diretamente o checkout PRIME da Pacto com `cupom=0,99_IZI`, inclusive o CTA no card One, conforme o novo escopo de mensageria. Links de navegação, mapa e Instagram mantêm suas funções.
+
+`src/checkout-attribution.ts` captura parâmetros `utm_*`, `gclid` e `fbclid`, guarda a campanha em `sessionStorage` e reaplica esses valores a cada CTA. Uma nova campanha substitui a anterior; os parâmetros de unidade, plano, conta e cupom vêm sempre do destino fixo. Com JavaScript ou armazenamento indisponível, o link HTML continua abrindo o checkout com cupom.
+
+Os cadastros históricos D1 e o painel administrativo continuam disponíveis. Este fluxo não envia novos cadastros ao D1: o preenchimento ocorre na Pacto.
+
+Teste de atribuição: `node --test tests/checkout-attribution.test.mjs` (Node 24+).
