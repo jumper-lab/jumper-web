@@ -140,7 +140,7 @@
     "interiors": "Fotografia real de ponta a ponta, cobrindo 100% da largura e 100vh, atrás do cabeçalho fixo. Texto sobre camada escura, sem moldura ou coluna de foto. Descida discreta em todas as páginas para a próxima seção real."
   },
   "navigation_direction": {
-    "desktop": "Logo central; História/Cardápio/Eventos à esquerda e links diretos Rodeio Jardins/Rodeio Iguatemi à direita, reserva explícita.",
+    "desktop": "Logo central; Nossa história/Cardápio à esquerda e Restaurantes/Eventos à direita, com botão de reserva.",
     "mobile": "Sete destinos explícitos na ordem do PDF, diálogo acessível.",
     "scroll": "Cabeçalho fixo:96px a partir1200px,80px abaixo1200px e64px em alturas até550px; sem blur. Compensação de âncoras usa altura real.",
     "current": "aria-current e sublinhado no link atual"
@@ -350,5 +350,20 @@
     ],
     "internalNavigation": "Events navigation continues to the new site’s own Events page",
     "form": "Unchanged official form. No submission in QA."
+  },
+  "desktop_navigation_restoration": {
+    "date": "2026-10-08",
+    "left": [
+      "Nossa história",
+      "Cardápio"
+    ],
+    "right": [
+      "Restaurantes",
+      "Eventos"
+    ],
+    "center": "Existing Rodeio logo",
+    "reservation": "Existing reservation button",
+    "mobile": "Full-screen menu retains direct links to both units",
+    "restaurantsActive": "Restaurants highlighted on listing and either unit page"
   }
 }

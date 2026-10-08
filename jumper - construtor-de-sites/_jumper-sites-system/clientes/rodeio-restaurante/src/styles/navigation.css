@@ -443,7 +443,7 @@
   }
 }
 
-/* The two houses now belong to the primary navigation. */
+/* Desktop links flank the centered logo; unit links remain in the mobile menu. */
 @media (min-width:1200px) {
   .site-header { column-gap:clamp(24px,3vw,48px); }
   .header-left { justify-content:flex-end; }

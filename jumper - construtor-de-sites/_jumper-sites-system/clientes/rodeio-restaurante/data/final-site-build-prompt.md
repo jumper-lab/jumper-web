@@ -58,3 +58,6 @@ Restaurar a composição vertical anterior da História: título à esquerda, se
 
 ### Eventos em popup — 08/10/2026
 Abrir todos os acessos a `https://rodeiosp.com.br/eventos/` em lightbox responsivo, no mesmo padrão do cardápio digital. Manter a navegação interna Eventos, o formulário oficial, URL de fallback, carregamento após clique e controles acessíveis de fechamento.
+
+### Menu desktop anterior — 08/10/2026
+Restaurar “Nossa história” e “Cardápio” à esquerda do logo; “Restaurantes” e “Eventos” à direita. Preservar logo, botão de reserva, animação, menu mobile com links para as duas unidades e popup de eventos. Restaurantes aponta para a seleção das duas casas.
