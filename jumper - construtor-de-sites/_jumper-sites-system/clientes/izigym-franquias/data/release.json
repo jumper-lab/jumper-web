@@ -1,1 +1,11 @@
-{"source_zip":"LP_IZI_GYM_PRONTO.zip","hostname":"franquias.izigym.com.br","worker":"izi-lp-franquias","database":"izi-lp-franquias-leads","database_id":"4553bc65-eeb8-4404-aa57-e44692bcc9a3","conversion_event":"CADASTRO-LP-CATIVE","conversion_event_confirmed":false,"conversion_event_note":"A tarefa exige confirmar o nome com Bruno antes de publicar. Ainda sem confirmação."}
+{
+  "source_zip": "LP_IZI_GYM_PRONTO.zip",
+  "hostname": "franquias.izigym.com.br",
+  "worker": "izi-lp-franquias",
+  "database": "izi-lp-franquias-leads",
+  "database_id": "4553bc65-eeb8-4404-aa57-e44692bcc9a3",
+  "conversion_event": "CADASTRO-LP-CATIVE",
+  "conversion_event_confirmed": true,
+  "conversion_event_note": "Usuário autorizou em 08/10/2026 manter CADASTRO-LP-CATIVE e registrar conversão somente no envio confirmado pelo D1.",
+  "conversion_location": "successful_form_submission_only"
+}

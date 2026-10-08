@@ -24,7 +24,7 @@ Somente após confirmação do evento em `data/release.json`: PR → merge em ma
 
 ## Tracking entregue
 
-O ZIP usa `CADASTRO-LP-CATIVE`. Nome pendente de confirmação com Bruno antes da publicação. A página de obrigado também dispara eventos de conversão herdados do ZIP; preservados conforme pedido, com potencial duplicidade entre envio e obrigado que deve ser considerado na configuração de mensuração.
+O evento `CADASTRO-LP-CATIVE` foi confirmado pelo usuário em 08/10/2026. Conversões Meta/GTM ocorrem somente após o envio confirmado pelo D1. A página de obrigado mantém os códigos de carregamento GTM/Pixel e PageView, sem disparar conversões em acesso direto ou recarregamento.
 
 ## Acesso aos dados
 

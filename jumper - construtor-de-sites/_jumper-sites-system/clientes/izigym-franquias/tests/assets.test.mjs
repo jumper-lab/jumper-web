@@ -17,3 +17,9 @@ test('four forms share the persisted submit handler; ZIP tracking retained',asyn
  assert.ok(html.includes('GTM-M3GVTFV4'));assert.ok(html.includes('1874149183549598'));assert.ok(script.includes('CADASTRO-LP-CATIVE'));
  assert.ok(script.indexOf("fetch('/api/lead'")<script.indexOf("fbq('track', 'Lead')"));
 });
+
+test('thank-you page keeps tracking loaders and PageView without replaying conversion',async()=>{
+ const html=await readFile(new URL('proximos-passos.html',root),'utf8');
+ assert.ok(html.includes('GTM-M3GVTFV4'));assert.ok(html.includes('1874149183549598'));assert.ok(html.includes("fbq('track', 'PageView')"));
+ assert.ok(!html.includes('CADASTRO-LP-CATIVE'));assert.ok(!html.includes("fbq('track', 'Lead')"));assert.ok(!html.includes('CompleteRegistration'));assert.ok(!html.includes('cadastro_concluido'));
+});

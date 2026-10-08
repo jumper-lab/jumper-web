@@ -13,4 +13,4 @@
 - Os quatro leads fictícios locais foram removidos por UUID depois de guardar evidência; banco local vazio.
 - D1 remoto consultado com sucesso: tabela criada e zero registros. Wrangler fixado em 4.144.0, pois 4.148.0 retornou erro de autorização na consulta enquanto 4.144.0 e API direta confirmaram acesso.
 
-Ainda sem publicação oficial/testes no D1 remoto: confirmação do evento exigida pela tarefa está pendente.
+Em 08/10/2026, o usuário confirmou CADASTRO-LP-CATIVE e conversão somente no envio confirmado. Nove testes automatizados passaram após remover conversões da página de obrigado. A validação oficial será feita após a publicação.

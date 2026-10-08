@@ -21,28 +21,11 @@
   'https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', '1874149183549598');
   fbq('track', 'PageView');
-  // Conversão de Cadastro Concluído / Lead / Personalizada na Thank You Page
-  fbq('track', 'Lead');
-  fbq('track', 'CompleteRegistration');
-  fbq('trackCustom', 'CADASTRO-LP-CATIVE');
   </script>
   <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=1874149183549598&ev=PageView&noscript=1"
   /></noscript>
   <!-- End Meta Pixel Code -->
-
-  <!-- GTM dataLayer conversion push -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: 'cadastro_concluido',
-      event_category: 'lead',
-      conversion_name: 'CADASTRO-LP-CATIVE'
-    });
-    window.dataLayer.push({
-      event: 'CADASTRO-LP-CATIVE'
-    });
-  </script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
