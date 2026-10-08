@@ -1,0 +1,17 @@
+import { execFileSync, spawnSync } from 'node:child_process';
+import { readFile } from 'node:fs/promises';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
+const git=(...args)=>execFileSync('git',args,{cwd:root,encoding:'utf8'}).trim();
+const sha=git('rev-parse','HEAD');
+if(git('status','--porcelain','--untracked-files=normal')) throw Error('Deploy requer checkout limpo.');
+if(git('branch','--show-current') && git('branch','--show-current')!=='main') throw Error('Deploy requer main.');
+if(git('ls-remote','origin','refs/heads/main').split(/\s+/)[0]!==sha) throw Error('O GitHub main está mais atualizado.');
+const config=JSON.parse(await readFile(resolve(root,'wrangler.jsonc'),'utf8'));
+if(config.name!=='izi-lp-franquias'||config.account_id!=='e23efa36a1e09015eebb2b36bdfcf201'||config.routes.length!==1||config.routes[0].pattern!=='franquias.izigym.com.br'||!config.routes[0].custom_domain||config.d1_databases[0].database_id!=='4553bc65-eeb8-4404-aa57-e44692bcc9a3') throw Error('Escopo de publicação inesperado.');
+const approval=JSON.parse(await readFile(resolve(root,'data/release.json'),'utf8'));
+if(approval.conversion_event_confirmed!==true) throw Error('O evento de conversão precisa ser confirmado antes de publicar.');
+execFileSync('npm',['test'],{cwd:root,stdio:'inherit'});
+const result=spawnSync('npx',['--no-install','wrangler','deploy','--strict','--tag',`git-${sha}`,'--message',`jumper-web main ${sha} · IZI franquias`],{cwd:root,stdio:'inherit'});
+if(result.error)throw result.error;process.exitCode=result.status||0;

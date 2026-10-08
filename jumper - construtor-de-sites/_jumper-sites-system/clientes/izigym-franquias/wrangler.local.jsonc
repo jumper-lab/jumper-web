@@ -1,0 +1,8 @@
+{
+ "name":"izi-lp-franquias-local",
+ "main":"worker.mjs",
+ "compatibility_date":"2026-10-08",
+ "vars":{"ENVIRONMENT":"local"},
+ "assets":{"directory":"./public","binding":"ASSETS","run_worker_first":["/api/*"]},
+ "d1_databases":[{"binding":"LEADS_DB","database_name":"izi-lp-franquias-local","database_id":"00000000-0000-4000-8000-000000000000","migrations_dir":"migrations"}]
+}

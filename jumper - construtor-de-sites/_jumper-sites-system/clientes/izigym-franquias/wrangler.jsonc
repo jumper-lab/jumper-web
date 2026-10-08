@@ -1,0 +1,13 @@
+{
+ "$schema":"node_modules/wrangler/config-schema.json",
+ "name":"izi-lp-franquias",
+ "main":"worker.mjs",
+ "account_id":"e23efa36a1e09015eebb2b36bdfcf201",
+ "compatibility_date":"2026-10-08",
+ "workers_dev":false,
+ "preview_urls":false,
+ "assets":{"directory":"./public","binding":"ASSETS","run_worker_first":["/api/*"],"html_handling":"auto-trailing-slash"},
+ "routes":[{"pattern":"franquias.izigym.com.br","custom_domain":true}],
+ "d1_databases":[{"binding":"LEADS_DB","database_name":"izi-lp-franquias-leads","database_id":"4553bc65-eeb8-4404-aa57-e44692bcc9a3","migrations_dir":"migrations"}],
+ "ratelimits":[{"name":"LEAD_LIMITER","namespace_id":"348672411","simple":{"limit":20,"period":60}}]
+}
