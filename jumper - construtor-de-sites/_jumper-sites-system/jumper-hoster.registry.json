@@ -149,6 +149,14 @@
           "url": "https://site.jumper.dev.br/__jumper/izi-gym/lp-cerro-cora/leads-live"
         },
         {
+          "label": "LP Franquias - Oficial",
+          "url": "https://franquias.izigym.com.br/"
+        },
+        {
+          "label": "Cadastros da LP Franquias - Cloudflare D1",
+          "url": "https://dash.cloudflare.com/e23efa36a1e09015eebb2b36bdfcf201/workers/d1/databases/4553bc65-eeb8-4404-aa57-e44692bcc9a3/studio"
+        },
+        {
           "label": "Site Institucional - Desenvolvimento",
           "slug": "izigym"
         },
