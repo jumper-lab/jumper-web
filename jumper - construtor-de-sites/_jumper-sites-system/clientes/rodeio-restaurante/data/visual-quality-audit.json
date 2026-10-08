@@ -1544,5 +1544,76 @@
       "beforeAndAfter": true,
       "liveBoundariesPreserved": true
     }
+  },
+  "mobile_menu_full_height": {
+    "date": "2026-10-08",
+    "status": "published-passed",
+    "report": "data/visual-review/menu-mobile-viewport/altura-integral-local/report.json",
+    "checks": 27,
+    "safeAreaCheck": "Chrome CDP: top 59px / bottom 34px, close control outside notch",
+    "scrollRestoration": "data/visual-review/menu-mobile-viewport/altura-integral-local/scroll-restoration.json",
+    "entryBackdrop": "Opaque from first frame; menu content fade retained",
+    "limits": [
+      "Desktop engines with emulated mobile viewports, not a physical iPhone/Safari test",
+      "Native browser controls remain native; theme-color is a hint",
+      "Original CSS already used 100dvh. Revision reinforces viewport-fit, safe-area and solid canvas coverage."
+    ],
+    "references": [
+      "https://webkit.org/blog/7929/designing-websites-for-iphone-x/",
+      "https://bugs.webkit.org/show_bug.cgi?id=300965"
+    ],
+    "versionId": "8d53e244-b7b4-48ab-9c76-851ceae1368b",
+    "sourceCommit": "0d8243818722c2cee743cb2257bb5a3d6904b8ef",
+    "pullRequest": 99,
+    "publicBrowserReport": "data/visual-review/menu-mobile-viewport/altura-integral-publicada/report.json",
+    "publicChecks": 27,
+    "publishedPerformance": {
+      "date": "2026-10-08T05:31:40.798Z",
+      "base": "https://site.jumper.dev.br/rodeio",
+      "reports": [
+        {
+          "mode": "mobile",
+          "route": "/",
+          "categories": {
+            "performance": 96,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 69
+          },
+          "metrics": {
+            "first-contentful-paint": 1765.3894999999998,
+            "largest-contentful-paint": 2580.5555,
+            "total-blocking-time": 0,
+            "cumulative-layout-shift": 0,
+            "speed-index": 1765.3894999999998
+          }
+        },
+        {
+          "mode": "desktop",
+          "route": "/",
+          "categories": {
+            "performance": 100,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 69
+          },
+          "metrics": {
+            "first-contentful-paint": 498.60999999999996,
+            "largest-contentful-paint": 631.578,
+            "total-blocking-time": 0,
+            "cumulative-layout-shift": 0,
+            "speed-index": 498.60999999999996
+          }
+        }
+      ]
+    },
+    "assetReport": "data/qa/menu-altura-2026-10-08/published/assets-and-pages.json",
+    "preflight": {
+      "allowedSlug": "rodeio",
+      "otherAssetsVerified": 564,
+      "otherSites": 7,
+      "beforeAndAfter": true,
+      "liveBoundariesPreserved": true
+    }
   }
 }

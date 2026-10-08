@@ -1,0 +1,714 @@
+{
+  "date": "2026-10-08T05:29:50.965Z",
+  "base": "https://site.jumper.dev.br/rodeio",
+  "note": "Desktop browser engines with emulated viewports. Chrome CDP uses native touch input. Viewport resizing simulates changing browser content height; not physical Safari toolbar testing.",
+  "checks": [
+    {
+      "engine": "chromium",
+      "width": 320,
+      "height": 568,
+      "route": "/",
+      "entry": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 568,
+        "viewportWidth": 320,
+        "viewportHeight": 568,
+        "overflow": false,
+        "bodyLocked": true
+      },
+      "colors": {
+        "menu": "rgb(48, 35, 28)",
+        "canvas": "rgb(48, 35, 28)",
+        "body": "rgb(48, 35, 28)",
+        "theme": "rgb(48, 35, 28)",
+        "backdropAnimation": "none"
+      },
+      "safeInsets": null,
+      "viewportAndThemeRestored": true,
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 844,
+      "route": "/",
+      "entry": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "viewportWidth": 390,
+        "viewportHeight": 844,
+        "overflow": false,
+        "bodyLocked": true
+      },
+      "colors": {
+        "menu": "rgb(48, 35, 28)",
+        "canvas": "rgb(48, 35, 28)",
+        "body": "rgb(48, 35, 28)",
+        "theme": "rgb(48, 35, 28)",
+        "backdropAnimation": "none"
+      },
+      "safeInsets": {
+        "top": 59,
+        "bottom": 34,
+        "left": 0,
+        "right": 0
+      },
+      "viewportAndThemeRestored": true,
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 430,
+      "height": 932,
+      "route": "/",
+      "entry": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 932,
+        "viewportWidth": 430,
+        "viewportHeight": 932,
+        "overflow": false,
+        "bodyLocked": true
+      },
+      "colors": {
+        "menu": "rgb(48, 35, 28)",
+        "canvas": "rgb(48, 35, 28)",
+        "body": "rgb(48, 35, 28)",
+        "theme": "rgb(48, 35, 28)",
+        "backdropAnimation": "none"
+      },
+      "safeInsets": null,
+      "viewportAndThemeRestored": true,
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 768,
+      "height": 1024,
+      "route": "/",
+      "entry": {
+        "x": 0,
+        "y": 0,
+        "width": 768,
+        "height": 1024,
+        "viewportWidth": 768,
+        "viewportHeight": 1024,
+        "overflow": false,
+        "bodyLocked": true
+      },
+      "colors": {
+        "menu": "rgb(48, 35, 28)",
+        "canvas": "rgb(48, 35, 28)",
+        "body": "rgb(48, 35, 28)",
+        "theme": "rgb(48, 35, 28)",
+        "backdropAnimation": "none"
+      },
+      "safeInsets": null,
+      "viewportAndThemeRestored": true,
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 1024,
+      "height": 768,
+      "route": "/",
+      "entry": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 768,
+        "viewportWidth": 1024,
+        "viewportHeight": 768,
+        "overflow": false,
+        "bodyLocked": true
+      },
+      "colors": {
+        "menu": "rgb(48, 35, 28)",
+        "canvas": "rgb(48, 35, 28)",
+        "body": "rgb(48, 35, 28)",
+        "theme": "rgb(48, 35, 28)",
+        "backdropAnimation": "none"
+      },
+      "safeInsets": null,
+      "viewportAndThemeRestored": true,
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 844,
+      "height": 390,
+      "route": "/",
+      "entry": {
+        "x": 0,
+        "y": 0,
+        "width": 844,
+        "height": 390,
+        "viewportWidth": 844,
+        "viewportHeight": 390,
+        "overflow": false,
+        "bodyLocked": true
+      },
+      "colors": {
+        "menu": "rgb(48, 35, 28)",
+        "canvas": "rgb(48, 35, 28)",
+        "body": "rgb(48, 35, 28)",
+        "theme": "rgb(48, 35, 28)",
+        "backdropAnimation": "none"
+      },
+      "safeInsets": null,
+      "viewportAndThemeRestored": true,
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 1199,
+      "height": 600,
+      "route": "/",
+      "entry": {
+        "x": 0,
+        "y": 0,
+        "width": 1199,
+        "height": 600,
+        "viewportWidth": 1199,
+        "viewportHeight": 600,
+        "overflow": false,
+        "bodyLocked": true
+      },
+      "colors": {
+        "menu": "rgb(48, 35, 28)",
+        "canvas": "rgb(48, 35, 28)",
+        "body": "rgb(48, 35, 28)",
+        "theme": "rgb(48, 35, 28)",
+        "backdropAnimation": "none"
+      },
+      "safeInsets": null,
+      "viewportAndThemeRestored": true,
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 844,
+      "route": "/historia/",
+      "entry": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "viewportWidth": 390,
+        "viewportHeight": 844,
+        "overflow": false,
+        "bodyLocked": true
+      },
+      "colors": {
+        "menu": "rgb(48, 35, 28)",
+        "canvas": "rgb(48, 35, 28)",
+        "body": "rgb(48, 35, 28)",
+        "theme": "rgb(48, 35, 28)",
+        "backdropAnimation": "none"
+      },
+      "safeInsets": null,
+      "viewportAndThemeRestored": true,
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "width": 844,
+      "height": 390,
+      "route": "/restaurantes/jardins/",
+      "entry": {
+        "x": 0,
+        "y": 0,
+        "width": 844,
+        "height": 390,
+        "viewportWidth": 844,
+        "viewportHeight": 390,
+        "overflow": false,
+        "bodyLocked": true
+      },
+      "colors": {
+        "menu": "rgb(48, 35, 28)",
+        "canvas": "rgb(48, 35, 28)",
+        "body": "rgb(48, 35, 28)",
+        "theme": "rgb(48, 35, 28)",
+        "backdropAnimation": "none"
+      },
+      "safeInsets": null,
+      "viewportAndThemeRestored": true,
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 320,
+      "height": 568,
+      "route": "/",
+      "entry": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 568,
+        "viewportWidth": 320,
+        "viewportHeight": 568,
+        "overflow": false,
+        "bodyLocked": true
+      },
+      "colors": {
+        "menu": "rgb(48, 35, 28)",
+        "canvas": "rgb(48, 35, 28)",
+        "body": "rgb(48, 35, 28)",
+        "theme": "rgb(48, 35, 28)",
+        "backdropAnimation": "none"
+      },
+      "safeInsets": null,
+      "viewportAndThemeRestored": true,
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "height": 844,
+      "route": "/",
+      "entry": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "viewportWidth": 390,
+        "viewportHeight": 844,
+        "overflow": false,
+        "bodyLocked": true
+      },
+      "colors": {
+        "menu": "rgb(48, 35, 28)",
+        "canvas": "rgb(48, 35, 28)",
+        "body": "rgb(48, 35, 28)",
+        "theme": "rgb(48, 35, 28)",
+        "backdropAnimation": "none"
+      },
+      "safeInsets": null,
+      "viewportAndThemeRestored": true,
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 430,
+      "height": 932,
+      "route": "/",
+      "entry": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 932,
+        "viewportWidth": 430,
+        "viewportHeight": 932,
+        "overflow": false,
+        "bodyLocked": true
+      },
+      "colors": {
+        "menu": "rgb(48, 35, 28)",
+        "canvas": "rgb(48, 35, 28)",
+        "body": "rgb(48, 35, 28)",
+        "theme": "rgb(48, 35, 28)",
+        "backdropAnimation": "none"
+      },
+      "safeInsets": null,
+      "viewportAndThemeRestored": true,
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 768,
+      "height": 1024,
+      "route": "/",
+      "entry": {
+        "x": 0,
+        "y": 0,
+        "width": 768,
+        "height": 1024,
+        "viewportWidth": 768,
+        "viewportHeight": 1024,
+        "overflow": false,
+        "bodyLocked": true
+      },
+      "colors": {
+        "menu": "rgb(48, 35, 28)",
+        "canvas": "rgb(48, 35, 28)",
+        "body": "rgb(48, 35, 28)",
+        "theme": "rgb(48, 35, 28)",
+        "backdropAnimation": "none"
+      },
+      "safeInsets": null,
+      "viewportAndThemeRestored": true,
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 1024,
+      "height": 768,
+      "route": "/",
+      "entry": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 768,
+        "viewportWidth": 1024,
+        "viewportHeight": 768,
+        "overflow": false,
+        "bodyLocked": true
+      },
+      "colors": {
+        "menu": "rgb(48, 35, 28)",
+        "canvas": "rgb(48, 35, 28)",
+        "body": "rgb(48, 35, 28)",
+        "theme": "rgb(48, 35, 28)",
+        "backdropAnimation": "none"
+      },
+      "safeInsets": null,
+      "viewportAndThemeRestored": true,
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 844,
+      "height": 390,
+      "route": "/",
+      "entry": {
+        "x": 0,
+        "y": 0,
+        "width": 844,
+        "height": 390,
+        "viewportWidth": 844,
+        "viewportHeight": 390,
+        "overflow": false,
+        "bodyLocked": true
+      },
+      "colors": {
+        "menu": "rgb(48, 35, 28)",
+        "canvas": "rgb(48, 35, 28)",
+        "body": "rgb(48, 35, 28)",
+        "theme": "rgb(48, 35, 28)",
+        "backdropAnimation": "none"
+      },
+      "safeInsets": null,
+      "viewportAndThemeRestored": true,
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 1199,
+      "height": 600,
+      "route": "/",
+      "entry": {
+        "x": 0,
+        "y": 0,
+        "width": 1199,
+        "height": 600,
+        "viewportWidth": 1199,
+        "viewportHeight": 600,
+        "overflow": false,
+        "bodyLocked": true
+      },
+      "colors": {
+        "menu": "rgb(48, 35, 28)",
+        "canvas": "rgb(48, 35, 28)",
+        "body": "rgb(48, 35, 28)",
+        "theme": "rgb(48, 35, 28)",
+        "backdropAnimation": "none"
+      },
+      "safeInsets": null,
+      "viewportAndThemeRestored": true,
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "height": 844,
+      "route": "/historia/",
+      "entry": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "viewportWidth": 390,
+        "viewportHeight": 844,
+        "overflow": false,
+        "bodyLocked": true
+      },
+      "colors": {
+        "menu": "rgb(48, 35, 28)",
+        "canvas": "rgb(48, 35, 28)",
+        "body": "rgb(48, 35, 28)",
+        "theme": "rgb(48, 35, 28)",
+        "backdropAnimation": "none"
+      },
+      "safeInsets": null,
+      "viewportAndThemeRestored": true,
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "width": 844,
+      "height": 390,
+      "route": "/restaurantes/jardins/",
+      "entry": {
+        "x": 0,
+        "y": 0,
+        "width": 844,
+        "height": 390,
+        "viewportWidth": 844,
+        "viewportHeight": 390,
+        "overflow": false,
+        "bodyLocked": true
+      },
+      "colors": {
+        "menu": "rgb(48, 35, 28)",
+        "canvas": "rgb(48, 35, 28)",
+        "body": "rgb(48, 35, 28)",
+        "theme": "rgb(48, 35, 28)",
+        "backdropAnimation": "none"
+      },
+      "safeInsets": null,
+      "viewportAndThemeRestored": true,
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "height": 568,
+      "route": "/",
+      "entry": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 568,
+        "viewportWidth": 320,
+        "viewportHeight": 568,
+        "overflow": false,
+        "bodyLocked": true
+      },
+      "colors": {
+        "menu": "rgb(48, 35, 28)",
+        "canvas": "rgb(48, 35, 28)",
+        "body": "rgb(48, 35, 28)",
+        "theme": "rgb(48, 35, 28)",
+        "backdropAnimation": "none"
+      },
+      "safeInsets": null,
+      "viewportAndThemeRestored": true,
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 844,
+      "route": "/",
+      "entry": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "viewportWidth": 390,
+        "viewportHeight": 844,
+        "overflow": false,
+        "bodyLocked": true
+      },
+      "colors": {
+        "menu": "rgb(48, 35, 28)",
+        "canvas": "rgb(48, 35, 28)",
+        "body": "rgb(48, 35, 28)",
+        "theme": "rgb(48, 35, 28)",
+        "backdropAnimation": "none"
+      },
+      "safeInsets": null,
+      "viewportAndThemeRestored": true,
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 430,
+      "height": 932,
+      "route": "/",
+      "entry": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 932,
+        "viewportWidth": 430,
+        "viewportHeight": 932,
+        "overflow": false,
+        "bodyLocked": true
+      },
+      "colors": {
+        "menu": "rgb(48, 35, 28)",
+        "canvas": "rgb(48, 35, 28)",
+        "body": "rgb(48, 35, 28)",
+        "theme": "rgb(48, 35, 28)",
+        "backdropAnimation": "none"
+      },
+      "safeInsets": null,
+      "viewportAndThemeRestored": true,
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 768,
+      "height": 1024,
+      "route": "/",
+      "entry": {
+        "x": 0,
+        "y": 0,
+        "width": 768,
+        "height": 1024,
+        "viewportWidth": 768,
+        "viewportHeight": 1024,
+        "overflow": false,
+        "bodyLocked": true
+      },
+      "colors": {
+        "menu": "rgb(48, 35, 28)",
+        "canvas": "rgb(48, 35, 28)",
+        "body": "rgb(48, 35, 28)",
+        "theme": "rgb(48, 35, 28)",
+        "backdropAnimation": "none"
+      },
+      "safeInsets": null,
+      "viewportAndThemeRestored": true,
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 1024,
+      "height": 768,
+      "route": "/",
+      "entry": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 768,
+        "viewportWidth": 1024,
+        "viewportHeight": 768,
+        "overflow": false,
+        "bodyLocked": true
+      },
+      "colors": {
+        "menu": "rgb(48, 35, 28)",
+        "canvas": "rgb(48, 35, 28)",
+        "body": "rgb(48, 35, 28)",
+        "theme": "rgb(48, 35, 28)",
+        "backdropAnimation": "none"
+      },
+      "safeInsets": null,
+      "viewportAndThemeRestored": true,
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 844,
+      "height": 390,
+      "route": "/",
+      "entry": {
+        "x": 0,
+        "y": 0,
+        "width": 844,
+        "height": 390,
+        "viewportWidth": 844,
+        "viewportHeight": 390,
+        "overflow": false,
+        "bodyLocked": true
+      },
+      "colors": {
+        "menu": "rgb(48, 35, 28)",
+        "canvas": "rgb(48, 35, 28)",
+        "body": "rgb(48, 35, 28)",
+        "theme": "rgb(48, 35, 28)",
+        "backdropAnimation": "none"
+      },
+      "safeInsets": null,
+      "viewportAndThemeRestored": true,
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 1199,
+      "height": 600,
+      "route": "/",
+      "entry": {
+        "x": 0,
+        "y": 0,
+        "width": 1199,
+        "height": 600,
+        "viewportWidth": 1199,
+        "viewportHeight": 600,
+        "overflow": false,
+        "bodyLocked": true
+      },
+      "colors": {
+        "menu": "rgb(48, 35, 28)",
+        "canvas": "rgb(48, 35, 28)",
+        "body": "rgb(48, 35, 28)",
+        "theme": "rgb(48, 35, 28)",
+        "backdropAnimation": "none"
+      },
+      "safeInsets": null,
+      "viewportAndThemeRestored": true,
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 844,
+      "route": "/historia/",
+      "entry": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "viewportWidth": 390,
+        "viewportHeight": 844,
+        "overflow": false,
+        "bodyLocked": true
+      },
+      "colors": {
+        "menu": "rgb(48, 35, 28)",
+        "canvas": "rgb(48, 35, 28)",
+        "body": "rgb(48, 35, 28)",
+        "theme": "rgb(48, 35, 28)",
+        "backdropAnimation": "none"
+      },
+      "safeInsets": null,
+      "viewportAndThemeRestored": true,
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "width": 844,
+      "height": 390,
+      "route": "/restaurantes/jardins/",
+      "entry": {
+        "x": 0,
+        "y": 0,
+        "width": 844,
+        "height": 390,
+        "viewportWidth": 844,
+        "viewportHeight": 390,
+        "overflow": false,
+        "bodyLocked": true
+      },
+      "colors": {
+        "menu": "rgb(48, 35, 28)",
+        "canvas": "rgb(48, 35, 28)",
+        "body": "rgb(48, 35, 28)",
+        "theme": "rgb(48, 35, 28)",
+        "backdropAnimation": "none"
+      },
+      "safeInsets": null,
+      "viewportAndThemeRestored": true,
+      "passed": true
+    }
+  ]
+}

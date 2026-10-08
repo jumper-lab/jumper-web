@@ -166,7 +166,9 @@
   width: min(580px, 100%);
   max-width: 100%;
   height: 100vh;
+  min-height: 100vh;
   height: 100dvh;
+  min-height: 100dvh;
   max-height: none;
   border: 0;
   padding: 0 clamp(24px, 4.4vw, 56px) 28px;
@@ -335,8 +337,16 @@
     padding-bottom: max(28px, env(safe-area-inset-bottom));
   }
   .navigation-dialog .dialog-top {
+    min-height: calc(88px + env(safe-area-inset-top));
     padding-top: env(safe-area-inset-top);
   }
+  /* A solid canvas and backdrop also fill the browser's safe-area sampling. */
+  html:has(#navigation-dialog[open]),
+  body:has(#navigation-dialog[open]),
+  .navigation-dialog::backdrop {
+    background: var(--brown);
+  }
+  .navigation-dialog[open]::backdrop { animation: none; }
 }
 @media (max-width: 599px) {
   .site-header {
@@ -419,7 +429,7 @@
     padding-bottom: max(16px, env(safe-area-inset-bottom));
   }
   .navigation-dialog .dialog-top {
-    min-height: 64px;
+    min-height: calc(64px + env(safe-area-inset-top));
   }
   .navigation-dialog nav {
     margin-top: 8px;

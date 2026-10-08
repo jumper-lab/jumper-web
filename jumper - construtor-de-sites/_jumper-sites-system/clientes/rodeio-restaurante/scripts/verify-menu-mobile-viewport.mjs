@@ -19,11 +19,17 @@ for(const[engine,type]of Object.entries({chromium,firefox,webkit})){
  const cases=[[320,568,'/'],[390,844,'/'],[430,932,'/'],[768,1024,'/'],[1024,768,'/'],[844,390,'/'],[1199,600,'/'],[390,844,'/historia/'],[844,390,'/restaurantes/jardins/']];
  for(const[width,height,route]of cases){
   const context=await browser.newContext({viewport:{width,height},hasTouch:true,...(engine==='chromium'?{isMobile:true}:{}),reducedMotion:'no-preference'});
-  const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  const page=await context.newPage();let safeInsets=null;
+  if(engine==='chromium'&&width===390&&route==='/'){safeInsets={top:59,bottom:34,left:0,right:0};const cdp=await context.newCDPSession(page);await cdp.send('Emulation.setSafeAreaInsetsOverride',{insets:safeInsets});}
+  const errors=[];page.on('pageerror',e=>errors.push(e.message));
   assert.equal((await page.goto(base+route,{waitUntil:'networkidle'})).status(),200);
+  const viewportBefore=await page.locator('meta[name=viewport]').getAttribute('content'),themeBefore=await page.locator('meta[name=theme-color]').getAttribute('content');
   const menu=page.locator('#navigation-dialog');await page.locator('[data-open-menu]').tap();
+  assert.ok((await page.locator('meta[name=viewport]').getAttribute('content')).includes('viewport-fit=cover'));
+  const colors=await page.evaluate(()=>({menu:getComputedStyle(document.querySelector('#navigation-dialog')).backgroundColor,canvas:getComputedStyle(document.documentElement).backgroundColor,body:getComputedStyle(document.body).backgroundColor,theme:document.querySelector('meta[name=theme-color]').content,backdropAnimation:getComputedStyle(document.querySelector('#navigation-dialog'),'::backdrop').animationName}));assert.equal(colors.canvas,colors.menu);assert.equal(colors.body,colors.menu);assert.equal(colors.theme,colors.menu);assert.equal(colors.backdropAnimation,'none');
   // Full coverage must hold during the entrance, not only after its animation.
   const entry=await bounds(page);await page.waitForTimeout(320);await bounds(page);
+  if(safeInsets){const safe=await menu.evaluate(el=>({top:parseFloat(getComputedStyle(el.querySelector('.dialog-top')).paddingTop),bottom:parseFloat(getComputedStyle(el).paddingBottom),closeY:el.querySelector('[data-close-menu]').getBoundingClientRect().y}));assert.equal(safe.top,59);assert.ok(safe.bottom>=34&&safe.closeY>=59);}
   assert.equal(await menu.locator('nav a').count(),7);
   assert.equal(await page.locator('[data-open-menu]').getAttribute('aria-expanded'),'true');
   await menu.evaluate(el=>{el.scrollTop=el.scrollHeight;});
@@ -47,9 +53,10 @@ for(const[engine,type]of Object.entries({chromium,firefox,webkit})){
   await page.waitForFunction(()=>document.querySelector('[data-open-menu]').getAttribute('aria-expanded')==='false');
   assert.equal(await page.locator('[data-open-menu]').getAttribute('aria-expanded'),'false');assert.equal(await page.evaluate(()=>document.activeElement.matches('[data-open-menu]')),true);
   assert.notEqual(await page.evaluate(()=>getComputedStyle(document.body).overflow),'hidden');
+  assert.equal(await page.locator('meta[name=viewport]').getAttribute('content'),viewportBefore);assert.equal(await page.locator('meta[name=theme-color]').getAttribute('content'),themeBefore);
   await page.locator('[data-open-menu]').tap();await page.keyboard.press('Escape');assert.equal(await menu.evaluate(el=>el.open),false);
   await page.locator('[data-open-menu]').tap();await menu.getByRole('link',{name:/Cardápio/}).tap();await page.waitForURL('**/cardapio/');assert.equal(await menu.evaluate(el=>el.open),false);
-  assert.deepEqual(errors,[]);report.checks.push({engine,width,height,route,entry,passed:true});console.log(`${engine} ${width}x${height} ${route}: viewport, scroll, close, focus and links pass`);await context.close();
+  assert.deepEqual(errors,[]);report.checks.push({engine,width,height,route,entry,colors,safeInsets,viewportAndThemeRestored:true,passed:true});console.log(`${engine} ${width}x${height} ${route}: viewport, scroll, close, focus and links pass`);await context.close();
  }
  await browser.close();
 }
