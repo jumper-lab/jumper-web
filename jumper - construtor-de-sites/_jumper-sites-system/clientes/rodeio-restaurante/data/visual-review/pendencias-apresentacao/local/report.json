@@ -1,0 +1,871 @@
+{
+  "date": "2026-10-08T17:19:12.411Z",
+  "base": "http://127.0.0.1:4326/rodeio",
+  "note": "Desktop browser engines with emulated viewports. Physical iPhone/Safari not tested.",
+  "checks": [
+    {
+      "engine": "chromium",
+      "route": "/",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "headingClipped": false,
+      "glyphBounds": {
+        "left": 24,
+        "right": 274.734375,
+        "top": 344.3125,
+        "bottom": 504.5
+      },
+      "heading": {
+        "x": 24,
+        "y": 357.3125,
+        "right": 366,
+        "bottom": 492.59375
+      },
+      "cta": {
+        "x": 24,
+        "y": 522.59375,
+        "right": 205.4375,
+        "bottom": 575.59375
+      },
+      "overlap": false,
+      "background": "rgb(48, 35, 28)",
+      "ctaHref": "/rodeio/reservas/",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/",
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "headingClipped": false,
+      "glyphBounds": {
+        "left": 63.359375,
+        "right": 953.9375,
+        "top": 375.578125,
+        "bottom": 609.296875
+      },
+      "heading": {
+        "x": 63.359375,
+        "y": 401.578125,
+        "right": 953.9375,
+        "bottom": 585.015625
+      },
+      "cta": {
+        "x": 1178.171875,
+        "y": 518.015625,
+        "right": 1376.640625,
+        "bottom": 579.015625
+      },
+      "overlap": false,
+      "background": "rgb(48, 35, 28)",
+      "ctaHref": "/rodeio/reservas/",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/historia/",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "headingClipped": false,
+      "glyphBounds": {
+        "left": 24,
+        "right": 274.734375,
+        "top": 344.546875,
+        "bottom": 504.734375
+      },
+      "heading": {
+        "x": 24,
+        "y": 357.546875,
+        "right": 366,
+        "bottom": 492.828125
+      },
+      "cta": {
+        "x": 24,
+        "y": 522.828125,
+        "right": 205.4375,
+        "bottom": 575.828125
+      },
+      "overlap": false,
+      "background": "rgb(48, 35, 28)",
+      "ctaHref": "/rodeio/reservas/",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/historia/",
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "headingClipped": false,
+      "glyphBounds": {
+        "left": 63.359375,
+        "right": 953.9375,
+        "top": 375.203125,
+        "bottom": 608.921875
+      },
+      "heading": {
+        "x": 63.359375,
+        "y": 401.203125,
+        "right": 953.9375,
+        "bottom": 584.640625
+      },
+      "cta": {
+        "x": 1178.171875,
+        "y": 517.640625,
+        "right": 1376.640625,
+        "bottom": 578.640625
+      },
+      "overlap": false,
+      "background": "rgb(48, 35, 28)",
+      "ctaHref": "/rodeio/reservas/",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/cardapio/",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "headingClipped": false,
+      "glyphBounds": {
+        "left": 24,
+        "right": 274.734375,
+        "top": 344.15625,
+        "bottom": 504.34375
+      },
+      "heading": {
+        "x": 24,
+        "y": 357.15625,
+        "right": 366,
+        "bottom": 492.4375
+      },
+      "cta": {
+        "x": 24,
+        "y": 522.4375,
+        "right": 205.4375,
+        "bottom": 575.4375
+      },
+      "overlap": false,
+      "background": "rgb(48, 35, 28)",
+      "ctaHref": "/rodeio/reservas/",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/cardapio/",
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "headingClipped": false,
+      "glyphBounds": {
+        "left": 63.359375,
+        "right": 953.9375,
+        "top": 375.734375,
+        "bottom": 609.453125
+      },
+      "heading": {
+        "x": 63.359375,
+        "y": 401.734375,
+        "right": 953.9375,
+        "bottom": 585.171875
+      },
+      "cta": {
+        "x": 1178.171875,
+        "y": 518.171875,
+        "right": 1376.640625,
+        "bottom": 579.171875
+      },
+      "overlap": false,
+      "background": "rgb(48, 35, 28)",
+      "ctaHref": "/rodeio/reservas/",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/restaurantes/",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "headingClipped": false,
+      "glyphBounds": {
+        "left": 24,
+        "right": 274.734375,
+        "top": 344.78125,
+        "bottom": 504.96875
+      },
+      "heading": {
+        "x": 24,
+        "y": 357.78125,
+        "right": 366,
+        "bottom": 493.0625
+      },
+      "cta": {
+        "x": 24,
+        "y": 523.0625,
+        "right": 205.4375,
+        "bottom": 576.0625
+      },
+      "overlap": false,
+      "background": "rgb(48, 35, 28)",
+      "ctaHref": "/rodeio/reservas/",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/restaurantes/",
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "headingClipped": false,
+      "glyphBounds": {
+        "left": 63.359375,
+        "right": 953.9375,
+        "top": 375.734375,
+        "bottom": 609.453125
+      },
+      "heading": {
+        "x": 63.359375,
+        "y": 401.734375,
+        "right": 953.9375,
+        "bottom": 585.171875
+      },
+      "cta": {
+        "x": 1178.171875,
+        "y": 518.171875,
+        "right": 1376.640625,
+        "bottom": 579.171875
+      },
+      "overlap": false,
+      "background": "rgb(48, 35, 28)",
+      "ctaHref": "/rodeio/reservas/",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/restaurantes/jardins/",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "headingClipped": false,
+      "glyphBounds": {
+        "left": 24,
+        "right": 274.734375,
+        "top": 344.484375,
+        "bottom": 504.671875
+      },
+      "heading": {
+        "x": 24,
+        "y": 357.484375,
+        "right": 366,
+        "bottom": 492.765625
+      },
+      "cta": {
+        "x": 24,
+        "y": 522.765625,
+        "right": 205.34375,
+        "bottom": 575.765625
+      },
+      "overlap": false,
+      "background": "rgb(48, 35, 28)",
+      "ctaHref": "/rodeio/reservas/?unidade=jardins",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/restaurantes/jardins/",
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "headingClipped": false,
+      "glyphBounds": {
+        "left": 63.359375,
+        "right": 953.9375,
+        "top": 375.6875,
+        "bottom": 609.40625
+      },
+      "heading": {
+        "x": 63.359375,
+        "y": 401.6875,
+        "right": 953.9375,
+        "bottom": 585.125
+      },
+      "cta": {
+        "x": 1178.265625,
+        "y": 518.125,
+        "right": 1376.640625,
+        "bottom": 579.125
+      },
+      "overlap": false,
+      "background": "rgb(48, 35, 28)",
+      "ctaHref": "/rodeio/reservas/?unidade=jardins",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/restaurantes/iguatemi/",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "headingClipped": false,
+      "glyphBounds": {
+        "left": 24,
+        "right": 274.734375,
+        "top": 344.484375,
+        "bottom": 504.671875
+      },
+      "heading": {
+        "x": 24,
+        "y": 357.484375,
+        "right": 366,
+        "bottom": 492.765625
+      },
+      "cta": {
+        "x": 24,
+        "y": 522.765625,
+        "right": 213.578125,
+        "bottom": 575.765625
+      },
+      "overlap": false,
+      "background": "rgb(48, 35, 28)",
+      "ctaHref": "/rodeio/reservas/?unidade=iguatemi",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/restaurantes/iguatemi/",
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "headingClipped": false,
+      "glyphBounds": {
+        "left": 63.359375,
+        "right": 953.9375,
+        "top": 375.0625,
+        "bottom": 608.78125
+      },
+      "heading": {
+        "x": 63.359375,
+        "y": 401.0625,
+        "right": 953.9375,
+        "bottom": 584.5
+      },
+      "cta": {
+        "x": 1169.40625,
+        "y": 517.5,
+        "right": 1376.640625,
+        "bottom": 578.5
+      },
+      "overlap": false,
+      "background": "rgb(48, 35, 28)",
+      "ctaHref": "/rodeio/reservas/?unidade=iguatemi",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/eventos/",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "headingClipped": false,
+      "glyphBounds": {
+        "left": 24,
+        "right": 274.734375,
+        "top": 344.3125,
+        "bottom": 504.5
+      },
+      "heading": {
+        "x": 24,
+        "y": 357.3125,
+        "right": 366,
+        "bottom": 492.59375
+      },
+      "cta": {
+        "x": 24,
+        "y": 522.59375,
+        "right": 205.4375,
+        "bottom": 575.59375
+      },
+      "overlap": false,
+      "background": "rgb(48, 35, 28)",
+      "ctaHref": "/rodeio/reservas/",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/eventos/",
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "headingClipped": false,
+      "glyphBounds": {
+        "left": 63.359375,
+        "right": 953.9375,
+        "top": 375.4375,
+        "bottom": 609.15625
+      },
+      "heading": {
+        "x": 63.359375,
+        "y": 401.4375,
+        "right": 953.9375,
+        "bottom": 584.875
+      },
+      "cta": {
+        "x": 1178.171875,
+        "y": 517.875,
+        "right": 1376.640625,
+        "bottom": 578.875
+      },
+      "overlap": false,
+      "background": "rgb(48, 35, 28)",
+      "ctaHref": "/rodeio/reservas/",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/reservas/",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "headingClipped": false,
+      "glyphBounds": {
+        "left": 24,
+        "right": 274.734375,
+        "top": 344.296875,
+        "bottom": 504.484375
+      },
+      "heading": {
+        "x": 24,
+        "y": 357.296875,
+        "right": 366,
+        "bottom": 492.578125
+      },
+      "cta": {
+        "x": 24,
+        "y": 522.578125,
+        "right": 202.375,
+        "bottom": 575.578125
+      },
+      "overlap": false,
+      "background": "rgb(48, 35, 28)",
+      "ctaHref": "#escolher-unidade",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/reservas/",
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "headingClipped": false,
+      "glyphBounds": {
+        "left": 63.359375,
+        "right": 953.9375,
+        "top": 375.453125,
+        "bottom": 609.171875
+      },
+      "heading": {
+        "x": 63.359375,
+        "y": 401.453125,
+        "right": 953.9375,
+        "bottom": 584.890625
+      },
+      "cta": {
+        "x": 1181.46875,
+        "y": 517.890625,
+        "right": 1376.640625,
+        "bottom": 578.890625
+      },
+      "overlap": false,
+      "background": "rgb(48, 35, 28)",
+      "ctaHref": "#escolher-unidade",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/privacidade/",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "headingClipped": false,
+      "glyphBounds": {
+        "left": 24,
+        "right": 274.734375,
+        "top": 344.03125,
+        "bottom": 504.21875
+      },
+      "heading": {
+        "x": 24,
+        "y": 357.03125,
+        "right": 366,
+        "bottom": 492.3125
+      },
+      "cta": {
+        "x": 24,
+        "y": 522.3125,
+        "right": 205.4375,
+        "bottom": 575.3125
+      },
+      "overlap": false,
+      "background": "rgb(48, 35, 28)",
+      "ctaHref": "/rodeio/reservas/",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/privacidade/",
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "headingClipped": false,
+      "glyphBounds": {
+        "left": 63.359375,
+        "right": 953.9375,
+        "top": 375.59375,
+        "bottom": 609.3125
+      },
+      "heading": {
+        "x": 63.359375,
+        "y": 401.59375,
+        "right": 953.9375,
+        "bottom": 585.03125
+      },
+      "cta": {
+        "x": 1178.171875,
+        "y": 518.03125,
+        "right": 1376.640625,
+        "bottom": 579.03125
+      },
+      "overlap": false,
+      "background": "rgb(48, 35, 28)",
+      "ctaHref": "/rodeio/reservas/",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/",
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "headingClipped": false,
+      "glyphBounds": {
+        "left": 24,
+        "right": 274.625,
+        "top": 206.875,
+        "bottom": 367.03125
+      },
+      "heading": {
+        "x": 24,
+        "y": 219.875,
+        "right": 296,
+        "bottom": 355.109375
+      },
+      "cta": {
+        "x": 24,
+        "y": 385.109375,
+        "right": 205.4375,
+        "bottom": 438.109375
+      },
+      "overlap": false,
+      "background": "rgb(48, 35, 28)",
+      "ctaHref": "/rodeio/reservas/",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/",
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "headingClipped": false,
+      "glyphBounds": {
+        "left": 33.78125,
+        "right": 328,
+        "top": 459.6875,
+        "bottom": 648.5
+      },
+      "heading": {
+        "x": 33.78125,
+        "y": 475.6875,
+        "right": 537.8125,
+        "bottom": 634.40625
+      },
+      "cta": {
+        "x": 569.8125,
+        "y": 567.40625,
+        "right": 734.21875,
+        "bottom": 628.40625
+      },
+      "overlap": false,
+      "background": "rgb(48, 35, 28)",
+      "ctaHref": "/rodeio/reservas/",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/",
+      "width": 1024,
+      "height": 768,
+      "overflow": false,
+      "headingClipped": false,
+      "glyphBounds": {
+        "left": 45.046875,
+        "right": 678.34375,
+        "top": 334.359375,
+        "bottom": 501.578125
+      },
+      "heading": {
+        "x": 45.046875,
+        "y": 353.359375,
+        "right": 678.34375,
+        "bottom": 483.796875
+      },
+      "cta": {
+        "x": 780.484375,
+        "y": 416.796875,
+        "right": 978.953125,
+        "bottom": 477.796875
+      },
+      "overlap": false,
+      "background": "rgb(48, 35, 28)",
+      "ctaHref": "/rodeio/reservas/",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/",
+      "width": 1200,
+      "height": 900,
+      "overflow": false,
+      "headingClipped": false,
+      "glyphBounds": {
+        "left": 52.796875,
+        "right": 794.9375,
+        "top": 394.296875,
+        "bottom": 589.734375
+      },
+      "heading": {
+        "x": 52.796875,
+        "y": 416.296875,
+        "right": 794.9375,
+        "bottom": 569.171875
+      },
+      "cta": {
+        "x": 948.734375,
+        "y": 502.171875,
+        "right": 1147.203125,
+        "bottom": 563.171875
+      },
+      "overlap": false,
+      "background": "rgb(48, 35, 28)",
+      "ctaHref": "/rodeio/reservas/",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "route": "/",
+      "width": 1920,
+      "height": 1080,
+      "overflow": false,
+      "headingClipped": false,
+      "glyphBounds": {
+        "left": 120,
+        "right": 1109.53125,
+        "top": 452.15625,
+        "bottom": 713.0625
+      },
+      "heading": {
+        "x": 120,
+        "y": 481.15625,
+        "right": 1109.53125,
+        "bottom": 684.96875
+      },
+      "cta": {
+        "x": 1601.53125,
+        "y": 617.96875,
+        "right": 1800,
+        "bottom": 678.96875
+      },
+      "overlap": false,
+      "background": "rgb(48, 35, 28)",
+      "ctaHref": "/rodeio/reservas/",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "route": "/",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "headingClipped": false,
+      "glyphBounds": {
+        "left": 24,
+        "right": 274.78334045410156,
+        "top": 344.5333251953125,
+        "bottom": 505.7333221435547
+      },
+      "heading": {
+        "x": 24,
+        "y": 357.48333740234375,
+        "right": 366,
+        "bottom": 492.78334045410156
+      },
+      "cta": {
+        "x": 24,
+        "y": 522.7833251953125,
+        "right": 205.43333435058594,
+        "bottom": 575.7833251953125
+      },
+      "overlap": false,
+      "background": "rgb(48, 35, 28)",
+      "ctaHref": "/rodeio/reservas/",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "route": "/",
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "headingClipped": false,
+      "glyphBounds": {
+        "left": 63.350006103515625,
+        "right": 953.8000183105469,
+        "top": 374.6333312988281,
+        "bottom": 610.3666687011719
+      },
+      "heading": {
+        "x": 63.350006103515625,
+        "y": 400.76666259765625,
+        "right": 953.8000183105469,
+        "bottom": 584.2333374023438
+      },
+      "cta": {
+        "x": 1178.199951171875,
+        "y": 517.2333374023438,
+        "right": 1376.6499481201172,
+        "bottom": 578.2333374023438
+      },
+      "overlap": false,
+      "background": "rgb(48, 35, 28)",
+      "ctaHref": "/rodeio/reservas/",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "headingClipped": false,
+      "glyphBounds": {
+        "left": 24,
+        "right": 274.72735595703125,
+        "top": 344.75341796875,
+        "bottom": 505.12158203125
+      },
+      "heading": {
+        "x": 24,
+        "y": 357.296875,
+        "right": 366,
+        "bottom": 492.5625
+      },
+      "cta": {
+        "x": 24,
+        "y": 522.5625,
+        "right": 205.4375,
+        "bottom": 575.5625
+      },
+      "overlap": false,
+      "background": "rgb(48, 35, 28)",
+      "ctaHref": "/rodeio/reservas/",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "route": "/",
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "headingClipped": false,
+      "glyphBounds": {
+        "left": 63.359375,
+        "right": 953.9243774414062,
+        "top": 376.03662109375,
+        "bottom": 610.49462890625
+      },
+      "heading": {
+        "x": 63.359375,
+        "y": 401.546875,
+        "right": 953.9375,
+        "bottom": 584.984375
+      },
+      "cta": {
+        "x": 1178.171875,
+        "y": 517.984375,
+        "right": 1376.640625,
+        "bottom": 578.984375
+      },
+      "overlap": false,
+      "background": "rgb(48, 35, 28)",
+      "ctaHref": "/rodeio/reservas/",
+      "violations": [],
+      "errors": [],
+      "passed": true
+    }
+  ]
+}

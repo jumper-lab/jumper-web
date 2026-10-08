@@ -13,24 +13,24 @@
       "differentiator": "Uma tradição construída ao longo de mais de seis décadas, que une carnes, cozinha e acolhimento em uma experiência contemporânea.",
       "must_have_message": "O Rodeio mantém sua essência enquanto acompanha o tempo. Uma história que começou em 1958 e segue presente em cada detalhe.",
       "client_voice_quote": "“É aquele lugar que faz parte das minhas histórias e continua sendo uma escolha especial.”",
-      "story": "Em 1958, o Rodeio começava sua história na Rua Haddock Lobo, quando os Jardins ainda davam seus primeiros passos como um dos endereços mais importantes de São Paulo.\nUm ano depois, a família Macedo assumiu o restaurante. Roberto Macedo, então jovem administrador, passou a conduzir a casa e, ao longo dos anos, transformou sua identidade. O Rodeio cresceu, ganhou novos serviços, incorporou vinhos e carnes especiais e ajudou a criar uma nova maneira de viver uma churrascaria em São Paulo.\nFoi também nessa trajetória que nasceram alguns dos grandes clássicos da casa, como a picanha fatiada e o arroz Rodeio, o tradicional Biro-Biro.\nA história seguiu dentro da família. Em 1986, Silvia Macedo começou a trabalhar ao lado do pai e, com o tempo, tornou-se parte fundamental da condução do restaurante.\nQuase sete décadas depois, o Rodeio continua na Haddock Lobo. Em 2026, a história ganha um novo endereço, a poucos metros de onde tudo começou.\n"
+      "story": "Em 1958, o Rodeio começava sua história na Rua Haddock Lobo, quando os Jardins ainda davam seus primeiros passos como um dos endereços mais importantes de São Paulo.\n\nUm ano depois, a família Macedo assumiu o restaurante. Roberto Macedo, então jovem administrador, passou a conduzir a unidade e, ao longo dos anos, transformou sua identidade. O Rodeio cresceu, ganhou novos serviços, incorporou vinhos e carnes especiais e ajudou a criar uma nova maneira de viver uma churrascaria em São Paulo.\n\nFoi também nessa trajetória que nasceram alguns dos grandes clássicos do Rodeio, como a picanha fatiada e o Arroz Rodeio, o tradicional Biro-Biro.\n\nA história seguiu dentro da família. Em 1986, Silvia Macedo começou a trabalhar ao lado do pai e, com o tempo, tornou-se parte fundamental da condução do restaurante.\n\nEm 2001, o Rodeio recebeu uma certificação de qualidade, reforçando o cuidado que sempre esteve presente em sua trajetória.\n\nDez anos depois, em 2011, a história ganhou um novo endereço com a inauguração da unidade no Shopping Iguatemi, levando a tradição da churrascaria para um dos principais polos de São Paulo.\n\nQuase sete décadas depois, o Rodeio continua na Haddock Lobo. Em 2026, a história ganha um novo endereço, a poucos metros de onde tudo começou."
     },
     "voice": "Casual e amistoso, adulto, sem superlativos.",
     "colors_requested": "Laranja do logo, branco e marrom",
     "forbidden": "“O melhor”, “a melhor”, “o melhor restaurante”\n“Excelência”, “excelência gastronômica”\nSuperlativos e promessas absolutas\nLinguagem exagerada ou grandiosa demais\nComunicação focada em preço, desconto ou promoção como principal argumento\nComparações diretas com concorrentes\nPromessas que não possam ser comprovadas",
     "source": "briefing/briefing-payload.json"
   },
-  "visual_thesis": "A fachada contemporânea da Haddock Lobo abre uma casa de memória: fotografia de ponta a ponta, títulos de cardápio impresso e capítulos com escalas próprias aproximam o Rodeio de 1958 da mesa de hoje.",
+  "visual_thesis": "A sequência de fotografias reais de gastronomia e ambientes abre a home; títulos serifados e capítulos com escalas próprias aproximam a história de 1958 da experiência atual nas duas casas.",
   "signature_element": {
     "name": "A casa e a mesa",
     "appearances": [
-      "Fachada imersiva na abertura",
+      "Slideshow imersivo de seis fotografias reais na abertura",
       "Filetes e legendas de acervo no capítulo da história",
       "Numeração e identificação editorial das duas casas",
       "Marca central no cabeçalho e convite de fechamento"
     ]
   },
-  "wow_moment": "A fachada real ocupa toda a abertura da home, enquanto a mensagem em creme e o cabeçalho com marca central criam presença imediata; a sequência passa do serviço à mesa à gastronomia em marrom profundo.",
+  "wow_moment": "O slideshow alterna seis temas do acervo do cliente, com transição elegante, mensagem em creme e marca central no cabeçalho; a sequência conecta gastronomia, ambientes e história.",
   "repertoire_used": [
     {
       "source": "01-1-padaria-artesanal-warm.json",
@@ -129,7 +129,7 @@
     "message": "O clássico que se renova.",
     "primary_cta": "Reservar uma mesa",
     "secondary_cta": "Conheça nossos cardápios",
-    "crop": "Home: recortes de entrega centralizados preservam a fachada e o letreiro no portrait; CSS cover se adapta à proporção exata. Desktop mantém a foto inteira com cobertura. A posição e a nitidez são conferidas em screenshots reais.",
+    "crop": "Recortes AVIF de entrega adequados a celular, tablet e desktop, preservando proporções; CSS cover adapta o enquadramento à área útil. Home mantém seis fotografias na ordem aprovada; Cardápio usa o enquadramento focado na carne já validado. Não esticar, inclinar ou distorcer as fotografias.",
     "viewport_coverage": {
       "mobile": "100vw de largura útil × 100vh, incluindo cabeçalho fixo; sem largura máxima.",
       "tablet": "100vw de largura útil × 100vh, incluindo cabeçalho fixo; sem largura máxima.",
@@ -374,5 +374,11 @@
     "safeAreas": "Sticky close header includes safe-area-inset-top; horizontal/bottom padding preserves safe insets",
     "restore": "Exact original viewport and theme-color plus page position/focus restored on close",
     "browserNote": "Browser chrome is native; theme-color is a hint, not a replacement for browser controls"
+  },
+  "footer_invitation": {
+    "title": "Seu próximo encontro",
+    "accent": "é no Rodeio.",
+    "source": "Pedido de substituir a frase do rodapé e finalizar pendências de apresentação em 08/10/2026.",
+    "direction": "Preservar serifas Bodoni, segunda linha em itálico, fundo marrom e CTA de reserva; permitir quebra natural sem clipping em telas estreitas."
   }
 }

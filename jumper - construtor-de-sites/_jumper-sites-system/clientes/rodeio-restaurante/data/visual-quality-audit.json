@@ -39,9 +39,9 @@
     "photo": "BMM_35.jpg da pasta Novo Rodeio"
   },
   "pending": [
-    "Fotos de eventos de cada unidade; pasta recebida vazia.",
-    "Novo cardápio físico.",
-    "Confirmação de horários por unidade e telefone individual do Iguatemi."
+    "Registro identificado de evento da unidade Jardins. A foto de evento do Iguatemi foi recebida e aplicada.",
+    "Novo material do cardápio físico; acesso ao cardápio digital indicado pela cliente já implementado.",
+    "Confirmação comercial dos horários por unidade e do telefone individual do Iguatemi; preservar os dados fornecidos no briefing até a confirmação."
   ],
   "limits": [
     "Prévia permanece noindex; não afirmar SEO todo verde.",
@@ -1615,5 +1615,26 @@
       "beforeAndAfter": true,
       "liveBoundariesPreserved": true
     }
+  },
+  "presentation_pending_review": {
+    "date": "2026-10-08",
+    "footer": {
+      "title": "Seu próximo encontro",
+      "accent": "é no Rodeio."
+    },
+    "historySourceAligned": true,
+    "materialsReview": "O catálogo do ZIP de 07/10 contém somente um arquivo no tema EVENTOS: RODEIO IGUATEMI - EVENTO.jpg. Não atribuir outras fotos a eventos dos Jardins.",
+    "materialsCatalog": "briefing/entrada/acervo-atualizado-2026-10-07/catalogo.json",
+    "status": "local_verified_ready_for_development",
+    "localBrowserReport": "data/visual-review/pendencias-apresentacao/local/report.json",
+    "localBrowserChecks": 27,
+    "astroCheck": {
+      "files": 35,
+      "errors": 0,
+      "warnings": 0,
+      "hints": 0
+    },
+    "workerTests": 22,
+    "assetsInventoryChanged": false
   }
 }
