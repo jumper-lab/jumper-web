@@ -1,6 +1,7 @@
 ---
 import SeoHead from '../components/SeoHead.astro';
 import MenuDialog from '../components/MenuDialog.astro';
+import EventsDialog from '../components/EventsDialog.astro';
 import Arrow from '../components/Arrow.astro';
 import content from '../../data/content.json';
 import '../styles/global.css';
@@ -67,6 +68,7 @@ const restaurant = currentUnit ? {
 </footer>
 <dialog class="gallery-dialog" id="gallery-dialog" aria-label="Fotografia do Rodeio"><button class="close-dialog" data-close-gallery>Fechar <span aria-hidden="true">×</span></button><p id="gallery-status" role="status"></p><div class="gallery-stage" aria-busy="false"><img hidden id="gallery-image" width="1200" height="630" alt=""/></div><p id="gallery-caption"></p><div class="gallery-controls"><button type="button" data-gallery-prev aria-label="Fotografia anterior">← Anterior</button><span id="gallery-count" aria-live="polite"></span><button type="button" data-gallery-next aria-label="Próxima fotografia">Próxima →</button></div><a class="text-link" id="gallery-original" href="/">Abrir foto em página inteira</a></dialog>
 <MenuDialog/>
+<EventsDialog/>
 <noscript><style>.menu-toggle,[data-map],#load-reservation,.unit-options{display:none!important}</style></noscript>
 <script src="../scripts/interactions.ts"></script>
 </body></html>

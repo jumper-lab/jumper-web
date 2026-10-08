@@ -262,5 +262,113 @@
         "seo": 69
       }
     }
+  },
+  "events_popup_review": {
+    "date": "2026-10-08",
+    "status": "local-passed",
+    "browserReport": "data/visual-review/eventos-popup/local/report.json",
+    "checks": [
+      {
+        "engine": "chromium",
+        "width": 390,
+        "height": 844,
+        "bounds": {
+          "x": 8,
+          "y": 8,
+          "width": 374,
+          "height": 828,
+          "locked": true
+        },
+        "officialFormLoaded": true,
+        "allThreeButtons": true,
+        "menuRegressionPassed": true,
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "width": 1440,
+        "height": 900,
+        "bounds": {
+          "x": 200,
+          "y": 63,
+          "width": 1040,
+          "height": 774,
+          "locked": true
+        },
+        "officialFormLoaded": true,
+        "allThreeButtons": true,
+        "menuRegressionPassed": true,
+        "passed": true
+      },
+      {
+        "engine": "firefox",
+        "width": 390,
+        "height": 844,
+        "bounds": {
+          "x": 8,
+          "y": 8,
+          "width": 374,
+          "height": 828,
+          "locked": true
+        },
+        "officialFormLoaded": true,
+        "allThreeButtons": true,
+        "menuRegressionPassed": true,
+        "passed": true
+      },
+      {
+        "engine": "firefox",
+        "width": 1440,
+        "height": 900,
+        "bounds": {
+          "x": 200,
+          "y": 63,
+          "width": 1040,
+          "height": 774,
+          "locked": true
+        },
+        "officialFormLoaded": true,
+        "allThreeButtons": true,
+        "menuRegressionPassed": true,
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "width": 390,
+        "height": 844,
+        "bounds": {
+          "x": 8,
+          "y": 8,
+          "width": 374,
+          "height": 828,
+          "locked": true
+        },
+        "officialFormLoaded": true,
+        "allThreeButtons": true,
+        "menuRegressionPassed": true,
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "width": 1440,
+        "height": 900,
+        "bounds": {
+          "x": 200,
+          "y": 63,
+          "width": 1040,
+          "height": 774,
+          "locked": true
+        },
+        "officialFormLoaded": true,
+        "allThreeButtons": true,
+        "menuRegressionPassed": true,
+        "passed": true
+      }
+    ],
+    "limits": [
+      "Desktop engines with mobile viewports; not physical-device testing",
+      "Official form loaded and fields inspected; no form submitted",
+      "Remote iframe excluded from host Axe audit"
+    ]
   }
 }

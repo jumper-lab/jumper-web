@@ -55,3 +55,6 @@ Preservar foto 354, overlay, textos e animação aprovados. Nos derivados deskto
 
 ### Retorno da linha do tempo — 07/10/2026
 Restaurar a composição vertical anterior da História: título à esquerda, seis anos grandes em terracota e títulos/textos ao lado, separados por linhas finas. Manter literalmente os sete parágrafos aprovados na ordem original: 1958; 1959 com o parágrafo dos clássicos em seguida; 1986; 2001; 2011; 2026. Remover a narrativa corrida seguida pela grade resumida de marcos. Mobile mantém sequência cronológica e títulos legíveis. Preservar hero e acervo fotográfico.
+
+### Eventos em popup — 08/10/2026
+Abrir todos os acessos a `https://rodeiosp.com.br/eventos/` em lightbox responsivo, no mesmo padrão do cardápio digital. Manter a navegação interna Eventos, o formulário oficial, URL de fallback, carregamento após clique e controles acessíveis de fechamento.
