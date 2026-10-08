@@ -10,5 +10,7 @@
 - Com o Worker local parado, envio não navegou, mostrou mensagem e permitiu nova tentativa. A tentativa subsequente após reinício foi gravada.
 - 8 testes automatizados passaram (assets + campos + escrita + idempotência + conflitos + origem + tamanho + rate limit + falha D1).
 - Pacote Wrangler dry-run validado para um único domínio e um único banco novos.
+- Os quatro leads fictícios locais foram removidos por UUID depois de guardar evidência; banco local vazio.
+- D1 remoto consultado com sucesso: tabela criada e zero registros. Wrangler fixado em 4.144.0, pois 4.148.0 retornou erro de autorização na consulta enquanto 4.144.0 e API direta confirmaram acesso.
 
 Ainda sem publicação oficial/testes no D1 remoto: confirmação do evento exigida pela tarefa está pendente.
