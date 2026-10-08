@@ -1,11 +1,31 @@
 export {};
 const menu=document.querySelector<HTMLDialogElement>('#navigation-dialog');
 const menuOpener=document.querySelector<HTMLButtonElement>('[data-open-menu]');
-function closeMenu(){menu?.close();menuOpener?.focus();}
-menuOpener?.addEventListener('click',()=>{menu?.showModal();menuOpener.setAttribute('aria-expanded','true');});
+const viewportMeta=document.querySelector<HTMLMetaElement>('meta[name="viewport"]');
+const themeMeta=document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
+let menuViewportContent:string|null=null;
+let menuThemeContent:string|null=null;
+let menuPageScroll={x:0,y:0};
+function closeMenu(){menu?.close();}
+menuOpener?.addEventListener('click',()=>{
+ if(!menu||menu.open)return;
+ menuPageScroll={x:window.scrollX,y:window.scrollY};
+ menuViewportContent=viewportMeta?.getAttribute('content')??null;
+ menuThemeContent=themeMeta?.getAttribute('content')??null;
+ // Let only the open menu extend beneath mobile browser controls and the notch.
+ if(viewportMeta)viewportMeta.content=(menuViewportContent||'width=device-width, initial-scale=1').replace(/(?:^|,)\s*viewport-fit\s*=\s*[^,]+/gi,'')+', viewport-fit=cover';
+ if(themeMeta)themeMeta.content=getComputedStyle(menu).backgroundColor;
+ menu.showModal();menuOpener.setAttribute('aria-expanded','true');
+});
 document.querySelector('[data-close-menu]')?.addEventListener('click',closeMenu);
 menu?.addEventListener('click',e=>{if(e.target===menu)closeMenu();});
-menu?.addEventListener('close',()=>{menuOpener?.setAttribute('aria-expanded','false');menuOpener?.focus();});
+menu?.addEventListener('close',()=>{
+ if(viewportMeta&&menuViewportContent!==null)viewportMeta.content=menuViewportContent;
+ if(themeMeta&&menuThemeContent!==null)themeMeta.content=menuThemeContent;
+ menuOpener?.setAttribute('aria-expanded','false');
+ window.scrollTo({left:menuPageScroll.x,top:menuPageScroll.y,behavior:'instant'});
+ menuOpener?.focus({preventScroll:true});
+});
 menu?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.close()));
 const gallery=document.querySelector<HTMLDialogElement>('#gallery-dialog');
 let galleryTrigger:HTMLElement|null=null;

@@ -1544,5 +1544,23 @@
       "beforeAndAfter": true,
       "liveBoundariesPreserved": true
     }
+  },
+  "mobile_menu_full_height": {
+    "date": "2026-10-08",
+    "status": "local-passed",
+    "report": "data/visual-review/menu-mobile-viewport/altura-integral-local/report.json",
+    "checks": 27,
+    "safeAreaCheck": "Chrome CDP: top 59px / bottom 34px, close control outside notch",
+    "scrollRestoration": "data/visual-review/menu-mobile-viewport/altura-integral-local/scroll-restoration.json",
+    "entryBackdrop": "Opaque from first frame; menu content fade retained",
+    "limits": [
+      "Desktop engines with emulated mobile viewports, not a physical iPhone/Safari test",
+      "Native browser controls remain native; theme-color is a hint",
+      "Original CSS already used 100dvh. Revision reinforces viewport-fit, safe-area and solid canvas coverage."
+    ],
+    "references": [
+      "https://webkit.org/blog/7929/designing-websites-for-iphone-x/",
+      "https://bugs.webkit.org/show_bug.cgi?id=300965"
+    ]
   }
 }

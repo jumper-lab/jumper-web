@@ -141,7 +141,7 @@
   },
   "navigation_direction": {
     "desktop": "Logo central; Nossa história/Cardápio à esquerda e Restaurantes/Eventos à direita, com botão de reserva.",
-    "mobile": "Sete destinos explícitos na ordem do PDF, diálogo acessível.",
+    "mobile": "Sete destinos explícitos; menu acessível ocupa a altura integral, com viewport-fit=cover somente quando aberto e fundo marrom contínuo nas áreas de segurança.",
     "scroll": "Cabeçalho fixo:96px a partir1200px,80px abaixo1200px e64px em alturas até550px; sem blur. Compensação de âncoras usa altura real.",
     "current": "aria-current e sublinhado no link atual"
   },
@@ -365,5 +365,14 @@
     "reservation": "Existing reservation button",
     "mobile": "Full-screen menu retains direct links to both units",
     "restaurantsActive": "Restaurants highlighted on listing and either unit page"
+  },
+  "mobile_menu_full_height": {
+    "date": "2026-10-08",
+    "height": "100vh fallback / 100dvh dynamic with matching minimum height",
+    "coverage": "Open menu enables viewport-fit=cover temporarily and fills canvas/backdrop with brown",
+    "entry": "Opaque stationary backdrop; existing menu-content fade retained",
+    "safeAreas": "Sticky close header includes safe-area-inset-top; horizontal/bottom padding preserves safe insets",
+    "restore": "Exact original viewport and theme-color plus page position/focus restored on close",
+    "browserNote": "Browser chrome is native; theme-color is a hint, not a replacement for browser controls"
   }
 }

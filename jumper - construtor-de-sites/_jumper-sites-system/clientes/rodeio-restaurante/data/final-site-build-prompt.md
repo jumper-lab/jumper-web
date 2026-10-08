@@ -61,3 +61,6 @@ Abrir todos os acessos a `https://rodeiosp.com.br/eventos/` em lightbox responsi
 
 ### Menu desktop anterior — 08/10/2026
 Restaurar “Nossa história” e “Cardápio” à esquerda do logo; “Restaurantes” e “Eventos” à direita. Preservar logo, botão de reserva, animação, menu mobile com links para as duas unidades e popup de eventos. Restaurantes aponta para a seleção das duas casas.
+
+### Menu com altura integral — 08/10/2026
+O menu aberto cobre toda a área da tela com 100vh de fallback e 100dvh dinâmico, altura mínima integral, viewport-fit=cover apenas durante sua abertura e margens de segurança para notch/barras. Canvas, backdrop e theme-color ficam marrons enquanto aberto; viewport, cor do navegador, foco e posição da página são restaurados no fechamento. Menus e páginas de fundo conservam os ajustes aprovados.
