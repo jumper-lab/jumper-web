@@ -195,6 +195,10 @@
       "title": "Novo site do",
       "accent": "Rodeio no ar.",
       "description": "Enquanto isso, esperamos você em nossas unidades."
+    },
+    "footer": {
+      "title": "Seu próximo encontro",
+      "accent": "é no Rodeio."
     }
   },
   "photo_source": "briefing/entrada/acervo-atualizado-2026-10-07/fotos-selecionadas.json"

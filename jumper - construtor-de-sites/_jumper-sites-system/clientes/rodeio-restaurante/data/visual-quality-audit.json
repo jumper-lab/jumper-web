@@ -39,9 +39,9 @@
     "photo": "BMM_35.jpg da pasta Novo Rodeio"
   },
   "pending": [
-    "Fotos de eventos de cada unidade; pasta recebida vazia.",
-    "Novo cardápio físico.",
-    "Confirmação de horários por unidade e telefone individual do Iguatemi."
+    "Registro identificado de evento da unidade Jardins. A foto de evento do Iguatemi foi recebida e aplicada.",
+    "Novo material do cardápio físico; acesso ao cardápio digital indicado pela cliente já implementado.",
+    "Confirmação comercial dos horários por unidade e do telefone individual do Iguatemi; preservar os dados fornecidos no briefing até a confirmação."
   ],
   "limits": [
     "Prévia permanece noindex; não afirmar SEO todo verde.",
@@ -1614,6 +1614,72 @@
       "otherSites": 7,
       "beforeAndAfter": true,
       "liveBoundariesPreserved": true
+    }
+  },
+  "presentation_pending_review": {
+    "date": "2026-10-08",
+    "footer": {
+      "title": "Seu próximo encontro",
+      "accent": "é no Rodeio."
+    },
+    "historySourceAligned": true,
+    "materialsReview": "O catálogo do ZIP de 07/10 contém somente um arquivo no tema EVENTOS: RODEIO IGUATEMI - EVENTO.jpg. Não atribuir outras fotos a eventos dos Jardins.",
+    "materialsCatalog": "briefing/entrada/acervo-atualizado-2026-10-07/catalogo.json",
+    "status": "published_verified",
+    "localBrowserReport": "data/visual-review/pendencias-apresentacao/local/report.json",
+    "localBrowserChecks": 27,
+    "astroCheck": {
+      "files": 35,
+      "errors": 0,
+      "warnings": 0,
+      "hints": 0
+    },
+    "workerTests": 30,
+    "assetsInventoryChanged": false,
+    "publishedBrowserReport": "data/visual-review/pendencias-apresentacao/published/report.json",
+    "publishedBrowserChecks": 27,
+    "developmentVersionId": "9ee42499-702a-481e-83f1-899fa07e802d",
+    "sourceCommit": "bdc07b4d68f4b11889a28232a04e8e748ba454bf",
+    "pullRequest": "https://github.com/jumper-lab/jumper-web/pull/101",
+    "publishedPerformance": {
+      "date": "2026-10-08T17:41:31.533Z",
+      "base": "https://site.jumper.dev.br/rodeio",
+      "reports": [
+        {
+          "mode": "mobile",
+          "route": "/",
+          "categories": {
+            "performance": 98,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 69
+          },
+          "metrics": {
+            "first-contentful-paint": 1375.9155,
+            "largest-contentful-paint": 2185.9155,
+            "total-blocking-time": 0,
+            "cumulative-layout-shift": 0.001173813984676848,
+            "speed-index": 1375.9155
+          }
+        },
+        {
+          "mode": "desktop",
+          "route": "/",
+          "categories": {
+            "performance": 100,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 69
+          },
+          "metrics": {
+            "first-contentful-paint": 519.0735,
+            "largest-contentful-paint": 626.9544999999999,
+            "total-blocking-time": 0,
+            "cumulative-layout-shift": 0,
+            "speed-index": 519.0735
+          }
+        }
+      ]
     }
   }
 }

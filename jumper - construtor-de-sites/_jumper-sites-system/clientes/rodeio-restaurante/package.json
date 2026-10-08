@@ -21,7 +21,9 @@
     "deploy:dev": "node scripts/deploy-process.mjs dev",
     "deploy:dev:worker": "node scripts/deploy-process.mjs dev-worker",
     "deploy:cloudflare": "node scripts/deploy-process.mjs live",
-    "postbuild": "node scripts/prune-unused-photo-masters.mjs"
+    "postbuild": "node scripts/prune-unused-photo-masters.mjs",
+    "build:cloudflare:dev": "npm run build:cloudflare && node scripts/preserve-dev-izi-snapshots.mjs",
+    "test:dev-build": "node --test scripts/tests/dev-preserved-build.test.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",

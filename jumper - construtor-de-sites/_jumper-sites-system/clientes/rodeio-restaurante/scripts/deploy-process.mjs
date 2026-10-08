@@ -53,7 +53,9 @@ async function main() {
     });
   }, 45_000);
   try {
-    await stage('Gerando o pacote', 'npm', ['run', 'build:cloudflare']);
+    await stage('Gerando o pacote', 'npm', mode === 'live'
+      ? ['run', 'build:cloudflare']
+      : ['run', 'build:cloudflare:dev', '--', ...flags]);
     await stage('Conferindo páginas e versões antes da publicação', 'node', [
       mode === 'live' ? 'scripts/preflight-hoster.mjs' : 'scripts/preflight-hoster-dev.mjs', ...flags,
     ]);

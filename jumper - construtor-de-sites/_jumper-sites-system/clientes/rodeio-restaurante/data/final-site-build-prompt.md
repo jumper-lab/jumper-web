@@ -13,7 +13,7 @@ Proteger leitura com degradê localizado; não escurecer toda a fotografia. Tít
 Sequência numerada 01 experiência, 02 clássicos e 03 casas; manter os marcadores no mesmo eixo e as imagens da gastronomia alinhadas. Novo registro BMM_88 na apresentação do novo Jardins. Acervo e convite para eventos complementam a narrativa.
 
 ## Navegação
-Desktop: marca sem cowboy central, História/Cardápio/Eventos à esquerda, Jardins/Iguatemi e reserva à direita. Home pela marca. Menu móvel e rodapé têm os sete destinos na ordem do PDF: Home, História, Cardápio, Eventos, Reservas, Jardins e Iguatemi. Escape, foco contido, retorno ao acionador e indicação da página atual. Logos com e sem símbolo, brancos e escuros, preservados em public/logos.
+Desktop: marca sem cowboy central, Nossa história/Cardápio à esquerda, Restaurantes/Eventos e reserva à direita. Home pela marca. Menu móvel e rodapé têm os sete destinos na ordem do PDF: Home, História, Cardápio, Eventos, Reservas, Jardins e Iguatemi. Escape, foco contido, retorno ao acionador e indicação da página atual. Logos com e sem símbolo, brancos e escuros, preservados em public/logos.
 
 ## Páginas e texto
 - História: narrativa completa do PDF, marcos 1958, 1959, 1986, 2001, 2011 e 2026; clássicos Arroz Rodeio/Biro-Biro e picanha fatiada; fotografias históricas apenas no conteúdo. Não nomear a certificação sem fonte.
@@ -64,3 +64,6 @@ Restaurar “Nossa história” e “Cardápio” à esquerda do logo; “Restau
 
 ### Menu com altura integral — 08/10/2026
 O menu aberto cobre toda a área da tela com 100vh de fallback e 100dvh dinâmico, altura mínima integral, viewport-fit=cover apenas durante sua abertura e margens de segurança para notch/barras. Canvas, backdrop e theme-color ficam marrons enquanto aberto; viewport, cor do navegador, foco e posição da página são restaurados no fechamento. Menus e páginas de fundo conservam os ajustes aprovados.
+
+## Finalização para apresentação — 08/10/2026
+Rodapé: “Seu próximo encontro” seguido de “é no Rodeio.” em itálico, mantendo o fundo marrom e o CTA de reserva. A História contém os sete parágrafos integrais aprovados, com marcos de 1958, 1959, 1986, 2001, 2011 e 2026. A foto de evento do Iguatemi foi recebida e aplicada; resta uma foto identificada de evento dos Jardins, o novo material de cardápio físico e confirmação comercial dos horários por unidade/telefone Iguatemi. Preservar o digital-menu popup enquanto não há novo impresso.

@@ -1,0 +1,384 @@
+{
+  "date": "2026-10-08",
+  "url": "https://site.jumper.dev.br/rodeio/",
+  "status": "Apto para apresentação e revisão da cliente; ajustes disponíveis finalizados e publicados.",
+  "functionalSuites": [
+    {
+      "suite": "verify-events-popup",
+      "scenarios": 6,
+      "passed": true
+    },
+    {
+      "suite": "verify-cardapio-classicos",
+      "scenarios": 10,
+      "passed": true
+    },
+    {
+      "suite": "verify-home-swipe",
+      "scenarios": 30,
+      "passed": true
+    },
+    {
+      "suite": "verify-menu-mobile-viewport",
+      "scenarios": 27,
+      "passed": true
+    },
+    {
+      "suite": "verify-jardins-gallery",
+      "scenarios": 12,
+      "passed": true
+    },
+    {
+      "suite": "verify-history-integral",
+      "scenarios": 10,
+      "passed": true
+    },
+    {
+      "suite": "desktop-nav",
+      "scenarios": 8,
+      "passed": true
+    },
+    {
+      "suite": "general",
+      "scenarios": 60,
+      "passed": true
+    },
+    {
+      "suite": "reservations-standard-browser-identification",
+      "scenarios": 4,
+      "passed": true
+    },
+    {
+      "suite": "footer-final-published",
+      "scenarios": 27,
+      "passed": true
+    }
+  ],
+  "functionalScenarioCount": 194,
+  "performance": [
+    {
+      "mode": "mobile",
+      "route": "/",
+      "categories": {
+        "performance": 96,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "first-contentful-paint": 1764.326,
+        "largest-contentful-paint": 2575.433,
+        "total-blocking-time": 9,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1764.326
+      }
+    },
+    {
+      "mode": "mobile",
+      "route": "/historia/",
+      "categories": {
+        "performance": 97,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "first-contentful-paint": 1878.221,
+        "largest-contentful-paint": 2287.616,
+        "total-blocking-time": 29,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1878.221
+      }
+    },
+    {
+      "mode": "mobile",
+      "route": "/cardapio/",
+      "categories": {
+        "performance": 95,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "first-contentful-paint": 1713.3915,
+        "largest-contentful-paint": 2728.8575,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1713.3915
+      }
+    },
+    {
+      "mode": "mobile",
+      "route": "/restaurantes/",
+      "categories": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "first-contentful-paint": 1063.143,
+        "largest-contentful-paint": 1690.143,
+        "total-blocking-time": 16,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1781.050411087349
+      }
+    },
+    {
+      "mode": "mobile",
+      "route": "/restaurantes/jardins/",
+      "categories": {
+        "performance": 96,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "first-contentful-paint": 1716.795,
+        "largest-contentful-paint": 2582.239,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1716.795
+      }
+    },
+    {
+      "mode": "mobile",
+      "route": "/restaurantes/iguatemi/",
+      "categories": {
+        "performance": 96,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "first-contentful-paint": 1756.2089999999998,
+        "largest-contentful-paint": 2668.585,
+        "total-blocking-time": 38,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1756.2089999999998
+      }
+    },
+    {
+      "mode": "mobile",
+      "route": "/eventos/",
+      "categories": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "first-contentful-paint": 1707.82,
+        "largest-contentful-paint": 2273.948,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1707.82
+      }
+    },
+    {
+      "mode": "mobile",
+      "route": "/reservas/",
+      "categories": {
+        "performance": 95,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "first-contentful-paint": 1710.872,
+        "largest-contentful-paint": 2729.5119999999997,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1710.872
+      }
+    },
+    {
+      "mode": "desktop",
+      "route": "/",
+      "categories": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "first-contentful-paint": 506.14750000000004,
+        "largest-contentful-paint": 636.9875000000001,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "speed-index": 506.14750000000004
+      }
+    },
+    {
+      "mode": "desktop",
+      "route": "/historia/",
+      "categories": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "first-contentful-paint": 493.32499999999993,
+        "largest-contentful-paint": 556.611,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "speed-index": 493.32499999999993
+      }
+    },
+    {
+      "mode": "desktop",
+      "route": "/cardapio/",
+      "categories": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "first-contentful-paint": 512.3430000000001,
+        "largest-contentful-paint": 682.089,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "speed-index": 512.3430000000001
+      }
+    },
+    {
+      "mode": "desktop",
+      "route": "/restaurantes/",
+      "categories": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "first-contentful-paint": 515.001,
+        "largest-contentful-paint": 709.867,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "speed-index": 515.001
+      }
+    },
+    {
+      "mode": "desktop",
+      "route": "/restaurantes/jardins/",
+      "categories": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "first-contentful-paint": 534.1105,
+        "largest-contentful-paint": 700.0415,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "speed-index": 534.1105
+      }
+    },
+    {
+      "mode": "desktop",
+      "route": "/restaurantes/iguatemi/",
+      "categories": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "first-contentful-paint": 523.1645,
+        "largest-contentful-paint": 719.5625,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "speed-index": 561.7137730525315
+      }
+    },
+    {
+      "mode": "desktop",
+      "route": "/eventos/",
+      "categories": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "first-contentful-paint": 547.628,
+        "largest-contentful-paint": 597.024,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "speed-index": 547.628
+      }
+    },
+    {
+      "mode": "desktop",
+      "route": "/reservas/",
+      "categories": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "first-contentful-paint": 518.8585,
+        "largest-contentful-paint": 669.3895,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "speed-index": 518.8585
+      }
+    }
+  ],
+  "pending": [
+    "Registro identificado de evento da unidade Jardins. A foto de evento do Iguatemi foi recebida e aplicada.",
+    "Novo material do cardápio físico; acesso ao cardápio digital indicado pela cliente já implementado.",
+    "Confirmação comercial dos horários por unidade e do telefone individual do Iguatemi; preservar os dados fornecidos no briefing até a confirmação."
+  ],
+  "limitations": [
+    "Motores desktop com tamanhos emulados; nenhum iPhone físico testado.",
+    "Sem reserva ou orçamento enviado.",
+    "Lighthouse de laboratório, sem PageSpeed Insights API ou CrUX."
+  ],
+  "finalPublication": {
+    "versionId": "9ee42499-702a-481e-83f1-899fa07e802d",
+    "sourceCommit": "bdc07b4d68f4b11889a28232a04e8e748ba454bf",
+    "pullRequest": "https://github.com/jumper-lab/jumper-web/pull/101",
+    "date": "2026-10-08T17:39:55.394742+00:00"
+  },
+  "finalHomePerformance": [
+    {
+      "mode": "mobile",
+      "route": "/",
+      "categories": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "first-contentful-paint": 1375.9155,
+        "largest-contentful-paint": 2185.9155,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0.001173813984676848,
+        "speed-index": 1375.9155
+      }
+    },
+    {
+      "mode": "desktop",
+      "route": "/",
+      "categories": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 69
+      },
+      "metrics": {
+        "first-contentful-paint": 519.0735,
+        "largest-contentful-paint": 626.9544999999999,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "speed-index": 519.0735
+      }
+    }
+  ]
+}

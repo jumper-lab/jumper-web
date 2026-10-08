@@ -2,13 +2,13 @@
   "url": "https://site.jumper.dev.br/rodeio/",
   "provider": "cloudflare-workers-static-assets",
   "worker": "jumper-hoster-dev",
-  "versionId": "8d53e244-b7b4-48ab-9c76-851ceae1368b",
-  "sourceCommit": "0d8243818722c2cee743cb2257bb5a3d6904b8ef",
-  "sourceBranch": "codex/rodeio-menu-altura-total",
-  "pullRequest": "https://github.com/jumper-lab/jumper-web/pull/99",
+  "versionId": "9ee42499-702a-481e-83f1-899fa07e802d",
+  "sourceCommit": "bdc07b4d68f4b11889a28232a04e8e748ba454bf",
+  "sourceBranch": "codex/rodeio-pendencias-apresentacao",
+  "pullRequest": "https://github.com/jumper-lab/jumper-web/pull/101",
   "status": "READY",
   "indexing": "noindex",
-  "date": "2026-10-08T05:32:42.322977+00:00",
+  "date": "2026-10-08T17:39:55.394742+00:00",
   "access": "public without cookies",
   "results": [
     {
@@ -18,8 +18,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 82007,
-      "sha256": "e4d123ee811e8e867ec48ed30269e026ed927788bf36b770cc6d1c54ab5d9ede",
+      "bytes": 82018,
+      "sha256": "58021c2acb952c2f2ad7cb4ba1f5409ecaef561bd441d060f221cd20b5f70c5f",
       "noindex": true
     },
     {
@@ -29,8 +29,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 77181,
-      "sha256": "4f502567bb1a83655cb9ccb1c3b7b09918c7b8378962966ce21b860663df7656",
+      "bytes": 77192,
+      "sha256": "ea28c741a5efc3c9952fe97805c5dbeba2295ac29d3bc165d3d3c75e5a855613",
       "noindex": true
     },
     {
@@ -40,8 +40,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 77959,
-      "sha256": "2afc925196e8e827e9ea62e3ef59ac2b4743dab3afe8eb7082120ed3bde8fa79",
+      "bytes": 77970,
+      "sha256": "5828b19f63f7df7afe152bd7fcff65970cf9dc0f8a46c490321f15b226a6144f",
       "noindex": true
     },
     {
@@ -51,8 +51,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 75839,
-      "sha256": "a6ff8d5310a3a75256a98ff2f7e38627ab9479ed61ea2c1ec35c232bc5055406",
+      "bytes": 75850,
+      "sha256": "fd84eb69200dfb4d0a38ac4679f41252c54418a99272d927dd915d16aa179dcb",
       "noindex": true
     },
     {
@@ -62,8 +62,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 153494,
-      "sha256": "f5fc07af2187649d0742191f8d7aa2a66a2cab72f66addaeed21d1b5861e73d4",
+      "bytes": 153505,
+      "sha256": "b924f0aceb0e8adb009de00df5249d63296110d0d3a404cb58478b4be802aa8e",
       "noindex": true
     },
     {
@@ -73,8 +73,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 93136,
-      "sha256": "663f094ec6d88c07bfb21ba95bc75604550d776b3bb4d571464df299032b05a3",
+      "bytes": 93147,
+      "sha256": "5e44826f0f24b5e9ae1dd6c1c5dc8371b0a3f1ffa11da7b8bc1ba5a767a2315a",
       "noindex": true
     },
     {
@@ -84,8 +84,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 74153,
-      "sha256": "ff2876131f38e0b90f5fee433f1213307323b3ed891498335d67813f7ae0e053",
+      "bytes": 74164,
+      "sha256": "93b43dbd8d84b890d633dcd2b00a433ee72243f4494fabeab65197a004df6d0a",
       "noindex": true
     },
     {
@@ -95,8 +95,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 75173,
-      "sha256": "d1c97152c30f1656986a2a566ea0edd2eff055c61b1004f4cb4cf9b84de4c51b",
+      "bytes": 75184,
+      "sha256": "954bb8f0d2037f9bbcbe563320e288abbee96c6fb7c5a9529daaa3b3bda0a040",
       "noindex": true
     },
     {
@@ -106,8 +106,8 @@
       "matchesBuild": false,
       "matchesBuildAfterCloudflareBeacon": true,
       "cloudflareBeaconInjected": true,
-      "bytes": 70576,
-      "sha256": "7d1373c7ffbd61e33cf514f2ac88264fbf21414d32ffa6860f219b879608ea5e",
+      "bytes": 70587,
+      "sha256": "bd5efa2a9ccd7c29856a2a2c45c2e93775a2799d5110d4f024b74eda80dfae8c",
       "noindex": true
     },
     {
@@ -129,11 +129,11 @@
     "beforeAndAfter": true,
     "liveBoundariesPreserved": true
   },
-  "previousDevVersionId": "b322c56d-f924-45c5-9539-5a482ee05c05",
-  "previousSourceCommit": "a8d2765bb7dd76095b6cca6d0cc34d039ca34ba3",
+  "previousDevVersionId": "8d53e244-b7b4-48ab-9c76-851ceae1368b",
+  "previousSourceCommit": "0d8243818722c2cee743cb2257bb5a3d6904b8ef",
   "maintenancePage": "/rodeio/em-breve/",
   "maintenanceActiveOnHome": false,
-  "change": "Menu mobile com cobertura integral: altura mínima 100dvh/fallback 100vh, viewport-fit=cover durante abertura, safe-area, canvas/backdrop marrom contínuo desde a entrada e restauração de viewport/theme-color/foco/rolagem ao fechar.",
+  "change": "Convite do rodapé: Seu próximo encontro é no Rodeio. Documentação alinhada; build dev preserva as prévias IZI que não receberam publicação da mudança oficial.",
   "galleryPhotos": {
     "jardins": 77,
     "iguatemi": 16
@@ -143,12 +143,12 @@
     "iguatemi": 6
   },
   "assetVerification": {
-    "report": "data/qa/menu-altura-2026-10-08/published/assets-and-pages.json",
-    "newAssetsVerified": 1,
+    "report": "data/qa/pendencias-apresentacao-2026-10-08/published/assets-and-pages.json",
+    "newAssetsVerified": 0,
     "allMatched": true,
-    "note": "Dez páginas idênticas ao build após contabilizar somente o beacon injetado pela Cloudflare; novo JS idêntico ao pacote."
+    "note": "Dez páginas HTTP 200 sem cookies, idênticas ao pacote após contabilizar somente o beacon de Analytics da Cloudflare. Inventário sem alterações."
   },
-  "performanceReport": "data/qa/acervo-atualizado-2026-10-07/published/summary.json",
+  "performanceReport": "data/qa/pendencias-apresentacao-2026-10-08/published/summary.json",
   "galleryBrowserReport": "data/visual-review/acervo-atualizado-2026-10-07/published/report.json",
   "motionBrowserReport": "data/visual-review/acervo-atualizado-2026-10-07/acervo-outubro-final/motion.json",
   "photoSelection": "briefing/entrada/acervo-atualizado-2026-10-07/fotos-selecionadas.json",
@@ -177,7 +177,8 @@
     "menuHeroAssetReport": "data/qa/cardapio-hero-foco-2026-10-07/published/assets-and-pages.json",
     "historyTimelineAssetReport": "data/qa/historia-timeline-2026-10-07/published/assets-and-pages.json",
     "eventsPopupAssetReport": "data/qa/eventos-popup-2026-10-08/published/assets-and-pages.json",
-    "desktopNavigationAssetReport": "data/qa/menu-desktop-2026-10-08/published/assets-and-pages.json"
+    "desktopNavigationAssetReport": "data/qa/menu-desktop-2026-10-08/published/assets-and-pages.json",
+    "footerBrowserReport": "data/visual-review/pendencias-apresentacao/published/report.json"
   },
   "menuBrowserReport": "data/visual-review/cardapio-classicos/identificacao-publicada/report.json",
   "menuPerformanceReport": "data/qa/cardapio-hero-foco-2026-10-07/published/summary.json",
