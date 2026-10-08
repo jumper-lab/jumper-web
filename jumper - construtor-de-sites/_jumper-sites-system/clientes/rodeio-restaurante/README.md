@@ -176,3 +176,5 @@ Popup publicado exclusivamente no `jumper-hoster-dev`, versão `1ae436f6-fc36-41
 
 ## Menu desktop anterior — 08/10/2026
 Restaurar “Nossa história” e “Cardápio” à esquerda do logo; “Restaurantes” e “Eventos” à direita. Preservar logo, botão de reserva, animação, menu mobile com links para as duas unidades e popup de eventos. Restaurantes aponta para a seleção das duas casas.
+
+Menu restaurado publicado no `jumper-hoster-dev`, versão `b322c56d-f924-45c5-9539-5a482ee05c05`, fonte `a8d2765b`, PR #98. Oito cenários locais e oito públicos em Chrome/Firefox/WebKit aprovados; logo central, ordem dos links, navegação, menu mobile e popup de eventos conferidos. Dez páginas públicas idênticas ao build, inventário sem mudanças e 564 assets dos outros sete sites preservados antes/depois. Lighthouse Home publicada: desempenho **96 mobile / 100 desktop**, acessibilidade e boas práticas **100**, TBT e CLS **0**; SEO **69** pelo noindex intencional da prévia. Métricas de laboratório, não API PageSpeed Insights ou CrUX. Evidências em `data/visual-review/menu-desktop-anterior/` e `data/qa/menu-desktop-2026-10-08/published/`.
