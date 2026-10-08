@@ -23,3 +23,10 @@ test('thank-you page keeps tracking loaders and PageView without replaying conve
  assert.ok(html.includes('GTM-M3GVTFV4'));assert.ok(html.includes('1874149183549598'));assert.ok(html.includes("fbq('track', 'PageView')"));
  assert.ok(!html.includes('CADASTRO-LP-CATIVE'));assert.ok(!html.includes("fbq('track', 'Lead')"));assert.ok(!html.includes('CompleteRegistration'));assert.ok(!html.includes('cadastro_concluido'));
 });
+
+test('UTF-8 declaration is inside the first 1024 bytes of both documents',async()=>{
+ for(const name of ['index.html','proximos-passos.html']){
+  const body=await readFile(new URL(name,root));const marker=Buffer.from('<meta charset="UTF-8">');
+  assert.ok(body.indexOf(marker)>=0 && body.indexOf(marker)+marker.length<1024);
+ }
+});
