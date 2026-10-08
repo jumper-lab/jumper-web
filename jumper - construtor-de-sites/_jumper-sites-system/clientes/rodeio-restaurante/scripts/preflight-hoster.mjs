@@ -165,12 +165,19 @@ async function liveWorkerFeatures() {
 export async function readPromotion(args = []) {
   const flags = args.filter(arg => arg !== '--audit');
   if (!flags.length) return null;
-  if (flags.length !== 1 || flags[0] !== '--promote=cerrocora-direct-checkout-2026-10-08') {
+  const releases = { '--promote=cerrocora-direct-checkout-2026-10-08': 'cerrocora-direct-checkout-2026-10-08', '--promote=izi-franquias-admin-2026-10-08': 'izi-franquias-admin-2026-10-08' };
+  if (flags.length !== 1 || !releases[flags[0]]) {
     throw new Error('Promoção live desconhecida. Use uma revisão de escopo versionada.');
   }
-  const promotion = JSON.parse(await readFile(join(projectRoot, 'data/releases/cerrocora-direct-checkout-2026-10-08.json'), 'utf8'));
+  const promotion = JSON.parse(await readFile(join(projectRoot, `data/releases/${releases[flags[0]]}.json`), 'utf8'));
+  if (promotion.scope === 'izi-franquias-admin') {
+    const expected = { binding: 'IZI_FRANCHISE_DB', database_id: '4553bc65-eeb8-4404-aa57-e44692bcc9a3' };
+    if (JSON.stringify(promotion.franchiseDatabase) !== JSON.stringify(expected)) throw new Error('Banco de franquias difere do vínculo revisado.');
+    const configured = configuredBindingIds(await readFile(join(projectRoot, 'wrangler.jsonc'), 'utf8'));
+    if (configured.get(expected.binding) !== expected.database_id) throw new Error('Configuração do D1 de franquias difere do banco revisado.');
+  }
   const assets = promotion.pages?.map(page => page.asset).sort();
-  if (promotion.scope !== 'cerrocora' || JSON.stringify(assets) !== JSON.stringify(['cerrocora/index.html', 'izigym-lp-vilaromana/index.html'])) {
+  if (promotion.scope !== (releases[flags[0]] === 'izi-franquias-admin-2026-10-08' ? 'izi-franquias-admin' : 'cerrocora') || JSON.stringify(assets) !== JSON.stringify(['cerrocora/index.html', 'izigym-lp-vilaromana/index.html'])) {
     throw new Error('A promoção deve conter somente a LP Cerro Corá e seu pacote de assets Vila Romana.');
   }
   for (const page of promotion.pages) {

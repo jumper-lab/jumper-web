@@ -35,6 +35,11 @@
       "database_name": "izi-lp-CerroCora-leads-dev",
       "database_id": "af52ce85-b519-473c-ad3c-66654cf3aabd",
       "migrations_dir": "cloudflare/migrations/izi-lp-CerroCora-leads-dev"
+    },
+    {
+      "binding": "IZI_FRANCHISE_DB",
+      "database_name": "izi-lp-franquias-leads",
+      "database_id": "4553bc65-eeb8-4404-aa57-e44692bcc9a3"
     }
   ],
   "ratelimits": [
