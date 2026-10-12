@@ -1,6 +1,8 @@
-# Cerro Corá — entrega de código e migração GTM
+# Cerro Corá — instalação de rastreamentos e contrato dataLayer
 
-Briefing aplicado: `jumper-tracker/clients/izigym/PLANO-PARIDADE-PRINCIPAL-CERROCORA.md`, atualizado em 12/10/2026, e seu complemento GTM como hub. Escopo: somente o oficial Cerro Corá. Esta entrega prepara o código; não publica o site nem versões GTM e não conclui a ativação/recebimento dos destinos.
+Briefing aplicado: `jumper-tracker/clients/izigym/PLANO-PARIDADE-PRINCIPAL-CERROCORA.md`, atualizado em 12/10/2026, com o escopo esclarecido pelo usuário: instalar os rastreamentos no código da página e montar o `dataLayer`, somente no oficial Cerro Corá. A implementação e a validação local desse escopo estão concluídas. A publicação do site é uma etapa separada.
+
+Configurar, editar ou publicar tags, gatilhos, variáveis e versões dos GTMs fica fora desta entrega. O recebimento nas plataformas e uma futura migração dos legados Cative também pertencem a outras etapas; não são requisitos pendentes desta PR.
 
 ## Configuração entregue
 
@@ -8,7 +10,7 @@ Briefing aplicado: `jumper-tracker/clients/izigym/PLANO-PARIDADE-PRINCIPAL-CERRO
 
 O bootstrap preserva a fila existente, publica os controles sem criar um novo evento custom, carrega cada container uma vez e compartilha um único `gtm.js`. O handler existente dos oito links continua emitindo um único `checkout_click`. `site_id`, os controles e `cative_checkout_source` ficam no mesmo push. O evento preserva campanha e destino, retirando da URL de telemetria a chave `k`, credenciais, fragmento e parâmetros alheios. O href comercial mantém unidade, plano, chave e cupom originais. `utm_*`, `gclid` e `fbclid` continuam com os valores existentes; nenhum preço/valor/receita foi acrescentado.
 
-Os legados Cative permanecem ativos porque o substituto ainda não foi validado: `cative.legacy.ga4Direct.enabled = true` e `cative.legacy.metaCheckout.source = legacy`. O `InitiateCheckout` direto agora usa `trackSingle` para `922916223883872` exclusivamente. Esses IDs no código são temporários da migração, não uma nova instalação Izi. Após validar os caminhos GTM, uma segunda alteração deve retirar o bootstrap/chamada legados; trocar flags apenas não conclui a arquitetura final.
+Os legados Cative permanecem ativos: `cative.legacy.ga4Direct.enabled = true` e `cative.legacy.metaCheckout.source = legacy`. O `InitiateCheckout` direto agora usa `trackSingle` para `922916223883872` exclusivamente, evitando que a chamada da página alcance o pixel Izi. Uma futura retirada desses legados exige outra alteração, após validação dos substitutos pelos responsáveis pelo GTM.
 
 Para desligar Cative em teste, alterar somente `cative.enabled` para `false`, reconstruir e abrir uma nova página/sessão. Nenhum GTM, GA4 direto ou chamada Meta Cative será iniciado por esse código; tags exclusivamente no container também deixam de carregar. Não existe controle por query string nem tentativa de descarregar um container já executado. Reativar requer `true`, novo build e nova sessão.
 
@@ -22,34 +24,29 @@ Para desligar Cative em teste, alterar somente `cative.enabled` para `false`, re
 - Na sessão Chrome disponível, o container Izi aparecia na conta Izi GYM - Holding, sem alterações pendentes. O container Cative não apareceu na lista acessível; a coleta de sua versão foi pública. Não houve edição/publicação em nenhum GTM.
 - Não foi encontrado endpoint AWS no fonte próprio ou recursos publicados dos containers inspecionados. A dependência de configurações carregadas pelo pixel/rede ainda precisa de inventário em runtime; ausência nesses arquivos não comprova ausência de requisições. Nenhuma integração foi copiada.
 
-## Configurações GTM necessárias
+## Contrato dataLayer entregue
 
-[`gtm-change-plan.json`](gtm-change-plan.json) é um plano declarativo, **não um arquivo de importação GTM**. Inclui tags, destinos, variáveis, parâmetros e filtros exatos para configurar nos templates. Responsáveis: Jumper/admin Izi e administrador autorizado Cative.
+[`datalayer-contract.json`](datalayer-contract.json) documenta as mensagens produzidas pela página e um exemplo sanitizado. É uma referência do código implementado; não aplica configuração aos GTMs.
 
-1. Reutilizar as bases já publicadas Izi, verificar contagem e consentimento, e acrescentar GA4 `checkout_click` e Meta custom dirigido ao pixel Izi. Usar o evento existente; não criar outro listener. Filtrar hostname oficial, `site_id=cerrocora` e `izi_enabled=true`. Não duplicar `GT-MQRDQBSX`/AW nem usar labels Ads de venda.
-2. Preparar/publicar no GTM Cative o `InitiateCheckout` somente para `cative_checkout_source=gtm`, hostname/site corretos e Cative ativa. Campo ausente/legacy não dispara a tag substituta. Preservar a tag Meta custom atual. Os controles de migração são internos; não mapeá-los como parâmetros de plataformas.
-3. Manter configurações e exigências de consentimento dos templates. O código não concede consentimento, não altera defaults e não apaga mensagens existentes. Não foi identificado CMP próprio no fonte inspecionado; consentimento/recebimento dos containers continuam sujeitos a validação em Preview.
-
-| Ocorrência | Izi via GTM | Cative durante a transição |
+| Mensagem | Campos | Emissão |
 |---|---|---|
-| Visualização | GA4 `page_view`, Meta `PageView`, base Ads existentes | Google tag existente + legado GA4 preservado até validação; Meta PageView e Clarity existentes |
-| `checkout_click` | Nova tag GA4 + Meta custom; **configuração/publicação pendentes** | Meta custom atual via tag 20; não acrescentado evento GA4 |
-| `InitiateCheckout` de saída | Nenhum | `trackSingle` legado; futuramente tag Cative filtrada por origem |
-| Clarity | Nova tag oficial necessária, com restrição abaixo | `ytjf3498ao` preservado |
+| Contexto da página | `site_id`, `izi_enabled`, `cative_enabled` | Uma vez, preservando a fila existente; sem evento custom. |
+| Inicialização GTM | `event=gtm.js`, `gtm.start` | Uma inicialização compartilhada pelos containers ativos; não repete se a fila já contém esse evento. |
+| Contratação | `event=checkout_click`, `placement`, `checkout_url`, `site_id`, `izi_enabled`, `cative_enabled`, `cative_checkout_source` e campanha disponível | Um push por interação, com contexto e parâmetros na mesma mensagem. |
 
-## Clarity: conflito confirmado no script, recebimento pendente
+`placement` identifica `header`, `hero`, `gallery`, `manifesto`, `prime`, `one`, `footer` ou `mobile`. Os parâmetros `utm_*`, `gclid` e `fbclid` são strings quando presentes; valores ausentes não são fabricados. A URL de telemetria conserva unidade, plano, cupom e campanha, sem chave de conta, credenciais ou fragmento. O link comercial permanece completo.
 
-Ambos os scripts públicos consultados em 12/10/2026 têm a mesma proteção: se `clarity.v` ou `clarity.t` já existe, registram `dup.<projectId>` e retornam antes de iniciar o segundo coletor. A execução controlada dos scripts em ambas as ordens confirmou um `start` para o primeiro projeto e `dup` para o segundo. Isso não é um teste de recebimento em dashboard.
+`cative_checkout_source` informa o caminho de envio Cative e permanece `legacy` nesta entrega. O modo `gtm` está preparado no código para uma etapa futura; não deve ser ativado antes de o responsável pelo container validar o substituto. Os controles de ativação e esse marcador são dados internos de controle. O código preserva mensagens existentes de consentimento e não acrescenta comandos de concessão.
 
-O plano GTM usa o template oficial Izi `ywlrxh4o91`, limitado a Cerro Corá, Izi ativa e Cative **desativada**. Enquanto ambos ficam ativos, preservar Cative e deixar Clarity Izi pendente. Não confiar na ordem de carregamento assíncrono para escolher o projeto nem tentar contornar o guard do SDK. A coleta simultânea nos dois projetos não foi comprovada e bloqueia o aceite completo; a referência oficial também protege contra segunda inicialização: [SDK Clarity](https://github.com/microsoft/clarity/blob/master/packages/clarity-js/src/clarity.ts).
+## Observação anterior sobre Clarity — fora do escopo
 
-## Troca e retorno
+A auditoria dos scripts públicos encontrou uma proteção contra segundo coletor: a execução controlada em ambas as ordens resultou em um `start` e um `dup.<projectId>`. A evidência está em [`2026-10-12/clarity-conflict.json`](2026-10-12/clarity-conflict.json). Nenhum snippet Clarity direto foi acrescentado ao site e nenhum GTM foi alterado. Configuração e validação de coleta Clarity pertencem aos responsáveis pelo GTM e não bloqueiam o aceite do código desta PR.
 
-1. Guardar versões compatíveis do site e GTMs. Baselines públicos: Izi v23, Cative v10; hashes registrados no inventário. Registrar novas versões antes de alterar flags.
-2. Publicar primeiro a tag Cative que exige origem `gtm`. Em modo `legacy`, apenas o direto dispara; em modo `gtm`, apenas a substituta. Uma página antiga, sem marcador, nunca deve disparar a substituta.
-3. Em sessão controlada, testar `ga4Direct.enabled=false` e confirmar os pageviews/eventos existentes pela tag 27: destino, parâmetros, contagem, consentimento e independência do legado. Não desligar esse caminho em produção sem a evidência.
-4. Em sessão controlada, mudar `metaCheckout.source` para `gtm`, validar continuidade/contagem/recebimento e então promover. Nunca habilitar ambos os emissores para a mesma ocorrência.
-5. Antes da limpeza dos legados, retorno por ferramenta: `ga4Direct.enabled=true` ou `metaCheckout.source=legacy`, mantendo o filtro da tag Cative. Depois de remover os legados, retorno exige restaurar **site e containers compatíveis**; uma flag não recria o código removido. Guardar e testar essas versões. Conservar o marcador `gtm` enquanto páginas antigas puderem estar abertas ou em cache.
+## Controles e retorno do código
+
+Os dois kits são entregues ativos. Desligar somente Izi exige `izi.enabled=false`, novo build e nova página; desligar somente Cative usa `cative.enabled=false` nas mesmas condições. O emissor lógico `checkout_click` e a navegação continuam funcionando. Reativar um kit exige restaurar sua flag para `true`.
+
+Para retornar ao comportamento anterior da página, restaurar a versão anterior do código e seguir o fluxo de publicação do Hoster. Para manter os dois carregadores com o caminho Cative atual, conservar `ga4Direct.enabled=true` e `metaCheckout.source=legacy`. Esta PR não muda versões dos containers.
 
 ## Evidências e limites
 
@@ -59,6 +56,6 @@ Executar a suíte após `npm run build`: `npm test` em `izigym-lp`. Os testes do
 
 [`2026-10-12/tests-summary.json`](2026-10-12/tests-summary.json) registra build completo, 18 testes da LP e 25 testes do Hoster aprovados. Na conferência local Chrome, com destinos simulados, os sete placements desktop (hero pelo teclado) e o mobile em 390×844 resultaram em oito eventos e oito chamadas legadas específicas Cative. Em nova página com Cative desativada: só GTM Izi selecionado, um evento hero e nenhuma chamada Meta legada, com campanha preservada no href. Reativação em nova página: um evento e uma chamada legada. Nenhum erro de página observado. Isso valida a lógica e a interface local; não executa os templates GTM reais nem comprova coleta.
 
-Pendentes para concluir: configurar/publicar e testar os GTMs; conferir rede/Tag Assistant, GA4 DebugView e Meta Test Events; confirmar sessão da Cerro Corá no Clarity Izi e preservação Cative; verificar contagem real GA4 Cative; resolver coleta simultânea Clarity; inventariar dependências AWS em runtime; executar navegação desktop/mobile/teclado e testes com bases reais tardias; comprovar retirada/reativação de todos os destinos em novas sessões. Conversões Ads/labels, lead/D1 e compra/atribuição Pacto não foram validados.
+A entrega de código está pronta para revisão no escopo de instalação e `dataLayer`. Configuração de tags, recebimento nas plataformas, migração dos legados Cative, dependências AWS, conversões Ads, lead/D1 e compra/atribuição Pacto ficam fora desta entrega.
 
-Publicação do Hoster continua separada: PR, revisão e autorização explícita; o release antigo de 08/10 não autoriza esses novos hashes. Não foi criado bypass nem executado deploy/preflight de promoção live. A entrega de código não deve ser descrita como coleta Izi completa em produção.
+Publicação do Hoster continua separada: PR, revisão e autorização explícita; o release antigo de 08/10 não autoriza esses novos hashes. Não foi criado bypass nem executado deploy/preflight de promoção live. Merge atualiza o repositório; o site publicado só muda após deploy.

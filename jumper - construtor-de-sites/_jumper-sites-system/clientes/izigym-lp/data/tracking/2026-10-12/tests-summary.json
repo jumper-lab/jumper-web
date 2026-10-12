@@ -1,5 +1,6 @@
 {
   "date": "2026-10-12",
+  "scope": "site-code-installation-and-dataLayer",
   "productionDeploy": false,
   "gtmChangesApplied": false,
   "platformReceiptVerified": false,
@@ -31,12 +32,12 @@
     "cativeReenabledFreshPage": "1 logical hero event, 1 legacy Meta call",
     "pageErrorsObserved": 0
   },
-  "pending": [
+  "outsideScope": [
     "real destination emissions/counts/receipt",
     "GTM Izi checkout and Clarity tags",
     "Cative GA4/Meta migration",
     "AWS runtime dependency inventory",
-    "Clarity simultaneous receipt",
-    "authorized Hoster promotion and remote preflight"
-  ]
+    "Clarity simultaneous receipt"
+  ],
+  "pendingPublication": ["authorized Hoster promotion and remote preflight"]
 }

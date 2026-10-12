@@ -56,4 +56,4 @@ Teste de atribuição: `node --test tests/checkout-attribution.test.mjs` (Node 2
 
 ## Kits de rastreamento Cerro Corá — 12/10/2026
 
-O Hoster aplica `data/cerrocora-tracking.json` somente ao HTML do domínio oficial. Os dois GTMs usam uma fila comum; os legados Cative permanecem controlados durante a migração. Izi não recebe instalação direta de ferramentas. [Entrega, matriz, testes e pendências GTM/Clarity](data/tracking/CERROCORA-2026-10-12.md). Depois do build, `npm test` executa a suíte de atribuição e separação dos kits.
+O Hoster aplica `data/cerrocora-tracking.json` somente ao HTML do domínio oficial. Os dois GTMs usam uma fila comum; os legados Cative permanecem controlados. Izi não recebe instalação direta de ferramentas. Esta entrega cobre os carregadores, controles e eventos da página; configuração e publicação dos GTMs ficam fora do escopo. [Entrega e validação local](data/tracking/CERROCORA-2026-10-12.md) e [contrato dataLayer](data/tracking/datalayer-contract.json). Depois do build, `npm test` executa a suíte de atribuição e separação dos kits.
