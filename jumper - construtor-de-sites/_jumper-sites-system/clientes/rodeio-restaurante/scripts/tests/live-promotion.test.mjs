@@ -36,3 +36,14 @@ test('franchise admin promotion fixes the exact independent D1 and keeps the exi
  assert.deepEqual(release.pages.map(page=>page.asset).sort(), ['cerrocora/index.html','izigym-lp-vilaromana/index.html']);
  await assert.rejects(readPromotion(['--promote=any-other-client']), /desconhecida/);
 });
+
+test('tracking release uses its own reviewed hashes without widening the page scope', async () => {
+ const release = await readPromotion(['--promote=cerrocora-tracking-2026-10-12']);
+ const previous = await readPromotion(['--promote=cerrocora-direct-checkout-2026-10-08']);
+ assert.equal(release.scope, 'cerrocora');
+ assert.deepEqual(release.pages.map(page=>page.asset).sort(), ['cerrocora/index.html','izigym-lp-vilaromana/index.html']);
+ assert.notEqual(release.pages[0].candidateSha256, previous.pages[0].candidateSha256);
+ assert.ok(release.pages[0].publishedSha256.includes(previous.pages[0].candidateSha256));
+ assert.deepEqual(release.pages[1].publishedSha256, ['f4fd8685e2b899c49b44d13f4cd738215c6b6d506dc5c2031400c2c6ddbfc3ea']);
+ await assert.rejects(readPromotion(['--promote=cerrocora-tracking-2026-10-12', '--promote=any-other-client']), /desconhecida/);
+});

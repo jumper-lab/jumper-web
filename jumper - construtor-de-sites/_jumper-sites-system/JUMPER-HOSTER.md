@@ -95,6 +95,8 @@ O live continua em `jumper-hoster` e **não** é publicado pelo GitHub Actions. 
 
 Após o deploy, confira o hub e a autenticação, o formulário e sua API, os sites oficiais e os cadastros/rastreamento afetados. Para Rodeio ou Casa Beliê oficiais, esta operação **não** publica seus domínios externos. Segredos ficam em variável de ambiente ou gerenciador próprio, nunca em Git ou na documentação.
 
+**Promoção de rastreamento Cerro Corá de 12/10/2026.** A PR #110 foi aprovada com autorização explícita de merge e publicação. Usar `npm run deploy:cloudflare -- --promote=cerrocora-tracking-2026-10-12` após integrar o registro versionado em `clientes/rodeio-restaurante/data/releases/cerrocora-tracking-2026-10-12.json`. Ele fixa os novos hashes da página oficial e do pacote Vila Romana necessário ao módulo, conservando o HTML público anterior da prévia no Worker dev. O código compartilhado do Worker não muda. O usuário também autorizou publicar o ajuste visual dos selos do hub da PR #109; seus hashes anterior/candidato constam no registro. Os demais sites seguem na comparação estrita. Nenhuma tag, gatilho, variável ou versão GTM é configurada/publicada por esta operação; os legados Cative permanecem conforme a configuração revisada da página.
+
 ### Reconciliação de 29/09/2026
 
 A primeira auditoria encontrou recursos de Cerro Corá, leads IZI e briefing que faltavam no `main`. A PR #37 integrou esses recursos ao GitHub. Um novo build do `main` passou no preflight contra a versão Cloudflare `282b6913-c6de-4b31-af96-128b007ecd99`: todas as páginas iniciais protegidas e os domínios conferiram. Esse resultado é uma fotografia datada; qualquer novo deploy, commit ou mudança de assets exige reconstrução e nova auditoria antes da publicação.
