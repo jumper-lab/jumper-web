@@ -165,7 +165,11 @@ async function liveWorkerFeatures() {
 export async function readPromotion(args = []) {
   const flags = args.filter(arg => arg !== '--audit');
   if (!flags.length) return null;
-  const releases = { '--promote=cerrocora-direct-checkout-2026-10-08': 'cerrocora-direct-checkout-2026-10-08', '--promote=izi-franquias-admin-2026-10-08': 'izi-franquias-admin-2026-10-08' };
+  const releases = {
+    '--promote=cerrocora-direct-checkout-2026-10-08': 'cerrocora-direct-checkout-2026-10-08',
+    '--promote=izi-franquias-admin-2026-10-08': 'izi-franquias-admin-2026-10-08',
+    '--promote=cerrocora-tracking-2026-10-12': 'cerrocora-tracking-2026-10-12',
+  };
   if (flags.length !== 1 || !releases[flags[0]]) {
     throw new Error('Promoção live desconhecida. Use uma revisão de escopo versionada.');
   }

@@ -1,0 +1,33 @@
+{
+  "scope": "cerrocora",
+  "approvedRequest": "PR #110 aprovada e merge/publicação autorizados neste chat em 12/10/2026. Instalar os kits GTM Izi/Cative e o contrato checkout_click na página oficial; nenhuma configuração ou publicação de GTM. Inclusão do ajuste visual já integrado na PR #109 também autorizada explicitamente neste chat.",
+  "implementationPullRequest": "https://github.com/jumper-lab/jumper-web/pull/110",
+  "baselineMain": "c84140d12a976af9e3dff909c8eb9a7af9ac4ef4",
+  "baselineWorkerVersion": "e7841333-0869-4510-9e34-83fa63efb772",
+  "workerSha256": "524a9941779ca57ce91e3594d8dd9baef5ea4ad90c625cc23ea3d3ffc78197d7",
+  "pages": [
+    {
+      "asset": "cerrocora/index.html",
+      "candidateSha256": "dbc1e000a29b1571602de4ea9b5945b3bbd7af045e946d77233c8ec624ce0775",
+      "publishedSha256": [
+        "9f3fa179d3a28aaead741edc2f58014452760b6bd4fa505d3f90ddcf95da104d",
+        "dbc1e000a29b1571602de4ea9b5945b3bbd7af045e946d77233c8ec624ce0775"
+      ]
+    },
+    {
+      "asset": "izigym-lp-vilaromana/index.html",
+      "candidateSha256": "9914459f5d754c42838c52dd8a6006465ca41e0f5baee12d36ce53061e1359de",
+      "publishedSha256": [
+        "f4fd8685e2b899c49b44d13f4cd738215c6b6d506dc5c2031400c2c6ddbfc3ea"
+      ],
+      "reason": "O live precisa do módulo novo sob o caminho Vila Romana para servir a Cerro Corá. A prévia pública permanece no Worker dev com os bytes anteriores; esta operação não publica o dev."
+    }
+  ],
+  "additionalApprovedChange": {
+    "pullRequest": "https://github.com/jumper-lab/jumper-web/pull/109",
+    "asset": "hub-redesign.css",
+    "publishedSha256": "5601ffdaea47cfbedcfda7adba9c993b550792562c38f965cb4cfa8fec5d4801",
+    "candidateSha256": "a84a659760787a870f33efd9ee30fb23bfd0ba92f90c3df8c06345997b1d8eec",
+    "reason": "Selos de origem mais compactos e arredondados no hub. Hashes registrados como evidência da inclusão explicitamente aprovada; as páginas protegidas continuam na auditoria estrita do preflight."
+  }
+}
