@@ -1,0 +1,98 @@
+{
+  "format": "jumper-gtm-change-plan/v1",
+  "importable": false,
+  "status": "prepared-not-applied",
+  "scope": "cerrocora.izigym.com.br",
+  "variables": {
+    "dataLayerVersion": 2,
+    "names": ["site_id", "izi_enabled", "cative_enabled", "cative_checkout_source", "placement", "checkout_url", "utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "utm_id", "gclid", "fbclid"],
+    "builtIn": ["Page Hostname", "Event"],
+    "internalOnly": ["izi_enabled", "cative_enabled", "cative_checkout_source"]
+  },
+  "izi": {
+    "containerId": "GTM-TGQTFXTN",
+    "reviewedPublishedVersion": "23",
+    "owner": "Jumper / administrador do GTM Izi",
+    "reusePublishedTags": {
+      "ga4GoogleTag": {"tagId": "7", "destination": "G-70NXMC0KR6"},
+      "adsGoogleTag": {"tagId": "8", "destination": "AW-17997991775"},
+      "metaPageView": {"tagId": "15", "pixelId": "1181083030661596", "dispatch": "trackSingle"}
+    },
+    "newCheckoutTrigger": {
+      "eventEquals": "checkout_click",
+      "filters": {"Page Hostname": "cerrocora.izigym.com.br", "site_id": "cerrocora", "izi_enabled": true}
+    },
+    "newTags": [
+      {
+        "name": "Cerro Corá - Izi - GA4 checkout_click",
+        "template": "Google Analytics: GA4 Event (native)",
+        "measurementId": "G-70NXMC0KR6",
+        "eventName": "checkout_click",
+        "sendEcommerceData": false,
+        "trigger": "newCheckoutTrigger",
+        "eventParameters": ["site_id", "placement", "checkout_url", "utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "utm_id", "gclid", "fbclid"]
+      },
+      {
+        "name": "Cerro Corá - Izi - Meta checkout_click",
+        "template": "Existing reviewed Facebook Pixel template",
+        "pixelId": "1181083030661596",
+        "eventNameMode": "custom",
+        "customEventName": "checkout_click",
+        "requiredDispatch": "trackSingleCustom",
+        "trigger": "newCheckoutTrigger",
+        "properties": ["site_id", "placement", "checkout_url", "utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "utm_id", "gclid", "fbclid"]
+      },
+      {
+        "name": "Cerro Corá - Izi - Clarity",
+        "template": "Microsoft Clarity official template",
+        "projectId": "ywlrxh4o91",
+        "trigger": {
+          "event": "gtm.js",
+          "filters": {"Page Hostname": "cerrocora.izigym.com.br", "site_id": "cerrocora", "izi_enabled": true, "cative_enabled": false}
+        },
+        "limitation": "Preserve Cative while both kits are enabled. Published scripts prevent a second independent collector. Simultaneous collection and Izi receipt remain pending."
+      }
+    ],
+    "constraints": [
+      "Do not recreate base tags already published; verify one page_view/PageView per destination.",
+      "No sale/Lead/Purchase/InitiateCheckout or Ads conversion mapping from checkout_click.",
+      "Do not install GT-MQRDQBSX separately from the existing AW Google tag.",
+      "Preserve LP/Pacto triggers; new triggers apply only to Cerro Corá.",
+      "Map any additional utm_* keys only when required, without adding personal data."
+    ]
+  },
+  "cative": {
+    "containerId": "GTM-N52MH72F",
+    "reviewedPublishedVersion": "10",
+    "owner": "Administrador com acesso ao GTM Cative (acesso Jumper não confirmado nesta sessão)",
+    "reusePublishedTags": {
+      "ga4GoogleTag": {"tagId": "27", "destination": "G-7CECXK1LS2"},
+      "metaVariableEvents": {"tagId": "20", "pixelId": "922916223883872", "dispatch": "trackSingle/trackSingleCustom"},
+      "clarity": {"tagId": "23", "projectId": "ytjf3498ao"}
+    },
+    "newMetaCheckoutTag": {
+      "name": "Cerro Corá - Cative - InitiateCheckout migration",
+      "template": "Existing reviewed Facebook Pixel template",
+      "pixelId": "922916223883872",
+      "standardEventName": "InitiateCheckout",
+      "requiredDispatch": "trackSingle",
+      "trigger": {
+        "eventEquals": "checkout_click",
+        "filters": {"Page Hostname": "cerrocora.izigym.com.br", "site_id": "cerrocora", "cative_enabled": true, "cative_checkout_source": "gtm"}
+      },
+      "missingSource": "do-not-fire",
+      "platformParameters": [],
+      "keepExistingCheckoutCustom": true
+    },
+    "migrationGates": [
+      "Publish the source=gtm-only tag before changing the site's source.",
+      "Validate Google tag 27 with direct GA4 disabled in a fresh controlled page before removing legacy GA4.",
+      "Test one InitiateCheckout per occurrence in GTM mode, legacy mode and a page with absent source.",
+      "Never add a Cative GA4 checkout_click tag without alignment.",
+      "Only remove direct legacy code after continuity/count/receipt validation and compatible rollback versions."
+    ]
+  },
+  "consent": "Preserve the reviewed templates' existing consent settings and any existing consent-mode messages. Do not add grant or default-consent commands.",
+  "ads": {"account": "237-071-7566", "conversionLabelsVerified": false, "activateNewConversions": false},
+  "aws": {"status": "runtime-dependencies-pending", "copyIntegration": false}
+}

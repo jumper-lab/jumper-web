@@ -1,0 +1,35 @@
+{
+  "method": "Execution of publicly fetched project scripts in an isolated JS context; no collection requests or dashboard receipt",
+  "results": [
+    {
+      "order": [
+        "cative",
+        "izi"
+      ],
+      "starts": [
+        "ytjf3498ao"
+      ],
+      "duplicates": [
+        "dup.ywlrxh4o91"
+      ],
+      "libraries": [
+        "https://scripts.clarity.ms/0.8.72/clarity.js"
+      ]
+    },
+    {
+      "order": [
+        "izi",
+        "cative"
+      ],
+      "starts": [
+        "ywlrxh4o91"
+      ],
+      "duplicates": [
+        "dup.ytjf3498ao"
+      ],
+      "libraries": [
+        "https://scripts.clarity.ms/0.8.72/clarity.js"
+      ]
+    }
+  ]
+}

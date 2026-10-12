@@ -3,6 +3,28 @@ const storageKey = 'izi:checkout-attribution:v1';
 const isCampaignKey = (key: string) => /^utm_[a-z0-9_]+$/.test(key) || key === 'gclid' || key === 'fbclid';
 
 type Campaign = Record<string, string>;
+type CerroCoraTracking = {
+  siteId: string;
+  izi: { enabled: boolean };
+  cative: { enabled: boolean; legacy: { metaCheckout: { source: 'legacy' | 'gtm'; pixelId: string } } };
+};
+type TrackingWindow = Window & {
+  dataLayer?: unknown[];
+  fbq?: (...args: unknown[]) => void;
+  cerroCoraTracking?: CerroCoraTracking;
+};
+const boundLinks = new WeakSet<HTMLAnchorElement>();
+
+// The commercial link retains its account key; analytics only receives the
+// destination and campaign parameters, without the key or unrelated URL data.
+export function trackingCheckoutUrl(href: string): string {
+  const source = new URL(href);
+  const safe = new URL(source.origin + source.pathname);
+  for (const [key, value] of source.searchParams) {
+    if (['un', 'pl', 'cupom'].includes(key) || isCampaignKey(key)) safe.searchParams.set(key, value);
+  }
+  return safe.href;
+}
 export function readCampaign(search: string, storage: Pick<Storage, 'getItem' | 'setItem'>): Campaign {
   const arrival = Object.fromEntries([...new URLSearchParams(search)].filter(([key, value]) => isCampaignKey(key) && value));
   if (Object.keys(arrival).length) {
@@ -35,12 +57,38 @@ export function setupCheckoutLinks(): void {
     links.forEach(link => { link.href = checkoutUrl(campaign); });
   };
   refresh();
+  const unboundLinks = links.filter(link => !boundLinks.has(link));
+  if (!unboundLinks.length) return;
   window.addEventListener('pageshow', refresh);
-  links.forEach(link => link.addEventListener('click', () => {
-    refresh();
-    const tracking = window as Window & { dataLayer?: unknown[]; fbq?: (action: string, event: string) => void };
-    tracking.dataLayer ||= [];
-    tracking.dataLayer.push({ event: 'checkout_click', placement: link.dataset.checkout, checkout_url: link.href, ...campaign });
-    tracking.fbq?.('track', 'InitiateCheckout');
-  }));
+  unboundLinks.forEach(link => {
+    boundLinks.add(link);
+    link.addEventListener('click', () => {
+      refresh();
+      const tracking = window as TrackingWindow;
+      tracking.dataLayer ||= [];
+      const kits = tracking.cerroCoraTracking;
+      tracking.dataLayer.push({
+        event: 'checkout_click',
+        placement: link.dataset.checkout,
+        checkout_url: kits ? trackingCheckoutUrl(link.href) : link.href,
+        ...campaign,
+        ...(kits ? {
+          site_id: kits.siteId,
+          izi_enabled: kits.izi.enabled,
+          cative_enabled: kits.cative.enabled,
+          cative_checkout_source: kits.cative.legacy.metaCheckout.source,
+        } : {}),
+      });
+      if (kits) {
+        // Transitional Cative emitter. GTM must explicitly require source=gtm
+        // before this mode can change, including while older pages remain open.
+        if (kits.cative.enabled && kits.cative.legacy.metaCheckout.source === 'legacy') {
+          tracking.fbq?.('trackSingle', kits.cative.legacy.metaCheckout.pixelId, 'InitiateCheckout');
+        }
+      } else {
+        // Existing previews keep their behavior; only the official HTML opts in.
+        tracking.fbq?.('track', 'InitiateCheckout');
+      }
+    });
+  });
 }

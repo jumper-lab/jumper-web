@@ -1,6 +1,7 @@
 import { cp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { dirname, extname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { prepareCerroCoraTracking } from './prepare-cerrocora-tracking.mjs';
 
 const projectRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
 const source = join(projectRoot, 'dist');
@@ -92,9 +93,11 @@ await rewriteTree(iziVilaRomanaTarget, [
 await cp(join(iziVilaRomanaTarget, 'simple', 'index.html'), join(iziVilaRomanaTarget, 'index.html'));
 await mkdir(iziCerroCoraTarget, { recursive: true });
 const cerroCoraHtml = await readFile(join(iziVilaRomanaTarget, 'index.html'), 'utf8');
+const cerroCoraTracking = JSON.parse(await readFile(resolve(projectRoot, '../izigym-lp/data/cerrocora-tracking.json'), 'utf8'));
 await writeFile(
   join(iziCerroCoraTarget, 'index.html'),
-  cerroCoraHtml.replaceAll('https://site.jumper.dev.br/izigym-lp-vilaromana/', 'https://cerrocora.izigym.com.br/'),
+  prepareCerroCoraTracking(cerroCoraHtml, cerroCoraTracking)
+    .replaceAll('https://site.jumper.dev.br/izigym-lp-vilaromana/', 'https://cerrocora.izigym.com.br/'),
 );
 
 const dashboardTemplate = await readFile(join(projectRoot, 'cloudflare', 'dashboard.html'), 'utf8');

@@ -1,0 +1,92 @@
+{
+  "collectedAt": "2026-10-12",
+  "method": "Public HTTP GET; source/config review, no platform receipt validation",
+  "productionModified": false,
+  "sources": [
+    {
+      "url": "https://cerrocora.izigym.com.br/",
+      "sha256": "9f3fa179d3a28aaead741edc2f58014452760b6bd4fa505d3f90ddcf95da104d",
+      "bytes": 29922
+    },
+    {
+      "url": "https://cerrocora.izigym.com.br/izigym-lp-vilaromana/_astro/simple.astro_astro_type_script_index_0_lang.CAcxM-NK.js",
+      "sha256": "b8dd7df4260b638fbd732d73141e7535cf69ec8f1ad9c164c92d91053e7bd4bc",
+      "bytes": 10029
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtm.js?id=GTM-TGQTFXTN",
+      "sha256": "fe9752046b6a455fde5f405e27303531f6e6f729261b0a1fe7c89ec86119dba0",
+      "bytes": 493862,
+      "publishedVersion": "23",
+      "tagIds": [
+        4,
+        6,
+        7,
+        8,
+        11,
+        15,
+        16,
+        18,
+        20,
+        26,
+        39,
+        41,
+        43,
+        45,
+        46,
+        47,
+        48,
+        49,
+        51,
+        57,
+        58
+      ]
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtm.js?id=GTM-N52MH72F",
+      "sha256": "bbbe4051f1a4c61bbd4058902df635da35f30e7cda6bae15e21e3a110ff15205",
+      "bytes": 481533,
+      "publishedVersion": "10",
+      "tagIds": [
+        3,
+        20,
+        23,
+        26,
+        27,
+        28
+      ]
+    },
+    {
+      "url": "https://www.clarity.ms/tag/ywlrxh4o91",
+      "sha256": "87c4a34da3e3dee4588458410ee156ffb37b46d566e66778955df538687229ad",
+      "bytes": 726
+    },
+    {
+      "url": "https://www.clarity.ms/tag/ytjf3498ao?ref=gtm",
+      "sha256": "e380cf1ac84a4de83507449093dbac7718695ea242815cf98cce022629cc923a",
+      "bytes": 726
+    }
+  ],
+  "findings": {
+    "placements": [
+      "header",
+      "hero",
+      "gallery",
+      "manifesto",
+      "prime",
+      "one",
+      "footer",
+      "mobile"
+    ],
+    "iziCheckoutMappingPublished": false,
+    "iziClarityPublished": false,
+    "metaTemplatesUse": [
+      "trackSingle",
+      "trackSingleCustom"
+    ],
+    "cativeDirectGa4AlsoInGtm": true,
+    "duplicateGa4CountingProven": false,
+    "clarityGuard": "Second script returns an event dup.<projectId> when window.clarity.v or window.clarity.t already exists. First initialization wins.",
+    "awsEndpoint": "No AWS endpoint found in owned LP source or public container resources. Pixel-delivered settings/network dependencies still require runtime inventory. No integration copied."
+  }
+}

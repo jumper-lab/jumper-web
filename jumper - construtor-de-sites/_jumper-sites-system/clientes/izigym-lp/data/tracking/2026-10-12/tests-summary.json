@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-12",
+  "productionDeploy": false,
+  "gtmChangesApplied": false,
+  "platformReceiptVerified": false,
+  "build": "npm run build:cloudflare completed",
+  "lpTests": {
+    "command": "npm test (after build)",
+    "passed": 18,
+    "failed": 0
+  },
+  "hosterTests": {
+    "tests": [
+      "dev-preserved-build",
+      "dev-preflight",
+      "dev-worker",
+      "live-promotion"
+    ],
+    "passed": 25,
+    "failed": 0
+  },
+  "previewSnapshots": {
+    "preservedFiles": 5,
+    "sha256Matched": true
+  },
+  "browserQa": {
+    "environment": "Local Chrome, production HTML renderer and compiled page module; all platform scripts mocked, commercial navigation prevented only by QA fixture",
+    "desktop": "header, hero via Enter, gallery, manifesto, prime, one, footer: 7 logical events, 7 targeted legacy Cative calls",
+    "mobile390x844": "mobile: total 8 events and 8 targeted legacy calls",
+    "cativeOffFreshPage": "Only Izi GTM selected; 1 logical hero event, 0 legacy Meta calls; existing campaign retained in link",
+    "cativeReenabledFreshPage": "1 logical hero event, 1 legacy Meta call",
+    "pageErrorsObserved": 0
+  },
+  "pending": [
+    "real destination emissions/counts/receipt",
+    "GTM Izi checkout and Clarity tags",
+    "Cative GA4/Meta migration",
+    "AWS runtime dependency inventory",
+    "Clarity simultaneous receipt",
+    "authorized Hoster promotion and remote preflight"
+  ]
+}
