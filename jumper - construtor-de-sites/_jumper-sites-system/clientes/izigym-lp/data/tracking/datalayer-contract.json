@@ -1,0 +1,89 @@
+{
+  "format": "jumper-site-dataLayer-contract/v1",
+  "status": "implemented-site-code-not-deployed",
+  "hostname": "cerrocora.izigym.com.br",
+  "layerName": "dataLayer",
+  "preservesExistingQueue": true,
+  "scope": "Site loaders, activation controls and dataLayer messages. GTM configuration and publication are outside this delivery.",
+  "containers": {
+    "izi": { "id": "GTM-TGQTFXTN", "enabled": true },
+    "cative": { "id": "GTM-N52MH72F", "enabled": true }
+  },
+  "pageContext": {
+    "oncePerBootstrap": true,
+    "customEvent": false,
+    "example": {
+      "site_id": "cerrocora",
+      "izi_enabled": true,
+      "cative_enabled": true
+    }
+  },
+  "startup": {
+    "event": "gtm.js",
+    "timestampField": "gtm.start",
+    "timestampType": "number (Unix milliseconds)",
+    "sharedByEnabledContainers": true,
+    "pushCondition": "At least one kit enabled and no existing gtm.js event in the queue."
+  },
+  "checkout": {
+    "event": "checkout_click",
+    "selector": "a[data-checkout]",
+    "pushesPerInteraction": 1,
+    "pushBeforeNavigation": true,
+    "requiredFields": {
+      "event": { "type": "string", "value": "checkout_click" },
+      "placement": {
+        "type": "string",
+        "values": ["header", "hero", "gallery", "manifesto", "prime", "one", "footer", "mobile"]
+      },
+      "checkout_url": { "type": "string", "description": "Sanitized checkout URL; the commercial link remains complete." },
+      "site_id": { "type": "string", "value": "cerrocora" },
+      "izi_enabled": { "type": "boolean" },
+      "cative_enabled": { "type": "boolean" },
+      "cative_checkout_source": { "type": "string", "values": ["legacy", "gtm"], "deliveredValue": "legacy" }
+    },
+    "optionalCampaignFields": {
+      "type": "string",
+      "knownNames": ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "utm_id", "gclid", "fbclid"],
+      "utmKeyPattern": "^utm_[a-z0-9_]+$",
+      "otherKeys": ["gclid", "fbclid"],
+      "extensions": "Existing nonpersonal utm_* extensions keep their original names; browser QA includes utm_variant.",
+      "source": "Nonempty arrival parameters, or existing session campaign when no arrival campaign is present.",
+      "missingValues": "Omitted; not fabricated.",
+      "privacy": "Known personal UTM fields and values with email, formatted phone, CPF/CNPJ or bare 10-14 digit personal-number patterns are omitted from the event and telemetry URL. Numeric utm_id, gclid and fbclid identifiers remain supported. Encoded values are checked without changing checkout campaign propagation."
+    },
+    "urlSanitization": {
+      "allowedQueryKeys": ["un", "pl", "cupom", "utm_*", "gclid", "fbclid"],
+      "removes": ["k", "credentials", "fragment", "unrelated query parameters"]
+    },
+    "example": {
+      "event": "checkout_click",
+      "placement": "hero",
+      "checkout_url": "https://vendas.online.sistemapacto.com.br/checkout?un=1&pl=2&cupom=0%2C99_IZI&utm_source=exemplo",
+      "utm_source": "exemplo",
+      "site_id": "cerrocora",
+      "izi_enabled": true,
+      "cative_enabled": true,
+      "cative_checkout_source": "legacy"
+    }
+  },
+  "internalControlFields": ["izi_enabled", "cative_enabled", "cative_checkout_source"],
+  "internalControlsArePlatformParameters": false,
+  "consumerIntentOutsideSiteScope": {
+    "izi": {"ga4Event": "checkout_click", "metaEvent": "checkout_click", "metaEventType": "custom", "siteId": "cerrocora", "hostname": "cerrocora.izigym.com.br"},
+    "noConversionInferredFromClick": ["Lead", "Purchase", "begin_checkout", "real checkout start"],
+    "gtmConfigurationApplied": false
+  },
+  "functionalFormPresent": false,
+  "additionalSiteEventsIntroduced": [],
+  "legacyCativePreserved": {
+    "ga4DirectEnabled": true,
+    "metaCheckoutSource": "legacy",
+    "metaDispatch": "trackSingle",
+    "metaPixelId": "922916223883872",
+    "metaEvent": "InitiateCheckout",
+    "condition": "Cative enabled, source=legacy and fbq available."
+  },
+  "consent": "Existing queue and consent messages are preserved; no new consent grant or default commands.",
+  "activation": "Change the kit enabled flag, rebuild and open a fresh page. Already executed containers are not unloaded."
+}

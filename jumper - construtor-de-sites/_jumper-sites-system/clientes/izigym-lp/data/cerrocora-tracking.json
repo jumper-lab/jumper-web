@@ -1,0 +1,21 @@
+{
+  "siteId": "cerrocora",
+  "izi": {
+    "enabled": true,
+    "gtmId": "GTM-TGQTFXTN"
+  },
+  "cative": {
+    "enabled": true,
+    "gtmId": "GTM-N52MH72F",
+    "legacy": {
+      "ga4Direct": {
+        "enabled": true,
+        "measurementId": "G-7CECXK1LS2"
+      },
+      "metaCheckout": {
+        "source": "legacy",
+        "pixelId": "922916223883872"
+      }
+    }
+  }
+}

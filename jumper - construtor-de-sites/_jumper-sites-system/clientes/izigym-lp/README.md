@@ -53,3 +53,7 @@ A LP Simple usada no domínio Cerro Corá não exibe formulário nem modal de ma
 Os cadastros históricos D1 e o painel administrativo continuam disponíveis. Este fluxo não envia novos cadastros ao D1: o preenchimento ocorre na Pacto.
 
 Teste de atribuição: `node --test tests/checkout-attribution.test.mjs` (Node 24+).
+
+## Kits de rastreamento Cerro Corá — 12/10/2026
+
+O Hoster aplica `data/cerrocora-tracking.json` somente ao HTML do domínio oficial. Os dois GTMs usam uma fila comum; os legados Cative permanecem controlados. Izi não recebe instalação direta de ferramentas. Esta entrega cobre os carregadores, controles e eventos da página; configuração e publicação dos GTMs ficam fora do escopo. [Entrega e validação local](data/tracking/CERROCORA-2026-10-12.md) e [contrato dataLayer](data/tracking/datalayer-contract.json). Depois do build, `npm test` executa a suíte de atribuição e separação dos kits.
