@@ -1,0 +1,507 @@
+{
+  "date": "2026-10-12",
+  "environment": "Local Chromium with official hostname represented by intercepted HTML/assets; published GTM/platform scripts fetched read-only. All collection requests intercepted and answered locally; no event forwarded to a real collector.",
+  "gtmChangesApplied": false,
+  "receiptConfirmed": false,
+  "cases": [
+    {
+      "mode": "legacy",
+      "loadedContainers": [
+        "GTM-N52MH72F",
+        "GTM-TGQTFXTN"
+      ],
+      "sourceResponses": [
+        {
+          "hostname": "www.googletagmanager.com",
+          "path": "/gtm.js",
+          "status": 200
+        },
+        {
+          "hostname": "www.googletagmanager.com",
+          "path": "/gtag/js",
+          "status": 200
+        },
+        {
+          "hostname": "www.googletagmanager.com",
+          "path": "/gtm.js",
+          "status": 200
+        },
+        {
+          "hostname": "connect.facebook.net",
+          "path": "/en_US/fbevents.js",
+          "status": 200
+        },
+        {
+          "hostname": "www.clarity.ms",
+          "path": "/tag/ytjf3498ao",
+          "status": 200
+        },
+        {
+          "hostname": "connect.facebook.net",
+          "path": "/signals/config/922916223883872",
+          "status": 200
+        },
+        {
+          "hostname": "scripts.clarity.ms",
+          "path": "/0.8.72/clarity.js",
+          "status": 200
+        },
+        {
+          "hostname": "connect.facebook.net",
+          "path": "/signals/config/1181083030661596",
+          "status": 200
+        },
+        {
+          "hostname": "www.googletagmanager.com",
+          "path": "/gtag/js",
+          "status": 200
+        },
+        {
+          "hostname": "cdn.jsdelivr.net",
+          "path": "/npm/meta-capi-param-builder-clientjs/dist/clientParamBuilder.bundle.js",
+          "status": 200
+        },
+        {
+          "hostname": "www.googletagmanager.com",
+          "path": "/gtag/js",
+          "status": 200
+        },
+        {
+          "hostname": "www.googletagmanager.com",
+          "path": "/gtag/js",
+          "status": 200
+        }
+      ],
+      "sourceFailures": [],
+      "siteEvents": [
+        {
+          "event": "checkout_click",
+          "placement": "hero",
+          "checkout_url": "https://vendas.online.sistemapacto.com.br/checkout?un=1&pl=2&cupom=0%2C99_IZI&utm_source=qa_cerrocora",
+          "utm_source": "qa_cerrocora",
+          "site_id": "cerrocora",
+          "izi_enabled": true,
+          "cative_enabled": true,
+          "cative_checkout_source": "legacy",
+          "gtm.uniqueEventId": 35
+        }
+      ],
+      "ga4ObservedRequests": [
+        {
+          "hostname": "www.google-analytics.com",
+          "path": "/g/collect",
+          "method": "POST",
+          "measurementId": "G-7CECXK1LS2",
+          "pixelId": null,
+          "event": "page_view",
+          "sequence": "1",
+          "parameterNames": []
+        },
+        {
+          "hostname": "www.google-analytics.com",
+          "path": "/g/collect",
+          "method": "POST",
+          "measurementId": "G-70NXMC0KR6",
+          "pixelId": null,
+          "event": "page_view",
+          "sequence": "1",
+          "parameterNames": []
+        }
+      ],
+      "meta": {
+        "runtimeReady": true,
+        "collectionRequestsObserved": 0,
+        "confirmedReceipt": false,
+        "note": "No Meta collector request was observed within this isolated 15-second window. API-call isolation is evidenced separately by the deterministic browser tests; this observation does not establish Meta transport or receipt."
+      },
+      "requestGroups": [
+        {
+          "hostname": "www.google.com",
+          "path": "/ccm/collect",
+          "measurementId": null,
+          "pixelId": null,
+          "event": "page_view",
+          "attempts": 2
+        },
+        {
+          "hostname": "ad.doubleclick.net",
+          "path": "/ccm/s/collect",
+          "measurementId": null,
+          "pixelId": null,
+          "event": null,
+          "attempts": 1
+        },
+        {
+          "hostname": "www.google-analytics.com",
+          "path": "/g/collect",
+          "measurementId": "G-7CECXK1LS2",
+          "pixelId": null,
+          "event": "page_view",
+          "attempts": 1
+        },
+        {
+          "hostname": "a.clarity.ms",
+          "path": "/collect",
+          "measurementId": null,
+          "pixelId": null,
+          "event": null,
+          "attempts": 55
+        },
+        {
+          "hostname": "www.google-analytics.com",
+          "path": "/g/collect",
+          "measurementId": "G-70NXMC0KR6",
+          "pixelId": null,
+          "event": "page_view",
+          "attempts": 1
+        },
+        {
+          "hostname": "googleads.g.doubleclick.net",
+          "path": "/pagead/viewthroughconversion/17997991775/",
+          "measurementId": null,
+          "pixelId": null,
+          "event": "gtag.config",
+          "attempts": 1
+        },
+        {
+          "hostname": "www.google.com",
+          "path": "/rmkt/collect/17997991775/",
+          "measurementId": null,
+          "pixelId": null,
+          "event": "gtag.config",
+          "attempts": 1
+        },
+        {
+          "hostname": "www.google.com",
+          "path": "/ccm/collect",
+          "measurementId": "AW-17997991775",
+          "pixelId": null,
+          "event": "page_view",
+          "attempts": 1
+        },
+        {
+          "hostname": "c.clarity.ms",
+          "path": "/c.gif",
+          "measurementId": null,
+          "pixelId": null,
+          "event": null,
+          "attempts": 1
+        }
+      ],
+      "pageErrors": [],
+      "limits": "One hero interaction per mode. Collection responses are simulated; retries in Clarity/other auxiliary traffic are not independent logical events. This is not full platform coverage or production receipt validation."
+    },
+    {
+      "mode": "cativeOff",
+      "loadedContainers": [
+        "GTM-TGQTFXTN"
+      ],
+      "sourceResponses": [
+        {
+          "hostname": "www.googletagmanager.com",
+          "path": "/gtm.js",
+          "status": 200
+        },
+        {
+          "hostname": "connect.facebook.net",
+          "path": "/en_US/fbevents.js",
+          "status": 200
+        },
+        {
+          "hostname": "connect.facebook.net",
+          "path": "/signals/config/1181083030661596",
+          "status": 200
+        },
+        {
+          "hostname": "www.googletagmanager.com",
+          "path": "/gtag/js",
+          "status": 200
+        },
+        {
+          "hostname": "www.googletagmanager.com",
+          "path": "/gtag/js",
+          "status": 200
+        }
+      ],
+      "sourceFailures": [],
+      "siteEvents": [
+        {
+          "event": "checkout_click",
+          "placement": "hero",
+          "checkout_url": "https://vendas.online.sistemapacto.com.br/checkout?un=1&pl=2&cupom=0%2C99_IZI&utm_source=qa_cerrocora",
+          "utm_source": "qa_cerrocora",
+          "site_id": "cerrocora",
+          "izi_enabled": true,
+          "cative_enabled": false,
+          "cative_checkout_source": "legacy",
+          "gtm.uniqueEventId": 20
+        }
+      ],
+      "ga4ObservedRequests": [
+        {
+          "hostname": "www.google-analytics.com",
+          "path": "/g/collect",
+          "method": "POST",
+          "measurementId": "G-70NXMC0KR6",
+          "pixelId": null,
+          "event": "page_view",
+          "sequence": "1",
+          "parameterNames": []
+        }
+      ],
+      "meta": {
+        "runtimeReady": true,
+        "collectionRequestsObserved": 0,
+        "confirmedReceipt": false,
+        "note": "No Meta collector request was observed within this isolated 15-second window. API-call isolation is evidenced separately by the deterministic browser tests; this observation does not establish Meta transport or receipt."
+      },
+      "requestGroups": [
+        {
+          "hostname": "www.google.com",
+          "path": "/ccm/collect",
+          "measurementId": null,
+          "pixelId": null,
+          "event": "page_view",
+          "attempts": 1
+        },
+        {
+          "hostname": "ad.doubleclick.net",
+          "path": "/ccm/s/collect",
+          "measurementId": null,
+          "pixelId": null,
+          "event": null,
+          "attempts": 1
+        },
+        {
+          "hostname": "www.google-analytics.com",
+          "path": "/g/collect",
+          "measurementId": "G-70NXMC0KR6",
+          "pixelId": null,
+          "event": "page_view",
+          "attempts": 1
+        },
+        {
+          "hostname": "googleads.g.doubleclick.net",
+          "path": "/pagead/viewthroughconversion/17997991775/",
+          "measurementId": null,
+          "pixelId": null,
+          "event": "gtag.config",
+          "attempts": 1
+        },
+        {
+          "hostname": "www.google.com",
+          "path": "/rmkt/collect/17997991775/",
+          "measurementId": null,
+          "pixelId": null,
+          "event": "gtag.config",
+          "attempts": 1
+        },
+        {
+          "hostname": "www.google.com",
+          "path": "/ccm/collect",
+          "measurementId": "AW-17997991775",
+          "pixelId": null,
+          "event": "page_view",
+          "attempts": 1
+        }
+      ],
+      "pageErrors": [],
+      "limits": "One hero interaction per mode. Collection responses are simulated; retries in Clarity/other auxiliary traffic are not independent logical events. This is not full platform coverage or production receipt validation."
+    },
+    {
+      "mode": "gtmSource",
+      "loadedContainers": [
+        "GTM-N52MH72F",
+        "GTM-TGQTFXTN"
+      ],
+      "sourceResponses": [
+        {
+          "hostname": "www.googletagmanager.com",
+          "path": "/gtm.js",
+          "status": 200
+        },
+        {
+          "hostname": "www.googletagmanager.com",
+          "path": "/gtag/js",
+          "status": 200
+        },
+        {
+          "hostname": "www.googletagmanager.com",
+          "path": "/gtm.js",
+          "status": 200
+        },
+        {
+          "hostname": "connect.facebook.net",
+          "path": "/en_US/fbevents.js",
+          "status": 200
+        },
+        {
+          "hostname": "www.clarity.ms",
+          "path": "/tag/ytjf3498ao",
+          "status": 200
+        },
+        {
+          "hostname": "connect.facebook.net",
+          "path": "/signals/config/922916223883872",
+          "status": 200
+        },
+        {
+          "hostname": "scripts.clarity.ms",
+          "path": "/0.8.72/clarity.js",
+          "status": 200
+        },
+        {
+          "hostname": "connect.facebook.net",
+          "path": "/signals/config/1181083030661596",
+          "status": 200
+        },
+        {
+          "hostname": "cdn.jsdelivr.net",
+          "path": "/npm/meta-capi-param-builder-clientjs/dist/clientParamBuilder.bundle.js",
+          "status": 200
+        },
+        {
+          "hostname": "www.googletagmanager.com",
+          "path": "/gtag/js",
+          "status": 200
+        },
+        {
+          "hostname": "www.googletagmanager.com",
+          "path": "/gtag/js",
+          "status": 200
+        },
+        {
+          "hostname": "www.googletagmanager.com",
+          "path": "/gtag/js",
+          "status": 200
+        }
+      ],
+      "sourceFailures": [],
+      "siteEvents": [
+        {
+          "event": "checkout_click",
+          "placement": "hero",
+          "checkout_url": "https://vendas.online.sistemapacto.com.br/checkout?un=1&pl=2&cupom=0%2C99_IZI&utm_source=qa_cerrocora",
+          "utm_source": "qa_cerrocora",
+          "site_id": "cerrocora",
+          "izi_enabled": true,
+          "cative_enabled": true,
+          "cative_checkout_source": "gtm",
+          "gtm.uniqueEventId": 35
+        }
+      ],
+      "ga4ObservedRequests": [
+        {
+          "hostname": "www.google-analytics.com",
+          "path": "/g/collect",
+          "method": "POST",
+          "measurementId": "G-7CECXK1LS2",
+          "pixelId": null,
+          "event": "page_view",
+          "sequence": "1",
+          "parameterNames": []
+        },
+        {
+          "hostname": "www.google-analytics.com",
+          "path": "/g/collect",
+          "method": "POST",
+          "measurementId": "G-70NXMC0KR6",
+          "pixelId": null,
+          "event": "page_view",
+          "sequence": "1",
+          "parameterNames": []
+        }
+      ],
+      "meta": {
+        "runtimeReady": true,
+        "collectionRequestsObserved": 0,
+        "confirmedReceipt": false,
+        "note": "No Meta collector request was observed within this isolated 15-second window. API-call isolation is evidenced separately by the deterministic browser tests; this observation does not establish Meta transport or receipt."
+      },
+      "requestGroups": [
+        {
+          "hostname": "www.google.com",
+          "path": "/ccm/collect",
+          "measurementId": null,
+          "pixelId": null,
+          "event": "page_view",
+          "attempts": 2
+        },
+        {
+          "hostname": "ad.doubleclick.net",
+          "path": "/ccm/s/collect",
+          "measurementId": null,
+          "pixelId": null,
+          "event": null,
+          "attempts": 1
+        },
+        {
+          "hostname": "www.google-analytics.com",
+          "path": "/g/collect",
+          "measurementId": "G-7CECXK1LS2",
+          "pixelId": null,
+          "event": "page_view",
+          "attempts": 1
+        },
+        {
+          "hostname": "e.clarity.ms",
+          "path": "/collect",
+          "measurementId": null,
+          "pixelId": null,
+          "event": null,
+          "attempts": 42
+        },
+        {
+          "hostname": "www.google-analytics.com",
+          "path": "/g/collect",
+          "measurementId": "G-70NXMC0KR6",
+          "pixelId": null,
+          "event": "page_view",
+          "attempts": 1
+        },
+        {
+          "hostname": "googleads.g.doubleclick.net",
+          "path": "/pagead/viewthroughconversion/17997991775/",
+          "measurementId": null,
+          "pixelId": null,
+          "event": "gtag.config",
+          "attempts": 1
+        },
+        {
+          "hostname": "www.google.com",
+          "path": "/rmkt/collect/17997991775/",
+          "measurementId": null,
+          "pixelId": null,
+          "event": "gtag.config",
+          "attempts": 1
+        },
+        {
+          "hostname": "www.google.com",
+          "path": "/ccm/collect",
+          "measurementId": "AW-17997991775",
+          "pixelId": null,
+          "event": "page_view",
+          "attempts": 1
+        },
+        {
+          "hostname": "c.clarity.ms",
+          "path": "/c.gif",
+          "measurementId": null,
+          "pixelId": null,
+          "event": null,
+          "attempts": 1
+        },
+        {
+          "hostname": "www.googletagmanager.com",
+          "path": "/a",
+          "measurementId": null,
+          "pixelId": null,
+          "event": null,
+          "attempts": 1
+        }
+      ],
+      "pageErrors": [],
+      "limits": "One hero interaction per mode. Collection responses are simulated; retries in Clarity/other auxiliary traffic are not independent logical events. This is not full platform coverage or production receipt validation."
+    }
+  ]
+}

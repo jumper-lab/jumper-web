@@ -29,6 +29,7 @@
     "event": "checkout_click",
     "selector": "a[data-checkout]",
     "pushesPerInteraction": 1,
+    "pushBeforeNavigation": true,
     "requiredFields": {
       "event": { "type": "string", "value": "checkout_click" },
       "placement": {
@@ -43,10 +44,13 @@
     },
     "optionalCampaignFields": {
       "type": "string",
+      "knownNames": ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "utm_id", "gclid", "fbclid"],
       "utmKeyPattern": "^utm_[a-z0-9_]+$",
       "otherKeys": ["gclid", "fbclid"],
+      "extensions": "Existing nonpersonal utm_* extensions keep their original names; browser QA includes utm_variant.",
       "source": "Nonempty arrival parameters, or existing session campaign when no arrival campaign is present.",
-      "missingValues": "Omitted; not fabricated."
+      "missingValues": "Omitted; not fabricated.",
+      "privacy": "Known personal UTM fields and values with email, formatted phone, CPF/CNPJ or bare 10-14 digit personal-number patterns are omitted from the event and telemetry URL. Numeric utm_id, gclid and fbclid identifiers remain supported. Encoded values are checked without changing checkout campaign propagation."
     },
     "urlSanitization": {
       "allowedQueryKeys": ["un", "pl", "cupom", "utm_*", "gclid", "fbclid"],
@@ -64,6 +68,14 @@
     }
   },
   "internalControlFields": ["izi_enabled", "cative_enabled", "cative_checkout_source"],
+  "internalControlsArePlatformParameters": false,
+  "consumerIntentOutsideSiteScope": {
+    "izi": {"ga4Event": "checkout_click", "metaEvent": "checkout_click", "metaEventType": "custom", "siteId": "cerrocora", "hostname": "cerrocora.izigym.com.br"},
+    "noConversionInferredFromClick": ["Lead", "Purchase", "begin_checkout", "real checkout start"],
+    "gtmConfigurationApplied": false
+  },
+  "functionalFormPresent": false,
+  "additionalSiteEventsIntroduced": [],
   "legacyCativePreserved": {
     "ga4DirectEnabled": true,
     "metaCheckoutSource": "legacy",

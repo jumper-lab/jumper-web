@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import vm from 'node:vm';
 import { bootstrapTracking } from '../src/tracking-bootstrap.mjs';
-import { setupCheckoutLinks, PRIME_CHECKOUT, trackingCheckoutUrl } from '../src/checkout-attribution.ts';
+import { setupCheckoutLinks, PRIME_CHECKOUT, trackingCheckoutUrl, trackingCampaign } from '../src/checkout-attribution.ts';
 import { prepareCerroCoraTracking } from '../../rodeio-restaurante/scripts/prepare-cerrocora-tracking.mjs';
 
 const defaults = JSON.parse(await readFile(new URL('../data/cerrocora-tracking.json', import.meta.url)));
@@ -120,8 +120,9 @@ test('GTM checkout mode publishes its source with no direct Meta call', t => {
   const config = structuredClone(defaults);
   config.cative.legacy.metaCheckout.source = 'gtm';
   const f = clickFixture(t, config);
-  f.links[0].dispatchEvent(new Event('click'));
-  assert.equal(f.window.dataLayer[0].cative_checkout_source, 'gtm');
+  f.links.forEach(link => link.dispatchEvent(new Event('click')));
+  assert.equal(f.window.dataLayer.length, 8);
+  assert.ok(f.window.dataLayer.every(event => event.cative_checkout_source === 'gtm'));
   assert.equal(f.calls.length, 0);
 });
 
@@ -129,9 +130,9 @@ test('Cative off keeps links/campaign/events and cannot call its pixel', t => {
   const config = structuredClone(defaults);
   config.cative.enabled = false;
   const f = clickFixture(t, config);
-  f.links[0].dispatchEvent(new Event('click'));
-  assert.equal(f.window.dataLayer[0].cative_enabled, false);
-  assert.equal(f.window.dataLayer[0].izi_enabled, true);
+  f.links.forEach(link => link.dispatchEvent(new Event('click')));
+  assert.equal(f.window.dataLayer.length, 8);
+  assert.ok(f.window.dataLayer.every(event => event.cative_enabled === false && event.izi_enabled === true));
   assert.equal(f.calls.length, 0);
   assert.equal(new URL(f.links[0].href).searchParams.get('utm_source'), 'teste');
 });
@@ -170,6 +171,53 @@ test('sanitized telemetry strips unrelated parameters, credentials and fragment'
   assert.equal(safe.password, '');
   assert.equal(safe.hash, '');
   assert.deepEqual([...safe.searchParams.keys()], ['un', 'pl', 'cupom', 'utm_id']);
+});
+
+test('personal campaign fields and contact values stay out of telemetry but checkout propagation is preserved', t => {
+  const f = clickFixture(t);
+  f.location.search = '?utm_source=teste&utm_medium=cpc&utm_campaign=abertura&utm_content=person%40example.com&utm_term=%2B55%20%2811%29%2099999-9999&utm_id=123456789012&utm_audience=fitness&utm_email=person%40example.com&utm_customer_id=12345&gclid=gc&fbclid=fb';
+  f.links[0].dispatchEvent(new Event('click'));
+  const event = f.window.dataLayer[0];
+  const safe = new URL(event.checkout_url);
+  const commercial = new URL(f.links[0].href);
+  for (const key of ['utm_content', 'utm_term', 'utm_email', 'utm_customer_id']) {
+    assert.equal(event[key], undefined);
+    assert.equal(safe.searchParams.has(key), false);
+    assert.equal(commercial.searchParams.has(key), true);
+  }
+  for (const key of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_id', 'utm_audience', 'gclid', 'fbclid']) {
+    assert.equal(event[key], commercial.searchParams.get(key));
+    assert.equal(safe.searchParams.get(key), event[key]);
+  }
+  assert.equal(commercial.searchParams.has('k'), true);
+});
+
+test('encoded contact/document values are excluded while nonpersonal campaign names and IDs remain intact', () => {
+  const campaign = {
+    utm_source: 'teste', utm_content: 'person%2540example.com', utm_term: '123.456.789-00',
+    utm_phone: '11999999999', utm_audience: '11999999999', utm_company: '12.345.678/0001-90',
+    utm_id: '123456789012', utm_ad_name: 'Treino & saúde', utm_variant: '50% abertura',
+    gclid: 'gc', fbclid: 'fb', email: 'person@example.com',
+  };
+  assert.deepEqual(trackingCampaign(campaign), {
+    utm_source: 'teste', utm_id: '123456789012', utm_ad_name: 'Treino & saúde',
+    utm_variant: '50% abertura', gclid: 'gc', fbclid: 'fb',
+  });
+});
+
+test('checkout push preserves queued messages and precedes the targeted legacy emission', t => {
+  const f = clickFixture(t);
+  const existing = { event: 'existing_event' };
+  f.window.dataLayer.push(existing);
+  const emissions = [];
+  f.window.fbq = (...args) => emissions.push({ args, lastEvent: f.window.dataLayer.at(-1) });
+  f.links[0].dispatchEvent(new Event('click'));
+  assert.equal(f.window.dataLayer[0], existing);
+  assert.equal(f.window.dataLayer.length, 2);
+  assert.equal(emissions.length, 1);
+  assert.equal(emissions[0].lastEvent, f.window.dataLayer[1]);
+  assert.equal(emissions[0].lastEvent.event, 'checkout_click');
+  assert.deepEqual(emissions[0].args, ['trackSingle', '922916223883872', 'InitiateCheckout']);
 });
 
 test('official packaging replaces only reviewed snippets and respects noscript controls', async () => {

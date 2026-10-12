@@ -4,10 +4,10 @@
   "productionDeploy": false,
   "gtmChangesApplied": false,
   "platformReceiptVerified": false,
-  "build": "npm run build:cloudflare completed",
+  "build": "Initial full Hoster build completed; after dataLayer complement, LP rebuild and Hoster staging completed",
   "lpTests": {
     "command": "npm test (after build)",
-    "passed": 18,
+    "passed": 21,
     "failed": 0
   },
   "hosterTests": {
@@ -25,19 +25,41 @@
     "sha256Matched": true
   },
   "browserQa": {
-    "environment": "Local Chrome, production HTML renderer and compiled page module; all platform scripts mocked, commercial navigation prevented only by QA fixture",
-    "desktop": "header, hero via Enter, gallery, manifesto, prime, one, footer: 7 logical events, 7 targeted legacy Cative calls",
-    "mobile390x844": "mobile: total 8 events and 8 targeted legacy calls",
-    "cativeOffFreshPage": "Only Izi GTM selected; 1 logical hero event, 0 legacy Meta calls; existing campaign retained in link",
-    "cativeReenabledFreshPage": "1 logical hero event, 1 legacy Meta call",
+    "environment": "Local Chromium, official HTML renderer and compiled page module; GTM/GA4 and Meta library mocked; Pacto navigation mocked",
+    "evidence": "datalayer-validation.json",
+    "viewports": ["1440x900", "390x844"],
+    "cases": "6 cases: both viewports in legacy, Cative-off and GTM-source modes",
+    "placements": "8 in each viewport; 7 native visible clicks and 1 explicitly documented programmatic dispatch for the hidden CTA",
+    "perCase": "8 placement clicks, 1 keyboard activation and 2 rapid clicks: 11 pushes for 11 interactions",
+    "legacy": "11 calls exclusively to Cative pixel in each viewport; one call per interaction",
+    "cativeOffFreshPage": "Only Izi GTM selected; 11 logical events, 0 legacy Meta calls; links and campaign preserved",
+    "gtmSourceFreshPage": "Source=gtm in the same push; 11 logical events, 0 direct Meta calls",
+    "cativeReenabledFreshPage": "Both viewports: 1 logical event, 1 targeted Cative call; intercepted arguments recorded without internal control parameters",
+    "navigation": "4 real browser navigations to a mocked Pacto destination; event observed before navigation and commercial parameters preserved",
+    "privacy": "Personal test fields/values excluded from event and telemetry URL; commercial propagation and numeric campaign ID retained",
+    "functionalForms": 0,
+    "noSyntheticConversionEventsAdded": true,
+    "receiptConfirmed": false,
+    "realGtmDuplicateChecksPerformed": false,
     "pageErrorsObserved": 0
   },
   "outsideScope": [
-    "real destination emissions/counts/receipt",
+    "full real-destination coverage and confirmed receipt",
     "GTM Izi checkout and Clarity tags",
     "Cative GA4/Meta migration",
     "AWS runtime dependency inventory",
     "Clarity simultaneous receipt"
   ],
+  "publishedScriptAudit": {
+    "evidence": "published-script-emissions.json",
+    "environment": "Official hostname represented by local HTML/assets; published scripts fetched read-only; all collection intercepted with local replies",
+    "gtmChangesApplied": false,
+    "heroInteractions": 3,
+    "ga4PageViews": "One observed request per active GA4 ID; only Izi when Cative is disabled",
+    "meta": "Runtime ready and source responses 200; no Meta collection request observed within the isolated 15-second window",
+    "iziCheckoutRequestObserved": false,
+    "platformReceiptConfirmed": false,
+    "scopeLimit": "One hero click per mode; not full destination coverage or production receipt proof"
+  },
   "pendingPublication": ["authorized Hoster promotion and remote preflight"]
 }

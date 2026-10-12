@@ -1,0 +1,566 @@
+{
+  "date": "2026-10-12",
+  "environment": "Local Chromium; official HTML preparation and compiled page module; GTM/GA4 scripts and Meta library simulated; checkout navigation mocked.",
+  "gtmChangesApplied": false,
+  "platformReceiptConfirmed": false,
+  "cases": [
+    {
+      "viewport": "desktop",
+      "dimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "mode": "legacy",
+      "checks": [
+        {
+          "placement": "header",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "hero",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "gallery",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "manifesto",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "prime",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "one",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "footer",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "mobile",
+          "interaction": "programmatic dispatch: CTA hidden in this layout",
+          "pushes": 1
+        }
+      ],
+      "keyboard": "Shift+Tab / Tab returns focus to hero; Enter emits one checkout_click",
+      "rapidClicks": "double click: 2 pushes for 2 clicks",
+      "checkoutPushes": 11,
+      "targetedLegacyMetaCalls": 11,
+      "queuedMessagePreserved": true,
+      "gtmStartupCount": 1,
+      "forms": 0,
+      "sampleEvent": {
+        "event": "checkout_click",
+        "placement": "header",
+        "checkout_url": "https://vendas.online.sistemapacto.com.br/checkout?un=1&pl=2&cupom=0%2C99_IZI&utm_source=teste&utm_medium=cpc&utm_campaign=abertura&utm_content=criativo_a&utm_term=fitness&utm_id=42&utm_variant=blue&gclid=gc&fbclid=fb",
+        "utm_source": "teste",
+        "utm_medium": "cpc",
+        "utm_campaign": "abertura",
+        "utm_content": "criativo_a",
+        "utm_term": "fitness",
+        "utm_id": "42",
+        "utm_variant": "blue",
+        "gclid": "gc",
+        "fbclid": "fb",
+        "site_id": "cerrocora",
+        "izi_enabled": true,
+        "cative_enabled": true,
+        "cative_checkout_source": "legacy"
+      },
+      "pageErrors": []
+    },
+    {
+      "viewport": "desktop",
+      "dimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "mode": "cativeOff",
+      "checks": [
+        {
+          "placement": "header",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "hero",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "gallery",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "manifesto",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "prime",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "one",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "footer",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "mobile",
+          "interaction": "programmatic dispatch: CTA hidden in this layout",
+          "pushes": 1
+        }
+      ],
+      "keyboard": "Shift+Tab / Tab returns focus to hero; Enter emits one checkout_click",
+      "rapidClicks": "double click: 2 pushes for 2 clicks",
+      "checkoutPushes": 11,
+      "targetedLegacyMetaCalls": 0,
+      "queuedMessagePreserved": true,
+      "gtmStartupCount": 1,
+      "forms": 0,
+      "sampleEvent": {
+        "event": "checkout_click",
+        "placement": "header",
+        "checkout_url": "https://vendas.online.sistemapacto.com.br/checkout?un=1&pl=2&cupom=0%2C99_IZI&utm_source=teste&utm_medium=cpc&utm_campaign=abertura&utm_content=criativo_a&utm_term=fitness&utm_id=42&utm_variant=blue&gclid=gc&fbclid=fb",
+        "utm_source": "teste",
+        "utm_medium": "cpc",
+        "utm_campaign": "abertura",
+        "utm_content": "criativo_a",
+        "utm_term": "fitness",
+        "utm_id": "42",
+        "utm_variant": "blue",
+        "gclid": "gc",
+        "fbclid": "fb",
+        "site_id": "cerrocora",
+        "izi_enabled": true,
+        "cative_enabled": false,
+        "cative_checkout_source": "legacy"
+      },
+      "pageErrors": []
+    },
+    {
+      "viewport": "desktop",
+      "dimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "mode": "gtmSource",
+      "checks": [
+        {
+          "placement": "header",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "hero",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "gallery",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "manifesto",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "prime",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "one",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "footer",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "mobile",
+          "interaction": "programmatic dispatch: CTA hidden in this layout",
+          "pushes": 1
+        }
+      ],
+      "keyboard": "Shift+Tab / Tab returns focus to hero; Enter emits one checkout_click",
+      "rapidClicks": "double click: 2 pushes for 2 clicks",
+      "checkoutPushes": 11,
+      "targetedLegacyMetaCalls": 0,
+      "queuedMessagePreserved": true,
+      "gtmStartupCount": 1,
+      "forms": 0,
+      "sampleEvent": {
+        "event": "checkout_click",
+        "placement": "header",
+        "checkout_url": "https://vendas.online.sistemapacto.com.br/checkout?un=1&pl=2&cupom=0%2C99_IZI&utm_source=teste&utm_medium=cpc&utm_campaign=abertura&utm_content=criativo_a&utm_term=fitness&utm_id=42&utm_variant=blue&gclid=gc&fbclid=fb",
+        "utm_source": "teste",
+        "utm_medium": "cpc",
+        "utm_campaign": "abertura",
+        "utm_content": "criativo_a",
+        "utm_term": "fitness",
+        "utm_id": "42",
+        "utm_variant": "blue",
+        "gclid": "gc",
+        "fbclid": "fb",
+        "site_id": "cerrocora",
+        "izi_enabled": true,
+        "cative_enabled": true,
+        "cative_checkout_source": "gtm"
+      },
+      "pageErrors": []
+    },
+    {
+      "viewport": "mobile",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mode": "legacy",
+      "checks": [
+        {
+          "placement": "header",
+          "interaction": "programmatic dispatch: CTA hidden in this layout",
+          "pushes": 1
+        },
+        {
+          "placement": "hero",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "gallery",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "manifesto",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "prime",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "one",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "footer",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "mobile",
+          "interaction": "native browser click",
+          "pushes": 1
+        }
+      ],
+      "keyboard": "Shift+Tab / Tab returns focus to hero; Enter emits one checkout_click",
+      "rapidClicks": "double click: 2 pushes for 2 clicks",
+      "checkoutPushes": 11,
+      "targetedLegacyMetaCalls": 11,
+      "queuedMessagePreserved": true,
+      "gtmStartupCount": 1,
+      "forms": 0,
+      "sampleEvent": {
+        "event": "checkout_click",
+        "placement": "header",
+        "checkout_url": "https://vendas.online.sistemapacto.com.br/checkout?un=1&pl=2&cupom=0%2C99_IZI&utm_source=teste&utm_medium=cpc&utm_campaign=abertura&utm_content=criativo_a&utm_term=fitness&utm_id=42&utm_variant=blue&gclid=gc&fbclid=fb",
+        "utm_source": "teste",
+        "utm_medium": "cpc",
+        "utm_campaign": "abertura",
+        "utm_content": "criativo_a",
+        "utm_term": "fitness",
+        "utm_id": "42",
+        "utm_variant": "blue",
+        "gclid": "gc",
+        "fbclid": "fb",
+        "site_id": "cerrocora",
+        "izi_enabled": true,
+        "cative_enabled": true,
+        "cative_checkout_source": "legacy"
+      },
+      "pageErrors": []
+    },
+    {
+      "viewport": "mobile",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mode": "cativeOff",
+      "checks": [
+        {
+          "placement": "header",
+          "interaction": "programmatic dispatch: CTA hidden in this layout",
+          "pushes": 1
+        },
+        {
+          "placement": "hero",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "gallery",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "manifesto",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "prime",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "one",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "footer",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "mobile",
+          "interaction": "native browser click",
+          "pushes": 1
+        }
+      ],
+      "keyboard": "Shift+Tab / Tab returns focus to hero; Enter emits one checkout_click",
+      "rapidClicks": "double click: 2 pushes for 2 clicks",
+      "checkoutPushes": 11,
+      "targetedLegacyMetaCalls": 0,
+      "queuedMessagePreserved": true,
+      "gtmStartupCount": 1,
+      "forms": 0,
+      "sampleEvent": {
+        "event": "checkout_click",
+        "placement": "header",
+        "checkout_url": "https://vendas.online.sistemapacto.com.br/checkout?un=1&pl=2&cupom=0%2C99_IZI&utm_source=teste&utm_medium=cpc&utm_campaign=abertura&utm_content=criativo_a&utm_term=fitness&utm_id=42&utm_variant=blue&gclid=gc&fbclid=fb",
+        "utm_source": "teste",
+        "utm_medium": "cpc",
+        "utm_campaign": "abertura",
+        "utm_content": "criativo_a",
+        "utm_term": "fitness",
+        "utm_id": "42",
+        "utm_variant": "blue",
+        "gclid": "gc",
+        "fbclid": "fb",
+        "site_id": "cerrocora",
+        "izi_enabled": true,
+        "cative_enabled": false,
+        "cative_checkout_source": "legacy"
+      },
+      "pageErrors": []
+    },
+    {
+      "viewport": "mobile",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mode": "gtmSource",
+      "checks": [
+        {
+          "placement": "header",
+          "interaction": "programmatic dispatch: CTA hidden in this layout",
+          "pushes": 1
+        },
+        {
+          "placement": "hero",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "gallery",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "manifesto",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "prime",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "one",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "footer",
+          "interaction": "native browser click",
+          "pushes": 1
+        },
+        {
+          "placement": "mobile",
+          "interaction": "native browser click",
+          "pushes": 1
+        }
+      ],
+      "keyboard": "Shift+Tab / Tab returns focus to hero; Enter emits one checkout_click",
+      "rapidClicks": "double click: 2 pushes for 2 clicks",
+      "checkoutPushes": 11,
+      "targetedLegacyMetaCalls": 0,
+      "queuedMessagePreserved": true,
+      "gtmStartupCount": 1,
+      "forms": 0,
+      "sampleEvent": {
+        "event": "checkout_click",
+        "placement": "header",
+        "checkout_url": "https://vendas.online.sistemapacto.com.br/checkout?un=1&pl=2&cupom=0%2C99_IZI&utm_source=teste&utm_medium=cpc&utm_campaign=abertura&utm_content=criativo_a&utm_term=fitness&utm_id=42&utm_variant=blue&gclid=gc&fbclid=fb",
+        "utm_source": "teste",
+        "utm_medium": "cpc",
+        "utm_campaign": "abertura",
+        "utm_content": "criativo_a",
+        "utm_term": "fitness",
+        "utm_id": "42",
+        "utm_variant": "blue",
+        "gclid": "gc",
+        "fbclid": "fb",
+        "site_id": "cerrocora",
+        "izi_enabled": true,
+        "cative_enabled": true,
+        "cative_checkout_source": "gtm"
+      },
+      "pageErrors": []
+    }
+  ],
+  "navigations": [
+    {
+      "viewport": "desktop",
+      "interaction": "click",
+      "pushes": 1,
+      "pushObservedBeforeNavigation": true,
+      "checkoutDestinationPreserved": true,
+      "campaignPreserved": true,
+      "checkoutMocked": true
+    },
+    {
+      "viewport": "desktop",
+      "interaction": "keyboard",
+      "pushes": 1,
+      "pushObservedBeforeNavigation": true,
+      "checkoutDestinationPreserved": true,
+      "campaignPreserved": true,
+      "checkoutMocked": true
+    },
+    {
+      "viewport": "mobile",
+      "interaction": "click",
+      "pushes": 1,
+      "pushObservedBeforeNavigation": true,
+      "checkoutDestinationPreserved": true,
+      "campaignPreserved": true,
+      "checkoutMocked": true
+    },
+    {
+      "viewport": "mobile",
+      "interaction": "keyboard",
+      "pushes": 1,
+      "pushObservedBeforeNavigation": true,
+      "checkoutDestinationPreserved": true,
+      "campaignPreserved": true,
+      "checkoutMocked": true
+    }
+  ],
+  "privacy": {
+    "removedFields": [
+      "utm_email",
+      "utm_content",
+      "utm_term",
+      "utm_customer_id"
+    ],
+    "topLevelAndTelemetryUrlFiltered": true,
+    "commercialPropagationPreserved": true,
+    "numericCampaignIdPreserved": true,
+    "sampleEvent": {
+      "event": "checkout_click",
+      "placement": "hero",
+      "checkout_url": "https://vendas.online.sistemapacto.com.br/checkout?un=1&pl=2&cupom=0%2C99_IZI&utm_source=teste&utm_id=123456789012",
+      "utm_source": "teste",
+      "utm_id": "123456789012",
+      "site_id": "cerrocora",
+      "izi_enabled": true,
+      "cative_enabled": true,
+      "cative_checkout_source": "legacy"
+    }
+  },
+  "attribution": {
+    "refreshAndArrivalWithoutCampaign": "Existing session campaign retained",
+    "backAfterNewCampaign": "Newest session campaign retained",
+    "cativeOff": true,
+    "legacyCalls": 0
+  },
+  "reactivation": [
+    {
+      "viewport": "desktop",
+      "transition": "Cative off page -> fresh page with Cative on and legacy source",
+      "checkoutPushes": 1,
+      "targetedLegacyMetaCalls": 1,
+      "observedMetaCall": {
+        "args": [
+          "trackSingle",
+          "922916223883872",
+          "InitiateCheckout"
+        ],
+        "checkoutCount": 1,
+        "lastPlacement": "hero"
+      },
+      "bothGtmLoadersSelected": true,
+      "realPlatformDelivery": false
+    },
+    {
+      "viewport": "mobile",
+      "transition": "Cative off page -> fresh page with Cative on and legacy source",
+      "checkoutPushes": 1,
+      "targetedLegacyMetaCalls": 1,
+      "observedMetaCall": {
+        "args": [
+          "trackSingle",
+          "922916223883872",
+          "InitiateCheckout"
+        ],
+        "checkoutCount": 1,
+        "lastPlacement": "hero"
+      },
+      "bothGtmLoadersSelected": true,
+      "realPlatformDelivery": false
+    }
+  ]
+}

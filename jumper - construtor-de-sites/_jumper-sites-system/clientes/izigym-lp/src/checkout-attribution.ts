@@ -1,6 +1,23 @@
 export const PRIME_CHECKOUT = 'https://vendas.online.sistemapacto.com.br/checkout?un=1&k=6e2660773cc378e250e6a8731d6830e5&pl=2&cupom=0,99_IZI';
 const storageKey = 'izi:checkout-attribution:v1';
 const isCampaignKey = (key: string) => /^utm_[a-z0-9_]+$/.test(key) || key === 'gclid' || key === 'fbclid';
+const personalCampaignKey = /^utm_(?:e_?mail|phone|telephone|telefone|celular|whatsapp|cpf|cnpj|rg|nome|name|first_name|last_name|full_name|address|endereco|user_id|customer_id|contact_id|subscriber_id)(?:_|$)/;
+
+function isTrackingCampaignEntry(key: string, value: string): boolean {
+  if (!isCampaignKey(key) || personalCampaignKey.test(key)) return false;
+  // Check encoded values too, without changing campaign values used by checkout.
+  let inspected = value;
+  for (let pass = 0; pass < 2; pass++) {
+    try { inspected = decodeURIComponent(inspected); } catch { break; }
+  }
+  if (/[^\s@]+@[^\s@]+\.[^\s@]+/.test(inspected)) return false;
+  if (/\+\d[\d ().-]{8,}\d|\(\d{2,3}\)\s*\d{4,5}[\s.-]?\d{4}|\b\d{2}[\s.-]\d{4,5}[\s.-]\d{4}\b/.test(inspected)) return false;
+  if (/\b\d{3}\.\d{3}\.\d{3}-\d{2}\b|\b\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}\b/.test(inspected)) return false;
+  // Numeric campaign/ad identifiers remain valid; free-text UTM fields cannot
+  // carry a bare phone/document number instead of campaign metadata.
+  if (key.startsWith('utm_') && key !== 'utm_id' && /^\d{10,14}$/.test(inspected.trim())) return false;
+  return true;
+}
 
 type Campaign = Record<string, string>;
 type CerroCoraTracking = {
@@ -15,13 +32,17 @@ type TrackingWindow = Window & {
 };
 const boundLinks = new WeakSet<HTMLAnchorElement>();
 
+export function trackingCampaign(campaign: Campaign): Campaign {
+  return Object.fromEntries(Object.entries(campaign).filter(([key, value]) => isTrackingCampaignEntry(key, value)));
+}
+
 // The commercial link retains its account key; analytics only receives the
 // destination and campaign parameters, without the key or unrelated URL data.
 export function trackingCheckoutUrl(href: string): string {
   const source = new URL(href);
   const safe = new URL(source.origin + source.pathname);
   for (const [key, value] of source.searchParams) {
-    if (['un', 'pl', 'cupom'].includes(key) || isCampaignKey(key)) safe.searchParams.set(key, value);
+    if (['un', 'pl', 'cupom'].includes(key) || isTrackingCampaignEntry(key, value)) safe.searchParams.set(key, value);
   }
   return safe.href;
 }
@@ -71,7 +92,7 @@ export function setupCheckoutLinks(): void {
         event: 'checkout_click',
         placement: link.dataset.checkout,
         checkout_url: kits ? trackingCheckoutUrl(link.href) : link.href,
-        ...campaign,
+        ...(kits ? trackingCampaign(campaign) : campaign),
         ...(kits ? {
           site_id: kits.siteId,
           izi_enabled: kits.izi.enabled,
