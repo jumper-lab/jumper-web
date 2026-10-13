@@ -31,6 +31,8 @@ export const StickyMobileCTA: React.FC = () => {
       <div className="flex items-center gap-2">
         <a
           href={whatsappHref}
+          data-whatsapp="whatsapp_mobile_sticky"
+          data-whatsapp-channel="principal_sales"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Conversar pelo WhatsApp"
@@ -46,6 +48,7 @@ export const StickyMobileCTA: React.FC = () => {
         </a>
         <a
           href="#planos"
+          data-navigation="mobile_sticky_plans"
           onClick={handleClick}
           className="flex min-w-0 flex-1 items-center justify-center gap-2 rounded-full border border-primary bg-primary px-4 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white shadow-[0_8px_22px_rgba(229,44,18,0.18)] transition-all duration-500 ease-soft hover:-translate-y-px hover:bg-primary/30 hover:shadow-none focus:outline-none focus:ring-4 focus:ring-primary/35 xs:text-sm xs:tracking-wide"
         >

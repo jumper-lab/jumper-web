@@ -79,6 +79,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ handleSmoothScroll, isHead
         <div className="mt-auto space-y-5 border-t border-zinc-200 p-5 dark:border-zinc-700">
           <a 
             href="#planos" 
+            data-navigation="mobile_menu_plans"
             onClick={(e) => handleNavigationClick(e, "planos")}
             className="block w-full rounded-full border border-primary bg-primary px-6 py-3 text-center text-sm font-bold uppercase tracking-wide text-white shadow-[0_8px_22px_rgba(229,44,18,0.18)] transition-all duration-500 ease-soft hover:-translate-y-px hover:bg-primary/30 hover:shadow-none"
           >

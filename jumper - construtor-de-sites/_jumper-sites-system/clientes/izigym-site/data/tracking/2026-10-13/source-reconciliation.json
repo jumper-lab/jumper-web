@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-13",
+  "candidateFiles": 33,
+  "snapshotFiles": 33,
+  "differences": [
+    {
+      "path": "assets/index-y7D0bNSX.js",
+      "reason": "bytes"
+    },
+    {
+      "path": "placeholder.svg",
+      "reason": "bytes"
+    }
+  ],
+  "recordedAt": "2026-10-13T07:51:31.637Z",
+  "requestDate": "2026-10-12",
+  "notes": [
+    "31 of 33 files byte-identical before implementation. The main JS differs only in whitespace within a library CSS string; placeholder.svg differs by its final newline. No commercial or UI source difference."
+  ]
+}

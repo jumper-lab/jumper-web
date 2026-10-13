@@ -18,7 +18,8 @@
     "noFallthroughCasesInSwitch": false,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@cerrocora-attribution": ["../izigym-lp/src/checkout-attribution.ts"]
     }
   },
   "include": ["src"]
