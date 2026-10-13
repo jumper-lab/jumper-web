@@ -109,6 +109,20 @@ Após o deploy, confira o hub e a autenticação, o formulário e sua API, os si
 
 **Promoção de rastreamento Cerro Corá de 12/10/2026.** A PR #110 foi aprovada com autorização explícita de merge e publicação. Usar `npm run deploy:cloudflare -- --promote=cerrocora-tracking-2026-10-12` após integrar o registro versionado em `clientes/rodeio-restaurante/data/releases/cerrocora-tracking-2026-10-12.json`. Ele fixa os novos hashes da página oficial e do pacote Vila Romana necessário ao módulo, conservando o HTML público anterior da prévia no Worker dev. O código compartilhado do Worker não muda. O usuário também autorizou publicar o ajuste visual dos selos do hub da PR #109; seus hashes anterior/candidato constam no registro. Os demais sites seguem na comparação estrita. Nenhuma tag, gatilho, variável ou versão GTM é configurada/publicada por esta operação; os legados Cative permanecem conforme a configuração revisada da página.
 
+**Promoção do principal Izi de 13/10/2026.** A PR #112 recebeu autorização
+explícita de merge e publicação. Após integrar o registro
+`clientes/rodeio-restaurante/data/releases/principal-tracking-2026-10-13.json`,
+usar `npm run deploy:cloudflare -- --promote=principal-tracking-2026-10-13`
+em checkout limpo do `main` atual. O registro fixa os hashes anterior e candidato
+de `_official/izigym/index.shell`, servido em `www.izigym.com.br`; o domínio
+`izigym.com.br` conserva o redirecionamento com caminho e parâmetros. A diferença
+live/dev do pacote Vila Romana é herdada da promoção anterior e permanece
+limitada aos hashes já revisados. Cerro Corá e as outras páginas seguem na
+comparação estrita. Worker, domínios, vínculos de dados e estilo do hub permanecem
+os existentes. O deploy publica somente a preparação de código do principal;
+configuração de destinos e confirmação de recebimento pertencem ao
+`jumper-tracker`.
+
 ### Reconciliação de 29/09/2026
 
 A primeira auditoria encontrou recursos de Cerro Corá, leads IZI e briefing que faltavam no `main`. A PR #37 integrou esses recursos ao GitHub. Um novo build do `main` passou no preflight contra a versão Cloudflare `282b6913-c6de-4b31-af96-128b007ecd99`: todas as páginas iniciais protegidas e os domínios conferiram. Esse resultado é uma fotografia datada; qualquer novo deploy, commit ou mudança de assets exige reconstrução e nova auditoria antes da publicação.

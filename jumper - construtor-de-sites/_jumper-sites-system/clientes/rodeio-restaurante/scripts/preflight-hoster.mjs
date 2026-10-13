@@ -162,6 +162,23 @@ async function liveWorkerFeatures() {
   return module.text();
 }
 
+export function validatePromotionScope(promotion, release) {
+  const principal = release === 'principal-tracking-2026-10-13';
+  const expectedScope = principal ? 'principal' : release === 'izi-franquias-admin-2026-10-08' ? 'izi-franquias-admin' : 'cerrocora';
+  const expectedAssets = principal
+    ? ['_official/izigym/index.shell', 'izigym-lp-vilaromana/index.html']
+    : ['cerrocora/index.html', 'izigym-lp-vilaromana/index.html'];
+  const assets = promotion.pages?.map(page => page.asset).sort();
+  if (promotion.scope !== expectedScope || JSON.stringify(assets) !== JSON.stringify(expectedAssets)) {
+    throw new Error('A promoção deve conter somente as páginas do escopo revisado.');
+  }
+  for (const page of promotion.pages) {
+    if (!/^[a-f0-9]{64}$/.test(page.candidateSha256) || !Array.isArray(page.publishedSha256) || !page.publishedSha256.length || page.publishedSha256.some(hash => !/^[a-f0-9]{64}$/.test(hash))) {
+      throw new Error('Promoção sem hashes de origem e destino válidos.');
+    }
+  }
+}
+
 export async function readPromotion(args = []) {
   const flags = args.filter(arg => arg !== '--audit');
   if (!flags.length) return null;
@@ -169,6 +186,7 @@ export async function readPromotion(args = []) {
     '--promote=cerrocora-direct-checkout-2026-10-08': 'cerrocora-direct-checkout-2026-10-08',
     '--promote=izi-franquias-admin-2026-10-08': 'izi-franquias-admin-2026-10-08',
     '--promote=cerrocora-tracking-2026-10-12': 'cerrocora-tracking-2026-10-12',
+    '--promote=principal-tracking-2026-10-13': 'principal-tracking-2026-10-13',
   };
   if (flags.length !== 1 || !releases[flags[0]]) {
     throw new Error('Promoção live desconhecida. Use uma revisão de escopo versionada.');
@@ -180,15 +198,7 @@ export async function readPromotion(args = []) {
     const configured = configuredBindingIds(await readFile(join(projectRoot, 'wrangler.jsonc'), 'utf8'));
     if (configured.get(expected.binding) !== expected.database_id) throw new Error('Configuração do D1 de franquias difere do banco revisado.');
   }
-  const assets = promotion.pages?.map(page => page.asset).sort();
-  if (promotion.scope !== (releases[flags[0]] === 'izi-franquias-admin-2026-10-08' ? 'izi-franquias-admin' : 'cerrocora') || JSON.stringify(assets) !== JSON.stringify(['cerrocora/index.html', 'izigym-lp-vilaromana/index.html'])) {
-    throw new Error('A promoção deve conter somente a LP Cerro Corá e seu pacote de assets Vila Romana.');
-  }
-  for (const page of promotion.pages) {
-    if (!/^[a-f0-9]{64}$/.test(page.candidateSha256) || !Array.isArray(page.publishedSha256) || !page.publishedSha256.length || page.publishedSha256.some(hash => !/^[a-f0-9]{64}$/.test(hash))) {
-      throw new Error('Promoção sem hashes de origem e destino válidos.');
-    }
-  }
+  validatePromotionScope(promotion, releases[flags[0]]);
   return promotion;
 }
 

@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { compareDomains, compareProtectedPages, protectedPages } from '../../clientes/rodeio-restaurante/scripts/preflight-hoster.mjs';
+import { createHash } from 'node:crypto';
+import { compareDomains, compareProtectedPages, protectedPages, readPromotion, validatePromotionScope } from '../../clientes/rodeio-restaurante/scripts/preflight-hoster.mjs';
 
 const files = new Map(protectedPages.map(([, , asset]) => [asset, Buffer.from(`conteúdo de ${asset}`)]));
 const assetsByUrl = new Map(protectedPages.map(([, url, asset]) => [url, asset]));
@@ -44,4 +45,35 @@ test('domínios não podem desaparecer nem ser adicionados num deploy do hub', (
       'Domínio novo no wrangler.jsonc exige revisão (novo.exemplo.com)',
     ],
   );
+});
+
+test('promoção do principal mantém escopo, páginas e hashes específicos', async () => {
+  const promotion = await readPromotion(['--promote=principal-tracking-2026-10-13']);
+  assert.equal(promotion.scope, 'principal');
+  for (const change of [
+    { scope: 'cerrocora' },
+    { pages: [...promotion.pages, { ...promotion.pages[0], asset: 'cerrocora/index.html' }] },
+    { pages: [{ ...promotion.pages[0], candidateSha256: 'qualquer' }, promotion.pages[1]] },
+  ]) assert.throws(() => validatePromotionScope({ ...promotion, ...change }, 'principal-tracking-2026-10-13'));
+  await assert.rejects(readPromotion(['--promote=principal-qualquer']));
+  await assert.rejects(readPromotion(['--promote=principal-tracking-2026-10-13', '--skip-checks']));
+});
+
+test('promoção do principal não permite mudar a Cerro Corá ou bytes não revisados', async () => {
+  const sha = bytes => createHash('sha256').update(bytes).digest('hex');
+  const principal = '_official/izigym/index.shell';
+  const candidate = Buffer.from('principal aprovado');
+  const published = Buffer.from('principal anterior');
+  const promotion = { pages: [{ asset: principal, candidateSha256: sha(candidate), publishedSha256: [sha(published), sha(candidate)] }] };
+  const readCandidate = async asset => asset === principal ? candidate : files.get(asset);
+  const fetchLive = async url => new Response(assetsByUrl.get(url) === principal ? published : files.get(assetsByUrl.get(url)));
+  assert.deepEqual(await compareProtectedPages(readCandidate, fetchLive, promotion), []);
+  const changed = await compareProtectedPages(
+    async asset => asset === 'cerrocora/index.html' ? Buffer.from('cerro não aprovada') : readCandidate(asset), fetchLive, promotion,
+  );
+  assert.equal(changed.length, 1);
+  assert.match(changed[0], /Cerro Corá oficial: conteúdo publicado difere/);
+  const unknown = await compareProtectedPages(async asset => asset === principal ? Buffer.from('principal não revisado') : readCandidate(asset), fetchLive, promotion);
+  assert.equal(unknown.length, 1);
+  assert.match(unknown[0], /IZI Gym oficial: pacote ou publicação difere da promoção revisada/);
 });
