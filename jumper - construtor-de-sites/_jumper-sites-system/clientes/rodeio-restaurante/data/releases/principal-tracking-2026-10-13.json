@@ -1,0 +1,29 @@
+{
+  "scope": "principal",
+  "approvedRequest": "PR #112 aprovada e merge/publicação autorizados neste chat em 13/10/2026. Publicar o preparo do kit Izi e os eventos checkout_click/whatsapp_click no principal izigym.com.br e www.izigym.com.br. Configuração, tags e publicação de GTM ficam com jumper-tracker.",
+  "implementationPullRequest": "https://github.com/jumper-lab/jumper-web/pull/112",
+  "baselineMain": "cd04a2c4adf4ef0639ef5467dc4ecfe65160d355",
+  "baselineWorkerVersion": "ce1bcea0-f6fc-4edd-b72b-438c42b8585d",
+  "workerSha256": "524a9941779ca57ce91e3594d8dd9baef5ea4ad90c625cc23ea3d3ffc78197d7",
+  "baselineCompiledWorkerSha256": "5d9e9c528f58f42c66103e72295358a13f7de1000e06f4d50baf0c859a0fed7c",
+  "pages": [
+    {
+      "asset": "_official/izigym/index.shell",
+      "candidateSha256": "6f44183715adbc6f17497aa2742a3b9293977af3333f9444b1e3a50cd78d22e9",
+      "publishedSha256": [
+        "b258d820541a921e8113427ef1e2178c84d817bf4584a84d6bfc87c6f9dcf76b",
+        "6f44183715adbc6f17497aa2742a3b9293977af3333f9444b1e3a50cd78d22e9"
+      ]
+    },
+    {
+      "asset": "izigym-lp-vilaromana/index.html",
+      "candidateSha256": "9914459f5d754c42838c52dd8a6006465ca41e0f5baee12d36ce53061e1359de",
+      "publishedSha256": [
+        "f4fd8685e2b899c49b44d13f4cd738215c6b6d506dc5c2031400c2c6ddbfc3ea"
+      ],
+      "reason": "Diferença do pacote live já revisada e publicada na promoção Cerro Corá de 12/10/2026: o live usa esse módulo sob Vila Romana; a prévia pública permanece no Worker dev com os bytes anteriores. Esta publicação conserva ambos os estados."
+    }
+  ],
+  "preservedCerroCoraSha256": "dbc1e000a29b1571602de4ea9b5945b3bbd7af045e946d77233c8ec624ce0775",
+  "preservedHubStyleSha256": "a84a659760787a870f33efd9ee30fb23bfd0ba92f90c3df8c06345997b1d8eec"
+}
