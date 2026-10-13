@@ -99,3 +99,23 @@ export const restaurantGalleries:Record<string,GalleryEntry[]>={
   {name:'iguatemiAcervoDsc9474',caption:'A passagem entre os ambientes'},
  ]
 };
+
+// Six landscape photographs per house, selected from the client's Drive albums.
+export const restaurantGallerySelections: Record<string, GalleryEntry[]> = {
+ jardins: [
+  {name:'jardinsAcervoBmm12',caption:'A fachada do novo Jardins'},
+  {name:'jardinsAcervoBmm87',caption:'O salão dos Jardins em movimento'},
+  {name:'jardinsAcervoBmm29',caption:'O lounge dos Jardins'},
+  {name:'jardinsAcervoBmm51',caption:'O bar e o ambiente ao redor'},
+  {name:'jardinsAcervoBmm37',caption:'Outro ambiente de mesas dos Jardins'},
+  {name:'jardinsAcervoBmm65',caption:'A mesa posta à luz acolhedora'},
+ ],
+ iguatemi: [
+  {name:'iguatemiAcervoDsc9361',caption:'A entrada do Rodeio Iguatemi'},
+  {name:'iguatemiAcervoDsc9454',caption:'Uma vista ampla do salão'},
+  {name:'iguatemiAcervoDsc9443',caption:'As mesas junto à janela'},
+  {name:'iguatemiBarHorizontal',caption:'O bar do Rodeio Iguatemi'},
+  {name:'iguatemiLoungeHorizontal',caption:'Uma área de estar no lounge'},
+  {name:'iguatemiAcervoDsc9474',caption:'O acesso entre os ambientes'},
+ ],
+};

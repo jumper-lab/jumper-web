@@ -10,7 +10,7 @@
   gap: clamp(32px, 5vw, 80px);
   margin-bottom: clamp(40px, 5vw, 72px);
 }
-.menu-classics-heading h2 {
+.menu-classics-heading :is(h1,h2) {
   font-size: clamp(36px, 4.15vw, 64px);
   margin-top: 24px;
   max-width: 24ch;
@@ -24,7 +24,7 @@
 .menu-classics-access .action { margin-top: 28px; }
 .menu-classics-label { border-top: 1px solid var(--line); padding-top: 24px; margin-bottom: 32px; }
 .menu-classic-name { display: grid; gap: 6px; }
-.menu-classic-name h3 { font-size: clamp(25px, 2.4vw, 36px); line-height: 1.15; }
+.menu-classic-name :is(h2,h3) { font-size: clamp(25px, 2.4vw, 36px); line-height: 1.15; }
 .menu-classic-name > span { font: 400 11px/1.5 var(--sans); color: var(--muted); }
 .menu-classics-layout {
   display: grid;
@@ -77,7 +77,7 @@
 @media (max-width: 759px) {
   .menu-classics-heading, .menu-classics-layout, .menu-invitation-layout { grid-template-columns: minmax(0, 1fr); }
   .menu-classics-heading { align-items: start; gap: 28px; }
-  .menu-classics-heading h2 { margin-top: 18px; }
+  .menu-classics-heading :is(h1,h2) { margin-top: 18px; }
   .menu-classics-access p { max-width: none; }
   .menu-classics-access .action { margin-top: 22px; }
   .menu-invitation h2 { margin-top: 18px; }
@@ -87,3 +87,5 @@
 @media (orientation: landscape) {
   .hero.hero-photo .hero-figure img[data-menu-hero] { object-position: 50% 85%; }
 }
+
+.menu-classics-intro { margin-top:24px; color:var(--muted); font-size:15px; }

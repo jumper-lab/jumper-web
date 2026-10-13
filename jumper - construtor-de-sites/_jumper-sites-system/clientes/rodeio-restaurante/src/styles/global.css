@@ -28,6 +28,8 @@
   --muted: #716156;
   --cream: #efe7da;
   --line: #d7cec1;
+  --lightbox-backdrop: rgb(0 0 0 / .82);
+  --lightbox-surface: var(--cream);
   --xs: 8px;
   --sm: 16px;
   --md: 24px;
@@ -350,7 +352,7 @@ figure figcaption {
   align-self: start;
   border-top: 3px double var(--orange);
 }
-.reservation-widget h3 {
+.reservation-widget :is(h2,h3) {
   font-size: 34px;
   margin-bottom: 16px;
 }
@@ -378,7 +380,8 @@ figure figcaption {
   width: min(1000px, 94vw);
   padding: 24px;
   border: 0;
-  background: var(--paper);
+  background: var(--lightbox-surface);
+  color: var(--brown);
   max-height: 94svh;
 }
 .gallery-dialog > img {
@@ -401,17 +404,39 @@ figure figcaption {
   align-items: center;
   gap: 16px;
   font-size: 13px;
-}
-.close-dialog span {
-  font-size: 28px;
   line-height: 1;
+}
+.close-dialog span,
+.digital-menu-close span {
+  position: relative;
+  display: block;
+  flex: 0 0 14px;
+  width: 14px;
+  height: 14px;
+  font-size: 0;
+  line-height: 0;
+}
+.close-dialog span::before, .close-dialog span::after,
+.digital-menu-close span::before, .digital-menu-close span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  transform: translateY(-50%) rotate(45deg);
+}
+.close-dialog span::after, .digital-menu-close span::after {
+  transform: translateY(-50%) rotate(-45deg);
 }
 .gallery-dialog > .close-dialog {
   margin: 0 0 16px auto;
 }
 dialog::backdrop {
-  background: rgb(48 35 28 / 0.55);
+  background: var(--lightbox-backdrop);
 }
+.gallery-dialog::backdrop { background: var(--lightbox-backdrop); }
 @media (max-width: 1100px) {
   .brand img {
     width: 125px;
@@ -633,7 +658,8 @@ main:focus {
 .gallery-dialog > .close-dialog {
   position: sticky;
   top: 0;
-  background: var(--paper);
+  background: var(--lightbox-surface);
+  color: var(--brown);
   z-index: 1;
 }
 .gallery-dialog > img {
@@ -644,7 +670,9 @@ main:focus {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
+  border-color: currentColor;
 }
+.gallery-dialog #gallery-original:hover { color: var(--brown); border-color: var(--brown); }
 .gallery-dialog #gallery-status:empty {
   display: none;
 }

@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/full-page-workspace.css';
+interface Props { title: string; back: string; frame?: string; photo?: string; }
+const {title,back,frame,photo} = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/,'');
+---
+<Layout title={title} description={`${title}. Consulte e planeje sua visita ao Rodeio.`}>
+  <section class:list={['full-page-workspace',{'workspace-reservation':!!photo}]} aria-labelledby="workspace-title">
+    <div class="workspace-toolbar"><h1 id="workspace-title">{title}</h1><div class="workspace-actions">{photo && <a href="tel:+551134741333" class="workspace-help">Ajuda: (11) 3474-1333</a>}<a href={`${base}${back}`} class="workspace-back" data-workspace-back>← Voltar à página anterior</a></div></div>
+    <div class="workspace-content" style={photo ? `--workspace-photo:url("${photo}")` : undefined}>
+      {frame ? <iframe src={frame} title={title} referrerpolicy="strict-origin-when-cross-origin"></iframe> : <slot/>}
+    </div>
+  </section>
+</Layout>
+<script src="../scripts/workspace-back.ts"></script>

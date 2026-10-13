@@ -1,3 +1,4 @@
+import { rodeioEvents } from './rodeio-events.mjs';
 import { hubStatus } from './hub-status.mjs';
 import { cloudflareProcesses, githubWebhook } from './process-status.mjs';
 
@@ -446,6 +447,7 @@ form.addEventListener('submit', event => {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (url.pathname === '/rodeio/api/eventos' || url.pathname === '/rodeio/api/eventos/') return rodeioEvents(request);
     const password = env.JUMPER_HOSTER_PASSWORD;
     const hubPassword = env.JUMPER_HUB_PASSWORD || password;
     const hubCookieName = env.JUMPER_HUB_PASSWORD ? HUB_COOKIE_NAME : COOKIE_NAME;
@@ -632,6 +634,10 @@ export default {
     }
 
     let response = await env.ASSETS.fetch(request);
+    if (response.status === 404 && url.pathname.startsWith('/rodeio/') && request.headers.get('Accept')?.includes('text/html')) {
+      const notFound = await env.ASSETS.fetch(new Request(new URL('/rodeio/404.html', url), request));
+      if (notFound.ok) response = new Response(notFound.body, {status: 404, headers: notFound.headers});
+    }
     if (response.status === 404 && url.pathname.startsWith('/izigym/') && request.headers.get('Accept')?.includes('text/html')) {
       response = await env.ASSETS.fetch(new Request(new URL('/izigym/index.html', url), request));
     }

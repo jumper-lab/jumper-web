@@ -9,58 +9,35 @@ interface Slide {
 }
 
 const slides: Slide[] = [
-  {
-    name: 'homeBifeAcervo2024',
-    caption: 'O corte, no centro da experiência',
-    alt: 'Corte de carne grelhada servido com arroz no Rodeio',
-  },
-  {
-    name: 'homeMarcaAcervo2024',
-    caption: 'Rodeio · São Paulo desde 1958',
-    alt: 'Letreiro Rodeio em parede de madeira iluminada',
-  },
-  {
-    name: 'iguatemiAcervoDsc9454',
-    caption: 'A casa do Iguatemi, pronta para receber',
-    alt: 'Salão do Rodeio Iguatemi com mesas postas, madeira e luz natural',
-  },
-  {
-    name: 'homeAperitivosAcervo2024',
-    caption: 'Para começar, sabores da casa',
-    alt: 'Seleção de aperitivos do Rodeio acompanhada de cerveja',
-  },
-  {
-    name: 'homeCosteletasAcervo2024',
-    caption: 'Clássicos servidos à mesa',
-    alt: 'Costeletas grelhadas servidas com vinho no Rodeio',
-  },
-  {
-    name: 'homeSobremesaAcervo2023',
-    caption: 'Para terminar, um último sabor',
-    alt: 'Sobremesa de chocolate com sorvete servida no Rodeio',
-  },
+  { name: 'homeMarcaAcervo2024', caption: 'Rodeio · São Paulo desde 1958', alt: 'Letreiro Rodeio em parede de madeira iluminada' },
+  { name: 'iguatemiAcervoDsc9454', caption: 'Rodeio Iguatemi', alt: 'Salão do Rodeio Iguatemi com mesas postas, madeira e luz natural' },
+  { name: 'jardinsAcervoBmm17', caption: 'Rodeio Jardins', alt: 'Salão do novo Rodeio Jardins com mesas postas e jardim' },
+  { name: 'homePicanhaFatiada', caption: 'Picanha fatiada', alt: 'Picanha do Rodeio servida com arroz em prato branco' },
 ];
 
-const crop = async (name: PhotoName, widths: number[], ratio: number) => {
+const crop = async (name: PhotoName, widths: number[], ratio: number, quality = 60) => {
   const source = photos[name];
-  const images = await Promise.all(widths.map((width) => getImage({
+  // Limit each crop to the source's native dimensions; never upscale a photo.
+  const maxWidth = Math.floor(Math.min(source.width, source.height * ratio));
+  const cropWidths = [...new Set(widths.map(width => Math.min(width, maxWidth)))];
+  const images = await Promise.all(cropWidths.map((width) => getImage({
     src: source,
     width,
     height: Math.round(width / ratio),
     fit: 'cover',
     position: 'centre',
     format: 'avif',
-    quality: 60,
+    quality,
   })));
   return {
     src: images[0].src,
-    srcset: images.map((image, index) => `${image.src} ${widths[index]}w`).join(', '),
+    srcset: images.map((image, index) => `${image.src} ${cropWidths[index]}w`).join(', '),
   };
 };
 
 const preparedSlides = await Promise.all(slides.map(async (slide) => {
   const [phone, tablet, desktop] = await Promise.all([
-    crop(slide.name, [360, 540, 720, 900], 9 / 16),
+    crop(slide.name, [360, 540, 720, 900], 9 / 16, slide.name === 'homeMarcaAcervo2024' ? 48 : 60),
     crop(slide.name, [640, 840, 1080], 4 / 5),
     crop(slide.name, slide.name === 'homeMarcaAcervo2024' ? [960, 1440, 1920] : [960, 1440, 1920, 2560], 16 / 9),
   ]);
@@ -110,7 +87,7 @@ const preparedSlides = await Promise.all(slides.map(async (slide) => {
   </div>
 
   <div class="home-slideshow-controls" aria-label="Fotografias em destaque">
-    <span class="home-slideshow-count" aria-hidden="true"><span data-slide-current>01</span> / {String(preparedSlides.length).padStart(2, '0')}</span>
+    <button type="button" class="home-slideshow-pause" data-slide-pause aria-label="Pausar apresentação de fotos" aria-pressed="false"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path class="slideshow-pause-symbol" d="M4 2v10M10 2v10" fill="none" stroke="currentColor" stroke-width="2"/><path class="slideshow-play-symbol" d="M4 2l8 5-8 5z" fill="currentColor"/></svg></button>
     <div class="home-slideshow-dots">
       {preparedSlides.map((slide, index) => (
         <button
@@ -135,7 +112,10 @@ const preparedSlides = await Promise.all(slides.map(async (slide) => {
     const controls = [...slideshow.querySelectorAll<HTMLButtonElement>('[data-slide-control]')];
     const currentLabel = slideshow.querySelector<HTMLElement>('[data-slide-current]');
     const caption = slideshow.closest('figure')?.querySelector<HTMLElement>('[data-home-slide-caption]');
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let reducedMotion = motionPreference.matches;
+    const pauseButton = slideshow.querySelector<HTMLButtonElement>('[data-slide-pause]');
+    let paused = false;
     const connection = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
     const limitedConnection = Boolean(connection?.saveData || connection?.effectiveType === 'slow-2g' || connection?.effectiveType === '2g');
     let activeIndex = 0;
@@ -143,6 +123,7 @@ const preparedSlides = await Promise.all(slides.map(async (slide) => {
     let gesture: { pointerId: number; startX: number; startY: number; intent: 'undecided' | 'horizontal' | 'vertical' } | null = null;
     let timer = 0;
     let transitionToken = 0;
+    let firstEntrance: Animation | undefined;
 
     const loadFrame = (index: number) => {
       const frame = frames[index];
@@ -153,7 +134,7 @@ const preparedSlides = await Promise.all(slides.map(async (slide) => {
       });
       const image = frame.querySelector<HTMLImageElement>('img[data-src]');
       if (image) {
-        // Only the requested/preloaded frame becomes eager, never all six photos.
+        // Only the requested/preloaded frame becomes eager, never all photos.
         image.loading = 'eager';
         image.srcset = image.dataset.srcset || '';
         image.src = image.dataset.src || '';
@@ -177,11 +158,12 @@ const preparedSlides = await Promise.all(slides.map(async (slide) => {
 
     const schedule = () => {
       window.clearTimeout(timer);
-      if (reducedMotion || limitedConnection || document.hidden || gesture) return;
+      if (reducedMotion || limitedConnection || paused || document.hidden || gesture) return;
       timer = window.setTimeout(() => showFrame((activeIndex + 1) % frames.length), 6500);
     };
 
     const commitFrame = (index: number) => {
+      firstEntrance?.cancel();
       frames.forEach((frame, frameIndex) => frame.classList.toggle('is-active', frameIndex === index));
       controls.forEach((control, controlIndex) => {
         const isActive = controlIndex === index;
@@ -275,12 +257,43 @@ const preparedSlides = await Promise.all(slides.map(async (slide) => {
     const queueInitialPreload = () => globalThis.setTimeout(preloadFollowingFrame, 3200);
 
     controls.forEach((control, index) => control.addEventListener('click', () => showFrame(index)));
+    pauseButton?.addEventListener('click', () => {
+      paused = !paused;
+      pauseButton.setAttribute('aria-pressed', String(paused));
+      pauseButton.setAttribute('aria-label', paused ? 'Reproduzir apresentação de fotos' : 'Pausar apresentação de fotos');
+      if (paused) { window.clearTimeout(timer); firstEntrance?.cancel(); }
+      else schedule();
+    });
+    motionPreference.addEventListener('change', event => {
+      reducedMotion = event.matches;
+      if (reducedMotion) { window.clearTimeout(timer); firstEntrance?.cancel(); }
+      else schedule();
+    });
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) { gesture = null; window.clearTimeout(timer); }
       else resume();
     });
     if (document.readyState === 'complete') queueInitialPreload();
     else window.addEventListener('load', queueInitialPreload, { once: true });
-    schedule();
+    // Start the entrance when the photograph can actually be painted, rather
+    // than spending its animation while the network is still loading it.
+    const introduceFirstFrame = async () => {
+      const image = frames[0]?.querySelector('img');
+      if (!image) { schedule(); return; }
+      try { await image.decode(); }
+      catch { schedule(); return; }
+      if (activeIndex !== 0 || requestedIndex !== 0) return;
+      if (!reducedMotion) {
+        firstEntrance = image.animate([
+          { transform: 'scale(1.055)', opacity: .85 },
+          { transform: 'scale(1)', opacity: 1 },
+        ], {
+          duration: 2200,
+          easing: 'cubic-bezier(.16,.65,.25,1)',
+        });
+      }
+      schedule();
+    };
+    void introduceFirstFrame();
   }
 </script>

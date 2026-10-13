@@ -5,12 +5,12 @@ interface Props {photos:{name:PhotoName;caption:string}[];unitName?:string;galle
 const {photos,unitName='Jardins',galleryId='jardins-gallery-grid',pageSize=12,detailWidth=1600,detailQuality=55}=Astro.props;
 ---
 <div class="gallery-grid visit-gallery restaurant-gallery archive-gallery" data-paginated-gallery data-page-size={pageSize} id={galleryId}>
- {photos.map((photo,index)=><GalleryPhoto name={photo.name} alt={`${photo.caption} · Rodeio ${unitName}`} caption={photo.caption} sizes="(max-width:599px) calc(100vw - 48px), (max-width:959px) 44vw, 29vw" hidden={index>=pageSize} detailWidth={detailWidth} detailQuality={detailQuality}/>)}
+ {photos.map((photo,index)=><GalleryPhoto name={photo.name} alt={`${photo.caption} · Rodeio ${unitName}`} caption={photo.caption} showCaption={false} sizes="(max-width:599px) calc(100vw - 48px), (max-width:959px) 44vw, 29vw" hidden={index>=pageSize} detailWidth={detailWidth} detailQuality={detailQuality}/>)}
 </div>
-<div class="gallery-more" data-gallery-more>
+{photos.length>pageSize&&<div class="gallery-more" data-gallery-more>
  <p aria-live="polite"><span data-gallery-shown>{Math.min(pageSize,photos.length)}</span> de {photos.length} fotografias</p>
  <button type="button" data-show-more-photos aria-controls={galleryId}>Ver mais fotografias <span aria-hidden="true">↓</span></button>
-</div>
+</div>}
 <noscript><style>.archive-gallery [data-gallery][hidden]{display:block!important}.gallery-more{display:none!important}</style></noscript>
 <style>
  .archive-gallery :global([data-gallery][hidden]){display:none}

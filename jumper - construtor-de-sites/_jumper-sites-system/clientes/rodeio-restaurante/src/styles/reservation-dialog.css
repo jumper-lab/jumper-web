@@ -1,0 +1,38 @@
+/* Frame the responsive form with photography from the selected restaurant. */
+.reservation-page-dialog .digital-menu-header {
+  padding: 12px 20px;
+  border-bottom: 0;
+}
+.reservation-page-dialog .digital-menu-header h2 {
+  font-size: 28px;
+  line-height: 1.1;
+}
+.reservation-page-dialog .digital-menu-header h2 span {
+  display: block;
+  margin-top: 4px;
+  font: 400 12px/1.4 var(--sans);
+  letter-spacing: 0;
+  color: var(--muted);
+}
+.reservation-page-dialog .digital-menu-content {
+  margin: 0 12px 12px;
+  overflow: hidden;
+  background: linear-gradient(rgb(0 0 0 / .6), rgb(0 0 0 / .6)), var(--reservation-photo) center / cover;
+  border-radius: 2px;
+}
+.reservation-page-dialog .digital-menu-content iframe {
+  width: min(560px, 100%);
+  margin-inline: auto;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+}
+.reservation-page-dialog .digital-menu-footer { padding-inline: 20px; justify-content: space-between; gap: 16px; }
+@media (max-width: 599px) {
+  .reservation-page-dialog .digital-menu-header {
+    padding: max(10px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) 10px max(16px, env(safe-area-inset-left));
+  }
+  .reservation-page-dialog .digital-menu-content { margin: 0 8px 8px; }
+  .reservation-page-dialog .digital-menu-footer {
+    padding: 0 max(16px, env(safe-area-inset-right)) env(safe-area-inset-bottom) max(16px, env(safe-area-inset-left));
+  }
+}

@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
+
 import Photo from '../components/Photo.astro';
 import Link from '../components/Link.astro';
 import content from '../../data/content.json';
@@ -9,13 +9,13 @@ import '../styles/cardapio.css';
 const copy=content.pages.menu;
 ---
 <Layout title="Cardápio — os clássicos do Rodeio" description={copy.description}>
-  <Hero eyebrow="Cardápio · Rodeio" title={copy.title} accent={copy.accent} description={copy.description} photo="cardapioHero" phoneQuality={55} alt="Corte grelhado e folhas verdes servidos à mesa no Rodeio" caption="Os sabores da casa" cta={copy.cta} href={content.menu_url} secondary="Reservar uma mesa" secondaryHref="/reservas/"/>
-  <section id="proxima-secao" class="menu-classics" aria-labelledby="menu-classics-title">
+
+  <section id="proxima-secao" class="menu-classics page-without-banner" aria-labelledby="menu-classics-title">
     <div class="wrap">
       <div class="menu-classics-heading">
         <div>
-          <p class="eyebrow">Os clássicos do Rodeio</p>
-          <h2 id="menu-classics-title">Uma seleção de sabores<br/><em>que atravessa gerações.</em></h2>
+          <h1 id="menu-classics-title">{copy.title}<br/><em>{copy.accent}</em></h1>
+          <p class="menu-classics-intro">{copy.intro}</p>
         </div>
         <div class="menu-classics-access">
           <p>{copy.description}</p>
@@ -26,11 +26,11 @@ const copy=content.pages.menu;
       <div class="menu-classics-layout">
         <figure class="menu-cuts-photo" aria-labelledby="menu-picanha-title">
           <Photo name="menuPicanhaFatiada" quality={68} maxWidth={1920} sizes="(max-width:999px) 90vw, (min-width:1680px) 1008px, 61vw" alt="Picanha fatiada servida com acompanhamentos em um prato branco do Rodeio"/>
-          <figcaption class="menu-classic-name"><h3 id="menu-picanha-title">Picanha fatiada</h3><span>Carnes</span></figcaption>
+          <figcaption class="menu-classic-name"><h2 id="menu-picanha-title">Picanha fatiada</h2><span>Carnes</span></figcaption>
         </figure>
         <figure class="menu-rice-photo" aria-labelledby="menu-arroz-title">
           <Photo name="menuArrozRodeio" quality={68} maxWidth={1920} sizes="(max-width:999px) 90vw, (min-width:1680px) 448px, 27vw" alt="Arroz Rodeio, o tradicional Biro-Biro, sendo servido em uma frigideira à mesa"/>
-          <figcaption class="menu-classic-name"><h3 id="menu-arroz-title">Arroz Rodeio</h3><span>O tradicional Biro-Biro</span></figcaption>
+          <figcaption class="menu-classic-name"><h2 id="menu-arroz-title">Arroz Rodeio</h2><span>O tradicional Biro-Biro</span></figcaption>
         </figure>
       </div>
     </div>

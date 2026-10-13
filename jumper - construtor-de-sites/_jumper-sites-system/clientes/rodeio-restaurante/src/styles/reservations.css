@@ -1,0 +1,133 @@
+/* A full-screen choice of houses, with a direct reservation action for each. */
+.reservation-screen {
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  padding: calc(var(--header-height) + 32px) var(--gutter) 32px;
+  overflow: auto;
+  scroll-padding-top: calc(var(--header-height) + 24px);
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+}
+.reservation-screen:focus-visible { outline-offset: -3px; }
+.reservation-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  flex: 0 0 auto;
+}
+.reservation-introduction { text-align: center; margin-bottom: 32px; }
+.reservation-introduction h1 {
+  font-size: clamp(36px, 4.1vw, 62px);
+  line-height: 1.08;
+  margin-bottom: 16px;
+}
+.reservation-introduction p {
+  margin-inline: auto;
+  font-size: 14px;
+  color: var(--muted);
+}
+.reservation-houses {
+  --house-gap: clamp(80px, 10vw, 160px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--house-gap);
+}
+.reservation-house {
+  min-width: 0;
+  background: transparent;
+}
+.reservation-house[data-current] .reservation-house-action {
+  color: var(--orange);
+  border-color: var(--orange);
+}
+.reservation-house-photo { overflow: hidden; }
+.reservation-house-photo img {
+  display: block;
+  width: 100%;
+  height: clamp(180px, 24vh, 280px);
+  height: clamp(180px, 24dvh, 280px);
+  object-fit: cover;
+  object-position: 50% 66%;
+}
+.reservation-house-information {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 24px;
+  padding-top: 22px;
+}
+.reservation-house-description { min-width: 0; }
+.reservation-house h2 { font-size: clamp(30px, 2.6vw, 38px); line-height: 1.12; margin-bottom: 12px; }
+.reservation-house address { font-style: normal; font-size: 13px; line-height: 1.7; }
+.reservation-house address span { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; }
+.reservation-house-action {
+  width: fit-content;
+  gap: 28px;
+  padding: 10px 0;
+  border-bottom: 1px solid currentColor;
+  color: var(--brown);
+  font-size: 12px;
+}
+.reservation-house-action svg { width: 20px; height: 20px; }
+.reservation-house-action:hover { color: var(--orange); }
+.reservation-house-action:focus-visible { outline: 2px solid var(--orange); outline-offset: 6px; }
+.reservation-assistance {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px 24px;
+  margin-top: 64px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.reservation-assistance p { font-size: 12px; color: var(--muted); }
+.reservation-assistance > a {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  min-height: 44px;
+  font-size: 12px;
+}
+.reservation-assistance > a span { color: var(--muted); }
+.reservation-assistance > a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.reservation-assistance noscript { width: 100%; }
+.reservation-assistance noscript a { display: inline-flex; align-items: center; min-height: 44px; margin-left: 12px; text-decoration: underline; }
+@media (max-width: 1199px) {
+  .reservation-house-information { grid-template-columns: 1fr; gap: 16px; }
+}
+@media (max-width: 759px) {
+  .reservation-screen { padding-top: calc(var(--header-height) + 28px); padding-bottom: 28px; }
+  .reservation-introduction { text-align: left; margin-bottom: 24px; }
+  .reservation-introduction h1 { max-width: 14ch; font-size: clamp(34px, 8.7vw, 44px); margin-bottom: 14px; }
+  .reservation-introduction p { margin-inline: 0; font-size: 13px; }
+  .reservation-houses { grid-template-columns: 1fr; gap: 48px; }
+  .reservation-house-photo img { height: 180px; }
+  .reservation-house-information { padding-top: 18px; gap: 14px; }
+  .reservation-house h2 { font-size: 30px; }
+  .reservation-assistance { gap: 8px; margin-top: 44px; padding-top: 8px; }
+}
+
+/* A fine divider centered in the gap between the two restaurants. */
+.reservation-house + .reservation-house { position: relative; }
+.reservation-house + .reservation-house::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--house-gap) / -2);
+  width: 1px;
+  background: var(--line);
+}
+@media(max-width:759px) {
+  .reservation-house + .reservation-house::before {
+    top: -24px;
+    bottom: auto;
+    left: 0;
+    width: 100%;
+    height: 1px;
+  }
+}

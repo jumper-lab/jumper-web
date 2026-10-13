@@ -18,13 +18,18 @@ menuOpener?.addEventListener('click',()=>{
  menu.showModal();menuOpener.setAttribute('aria-expanded','true');
 });
 document.querySelector('[data-close-menu]')?.addEventListener('click',closeMenu);
-menu?.addEventListener('click',e=>{if(e.target===menu)closeMenu();});
+function clickedBackdrop(event:MouseEvent,dialog:HTMLDialogElement){
+ if(event.target!==dialog)return false;
+ const rect=dialog.getBoundingClientRect();
+ return event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom;
+}
+menu?.addEventListener('click',event=>{if(clickedBackdrop(event,menu))closeMenu();});
 menu?.addEventListener('close',()=>{
  if(viewportMeta&&menuViewportContent!==null)viewportMeta.content=menuViewportContent;
  if(themeMeta&&menuThemeContent!==null)themeMeta.content=menuThemeContent;
  menuOpener?.setAttribute('aria-expanded','false');
  window.scrollTo({left:menuPageScroll.x,top:menuPageScroll.y,behavior:'instant'});
- menuOpener?.focus({preventScroll:true});
+ if(!document.querySelector('.digital-menu-dialog[open]'))menuOpener?.focus({preventScroll:true});
 });
 menu?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.close()));
 const gallery=document.querySelector<HTMLDialogElement>('#gallery-dialog');
@@ -103,7 +108,7 @@ gallery?.addEventListener('keydown',event=>{
 });
 document.querySelector('[data-close-gallery]')?.addEventListener('click',()=>gallery?.close());
 gallery?.addEventListener('close',()=>{galleryRequest++;finishGalleryTransition();galleryStage?.setAttribute('aria-busy','false');galleryTrigger?.focus();});
-gallery?.addEventListener('click',e=>{if(e.target===gallery)gallery.close();});
+gallery?.addEventListener('click',event=>{if(clickedBackdrop(event,gallery))gallery.close();});
 document.querySelectorAll<HTMLButtonElement>('[data-map]').forEach(button=>button.addEventListener('click',()=>{
  const host=document.querySelector<HTMLElement>('#map-slot');if(!host)return;
  const frame=document.createElement('iframe');frame.title=button.dataset.title||'Localização do Rodeio';frame.src=button.dataset.map!;frame.referrerPolicy='no-referrer-when-downgrade';frame.width='1200';frame.height='400';
@@ -137,7 +142,7 @@ function serve(element:Element,delay=0){
 const entrance=document.querySelectorAll('.hero:not(.hero-home) .hero-copy > :not(.hero-note), .not-found > *');
 entrance.forEach((element,index)=>serve(element,Math.min(index*85,340)));
 // Frames remain anchored; each photograph reveals within its own bounds.
-const chapters=document.querySelectorAll('main > section:not(.hero) h2, .timeline-item > :not(h2), .event-detail > *, .footer-top > div > *, .house-info > *');
+const chapters=document.querySelectorAll('main > section:not(.hero):not(.reservation-screen) h2, .timeline-item > :not(h2), .event-detail > *, .house-info > *');
 const media=document.querySelectorAll<HTMLImageElement>('main [data-photo-entrance]');
 type PhotoMotionState={armed:boolean;prepared:boolean;request:number;animation?:Animation};
 const photoMotion=new WeakMap<HTMLImageElement,PhotoMotionState>();
@@ -177,7 +182,11 @@ const observer=new IntersectionObserver(entries=>{
   serve(entry.target,Math.min(index*75,225));
  });
 },{threshold:0.08});
-chapters.forEach(element=>{if(!element.querySelector('[data-photo-entrance]'))observer.observe(element);});
+chapters.forEach(element=>{
+ // Timeline headings enter with their enclosing text block, once.
+ if(element.matches('h2')&&element.closest('.history-timeline'))return;
+ if(!element.querySelector('[data-photo-entrance]'))observer.observe(element);
+});
 // Observe the stationary frame, not the scaled image. Re-arm only after full exit;
 // the 8% entry threshold prevents tiny direction changes from restarting the effect.
 const photoObserver=new IntersectionObserver(entries=>{

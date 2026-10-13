@@ -1,0 +1,10 @@
+---
+import {getImage} from 'astro:assets';
+import FullPageWorkspace from '../../components/FullPageWorkspace.astro';
+import content from '../../../data/content.json';
+import {photos} from '../../lib/photos';
+export function getStaticPaths() { return content.units.map(unit => ({params:{unidade:unit.slug},props:{unit}})); }
+const {unit} = Astro.props;
+const image = await getImage({src:unit.slug==='jardins'?photos.jardinsAcervoBmm17:photos.iguatemiAcervoDsc9454,width:1440,format:'avif',quality:55});
+---
+<FullPageWorkspace title={`Reservas · Rodeio ${unit.name}`} back={`/reservas/?unidade=${unit.slug}`} frame={unit.widget} photo={image.src}/>

@@ -1,17 +1,39 @@
 ---
-import Layout from '../layouts/Layout.astro';import Hero from '../components/Hero.astro';import content from '../../data/content.json';
-const copy=content.pages.reservations;
-import '../styles/interiors.css';
+import {Image} from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import Arrow from '../components/Arrow.astro';
+import ReservationDialog from '../components/ReservationDialog.astro';
+import content from '../../data/content.json';
+import {photos} from '../lib/photos';
+import '../styles/reservations.css';
+const unitPhotos = [photos.jardinsAcervoBmm17,photos.iguatemiAcervoDsc9454];
 ---
-<Layout title="Reservas — escolha sua mesa" description="Reserve uma mesa no Rodeio Jardins ou Iguatemi. Escolha sua unidade e consulte disponibilidade pelo sistema oficial de reservas da casa."><Hero scrollHref="#escolher-unidade" eyebrow="Reservas · São Paulo" title={copy.title} accent={copy.accent} description={copy.description} photo="reservasHero" alt="Vista do salão do Rodeio com mesas postas para receber os clientes" caption="Rodeio Jardins" cta="Escolher a unidade" href="#escolher-unidade"/>
-<section class="wrap interior-section reservation-layout reservation-workspace" id="escolher-unidade" aria-labelledby="reservation-heading">
-  <div class="reservation-choice"><p class="eyebrow">01 / Escolha a unidade</p><h2 id="reservation-heading">Onde vamos<br/><em>nos encontrar?</em></h2><p>Selecione Jardins ou Iguatemi para consultar datas e horários. A disponibilidade e a confirmação são informadas pelo sistema de reservas.</p>
-    <div class="unit-options" role="group" aria-label="Escolha a unidade">{content.units.map((u,i)=><button data-unit={u.slug} data-name={u.name} data-address={u.address} data-district={u.district} data-widget={u.widget} data-url={u.reservation} aria-pressed={i===0?'true':'false'}>{u.name}</button>)}</div>
-    <div class="reservation-address" aria-live="polite"><span class="eyebrow">Endereço da unidade</span><p id="selected-address">{content.units[0].address}</p><p id="selected-district">{content.units[0].district}</p></div>
-    <div class="reservation-help"><p>Uma dúvida antes de reservar?</p><a class="text-link" href="tel:+551134741333">(11) 3474-1333</a></div>
-    <noscript><p>Escolha uma casa para continuar:</p>{content.units.map(u=><p><a href={u.reservation}>Reservar no Rodeio {u.name}</a></p>)}</noscript>
+<Layout title="Reservas — escolha sua mesa" description="Reserve uma mesa no Rodeio Jardins ou Iguatemi. Escolha sua unidade e consulte disponibilidade pelo sistema oficial de reservas da casa.">
+<section class="reservation-screen" id="escolher-unidade" aria-labelledby="reservation-heading" tabindex="0">
+  <div class="reservation-content">
+    <header class="reservation-introduction">
+      <h1 id="reservation-heading">Onde vamos <em>nos encontrar?</em></h1>
+      <p>Selecione Jardins ou Iguatemi para consultar datas e horários.</p>
+    </header>
+    <div class="reservation-houses">
+      {content.units.map((unit,i)=><article class="reservation-house" id={`reservar-${unit.slug}`} data-reservation-card={unit.slug} aria-labelledby={`reservation-heading-${unit.slug}`}>
+        <div class="reservation-house-photo"><Image src={unitPhotos[i]} alt={`O salão do Rodeio ${unit.name}`} width={960} widths={[320,480,640,960]} sizes="(max-width: 759px) calc(100vw - 48px), (max-width: 1199px) 45vw, 580px" format="avif" quality={55} loading={i===0?'eager':'lazy'} fetchpriority={i===0?'high':'low'} decoding="async"/></div>
+        <div class="reservation-house-information">
+          <div class="reservation-house-description">
+            <h2 id={`reservation-heading-${unit.slug}`}>Rodeio {unit.name}</h2>
+            <address>{unit.address}<span>{unit.district}</span></address>
+          </div>
+          <a class="action reservation-house-action" href={unit.widget} data-reservation-unit={unit.slug} aria-haspopup="dialog" aria-controls={`reservation-${unit.slug}-dialog`}>Reservar no {unit.name}<Arrow/></a>
+        </div>
+      </article>)}
+    </div>
+    <div class="reservation-assistance">
+      <p>A disponibilidade e a confirmação são informadas pelo sistema de reservas.</p>
+      <a href="tel:+551134741333"><span>Precisa de ajuda?</span> (11) 3474-1333</a>
+      <noscript><p>Reservas nas páginas oficiais: {content.units.map(unit=><a href={unit.reservation}>{unit.name}</a>)}</p></noscript>
+    </div>
   </div>
-  <div class="reservation-widget reservation-availability"><p class="eyebrow">02 / Data e horário</p><h3 id="reservation-title">Reserva no Rodeio Jardins</h3><p>Selecione “Consultar disponibilidade” para abrir o sistema de reservas Tagme.</p><button class="button" id="load-reservation">Consultar disponibilidade</button><div id="widget-slot" class="widget-slot"></div><p class="reservation-status" id="reservation-status" role="status"></p><a class="action text-link" id="reservation-fallback" href={content.units[0].reservation}>Abrir reservas em página inteira ↗</a></div>
 </section>
+{content.units.map(unit=><ReservationDialog unit={unit}/>)}
 </Layout>
 <script src="../scripts/reservations.ts"></script>

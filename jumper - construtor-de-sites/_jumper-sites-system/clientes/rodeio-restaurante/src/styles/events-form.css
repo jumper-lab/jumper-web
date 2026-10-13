@@ -1,0 +1,15 @@
+.events-form { width: min(100%, 720px); margin: auto; }
+.events-form-fields { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; }
+.events-form label { display: flex; flex-direction: column; gap: 8px; font-size: 12px; color: var(--brown); }
+.events-form :is(input,select,textarea) { width: 100%; border: 1px solid var(--line); background: var(--paper); border-radius: 0; padding: 12px; min-height: 44px; color: var(--brown); font: 14px/1.5 var(--sans); }
+.events-form :is(input,select,textarea):focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+.events-form textarea { resize: vertical; }
+.events-form-wide { grid-column: 1 / -1; }
+.events-form small { color: var(--muted); font-size: 11px; }
+.events-form-submit { margin-top: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; }
+.events-form-submit button { cursor: pointer; border: 0; }
+.events-form-submit button:disabled { opacity: .6; cursor: wait; }
+.events-form-submit p { font-size: 13px; max-width: 42ch; }
+.events-form-trap { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.events-local-content { overflow: auto; padding: 28px; }
+@media(max-width:599px) { .events-form-fields { grid-template-columns: 1fr; gap: 18px; } .events-local-content { padding: 20px; } }

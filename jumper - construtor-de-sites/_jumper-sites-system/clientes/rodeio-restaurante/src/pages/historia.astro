@@ -1,19 +1,17 @@
 ---
-import Layout from '../layouts/Layout.astro';import Hero from '../components/Hero.astro';import Photo from '../components/Photo.astro';import Link from '../components/Link.astro';
+import Layout from '../layouts/Layout.astro';import Photo from '../components/Photo.astro';import Link from '../components/Link.astro';
 import content from '../../data/content.json';
 const copy=content.pages.history;
 const milestones=copy.milestones;
 import '../styles/interiors.css';
 ---
-<Layout title="Nossa história — desde 1958" description="Da Haddock Lobo à história da família Macedo: conheça a trajetória do Rodeio, seus clássicos à mesa e os encontros que começaram em 1958."><Hero eyebrow="Nossa história · São Paulo" title={copy.title} accent={copy.accent} description={content.pages.home.intro} photo="historiaHero" alt="Luz de abajur e poltrona no ambiente contemporâneo do Rodeio Jardins" caption="O acolhimento da casa · Jardins"/>
-<section id="proxima-secao" class="wrap interior-section history-chapter" aria-labelledby="history-chapter-title">
+<Layout title="Nossa história — desde 1958" description="Da Haddock Lobo à história da família Macedo: conheça a trajetória do Rodeio, seus clássicos à mesa e os encontros que começaram em 1958.">
+<section id="proxima-secao" class="wrap interior-section history-chapter page-without-banner" aria-labelledby="history-chapter-title">
   <div class="history-chapter-heading">
-    <p class="eyebrow">1958 — hoje</p>
-    <h2 id="history-chapter-title">Uma história<br/>que atravessa <em>gerações.</em></h2>
-    <span class="history-date-note">Haddock Lobo, São Paulo</span>
+    <h1 id="history-chapter-title">Uma história<br/>que atravessa <em>gerações.</em></h1>
   </div>
   <ol class="history-timeline" aria-label="Linha do tempo do Rodeio">
-    {milestones.map(m=><li class="timeline-item history-milestone"><span class="timeline-date">{m.year}</span><div><h3>{m.title}</h3><p>{m.text}</p>{m.year==='1959'&&<p>{copy.classics}</p>}</div></li>)}
+    {milestones.map(m=><li class="timeline-item history-milestone"><span class="timeline-date">{m.year}</span><div><h2>{m.title}</h2><p>{m.text}</p>{m.year==='1959'&&<p>{copy.classics}</p>}</div></li>)}
   </ol>
 </section>
 <section class="history-archive" aria-labelledby="history-archive-title">
@@ -32,7 +30,7 @@ import '../styles/interiors.css';
 <section class="history-taste interior-section">
   <div class="wrap history-taste-grid">
     <figure><Photo name="origem" sizes="(max-width:759px) 74vw, 30vw" alt="Registro de acervo da antiga entrada do Rodeio e seu letreiro"/><figcaption>Fotografia preservada no acervo do Rodeio.</figcaption></figure>
-    <div class="history-taste-copy"><p class="eyebrow">Clássicos que nasceram aqui</p><h2>A história<br/>também tem <em>sabor.</em></h2><Link href="/cardapio/">Conhecer os clássicos da casa</Link></div>
+    <div class="history-taste-copy"><p class="eyebrow">Clássicos que nasceram aqui</p><h2>A história<br/>também tem <em>sabor.</em></h2><Link href={content.menu_url}>{content.pages.menu.cta}</Link></div>
   </div>
 </section>
 </Layout>
