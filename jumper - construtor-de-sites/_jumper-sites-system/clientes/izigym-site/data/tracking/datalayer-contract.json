@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "site_id": "principal",
+  "hosts": ["izigym.com.br", "www.izigym.com.br"],
+  "canonicalHost": "www.izigym.com.br",
+  "apexBehavior": "308 to www, preserving path and query; the React page and GTM load at the canonical host",
+  "status": "Implemented and validated locally; site and GTM publication not performed by this PR",
+  "responsibilities": {
+    "jumper-web": ["GTM loader and activation", "single shared dataLayer", "logical site events", "navigation and attribution", "code validation"],
+    "jumper-tracker": ["GTM tags and triggers", "platform destinations and sends", "platform receipt validation"]
+  },
+  "configuration": {
+    "file": "src/data/tracking.json",
+    "izi_enabled": true,
+    "gtm_id": "GTM-TGQTFXTN",
+    "urlOverrideAllowed": false,
+    "activationChangeRequires": "edit configuration, rebuild, start a fresh page",
+    "disabledBehavior": "no GTM script or noscript; logical site events still emitted with izi_enabled=false",
+    "cative": "not installed on principal"
+  },
+  "destinationsReferenceOnly": {
+    "ga4": "G-70NXMC0KR6",
+    "googleAds": "AW-17997991775",
+    "alternateIdOfSameGoogleTag": "GT-MQRDQBSX",
+    "metaPixel": "1181083030661596",
+    "clarity": "ywlrxh4o91",
+    "installationOwner": "jumper-tracker inside GTM-TGQTFXTN; no direct platform snippets or sends in page code"
+  },
+  "initialMessages": [
+    {"fields": ["site_id", "izi_enabled"], "customEvent": false, "frequency": "once per page; preceding messages and consent commands retained"},
+    {"event": "gtm.js", "fields": ["gtm.start"], "frequency": "one startup if Izi enabled; reuse an existing startup"}
+  ],
+  "events": {
+    "checkout_click": {
+      "trigger": "unprevented left/keyboard/modified click or middle-button auxclick on a[data-checkout] linking to permitted Pacto destination; one push before navigation",
+      "allowedDestination": {"origin": "https://vendas.online.sistemapacto.com.br", "paths": ["/planos", "/checkout"]},
+      "requiredFields": {"event": "checkout_click", "site_id": "principal", "izi_enabled": "boolean", "placement": "stable component identifier", "checkout_url": "sanitized absolute URL"},
+      "placements": ["plan_card_izi_one", "plan_card_izi_prime"],
+      "optionalAttribution": ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "utm_id", "nonpersonal utm_* extensions", "gclid", "fbclid", "gbraid", "wbraid", "dclid", "msclkid"],
+      "attributionTypes": "nonempty strings when available; absent values are omitted",
+      "plan_id": "not emitted: local card IDs 5/6 are not confirmed Pacto IDs",
+      "unit_id": "not emitted: un=1 is preserved in the destination, without asserting an externally confirmed unit identity",
+      "telemetryUrl": "keep path, safe un/pl/cupom and filtered attribution; omit credentials, fragment, k, _gl, conversation text and unrelated/personal fields",
+      "commercialUrl": "preserve existing parameters and late _gl; append applicable attribution only; no plan/unit/key/coupon overrides",
+      "expectedTrackerMapping": {"ga4": "checkout_click", "meta": "custom checkout_click"},
+      "meaning": "exit to Pacto contract flow, including its plan list; not a real checkout start or purchase"
+    },
+    "whatsapp_click": {
+      "trigger": "unprevented activation of a[data-whatsapp][data-whatsapp-channel=principal_sales] linking to WhatsApp; one push before navigation",
+      "requiredFields": {"event": "whatsapp_click", "site_id": "principal", "izi_enabled": "boolean", "placement": "stable component identifier", "channel_id": "principal_sales"},
+      "placements": ["whatsapp_faq_contact", "whatsapp_floating_desktop", "whatsapp_mobile_sticky"],
+      "excludedFields": ["recipient", "phone", "message", "conversation text", "whatsapp_url", "personal data"],
+      "commercialUrl": "unchanged recipient and optional prefilled message; no attribution appended to WhatsApp URLs",
+      "expectedTrackerMapping": {"ga4": "whatsapp_click", "meta": "Contact"}
+    }
+  },
+  "excludedActions": ["internal navigation", "scroll", "header/menu/mobile links to #planos", "render or remount", "page opening"],
+  "notProducedByPage": ["Lead", "Purchase", "lead_submit", "begin_checkout", "purchase", "InitiateCheckout"],
+  "consent": "preserve any existing queue and consent commands; no new consent grant/default/update issued by this code",
+  "sampleCheckout": {"event": "checkout_click", "site_id": "principal", "izi_enabled": true, "placement": "plan_card_izi_one", "checkout_url": "https://vendas.online.sistemapacto.com.br/planos?un=1&utm_source=qa&utm_medium=verification", "utm_source": "qa", "utm_medium": "verification"},
+  "sampleWhatsApp": {"event": "whatsapp_click", "site_id": "principal", "izi_enabled": true, "placement": "whatsapp_mobile_sticky", "channel_id": "principal_sales"},
+  "validation": "local Chromium desktop/mobile, real Worker and production assets, mocked external libraries/collectors/destinations; logical emission observed, platform receipt not confirmed"
+}

@@ -10,6 +10,7 @@ interface PlanCardProps {
   isFeatured: boolean;
   features: { name: string }[];
   urlSale: string;
+  trackingPlacement: string;
   isPromo?: boolean;
   originalPrice?: string;
   promoLabel?: string;
@@ -24,6 +25,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
   isFeatured,
   features,
   urlSale,
+  trackingPlacement,
   isPromo = false,
   originalPrice,
   promoLabel,
@@ -127,6 +129,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
 
       <a
         href={urlSale}
+        data-checkout={trackingPlacement}
         target="_blank"
         rel="noopener noreferrer"
         className={`group/cta relative inline-flex w-full items-center justify-center gap-2 rounded-full border px-4 py-3 text-center text-[11px] sm:text-[12px] font-bold uppercase tracking-[0.14em] sm:tracking-[0.17em] transition-all duration-500 ease-soft

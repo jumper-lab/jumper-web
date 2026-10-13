@@ -7,6 +7,7 @@ export interface GymPlan {
   promotionalMonths?: number;
   features: string[];
   checkoutUrl: string;
+  trackingPlacement: string;
 }
 
 export const SISTEMA_PACTO_CHECKOUT_URL =
@@ -15,6 +16,7 @@ export const SISTEMA_PACTO_CHECKOUT_URL =
 export const plans: GymPlan[] = [
   {
     id: 5,
+    trackingPlacement: "plan_card_izi_one",
     name: "Izi One",
     description: "Plano essencial para treinar na unidade de matrícula.",
     price: 157,
@@ -28,6 +30,7 @@ export const plans: GymPlan[] = [
   },
   {
     id: 6,
+    trackingPlacement: "plan_card_izi_prime",
     name: "Izi Prime",
     description: "Plano completo com benefícios exclusivos IZI Prime.",
     price: 167,

@@ -11,16 +11,19 @@ o histórico original foi preservado no próprio `jumper-web` pela tag
 `izigym-source-import-0c1b3b8`, que aponta para o commit de origem.
 `clientes/izigym-lp/` é outra página e não deve ser substituída por este projeto.
 
-O import **não altera a publicação**. O `jumper-hoster` ainda usa dois pacotes
-distintos em `clientes/rodeio-restaurante/cloudflare/snapshots/`: `izigym/`
-para `https://site.jumper.dev.br/izigym/` e `izigym-official/` para
-`https://www.izigym.com.br/`. A versão de desenvolvimento é uma implementação
-HTML/CSS/JS diferente deste aplicativo React; não publique o build daqui no
-endereço de desenvolvimento nem substitua o snapshot oficial sem comparação.
-O código, as URLs e os dados D1 devem ser reconciliados e validados em uma PR
-separada antes de alterar o preparo do Hoster. Não há deploy automático deste
-diretório. O repositório antigo só pode ser removido após essa transição e a
-auditoria das referências externas.
+O import **não altera a publicação**. A preparação de rastreamento do principal
+reconcilia este fonte com o snapshot oficial anterior e conecta seu build ao
+Hoster, conforme `data/tracking/PRINCIPAL-2026-10-13.md`. O build é validado antes
+de ser copiado para `_official/izigym`, usado por `www.izigym.com.br`; o apex
+`izigym.com.br` mantém o redirecionamento existente para `www`.
+
+A prévia `https://site.jumper.dev.br/izigym/` conserva o pacote separado
+`cloudflare/snapshots/izigym/`, uma implementação HTML/CSS/JS diferente deste
+aplicativo React. O snapshot `izigym-official/` permanece como referência
+histórica. URLs, Worker e dados D1 continuam existentes. Não há deploy automático
+deste diretório: publicar exige revisão e operação autorizada pelo fluxo do
+Hoster. O repositório antigo só pode ser removido após a auditoria das referências
+externas.
 
 ## Stack
 
@@ -33,17 +36,18 @@ auditoria das referências externas.
 ## Como rodar localmente
 
 ```bash
-npm install
-npm run dev
+npx pnpm@10.15.1 install --frozen-lockfile
+npx pnpm@10.15.1 dev
 ```
 
 ## Scripts
 
 ```bash
-npm run dev
-npm run build
-npm run lint
-npm run preview
+npx pnpm@10.15.1 dev
+npx pnpm@10.15.1 build
+npx pnpm@10.15.1 test
+npx pnpm@10.15.1 lint
+npx pnpm@10.15.1 preview
 ```
 
 ## Deploy
@@ -53,3 +57,13 @@ O site oficial e a versão de desenvolvimento são publicados pelo Worker centra
 contém o código-fonte da IZI Gym e não cria um Worker independente.
 
 Os botões de matrícula usam exclusivamente o checkout do Sistema Pacto.
+
+## Rastreamento do principal
+
+`src/data/tracking.json` controla o kit Izi e seu carregador GTM. Não há controle
+por query string. A página produz `checkout_click` e `whatsapp_click` em uma fila
+compartilhada, preservando links e atribuição. Configurar tags e destinos e
+confirmar recebimento nas plataformas pertence ao `jumper-tracker`.
+
+Contrato, lista de CTAs, observações comerciais e evidências:
+[`data/tracking/PRINCIPAL-2026-10-13.md`](data/tracking/PRINCIPAL-2026-10-13.md).

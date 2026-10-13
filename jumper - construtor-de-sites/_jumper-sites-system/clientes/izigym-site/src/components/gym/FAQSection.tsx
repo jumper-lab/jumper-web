@@ -113,6 +113,8 @@ export const FAQSection = () => {
 
           <a
             href="https://wa.me/5511952137022"
+            data-whatsapp="whatsapp_faq_contact"
+            data-whatsapp-channel="principal_sales"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-8 sm:mt-10 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-5 py-3 text-[12px] font-bold uppercase tracking-[0.16em] text-primary transition-all duration-500 ease-soft hover:border-primary/60 hover:bg-primary/15"

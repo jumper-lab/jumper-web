@@ -49,7 +49,7 @@ const galleryItems = [
     alt: "Detalhes da estrutura da academia",
     label: "Estrutura",
   },
-];
+] as const;
 
 const VideoGalleryItem = ({
   item,

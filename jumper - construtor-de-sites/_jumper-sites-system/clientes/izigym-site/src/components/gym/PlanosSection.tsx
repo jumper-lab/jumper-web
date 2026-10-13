@@ -98,6 +98,7 @@ export const PlanosSection = () => {
                   isFeatured={plan.name.toLowerCase().includes("prime")}
                   features={plan.features.map((name) => ({ name }))}
                   urlSale={plan.checkoutUrl}
+                  trackingPlacement={plan.trackingPlacement}
                   isPromo={pricing.isPromo}
                   originalPrice={pricing.originalPrice}
                   promoLabel={pricing.promoLabel}

@@ -89,6 +89,18 @@ O inventário detecta inclusões e remoções no pacote, e o preflight compara b
 
 ## Publicação live
 
+**Preparo do principal Izi — 13/10/2026.** `build:cloudflare` constrói o fonte
+React de `clientes/izigym-site` com dependências travadas e valida seu bootstrap
+antes de montar `_official/izigym`. A comparação anterior e o contrato estão em
+`clientes/izigym-site/data/tracking/PRINCIPAL-2026-10-13.md`. O snapshot oficial
+anterior permanece como referência histórica; a prévia `/izigym/` mantém seu
+snapshot separado. O kit Izi é instalado somente no principal desse build, com
+eventos na dataLayer e destinos administrados pelo GTM. O código compartilhado
+do Worker, rotas e bindings continuam existentes. A PR prepara esse código e não
+publica o site: novos hashes do principal exigem revisão/promoção específica no
+fluxo live. Nenhuma regra de preflight ou autorização de publicação é ampliada
+por esse preparo.
+
 O live continua em `jumper-hoster` e **não** é publicado pelo GitHub Actions. Uma solicitação de publicar no dev não autoriza publicar no live. Para uma publicação live explicitamente aprovada, use um checkout limpo de `main`, `npm run build:cloudflare`, `npm run preflight:cloudflare` e somente então `npm run deploy:cloudflare`; o próprio comando repete a auditoria. O preflight live compara páginas protegidas, domínios, vínculos D1 e funções críticas com o Worker atualmente ativo. O pacote é compartilhado, portanto uma alteração pretendida de página protegida não deve ser liberada por um bypass: precisa de uma revisão de escopo e de uma estratégia de promoção específica antes do deploy.
 
 **Promoção Cerro Corá de 08/10/2026.** A publicação explicitamente solicitada para checkout direto usa `npm run deploy:cloudflare -- --promote=cerrocora-direct-checkout-2026-10-08`, após PR e merge. O registro versionado em `clientes/rodeio-restaurante/data/releases/cerrocora-direct-checkout-2026-10-08.json` fixa hashes do HTML anterior e candidato da Cerro Corá e do pacote Vila Romana, além do código compartilhado do Worker. A prévia Vila Romana no Worker dev pode continuar com seu HTML anterior; esse estado é conferido pelo hash registrado e não é publicado pelo comando live. Todos os demais sites continuam na comparação estrita. Hash diferente, revisão antiga, checkout sujo ou deploy concorrente bloqueia a promoção. A opção não concede autorização para mudanças em outro cliente e não é uma liberação genérica de diferenças.

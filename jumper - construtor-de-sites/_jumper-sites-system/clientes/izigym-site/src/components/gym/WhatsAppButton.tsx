@@ -15,6 +15,8 @@ export const WhatsAppButton = () => {
     <a
       className="fixed bottom-16 right-8 z-50 hidden h-14 w-14 items-center justify-center rounded-full border border-primary bg-primary shadow-[0_10px_28px_rgba(229,44,18,0.22)] transition-all duration-500 ease-soft hover:-translate-y-px hover:bg-primary/30 hover:shadow-none focus:outline-none focus:ring-4 focus:ring-primary/35 md:flex"
       href={href}
+      data-whatsapp="whatsapp_floating_desktop"
+      data-whatsapp-channel="principal_sales"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Conversar com a IZI Gym pelo WhatsApp"

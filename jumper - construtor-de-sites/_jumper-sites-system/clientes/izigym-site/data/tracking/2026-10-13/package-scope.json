@@ -1,0 +1,113 @@
+{
+  "checkedAt": "2026-10-13T07:37:43.705Z",
+  "authorizedTarget": "principal",
+  "pages": [
+    {
+      "name": "Pão de Queijo dev",
+      "url": "https://site.jumper.dev.br/pao-de-queijo-haddock-lobo/",
+      "asset": "pao-de-queijo-haddock-lobo/index.html",
+      "status": 200,
+      "liveSha256": "5d0102bb31bc2868a513ac11cbc2ab0a1c7a91d86f25cccce948492d7bd2fd0b",
+      "candidateSha256": "5d0102bb31bc2868a513ac11cbc2ab0a1c7a91d86f25cccce948492d7bd2fd0b",
+      "equal": true,
+      "existingReviewedDifference": false
+    },
+    {
+      "name": "Rodeio dev",
+      "url": "https://site.jumper.dev.br/rodeio/",
+      "asset": "rodeio/index.html",
+      "status": 200,
+      "liveSha256": "3fed8220503414223fc38c3cc5d94937983af8c67913120c032a5bbd999dec60",
+      "candidateSha256": "3fed8220503414223fc38c3cc5d94937983af8c67913120c032a5bbd999dec60",
+      "equal": true,
+      "existingReviewedDifference": false
+    },
+    {
+      "name": "IZI Gym dev",
+      "url": "https://site.jumper.dev.br/izigym/",
+      "asset": "izigym/index.html",
+      "status": 200,
+      "liveSha256": "44ba84631493666f7658207ab00e11f207a6be77cdc6c4e884a222f40e848e32",
+      "candidateSha256": "44ba84631493666f7658207ab00e11f207a6be77cdc6c4e884a222f40e848e32",
+      "equal": true,
+      "existingReviewedDifference": false
+    },
+    {
+      "name": "IZI Gym LP v1",
+      "url": "https://site.jumper.dev.br/izigym-lp/",
+      "asset": "izigym-lp/index.html",
+      "status": 200,
+      "liveSha256": "ae465f0eff856d55e05334e33cd196912bf1b9accce50a6501fa81f2f659d7dc",
+      "candidateSha256": "ae465f0eff856d55e05334e33cd196912bf1b9accce50a6501fa81f2f659d7dc",
+      "equal": true,
+      "existingReviewedDifference": false
+    },
+    {
+      "name": "IZI Gym LP v2",
+      "url": "https://site.jumper.dev.br/izigym-lp-vilaromana/",
+      "asset": "izigym-lp-vilaromana/index.html",
+      "status": 200,
+      "liveSha256": "f4fd8685e2b899c49b44d13f4cd738215c6b6d506dc5c2031400c2c6ddbfc3ea",
+      "candidateSha256": "9914459f5d754c42838c52dd8a6006465ca41e0f5baee12d36ce53061e1359de",
+      "equal": false,
+      "existingReviewedDifference": true
+    },
+    {
+      "name": "Casa Beliê v1",
+      "url": "https://site.jumper.dev.br/casabelie/",
+      "asset": "casabelie/index.html",
+      "status": 200,
+      "liveSha256": "383790339435567241253a51078bf316b52cd03a500d8f31b274de5c81aaadf0",
+      "candidateSha256": "383790339435567241253a51078bf316b52cd03a500d8f31b274de5c81aaadf0",
+      "equal": true,
+      "existingReviewedDifference": false
+    },
+    {
+      "name": "Casa Beliê v2",
+      "url": "https://site.jumper.dev.br/casabelie-2/",
+      "asset": "casabelie-2/index.html",
+      "status": 200,
+      "liveSha256": "236fa2d3bcdc85e862f0423d55f2f19c27c2be1131d337c7473e3293a1ec6ee3",
+      "candidateSha256": "236fa2d3bcdc85e862f0423d55f2f19c27c2be1131d337c7473e3293a1ec6ee3",
+      "equal": true,
+      "existingReviewedDifference": false
+    },
+    {
+      "name": "Casa Beliê v3",
+      "url": "https://site.jumper.dev.br/casabelie-3/",
+      "asset": "casabelie-3/index.html",
+      "status": 200,
+      "liveSha256": "b3420af1df3218944fadd243786ab7cb513bf053afa3e04c869e4df4181cf02b",
+      "candidateSha256": "b3420af1df3218944fadd243786ab7cb513bf053afa3e04c869e4df4181cf02b",
+      "equal": true,
+      "existingReviewedDifference": false
+    },
+    {
+      "name": "IZI Gym oficial",
+      "url": "https://www.izigym.com.br/",
+      "asset": "_official/izigym/index.shell",
+      "status": 200,
+      "liveSha256": "b258d820541a921e8113427ef1e2178c84d817bf4584a84d6bfc87c6f9dcf76b",
+      "candidateSha256": "6f44183715adbc6f17497aa2742a3b9293977af3333f9444b1e3a50cd78d22e9",
+      "equal": false,
+      "existingReviewedDifference": false
+    },
+    {
+      "name": "Cerro Corá oficial",
+      "url": "https://cerrocora.izigym.com.br/",
+      "asset": "cerrocora/index.html",
+      "status": 200,
+      "liveSha256": "dbc1e000a29b1571602de4ea9b5945b3bbd7af045e946d77233c8ec624ce0775",
+      "candidateSha256": "dbc1e000a29b1571602de4ea9b5945b3bbd7af045e946d77233c8ec624ce0775",
+      "equal": true,
+      "existingReviewedDifference": false
+    }
+  ],
+  "newChanges": [
+    "_official/izigym/index.shell"
+  ],
+  "publicationPerformed": false,
+  "recordedAt": "2026-10-13T07:51:31.637Z",
+  "requestDate": "2026-10-12",
+  "date": "2026-10-13"
+}

@@ -2,6 +2,7 @@ import { cp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { dirname, extname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { prepareCerroCoraTracking } from './prepare-cerrocora-tracking.mjs';
+import { validatePrincipalBuild } from './prepare-principal.mjs';
 
 const projectRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
 const source = join(projectRoot, 'dist');
@@ -10,7 +11,7 @@ const clientTarget = join(target, 'rodeio');
 const fontsTarget = join(target, 'fonts');
 const iziSource = join(projectRoot, 'cloudflare', 'snapshots', 'izigym');
 const iziTarget = join(target, 'izigym');
-const iziOfficialSource = join(projectRoot, 'cloudflare', 'snapshots', 'izigym-official');
+const iziOfficialSource = resolve(projectRoot, '../izigym-site/dist');
 const iziOfficialTarget = join(target, '_official', 'izigym');
 const belieSource = resolve(projectRoot, '../casa-belie/public');
 const beliePages = join(projectRoot, 'cloudflare', 'snapshots', 'casa-belie');
@@ -54,6 +55,8 @@ await cp(join(projectRoot, 'cloudflare', 'favicon-jumper.png'), join(target, 'fa
 await cp(join(projectRoot, 'cloudflare', 'design-system', '3.15.0'), join(target, 'hub-design-system', '3.15.0'), { recursive: true });
 await cp(join(projectRoot, 'cloudflare', 'hub-redesign.css'), join(target, 'hub-redesign.css'));
 await cp(iziSource, iziTarget, { recursive: true });
+const principalTracking = JSON.parse(await readFile(resolve(projectRoot, '../izigym-site/src/data/tracking.json'), 'utf8'));
+validatePrincipalBuild(await readFile(join(iziOfficialSource, 'index.html'), 'utf8'), principalTracking);
 await cp(iziOfficialSource, iziOfficialTarget, { recursive: true });
 await writeFile(
   join(iziOfficialTarget, 'index.shell'),
