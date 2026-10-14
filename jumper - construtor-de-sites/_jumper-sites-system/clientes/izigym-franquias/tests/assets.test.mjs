@@ -18,11 +18,22 @@ test('four forms share the persisted submit handler; ZIP tracking retained',asyn
  assert.ok(script.indexOf("fetch('/api/lead'")<script.indexOf("fbq('track', 'Lead')"));
 });
 
+
+test('GA4 direct loader is present on both pages',async()=>{
+ for(const name of ['index.html','proximos-passos.html']){
+  const html=await readFile(new URL(name,root),'utf8');
+  assert.ok(html.includes('googletagmanager.com/gtag/js?id=G-DQQD3TR2XR'));
+  assert.ok(html.includes("gtag('config', 'G-DQQD3TR2XR')"));
+ }
+});
+
+
 test('thank-you page keeps tracking loaders and PageView without replaying conversion',async()=>{
  const html=await readFile(new URL('proximos-passos.html',root),'utf8');
- assert.ok(html.includes('GTM-M3GVTFV4'));assert.ok(html.includes('1874149183549598'));assert.ok(html.includes("fbq('track', 'PageView')"));
+ assert.ok(html.includes('GTM-M3GVTFV4'));assert.ok(html.includes('G-DQQD3TR2XR'));assert.ok(html.includes('1874149183549598'));assert.ok(html.includes("fbq('track', 'PageView')"));
  assert.ok(!html.includes('CADASTRO-LP-CATIVE'));assert.ok(!html.includes("fbq('track', 'Lead')"));assert.ok(!html.includes('CompleteRegistration'));assert.ok(!html.includes('cadastro_concluido'));
 });
+
 
 test('UTF-8 declaration is inside the first 1024 bytes of both documents',async()=>{
  for(const name of ['index.html','proximos-passos.html']){
