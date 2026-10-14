@@ -142,18 +142,10 @@
   aspect-ratio: 1.35 / 1;
   object-fit: cover;
 }
-.history-archive-family {
-  grid-column: 1 / span 5;
-  margin-top: clamp(32px, 6vw, 90px);
-}
-.history-archive-family img {
-  aspect-ratio: 0.82 / 1;
-  object-fit: cover;
-}
 .history-archive-note {
-  grid-column: 6 / span 3;
+  grid-column: 1 / span 6;
   align-self: center;
-  margin-top: clamp(32px, 8vw, 126px);
+  margin-top: clamp(32px, 5vw, 72px);
   padding-top: 18px;
   border-top: 1px solid rgba(250, 246, 238, 0.26);
 }
@@ -168,7 +160,7 @@
   letter-spacing: -.035em;
 }
 .history-archive-portrait {
-  grid-column: 10 / span 3;
+  grid-column: 9 / span 4;
   margin-top: clamp(20px, 3vw, 48px);
 }
 .history-archive-portrait img {
@@ -627,14 +619,10 @@
   .history-archive-facade img {
     aspect-ratio: 1.2 / 1;
   }
-  .history-archive-family {
-    grid-column: 1 / span 1;
-    margin-top: 8px;
-  }
   .history-archive-note {
-    grid-column: 2 / span 1;
-    align-self: end;
-    margin-top: 0;
+    grid-column: 1 / span 1;
+    align-self: center;
+    margin-top: 8px;
     padding-top: 14px;
   }
   .history-archive-note p {
@@ -642,7 +630,7 @@
   }
   .history-archive-portrait {
     grid-column: 2 / span 1;
-    margin-top: -6px;
+    margin-top: 8px;
   }
   .interior-section-heading {
     grid-template-columns: 1fr;
