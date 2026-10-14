@@ -1,0 +1,40 @@
+{
+  "localOnly": true,
+  "date": "2026-10-13",
+  "source": "https://drive.google.com/file/d/16IE5Ydw__FRquuVYCK4CFN943LYHK18P/view",
+  "file": "rodeo_2026set_093.jpg",
+  "sourceSha256": "308b5bd5e02444e8aa22aaa5dd6a5ab1088cfbe93d1ff19c2446b69fe6b095cc",
+  "originalSize": [
+    4169,
+    5211
+  ],
+  "masterSize": [
+    2000,
+    2500
+  ],
+  "crop": null,
+  "aiUsed": false,
+  "selection": [
+    "rodeo_2026set_093.jpg",
+    "rodeo_2026set_082.jpg",
+    "rodeo_2026set_127.jpg",
+    "rodeo_2026set_067.jpg",
+    "rodeo_2026set_001.jpg"
+  ],
+  "correction": {
+    "replaced": "rodeo_2026set_235.jpg",
+    "correct": "rodeo_2026set_127.jpg",
+    "source": "https://drive.google.com/file/d/1D06e-ooDrh51MdKyU7xJ6hxv92bPDA1L/view",
+    "sourceSha256": "a0e2d17ec013e1691a0d93f6c3baf3fe4f4815a57ef218f852c5d9ddc27e31cb",
+    "originalSize": [
+      4483,
+      5604
+    ],
+    "masterSize": [
+      2000,
+      2500
+    ],
+    "crop": null,
+    "aiUsed": false
+  }
+}

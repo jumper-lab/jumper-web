@@ -6,7 +6,7 @@ body:has(.full-page-workspace) .site-footer { display: none; }
 .workspace-back:hover { text-decoration: underline; text-underline-offset: 4px; }
 .workspace-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 0 24px; }
 .workspace-help { display: inline-flex; align-items: center; min-height: 44px; font-size: 12px; }
-.workspace-help:hover { color: var(--orange); }
+.workspace-help:hover { color: var(--brown); }
 .workspace-content { flex: 1; min-height: 0; overflow: auto; position: relative; }
 .workspace-content > iframe { display: block; border: 0; width: 100%; height: 100%; background: white; }
 .workspace-reservation .workspace-content { background: linear-gradient(rgb(0 0 0 / .6),rgb(0 0 0 / .6)),var(--workspace-photo) center / cover; }

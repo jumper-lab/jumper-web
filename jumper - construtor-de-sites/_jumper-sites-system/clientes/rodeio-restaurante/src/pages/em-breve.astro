@@ -24,9 +24,10 @@ const organization={id:new URL(`${base}/#organization`,Astro.site).href,name:con
     <h1>{copy.title}<br/>{copy.accent}</h1>
     <p class="launch-intro">{copy.description}</p>
     <div class="launch-houses">{content.units.map(unit=><section aria-labelledby={`launch-${unit.slug}`}><h2 id={`launch-${unit.slug}`}>{unit.slug==='jardins'?'Conheça o novo Rodeio Jardins':unit.display_name}</h2><address>{unit.address}<br/>{unit.district}</address><a href={`${base}/reservas/?unidade=${unit.slug}`}>Reservar mesa<Arrow/></a></section>)}</div>
-    <a class="action button launch-menu" href={content.menu_url}>{content.pages.menu.cta}<Arrow/></a>
+    <a class="action text-link light launch-menu" href={content.menu_url}>{content.pages.menu.cta}<Arrow/></a>
   </div>
   <footer class="launch-footer"><span>São Paulo · desde 1958</span><a href="https://www.instagram.com/rodeiorestaurante/">@rodeiorestaurante</a></footer>
 </main>
 <MenuDialog/>
+<script src="../scripts/interactions.ts"></script>
 </body></html>

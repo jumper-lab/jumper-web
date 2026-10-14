@@ -55,7 +55,7 @@
 }
 .year {
   font: 500 44px/1 var(--serif);
-  color: var(--orange);
+  color: var(--brown);
 }
 .hero-note > span:last-child {
   border-left: 1px solid var(--line);
@@ -116,7 +116,7 @@
   transition: transform 300ms var(--service-ease);
 }
 .hero-scroll:hover {
-  color: var(--orange);
+  color: var(--brown);
 }
 .hero-scroll:hover svg {
   transform: translateY(3px);
@@ -370,7 +370,7 @@
 .hero-slide {
   opacity: 0;
   visibility: hidden;
-  transition: opacity 1400ms cubic-bezier(.22,.7,.2,1), visibility 0s linear 1400ms;
+  transition: opacity 2200ms cubic-bezier(.45,0,.55,1), visibility 0s linear 2200ms;
 }
 .hero-slide.is-active {
   opacity: 1;
@@ -379,7 +379,7 @@
 }
 .hero-slide img {
   transform: scale(1.035);
-  transition: transform 7600ms cubic-bezier(.18,.7,.25,1);
+  transition: transform 4500ms cubic-bezier(.18,.7,.25,1);
 }
 .hero-slide.is-active img {
   transform: scale(1);

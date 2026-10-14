@@ -1,31 +1,14 @@
-/* A compact editorial bar beneath the photograph. */
+/* Keep the photo link and navigation on one balanced control row. */
 .gallery-dialog .gallery-details {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+  gap: 16px;
   margin-top: 20px;
   padding-top: 16px;
   border-top: 1px solid var(--line);
 }
-.gallery-dialog .gallery-description { min-width: 0; }
-.gallery-dialog #gallery-caption {
-  min-height: 0;
-  margin: 0;
-  font-size: 13px;
-  line-height: 1.5;
-}
-.gallery-dialog #gallery-original {
-  position: relative;
-  gap: 8px;
-  min-height: 44px;
-  font-size: 11px;
-  color: var(--muted);
-  text-decoration: none;
-}
-.gallery-dialog #gallery-original::after { content: ""; position: absolute; left: 0; right: 0; bottom: calc(50% - 9px); height: 1px; background: currentColor; }
-.gallery-dialog #gallery-original:hover { text-decoration: none; }
-.gallery-dialog .gallery-controls { flex-shrink: 0; gap: 12px; margin: 0; }
+.gallery-dialog .gallery-controls { justify-self: center; gap: 12px; margin: 0; }
 .gallery-dialog .gallery-controls button {
   display: inline-flex;
   align-items: center;
@@ -39,13 +22,14 @@
 }
 .gallery-dialog .gallery-controls button svg { width: 20px; height: 20px; }
 .gallery-dialog [data-gallery-prev] svg { transform: rotate(180deg); }
-.gallery-dialog .gallery-controls button:hover { background: var(--brown); color: var(--paper); border-color: var(--brown); }
-.gallery-dialog #gallery-count { font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.gallery-dialog .gallery-controls button:is(:hover, :focus-visible) { background: var(--brown); color: var(--paper); border-color: var(--brown); }
+.gallery-dialog #gallery-count { min-width: 36px; font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
 .gallery-dialog .gallery-details :focus-visible { outline: 2px solid var(--brown); outline-offset: 4px; }
 @media (max-width: 599px) {
-  .gallery-dialog .gallery-details { display: grid; grid-template-columns: 1fr auto; gap: 12px; padding-top: 14px; margin-top: 16px; }
-  .gallery-dialog .gallery-description { display: contents; }
-  .gallery-dialog #gallery-caption { grid-column: 1/-1; font-size: 12px; }
+  .gallery-dialog .gallery-details { gap: 12px; padding-top: 12px; margin-top: 16px; }
   .gallery-dialog .gallery-controls { gap: 8px; }
   .gallery-dialog .gallery-controls button { width: 44px; height: 44px; }
 }
+
+.gallery-stage { touch-action: none; }
+.gallery-stage > img { transform-origin: center; user-select: none; -webkit-user-select: none; -webkit-user-drag: none; }

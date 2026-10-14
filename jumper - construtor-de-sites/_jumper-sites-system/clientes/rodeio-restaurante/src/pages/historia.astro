@@ -8,7 +8,7 @@ import '../styles/interiors.css';
 <Layout title="Nossa história — desde 1958" description="Da Haddock Lobo à história da família Macedo: conheça a trajetória do Rodeio, seus clássicos à mesa e os encontros que começaram em 1958.">
 <section id="proxima-secao" class="wrap interior-section history-chapter page-without-banner" aria-labelledby="history-chapter-title">
   <div class="history-chapter-heading">
-    <h1 id="history-chapter-title">Uma história<br/>que atravessa <em>gerações.</em></h1>
+    <h1 id="history-chapter-title">Uma história<br/>que <span class="history-title-accent">atravessa</span> <em>gerações.</em></h1>
   </div>
   <ol class="history-timeline" aria-label="Linha do tempo do Rodeio">
     {milestones.map(m=><li class="timeline-item history-milestone"><span class="timeline-date">{m.year}</span><div><h2>{m.title}</h2><p>{m.text}</p>{m.year==='1959'&&<p>{copy.classics}</p>}</div></li>)}

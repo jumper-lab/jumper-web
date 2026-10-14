@@ -112,6 +112,9 @@
 .house-new-address {
   display: block;
   margin-bottom: 6px;
-  color: var(--orange);
+  color: var(--brown);
   font-weight: 600;
 }
+
+.house-info .house-brand { color: var(--brown); }
+.house-info .house-place { color: var(--brand-text); font-style: italic; }

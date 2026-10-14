@@ -68,6 +68,7 @@
   letter-spacing: -0.045em;
 }
 .history-milestone :is(h2,h3) {
+  color: var(--brand-text);
   font-size: clamp(27px, 2.6vw, 39px);
   margin-bottom: 16px;
 }
@@ -944,7 +945,7 @@ main > .page-without-banner { padding-top: calc(var(--header-height) + clamp(48p
 .houses-directory h1 { font-size: clamp(40px, 5vw, 76px); }
 .visit-reservation { flex-direction: column; align-items: flex-start; flex-wrap: nowrap; }
 .visit-reservation-actions { display:flex; align-items:center; flex-wrap:wrap; gap:16px 24px; }
-.visit-address address .house-new-address { display:block; margin-bottom:6px; font-size:12px; font-weight:600; color:var(--orange); }
+.visit-address address .house-new-address { display:block; margin-bottom:6px; font-size:12px; font-weight:600; color:var(--brown); }
 /* Unit information replaces the image banners. */
 .visit-details.page-without-banner { row-gap:clamp(32px, 4vw, 56px); }
 .unit-page-heading { grid-column:1 / -1; }
@@ -996,3 +997,5 @@ main > .visit-details.page-without-banner {
   main > .visit-details.page-without-banner { padding-top: calc(var(--header-height) + 12px); row-gap:16px; }
   .visit-details > .visit-heading { margin-top: 28px; }
 }
+
+.history-chapter-heading .history-title-accent { color: var(--brand-text); }

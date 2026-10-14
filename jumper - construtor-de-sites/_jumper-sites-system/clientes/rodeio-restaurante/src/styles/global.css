@@ -24,7 +24,8 @@
 :root {
   --paper: #faf7f0;
   --brown: #30231c;
-  --orange: #bb4b20;
+  --orange: #ef7622;
+  --brand-text: #792912;
   --muted: #716156;
   --cream: #efe7da;
   --line: #d7cec1;
@@ -100,7 +101,7 @@ h3 {
 }
 em {
   font-weight: 500;
-  color: var(--orange);
+  color: var(--brand-text);
 }
 p {
   max-width: 62ch;
@@ -113,7 +114,7 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 :focus-visible {
-  outline: 2px solid var(--orange);
+  outline: 2px solid var(--brown);
   outline-offset: 5px;
 }
 a,
@@ -200,7 +201,7 @@ button {
 }
 .button {
   background: var(--orange);
-  color: white;
+  color: #fff;
   padding: 16px 24px;
   border: 1px solid var(--orange);
   transition:
@@ -210,6 +211,7 @@ button {
 .button:hover {
   background: var(--brown);
   border-color: var(--brown);
+  color: var(--paper);
 }
 .button:active {
   transform: translateY(1px);
@@ -219,7 +221,16 @@ button {
   padding-block: 10px;
 }
 .text-link:hover {
-  color: var(--orange);
+  color: var(--brown);
+  border-color: var(--orange);
+}
+:where(.house-actions, .visit-reservation-actions, .error-actions, .hero:not(.hero-photo) .hero-actions) > .action + .text-link:not(.light) {
+  color: var(--brand-text);
+  border-color: currentColor;
+  transition: color 180ms, border-color 180ms;
+}
+:where(.house-actions, .visit-reservation-actions, .error-actions, .hero:not(.hero-photo) .hero-actions) > .action + .text-link:not(.light):is(:hover, :focus-visible) {
+  color: var(--brown);
   border-color: var(--orange);
 }
 .light {
@@ -250,7 +261,7 @@ figure figcaption {
 }
 .timeline-date {
   font: 500 52px/1 var(--serif);
-  color: var(--orange);
+  color: var(--brown);
 }
 .timeline-item h2 {
   font-size: 36px;
@@ -529,16 +540,16 @@ dialog::backdrop {
 }
 /* Crossfade in place: moving the root exposes the canvas below 100vh heroes. */
 @view-transition {
-  navigation: auto;
+  navigation: none;
 }
 ::view-transition-old(root) {
-  animation: menu-page-out 220ms ease-in both;
+  animation: menu-page-out 120ms ease-in both;
 }
 ::view-transition-new(root) {
-  animation: menu-page-in 480ms var(--service-ease) both;
+  animation: menu-page-in 160ms var(--service-ease) both;
 }
 ::view-transition-group(rodeio-header) {
-  animation-duration: 480ms;
+  animation-duration: 160ms;
 }
 @keyframes menu-page-out {
   to {
@@ -711,4 +722,15 @@ main:focus {
 }
 @media (max-width: 600px) {
   .gallery-stage { height: max(100px, min(52svh, calc(94vw - 48px))); }
+}
+
+/* Consistent service gestures across local pages and lightboxes. */
+:where(button, .workspace-back, .workspace-help, .footer-navigation a, .footer-unit-reserve, .digital-menu-footer a, .close-dialog, .digital-menu-close) {
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+.events-form :is(input,select,textarea) { transition: border-color 180ms ease, box-shadow 180ms ease; }
+.events-form :is(input,select,textarea):focus-visible { border-color: var(--brand-text); box-shadow: 0 0 0 3px rgb(121 41 18 / .08); }
+@keyframes embedded-content-enter { from { opacity: .45; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .digital-menu-content > iframe { animation: embedded-content-enter 320ms ease-out; }
 }

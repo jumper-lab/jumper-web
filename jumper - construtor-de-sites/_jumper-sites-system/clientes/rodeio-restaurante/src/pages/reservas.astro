@@ -1,12 +1,10 @@
 ---
-import {Image} from 'astro:assets';
+import Photo from '../components/Photo.astro';
 import Layout from '../layouts/Layout.astro';
 import Arrow from '../components/Arrow.astro';
 import ReservationDialog from '../components/ReservationDialog.astro';
 import content from '../../data/content.json';
-import {photos} from '../lib/photos';
 import '../styles/reservations.css';
-const unitPhotos = [photos.jardinsAcervoBmm17,photos.iguatemiAcervoDsc9454];
 ---
 <Layout title="Reservas — escolha sua mesa" description="Reserve uma mesa no Rodeio Jardins ou Iguatemi. Escolha sua unidade e consulte disponibilidade pelo sistema oficial de reservas da casa.">
 <section class="reservation-screen" id="escolher-unidade" aria-labelledby="reservation-heading" tabindex="0">
@@ -17,7 +15,7 @@ const unitPhotos = [photos.jardinsAcervoBmm17,photos.iguatemiAcervoDsc9454];
     </header>
     <div class="reservation-houses">
       {content.units.map((unit,i)=><article class="reservation-house" id={`reservar-${unit.slug}`} data-reservation-card={unit.slug} aria-labelledby={`reservation-heading-${unit.slug}`}>
-        <div class="reservation-house-photo"><Image src={unitPhotos[i]} alt={`O salão do Rodeio ${unit.name}`} width={960} widths={[320,480,640,960]} sizes="(max-width: 759px) calc(100vw - 48px), (max-width: 1199px) 45vw, 580px" format="avif" quality={55} loading={i===0?'eager':'lazy'} fetchpriority={i===0?'high':'low'} decoding="async"/></div>
+        <div class="reservation-house-photo"><Photo name={unit.slug==='jardins'?'jardinsAcervoBmm17':'iguatemiAcervoDsc9454'} alt={`O salão do Rodeio ${unit.name}`} maxWidth={960} sizes="(max-width: 759px) calc(100vw - 48px), (max-width: 1199px) 45vw, 580px" eager={i===0}/></div>
         <div class="reservation-house-information">
           <div class="reservation-house-description">
             <h2 id={`reservation-heading-${unit.slug}`}>Rodeio {unit.name}</h2>

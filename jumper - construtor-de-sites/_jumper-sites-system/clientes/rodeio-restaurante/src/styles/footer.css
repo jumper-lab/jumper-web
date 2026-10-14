@@ -175,9 +175,10 @@
   .site-footer .footer-unit,
   .site-footer .footer-contact { border-top: 1px solid rgb(250 247 240 / .18); padding-top: 24px; }
   .site-footer .footer-details h3 { font-size: 30px; margin-bottom: 8px; }
-  .site-footer .footer-bottom { grid-template-columns: 1fr auto; gap: 0 12px; font-size: 9px; }
-  .site-footer .footer-location { grid-column: 1/-1; grid-row: 2; padding-bottom: 8px; }
-  .site-footer .footer-bottom > a { grid-column: 2; grid-row: 1; }
+  .site-footer .footer-bottom { grid-template-columns: repeat(3, max-content); justify-content: space-between; gap: 4px; font-size: clamp(8px, 2.2vw, 9px); }
+  .site-footer .footer-bottom > * { white-space: nowrap; }
+  .site-footer .footer-location { grid-column: auto; grid-row: auto; padding: 0; }
+  .site-footer .footer-bottom > a { grid-column: auto; grid-row: auto; }
 }
 @media (max-width: 370px) {
   .site-footer .footer-signature { font-size: 18px; }

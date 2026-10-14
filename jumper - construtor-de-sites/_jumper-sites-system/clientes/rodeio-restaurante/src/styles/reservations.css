@@ -39,7 +39,7 @@
   background: transparent;
 }
 .reservation-house[data-current] .reservation-house-action {
-  color: var(--orange);
+  color: var(--brown);
   border-color: var(--orange);
 }
 .reservation-house-photo { overflow: hidden; }
@@ -71,8 +71,8 @@
   font-size: 12px;
 }
 .reservation-house-action svg { width: 20px; height: 20px; }
-.reservation-house-action:hover { color: var(--orange); }
-.reservation-house-action:focus-visible { outline: 2px solid var(--orange); outline-offset: 6px; }
+.reservation-house-action:hover { color: var(--brown); }
+.reservation-house-action:focus-visible { outline: 2px solid var(--brown); outline-offset: 6px; }
 .reservation-assistance {
   display: flex;
   flex-wrap: wrap;

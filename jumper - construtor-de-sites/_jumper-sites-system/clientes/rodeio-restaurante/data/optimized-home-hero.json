@@ -1,0 +1,62 @@
+{
+  "source": "briefing/entrada/matrizes/home-marca-acervo-2024.webp",
+  "variants": {
+    "phone": [
+      {
+        "path": "photos/home-hero/marca-phone-360.webp",
+        "width": 360,
+        "bytes": 21892
+      },
+      {
+        "path": "photos/home-hero/marca-phone-540.webp",
+        "width": 540,
+        "bytes": 47858
+      },
+      {
+        "path": "photos/home-hero/marca-phone-720.webp",
+        "width": 720,
+        "bytes": 84826
+      },
+      {
+        "path": "photos/home-hero/marca-phone-900.webp",
+        "width": 900,
+        "bytes": 137400
+      }
+    ],
+    "tablet": [
+      {
+        "path": "photos/home-hero/marca-tablet-640.webp",
+        "width": 640,
+        "bytes": 48006
+      },
+      {
+        "path": "photos/home-hero/marca-tablet-840.webp",
+        "width": 840,
+        "bytes": 84628
+      },
+      {
+        "path": "photos/home-hero/marca-tablet-1080.webp",
+        "width": 1080,
+        "bytes": 145670
+      }
+    ],
+    "desktop": [
+      {
+        "path": "photos/home-hero/marca-desktop-960.webp",
+        "width": 960,
+        "bytes": 58734
+      },
+      {
+        "path": "photos/home-hero/marca-desktop-1440.webp",
+        "width": 1440,
+        "bytes": 137590
+      },
+      {
+        "path": "photos/home-hero/marca-desktop-1920.webp",
+        "width": 1920,
+        "bytes": 258402
+      }
+    ]
+  },
+  "previewDataUrl": "data:image/webp;base64,UklGRqYCAABXRUJQVlA4IJoCAAAwDgCdASpIACkAPt1Upk2opKOiNVgOYRAbiWwAt3RQ0QK+IRNu4t1LaGswei1THftdhvAANdD/jUTpo/UlBtf+/Xj2gvQRM8KpvvCiyNWJJmVQ+B46z33URpYSVk2cX+Ua9ULeuCEngtgAicRVC3dd8vt7RZYT97AoAAD+qBfUQvuiSKr9qW0mAWWALGurPfoDYm0vlR8YGyI7/2L8rX2Ro6/kl52934GFaJTCS+ymmZEcU80U3rCWFVzAFscLm8PHq+ns4am7Bbf+mMyKTKEMA92OfjrLjH8uyk4Hc7NVRQd9r6X8QUuOSF/ZfjOu1SaI4PGrKuJncSGTN1+ghjepQWot+9pb97DHaN/do7IWrT1dwj572rZvDSErM/5QhcOb4JcvRXpiK9ZGbIsYCid4EjWN2Cx3D17s1QObP0Rj63Pv0LqRU3C/+lo52BeJgOMIlbCRLz2UPIrtWydKp0SsB7SzpNeT0s3gqkM8SI4puJAN3G/5sQK9do1xvGNSju0zr19z4+C4raKPOWpQxafgrZOdaR+fONaR5jdVyKTbwwvDIpv0QOh/wrtDDnh/GhgJS4OTq0jPlb4DLNhuzuEc9fIsBcyaqTaqR+ONELfrNqx50LNBrroCoULloEz+Cd7E0iA2yNeQXVDCvhSqkU4YDyOj+U70kUF8b1uAiHy/qEOSBWQ/xPT0DrYEZkwgS8iN19QDZ+UWOiwt9xw7Ik3dGlTn7da5H3dip/oxRHOIjpu/ESIHDpgHmlLgV1G8o81tSUvmgl7Noh8Vqk073Z9JJN1YX224BRM+8ytt8vPi3I4AVSZfaj8H25e0DbimkMMfp4mZx87jtUwzLbTxLva9WPmVEaot1B1GYHaARDlO56kZpLUGLovAAAA="
+}

@@ -1,13 +1,13 @@
 ---
-import {getImage} from 'astro:assets';
 import Photo from './Photo.astro';
-import {photos, type PhotoName} from '../lib/photos';
+import {type PhotoName} from '../lib/photos';
+import {responsivePhoto,photoVariant} from '../lib/responsive-photos';
 interface Props {name:PhotoName; alt:string; caption:string;showCaption?:boolean;sizes?:string;hidden?:boolean;detailWidth?:number;detailQuality?:number;}
-const {name,alt,caption,showCaption=true,hidden=false,detailWidth=1600,detailQuality=55,sizes="(max-width:370px) 85vw, (max-width:759px) 44vw, 46vw"}=Astro.props;
-const source=photos[name];
-const full=await getImage({src:source,width:Math.min(source.width,detailWidth),format:'avif',quality:detailQuality});
+const {name,alt,hidden=false,detailWidth=1600,sizes="(max-width:370px) 85vw, (max-width:759px) 44vw, 46vw"}=Astro.props;
+const source=responsivePhoto(name);
+const detail=source.variants.filter(image=>image.width<=detailWidth).at(-1)!;
+const full=photoVariant([detail],import.meta.env.BASE_URL);
 ---
 <a hidden={hidden} class="gallery-item" data-gallery href={full.src} aria-haspopup="dialog">
  <Photo name={name} alt={alt} sizes={sizes}/>
- {showCaption&&<span>{caption}<span aria-hidden="true">↗</span></span>}
 </a>

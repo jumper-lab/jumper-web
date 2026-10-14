@@ -4,35 +4,39 @@ import Hero from '../components/Hero.astro';
 import Photo from '../components/Photo.astro';
 import Link from '../components/Link.astro';
 import UnitList from '../components/UnitList.astro';
+import CuisineGallery from '../components/CuisineGallery.astro';
+import {homeHeroFirst} from '../lib/home-hero-first';
+const firstBanner=homeHeroFirst(import.meta.env.BASE_URL);
 import content from '../../data/content.json';
 import {type PhotoName} from '../lib/photos';
 import '../styles/home.css';
 const copy=content.pages.home;
 const classics: {name:PhotoName;alt:string}[] = [
-  {name:'homePicanhaFatiada',alt:'Picanha do Rodeio servida com arroz em prato branco'},
-  {name:'homeArrozRodeio',alt:'Arroz Rodeio, o tradicional Biro-Biro, servido em uma frigideira'},
+  {name:'homeCorteFatiadoAcervo2026',alt:'Corte grelhado fatiado com batata assada servido no Rodeio'},
   {name:'homeAcompanhamentosAcervo2026',alt:'Pães e acompanhamentos servidos no Rodeio'},
   {name:'menuCortes',alt:'Corte grelhado com batata assada servido em prato branco'},
-  {name:'homeFrangoAcervo2026',alt:'Frango grelhado servido com limão em prato branco no Rodeio'},
-  {name:'menuSobremesa',alt:'Sobremesa cremosa servida em uma taça no Rodeio'},
+  {name:'homeCarneVistaSuperior2026',alt:'Carne grelhada fatiada em prato branco, vista de cima, com taça de vinho e acompanhamento'},
+  {name:'homeArrozRodeio',alt:'Arroz Rodeio, o tradicional Biro-Biro, servido em uma frigideira'},
 ];
 ---
 <Layout title="Um clássico que se renova, desde 1958" description="Conheça o Rodeio: carnes, cozinha e acolhimento desde 1958 em São Paulo. Descubra nossas casas nos Jardins e no Iguatemi e reserve sua mesa.">
-  <Hero home eyebrow="Restaurante · São Paulo · desde 1958" title={copy.title} accent={copy.accent} description={copy.intro} photo="homeMarcaAcervo2024" alt="Letreiro Rodeio em parede de madeira iluminada" caption="Rodeio · São Paulo desde 1958" secondary={copy.menu_cta} secondaryHref={content.menu_url}/>
+  <Fragment slot="head">
+    <link rel="preload" as="image" type="image/webp" fetchpriority="high" media="(max-width:599px) and (orientation:portrait)" imagesrcset={firstBanner.phone.srcset} imagesizes="max(100vw, 56.25vh)"/>
+    <link rel="preload" as="image" type="image/webp" fetchpriority="high" media="(min-width:600px) and (max-width:1199px) and (orientation:portrait)" imagesrcset={firstBanner.tablet.srcset} imagesizes="max(100vw, 80vh)"/>
+    <link rel="preload" as="image" type="image/webp" fetchpriority="high" media="(min-width:1200px), (orientation:landscape)" imagesrcset={firstBanner.desktop.srcset} imagesizes="max(100vw, 177.78vh)"/>
+  </Fragment>
+  <Hero home eyebrow="Restaurante · São Paulo · desde 1958" title={copy.title} accent={copy.accent} description={copy.intro} photo="homeMarcaAcervo2024" alt="Letreiro Rodeio em parede de madeira iluminada" caption="Rodeio · São Paulo desde 1958" secondary={copy.reservation_cta} secondaryHref="/reservas/"/>
 
   <section id="classicos" class="home-cuisine" aria-labelledby="cuisine-title">
     <div class="wrap cuisine-layout">
       <div class="cuisine-heading">
-        <h2 id="cuisine-title">Os clássicos<br/><em>do Rodeio.</em></h2>
+        <h2 id="cuisine-title">Uma seleção de sabores<br/> <em>que atravessa gerações.</em></h2>
         <div class="cuisine-intro">
-          <p class="cuisine-lead">{content.pages.menu.intro}</p>
           <p>{content.pages.menu.description}</p>
-          <Link href={content.menu_url} primary menuLabel="Conferir o cardápio completo"/>
+          <Link href={content.menu_url} menuLabel="Conferir o cardápio completo"/>
         </div>
       </div>
-      <div class="cuisine-photos">
-        {classics.map(photo=><figure><Photo name={photo.name} quality={68} maxWidth={1200} sizes="(max-width:759px) calc((100vw - 60px) / 2), (min-width:1680px) 496px, 30vw" alt={photo.alt}/></figure>)}
-      </div>
+      <CuisineGallery photos={[classics[0],classics[1],classics[3],classics[2],classics[4]]}/>
     </div>
   </section>
 
@@ -50,7 +54,7 @@ const classics: {name:PhotoName;alt:string}[] = [
     <figure><Photo name="mesaDetalhe" sizes="(max-width:759px) 90vw, 38vw" alt="Mesa posta no Rodeio com iluminação acolhedora para um encontro"/></figure>
     <div>
       <h2 id="occasion-title">Um endereço<br/>para celebrar<br/><em>momentos especiais.</em></h2>
-      <div class="occasion-actions"><Link href="/eventos/" primary>Planejar um evento</Link></div>
+      <div class="occasion-actions"><Link href="/eventos/">Planejar um evento</Link></div>
     </div>
     </div>
   </section>
@@ -59,7 +63,7 @@ const classics: {name:PhotoName;alt:string}[] = [
     <div class="wrap memory-layout">
       <div class="memory-editorial">
         <span class="archive-date" aria-hidden="true">1958</span>
-        <h2 id="memory-title">Uma história<br/>que atravessa<br/><em>gerações.</em></h2>
+        <h2 id="memory-title">Uma história<br/>que <span class="memory-title-accent">atravessa</span><br/><em>gerações.</em></h2>
         <p>Desde 1959, a família Macedo conduz o Rodeio. Uma trajetória que passa por Roberto, Silvia e pela vida da casa na Haddock Lobo.</p>
         <Link href="/historia/">Percorrer nossa história</Link>
       </div>

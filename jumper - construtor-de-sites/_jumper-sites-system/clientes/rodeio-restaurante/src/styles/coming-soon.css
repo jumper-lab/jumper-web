@@ -6,7 +6,7 @@
 .launch::before { content:""; position:absolute; inset:0; z-index:-1; background:radial-gradient(ellipse at 50% 45%,rgb(24 17 12 / .82) 0%,rgb(24 17 12 / .57) 55%,rgb(24 17 12 / .22) 100%),linear-gradient(0deg,rgb(24 17 12 / .6),transparent 25%); }
 .launch-content { width:min(100%,1000px); margin:auto; text-align:center; }
 .launch-brand { width:clamp(160px,13vw,230px); margin:0 auto 44px; }
-.launch-eyebrow { margin-inline:auto; color:#f1bc8c; letter-spacing:.22em; }
+.launch-eyebrow { margin-inline:auto; color:var(--orange); letter-spacing:.22em; }
 .launch h1 { font-size:clamp(42px,5.2vw,86px); line-height:1.08; margin:16px 0 24px; letter-spacing:-.035em; }
 .launch-intro { font-size:14px; margin-inline:auto; }
 .launch-houses { display:grid; grid-template-columns:1fr 1fr; gap:48px; margin:44px auto 28px; max-width:840px; border-top:1px solid rgb(250 247 240 / .3); padding-top:28px; }
@@ -15,12 +15,12 @@
 .launch-houses a { display:inline-flex; align-items:center; gap:16px; min-height:44px; margin-top:10px; border-bottom:1px solid rgb(250 247 240 / .45); font-size:12px; }
 .launch-houses a:hover { border-color:var(--paper); }
 .launch-menu { gap:40px; min-width:208px; justify-content:space-between; }
-.launch-menu:hover { color:var(--brown); background:var(--paper); border-color:var(--paper); }
+.launch-menu:is(:hover, :focus-visible) { color:var(--paper); background:transparent; border-color:var(--orange); }
 .launch-footer { position:absolute; inset:auto var(--gutter) 24px; display:flex; justify-content:space-between; align-items:center; gap:24px; font-size:10px; letter-spacing:.08em; }
 .launch-footer a { min-height:44px; display:flex; align-items:center; }
 .launch :focus-visible { outline-color:var(--paper); }
 @media(prefers-reduced-motion:no-preference) {
-  .launch-content { animation:launch-arrive 1000ms cubic-bezier(.22,.7,.2,1) both; }
+  .launch-content { animation:launch-arrive 650ms cubic-bezier(.22,.7,.2,1) both; }
 }
 @keyframes launch-arrive { from { opacity:0; } to { opacity:1; } }
 @media(max-width:599px) {

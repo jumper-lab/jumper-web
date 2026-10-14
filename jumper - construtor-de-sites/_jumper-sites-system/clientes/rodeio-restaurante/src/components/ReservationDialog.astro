@@ -1,6 +1,5 @@
 ---
-import { getImage } from 'astro:assets';
-import { photos } from '../lib/photos';
+import {responsivePhoto,photoVariant} from '../lib/responsive-photos';
 import '../styles/menu-dialog.css';
 import '../styles/reservation-dialog.css';
 interface Props { unit: {slug: string; name: string; widget: string; reservation: string}; }
@@ -8,12 +7,8 @@ const {unit} = Astro.props;
 const base=import.meta.env.BASE_URL.replace(/\/$/,'');
 const id = `reservation-${unit.slug}-dialog`;
 const titleId = `reservation-${unit.slug}-title`;
-const background = await getImage({
-  src: unit.slug === 'jardins' ? photos.jardinsAcervoBmm17 : photos.iguatemiAcervoDsc9454,
-  width: 1440,
-  format: 'avif',
-  quality: 55,
-});
+const photo=responsivePhoto(unit.slug==='jardins'?'jardinsAcervoBmm17':'iguatemiAcervoDsc9454');
+const background=photoVariant([photo.variants.filter(image=>image.width<=1600).at(-1)!],import.meta.env.BASE_URL);
 ---
 <dialog id={id} class="digital-menu-dialog reservation-page-dialog" aria-labelledby={titleId} data-menu-url={unit.widget} data-page-label={`o formulário de reservas do ${unit.name}`} data-frame-title={`Reservas Rodeio ${unit.name}`}>
   <div class="digital-menu-header">
