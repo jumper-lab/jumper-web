@@ -1,0 +1,10 @@
+---
+import FullPageWorkspace from '../../components/FullPageWorkspace.astro';
+import content from '../../../data/content.json';
+import {responsivePhoto,photoVariant} from '../../lib/responsive-photos';
+export function getStaticPaths() { return content.units.map(unit => ({params:{unidade:unit.slug},props:{unit}})); }
+const {unit} = Astro.props;
+const photo=responsivePhoto(unit.slug==='jardins'?'jardinsAcervoBmm17':'iguatemiAcervoDsc9454');
+const image=photoVariant([photo.variants.filter(variant=>variant.width<=1600).at(-1)!],import.meta.env.BASE_URL);
+---
+<FullPageWorkspace title={`Reservas · Rodeio ${unit.name}`} back={`/reservas/?unidade=${unit.slug}`} frame={unit.widget} photo={image.src}/>

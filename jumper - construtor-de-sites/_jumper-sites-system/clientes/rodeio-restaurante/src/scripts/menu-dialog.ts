@@ -4,33 +4,40 @@ for(const dialog of document.querySelectorAll<HTMLDialogElement>('.digital-menu-
 const closeButton=dialog?.querySelector<HTMLButtonElement>('[data-close-digital-menu]');
 const slot=dialog?.querySelector<HTMLElement>('[data-menu-frame-slot]');
 const status=dialog?.querySelector<HTMLElement>('[data-menu-status]');
-const menuUrl=dialog?.dataset.menuUrl;
+const menuUrl=dialog.dataset.menuUrl ? new URL(dialog.dataset.menuUrl, document.baseURI).href : undefined;
 const pageLabel=dialog.dataset.pageLabel||'o cardápio';
 const frameTitle=dialog.dataset.frameTitle||'Cardápio digital do Rodeio';
-let opener:HTMLAnchorElement|null=null;
+let opener:HTMLElement|null=null;
 let frame:HTMLIFrameElement|null=null;
 let pageScroll={x:0,y:0};
 let loadingTimer:ReturnType<typeof setTimeout>|undefined;
 function clearLoadingTimer(){if(loadingTimer!==undefined){clearTimeout(loadingTimer);loadingTimer=undefined;}}
 if(dialog&&closeButton&&slot&&status&&menuUrl&&typeof dialog.showModal==='function'){
  const showStatus=(text:string)=>{status.textContent=text;status.hidden=false;};
- const slowMessage=`O conteúdo está demorando a carregar. Você também pode abri-lo em outra aba.`;
+ const slowMessage=`O conteúdo está demorando a carregar. Tente a opção de tela cheia abaixo.`;
  // Keep the original href working without JavaScript and for modified clicks.
  document.querySelectorAll<HTMLAnchorElement>('a[href]').forEach(link=>{
   if(link.href!==menuUrl||dialog.contains(link))return;
   link.setAttribute('aria-haspopup','dialog');link.setAttribute('aria-controls',dialog.id);
-  link.addEventListener('click',event=>{
+ });
+ document.addEventListener('click',event=>{
+   const link=(event.target as Element).closest<HTMLAnchorElement>('a[href]');
+   if(!link||link.href!==menuUrl||dialog.contains(link))return;
    if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
-   event.preventDefault();opener=link;
+   event.preventDefault();
    if(dialog.open)return;
+   const navigation=link.closest<HTMLDialogElement>('#navigation-dialog');
+   opener=navigation?document.querySelector<HTMLButtonElement>('[data-open-menu]'):link;
+   // Hand off to the external page instead of stacking two modal dialogs.
+   if(navigation?.open)navigation.close();
    pageScroll={x:window.scrollX,y:window.scrollY};
    showStatus(`Carregando ${pageLabel}…`);dialog.showModal();closeButton.focus();
+   if (dialog.hasAttribute('data-local-content')) { status.hidden=true; return; }
    const incoming=document.createElement('iframe');frame=incoming;frame.title=frameTitle;frame.referrerPolicy='strict-origin-when-cross-origin';
    frame.addEventListener('load',()=>{if(frame!==incoming||!dialog.open)return;clearLoadingTimer();status.hidden=true;},{once:true});
-   frame.addEventListener('error',()=>{if(frame!==incoming||!dialog.open)return;clearLoadingTimer();showStatus('Não foi possível carregar a página. Use o link abaixo para abrir em outra aba.');},{once:true});
+   frame.addEventListener('error',()=>{if(frame!==incoming||!dialog.open)return;clearLoadingTimer();showStatus('Não foi possível carregar a página. Tente a opção de tela cheia abaixo.');},{once:true});
    loadingTimer=setTimeout(()=>showStatus(slowMessage),15000);
    frame.src=menuUrl;slot.append(frame);
-  });
  });
  closeButton.addEventListener('click',()=>dialog.close());
  dialog.addEventListener('click',event=>{
@@ -42,7 +49,7 @@ if(dialog&&closeButton&&slot&&status&&menuUrl&&typeof dialog.showModal==='functi
  // Include the frame in the tab sequence; the close control stays outside it.
  dialog.addEventListener('keydown',event=>{
   if(event.key!=='Tab')return;
-  const last=dialog.querySelector<HTMLAnchorElement>('.digital-menu-footer a');
+  const last=Array.from(dialog.querySelectorAll<HTMLAnchorElement>('.digital-menu-footer a')).at(-1);
   if(event.shiftKey&&document.activeElement===closeButton){event.preventDefault();last?.focus();}
   else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();closeButton.focus();}
  });

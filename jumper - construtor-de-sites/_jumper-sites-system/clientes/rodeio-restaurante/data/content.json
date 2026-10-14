@@ -62,7 +62,7 @@
       "image": "jardins",
       "reservation": "https://rodeiosp.com.br/reservas/jardins/",
       "widget": "https://reservation-widget.tagme.com.br/reservation/schedule/56c778030896b3cd13c609e5/reservationWidget",
-      "map": "https://share.google/SoX3qamTaF1qtEKIs",
+      "map": "https://www.google.com/maps/search/?api=1&query=Rodeio+Jardins%2C+Rua+Haddock+Lobo%2C+1448%2C+S%C3%A3o+Paulo%2C+SP",
       "intro": "O Rodeio Jardins está de casa nova. Agora, esperamos você na Rua Haddock Lobo, 1448, em um novo espaço pensado para receber os clássicos momentos à mesa que fazem parte da nossa história.",
       "display_name": "Rodeio Jardins",
       "headline": "Um novo endereço para uma história que continua."
@@ -76,7 +76,7 @@
       "image": "iguatemi",
       "reservation": "https://rodeiosp.com.br/reservas/iguatemi/",
       "widget": "https://reservation-widget.tagme.com.br/reservation/schedule/56c778010896b3cd13c609d2/reservationWidget",
-      "map": "https://share.google/ieCesdCBfaoqhE5d4",
+      "map": "https://www.google.com/maps/search/?api=1&query=Rodeio+Iguatemi%2C+Avenida+Brigadeiro+Faria+Lima%2C+2232%2C+S%C3%A3o+Paulo%2C+SP",
       "intro": "Um espaço para reunir pessoas, celebrar momentos e saborear os clássicos que fazem parte da nossa história.",
       "display_name": "Rodeio Shopping Iguatemi",
       "headline": "A tradição do Rodeio em um dos endereços mais emblemáticos de São Paulo."
@@ -120,9 +120,9 @@
       "title": "O clássico",
       "accent": "que se renova.",
       "intro": "Desde 1958, o Rodeio faz parte da história da gastronomia de São Paulo.",
-      "description": "Hoje, seguimos essa história em dois endereços: no Jardins, agora em nossa nova localização, e no Shopping Iguatemi.",
+      "description": "Nos Jardins ou no Shopping Iguatemi, escolha onde será seu próximo encontro em São Paulo.",
       "units_cta": "Conheça nossas unidades",
-      "menu_cta": "Conheça nossos cardápios"
+      "reservation_cta": "Fazer uma reserva"
     },
     "history": {
       "title": "Rodeio",
@@ -176,12 +176,12 @@
       "accent": "do Rodeio.",
       "intro": "Uma seleção de sabores que atravessa gerações.",
       "description": "Dos cortes que fazem parte da nossa história aos acompanhamentos que já ganharam lugar à mesa, conheça o cardápio do Rodeio.",
-      "cta": "Conferir cardápio completo"
+      "cta": "Conheça nosso cardápio"
     },
     "events": {
       "title": "Eventos",
       "accent": "no Rodeio.",
-      "intro": "Um endereço para celebrar momentos especiais.",
+      "intro": "Celebre momentos especiais.",
       "description": "O Rodeio recebe eventos que pedem boa mesa, ambiente especial e uma experiência à altura da ocasião.",
       "cta": "Fale com nossa equipe"
     },

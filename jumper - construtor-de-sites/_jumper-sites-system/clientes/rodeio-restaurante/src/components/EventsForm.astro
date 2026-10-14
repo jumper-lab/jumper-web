@@ -1,0 +1,18 @@
+---
+import '../styles/events-form.css';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<form class="events-form" data-events-form action={`${base}/api/eventos`} method="post">
+  <div class="events-form-fields">
+    <label>Nome completo<input name="name" autocomplete="name" required maxlength="120"/></label>
+    <label>E-mail<input name="email" type="email" autocomplete="email" required maxlength="180"/></label>
+    <label>Telefone<input name="phone" type="tel" autocomplete="tel" maxlength="40"/></label>
+    <label>Empresa<input name="company" autocomplete="organization" maxlength="120"/></label>
+    <label class="events-form-wide">Unidade<select name="unit" required><option value="">Selecione a unidade</option><option value="jardins">Rodeio Jardins</option><option value="iguatemi">Rodeio Iguatemi</option></select></label>
+    <label class="events-form-wide">Conte um pouco sobre o seu evento<textarea name="message" rows="4" maxlength="180"></textarea><small>Até 180 caracteres.</small></label>
+  </div>
+  <div class="events-form-trap" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"/></label></div>
+  <div class="events-form-submit"><button type="submit" class="action text-link">Solicitar orçamento <span aria-hidden="true">→</span></button><p role="status" data-events-status></p></div>
+  <noscript><style>.events-form-fields,.events-form-submit{display:none}</style><p>Para solicitar seu orçamento, ligue <a href="tel:+551134741333">(11) 3474-1333</a>.</p></noscript>
+</form>
+<script src="../scripts/events-form.ts"></script>

@@ -29,7 +29,8 @@
   position: sticky;
   top: calc(var(--header-height) + 40px);
 }
-.history-chapter-heading h2 {
+.history-chapter-heading :is(h1,h2) {
+  font-size:clamp(38px, 4.5vw, 70px);
   margin-block: 24px;
 }
 .history-chapter-heading > p:not(.eyebrow) {
@@ -66,7 +67,8 @@
   font-size: clamp(40px, 4vw, 60px);
   letter-spacing: -0.045em;
 }
-.history-milestone h3 {
+.history-milestone :is(h2,h3) {
+  color: var(--brand-text);
   font-size: clamp(27px, 2.6vw, 39px);
   margin-bottom: 16px;
 }
@@ -273,18 +275,20 @@
 .event-occasions {
   background: var(--cream);
 }
+.event-occasions .interior-section-heading {
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+  gap: 32px;
+}
+.event-occasions .interior-section-heading > p {
+  justify-self: start;
+  max-width: 35ch;
+}
 .occasion-list .occasion {
   display: grid;
-  grid-template-columns: 60px minmax(0, 1.25fr) minmax(0, 0.75fr);
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
   gap: 32px;
   align-items: center;
   padding-block: 32px;
-}
-.occasion .occasion-number {
-  font: 500 13px/1.5 var(--sans);
-  color: var(--muted);
-  align-self: start;
-  padding-top: 8px;
 }
 .occasion-list .occasion h3 {
   margin: 0;
@@ -306,13 +310,13 @@
   color: var(--muted);
   font-size: 14px;
 }
-/* One reservation workspace; the official widget supplies its own interface. */
+/* Unit selection stays on the page; the official form opens in the standard dialog. */
 .reservation-layout.reservation-workspace {
   grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
   gap: clamp(40px, 6vw, 96px);
   align-items: start;
 }
-.reservation-workspace .reservation-choice h2 {
+.reservation-workspace .reservation-choice :is(h1,h2) {
   margin-block: 24px;
   font-size: clamp(38px, 4vw, 60px);
 }
@@ -376,20 +380,12 @@
 .reservation-availability > .eyebrow {
   margin-bottom: 24px;
 }
-.reservation-widget.reservation-availability h3 {
+.reservation-widget.reservation-availability :is(h2,h3) {
   font-size: clamp(32px, 3vw, 44px);
   margin-bottom: 24px;
 }
 .reservation-availability > p:not(.eyebrow) {
   max-width: 45ch;
-}
-.reservation-availability .widget-slot {
-  margin-inline: 0;
-}
-.reservation-availability #reservation-fallback {
-  font-size: 12px;
-  overflow-wrap: anywhere;
-  margin-top: 12px;
 }
 /* Address, hours and reservation are grouped by the visitor's task. */
 .houses-directory .interior-section-heading {
@@ -401,8 +397,28 @@
   gap: clamp(40px, 6vw, 96px);
   align-items: start;
 }
-.visit-heading h2 {
+.visit-heading h1, .visit-heading h2 {
+  font-size: clamp(38px, 4.5vw, 70px);
   margin-block: 24px;
+}
+.visit-heading { container-type: inline-size; }
+.visit-heading .restaurant-name {
+  line-height: 1;
+}
+.restaurant-name > span {
+  display: block;
+  font-size: clamp(18px, 5.5cqw, 24px);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.restaurant-name > em {
+  display: block;
+  width: 95%;
+  margin-left: 5%;
+  font-size: clamp(32px, 24cqw, 100px);
+  letter-spacing: -0.045em;
+  line-height: 1.08;
 }
 .visit-heading > p:not(.eyebrow) {
   max-width: 25ch;
@@ -446,6 +462,9 @@
 }
 .visit-hours li:first-child {
   padding-top: 0;
+}
+.visit-hours li:last-child {
+  border-bottom: 0;
 }
 .visit-hours li > span,
 .visit-hours li > strong {
@@ -512,39 +531,17 @@
 .gallery-grid.visit-gallery .gallery-item:last-child img {
   aspect-ratio: 1;
 }
-/* Long-form information has a useful index and a deliberate reading measure. */
+/* Keep a comfortable reading measure without a duplicated page index. */
 .privacy-layout {
   display: grid;
-  grid-template-columns: minmax(0, 0.5fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: clamp(48px, 8vw, 120px);
   align-items: start;
 }
-.privacy-index {
-  position: sticky;
-  top: calc(var(--header-height) + 32px);
-  max-width: 300px;
-}
-.privacy-index > .eyebrow {
-  margin-bottom: 24px;
-}
-.privacy-index a {
-  display: flex;
-  gap: 24px;
-  align-items: center;
-  padding-block: 16px;
-  border-top: 1px solid var(--line);
-  font-size: 10px;
-  color: var(--muted);
-}
-.privacy-index a > span {
-  color: var(--brown);
-  font-size: 13px;
-}
-.privacy-index a:hover > span {
-  color: var(--orange);
-}
 .privacy-articles {
   max-width: 720px;
+  width: 100%;
+  margin-inline: auto;
 }
 .privacy-articles article + article {
   margin-top: 48px;
@@ -600,8 +597,9 @@
     align-items: flex-start;
     flex-direction: column;
   }
+  .event-occasions .interior-section-heading,
   .occasion-list .occasion {
-    grid-template-columns: 40px minmax(0, 1fr) minmax(0, 0.8fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
     gap: 24px;
   }
 }
@@ -663,7 +661,8 @@
   .history-chapter-heading {
     position: static;
   }
-  .history-chapter-heading h2 {
+  .history-chapter-heading :is(h1,h2) {
+  font-size:clamp(38px, 4.5vw, 70px);
     margin-block: 18px 24px;
   }
   .history-date-note {
@@ -678,7 +677,7 @@
   .history-milestone .timeline-date {
     font-size: 38px;
   }
-  .history-milestone h3 {
+  .history-milestone :is(h2,h3) {
     font-size: 28px;
   }
   .history-milestone p {
@@ -756,8 +755,12 @@
   .event-contact-actions {
     margin-top: 24px;
   }
+  .event-occasions .interior-section-heading {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
   .occasion-list .occasion {
-    grid-template-columns: 28px minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr);
     gap: 16px;
     padding-block: 28px;
   }
@@ -765,7 +768,7 @@
     font-size: 36px;
   }
   .occasion-list .occasion p {
-    grid-column: 2;
+    grid-column: 1;
     max-width: 36ch;
     font-size: 14px;
   }
@@ -779,7 +782,7 @@
     grid-template-columns: 1fr;
     gap: 40px;
   }
-  .reservation-workspace .reservation-choice h2 {
+  .reservation-workspace .reservation-choice :is(h1,h2) {
     font-size: 40px;
     margin-block: 20px;
   }
@@ -795,11 +798,8 @@
     border-left: 0;
     border-top: 1px solid var(--line);
   }
-  .reservation-widget.reservation-availability h3 {
+  .reservation-widget.reservation-availability :is(h2,h3) {
     font-size: 34px;
-  }
-  .reservation-availability .widget-slot {
-    margin-inline: calc(-1 * var(--gutter));
   }
   .reservation-availability > .eyebrow {
     margin-bottom: 20px;
@@ -808,7 +808,7 @@
     grid-template-columns: 1fr;
     gap: 36px;
   }
-  .visit-heading h2 {
+  .visit-heading h1, .visit-heading h2 {
     margin-block: 20px;
   }
   .visit-heading > p:not(.eyebrow) {
@@ -856,16 +856,6 @@
   .privacy-layout {
     grid-template-columns: 1fr;
     gap: 40px;
-  }
-  .privacy-index {
-    position: static;
-    max-width: none;
-  }
-  .privacy-index > .eyebrow {
-    margin-bottom: 16px;
-  }
-  .privacy-index a {
-    padding-block: 12px;
   }
   .privacy-articles h2 {
     font-size: 36px;
@@ -949,3 +939,63 @@
 
 /* The client event record is shown complete, including the decorated table. */
 .event-record-photo img {height:auto;aspect-ratio:3/4;object-fit:contain;}
+
+/* Direct internal pages begin beneath the fixed menu. */
+main > .page-without-banner { padding-top: calc(var(--header-height) + clamp(48px, 6vw, 96px)); }
+.houses-directory h1 { font-size: clamp(40px, 5vw, 76px); }
+.visit-reservation { flex-direction: column; align-items: flex-start; flex-wrap: nowrap; }
+.visit-reservation-actions { display:flex; align-items:center; flex-wrap:wrap; gap:16px 24px; }
+.visit-address address .house-new-address { display:block; margin-bottom:6px; font-size:12px; font-weight:600; color:var(--brown); }
+/* Unit information replaces the image banners. */
+.visit-details.page-without-banner { row-gap:clamp(32px, 4vw, 56px); }
+.unit-page-heading { grid-column:1 / -1; }
+.unit-page-heading h1 { max-width:27ch; font-size:clamp(38px, 4.5vw, 70px); }
+@media(max-width:759px) {
+ .visit-reservation-actions { gap:16px; }
+ .unit-page-heading h1 { font-size:clamp(32px, 8vw, 42px); }
+}
+
+/* Reservations fill one viewport; long content stays reachable inside it. */
+main > .reservation-layout.reservation-workspace {
+  width: 100%;
+  max-width: none;
+  height: 100vh;
+  height: 100dvh;
+  margin: 0;
+  padding-inline: max(var(--gutter), calc((100% - 1680px) / 2 + var(--gutter)));
+  align-content: start;
+  overflow: auto;
+  scroll-padding-top: calc(var(--header-height) + 24px);
+  background: var(--paper);
+}
+main > .reservation-workspace:focus-visible {
+  outline-offset: -3px;
+}
+
+.reservation-availability .reservation-actions { margin-top: 32px; }
+.reservation-availability .reservation-actions .button { margin: 0; }
+
+/* Quiet navigation between the restaurant directory and the two houses. */
+.unit-page-navigation { grid-column: 1/-1; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.unit-page-navigation .action { min-height:44px; padding:8px 0; border:0; gap:10px; font-size:12px; font-weight:400; color:var(--muted); }
+.unit-page-navigation .unit-back { flex-direction:row-reverse; }
+.unit-page-navigation .unit-back svg { transform:rotate(180deg); }
+.unit-page-navigation .action svg { width:16px; height:16px; }
+.unit-page-navigation .action:hover { color:var(--brown); text-decoration:underline; text-underline-offset:4px; }
+@media(max-width:370px) { .unit-page-navigation .action { font-size:11px; gap:6px; } }
+
+/* Keep the navigation near the menu and lower the restaurant information together. */
+main > .visit-details.page-without-banner {
+  padding-top: calc(var(--header-height) + 20px);
+  row-gap: 20px;
+}
+@media(min-width:760px) {
+  .visit-details > .visit-heading,
+  .visit-details > .visit-information { margin-top: clamp(48px, 9vh, 96px); }
+}
+@media(max-width:759px) {
+  main > .visit-details.page-without-banner { padding-top: calc(var(--header-height) + 12px); row-gap:16px; }
+  .visit-details > .visit-heading { margin-top: 28px; }
+}
+
+.history-chapter-heading .history-title-accent { color: var(--brand-text); }

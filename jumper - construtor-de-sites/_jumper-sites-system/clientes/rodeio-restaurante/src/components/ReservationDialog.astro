@@ -1,0 +1,22 @@
+---
+import {responsivePhoto,photoVariant} from '../lib/responsive-photos';
+import '../styles/menu-dialog.css';
+import '../styles/reservation-dialog.css';
+interface Props { unit: {slug: string; name: string; widget: string; reservation: string}; }
+const {unit} = Astro.props;
+const base=import.meta.env.BASE_URL.replace(/\/$/,'');
+const id = `reservation-${unit.slug}-dialog`;
+const titleId = `reservation-${unit.slug}-title`;
+const photo=responsivePhoto(unit.slug==='jardins'?'jardinsAcervoBmm17':'iguatemiAcervoDsc9454');
+const background=photoVariant([photo.variants.filter(image=>image.width<=1600).at(-1)!],import.meta.env.BASE_URL);
+---
+<dialog id={id} class="digital-menu-dialog reservation-page-dialog" aria-labelledby={titleId} data-menu-url={unit.widget} data-page-label={`o formulário de reservas do ${unit.name}`} data-frame-title={`Reservas Rodeio ${unit.name}`}>
+  <div class="digital-menu-header">
+    <h2 id={titleId}>Reservas <span>Rodeio {unit.name}</span></h2>
+    <button type="button" class="digital-menu-close" data-close-digital-menu autofocus>Fechar <span aria-hidden="true">×</span></button>
+  </div>
+  <div class="digital-menu-content" data-menu-frame-slot style={`--reservation-photo: url("${background.src}")`}>
+    <p class="digital-menu-status" data-menu-status role="status" hidden>Carregando o formulário de reservas…</p>
+  </div>
+  <div class="digital-menu-footer"><a href="tel:+551134741333">Ajuda: (11) 3474-1333</a><a href={`${base}/reservas/${unit.slug}/`}>Abrir em tela cheia <span aria-hidden="true">↗</span></a></div>
+</dialog>

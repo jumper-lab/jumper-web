@@ -22,7 +22,6 @@
   .header-home .header-brand,
   .header-home .header-location,
   .header-home .desktop-nav a,
-  .header-home .header-reserve,
   .header-home .menu-toggle {
     animation: home-navigation-enter 560ms cubic-bezier(.22,.7,.2,1) backwards;
   }
@@ -30,12 +29,10 @@
   .header-home .header-left .desktop-nav a { animation-delay: 70ms; }
   .header-home .header-right .desktop-nav a { animation-delay: 110ms; }
   .header-home .header-location { animation-delay: 140ms; }
-  .header-home .header-reserve,
   .header-home .menu-toggle { animation-delay: 170ms; }
   .header-home:focus-within .header-brand,
   .header-home:focus-within .header-location,
   .header-home:focus-within .desktop-nav a,
-  .header-home:focus-within .header-reserve,
   .header-home:focus-within .menu-toggle { animation: none; }
 }
 @keyframes home-navigation-enter {
@@ -55,6 +52,7 @@
 }
 .header-right {
   justify-self: stretch;
+  justify-content: flex-end;
 }
 .header-location {
   flex-shrink: 0;
@@ -113,32 +111,6 @@
 .desktop-nav a:hover::after,
 .desktop-nav a[aria-current]::after {
   transform: scaleX(1);
-}
-.header-reserve {
-  display: inline-flex;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-  min-height: 48px;
-  padding: 12px 18px;
-  background: var(--orange);
-  color: #fff;
-  font-size: 11px;
-  font-weight: 500;
-  white-space: nowrap;
-  transition: background 220ms;
-}
-.header-reserve:hover {
-  background: var(--brown);
-}
-.header-reserve svg {
-  width: 20px;
-  height: 20px;
-  transition: transform 300ms var(--service-ease);
-}
-.header-reserve:hover svg {
-  transform: translateX(4px);
 }
 .menu-toggle {
   display: none;
@@ -206,7 +178,7 @@
 }
 .navigation-dialog nav a {
   display: grid;
-  grid-template-columns: 24px minmax(0, 1fr) 22px;
+  grid-template-columns: minmax(0, 1fr) 22px;
   align-items: center;
   gap: 14px;
   min-height: 72px;
@@ -215,12 +187,6 @@
   color: var(--paper);
   font: 500 clamp(28px, 4.3vw, 38px)/1.16 var(--serif);
   scroll-margin-top: 104px;
-}
-.navigation-dialog .menu-index {
-  align-self: center;
-  color: var(--line);
-  font: 400 9px/1 var(--sans);
-  letter-spacing: 0.08em;
 }
 .navigation-dialog nav a > svg {
   width: 20px;
@@ -297,10 +263,6 @@
   .header-right {
     gap: 20px;
   }
-  .header-reserve {
-    padding-inline: 14px;
-    gap: 12px;
-  }
 }
 @media (max-width: 1199px) {
   :root {
@@ -363,14 +325,6 @@
     font-size: 6px;
     letter-spacing: 0.1em;
   }
-  .header-reserve {
-    min-height: 44px;
-    font-size: 11px;
-    padding: 10px 12px;
-  }
-  .header-reserve svg {
-    display: none;
-  }
   .navigation-dialog .menu-contact {
     flex-wrap: wrap;
     gap: 20px;
@@ -390,10 +344,6 @@
   .site-header .header-brand > span {
     display: none;
   }
-  .header-reserve {
-    padding-inline: 10px;
-    font-size: 10px;
-  }
   .menu-toggle {
     padding: 8px;
   }
@@ -405,7 +355,7 @@
     clip-path: inset(50%);
   }
   .navigation-dialog nav a {
-    grid-template-columns: 18px minmax(0, 1fr) 18px;
+    grid-template-columns: minmax(0, 1fr) 18px;
     gap: 10px;
     min-height: 58px;
     font-size: 26px;
@@ -421,9 +371,6 @@
   }
   .site-header .header-brand > span {
     font-size: 6px;
-  }
-  .header-reserve {
-    min-height: 44px;
   }
   .navigation-dialog {
     padding-bottom: max(16px, env(safe-area-inset-bottom));
@@ -457,9 +404,9 @@
 @media (min-width:1200px) {
   .site-header { column-gap:clamp(24px,3vw,48px); }
   .header-left { justify-content:flex-end; }
-  .desktop-nav { gap:clamp(18px,1.7vw,32px); }
-  .header-right { gap:clamp(18px,1.8vw,32px); }
-  .header-right .desktop-nav a { font-size:13px; }
+  .header-right { justify-content:flex-start; }
+  .desktop-nav { gap:clamp(22px,2vw,36px); }
+  .desktop-nav a { font-size:14px; }
 }
 .navigation-dialog nav a { font-size:clamp(26px,4vw,34px); min-height:64px; }
 
@@ -468,4 +415,107 @@
   .navigation-dialog[open] {
     animation: menu-page-in 280ms ease-out;
   }
+}
+
+/* One alignment grid for the complete navigation panel. */
+.navigation-dialog {
+  --menu-gap: clamp(8px, 2dvh, 16px);
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  max-height: 100dvh;
+  padding-bottom: max(clamp(12px, 3dvh, 24px), env(safe-area-inset-bottom));
+  overflow: hidden;
+}
+.navigation-dialog[open] {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  row-gap: var(--menu-gap);
+}
+.navigation-dialog .dialog-top {
+  position: static;
+  min-height: calc(clamp(52px, 10dvh, 88px) + env(safe-area-inset-top));
+}
+.navigation-dialog .close-dialog { min-height: 44px; padding: 0; gap: 12px; }
+.navigation-dialog nav {
+  display: grid;
+  grid-template-rows: repeat(7, minmax(0, 1fr));
+  height: 100%;
+  max-height: 504px;
+  min-height: 0;
+  margin: 0;
+  align-self: center;
+}
+.navigation-dialog nav a {
+  min-height: 0;
+  padding-block: clamp(4px, 1dvh, 8px);
+  font-size: clamp(22px, 4dvh, 34px);
+  line-height: 1.08;
+}
+.navigation-dialog .menu-contact {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(12px, 4vw, 24px);
+  margin: 0;
+  align-items: stretch;
+}
+.navigation-dialog .menu-contact > div {
+  min-width: 0;
+  justify-self: stretch;
+  display: grid;
+  grid-template-rows: clamp(46px, 8dvh, 60px) 44px 44px;
+  row-gap: clamp(4px, 1dvh, 8px);
+  align-items: center;
+}
+.navigation-dialog .menu-signature,
+.navigation-dialog .menu-conversation h2 {
+  font: 500 clamp(20px, 3.3dvh, 26px)/1.1 var(--serif);
+  color: var(--paper);
+  margin: 0;
+  align-self: start;
+}
+.navigation-dialog .menu-signoff > span {
+  display: block;
+  margin: 0;
+  font-size: 10px;
+  line-height: 1.6;
+}
+.navigation-dialog .menu-signoff > a { font-size: 11px; }
+.navigation-dialog .menu-social { display: flex; gap: 10px; }
+.navigation-dialog .menu-social a {
+  display: inline-flex;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  padding: 0;
+  border: 1px solid rgb(250 247 240 / .35);
+  border-radius: 50%;
+}
+.navigation-dialog .menu-social svg { width: 20px; height: 20px; }
+.navigation-dialog .menu-social a:is(:hover, :focus-visible) {
+  background: rgb(250 247 240 / .1);
+  border-color: var(--paper);
+}
+.navigation-dialog .menu-contact .menu-plan-event {
+  width: 100%;
+  gap: 8px;
+  justify-content: space-between;
+  font-size: 11px;
+}
+.navigation-dialog .menu-plan-event svg { width: 18px; height: 18px; flex-shrink: 0; }
+@media (min-width: 600px) and (max-width: 1199px) and (max-height: 550px) {
+  .navigation-dialog nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(4, minmax(0, 1fr));
+    column-gap: 24px;
+  }
+  .navigation-dialog nav a { font-size: 22px; }
+  .navigation-dialog nav a:last-child { grid-column: 1 / -1; }
+}
+
+/* A clearer mobile header: larger brand with navigation beside it. */
+@media (max-width: 1199px) {
+  .site-header .header-brand img { width: clamp(128px, 34vw, 160px); }
+  .site-header .header-right { margin-left: auto; }
 }

@@ -1,74 +1,26 @@
 export {};
-const options = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-unit]'));
-const button = document.querySelector<HTMLButtonElement>('#load-reservation')!;
-const slot = document.querySelector<HTMLElement>('#widget-slot')!;
-const reservationStatus = document.querySelector<HTMLElement>('#reservation-status')!;
-let current = options[0];
-let requestId = 0;
-let timeout: number | undefined;
-function resetRequest() {
-  requestId++;
-  window.clearTimeout(timeout);
-  slot.removeAttribute('aria-busy');
+const cards = Array.from(document.querySelectorAll<HTMLElement>('[data-reservation-card]'));
+const actions = document.querySelectorAll<HTMLAnchorElement>('[data-reservation-unit]');
+function markUnit(name: string | null) {
+  cards.forEach(card => card.toggleAttribute('data-current', card.dataset.reservationCard === name));
 }
-function select(unit: HTMLButtonElement, updateURL = true) {
-  resetRequest();
-  current = unit;
-  options.forEach(option => option.setAttribute('aria-pressed', String(option === unit)));
-  document.querySelector('#selected-address')!.textContent = unit.dataset.address!;
-  document.querySelector('#selected-district')!.textContent = unit.dataset.district!;
-  document.querySelector('#reservation-title')!.textContent = 'Reserva no Rodeio ' + unit.dataset.name;
-  document.querySelector<HTMLAnchorElement>('#reservation-fallback')!.href = unit.dataset.url!;
-  slot.replaceChildren();
-  reservationStatus.textContent = '';
-  button.hidden = false;
-  button.disabled = false;
-  button.textContent = 'Consultar disponibilidade';
-  if (updateURL) {
-    const url = new URL(location.href);
-    url.searchParams.set('unidade', unit.dataset.unit!);
-    history.replaceState(history.state, '', url);
-  }
-}
-function selectFromURL() {
+function readUnitFromURL() {
   const name = new URL(location.href).searchParams.get('unidade');
-  select(options.find(option => option.dataset.unit === name) || options[0], false);
-}
-selectFromURL();
-window.addEventListener('popstate', selectFromURL);
-options.forEach(option => option.addEventListener('click', () => select(option)));
-button.addEventListener('click', () => {
-  resetRequest();
-  const id = requestId;
-  const frame = document.createElement('iframe');
-  frame.src = current.dataset.widget!;
-  frame.title = 'Reservas Rodeio ' + current.dataset.name;
-  frame.width = '600';
-  frame.height = '700';
-  frame.referrerPolicy = 'strict-origin-when-cross-origin';
-  slot.setAttribute('aria-busy', 'true');
-  reservationStatus.textContent = 'Carregando sistema de reservas…';
-  button.disabled = true;
-  button.textContent = 'Carregando…';
-  function unavailable() {
-    if (id !== requestId) return;
-    slot.removeAttribute('aria-busy');
-    button.disabled = false;
-    button.textContent = 'Tentar novamente';
-    reservationStatus.textContent = 'Não foi possível abrir o sistema de reservas. Tente novamente ou use o link abaixo.';
+  markUnit(name);
+  const card = cards.find(item => item.dataset.reservationCard === name);
+  // Direct links to a house bring its reservation action into view on small screens.
+  if (card && matchMedia('(max-width: 759px)').matches) {
+    requestAnimationFrame(() => card.scrollIntoView({block: 'nearest', behavior: 'instant'}));
   }
-  frame.addEventListener('load', () => {
-    if (id !== requestId) return;
-    window.clearTimeout(timeout);
-    slot.removeAttribute('aria-busy');
-    reservationStatus.textContent = 'Se o sistema não aparecer, selecione “Abrir reservas em página inteira” para continuar.';
-    const shouldFocus = document.activeElement === button;
-    button.hidden = true;
-    if (shouldFocus) frame.focus();
-  });
-  frame.addEventListener('error', unavailable);
-  slot.replaceChildren(frame);
-  timeout = window.setTimeout(unavailable, 12000);
-});
-window.addEventListener('pagehide', resetRequest);
-window.addEventListener('pageshow', event => { if (event.persisted) selectFromURL(); });
+}
+readUnitFromURL();
+window.addEventListener('popstate', readUnitFromURL);
+actions.forEach(action => action.addEventListener('click', event => {
+  if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  const name = action.dataset.reservationUnit!;
+  const url = new URL(location.href);
+  url.searchParams.set('unidade', name);
+  history.replaceState(history.state, '', url);
+  markUnit(name);
+}));
+window.addEventListener('pageshow', event => { if (event.persisted) readUnitFromURL(); });

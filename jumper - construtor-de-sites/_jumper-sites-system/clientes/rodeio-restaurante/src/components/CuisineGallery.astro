@@ -1,0 +1,165 @@
+---
+import Photo from './Photo.astro';
+import content from '../../data/content.json';
+import {type PhotoName} from '../lib/photos';
+interface Props { photos: {name:PhotoName;alt:string}[]; }
+const {photos}=Astro.props;
+---
+<div class="cuisine-gallery" data-cuisine-gallery>
+  <div class="cuisine-photos" data-cuisine-rail tabindex="0" role="region" aria-label="Fotografias dos pratos do Rodeio">
+    {photos.map(photo=><figure><a class="cuisine-menu-photo" href={content.menu_url} aria-label={`Abrir cardápio: ${photo.alt}`} aria-haspopup="dialog" aria-controls="digital-menu-dialog" draggable="false"><Photo entrance={false} name={photo.name} quality={74} maxWidth={1200} sizes="(max-width:759px) 78vw, 44vw" alt={photo.alt}/></a></figure>)}
+  </div>
+  <div class="cuisine-gallery-controls" data-cuisine-controls hidden role="group" aria-label="Escolher fotografia dos pratos">
+    {photos.map((photo,i)=><button type="button" class="cuisine-page" data-cuisine-page={i} aria-label={`Exibir foto ${i+1}: ${photo.alt}`} aria-current={i===0?'true':undefined}><span class="cuisine-page-dot" aria-hidden="true"></span><span class="cuisine-page-line" aria-hidden="true"></span></button>)}
+  </div>
+</div>
+<script>
+  function prepareCuisineGallery() {
+    document.querySelectorAll<HTMLElement>('[data-cuisine-gallery]').forEach(gallery=>{
+      if(gallery.dataset.ready)return;
+      gallery.dataset.ready='true';
+      const rail=gallery.querySelector<HTMLElement>('[data-cuisine-rail]')!;
+      const originals=Array.from(rail.querySelectorAll<HTMLElement>('figure'));
+      const pages=Array.from(gallery.querySelectorAll<HTMLButtonElement>('[data-cuisine-page]'));
+      const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+      gallery.dataset.entrance=reduced.matches?'complete':'pending';
+      let paused=reduced.matches,visible=false,imagesReady=false,loadingImages=false,entered=false,cycle=0,settle:number|undefined,frame=0,animating=false,settledAt=performance.now(),firstAdvancePending=true;
+      const copy=()=>originals.map(photo=>{
+        const clone=photo.cloneNode(true) as HTMLElement;
+        clone.setAttribute('aria-hidden','true');
+        clone.querySelectorAll('a').forEach(link=>{link.tabIndex=-1;});
+        clone.querySelectorAll('img').forEach(img=>{img.alt='';img.removeAttribute('data-photo-entrance');});
+        return clone;
+      });
+      const before=copy(),after=copy();
+      rail.prepend(...before);rail.append(...after);
+      gallery.querySelector<HTMLElement>('[data-cuisine-controls]')!.hidden=false;
+      const position=(photo:HTMLElement)=>photo.getBoundingClientRect().left-rail.getBoundingClientRect().left+rail.scrollLeft;
+      const updatePages=()=>{
+        const figures=Array.from(rail.querySelectorAll<HTMLElement>('figure'));
+        const nearest=figures.reduce((best,photo,i)=>Math.abs(position(photo)-rail.scrollLeft)<Math.abs(position(figures[best])-rail.scrollLeft)?i:best,0)%originals.length;
+        pages.forEach((page,i)=>{if(i===nearest)page.setAttribute('aria-current','true');else page.removeAttribute('aria-current');});
+      };
+      const stop=()=>{cancelAnimationFrame(frame);animating=false;rail.classList.remove('is-gliding');};
+      const normalize=()=>{
+        if(!cycle||animating)return;
+        const left=rail.scrollLeft;
+        if(left<cycle-1||left>=cycle*2-1)rail.scrollTo({left:cycle+((left-cycle)%cycle+cycle)%cycle,behavior:'instant'});
+        updatePages();
+      };
+      const resize=()=>{
+        stop();
+        const oldCycle=cycle;
+        const offset=oldCycle?((rail.scrollLeft-oldCycle)%oldCycle+oldCycle)%oldCycle/oldCycle:0;
+        cycle=position(originals[0])-position(before[0]);
+        rail.scrollTo({left:cycle*(1+offset),behavior:'instant'});
+      };
+      const glide=(target:number)=>{
+        stop();clearTimeout(settle);
+        firstAdvancePending=false;
+        if(reduced.matches){rail.scrollTo({left:target,behavior:'instant'});normalize();return;}
+        const start=rail.scrollLeft,distance=target-start,began=performance.now();
+        animating=true;rail.classList.add('is-gliding');
+        const tick=(now:number)=>{
+          const progress=Math.min((now-began)/2000,1);
+          const ease=(1-Math.cos(Math.PI*progress))/2;
+          rail.scrollTo({left:start+distance*ease,behavior:'instant'});
+          if(progress<1)frame=requestAnimationFrame(tick);
+          else{stop();normalize();settledAt=performance.now();}
+        };
+        frame=requestAnimationFrame(tick);
+      };
+      const move=(direction:number)=>{
+        normalize();
+        const targets=Array.from(rail.querySelectorAll<HTMLElement>('figure')).map(photo=>position(photo));
+        const target=direction>0?targets.find(x=>x>rail.scrollLeft+2):targets.reverse().find(x=>x<rail.scrollLeft-2);
+        if(target!==undefined)glide(target);
+      };
+      pages.forEach((page,i)=>page.addEventListener('click',()=>{
+        deferAutoplay();normalize();
+        const targets=[position(before[i]),position(originals[i]),position(after[i])];
+        glide(targets.reduce((best,target)=>Math.abs(target-rail.scrollLeft)<Math.abs(best-rail.scrollLeft)?target:best));
+      }));
+      let gestureStart={x:0,y:0,scroll:0},suppressClick=false,interacting=false,resumeAt=0;
+      const deferAutoplay=()=>{resumeAt=performance.now()+2500;};
+      const advanceIfReady=()=>{
+        if(visible&&imagesReady&&gallery.dataset.entrance==='complete'&&!paused&&!interacting&&performance.now()>=resumeAt&&(firstAdvancePending||performance.now()-settledAt>=2000)&&!document.hidden&&!animating&&!document.querySelector('dialog[open]'))move(1);
+      };
+      rail.addEventListener('pointerdown',event=>{
+        stop();suppressClick=false;interacting=true;deferAutoplay();
+        gestureStart={x:event.clientX,y:event.clientY,scroll:rail.scrollLeft};
+      },{passive:true});
+      rail.addEventListener('pointerup',event=>{
+        interacting=false;deferAutoplay();
+        suppressClick=Math.abs(event.clientX-gestureStart.x)>8||Math.abs(event.clientY-gestureStart.y)>8||Math.abs(rail.scrollLeft-gestureStart.scroll)>8;
+      },{passive:true});
+      rail.addEventListener('click',event=>{
+        if(suppressClick&&(event.target as Element).closest('.cuisine-menu-photo')){event.preventDefault();event.stopPropagation();suppressClick=false;}
+      },{capture:true});
+      rail.addEventListener('pointercancel',()=>{interacting=false;suppressClick=true;deferAutoplay();},{passive:true});
+      rail.addEventListener('wheel',event=>{
+        // Scrolling down the page should not postpone the carousel's first turn.
+        if(Math.abs(event.deltaX)>Math.abs(event.deltaY)){stop();deferAutoplay();}
+      },{passive:true});
+      rail.addEventListener('scroll',()=>{if(!animating&&(interacting||performance.now()<resumeAt))deferAutoplay();clearTimeout(settle);settle=window.setTimeout(normalize,180);},{passive:true});
+      rail.addEventListener('keydown',event=>{
+        if(event.target!==rail)return;
+        if(event.key==='ArrowRight'||event.key==='ArrowLeft'){event.preventDefault();move(event.key==='ArrowRight'?1:-1);}
+      });
+      const entranceAnimations:Animation[]=[];
+      const enter=()=>{
+        if(entered||!visible||!imagesReady)return;
+        entered=true;
+        settledAt=performance.now();
+        gallery.dataset.entrance='running';
+        if(reduced.matches){gallery.dataset.entrance='complete';return;}
+        const figures=Array.from(rail.querySelectorAll<HTMLElement>('figure')).filter(photo=>position(photo)+photo.offsetWidth>rail.scrollLeft+1&&position(photo)<rail.scrollLeft+rail.clientWidth);
+        const firstVisible=0;
+        figures.forEach((photo,i)=>{
+          const animation=photo.animate([
+          {opacity:.15,transform:'translateY(18px)',clipPath:'inset(25% 0 0 0)'},
+          {opacity:1,transform:'translateY(0)',clipPath:'inset(0 0 0 0)'}
+        ],{duration:650,delay:Math.min(Math.max(i-firstVisible,0),3)*60,easing:'cubic-bezier(.22,.61,.36,1)',fill:'backwards'});
+          entranceAnimations.push(animation);
+        });
+        const controls=gallery.querySelector<HTMLElement>('[data-cuisine-controls]')!;
+        const controlsEntrance=controls.animate([
+          {opacity:0,transform:'translateY(12px)'},
+          {opacity:1,transform:'translateY(0)'}
+        ],{duration:350,delay:150,easing:'cubic-bezier(.22,.61,.36,1)',fill:'backwards'});
+        entranceAnimations.push(controlsEntrance);
+        void Promise.all(entranceAnimations.map(animation=>animation.finished.catch(()=>{}))).then(()=>{
+          if(!gallery.isConnected)return;
+          gallery.dataset.entrance='complete';
+          advanceIfReady();
+        });
+      };
+      const observer=new IntersectionObserver(entries=>{
+        visible=entries[0].isIntersecting&&entries[0].intersectionRatio>=.05;
+        if(visible&&imagesReady)enter();
+      },{threshold:[0,.05]});
+      observer.observe(rail);
+      const preloadObserver=new IntersectionObserver(entries=>{
+        if(!entries[0].isIntersecting||loadingImages)return;
+        loadingImages=true;preloadObserver.disconnect();
+        const visibleImages=Array.from(rail.querySelectorAll<HTMLElement>('figure'))
+          .filter(photo=>position(photo)+photo.offsetWidth>rail.scrollLeft&&position(photo)<rail.scrollLeft+rail.clientWidth)
+          .map(photo=>photo.querySelector('img')!);
+        visibleImages.forEach(image=>{image.fetchPriority='high';image.loading='eager';});
+        rail.querySelectorAll('img').forEach(image=>{image.loading='eager';});
+        imagesReady=true;enter();
+      },{rootMargin:'400px 0px',threshold:0});
+      preloadObserver.observe(rail);
+      const sizeObserver=new ResizeObserver(resize);sizeObserver.observe(rail);
+      const motionChange=()=>{paused=reduced.matches;if(reduced.matches)entranceAnimations.forEach(animation=>animation.cancel());};
+      reduced.addEventListener('change',motionChange);
+      const timer=window.setInterval(advanceIfReady,200);
+      document.addEventListener('astro:before-swap',()=>{
+        entranceAnimations.forEach(animation=>animation.cancel());stop();clearInterval(timer);clearTimeout(settle);observer.disconnect();preloadObserver.disconnect();sizeObserver.disconnect();reduced.removeEventListener('change',motionChange);
+      },{once:true});
+      resize();updatePages();
+    });
+  }
+  prepareCuisineGallery();
+  document.addEventListener('astro:page-load',prepareCuisineGallery);
+</script>

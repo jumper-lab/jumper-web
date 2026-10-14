@@ -192,3 +192,11 @@ Validação local: 35 arquivos Astro, sem erros/avisos; 22 testes de isolamento.
 O build dev preserva as prévias IZI anteriores à mudança oficial da PR #100 por snapshots versionados, hashes SHA256 e validação antes de modificar o pacote. O build live permanece independente. Oito testes adicionais cobrem integridade, caminhos, autorização de slug e falha diante de pacote desconhecido (30 testes Worker/preflight/build no total).
 
 Publicado em 08/10 no jumper-hoster-dev, versão 9ee42499-702a-481e-83f1-899fa07e802d, fonte bdc07b4d68f4b11889a28232a04e8e748ba454bf, PR #101. Dez páginas públicas idênticas ao pacote; 27 cenários do rodapé aprovados em Chrome, Firefox e WebKit. Preflight antes/depois: 564 assets dos outros sete sites e fronteiras live preservados. Lighthouse home: desempenho 98 mobile / 100 desktop; acessibilidade/boas práticas 100; SEO 69 pelo noindex da prévia. Laboratório, sem API PSI/CrUX. Somente materiais/comprovação comercial ainda pendentes. Relatório: entregas/checkup-2026-10-08/index.html.
+
+## Revisão e nova prévia — 13/10/2026
+
+A versão aprovada reúne os ajustes visuais de 09/10, galerias horizontais com espaços distintos das duas unidades, cartões de reserva mais separados, links diretos de endereço no Google Maps e navegação para páginas próprias de cardápio, reservas e eventos em tela cheia. O retorno usa a página anterior do próprio site. O formulário de eventos encaminha os dados ao canal existente do Rodeio, confirmando sucesso apenas após a resposta positiva do provedor.
+
+A revisão local passou por três rodadas em desktop e mobile. A validação específica do Tagme em 13/10 carregou as duas unidades, calendários, lightboxes e páginas em tela cheia no Chrome normal; o erro de CORS do Chrome automatizado não foi reproduzido no Chrome normal nem no WebKit. Nenhuma reserva ou solicitação real foi enviada. O cliente confirmou manter os horários atuais.
+
+Checagem da versão isolada: Astro check sem diagnósticos e 25 testes de API, 404, Worker, preflight e preservação do build aprovados. Publicação autorizada apenas para o slug `rodeio` no Worker de desenvolvimento.

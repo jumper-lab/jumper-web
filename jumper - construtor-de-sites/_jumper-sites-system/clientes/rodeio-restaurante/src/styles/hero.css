@@ -55,7 +55,7 @@
 }
 .year {
   font: 500 44px/1 var(--serif);
-  color: var(--orange);
+  color: var(--brown);
 }
 .hero-note > span:last-child {
   border-left: 1px solid var(--line);
@@ -116,7 +116,7 @@
   transition: transform 300ms var(--service-ease);
 }
 .hero-scroll:hover {
-  color: var(--orange);
+  color: var(--brown);
 }
 .hero-scroll:hover svg {
   transform: translateY(3px);
@@ -311,9 +311,6 @@
 }
 .hero-home .hero-title-line > * { display: block; }
 @media (prefers-reduced-motion: no-preference) {
-  .hero-home .hero-slide:first-child img {
-    animation: home-photograph-arrive 1300ms cubic-bezier(.2,.65,.25,1) backwards;
-  }
   .hero-home .hero-copy > .eyebrow {
     animation: home-detail-arrive 650ms 100ms ease-out backwards;
   }
@@ -373,7 +370,7 @@
 .hero-slide {
   opacity: 0;
   visibility: hidden;
-  transition: opacity 1400ms cubic-bezier(.22,.7,.2,1), visibility 0s linear 1400ms;
+  transition: opacity 2200ms cubic-bezier(.45,0,.55,1), visibility 0s linear 2200ms;
 }
 .hero-slide.is-active {
   opacity: 1;
@@ -382,7 +379,7 @@
 }
 .hero-slide img {
   transform: scale(1.035);
-  transition: transform 7600ms cubic-bezier(.18,.7,.25,1);
+  transition: transform 4500ms cubic-bezier(.18,.7,.25,1);
 }
 .hero-slide.is-active img {
   transform: scale(1);
@@ -405,6 +402,12 @@
   align-items: center;
   gap: 0;
 }
+.home-slideshow-pause { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; border: 0; background: transparent; color: var(--paper); cursor: pointer; }
+.home-slideshow-pause .slideshow-play-symbol { display: none; }
+.home-slideshow-pause[aria-pressed="true"] .slideshow-pause-symbol { display: none; }
+.home-slideshow-pause[aria-pressed="true"] .slideshow-play-symbol { display: block; }
+.home-slideshow-pause:hover { opacity: .75; }
+.home-slideshow-pause:focus-visible { outline: 1px solid var(--paper); outline-offset: -6px; }
 .home-slideshow-dot {
   width: 28px;
   height: 44px;
@@ -677,6 +680,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .home-slideshow-pause { display: none; }
   .hero-slide,
   .hero-slide img,
   .home-slideshow-dot span {

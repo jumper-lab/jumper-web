@@ -1,0 +1,35 @@
+/* Keep the photo link and navigation on one balanced control row. */
+.gallery-dialog .gallery-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.gallery-dialog .gallery-controls { justify-self: center; gap: 12px; margin: 0; }
+.gallery-dialog .gallery-controls button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.gallery-dialog .gallery-controls button svg { width: 20px; height: 20px; }
+.gallery-dialog [data-gallery-prev] svg { transform: rotate(180deg); }
+.gallery-dialog .gallery-controls button:is(:hover, :focus-visible) { background: var(--brown); color: var(--paper); border-color: var(--brown); }
+.gallery-dialog #gallery-count { min-width: 36px; font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.gallery-dialog .gallery-details :focus-visible { outline: 2px solid var(--brown); outline-offset: 4px; }
+@media (max-width: 599px) {
+  .gallery-dialog .gallery-details { gap: 12px; padding-top: 12px; margin-top: 16px; }
+  .gallery-dialog .gallery-controls { gap: 8px; }
+  .gallery-dialog .gallery-controls button { width: 44px; height: 44px; }
+}
+
+.gallery-stage { touch-action: none; }
+.gallery-stage > img { transform-origin: center; user-select: none; -webkit-user-select: none; -webkit-user-drag: none; }
