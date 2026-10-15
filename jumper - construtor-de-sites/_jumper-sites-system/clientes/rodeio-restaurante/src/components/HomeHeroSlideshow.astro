@@ -12,7 +12,6 @@ interface Slide {
 }
 
 const slides: Slide[] = [
-  { name: 'homeMarcaAcervo2024', caption: 'Rodeio · São Paulo desde 1958', alt: 'Letreiro Rodeio em parede de madeira iluminada' },
   { name: 'iguatemiAcervoDsc9454', caption: 'Rodeio Iguatemi', alt: 'Salão do Rodeio Iguatemi com mesas postas, madeira e luz natural' },
   { name: 'jardinsAcervoBmm17', caption: 'Rodeio Jardins', alt: 'Salão do novo Rodeio Jardins com mesas postas e jardim' },
 ];
@@ -42,9 +41,9 @@ const preparedSlides = await Promise.all(slides.map(async (slide,index) => {
   const prepared=responsivePhoto(slide.name)?.hero;
   if(prepared)return {...slide,phone:photoVariant(prepared.phone,import.meta.env.BASE_URL),tablet:photoVariant(prepared.tablet,import.meta.env.BASE_URL),desktop:photoVariant(prepared.desktop,import.meta.env.BASE_URL)};
   const [phone, tablet, desktop] = await Promise.all([
-    crop(slide.name, [360, 540, 720, 900], 9 / 16, slide.name === 'homeMarcaAcervo2024' ? 48 : 60),
+    crop(slide.name, [360, 540, 720, 900], 9 / 16),
     crop(slide.name, [640, 840, 1080], 4 / 5),
-    crop(slide.name, slide.name === 'homeMarcaAcervo2024' ? [960, 1440, 1920] : [960, 1440, 1920, 2560], 16 / 9),
+    crop(slide.name, [960, 1440, 1920, 2560], 16 / 9),
   ]);
   return { ...slide, phone, tablet, desktop };
 }));

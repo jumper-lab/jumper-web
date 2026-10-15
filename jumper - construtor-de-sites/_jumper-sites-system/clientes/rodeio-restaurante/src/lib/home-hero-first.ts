@@ -1,9 +1,11 @@
-import manifest from '../../data/optimized-home-hero.json';
+import {responsivePhoto,photoVariant} from './responsive-photos';
 export function homeHeroFirst(base:string){
-  const prefix=base.replace(/\/$/,'');
-  const variant=(role:keyof typeof manifest.variants)=>({
-    src:`${prefix}/${manifest.variants[role][0].path}`,
-    srcset:manifest.variants[role].map(image=>`${prefix}/${image.path} ${image.width}w`).join(', '),
-  });
-  return {phone:variant('phone'),tablet:variant('tablet'),desktop:variant('desktop'),preview:manifest.previewDataUrl};
+  const photo=responsivePhoto('iguatemiAcervoDsc9454');
+  if (!photo?.hero) throw new Error('A foto inicial do Rodeio Iguatemi não tem versões para o banner.');
+  return {
+    phone:photoVariant(photo.hero.phone,base),
+    tablet:photoVariant(photo.hero.tablet,base),
+    desktop:photoVariant(photo.hero.desktop,base),
+    preview:photo.preview,
+  };
 }
