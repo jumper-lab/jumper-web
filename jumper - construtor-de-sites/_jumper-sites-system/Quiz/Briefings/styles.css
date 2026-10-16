@@ -1575,4 +1575,8 @@ h1 {
 .contact-requirement {padding:16px;border-left:3px solid #e5b965;background:#211b10;color:#f1e5cb;line-height:1.5;margin:0 0 20px;}
 .conditional-help {color:#c5bfbf;font-size:.9rem;line-height:1.5;margin:0 0 16px;}
 .model-legend {color:#eee;font-size:.95rem;margin-bottom:12px;}
+@media(min-width:861px){
+  .step-layout:has(input[name="model"]) .step-header {max-width:none;container-type:inline-size;}
+  .step-layout:has(input[name="model"]) .step-header h2 {font-size:clamp(1.5rem,6.5cqi,3.65rem);white-space:nowrap;}
+}
 @media(max-width:500px){.field-head label .requirement-badge{margin-left:0;margin-right:6px;}.requirement-badge{font-size:.7rem;}}
