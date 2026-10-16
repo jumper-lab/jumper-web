@@ -84,3 +84,21 @@ test('changing an answer invalidates previous confirmation, while unchanged navi
  c.FormData=class {has(k){return k==='differentiator'}get(){return 'Resposta alterada'}};
  vm.runInContext('updateStateFromForm()',c);assert.equal(run(c,'state.reviewConfirmed'),false);
 });
+
+test('M5 delivery excludes domain fields hidden after switching models without erasing the draft',()=>{
+ const c=browser({model:'M2',domainStatus:'sim-registrado',currentDomain:'anterior.example',registrar:'Registrador de teste',desiredDomain:'desejado.example'});
+ vm.runInContext('state.model="M5"',c);
+ const p=run(c,'buildPayload()');
+ assert.equal(p.project_scope.reformulation.existing_site_url,fixture.existingSiteUrl);
+ assert.deepEqual(p.domain,{status:'',current:'',registrar:'',desired:''});
+ assert.equal(run(c,'state.currentDomain'),'anterior.example');
+ vm.runInContext('state.model="M2"',c);
+ assert.equal(run(c,'buildPayload().domain.current'),'anterior.example');
+});
+test('gallery type is shown in review for every model that requests a gallery',()=>{
+ for(const model of ['M2','M3','M4','M5'])for(const [value,label] of [['portfolio','Trabalhos ou projetos'],['catalogo','Produtos ou cardápio'],['fotos-videos','Fotos e vídeos'],['antes-depois','Antes e depois']]){
+  const c=browser({model,wantsGallery:'sim',portfolioType:value});
+  assert.ok(run(c,'reviewGroups().find(g=>g[0]==="structure")[2]').includes('Tipo: '+label));
+  assert.equal(run(c,'buildPayload().content.portfolio.mode'),value);
+ }
+});
