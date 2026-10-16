@@ -1549,13 +1549,13 @@ h1 {
 .progress-overview .progress-card::after {display:none;}
 .progress-overview #step-count {color:#aaa4a1;font-size:.72rem;}
 .progress-overview .progress-track {height:6px;}
-.progress-steps {display:grid;gap:0;min-height:0;margin:0;padding:0 14px;overflow:auto;list-style:none;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.22) transparent;}
+.progress-steps {display:grid;grid-auto-rows:minmax(40px,max-content);align-content:start;gap:0;min-height:0;margin:0;padding:0 14px;overflow:auto;list-style:none;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.22) transparent;}
 .progress-steps li {display:grid;grid-template-columns:24px minmax(0,1fr);gap:12px;align-items:center;min-height:39px;border-bottom:1px solid rgba(255,255,255,.08);color:#a8a3a1;font-size:.86rem;}
 .progress-steps li:last-child {border-bottom:0;}
 .progress-steps li > span:first-child {color:#aaa4a1;font-size:.72rem;font-weight:700;}
 .progress-steps li.is-current {color:#fff;font-weight:750;}
 .progress-steps li.is-current > span:first-child {color:#fff;}
-.progress-steps li.is-complete {display:block;min-height:0;}
+.progress-steps li.is-complete {display:block;min-height:39px;}
 .progress-steps li.is-complete button {display:grid;width:100%;grid-template-columns:24px minmax(0,1fr);gap:12px;align-items:center;min-height:39px;padding:0;border:0;background:transparent;color:inherit;font:inherit;text-align:left;cursor:pointer;}
 .progress-steps li.is-complete button > span:first-child {color:#aaa4a1;font-size:.72rem;font-weight:700;}
 .progress-steps li.is-complete button:hover {color:#fff;background:rgba(255,255,255,.055);}
