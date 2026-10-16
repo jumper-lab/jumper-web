@@ -1,3 +1,4 @@
+import { createNotionBriefingPage } from "../../../Quiz/Briefings/notion-client.mjs";
 import { rodeioEvents } from './rodeio-events.mjs';
 import { hubStatus } from './hub-status.mjs';
 import { cloudflareProcesses, githubWebhook } from './process-status.mjs';
@@ -19,7 +20,6 @@ const IZI_LEADS_LIVE_ADMIN_LEGACY_PATH = '/__jumper/izi-gym/leads-live';
 const BRIEFING_PATH = '/briefing';
 const BRIEFING_API_PATH = `${BRIEFING_PATH}/api/briefings`;
 const BRIEFING_CONTINUE_PREFIX = `${BRIEFING_PATH}/continuar/`;
-const BRIEFING_API_UPSTREAM = 'https://briefing-formulario-sites-jumper.vercel.app/api/briefings';
 const LOGIN_PATH = '/__jumper/login';
 const LOGOUT_PATH = '/__jumper/logout';
 const HUB_STATUS_PATH = '/__jumper/system-status';
@@ -568,14 +568,15 @@ export default {
       if (request.method !== 'POST') {
         return new Response('Method Not Allowed', { status: 405, headers: { Allow: 'POST' } });
       }
-      const headers = new Headers(request.headers);
-      headers.delete('host');
-      return fetch(BRIEFING_API_UPSTREAM, {
-        method: 'POST',
-        headers,
-        body: request.body,
-        redirect: 'manual',
-      });
+      try {
+        if(Number(request.headers.get('content-length')||0)>500000)return jsonResponse({error:'briefing_too_large',message:'Envie materiais por link e reduza o tamanho dos textos.'},413);
+        const raw=await request.text();
+        if(new TextEncoder().encode(raw).byteLength>500000)return jsonResponse({error:'briefing_too_large',message:'Envie materiais por link e reduza o tamanho dos textos.'},413);
+        let payload;
+        try{payload=JSON.parse(raw);}catch{return jsonResponse({error:'invalid_json',message:'Não foi possível ler o briefing. Recarregue o formulário e tente novamente.'},400);}
+        const result=await createNotionBriefingPage(payload,{notionToken:env.NOTION_TOKEN,databaseId:env.NOTION_DATABASE_ID});
+        return jsonResponse({ok:true,...result},201);
+      }catch(error){if(error.code==='notion_not_configured')return jsonResponse({error:'briefing_unavailable',message:'O envio está temporariamente indisponível. Suas respostas continuam salvas; avise a Jumper.'},503);return jsonResponse({error:error.code||'notion_error',message:error.message||'Não foi possível enviar o briefing.'},error.status||500);}
     }
 
     if (url.pathname.startsWith(BRIEFING_CONTINUE_PREFIX)) {

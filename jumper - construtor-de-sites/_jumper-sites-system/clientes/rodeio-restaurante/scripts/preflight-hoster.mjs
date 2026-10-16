@@ -142,7 +142,11 @@ function configuredBindingIds(config) {
   return new Map(bindings.map(([, name, id]) => [name, id]));
 }
 
-async function bindingDifferences(versionId) {
+export function validateBriefingSecrets(bindings, directNotion = false) {
+  if (!directNotion) return [];
+  return bindings.some(binding => binding.name === 'NOTION_TOKEN' && binding.type === 'secret_text') ? [] : ['Briefing: configure o segredo NOTION_TOKEN na Cloudflare antes de ativar o envio direto ao Notion.'];
+}
+async function bindingDifferences(versionId, directNotion = false) {
   const version = wranglerJson('versions', 'view', versionId);
   const active = new Map((version.resources?.bindings || []).filter((binding) => binding.type === 'd1').map((binding) => [binding.name, binding.database_id]));
   const config = await readFile(join(projectRoot, 'wrangler.jsonc'), 'utf8');
@@ -150,6 +154,7 @@ async function bindingDifferences(versionId) {
   const activeKv = new Map((version.resources?.bindings || []).filter((binding) => binding.type === 'kv_namespace').map((binding) => [binding.name, binding.namespace_id]));
   const configuredKv = new Map([...config.matchAll(/"binding"\s*:\s*"([^"]+)"\s*,\s*"id"\s*:\s*"([a-f0-9]+)"/g)].map(([, name, id]) => [name, id]));
   return [
+    ...validateBriefingSecrets(version.resources?.bindings || [], directNotion),
     ...[...active].flatMap(([name, id]) => configured.get(name) === id ? [] : [`D1: vínculo ativo ${name} (${id}) difere do pacote`]),
     ...[...activeKv].flatMap(([name, id]) => configuredKv.get(name) === id ? [] : [`KV: vínculo ativo ${name} (${id}) difere do pacote`]),
   ];
@@ -219,7 +224,7 @@ export async function runPreflight({ enforceGit = true, candidateAssets = assets
       .map((feature) => `Worker: recurso ativo ausente no código candidato (${feature})`));
     differences.push(...await domainDifferences());
   }
-  differences.push(...await bindingDifferences(before.versionId));
+  differences.push(...await bindingDifferences(before.versionId, candidateWorker.includes('createNotionBriefingPage')));
   differences.push(...await compareProtectedPages((asset) => readFile(join(candidateAssets, asset)), fetch, promotion));
   const after = await activeVersion();
   if (before.versionId !== after.versionId || before.deploymentId !== after.deploymentId) {

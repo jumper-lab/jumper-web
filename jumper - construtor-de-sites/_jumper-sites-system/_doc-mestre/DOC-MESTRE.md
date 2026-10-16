@@ -211,9 +211,9 @@ O site é ferramenta, não folheto. Cada modelo tem um piso de funcionalidade qu
 
 Nada nesta lista justifica peso: um mapa que derruba o LCP ou um chat de terceiro que trava a interação REPROVAM. Funcionalidade premium é a que aparece quando é útil e some do caminho crítico quando não é.
 
-## M5 — Reformulação de Site Institucional Local
+## M5 — Site personalizado: criação ou reformulação
 
-M5 reconstrói um site existente com escopo aprovado de páginas, conteúdos e funcionalidades. Aplicar integralmente [M5-REFORMULACAO.md](M5-REFORMULACAO.md): levantamento, aprovação, DSs, prompt executivo, construção, validação de URLs e integrações, backup, recuperação e auditoria final. Nenhum cliente de exemplo integra o modelo.
+M5 cria um site novo ou reconstrói um existente com escopo aprovado de páginas, conteúdos e funcionalidades. A entrada distingue criação/reformulação e oferece um caminho de portfólio audiovisual com vídeos, obras por área, créditos, prêmios, Bio e links. URL antiga, inventário e backup do site anterior são exigidos somente na reformulação. Aplicar integralmente [M5-REFORMULACAO.md](M5-REFORMULACAO.md): levantamento, aprovação, DSs, prompt executivo, construção, validação de URLs e integrações, backup, recuperação e auditoria final. Nenhum cliente de exemplo integra o modelo.
 
 Antes de construir: `node scripts/m5-scope.mjs clientes/SLUG`. Na entrega: acrescentar `--delivery`. Execute dentro de `_jumper-sites-system/`. Esses gates somam aos critérios gerais; M5 não significa páginas ilimitadas.
 

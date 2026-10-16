@@ -7,7 +7,7 @@ const models = [
   ["M2", "Duas páginas", "Home completa com uma segunda página escolhida pelo cliente."],
   ["M3", "Portfólio ou catálogo", "Home, galeria/catálogo/portfólio e contato."],
   ["M4", "Completo local", "Home, sobre, serviços, depoimentos, blog/novidades e contato."],
-  ["M5", "Reformulação institucional", "Reconstrução de um site existente, com páginas e funcionalidades definidas antes da construção."],
+  ["M5", "Site personalizado", "Criação ou reformulação com páginas, conteúdos e funcionalidades definidos no escopo contratado."],
 ];
 
 const businessNatures = [
@@ -42,6 +42,20 @@ const initialState = {
   lastStep: "model",
   furthestStep: "model",
   legacyDraft: false,
+  m5ProjectType: "",
+  m5Profile: "",
+  m5PageDetails: "",
+  m5Features: "",
+  m5HomeVideoCount: "",
+  m5HomeVideos: "",
+  m5VideoPlayback: "",
+  m5VideoMobile: "",
+  m5WorkCredits: "",
+  m5Awards: "",
+  m5AwardsDetails: "",
+  m5BioText: "",
+  m5BioPhoto: "",
+  m5ProfessionalLinks: "",
   existingSiteUrl: "",
   reformulationReason: "",
   existingSiteProblems: "",
@@ -194,8 +208,18 @@ const fieldsByStep = {
     ['finalNotes','Faltou contar algo importante?','textarea','Pedidos especiais, cuidados ou informações que ajudam no projeto.'],
   ],
 };
+function m5Creation() {return state.model==='M5'&&state.m5ProjectType==='creation';}
+function m5Audiovisual() {return state.model==='M5'&&state.m5Profile==='audiovisual';}
+const m5ProjectTypes=[['','Escolha'],['creation','Criar um site novo'],['reformulation','Reformular um site existente']];
+const m5Profiles=[['','Escolha'],['institutional','Institucional ou serviços'],['audiovisual','Portfólio audiovisual'],['other','Outro projeto personalizado']];
+const playbackChoices=[['','Escolha'],['click','Reproduzir quando o visitante clicar'],['autoplay-muted','Começar automaticamente, sem som'],['mixed','Misturar vídeos automáticos e por clique'],['guidance','Quero orientação da Jumper']];
+const mobilePlaybackChoices=[['','Definir com a Jumper'],['poster-click','Mostrar capa e reproduzir por clique'],['light-autoplay','Avaliar reprodução automática de versões leves'],['guidance','Quero orientação']];
 const steps = [
   {id:'model',title:'Vamos começar pelo seu site',description:'Escolha o modelo combinado com a Jumper. Responda com suas palavras; o planejamento e os detalhes técnicos ficam com a nossa equipe.',render:()=>choiceCards('model',models.map(([value,title,text])=>({value,title:`${value} · ${title}`,text})))+`<p class="help">Não sabe o modelo? Confira com quem contratou o projeto antes de continuar.</p><section class="draft-import" aria-labelledby="draft-import-title"><div class="draft-import-copy"><strong id="draft-import-title">Já começou este briefing em outro aparelho?</strong><p>Selecione a cópia de rascunho que você baixou para continuar de onde parou.</p></div><label class="draft-upload-control"><input type="file" id="draft-import" accept="application/json,.json"><span>Selecionar cópia do rascunho</span></label><span class="draft-import-status" id="draft-import-status" aria-live="polite">Nenhum arquivo selecionado</span></section>`},
+  {id:'m5-project',title:'Como será seu projeto personalizado?',description:'Escolha o ponto de partida e o tipo de site. Só mostraremos os detalhes que fazem sentido para seu projeto.',condition:()=>state.model==='M5',render:()=>fields([
+    ['m5ProjectType','Vamos criar ou reformular?','select','Criar um site novo não exige ter um site anterior.',m5ProjectTypes,true],
+    ['m5Profile','Que tipo de site será criado?','select','A estrutura final será conferida com o que foi contratado.',m5Profiles,true],
+  ])},
   {id:'business',title:'Conte um pouco sobre o negócio',description:'Quatro respostas curtas já nos ajudam a entender o ponto de partida.',render:()=>fields(fieldsByStep.business)},
   {id:'goals',title:'O que o site precisa trazer para você?',description:'Escolha a prioridade. A Jumper transforma suas respostas em conteúdo e caminhos de contato.',render:()=>fields(fieldsByStep.goals)},
   {id:'audience',title:'O que leva seu cliente a procurar você?',description:'Respostas curtas e exemplos reais ajudam a escrever um site com a voz do seu negócio.',render:()=>fields([
@@ -224,19 +248,37 @@ const steps = [
     ['credibilityNumbers','Há números reais que ajudam a apresentar sua experiência?','text','Ex.: anos de atuação, projetos entregues. Só informe dados verificáveis.'],
     ['credentials','Existem certificações, prêmios ou parceiros relevantes?','textarea','Informe os nomes e, se possível, onde podemos conferir.'],
   ])},
-  {id:'m5-reformulation',title:'O que vamos melhorar no site atual?',description:'A Jumper vai analisar as páginas e preparar uma proposta de estrutura para sua aprovação.',condition:()=>state.model==='M5',render:()=>fields([
+  {id:'m5-reformulation',title:'O que vamos melhorar no site atual?',description:'A Jumper vai analisar as páginas e preparar uma proposta de estrutura para sua aprovação.',condition:()=>state.model==='M5'&&!m5Creation(),render:()=>fields([
     ['existingSiteUrl','Qual é o endereço do site atual?','url','https://seusite.com.br',null,true],
     ['reformulationReason','O que você gostaria de melhorar?','textarea','Ex.: facilitar contatos, atualizar informações ou mudar o visual.',null,true],
     ['existingSiteProblems','O que hoje atrapalha o visitante ou sua equipe?','textarea','Ex.: informações antigas, dificuldade para contato, navegação ou funcionamento no celular.'],
   ])},
-  {id:'m5-scope',title:'O que deve continuar e o que precisa mudar?',description:'Este levantamento orienta a reformulação. A Jumper vai conferir o site e aprovar com você as páginas e os recursos antes de construir.',condition:()=>state.model==='M5',render:()=>fields([
-    ['preserveItems','O que precisa ser preservado?','textarea','Marca, fotos, conteúdos ou recursos. Pode responder “nada específico” ou pedir uma análise.',null,true],
-    ['changeItems','O que precisa ser atualizado ou reorganizado?','textarea','Cite informações ou partes do site que precisam de revisão.'],
-    ['removeItems','O que não deve continuar na nova versão?','textarea','Se não há nada definido, diga “nenhum item definido”. Não vamos interpretar campo vazio como autorização para remover.',null,true],
-    ['addItems','O que precisa ser acrescentado?','textarea','Descreva a necessidade, sem se preocupar com a solução técnica.'],
-    ['requestedPages','Quais páginas você espera na nova versão?','textarea','Liste as páginas ou escreva “quero que a Jumper proponha a estrutura”.',null,true],
-    ['existingFeatures','O que o site faz hoje que precisamos considerar?','textarea','Ex.: contato, agenda, blog, catálogo, pedidos ou área de acesso. Se não souber, peça que a Jumper confira.',null,true],
-    ['importantUrls','Há algum link que não pode deixar de funcionar?','textarea','Links usados em anúncios, redes sociais ou materiais. A equipe também fará o levantamento técnico.'],
+  {id:'m5-scope',title:'Quais páginas e recursos o site precisa ter?',description:'Descreva o que foi combinado. Você pode indicar materiais ou pedir ajuda; a lista final será aprovada antes da construção.',condition:()=>state.model==='M5',render:()=>fields([
+    ['requestedPages','Quais páginas devem fazer parte do site?','textarea','Liste as páginas e indique qual é a Home. Ex.: Home, trabalhos por área e Bio. Use apenas as páginas do seu contrato ou peça uma proposta.',null,true],
+    ['m5PageDetails','O que deve aparecer em cada página?','textarea','Para cada página, conte o conteúdo principal, a organização e a ação ou link esperado. Em portfólios, explique como separar trabalhos de roteiro e direção, se fizer sentido.',null,true],
+    ['m5Features','Quais recursos e comportamentos foram combinados?','textarea','Ex.: vídeos na Home, filtro de trabalhos, contato, agenda ou blog. Informe quantidades ou limites conhecidos. Se ainda não estiver definido, peça uma proposta.',null,true],
+    ...(!m5Creation()?[
+      ['preserveItems','O que precisa ser preservado do site atual?','textarea','Marca, fotos, conteúdos ou recursos. Pode responder “nada específico” ou pedir uma análise.',null,true],
+      ['changeItems','O que precisa ser atualizado ou reorganizado?','textarea','Cite informações ou partes do site que precisam de revisão.'],
+      ['removeItems','O que não deve continuar na nova versão?','textarea','Se não há nada definido, diga “nenhum item definido”. Campo vazio nunca autoriza retirar conteúdo.',null,true],
+      ['addItems','O que precisa ser acrescentado?','textarea','Descreva a necessidade sem se preocupar com a solução técnica.'],
+      ['existingFeatures','O que o site faz hoje que precisamos considerar?','textarea','Ex.: contato, agenda, blog, catálogo, pedidos ou área de acesso. Se não souber, peça que a Jumper confira.',null,true],
+      ['importantUrls','Há algum link antigo que não pode deixar de funcionar?','textarea','Links usados em anúncios, redes sociais ou materiais. A equipe também fará o levantamento técnico.'],
+    ]:[]),
+  ])},
+  {id:'m5-videos',title:'Como vamos apresentar seus trabalhos em vídeo?',description:'Informe o material disponível. Se algum arquivo ou detalhe vier depois, sinalize isso. A Jumper não inventará créditos ou prêmios.',condition:m5Audiovisual,render:()=>fields([
+    ['m5HomeVideoCount','Quantos vídeos principais devem aparecer na Home?','text','Informe a quantidade aproximada combinada no contrato, ou diga que precisa confirmar.',null,true],
+    ['m5HomeVideos','Quais vídeos terão destaque e em qual ordem?','textarea','Liste título, link do vídeo ou da pasta e ordem desejada. Indique se será um trecho curto ou o filme completo, a capa e materiais que faltam enviar.',null,true],
+    ['m5VideoPlayback','Como esses vídeos devem começar?','select','O som só deve começar por ação do visitante. A reprodução automática depende do aparelho e terá alternativa por capa e clique.',playbackChoices,true],
+    ['m5VideoMobile','Como prefere apresentar os vídeos no celular?','select','A Jumper vai considerar conexão, acessibilidade e desempenho.',mobilePlaybackChoices],
+    ['m5WorkCredits','Quais trabalhos vão em cada área e quais créditos podemos publicar?','textarea','Para cada trabalho: título, ano, sua função (ex.: roteiro ou direção), página onde deve aparecer, link e créditos autorizados de cliente, produtora e equipe. Indique o que será enviado depois.',null,true],
+    ['m5Awards','Há prêmios ou seleções que devem acompanhar os trabalhos?','select','Somente informações reais e autorizadas.',yesNoHelp,true],
+    ...(state.m5Awards==='sim'?[['m5AwardsDetails','Qual prêmio pertence a cada trabalho e onde está a arte?','textarea','Relacione trabalho, prêmio/festival, categoria e ano. Envie o link da arte fornecida ou informe quando a enviará. Diga se a marca do prêmio já está na arte ou precisa ser aplicada.',null,true]]:[]),
+  ])},
+  {id:'m5-bio',title:'Vamos reunir sua bio e os links profissionais',description:'Esses materiais ajudam a apresentar sua trajetória e a dar ao visitante os caminhos certos de contato.',condition:m5Audiovisual,render:()=>fields([
+    ['m5BioText','Qual texto devemos usar na Bio?','textarea','Cole o texto aprovado ou indique a pasta onde ele está. Se precisar de apoio para escrever, conte sua trajetória e sinalize os fatos que faltam conferir.',null,true],
+    ['m5BioPhoto','Onde está a foto autorizada para a Bio?','textarea','Cole o link do arquivo ou da pasta. Se enviará depois, informe isso e diga se há alguma preferência de enquadramento.',null,true],
+    ['m5ProfessionalLinks','Quais links profissionais e contatos devem aparecer no site?','textarea','Liste Instagram, e-mail, WhatsApp e IMDb, quando houver. Cole os endereços ou números autorizados e indique os que não usa. Conte também se devem ficar no menu, rodapé ou Bio.',null,true],
   ])},
   {id:'operation',title:'Como você atende seus clientes?',description:'Escolha a forma principal de atendimento. Se combina formatos, conte isso nos horários ou nas observações finais.',render:()=>fields([
     ['businessNature','Seu atendimento é…','select','',[['','Escolha'],...businessNatures.map(([v,t])=>[v,t])],true],
@@ -252,24 +294,24 @@ const steps = [
   {id:'materials',title:'Vamos reunir os materiais',description:'Uma única pasta com logo, fotos e textos é suficiente. Você também pode enviar depois. Não compartilhe senhas.',render:()=>fields([
     fieldsByStep.materials[0],
     ...(state.materialsStatus==='link'?[['materialsFolder','Link da pasta de materiais','url','Drive, Dropbox ou outro link acessível à Jumper',null,true]]:[]),
-    ...(state.materialsStatus==='existing'&&state.model!=='M5'?[['existingSiteUrl','Endereço do site com os materiais','url','https://seusite.com.br',null,true]]:[]),
+    ...(state.materialsStatus==='existing'&&(state.model!=='M5'||m5Creation())?[['existingSiteUrl','Endereço do site com os materiais','url','https://seusite.com.br',null,true]]:[]),
     ...fieldsByStep.materials.slice(1),['missingMaterials','Quais materiais já existem e quais faltam?','textarea','Logo, manual da marca, fotos reais, textos, catálogo ou vídeos. Diga também o que a Jumper precisará ajudar a produzir.'],
   ])+`<p class="help">Os arquivos ficam na pasta compartilhada. Este formulário recebe o link, não faz upload das fotos. Imagens provisórias serão identificadas para sua aprovação.</p>`},
   {id:'finish',title:'Mais algum cuidado antes de começar?',description:'Esta etapa é opcional. O que ainda não souber será conferido pela Jumper.',render:()=>fields([
     fieldsByStep.finish[0],
-    ...(state.model!=='M5'?[fieldsByStep.finish[1],...(state.domainStatus==='sim-registrado'?[['currentDomain','Qual é o endereço?','text','seusite.com.br']]:[])]:[]),
+    ...(state.model!=='M5'||m5Creation()?[fieldsByStep.finish[1],...(state.domainStatus==='sim-registrado'?[['currentDomain','Qual é o endereço?','text','seusite.com.br']]:[])]:[]),
     fieldsByStep.finish[2],
   ])},
   {id:'review',title:'Confira antes de enviar',description:'Você pode editar cada parte. Depois do envio, a Jumper confere as informações e combina os próximos passos.',render:()=>resultMarkup()},
 ];
 
 function structureMarkup() {
-  const gallery = state.model==='M3'||state.wantsGallery==='sim';
+  const gallery = !m5Audiovisual()&&(state.model==='M3'||state.wantsGallery==='sim');
   const team = state.wantsTeam==='sim';
   const blog = ['M4','M5'].includes(state.model)&&['blog-ativo','novidades'].includes(state.blogMode);
   const base = [
     ...(state.model==='M2'?[['secondaryPage','Qual será a segunda página?','select','',[['','Escolha'],['sobre','Sobre o negócio'],['servicos','Serviços'],['contato','Contato'],['outra','Outra página combinada com a Jumper'],['nao-sei','Quero ajuda para escolher']],true],['secondaryPageGoal','O que essa segunda página precisa mostrar ou resolver?','textarea','Diga o assunto, o conteúdo principal e a ação esperada. Se escolheu outra página, informe qual. Se precisa de orientação, conte a necessidade.',null,true]]:[]),
-    ...(state.model!=='M3'?[['wantsGallery','Quer mostrar uma galeria ou catálogo?','select','',yesNoHelp]]:[]),
+    ...(state.model!=='M3'&&!m5Audiovisual()?[['wantsGallery','Quer mostrar uma galeria ou catálogo?','select','',yesNoHelp]]:[]),
     ['wantsTeam','Quer apresentar a equipe ou profissionais?','select','',yesNoHelp],
     ...(['M4','M5'].includes(state.model)?[['blogMode','Quer publicar artigos ou novidades?','select','',[['','Decidir depois'],['blog-ativo','Sim, com frequência'],['novidades','Sim, de vez em quando'],['sem-blog','Não preciso agora'],['nao-sei','Quero orientação']]]]:[]),
     ['wantsBooking','Precisa de agendamento ou reserva pelo site?','select','',yesNoHelp],
@@ -290,6 +332,10 @@ function optionalDetails(title, items) {
 }
 function fields(items) {return `<div class="field-grid">${items.map(fieldMarkup).join('')}</div>`;}
 function fieldMarkup([name,label,type,hint,options,required],index) {
+  if(m5Audiovisual()){
+    const wording={businessName:['Qual nome deve aparecer no site?','Seu nome profissional, artístico ou da produtora.'],shortDescription:['Como você apresenta sua atuação?','Conte suas áreas de trabalho e o tipo de projeto que realiza.'],story:['Como começou sua trajetória e o que caracteriza seu trabalho?','Conte sua experiência e proposta autoral com fatos que podemos conferir.'],servicesItems:['Quais áreas de atuação ou trabalhos precisam aparecer?','Descreva suas especialidades, como roteiro e direção, e os projetos que representam seu trabalho.'],serviceProcess:['Como acontece uma parceria ou contratação?','Conte como recebe propostas, desenvolve um projeto e combina a entrega.'],visualReferences:['Quais sites são referência e o que gosta em cada um?','Cole os links e comente composição, tipografia, ritmo, vídeos ou navegação. As referências orientam uma direção própria.']};
+    if(wording[name])[label,hint]=wording[name];
+  }
   const value=escapeHtml(state[name]||'');
   const contactAlternative=['whatsapp','contactEmail'].includes(name);
   const requirement=contactAlternative?'Preencha pelo menos um':required?'Obrigatório':'Opcional';
@@ -312,7 +358,9 @@ function activeState() {
   const s=structuredClone(state);
   if(s.contactUse!=='outro')s.publicContact='';
   if(s.domainStatus!=='sim-registrado')s.currentDomain='';
-  if(s.model==='M5')for(const key of ['domainStatus','currentDomain','registrar','desiredDomain'])s[key]='';
+  if(s.model==='M5'&&!m5Creation())for(const key of ['domainStatus','currentDomain','registrar','desiredDomain'])s[key]='';
+  if(m5Creation()&&s.materialsStatus!=='existing')s.existingSiteUrl='';
+  if(m5Audiovisual()){s.wantsGallery='sim';s.portfolioType='fotos-videos';s.portfolioMinItems=s.m5HomeVideoCount;s.portfolioItemsDescription=`Home: ${s.m5HomeVideos}\nAcervo e créditos: ${s.m5WorkCredits}`;}
   if(s.model!=='M2'){s.secondaryPage='';s.secondaryPageGoal='';}
   if(!['todos','misto'].includes(s.pricingDisplay))s.pricingDetails='';
   if(s.model==='M1'){s.wantsGallery='nao';s.wantsTeam='nao';s.wantsBooking=s.primaryCTA==='agendamento'?'sim':'nao';}
@@ -341,7 +389,8 @@ function pendingDecisions(s) {
   if(s.secondaryPage==='nao-sei')pending.push('Definir e aprovar a segunda página do M2.');
   if(s.materialsStatus==='later')pending.push('Receber logo, fotos e textos pelo link de materiais.');
   if(s.aiImages==='nao-sei'||s.usePexels==='nao-sei')pending.push('Confirmar permissões de mídia; não interpretar dúvida como autorização.');
-  if(s.model==='M5')pending.push('Analisar o site atual e inventariar páginas, conteúdos, funções e URLs; aprovar escopo, backup e recuperação.');
+  if(s.model==='M5')pending.push(m5Creation()?'Aprovar páginas, conteúdos, recursos, limites e plano de publicação do site novo.':'Analisar o site atual e inventariar páginas, conteúdos, funções e URLs; aprovar escopo, backup e recuperação.');
+  if(m5Audiovisual())pending.push('Conferir vídeos, capas, ordem, créditos e prêmios autorizados; aprovar Bio e links públicos. Testar reprodução sem som, alternativa por clique, celular, desempenho e movimento reduzido.');
   if(s.wantsGallery==='sim')pending.push('Conferir itens, quantidade e organização da galeria/catálogo.');
   if(s.wantsTeam==='sim')pending.push('Conferir nomes, descrições e fotos autorizadas da equipe.');
   if(['blog-ativo','novidades'].includes(s.blogMode))pending.push('Conferir publicações iniciais e implementar Blog Autônomo Jumper quando aprovado no escopo.');
@@ -349,9 +398,20 @@ function pendingDecisions(s) {
   return pending;
 }
 function stepError(id) {
-  const required={business:['businessName','shortDescription','targetAudience','cityCoverage'],goals:['mainGoal','priorityOffer','differentiator','differentiatorEvidence'],audience:['typicalProblem','typicalResult','customerQuestions'],offer:['servicesItems','serviceProcess','pricingDisplay','primaryCTA'],trust:['story','hasTestimonials'],'m5-scope':['preserveItems','removeItems','requestedPages','existingFeatures'],contact:['contactName','contactUse'],operation:['businessNature'],style:['personality','visualReferences'],materials:['materialsStatus','aiImages','usePexels']};
+  const required={business:['businessName','shortDescription','targetAudience','cityCoverage'],goals:['mainGoal','priorityOffer','differentiator','differentiatorEvidence'],audience:['typicalProblem','typicalResult','customerQuestions'],offer:['servicesItems','serviceProcess','pricingDisplay','primaryCTA'],trust:['story','hasTestimonials'],contact:['contactName','contactUse'],operation:['businessNature'],style:['personality','visualReferences'],materials:['materialsStatus','aiImages','usePexels']};
   const missing=(required[id]||[]).find(k=>!String(state[k]||'').trim());
   if(missing)return {field:missing,message:'Responda este campo para continuar. Quando disponível, você pode escolher a ajuda da Jumper.'};
+  if(id==='m5-project'){
+    if(!['creation','reformulation'].includes(state.m5ProjectType))return {field:'m5ProjectType',message:'Escolha se vamos criar ou reformular o site.'};
+    if(!['institutional','audiovisual','other'].includes(state.m5Profile))return {field:'m5Profile',message:'Escolha o tipo de projeto personalizado.'};
+  }
+  if(id==='m5-scope'){
+    for(const key of ['requestedPages','m5PageDetails','m5Features',...(!m5Creation()?['preserveItems','removeItems','existingFeatures']:[])])if(!state[key].trim())return {field:key,message:'Conte o que foi combinado ou indique o que precisa de orientação.'};
+  }
+  if(id==='m5-videos'){
+    for(const key of ['m5HomeVideoCount','m5HomeVideos','m5VideoPlayback','m5WorkCredits','m5Awards',...(state.m5Awards==='sim'?['m5AwardsDetails']:[])])if(!state[key].trim())return {field:key,message:'Informe o material disponível ou o que ainda precisa ser definido.'};
+  }
+  if(id==='m5-bio')for(const key of ['m5BioText','m5BioPhoto','m5ProfessionalLinks'])if(!state[key].trim())return {field:key,message:'Informe o material ou sinalize que enviará depois.'};
   if(id==='model'&&!models.some(m=>m[0]===state.model))return {field:'model',message:'Escolha o modelo combinado com a Jumper.'};
   if(id==='m5-reformulation'){
     if(!validUrl(state.existingSiteUrl))return {field:'existingSiteUrl',message:'Informe o endereço completo do site, começando por https:// ou http://.'};
@@ -370,12 +430,12 @@ function stepError(id) {
   }
   if(id==='materials'){
     if(state.materialsStatus==='link'&&!validUrl(state.materialsFolder))return {field:'materialsFolder',message:'Cole o link completo da pasta, começando por https://.'};
-    if(state.materialsStatus==='existing'&&state.model!=='M5'&&!validUrl(state.existingSiteUrl))return {field:'existingSiteUrl',message:'Informe o endereço do site de onde podemos aproveitar os materiais.'};
+    if(state.materialsStatus==='existing'&&(state.model!=='M5'||m5Creation())&&!validUrl(state.existingSiteUrl))return {field:'existingSiteUrl',message:'Informe o endereço do site de onde podemos aproveitar os materiais.'};
   }
   if(id==='trust'&&state.hasTestimonials==='sim')for(const k of ['testimonials','testimonialsPermission'])if(!state[k].trim())return {field:k,message:'Informe a origem das avaliações e a situação da autorização.'};
   if(id==='structure'){
     const keys=[];
-    if(state.model==='M3'||state.wantsGallery==='sim')keys.push('portfolioItemsDescription','portfolioMinItems');
+    if(!m5Audiovisual()&&(state.model==='M3'||state.wantsGallery==='sim'))keys.push('portfolioItemsDescription','portfolioMinItems');
     if(state.wantsTeam==='sim')keys.push('teamList');
     if(['M4','M5'].includes(state.model)&&['blog-ativo','novidades'].includes(state.blogMode))keys.push('blogInitialPosts');
     for(const k of keys)if(!state[k].trim())return {field:k,message:'Conte o que já sabe. Se faltam dados, indique o que será enviado ou precisa de orientação.'};
@@ -417,7 +477,13 @@ function buildPayload() {
     },
     project_scope: {
       model: state.model,
-      reformulation: state.model === "M5" ? {
+      project_type: state.model==='M5'?state.m5ProjectType:null,
+      custom_version: state.model==='M5'?'m5-v2':null,
+      custom: state.model==='M5'?{
+        profile:state.m5Profile,requested_pages:state.requestedPages,page_details:state.m5PageDetails,requested_features:state.m5Features,
+        audiovisual:m5Audiovisual()?{home_video_count:state.m5HomeVideoCount,home_videos:state.m5HomeVideos,playback:state.m5VideoPlayback,mobile_playback:state.m5VideoMobile,work_credits:state.m5WorkCredits,awards_available:state.m5Awards,awards_details:state.m5Awards==='sim'?state.m5AwardsDetails:'',bio_text:state.m5BioText,bio_photo:state.m5BioPhoto,professional_links:state.m5ProfessionalLinks}:null,
+      }:null,
+      reformulation: state.model === "M5" && !m5Creation() ? {
         existing_site_url: state.existingSiteUrl,
         reason: state.reformulationReason,
         problems: state.existingSiteProblems,
@@ -572,19 +638,24 @@ function answerLabel(options,value,fallback='Decidir com a Jumper') {return opti
 function reviewGroups() {
   const s=activeState();
   return [
+    ...(s.model==='M5'?[['m5-project','Projeto personalizado',`${answerLabel(m5ProjectTypes,s.m5ProjectType)}\nPerfil: ${answerLabel(m5Profiles,s.m5Profile)}`]]:[]),
     ['business','Seu negócio',`${s.businessName}\n${s.shortDescription}\nPúblico: ${s.targetAudience}\nAtuação: ${s.cityCoverage}`],
     ['goals','Objetivo',`${answerLabel(goalChoices,s.mainGoal)}\nDestaque: ${s.priorityOffer}\nDiferencial: ${s.differentiator}\nExemplo concreto: ${s.differentiatorEvidence}`],
-    ...(s.model==='M5'?[['m5-reformulation','Site atual',`${s.existingSiteUrl}\nMelhorar: ${s.reformulationReason}\nProblemas atuais: ${s.existingSiteProblems||'A analisar'}`]]:[]),
+    ...(s.model==='M5'&&!m5Creation()?[['m5-reformulation','Site atual',`${s.existingSiteUrl}\nMelhorar: ${s.reformulationReason}\nProblemas atuais: ${s.existingSiteProblems||'A analisar'}`]]:[]),
     ['audience','Público e necessidades',`Necessidade: ${s.typicalProblem}\nBenefício esperado: ${s.typicalResult}\nDúvidas e respostas: ${s.customerQuestions}\nNão atende: ${s.notFor||'Não informado'}\nMensagem: ${s.mustHaveMessage||'Não informada'}`],
     ['offer','Oferta e conversão',`Ofertas: ${s.servicesItems}\nComo funciona: ${s.serviceProcess}\nValores e condições: ${s.pricingDetails||"A confirmar, se forem publicados"}\nPreços: ${answerLabel([['todos','Mostrar preços'],['sem-precos','Pedir orçamento'],['misto','Mostrar alguns preços']],s.pricingDisplay)}\nAção principal: ${answerLabel([['whatsapp','Chamar no WhatsApp'],['agendamento','Agendar atendimento'],['orcamento','Pedir orçamento'],['comprar','Iniciar uma compra ou contratação'],['catalogo','Ver catálogo'],['servicos','Conhecer serviços']],s.primaryCTA)}\nLink para agendar: ${s.appointmentLink||"A definir, se necessário"}\nCondições: ${s.promotion||'Não informadas'}`],
     ['trust','História e provas',`História: ${s.story}\nAvaliações: ${answerLabel(yesNoHelp,s.hasTestimonials)}\nDepoimentos: ${s.testimonials||'Não informados'}\nPermissão: ${answerLabel([['nome-foto','Nome e foto autorizados'],['primeiro-nome','Primeiro nome ou iniciais'],['anonimo','Publicação anônima autorizada']],s.testimonialsPermission,'A confirmar')}\nNúmeros: ${s.credibilityNumbers||'Não informados'}\nCredenciais: ${s.credentials||'Não informadas'}`],
-    ...(s.model==='M5'?[['m5-scope','Escopo da reformulação',`Preservar: ${s.preserveItems}\nAtualizar: ${s.changeItems||'A conferir'}\nRetirar: ${s.removeItems}\nAcrescentar: ${s.addItems||'A conferir'}\nPáginas: ${s.requestedPages}\nRecursos atuais: ${s.existingFeatures}\nLinks importantes: ${s.importantUrls||'A levantar'}`]]:[]),
+    ...(s.model==='M5'?[['m5-scope','Páginas e recursos personalizados',`Páginas: ${s.requestedPages}\nConteúdo por página: ${s.m5PageDetails}\nRecursos solicitados: ${s.m5Features}${!m5Creation()?`\nPreservar: ${s.preserveItems}\nAtualizar: ${s.changeItems||'A conferir'}\nRetirar: ${s.removeItems}\nAcrescentar: ${s.addItems||'A conferir'}\nRecursos atuais: ${s.existingFeatures}\nLinks importantes: ${s.importantUrls||'A levantar'}`:''}`]]:[]),
+    ...(m5Audiovisual()?[
+      ['m5-videos','Vídeos, trabalhos e prêmios',`Vídeos principais na Home: ${s.m5HomeVideoCount}\nOrdem e materiais: ${s.m5HomeVideos}\nReprodução: ${answerLabel(playbackChoices,s.m5VideoPlayback)}\nNo celular: ${answerLabel(mobilePlaybackChoices,s.m5VideoMobile)}\nTrabalhos por área e créditos: ${s.m5WorkCredits}\nPrêmios: ${answerLabel(yesNoHelp,s.m5Awards)}${s.m5Awards==='sim'?`\nDetalhes e artes: ${s.m5AwardsDetails}`:''}`],
+      ['m5-bio','Bio e links profissionais',`Bio: ${s.m5BioText}\nFoto: ${s.m5BioPhoto}\nLinks e contatos autorizados: ${s.m5ProfessionalLinks}`],
+    ]:[]),
     ['operation','Atendimento',`${businessNatures.find(o=>o[0]===s.businessNature)?.[1]||''}\nLocalização: ${s.showAddress==='sim-mapa'?(s.address||'Endereço a confirmar'):s.showAddress==='nao-publico'?'Não mostrar endereço':s.cityCoverage}\nHorários: ${s.businessHours||'A confirmar'}`],
     ...(s.model!=='M1'?[['structure','Partes do site',`${s.model==='M2'?`Segunda página: ${answerLabel([['sobre','Sobre o negócio'],['servicos','Serviços'],['contato','Contato'],['outra','Outra página combinada com a Jumper'],['nao-sei','Quero ajuda para escolher']],s.secondaryPage)}\nFinalidade e conteúdo: ${s.secondaryPageGoal}\n`:''}Galeria: ${answerLabel(yesNoHelp,s.wantsGallery)}${s.wantsGallery==='sim'?`\nTipo: ${answerLabel([['portfolio','Trabalhos ou projetos'],['catalogo','Produtos ou cardápio'],['fotos-videos','Fotos e vídeos'],['antes-depois','Antes e depois']],s.portfolioType)}\nItens: ${s.portfolioItemsDescription||'Envio posterior'}\nQuantidade: ${s.portfolioMinItems}\nCategorias: ${s.portfolioCategories||'A organizar'}\nPreços da galeria: ${answerLabel([['sim-valores','Com valores'],['nao-orcamento','Solicitar orçamento'],['alguns','Alguns com preço']],s.portfolioPricing)}`:''}\nEquipe: ${answerLabel(yesNoHelp,s.wantsTeam)}${s.wantsTeam==='sim'?`\nPessoas: ${s.teamList||'Envio posterior'}`:''}\nPublicações: ${answerLabel([['blog-ativo','Publicar com frequência'],['novidades','Publicar de vez em quando'],['sem-blog','Sem publicações por enquanto'],['nao-sei','Quero orientação']],s.blogMode)}${s.blogFrequency?`\nFrequência: ${answerLabel([['1-semana','Semanalmente'],['1-mes','Mensalmente'],['irregular','Quando houver novidades']],s.blogFrequency)}`:''}${s.blogInitialPosts?`\nTemas ou textos: ${s.blogInitialPosts}`:''}\nAgendamento: ${answerLabel(yesNoHelp,s.wantsBooking)}${s.appointmentLink?`\nAgenda: ${s.appointmentLink}`:''}`]]:[]),
     ['contact','Contato',`${s.contactName}\n${s.whatsapp}\n${s.contactEmail}\nInstagram: ${s.instagram||'Não informado'}\nPerfil Google: ${s.googleBusiness||'Não informado'}\nUso no site: ${s.contactUse==='sim'?'Autorizado':s.contactUse==='outro'?s.publicContact:'Decidir depois; contato do projeto é privado'}`],
     ['style','Estilo',`${personalities.find(p=>p[0]===s.personality)?.[1]||'Quero recomendação da Jumper'}\nCor: ${s.primaryColor||'A definir'}\nReferências: ${s.visualReferences||'Não informadas'}\nEvitar: ${s.avoidSite||'Não informado'}\nTom de voz: ${answerLabel([['formal-cortes','Formal e cortês'],['casual-amistoso','Casual e amistoso'],['direto-premium','Direto e premium'],['objetivo-profissional','Objetivo e profissional']],s.voiceTone)}\nCuidados: ${s.forbiddenWords||'Não informados'}`],
     ['materials','Materiais e imagens',`${s.materialsStatus==='link'?s.materialsFolder:s.materialsStatus==='existing'?`Aproveitar materiais de ${s.existingSiteUrl}`:'Vou enviar depois'}\nDisponíveis e pendentes: ${s.missingMaterials||'A conferir'}\nImagens de IA: ${s.aiImages==='sim'?'Pode criar para minha aprovação':s.aiImages==='nao'?'Não autorizado':'Quero orientação'}\nFotos de banco: ${s.usePexels==='fallback'?'Somente se necessário':s.usePexels==='nao'?'Não autorizado':'Quero orientação'}`],
-    ['finish','Cuidados finais',`Data importante: ${s.deadline||'Não informada'}\nDomínio: ${s.model==='M5'?s.existingSiteUrl:s.currentDomain||answerLabel([['sim-registrado','Já tenho domínio'],['quero-registrar','Ainda não tenho'],['nao-sei','Preciso de ajuda']],s.domainStatus)}\nObservações: ${s.finalNotes||'Nenhuma'}`],
+    ['finish','Cuidados finais',`Data importante: ${s.deadline||'Não informada'}\nDomínio: ${s.model==='M5'&&!m5Creation()?s.existingSiteUrl:s.currentDomain||answerLabel([['sim-registrado','Já tenho domínio'],['quero-registrar','Ainda não tenho'],['nao-sei','Preciso de ajuda']],s.domainStatus)}\nObservações: ${s.finalNotes||'Nenhuma'}`],
   ];
 }
 function resultMarkup() {
@@ -685,6 +756,7 @@ function render(focus=false) {
   const visible=visibleSteps();
   if(!visible.some(s=>s.id===currentStep))currentStep='model';
   const step=visible.find(s=>s.id===currentStep);
+  const title=m5Audiovisual()&&step.id==='business'?'Conte um pouco sobre sua atuação':step.title;
   const index=visible.indexOf(step);
   const furthestIndex=visible.findIndex(s=>s.id===state.furthestStep);
   if(index>furthestIndex)state.furthestStep=currentStep;
@@ -692,7 +764,7 @@ function render(focus=false) {
     stepContainer.innerHTML='<div class="step-layout"><header class="step-header"><span>Recebido</span><h2 tabindex="-1">Obrigado por contar sua história.</h2><p>Seu briefing foi recebido pela Jumper. Nossa equipe vai conferir as respostas, os materiais e o escopo antes de dar continuidade ao site.</p></header><button type="button" class="ghost-button" id="new-briefing">Começar outro briefing</button></div>';
     nextButton.hidden=true;prevButton.hidden=true;saveButton.hidden=true;
   }else{
-    stepContainer.innerHTML=`<div class="step-layout"><header class="step-header"><span>Etapa ${index+1} de ${visible.length}</span><h2 tabindex="-1">${step.title}</h2><p>${step.description}</p></header>${showSavePanel?`<section class="save-panel" role="status"><strong>${storageAvailable?'Rascunho salvo neste navegador.':'O navegador não conseguiu guardar o rascunho.'}</strong><p>Para continuar em outro aparelho, baixe uma cópia e use “Continuar um rascunho” na primeira etapa. O arquivo contém suas respostas; guarde com cuidado.</p><button type="button" class="ghost-button" id="download-draft">Baixar cópia do rascunho</button><button type="button" class="edit-button" id="close-save">Continuar preenchendo</button></section>`:''}${submitStatus?`<div class="submit-status ${submitStatus.type}" role="${submitStatus.type==='error'?'alert':'status'}" tabindex="-1">${escapeHtml(submitStatus.message)}</div>`:''}${state.legacyDraft&&currentStep==='model'?'<p class="help">Encontramos respostas da versão anterior e as preservamos. Confira o novo caminho e suas preferências de imagens antes de enviar.</p>':''}<div class="step-body">${step.render()}</div></div>`;
+    stepContainer.innerHTML=`<div class="step-layout"><header class="step-header"><span>Etapa ${index+1} de ${visible.length}</span><h2 tabindex="-1">${title}</h2><p>${step.description}</p></header>${showSavePanel?`<section class="save-panel" role="status"><strong>${storageAvailable?'Rascunho salvo neste navegador.':'O navegador não conseguiu guardar o rascunho.'}</strong><p>Para continuar em outro aparelho, baixe uma cópia e use “Continuar um rascunho” na primeira etapa. O arquivo contém suas respostas; guarde com cuidado.</p><button type="button" class="ghost-button" id="download-draft">Baixar cópia do rascunho</button><button type="button" class="edit-button" id="close-save">Continuar preenchendo</button></section>`:''}${submitStatus?`<div class="submit-status ${submitStatus.type}" role="${submitStatus.type==='error'?'alert':'status'}" tabindex="-1">${escapeHtml(submitStatus.message)}</div>`:''}${state.legacyDraft&&currentStep==='model'?'<p class="help">Encontramos respostas da versão anterior e as preservamos. Confira o novo caminho e suas preferências de imagens antes de enviar.</p>':''}<div class="step-body">${step.render()}</div></div>`;
     nextButton.hidden=false;saveButton.hidden=false;prevButton.hidden=index===0;
     nextButton.disabled=isSubmitting;prevButton.disabled=isSubmitting;saveButton.disabled=isSubmitting;
     nextButton.textContent=isSubmitting?'Enviando…':currentStep==='review'?'Enviar briefing':currentStep==='finish'?'Revisar respostas':'Continuar';
@@ -703,7 +775,7 @@ function render(focus=false) {
 }
 const progressLabels={
   model:'Modelo',business:'Seu negócio',goals:'Objetivo',audience:'Público',offer:'Oferta',trust:'Confiança',
-  'm5-reformulation':'Site atual','m5-scope':'Escopo da reforma',operation:'Atendimento',structure:'Estrutura',
+  'm5-project':'Seu projeto','m5-reformulation':'Site atual','m5-scope':'Páginas e recursos','m5-videos':'Trabalhos e vídeos','m5-bio':'Bio e links',operation:'Atendimento',structure:'Estrutura',
   contact:'Contato',style:'Estilo',materials:'Materiais',finish:'Cuidados finais',review:'Revisão',
 };
 function renderSummary() {
@@ -799,8 +871,9 @@ form.addEventListener('change',async event=>{
   const openDetails=Array.from(stepContainer.querySelectorAll('details[open]')).map(d=>d.querySelector('summary')?.textContent);
   updateStateFromForm();
   if(key==='model')state.furthestStep='model';
+  if(['m5ProjectType','m5Profile'].includes(key))state.furthestStep='m5-project';
   clearValidationMessage(event.target);
-  if(['businessNature','showAddress','contactUse','materialsStatus','wantsGallery','wantsTeam','wantsBooking','blogMode','hasTestimonials','domainStatus','pricingDisplay','primaryCTA'].includes(key)){
+  if(['m5Awards','businessNature','showAddress','contactUse','materialsStatus','wantsGallery','wantsTeam','wantsBooking','blogMode','hasTestimonials','domainStatus','pricingDisplay','primaryCTA'].includes(key)){
     refreshConditionalFields();
     for(const detail of stepContainer.querySelectorAll('details'))if(openDetails.includes(detail.querySelector('summary')?.textContent))detail.open=true;
   }

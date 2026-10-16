@@ -4,6 +4,7 @@
   "main": "cloudflare/worker.mjs",
   "account_id": "e23efa36a1e09015eebb2b36bdfcf201",
   "compatibility_date": "2026-09-09",
+  "vars": { "NOTION_DATABASE_ID": "370db609496880e28cbfce7472169134" },
   "version_metadata": {
     "binding": "CF_VERSION_METADATA"
   },

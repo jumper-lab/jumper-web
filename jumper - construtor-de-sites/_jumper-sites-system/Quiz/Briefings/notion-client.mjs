@@ -19,8 +19,8 @@ export async function createNotionBriefingPage(payload, config = {}) {
   if (m5Errors.length) {
     const error = new Error(m5Errors.join(" ")); error.status = 400; error.code = "invalid_m5_briefing"; throw error;
   }
-  const notionToken = config.notionToken || process.env.NOTION_TOKEN || "";
-  const databaseId = config.databaseId || process.env.NOTION_DATABASE_ID || "370db609496880e28cbfce7472169134";
+  const notionToken = config.notionToken || globalThis.process?.env?.NOTION_TOKEN || "";
+  const databaseId = config.databaseId || globalThis.process?.env?.NOTION_DATABASE_ID || "370db609496880e28cbfce7472169134";
 
   if (!notionToken) {
     const error = new Error("Defina NOTION_TOKEN para criar páginas no Notion.");
@@ -30,7 +30,7 @@ export async function createNotionBriefingPage(payload, config = {}) {
   }
 
   if (payload.project_scope?.model === "M5") {
-    payload = { ...payload, project_scope: { ...payload.project_scope, reformulation: { ...payload.project_scope.reformulation, scope_status: "pending_review" } } };
+    payload = { ...payload, project_scope: { ...payload.project_scope, reformulation: payload.project_scope.reformulation ? { ...payload.project_scope.reformulation, scope_status: "pending_review" } : null, ...(payload.project_scope.custom ? { custom: { ...payload.project_scope.custom, scope_status: "pending_review" } } : {}) } };
   }
   if(payload.briefing_depth==='strategic-v3') {
     const review=reviewBriefingContent(payload);
@@ -43,7 +43,7 @@ export async function createNotionBriefingPage(payload, config = {}) {
     children: buildImportBlocks(payload),
   };
 
-  if (notionPayload.children.length > 100 || Buffer.byteLength(JSON.stringify(notionPayload)) > 450000) {
+  if (notionPayload.children.length > 100 || new TextEncoder().encode(JSON.stringify(notionPayload)).byteLength > 450000) {
     const error = new Error("Briefing muito extenso. Envie os materiais por link de pasta e reduza os textos.");
     error.code = "briefing_too_large";
     error.status = 413;
@@ -80,7 +80,7 @@ export function mapPayloadToNotionProperties(payload) {
   const model = payload.project_scope?.model || "";
   const properties = {
     "Nome do Negócio": title(payload.client?.name),
-    "Modelo contratado": select(modelSelect(model)),
+    "Modelo contratado": select(payload.project_scope.custom_version === "m5-v2" && model === "M5" ? "M5 Site Personalizado" : modelSelect(model)),
     Status: select("🆕 Novo"),
     "Natureza do negócio": select(businessNatureSelect(payload.project_scope?.business_nature)),
     "Segmento principal": richText(payload.client?.segment),
@@ -158,7 +158,16 @@ export function mapPayloadToNotionProperties(payload) {
   };
 
   if (model === "M5") {
-    const reformulation = payload.project_scope.reformulation;
+    const custom = payload.project_scope.custom;
+    const reformulation = payload.project_scope.reformulation || {};
+    if(custom){
+      properties["Tipo de projeto M5"]=select({creation:"Criação",reformulation:"Reformulação"}[payload.project_scope.project_type]);
+      properties["Perfil do site M5"]=select({institutional:"Institucional",audiovisual:"Portfólio audiovisual",other:"Outro personalizado"}[custom.profile]);
+      properties["Detalhamento das páginas M5"]=richText(custom.page_details);
+      properties["Recursos solicitados M5"]=richText(custom.requested_features);
+      properties["Escopo audiovisual M5"]=richText(custom.audiovisual?JSON.stringify(custom.audiovisual):"");
+      properties["Confirmo que este briefing é para Site Personalizado"]={checkbox:payload.project_scope.model_confirmation===true};
+    }
     properties["Site atual M5"] = url(reformulation.existing_site_url);
     properties["Motivo da reformulação M5"] = richText(reformulation.reason);
     properties["Problemas atuais M5"] = richText(reformulation.problems);
@@ -166,11 +175,11 @@ export function mapPayloadToNotionProperties(payload) {
     properties["Atualizar M5"] = richText(reformulation.change);
     properties["Retirar M5"] = richText(reformulation.remove);
     properties["Acrescentar M5"] = richText(reformulation.add);
-    properties["Páginas solicitadas M5"] = richText(reformulation.requested_pages);
+    properties["Páginas solicitadas M5"] = richText(custom?.requested_pages || reformulation.requested_pages);
     properties["Funcionalidades atuais M5"] = richText(reformulation.existing_features);
     properties["URLs importantes M5"] = richText(reformulation.important_urls);
     properties["Acessos e materiais M5"] = richText(reformulation.access_notes);
-    properties["Confirmo que este briefing é para Reformulação de Site Institucional Local"] = checkbox(payload.project_scope.model_confirmation);
+    properties["Confirmo que este briefing é para Reformulação de Site Institucional Local"] = checkbox(!custom && payload.project_scope.model_confirmation);
   }
 
   if (payload.intake_version === "guided-v1") {
@@ -284,7 +293,24 @@ Gerado automaticamente a partir do formulário público da Jumper.
 
 ${rows.map(([label, value]) => `- **${label}:** ${clean(value) || "Não informado"}`).join("\n")}
 
-${payload.project_scope?.model === "M5" ? `## Reformulação M5\n\nEscopo pendente de análise e aprovação.\n\n${Object.entries(payload.project_scope.reformulation || {}).map(([key, value]) => `- **${key}:** ${clean(value) || "Não informado"}`).join("\n")}\n` : ""}
+${payload.project_scope?.model === "M5" ? `## ${payload.project_scope.custom ? "M5 — Site personalizado" : "Reformulação M5"}\n\nEscopo pendente de análise e aprovação.\n\n${Object.entries(payload.project_scope.reformulation || {}).map(([key, value]) => `- **${key}:** ${clean(value) || "Não informado"}`).join("\n")}\n` : ""}
+
+${payload.project_scope?.custom ? `## Páginas e recursos personalizados M5
+
+- **Tipo de projeto:** ${payload.project_scope.project_type === "creation" ? "Criação de site novo" : "Reformulação de site existente"}
+- **Perfil:** ${({institutional:"Institucional",audiovisual:"Portfólio audiovisual",other:"Outro personalizado"})[payload.project_scope.custom.profile] || "A conferir"}
+- **Páginas pretendidas:** ${clean(payload.project_scope.custom.requested_pages)}
+- **Conteúdo por página:** ${clean(payload.project_scope.custom.page_details)}
+- **Recursos solicitados:** ${clean(payload.project_scope.custom.requested_features)}
+- **Escopo:** pendente de análise e aprovação; o briefing não aprova arquitetura ou funcionalidades.
+
+${payload.project_scope.custom.audiovisual ? `### Portfólio audiovisual
+
+${Object.entries({"Quantidade de vídeos na Home":"home_video_count","Vídeos, ordem, capas e materiais":"home_videos","Reprodução":"playback","Apresentação no celular":"mobile_playback","Trabalhos por área e créditos":"work_credits","Existem prêmios":"awards_available","Prêmios, obras e artes":"awards_details","Texto da Bio":"bio_text","Foto da Bio":"bio_photo","Links profissionais autorizados":"professional_links"}).map(([label,key])=>`- **${label}:** ${clean(payload.project_scope.custom.audiovisual[key])||"A definir"}`).join("\n")}
+
+Aprovar fatos, créditos, direitos e artes. Reprodução automática sem som precisa de alternativa por capa/clique, avaliação em celular, desempenho e movimento reduzido. Não inferir prêmios ou usar contatos privados como links públicos.
+` : ""}
+` : ""}
 
 ${payload.intake_version === "guided-v1" ? `## Complementação pela Jumper\n\nEstas respostas são a entrada inicial, não uma aprovação de arquitetura.\n\n${(payload.production_handoff?.pending_decisions || []).map(item => `- ${item}`).join("\n")}\n\n- Contatos do projeto podem ser publicados: ${payload.operations?.contact_publication || "A confirmar"}\n- Contato público alternativo: ${payload.operations?.public_contact || "Não informado"}\n- Materiais: ${payload.assets?.availability || "A confirmar"}\n- Site de origem dos materiais: ${payload.assets?.existing_site_url || payload.project_scope?.reformulation?.existing_site_url || "Não informado"}\n- Imagens de IA: ${payload.assets?.ai_placeholder_permission || "A confirmar"}\n- Fotos de banco: ${payload.project_scope?.pexels_mode || "A confirmar"}\n` : ""}
 

@@ -21,7 +21,7 @@ export function validateGuidedIntake(p) {
   if(p.project_scope?.model==='M2')choice('a segunda página',p.project_scope.secondary_page,['sobre','servicos','contato','outra','nao-sei']);
   if(['A','B'].includes(p.project_scope?.business_nature))choice('a exibição do endereço',p.location?.show_address,['sim-mapa','bairro-cidade','nao-publico']);
   if(p.assets?.availability==='link'&&!validUrl(p.assets.materials_folder))errors.push('Confira o link da pasta de materiais.');
-  if(p.assets?.availability==='existing'&&p.project_scope?.model!=='M5'&&!validUrl(p.assets.existing_site_url))errors.push('Confira o endereço do site com os materiais.');
+  if(p.assets?.availability==='existing'&&(p.project_scope?.model!=='M5'||p.project_scope?.project_type==='creation')&&!validUrl(p.assets.existing_site_url))errors.push('Confira o endereço do site com os materiais.');
   if(p.content?.conversion?.appointment_link&&!validUrl(p.content.conversion.appointment_link))errors.push('Confira o link de agendamento.');
   if(p.content?.blog?.enabled&&!['M4','M5'].includes(p.project_scope?.model))errors.push('Confira o modelo para publicação de blog.');
   if(p.location?.google_business&&!validUrl(p.location.google_business))errors.push('Confira o perfil do Google.');
@@ -38,7 +38,7 @@ export function validateGuidedIntake(p) {
     if(p.project_scope?.model==='M3'||p.production_handoff?.requested_modules?.gallery==='sim')required.push(['itens da galeria',c.portfolio?.items_description],['quantidade de itens',c.portfolio?.minimum_items]);
     if(c.team?.enabled)required.push(['apresentação da equipe',c.team.members_raw]);
     if(c.blog?.enabled)required.push(['temas iniciais do blog',c.blog.initial_posts_raw]);
-    if(p.project_scope?.model==='M5')for(const k of ['preserve','remove','requested_pages','existing_features'])required.push(['o levantamento da reformulação',r[k]]);
+    if(p.project_scope?.model==='M5'&&p.project_scope?.project_type!=='creation')for(const k of ['preserve','remove','requested_pages','existing_features'])required.push(['o levantamento da reformulação',r[k]]);
     if(p.briefing_depth==='strategic-v3') {
       required.push(['exemplo do diferencial',c.positioning?.differentiator_evidence],['dúvidas dos clientes',c.audience?.questions_raw],['como funciona o atendimento ou compra',c.services?.process_raw]);
       if(p.project_scope?.model==='M2')required.push(['finalidade da segunda página',p.project_scope.secondary_page_goal]);

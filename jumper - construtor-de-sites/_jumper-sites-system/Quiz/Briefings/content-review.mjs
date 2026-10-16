@@ -20,6 +20,12 @@ export function reviewBriefingContent(p) {
   if(c.conversion?.primary_cta==='catalogo'&&scope.model!=='M3'&&p.production_handoff?.requested_modules?.gallery!=='sim')issues.push('CTA catálogo: confirmar conteúdo e destino dentro das páginas contratadas.');
   if(c.conversion?.primary_cta==='comprar')issues.push('Compra: definir se o destino é contato, loja externa ou recurso contratado; não presumir checkout.');
   if(c.social_proof?.testimonials_available==='sim'&&c.social_proof.testimonials_permission==='nao-sei')issues.push('Depoimentos: autorização pendente; não publicar nem criar avaliações substitutas.');
+  if(scope.custom?.profile==='audiovisual'){
+    const a=scope.custom.audiovisual||{};
+    for(const [label,value]of [['Vídeos principais e ordem',a.home_videos],['Créditos dos trabalhos por área',a.work_credits],['Texto da Bio',a.bio_text],['Foto autorizada da Bio',a.bio_photo],['Links profissionais autorizados',a.professional_links]])check(label,value);
+    if(a.awards_available==='sim')check('Prêmios e artes por trabalho',a.awards_details);
+    issues.push('Vídeos: aprovar reprodução, versões leves e capas; testar celular, reprodução sem som e alternativa por clique, movimento reduzido e direitos dos materiais.');
+  }
   if(p.assets?.availability==='later')issues.push('Materiais reais pendentes: conferir logo, fotos, catálogo e direitos antes de substituir por imagens genéricas.');
   return {status:'needs_editorial_review',issues,rule:'Triagem não é aprovação. Confirmar fatos, resolver pendências relevantes e vincular texto, imagens e composição ao negócio real antes de construir. Não completar lacunas com frases genéricas ou fatos inventados.'};
 }

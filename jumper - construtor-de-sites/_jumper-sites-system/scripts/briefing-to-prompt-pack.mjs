@@ -205,6 +205,7 @@ const firstValueByHints = (entry, hints) => {
 };
 
 const MODEL_CONFIRMATION_FIELDS = [
+  { model: 'M5', label: 'Confirmo que este briefing é para Site Personalizado' },
   { model: 'M5', label: 'Confirmo que este briefing é para Reformulação de Site Institucional Local' },
   {
     model: 'M1',
@@ -397,6 +398,8 @@ const generated = submissionRows.map((row, index) => {
   mkdirSync(entryFolder, { recursive: true });
   copyFileSync(inputPath, join(entryFolder, basename(inputPath)));
 
+  const m5Type=model==='M5'?(normalizeKey(firstValueByHints(entry,['tipo de projeto m5','tipo de projeto'])).includes('criacao')?'creation':'reformulation'):null;
+  const m5Intake=model==='M5'?{profile:firstValueByHints(entry,['perfil do site m5','perfil do site']),requested_pages:firstValueByHints(entry,['paginas solicitadas m5','paginas desejadas']),page_details:firstValueByHints(entry,['detalhamento das paginas m5']),requested_features:firstValueByHints(entry,['recursos solicitados m5']),audiovisual_raw:firstValueByHints(entry,['escopo audiovisual m5'])}:null;
   const meta = {
     source_briefing: briefingSource.label,
     source_briefing_name: briefingSource.name,
@@ -408,8 +411,11 @@ const generated = submissionRows.map((row, index) => {
     model,
     modelDetectionSource: modelDetection.source,
     secondaryPage: model === 'M2' ? (secondaryPage ?? null) : null,
-    reformulation: model === "M5" ? {
+    projectType: m5Type,
+    customScope: model === "M5" && m5Type === "creation" ? {project_type:"creation",scope_status:"pending_review",intake:m5Intake,pages:[],features:[],rollback_plan:""} : null,
+    reformulation: model === "M5" && m5Type !== "creation" ? {
       existing_site_url: firstValueByHints(entry, ["site atual m5", "url do site atual", "site atual"]),
+      intake:m5Intake,
       scope_status: "pending_review",
     } : null,
     personalityBaseDesignSystemsFolder: personalityFolder,
@@ -466,7 +472,7 @@ const generated = submissionRows.map((row, index) => {
     site: {
       engine: 'ds-autoral',
       model: meta.model,
-      ...(meta.model === "M5" ? { reformulation: meta.reformulation } : {}),
+      ...(meta.model === "M5" ? { project_type:meta.projectType, ...(meta.projectType==='creation'?{custom_scope:meta.customScope}:{reformulation:meta.reformulation}) } : {}),
       secondary_page: meta.secondaryPage,
       hosting: 'cloudflare-workers-static-assets',
       base_path: `/${slug}`,
