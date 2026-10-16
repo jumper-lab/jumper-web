@@ -19,14 +19,14 @@ function browser(overrides={}){const c=vm.createContext({URL,Date,structuredClon
 const run=(c,e)=>JSON.parse(vm.runInContext('JSON.stringify('+e+')',c));
 const payload=overrides=>run(browser(overrides),'buildPayload()');
 test('M5 creation asks for page/content scope and audiovisual data without an old website',()=>{
- const c=browser();const steps=run(c,'visibleSteps().map(s=>s.id)');assert.equal(steps.length,17);assert.ok(!steps.includes('m5-reformulation'));assert.deepEqual(run(c,'visibleSteps().map(s=>stepError(s.id)).filter(Boolean)'),[]);
+ const c=browser();const steps=run(c,'visibleSteps().map(s=>s.id)');assert.equal(steps.length,10);assert.ok(!steps.includes('m5-reformulation'));assert.deepEqual(run(c,'visibleSteps().map(s=>stepError(s.id)).filter(Boolean)'),[]);
  const p=run(c,'buildPayload()');assert.equal(p.project_scope.project_type,'creation');assert.equal(p.project_scope.reformulation,null);assert.deepEqual(validateM5Intake(p),[]);assert.deepEqual(validateGuidedIntake(p),[]);
- const html=run(c,'steps.find(s=>s.id==="m5-scope").render()');assert.ok(html.includes('name="m5PageDetails"'));assert.ok(!html.includes('name="preserveItems"'));assert.ok(!run(c,'structureMarkup()').includes('name="portfolioMinItems"'));
+ const html=run(c,'visibleSteps().find(s=>s.id==="m5-scope").render()');assert.ok(html.includes('name="m5PageDetails"'));assert.ok(!html.includes('name="preserveItems"'));assert.ok(!run(c,'structureMarkup()').includes('name="portfolioMinItems"'));
 });
 test('M5 reformulation keeps old-site URL and preservation requirements',()=>{
- const c=browser({m5ProjectType:'reformulation',existingSiteUrl:'https://example.org/atual'});assert.equal(run(c,'visibleSteps().length'),18);assert.deepEqual(run(c,'visibleSteps().map(s=>stepError(s.id)).filter(Boolean)'),[]);let p=run(c,'buildPayload()');assert.equal(p.project_scope.reformulation.existing_site_url,'https://example.org/atual');
+ const c=browser({m5ProjectType:'reformulation',existingSiteUrl:'https://example.org/atual'});assert.equal(run(c,'visibleSteps().length'),10);assert.deepEqual(run(c,'visibleSteps().map(s=>stepError(s.id)).filter(Boolean)'),[]);let p=run(c,'buildPayload()');assert.equal(p.project_scope.reformulation.existing_site_url,'https://example.org/atual');
  vm.runInContext('state.existingSiteUrl=""',c);assert.ok(run(c,'stepError("m5-reformulation")'));assert.ok(validateM5Intake(run(c,'buildPayload()')).length);
- vm.runInContext('state.removeItems=""',c);assert.ok(run(c,'stepError("m5-scope")'));assert.ok(validateGuidedIntake(run(c,'buildPayload()')).length);
+ vm.runInContext('state.removeItems="";state.existingSiteUrl="https://example.org/atual"',c);assert.equal(run(c,'stepError("m5-scope")'),null);assert.deepEqual(validateGuidedIntake(run(c,'buildPayload()')),[]);
 });
 test('audiovisual questions and data are conditional; M1-M4 do not inherit them',()=>{
  for(const model of ['M1','M2','M3','M4']){const c=browser({model});assert.ok(!run(c,'visibleSteps().map(s=>s.id)').includes('m5-videos'));assert.equal(run(c,'buildPayload().project_scope.custom'),null);}
@@ -71,4 +71,31 @@ test('production preflight blocks switching transport without the Notion secret'
  assert.ok(validateBriefingSecrets([{name:'NOTION_TOKEN',type:'plain_text'}],true).length);
  assert.deepEqual(validateBriefingSecrets([{name:'NOTION_TOKEN',type:'secret_text'}],true),[]);
  assert.deepEqual(validateBriefingSecrets([],false),[]);
+});
+
+test('fresh compact M5 paths keep the full scope without requiring duplicate strategic answers',async()=>{
+ for(const profile of ['institutional','audiovisual'])for(const projectType of ['creation','reformulation']){
+  const c=browser();c.fresh={model:'M5',m5ProjectType:projectType,m5Profile:profile,businessName:'Teste compacto',shortDescription:'Atuação autoral com obras e serviços específicos',targetAudience:'Produtoras buscando roteiro e direção; clientes locais buscando produtos da unidade',cityCoverage:'São Paulo e online',mainGoal:'portfolio',priorityOffer:'Trabalhos de roteiro e direção',differentiator:'Experiência em documentários com pesquisa de campo, exemplificada nas obras fornecidas',m5PageDetails:'Home: quatro vídeos; Roteiro: obras escritas; Direção: filmes dirigidos; Bio: foto e trajetória',m5Features:'',existingSiteUrl:projectType==='reformulation'?'https://example.org/anterior':'',reformulationReason:'Atualizar estrutura e contato; manter marca e funções de contato; retirar conteúdo desatualizado após aprovação',servicesItems:profile==='audiovisual'?'':'Produtos e cardápio na pasta autorizada',story:profile==='audiovisual'?'':'História e informações da unidade na apresentação fornecida',pricingDisplay:profile==='audiovisual'?'':'sem-precos',contactName:'Responsável técnico',contactEmail:'qa@example.org',contactUse:'depois',primaryCTA:'orcamento',businessNature:'D',personality:'nao-sei',visualReferences:'https://example.org/referencia — composição e tipografia',materialsStatus:'later',aiImages:'nao',usePexels:'nao',reviewConfirmed:true,...(profile==='audiovisual'?Object.fromEntries(Object.entries(seed).filter(([key])=>['m5HomeVideoCount','m5HomeVideos','m5VideoPlayback','m5WorkCredits','m5Awards','m5AwardsDetails','m5BioText','m5BioPhoto','m5ProfessionalLinks'].includes(key))):{})};
+  vm.runInContext('state=Object.assign(structuredClone(initialState),fresh)',c);
+  const ids=run(c,'visibleSteps().map(s=>s.id)');assert.equal(ids.length,profile==='audiovisual'?10:9);
+  assert.deepEqual(run(c,'visibleSteps().map(s=>stepError(s.id)).filter(Boolean)'),[]);
+  const p=run(c,'buildPayload()');assert.deepEqual(validateGuidedIntake(p),[]);assert.deepEqual(validateM5Intake(p),[]);
+  assert.equal(p.intake_variant,'m5-compact-v1');assert.equal(p.project_scope.custom.page_details,c.fresh.m5PageDetails);assert.equal(p.project_scope.reformulation?.reason??'',projectType==='reformulation'?c.fresh.reformulationReason:'');
+  assert.ok(run(c,'reviewGroups().every(group=>visibleSteps().some(step=>step.id===group[0]))'));
+  const html=run(c,'visibleSteps().filter(step=>step.id!=="review").map(step=>step.render()).join("")');
+  for(const field of ['typicalProblem','typicalResult','differentiatorEvidence','preserveItems','removeItems','existingFeatures','requestedPages'])assert.ok(!html.includes(`name="${field}"`),field);
+  assert.equal((html.match(/name="m5ProfessionalLinks"/g)||[]).length,profile==='audiovisual'?1:0);
+  assert.equal((html.match(/name="m5BioText"/g)||[]).length,profile==='audiovisual'?1:0);
+  if(profile==='audiovisual'){assert.equal((html.match(/name="story"/g)||[]).length,0);assert.equal((html.match(/name="credentials"/g)||[]).length,0);assert.equal(p.content.positioning.story,c.fresh.m5BioText);assert.equal(p.content.services.items_raw,c.fresh.m5WorkCredits);}
+  const realFetch=globalThis.fetch;let body;globalThis.fetch=async(_url,o)=>{body=JSON.parse(o.body);return Response.json({id:'qa-compact'});};
+  try{await createNotionBriefingPage(p,{notionToken:'qa-only',databaseId:'qa-only'});const chunks=body.children.filter(b=>b.type==='code').map(b=>b.code.rich_text[0].text.content);const saved=JSON.parse(chunks.filter(s=>s.startsWith('JUMPER_PAYLOAD_JSON_PART')).map(s=>s.slice(s.indexOf('\n')+1)).join(''));assert.deepEqual(saved.project_scope,{...p.project_scope,custom:{...p.project_scope.custom,scope_status:"pending_review"}});}finally{globalThis.fetch=realFetch;}
+ }
+});
+test('compact M5 keeps recovered answers editable and maps old navigation to the new sections',()=>{
+ const c=browser({m5ProjectType:'reformulation',existingSiteUrl:'https://example.org/antigo',preserveItems:'Preservar marca e contato',removeItems:'Retirar seção antiga',existingFeatures:'Formulário',importantUrls:'/campanha'});
+ const html=run(c,'visibleSteps().filter(s=>s.id!=="review").map(s=>s.render()).join("")');
+ for(const field of ['preserveItems','removeItems','existingFeatures','importantUrls','requestedPages','story','servicesItems'])assert.ok(html.includes(`name="${field}"`));
+ const p=run(c,'buildPayload()');assert.equal(p.project_scope.reformulation.preserve,'Preservar marca e contato');assert.equal(p.project_scope.reformulation.remove,'Retirar seção antiga');assert.equal(p.project_scope.reformulation.important_urls,'/campanha');
+ for(const id of ['m5-project','m5-reformulation','audience','trust','offer','operation','structure','finish']){c.oldId=id;assert.ok(run(c,'visibleSteps().some(step=>step.id===m5StepId(oldId))'));}
+ vm.runInContext('state.m5PageDetails=""',c);assert.equal(run(c,'stepError("m5-scope").field'),'m5PageDetails');
 });
