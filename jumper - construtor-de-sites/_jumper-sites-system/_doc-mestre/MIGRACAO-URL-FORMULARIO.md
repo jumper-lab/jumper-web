@@ -1,3 +1,13 @@
+# Endereço oficial e processamento do formulário
+
+Atualização de 16/10/2026: o fluxo vigente é `site.jumper.dev.br/briefing/` → API do Worker Cloudflare → Notion Jumper Atlas. O Worker importa `Quiz/Briefings/notion-client.mjs`, sem encaminhamento para Vercel. Configurar o segredo `NOTION_TOKEN` e a variável `NOTION_DATABASE_ID` antes de publicar a migração. A credencial nunca aparece no formulário ou no repositório.
+
+O card do hub e o botão de copiar apontam ao endereço oficial. A hospedagem e o envio não exigem login nem deploy na Vercel. Não ativar a mudança enquanto a credencial do Notion estiver pendente. Verificar código publicado, API, schema Notion e registro técnico de teste antes de afirmar que houve gravação real.
+
+## Histórico anterior à remoção do intermediário
+
+As notas abaixo documentam a infraestrutura antiga e não são a orientação vigente.
+
 # Endereço do formulário — publicação oficial
 
 Data: 14/09/2026. Endereço público oficial: https://site.jumper.dev.br/briefing . Rota técnica compatível: https://quizzer.jumpers.cloud/briefing-novo-site .

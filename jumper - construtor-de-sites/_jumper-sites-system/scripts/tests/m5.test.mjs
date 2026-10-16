@@ -14,7 +14,7 @@ function browser() {
   vm.runInContext(quiz.slice(0, quiz.indexOf('const stepContainer =')), context);
   return context;
 }
-const requested = {differentiatorEvidence:'Orientação individual após cada etapa',customerQuestions:'Como funciona? Começa com avaliação.',serviceProcess:'Avaliação, proposta e atendimento',secondaryPageGoal:'Detalhar o serviço para pedir orçamento',differentiator:'Atendimento próximo',typicalProblem:'Encontrar orientação',typicalResult:'Escolher o serviço adequado',servicesItems:'Atendimento com orientação',pricingDisplay:'nao-sei',primaryCTA:'nao-sei',story:'Negócio em início de operação',hasTestimonials:'nao',visualReferences:'Preciso de orientação',portfolioItemsDescription:'Produtos a enviar',portfolioMinItems:'A confirmar',preserveItems:'Marca',removeItems:'Nenhum definido',requestedPages:'Jumper propõe',existingFeatures:'Contato',model:'M5', reviewConfirmed:true, shortDescription:'Serviços locais', targetAudience:'Moradores', cityCoverage:'São Paulo', contactName:'Equipe teste', contactEmail:'fixture@example.org', contactUse:'depois', mainGoal:'nao-sei', priorityOffer:'Atendimento', businessNature:'C', personality:'nao-sei', materialsStatus:'later', aiImages:'nao-sei', usePexels:'nao-sei', secondaryPage:'nao-sei', businessName:'Fixture M5', existingSiteUrl:'https://example.org', reformulationReason:'Melhorar contatos', requestedPages:'Home e contato', preserveItems:'Logo', removeItems:'Nenhum', existingFeatures:'Formulário', blogMode:'sem-blog'};
+const requested = {m5ProjectType:'reformulation',m5Profile:'institutional',m5PageDetails:'Conteúdo por página a aprovar',m5Features:'Formulário de contato',differentiatorEvidence:'Orientação individual após cada etapa',customerQuestions:'Como funciona? Começa com avaliação.',serviceProcess:'Avaliação, proposta e atendimento',secondaryPageGoal:'Detalhar o serviço para pedir orçamento',differentiator:'Atendimento próximo',typicalProblem:'Encontrar orientação',typicalResult:'Escolher o serviço adequado',servicesItems:'Atendimento com orientação',pricingDisplay:'nao-sei',primaryCTA:'nao-sei',story:'Negócio em início de operação',hasTestimonials:'nao',visualReferences:'Preciso de orientação',portfolioItemsDescription:'Produtos a enviar',portfolioMinItems:'A confirmar',preserveItems:'Marca',removeItems:'Nenhum definido',requestedPages:'Jumper propõe',existingFeatures:'Contato',model:'M5', reviewConfirmed:true, shortDescription:'Serviços locais', targetAudience:'Moradores', cityCoverage:'São Paulo', contactName:'Equipe teste', contactEmail:'fixture@example.org', contactUse:'depois', mainGoal:'nao-sei', priorityOffer:'Atendimento', businessNature:'C', personality:'nao-sei', materialsStatus:'later', aiImages:'nao-sei', usePexels:'nao-sei', secondaryPage:'nao-sei', businessName:'Fixture M5', existingSiteUrl:'https://example.org', reformulationReason:'Melhorar contatos', requestedPages:'Home e contato', preserveItems:'Logo', removeItems:'Nenhum', existingFeatures:'Formulário', blogMode:'sem-blog'};
 function payload() {const c=browser();c.input=requested;vm.runInContext('Object.assign(state,input)',c);return JSON.parse(vm.runInContext('JSON.stringify(buildPayload())',c));}
 test('wizard offers five models and M5-only intake, preserving all original branches',()=>{
  const c=browser();
@@ -24,7 +24,7 @@ test('wizard offers five models and M5-only intake, preserving all original bran
   const visible=Array.from(vm.runInContext('steps.filter(s=>!s.condition || s.condition()).map(s=>s.id)',c));
   assert.equal(visible.includes('m5-reformulation'),model==='M5');
   assert.equal(visible.includes('structure'),model!=='M1');
-  assert.equal(visible.length,model==='M1'?12:model==='M5'?15:13);
+  assert.equal(visible.length,model==='M1'?12:model==='M5'?16:13);
  }
 });
 test('M5 payload preserves full request, keeps scope pending and enables blog only explicitly',()=>{
@@ -46,14 +46,14 @@ test('server creates M5 properties and lossless import blocks, never trusts publ
  try {
   const p=payload();p.project_scope.reformulation.change='Atualizar conteúdo '.repeat(300);p.project_scope.reformulation.scope_status='approved';
   await createNotionBriefingPage(p,{notionToken:'fixture',databaseId:'fixture'});
-  assert.equal(body.properties['Modelo contratado'].select.name,'M5 Reformulação Institucional');
+  assert.equal(body.properties['Modelo contratado'].select.name,'M5 Site Personalizado');
   assert.equal(body.properties['Site atual M5'].url,'https://example.org');
-  assert.equal(body.properties['Confirmo que este briefing é para Reformulação de Site Institucional Local'].checkbox,true);
+  assert.equal(body.properties['Confirmo que este briefing é para Site Personalizado'].checkbox,true);
   const chunks=body.children.filter(b=>b.type==='code').map(b=>b.code.rich_text[0].text.content);
   const parsed=JSON.parse(chunks.filter(s=>s.startsWith('JUMPER_PAYLOAD_JSON_PART')).map(s=>s.slice(s.indexOf('\n')+1)).join(''));
   assert.equal(parsed.project_scope.reformulation.change,p.project_scope.reformulation.change);
   assert.equal(parsed.project_scope.reformulation.scope_status,'pending_review');
-  assert.match(chunks.filter(s=>s.startsWith('JUMPER_NORMALIZED_BRIEFING_MD_PART')).join(''),/Reformulação M5/);
+  assert.match(chunks.filter(s=>s.startsWith('JUMPER_NORMALIZED_BRIEFING_MD_PART')).join(''),/Site personalizado/);
  } finally {globalThis.fetch=saved;}
 });
 test('M5 refuses missing intake before network; M1–M4 mappings remain unchanged',async()=>{
