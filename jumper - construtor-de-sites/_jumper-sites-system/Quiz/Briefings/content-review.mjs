@@ -9,7 +9,11 @@ export function reviewBriefingContent(p) {
     else if(/^(qualidade|bom atendimento|excelencia|compromisso|solucoes personalizadas|atendimento personalizado)[.!\s]*$/.test(s))issues.push(`${label}: afirmação ampla; pedir um fato ou exemplo que a torne específica.`);
   };
   const c=p.content||{},scope=p.project_scope||{};
-  for(const [label,value] of [['Oferta',c.services?.items_raw],['Diferencial',c.positioning?.differentiator],['Evidência do diferencial',c.positioning?.differentiator_evidence],['Necessidade do público',c.audience?.typical_problem],['Dúvidas dos clientes',c.audience?.questions_raw],['Processo de atendimento ou compra',c.services?.process_raw],['História',c.positioning?.story],['Referências visuais',p.creative_direction?.visual_references]])check(label,value);
+  const compactM5=scope.model==='M5'&&p.intake_variant==='m5-compact-v1';
+  const context=[['Oferta',c.services?.items_raw],['Diferencial',c.positioning?.differentiator],['História',c.positioning?.story],['Referências visuais',p.creative_direction?.visual_references]];
+  if(compactM5)context.push(['Público e o que procura',c.audience?.target]);
+  for(const [label,value]of [['Evidência do diferencial',c.positioning?.differentiator_evidence],['Necessidade do público',c.audience?.typical_problem],['Dúvidas dos clientes',c.audience?.questions_raw],['Processo de atendimento ou compra',c.services?.process_raw]])if(!compactM5||value)context.push([label,value]);
+  for(const [label,value]of context)check(label,value);
   if(scope.model==='M2')check('Finalidade da segunda página',scope.secondary_page_goal);
   if(scope.model==='M3'||p.production_handoff?.requested_modules?.gallery==='sim')check('Conteúdo da galeria',c.portfolio?.items_description);
   if(c.team?.enabled)check('Apresentação da equipe',c.team.members_raw);

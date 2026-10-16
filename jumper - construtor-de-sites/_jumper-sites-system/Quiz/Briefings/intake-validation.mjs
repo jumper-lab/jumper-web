@@ -3,6 +3,7 @@ const validUrl = v => {try {const u=new URL(v);return ['http:','https:'].include
 export function validateGuidedIntake(p) {
   if (p.intake_version !== 'guided-v1') return [];
   const errors=[];
+  const compactM5=p.project_scope?.model==='M5'&&p.project_scope?.custom_version==='m5-v2'&&p.intake_variant==='m5-compact-v1';
   for(const [label,value] of [['nome do negócio',p.client?.name],['descrição do negócio',p.content?.positioning?.short_description],['público',p.content?.audience?.target],['região de atuação',p.location?.city_coverage],['responsável',p.client?.contact?.responsible],['oferta principal',p.content?.conversion?.priority_offer]])if(!text(value))errors.push(`Informe ${label}.`);
   const choice=(label,value,options)=>{if(!options.includes(value))errors.push(`Confira ${label}.`);};
   choice('o objetivo do site',p.content?.conversion?.main_goal,['whatsapp','agendamento','leads','venda','autoridade','portfolio','nao-sei']);
@@ -27,10 +28,10 @@ export function validateGuidedIntake(p) {
   if(p.location?.google_business&&!validUrl(p.location.google_business))errors.push('Confira o perfil do Google.');
   if(['strategic-v2','strategic-v3'].includes(p.briefing_depth)) {
     const c=p.content||{}, r=p.project_scope?.reformulation||{};
-    const required=[['diferencial',c.positioning?.differentiator],['necessidade do público',c.audience?.typical_problem],['benefício esperado',c.audience?.typical_result],['ofertas',c.services?.items_raw],['história do negócio',c.positioning?.story],['referências visuais',p.creative_direction?.visual_references]];
-    choice('a apresentação dos preços',c.services?.pricing_mode,['todos','sem-precos','misto','nao-sei']);
+    const required=[['diferencial',c.positioning?.differentiator],...(!compactM5?[['necessidade do público',c.audience?.typical_problem],['benefício esperado',c.audience?.typical_result]]:[]),['ofertas',c.services?.items_raw],['história do negócio',c.positioning?.story],['referências visuais',p.creative_direction?.visual_references]];
+    if(!compactM5||p.project_scope?.custom?.profile!=='audiovisual'||c.services?.pricing_mode)choice('a apresentação dos preços',c.services?.pricing_mode,['todos','sem-precos','misto','nao-sei']);
     choice('a ação principal',c.conversion?.primary_cta,['whatsapp','agendamento','orcamento','comprar','catalogo','servicos','nao-sei']);
-    choice('a disponibilidade de avaliações',c.social_proof?.testimonials_available,['sim','nao','nao-sei']);
+    if(!compactM5||c.social_proof?.testimonials_available)choice('a disponibilidade de avaliações',c.social_proof?.testimonials_available,['sim','nao','nao-sei']);
     if(c.social_proof?.testimonials_available==='sim') {
       required.push(['origem dos depoimentos',c.social_proof.testimonials_raw]);
       choice('a autorização dos depoimentos',c.social_proof.testimonials_permission,['nome-foto','primeiro-nome','anonimo','nao-sei']);
@@ -38,9 +39,9 @@ export function validateGuidedIntake(p) {
     if(p.project_scope?.model==='M3'||p.production_handoff?.requested_modules?.gallery==='sim')required.push(['itens da galeria',c.portfolio?.items_description],['quantidade de itens',c.portfolio?.minimum_items]);
     if(c.team?.enabled)required.push(['apresentação da equipe',c.team.members_raw]);
     if(c.blog?.enabled)required.push(['temas iniciais do blog',c.blog.initial_posts_raw]);
-    if(p.project_scope?.model==='M5'&&p.project_scope?.project_type!=='creation')for(const k of ['preserve','remove','requested_pages','existing_features'])required.push(['o levantamento da reformulação',r[k]]);
+    if(!compactM5&&p.project_scope?.model==='M5'&&p.project_scope?.project_type!=='creation')for(const k of ['preserve','remove','requested_pages','existing_features'])required.push(['o levantamento da reformulação',r[k]]);
     if(p.briefing_depth==='strategic-v3') {
-      required.push(['exemplo do diferencial',c.positioning?.differentiator_evidence],['dúvidas dos clientes',c.audience?.questions_raw],['como funciona o atendimento ou compra',c.services?.process_raw]);
+      if(!compactM5)required.push(['exemplo do diferencial',c.positioning?.differentiator_evidence],['dúvidas dos clientes',c.audience?.questions_raw],['como funciona o atendimento ou compra',c.services?.process_raw]);
       if(p.project_scope?.model==='M2')required.push(['finalidade da segunda página',p.project_scope.secondary_page_goal]);
       if(['todos','misto'].includes(c.services?.pricing_mode))required.push(['preços e condições',c.services.pricing_details]);
     }

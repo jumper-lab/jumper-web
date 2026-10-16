@@ -40,3 +40,7 @@ A entrada guiada foi publicada e validada no deployment `dpl_4TBynkQrXPwn5rQrEBr
 `strategic-v3` acrescenta evidência concreta do diferencial, dúvidas/respostas do público, processo de atendimento/compra, valores condicionais e finalidade da segunda página M2. Link público de agendamento funciona também no M1. A chamada de recuperação do endereço antigo foi removida; exportação/importação de rascunhos permanece disponível.
 
 `content-review.mjs` gera uma triagem editorial no servidor. `production_handoff.content_review` é sempre `needs_editorial_review`; o servidor substitui qualquer aprovação recebida do formulário. Alertas de ausência, texto amplo ou dúvida não são avaliação automática de veracidade. JSON, Markdown e pendências do Notion incluem a triagem e os novos campos. O prompt oficial exige complementação de fatos essenciais e revisão da especificidade antes de construir. Não usar exportação apenas das colunas do Notion como substituto dos blocos completos.
+
+### M5 compacto
+
+Criação e reformulação usam 9 etapas no perfil institucional/outro e 10 no audiovisual, com `intake_variant: m5-compact-v1`. Respostas combinadas substituem perguntas repetidas, sem apagar dados dos rascunhos. Detalhes complementares são opcionais e módulos mostram suas perguntas somente quando escolhidos. Consulte `_doc-mestre/M5-REFORMULACAO.md` para o contrato e a complementação pela equipe.

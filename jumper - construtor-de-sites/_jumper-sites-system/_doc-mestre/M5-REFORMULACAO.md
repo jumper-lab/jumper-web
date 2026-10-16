@@ -2,6 +2,17 @@
 
 Regra vigente desde 16/10/2026. O nome do arquivo é mantido para preservar links antigos. Nenhum cliente, nome de exemplo, referência visual específica ou quantidade fixa integra a estrutura.
 
+## Preenchimento compacto do M5
+
+O formulário usa `intake_variant = m5-compact-v1` no mesmo contrato `m5-v2`. São 9 etapas para institucional/outro personalizado e 10 para audiovisual, em criação ou reformulação. M1–M4 e formulários antigos abertos continuam compatíveis.
+
+- Páginas e conteúdo são coletados juntos; o texto completo alimenta `custom.page_details` e, na ausência de uma lista anterior, `custom.requested_pages`.
+- Diferencial e exemplo são uma resposta; público e o que procura são coletados juntos. Não exigir que o cliente repita respostas em necessidade, benefício ou evidência separada.
+- No audiovisual, Bio fornece a trajetória e a lista de trabalhos/créditos fornece as áreas de atuação. Não perguntar novamente história, serviços, prêmios ou Instagram em outras etapas. Os contatos privados do projeto continuam separados dos links públicos autorizados.
+- Na reformulação, URL e a resposta “o que melhorar, manter ou retirar” são obrigatórias. Inventário, funções e URLs serão conferidos pela Jumper. Campos antigos de preservação, retirada e recursos seguem no payload quando recuperados de rascunhos; campo vazio nunca autoriza exclusão.
+- Recursos extras, contexto do público, provas, cores, linguagem, domínio e observações ficam em seções opcionais. Os detalhes de catálogo, equipe, blog ou agenda são pedidos apenas se escolhidos. Preferências técnicas podem ser orientadas pela Jumper.
+- O cliente pode indicar uma pasta, contrato ou material pronto e sinalizar pendências. A equipe deve ler esses materiais, esclarecer lacunas e aprovar o escopo antes de construir; nunca inventar respostas nem interpretar ausência como autorização.
+
 ## Definição e limites
 
 M5 cria um site novo ou reformula um existente, com páginas, conteúdo e funcionalidades definidos no contrato e aprovados antes de construir. Pode ser institucional, portfólio audiovisual ou outro projeto personalizado. Não inclui páginas ilimitadas, loja, blog, agenda, administração ou integrações automaticamente. M1–M4 continuam com seus próprios escopos. A personalidade visual continua A–F.

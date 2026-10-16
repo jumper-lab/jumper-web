@@ -40,7 +40,7 @@ test('blocked browser storage still allows completion and offers downloadable re
 test('strategic depth requires content while accepting older open forms',()=>{
  const p=run(browser(),'buildPayload()');assert.equal(p.briefing_depth,'strategic-v3');
  for(const mutate of [p=>p.content.audience.typical_problem='',p=>p.content.services.items_raw='',p=>p.content.positioning.story='',p=>p.creative_direction.visual_references='',p=>{p.content.social_proof.testimonials_available='sim';p.content.social_proof.testimonials_permission='';}]){const bad=structuredClone(p);mutate(bad);assert.ok(validateGuidedIntake(bad).length);delete bad.briefing_depth;assert.deepEqual(validateGuidedIntake(bad),[]);}
- assert.ok(validateGuidedIntake(run(browser({model:'M5',removeItems:''}),'buildPayload()')).length);
+ const legacyM5=run(browser({model:'M5',removeItems:''}),'buildPayload()');delete legacyM5.intake_variant;assert.ok(validateGuidedIntake(legacyM5).length);
 });
 test('strategic answers and public profile survive canonical payload and Notion import blocks',async()=>{
  const p=run(browser({googleBusiness:'https://example.org/profile',voiceTone:'formal-cortes',hasTestimonials:'sim',testimonials:'Avaliação real de teste',testimonialsPermission:'nao-sei'}),'buildPayload()');
@@ -98,7 +98,7 @@ test('M5 delivery excludes domain fields hidden after switching models without e
 test('gallery type is shown in review for every model that requests a gallery',()=>{
  for(const model of ['M2','M3','M4','M5'])for(const [value,label] of [['portfolio','Trabalhos ou projetos'],['catalogo','Produtos ou cardápio'],['fotos-videos','Fotos e vídeos'],['antes-depois','Antes e depois']]){
   const c=browser({model,wantsGallery:'sim',portfolioType:value});
-  assert.ok(run(c,'reviewGroups().find(g=>g[0]==="structure")[2]').includes('Tipo: '+label));
+  assert.ok(run(c,'reviewGroups().find(g=>g[0]===m5StepId("structure"))[2]').includes('Tipo: '+label));
   assert.equal(run(c,'buildPayload().content.portfolio.mode'),value);
  }
 });

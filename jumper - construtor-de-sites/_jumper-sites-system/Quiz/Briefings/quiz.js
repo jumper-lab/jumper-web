@@ -305,6 +305,115 @@ const steps = [
   {id:'review',title:'Confira antes de enviar',description:'Você pode editar cada parte. Depois do envio, a Jumper confere as informações e combina os próximos passos.',render:()=>resultMarkup()},
 ];
 
+// M5 collects the client brief once. Technical inventory and approval stay with Jumper.
+function m5CompactSteps() {
+  const original=id=>steps.find(step=>step.id===id);
+  const byName=(items,name)=>items.find(item=>item[0]===name);
+  const operation=()=>original('operation').render();
+  const priceFields=()=>fields([
+    ['pricingDisplay','Como tratar os preços?','select','Se ainda não decidiu, peça orientação.',[['','Escolha'],['todos','Mostrar os preços'],['sem-precos','Pedir orçamento'],['misto','Mostrar alguns preços'],['nao-sei','Decidir com a Jumper']],true],
+    ...(['todos','misto'].includes(state.pricingDisplay)?[['pricingDetails','Quais preços e condições podemos divulgar?','textarea','Pode indicar a tabela ou pasta, sem transcrever.',null,true]]:[]),
+  ]);
+  return [
+    {...original('model'),render:()=>original('model').render()+original('m5-project').render()},
+    {...original('business'),description:'Respostas curtas bastam. Conte quem você atende e o que essas pessoas procuram.',render:()=>fields(fieldsByStep.business.map(item=>item[0]==='targetAudience'?[...item.slice(0,3),'Quem deve procurar você e o que essas pessoas buscam?',...item.slice(4)]:item))},
+    {...original('goals'),description:'Diga a prioridade e um detalhe real que torna seu trabalho diferente.',render:()=>fields([
+      fieldsByStep.goals[0],fieldsByStep.goals[1],
+      ['differentiator','O que diferencia seu trabalho? Conte um exemplo.','textarea','Pode ser sua abordagem, uma especialidade ou uma situação real. Se estiver no material, indique onde.',null,true],
+    ])+optionalDetails('Mais contexto sobre o público',[
+      ['customerQuestions','Há dúvidas frequentes que o site deve responder?','textarea','Se houver, liste as principais e suas respostas.'],
+      ['mustHaveMessage','Alguma mensagem ou limite de atendimento que não pode faltar?','textarea','Inclua pedidos que não atende, se for relevante.'],
+      ...(state.differentiatorEvidence?[fieldsByStep.goals[3]]:[]),
+      ...(state.typicalProblem?[['typicalProblem','Necessidade do público já informada','textarea','Resposta recuperada do rascunho.']]:[]),
+      ...(state.typicalResult?[['typicalResult','Benefício esperado já informado','textarea','Resposta recuperada do rascunho.']]:[]),
+      ...(state.notFor?[['notFor','Público que não atende, já informado','text','Resposta recuperada do rascunho.']]:[]),
+    ])},
+    {...original('m5-scope'),description:'Indique o que foi combinado ou a pasta com o escopo. A Jumper organiza e confirma a estrutura antes de construir.',render:()=>fields([
+      ...(!m5Creation()?[
+        ['existingSiteUrl','Qual é o endereço do site atual?','url','https://seusite.com.br',null,true],
+        ['reformulationReason','O que melhorar, manter ou retirar do site atual?','textarea','Cite as mudanças, conteúdos e funções que não podem se perder. Se não souber, peça uma análise da Jumper; nada será retirado sem aprovação.',null,true],
+      ]:[]),
+      ['m5PageDetails','Quais páginas teremos e o que vai em cada uma?','textarea','Pode indicar o contrato ou uma pasta. Ex.: Home com destaques; Roteiro e Direção com trabalhos por área; Bio com foto e texto. Se precisar, peça uma proposta da Jumper.',null,true],
+      ['m5Features','Algum recurso ou comportamento específico foi combinado?','textarea','Ex.: vídeos automáticos sem som, filtros ou contato. Os detalhes dos vídeos serão pedidos a seguir. Pode deixar em branco se não houver algo além do conteúdo acima.'],
+    ])+(!m5Creation()?optionalDetails('Links importantes e respostas recuperadas',[
+      ['importantUrls','Há links antigos importantes que precisamos preservar?','textarea','Anúncios, redes sociais ou materiais. A Jumper também fará o levantamento técnico.'],
+      ...[
+        ['preserveItems','Preservar'],['changeItems','Atualizar'],['removeItems','Retirar'],['addItems','Acrescentar'],['existingFeatures','Funções atuais'],['existingSiteProblems','Problemas atuais'],['requestedPages','Páginas'],
+      ].filter(([key])=>state[key]).map(([key,label])=>[key,label+' — resposta recuperada','textarea','Confira junto com as respostas acima. Campo vazio não autoriza excluir conteúdo.']),
+    ]):state.requestedPages?optionalDetails('Páginas recuperadas do rascunho',[
+      ['requestedPages','Lista já informada','textarea','Confira junto com o conteúdo acima.'],
+    ]):'')+`<details class="optional-details"><summary>Catálogo, equipe, blog ou agendamento <span>opcional</span></summary><p class="help">Abra apenas se algum desses recursos fizer parte do projeto. Cada escolha mostra os detalhes correspondentes.</p>${structureMarkup()}</details>`},
+    ...(m5Audiovisual()?[
+      {...original('m5-videos'),description:'Pode indicar uma pasta ou lista pronta. Não precisa repetir os títulos e links em mais de um campo.',render:()=>fields([
+        ['m5HomeVideoCount','Quantos vídeos terão destaque na Home?','text','Quantidade aproximada combinada, ou “a confirmar”.',null,true],
+        ['m5HomeVideos','Quais vídeos terão destaque e em qual ordem?','textarea','Indique títulos e links/pasta. Diga se são trechos ou filmes completos e onde estão as capas; pode sinalizar materiais pendentes.',null,true],
+        ['m5VideoPlayback','Como esses vídeos devem começar?','select','O som depende de ação do visitante. A Jumper confere alternativas por capa e clique.',playbackChoices,true],
+        ['m5WorkCredits','Como dividir os trabalhos por área e quais créditos usar?','textarea','Ex.: Roteiro e Direção. Indique a lista/pasta com título, ano, função e créditos autorizados. Se já listou os trabalhos acima, só indique a divisão e os créditos.',null,true],
+        ['m5Awards','Há prêmios ou seleções para mostrar nos trabalhos?','select','Somente informações reais e autorizadas.',yesNoHelp,true],
+        ...(state.m5Awards==='sim'?[
+          ['m5AwardsDetails','Quais prêmios e onde estão as artes?','textarea','Indique a relação entre obra, prêmio/festival, categoria/ano e arte fornecida. Pode apontar uma pasta ou o que enviará depois.',null,true],
+        ]:[]),
+      ])+optionalDetails('Preferência de vídeo no celular',[
+        ['m5VideoMobile','Como prefere apresentar os vídeos no celular?','select','Pode deixar para a Jumper recomendar; serão avaliados desempenho e acessibilidade.',mobilePlaybackChoices],
+      ])},
+      {...original('m5-bio'),title:'Sua Bio e foto',description:'Se o material já está pronto, indique a pasta. Não precisa copiar tudo nem repetir a trajetória.',render:()=>fields([
+        ['m5BioText','Qual Bio ou trajetória devemos usar?','textarea','Cole o texto ou indique o arquivo/pasta. Se precisa de apoio, conte sua trajetória com fatos reais. Pode sinalizar o que enviará depois.',null,true],
+        ['m5BioPhoto','Onde está a foto autorizada para a Bio?','textarea','Pode indicar a mesma pasta ou dizer que enviará depois.',null,true],
+      ])+((state.hasTestimonials||state.credibilityNumbers||state.credentials)?optionalDetails('Provas e informações recuperadas do rascunho',[
+        ['hasTestimonials','Depoimentos já informados','select','Confira a disponibilidade e autorização.',yesNoHelp],
+        ...(state.hasTestimonials==='sim'?[
+          ['testimonials','Textos, links ou pasta dos depoimentos','textarea','Resposta recuperada; indique pendências.',null,true],
+          ['testimonialsPermission','Autorização dos depoimentos','select','',[['','Escolha'],['nome-foto','Nome e foto autorizados'],['primeiro-nome','Somente primeiro nome ou iniciais'],['anonimo','Publicação anônima autorizada'],['nao-sei','Ainda preciso confirmar']],true],
+        ]:[]),
+        ...(state.credibilityNumbers?[['credibilityNumbers','Números já informados','text','Resposta recuperada do rascunho.']]:[]),
+        ...(state.credentials?[['credentials','Credenciais já informadas','textarea','Confira junto com os prêmios dos trabalhos.']]:[]),
+      ]):'')+(state.pricingDisplay?`<details class="optional-details"><summary>Preços recuperados do rascunho <span>opcional</span></summary>${priceFields()}</details>`:'')},
+    ]:[
+      {...original('offer'),title:'Conteúdo e história',description:'Pode indicar o catálogo, cardápio, apresentação ou pasta. Não precisa transcrever materiais prontos.',render:()=>fields([
+        ['servicesItems','Quais serviços, produtos ou trabalhos devem aparecer?','textarea','Indique nomes, detalhes e materiais. Se houver catálogo/cardápio, compartilhe o link; os itens serão conferidos pela Jumper.',null,true],
+        ['story','O que precisamos contar sobre sua história?','textarea','Conte a origem e os fatos que caracterizam o negócio, ou indique o texto/pasta. Se precisar, peça ajuda para organizar.',null,true],
+      ])+priceFields()+optionalDetails('Informações complementares e provas reais',[
+        ['serviceProcess','Como funciona a contratação ou o atendimento?','textarea','Só acrescente o que não estiver nos materiais.'],
+        ['promotion','Condições ou regras importantes','textarea','Se houver.'],
+        ['hasTestimonials','Há depoimentos reais que podemos consultar?','select','Pode decidir depois.',yesNoHelp],
+        ...(state.hasTestimonials==='sim'?[
+          ['testimonials','Textos, links ou pasta dos depoimentos','textarea','Pode indicar onde estão ou o que enviará depois.',null,true],
+          ['testimonialsPermission','Como foi autorizado o uso?','select','',[['','Escolha'],['nome-foto','Nome e foto autorizados'],['primeiro-nome','Somente primeiro nome ou iniciais'],['anonimo','Publicação anônima autorizada'],['nao-sei','Ainda preciso confirmar']],true],
+        ]:[]),
+        ['credibilityNumbers','Números reais que ajudam a apresentar o negócio','text','Se houver, apenas dados verificáveis.'],
+        ['credentials','Certificações, prêmios ou parceiros relevantes','textarea','Indique nomes ou materiais autorizados, se houver.'],
+      ])},
+    ]),
+    {...original('contact'),title:'Contato e atendimento',description:'Um WhatsApp ou e-mail é suficiente para o projeto. Você decide quais contatos podem ficar públicos.',render:()=>fields([
+      ...fieldsByStep.contact,
+      ...(state.contactUse==='outro'?[['publicContact','Qual contato pode aparecer no site?','text','WhatsApp, telefone ou e-mail público',null,true]]:[]),
+      ['primaryCTA','Qual deve ser a principal ação do visitante?','select','',[['','Escolha'],['whatsapp','Chamar no WhatsApp'],['agendamento','Agendar atendimento'],['orcamento','Pedir orçamento'],['comprar','Iniciar uma compra ou contratação'],['catalogo','Ver catálogo ou trabalhos'],['servicos','Conhecer os serviços'],['nao-sei','Quero orientação']],true],
+      ...(m5Audiovisual()?[
+        ['m5ProfessionalLinks','Quais links profissionais devem aparecer?','textarea','Inclua Instagram e IMDb, se usar. Não precisa repetir o contato acima quando já autorizado; indique outros contatos públicos, se houver. Pode apontar uma pasta ou sinalizar o que enviará depois.',null,true],
+      ]:[['instagram','Instagram do negócio','text','Informe o perfil, se houver.']]),
+    ])+operation()+optionalDetails('Outros detalhes de contato',[
+      ['googleBusiness','Perfil do negócio no Google','url','Se houver.'],
+      ...(m5Audiovisual()?[
+        ['serviceProcess','Como prefere receber propostas de trabalho?','textarea','Só acrescente se houver alguma orientação específica.'],
+        ...(state.story?[['story','Trajetória recuperada do rascunho','textarea','Confira junto com a Bio.']]:[]),
+        ...(state.servicesItems?[['servicesItems','Áreas de atuação recuperadas do rascunho','textarea','Confira junto com os trabalhos por área.']]:[]),
+      ]:[]),
+    ])},
+    {...original('style'),description:'Duas respostas orientam a direção visual. Se já tiver referências ou um manual, basta indicar os links.',render:()=>fields([byName(fieldsByStep.style,'personality'),byName(fieldsByStep.style,'visualReferences')])+optionalDetails('Cores, linguagem e cuidados',fieldsByStep.style.filter(item=>!['personality','visualReferences'].includes(item[0])))},
+    {...original('materials'),description:'Uma pasta com os materiais basta. O que faltar pode ser enviado depois; não compartilhe senhas.',render:()=>original('materials').render()+optionalDetails('Data, domínio e observações finais',[
+      fieldsByStep.finish[0],
+      ...(m5Creation()?[fieldsByStep.finish[1],...(state.domainStatus==='sim-registrado'?[['currentDomain','Qual é o endereço?','text','seusite.com.br']]:[])]:[]),
+      fieldsByStep.finish[2],
+    ])},
+    original('review'),
+  ];
+}
+function m5StepId(id) {
+  if(state.model!=='M5')return id;
+  const aliases={'m5-project':'model','audience':'goals','trust':m5Audiovisual()?'m5-bio':'offer','operation':'contact','structure':'m5-scope','m5-reformulation':'m5-scope','finish':'materials',...(m5Audiovisual()?{offer:'m5-videos'}:{'m5-bio':'offer','m5-videos':'m5-scope'})};
+  return aliases[id]||id;
+}
+
 function structureMarkup() {
   const gallery = !m5Audiovisual()&&(state.model==='M3'||state.wantsGallery==='sim');
   const team = state.wantsTeam==='sim';
@@ -350,7 +459,7 @@ function fieldMarkup([name,label,type,hint,options,required],index) {
 function choiceCards(name,options) {return `<fieldset class="choice-fieldset"><legend class="model-legend">Modelo contratado <span class="requirement-badge requirement-required">Obrigatório</span></legend><div class="choice-grid">${options.map(o=>`<label class="choice"><input type="radio" name="${name}" value="${o.value}" ${state[name]===o.value?'checked':''}><strong>${escapeHtml(o.title)}</strong><span class="choice-copy">${escapeHtml(o.text)}</span></label>`).join('')}</div></fieldset>`;}
 function escapeHtml(value) {return String(value??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');}
 function slugify(value) {return value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');}
-function visibleSteps() {return steps.filter(s=>!s.condition||s.condition());}
+function visibleSteps() {return state.model==='M5'?m5CompactSteps():steps.filter(s=>!s.condition||s.condition());}
 function validUrl(value) {try {const u=new URL(value);return ['http:','https:'].includes(u.protocol)&&!u.username&&!u.password;}catch{return false;}}
 
 // Only fields relevant to the current choices become active construction inputs.
@@ -360,7 +469,8 @@ function activeState() {
   if(s.domainStatus!=='sim-registrado')s.currentDomain='';
   if(s.model==='M5'&&!m5Creation())for(const key of ['domainStatus','currentDomain','registrar','desiredDomain'])s[key]='';
   if(m5Creation()&&s.materialsStatus!=='existing')s.existingSiteUrl='';
-  if(m5Audiovisual()){s.wantsGallery='sim';s.portfolioType='fotos-videos';s.portfolioMinItems=s.m5HomeVideoCount;s.portfolioItemsDescription=`Home: ${s.m5HomeVideos}\nAcervo e créditos: ${s.m5WorkCredits}`;}
+  if(s.model==='M5')s.requestedPages=s.requestedPages||s.m5PageDetails;
+  if(m5Audiovisual()){s.story=[s.m5BioText,s.story].filter((v,i,a)=>v&&a.indexOf(v)===i).join('\n');s.servicesItems=[s.m5WorkCredits,s.servicesItems].filter((v,i,a)=>v&&a.indexOf(v)===i).join('\n');s.wantsGallery='sim';s.portfolioType='fotos-videos';s.portfolioMinItems=s.m5HomeVideoCount;s.portfolioItemsDescription=`Home: ${s.m5HomeVideos}\nAcervo e créditos: ${s.m5WorkCredits}`;}
   if(s.model!=='M2'){s.secondaryPage='';s.secondaryPageGoal='';}
   if(!['todos','misto'].includes(s.pricingDisplay))s.pricingDetails='';
   if(s.model==='M1'){s.wantsGallery='nao';s.wantsTeam='nao';s.wantsBooking=s.primaryCTA==='agendamento'?'sim':'nao';}
@@ -399,19 +509,26 @@ function pendingDecisions(s) {
 }
 function stepError(id) {
   const required={business:['businessName','shortDescription','targetAudience','cityCoverage'],goals:['mainGoal','priorityOffer','differentiator','differentiatorEvidence'],audience:['typicalProblem','typicalResult','customerQuestions'],offer:['servicesItems','serviceProcess','pricingDisplay','primaryCTA'],trust:['story','hasTestimonials'],contact:['contactName','contactUse'],operation:['businessNature'],style:['personality','visualReferences'],materials:['materialsStatus','aiImages','usePexels']};
+  if(state.model==='M5'){
+    Object.assign(required,{goals:['mainGoal','priorityOffer','differentiator'],offer:['servicesItems','story','pricingDisplay'],contact:['contactName','contactUse','primaryCTA','businessNature',...(m5Audiovisual()?['m5ProfessionalLinks']:[])]});
+  }
   const missing=(required[id]||[]).find(k=>!String(state[k]||'').trim());
   if(missing)return {field:missing,message:'Responda este campo para continuar. Quando disponível, você pode escolher a ajuda da Jumper.'};
-  if(id==='m5-project'){
+  if(id==='m5-project'||(id==='model'&&state.model==='M5')){
     if(!['creation','reformulation'].includes(state.m5ProjectType))return {field:'m5ProjectType',message:'Escolha se vamos criar ou reformular o site.'};
     if(!['institutional','audiovisual','other'].includes(state.m5Profile))return {field:'m5Profile',message:'Escolha o tipo de projeto personalizado.'};
   }
   if(id==='m5-scope'){
-    for(const key of ['requestedPages','m5PageDetails','m5Features',...(!m5Creation()?['preserveItems','removeItems','existingFeatures']:[])])if(!state[key].trim())return {field:key,message:'Conte o que foi combinado ou indique o que precisa de orientação.'};
+    for(const key of ['m5PageDetails'])if(!state[key].trim())return {field:key,message:'Conte o que foi combinado ou indique o que precisa de orientação.'};
+  }
+  if(id==='m5-scope'){
+    if(!m5Creation()){const error=stepError('m5-reformulation');if(error)return error;}
+    const error=stepError('structure');if(error)return error;
   }
   if(id==='m5-videos'){
     for(const key of ['m5HomeVideoCount','m5HomeVideos','m5VideoPlayback','m5WorkCredits','m5Awards',...(state.m5Awards==='sim'?['m5AwardsDetails']:[])])if(!state[key].trim())return {field:key,message:'Informe o material disponível ou o que ainda precisa ser definido.'};
   }
-  if(id==='m5-bio')for(const key of ['m5BioText','m5BioPhoto','m5ProfessionalLinks'])if(!state[key].trim())return {field:key,message:'Informe o material ou sinalize que enviará depois.'};
+  if(id==='m5-bio')for(const key of ['m5BioText','m5BioPhoto'])if(!state[key].trim())return {field:key,message:'Informe o material ou sinalize que enviará depois.'};
   if(id==='model'&&!models.some(m=>m[0]===state.model))return {field:'model',message:'Escolha o modelo combinado com a Jumper.'};
   if(id==='m5-reformulation'){
     if(!validUrl(state.existingSiteUrl))return {field:'existingSiteUrl',message:'Informe o endereço completo do site, começando por https:// ou http://.'};
@@ -419,9 +536,10 @@ function stepError(id) {
   }
   if(id==='operation'&&['A','B'].includes(state.businessNature)&&!state.showAddress)return {field:'showAddress',message:'Escolha como podemos mostrar sua localização.'};
   if(id==='structure'&&state.model==='M2'&&!state.secondaryPageGoal.trim())return {field:'secondaryPageGoal',message:'Conte a finalidade e o conteúdo desejado para a segunda página.'};
-  if(id==='offer'&&['todos','misto'].includes(state.pricingDisplay)&&!state.pricingDetails.trim())return {field:'pricingDetails',message:'Informe os preços ou indique a tabela que será enviada para conferência.'};
+  if((id==='offer'||(id==='m5-bio'&&state.model==='M5'))&&['todos','misto'].includes(state.pricingDisplay)&&!state.pricingDetails.trim())return {field:'pricingDetails',message:'Informe os preços ou indique a tabela que será enviada para conferência.'};
   if(id==='structure'&&state.model==='M2'&&!state.secondaryPage)return {field:'secondaryPage',message:'Escolha a segunda página ou peça orientação da Jumper.'};
   if(id==='contact'){
+    if(state.model==='M5'){const error=stepError('operation');if(error)return error;}
     if(state.googleBusiness&&!validUrl(state.googleBusiness))return {field:'googleBusiness',message:'Confira o link completo do perfil no Google ou deixe para enviar depois.'};
     if(!state.whatsapp.trim()&&!state.contactEmail.trim())return {field:'whatsapp',message:'Informe pelo menos um WhatsApp ou e-mail para falarmos com você.'};
     if(state.whatsapp&&state.whatsapp.replace(/\D/g,'').length<10)return {field:'whatsapp',message:'Confira o WhatsApp e inclua o DDD.'};
@@ -432,7 +550,7 @@ function stepError(id) {
     if(state.materialsStatus==='link'&&!validUrl(state.materialsFolder))return {field:'materialsFolder',message:'Cole o link completo da pasta, começando por https://.'};
     if(state.materialsStatus==='existing'&&(state.model!=='M5'||m5Creation())&&!validUrl(state.existingSiteUrl))return {field:'existingSiteUrl',message:'Informe o endereço do site de onde podemos aproveitar os materiais.'};
   }
-  if(id==='trust'&&state.hasTestimonials==='sim')for(const k of ['testimonials','testimonialsPermission'])if(!state[k].trim())return {field:k,message:'Informe a origem das avaliações e a situação da autorização.'};
+  if((id==='trust'||(['offer','m5-bio'].includes(id)&&state.model==='M5'))&&state.hasTestimonials==='sim')for(const k of ['testimonials','testimonialsPermission'])if(!state[k].trim())return {field:k,message:'Informe a origem das avaliações e a situação da autorização.'};
   if(id==='structure'){
     const keys=[];
     if(!m5Audiovisual()&&(state.model==='M3'||state.wantsGallery==='sim'))keys.push('portfolioItemsDescription','portfolioMinItems');
@@ -452,6 +570,7 @@ function buildPayload() {
   const payload = {
     briefing_depth: "strategic-v3",
     intake_version: "guided-v1",
+    ...(state.model==="M5"?{intake_variant:"m5-compact-v1"}:{}),
     submission_id: state.submissionId,
     id: FORM_ID,
     source: "jumper.studio",
@@ -637,7 +756,7 @@ function buildPayload() {
 function answerLabel(options,value,fallback='Decidir com a Jumper') {return options.find(o=>o[0]===value)?.[1]||fallback;}
 function reviewGroups() {
   const s=activeState();
-  return [
+  const groups=[
     ...(s.model==='M5'?[['m5-project','Projeto personalizado',`${answerLabel(m5ProjectTypes,s.m5ProjectType)}\nPerfil: ${answerLabel(m5Profiles,s.m5Profile)}`]]:[]),
     ['business','Seu negócio',`${s.businessName}\n${s.shortDescription}\nPúblico: ${s.targetAudience}\nAtuação: ${s.cityCoverage}`],
     ['goals','Objetivo',`${answerLabel(goalChoices,s.mainGoal)}\nDestaque: ${s.priorityOffer}\nDiferencial: ${s.differentiator}\nExemplo concreto: ${s.differentiatorEvidence}`],
@@ -657,6 +776,17 @@ function reviewGroups() {
     ['materials','Materiais e imagens',`${s.materialsStatus==='link'?s.materialsFolder:s.materialsStatus==='existing'?`Aproveitar materiais de ${s.existingSiteUrl}`:'Vou enviar depois'}\nDisponíveis e pendentes: ${s.missingMaterials||'A conferir'}\nImagens de IA: ${s.aiImages==='sim'?'Pode criar para minha aprovação':s.aiImages==='nao'?'Não autorizado':'Quero orientação'}\nFotos de banco: ${s.usePexels==='fallback'?'Somente se necessário':s.usePexels==='nao'?'Não autorizado':'Quero orientação'}`],
     ['finish','Cuidados finais',`Data importante: ${s.deadline||'Não informada'}\nDomínio: ${s.model==='M5'&&!m5Creation()?s.existingSiteUrl:s.currentDomain||answerLabel([['sim-registrado','Já tenho domínio'],['quero-registrar','Ainda não tenho'],['nao-sei','Preciso de ajuda']],s.domainStatus)}\nObservações: ${s.finalNotes||'Nenhuma'}`],
   ];
+  if(s.model!=='M5')return groups;
+  const merged=new Map();
+  for(const [oldId,title,text]of groups){
+    if(oldId==='audience'&&![s.typicalProblem,s.typicalResult,s.customerQuestions,s.notFor,s.mustHaveMessage].some(Boolean))continue;
+    if(oldId==='trust'&&m5Audiovisual()&&![s.testimonials,s.credibilityNumbers,s.credentials].some(Boolean))continue;
+    if(oldId==='offer'&&m5Audiovisual()&&![s.serviceProcess,s.pricingDisplay,s.promotion].some(Boolean))continue;
+    const id=m5StepId(oldId),previous=merged.get(id);
+    if(previous)previous[2]+=`\n\n${title}\n${text}`;
+    else merged.set(id,[id,visibleSteps().find(step=>step.id===id)?.title||title,text]);
+  }
+  return [...merged.values()];
 }
 function resultMarkup() {
   return `<div class="result-box"><p class="scope-note"><strong>${escapeHtml(models.find(m=>m[0]===state.model)?.slice(0,2).join(' · ')||'')}</strong><br>As respostas serão conferidas pela Jumper. Páginas, recursos e materiais pendentes serão combinados antes da construção.</p><div class="review-list">${reviewGroups().map(([id,title,text])=>`<div><span>${escapeHtml(title)}</span><p>${escapeHtml(text)}</p><button type="button" class="edit-button" data-edit="${id}" aria-label="Editar ${escapeHtml(title)}">Editar</button></div>`).join('')}</div><label class="confirmation"><input type="checkbox" id="reviewConfirmed" name="reviewConfirmed" ${state.reviewConfirmed?'checked':''}><span><span class="requirement-badge requirement-required">Obrigatório</span> Confirmo que o modelo ${escapeHtml(state.model)} é o combinado e que estas respostas podem ser usadas pela Jumper na preparação do site.</span></label><p class="help">Não envie senhas. Materiais e informações ainda pendentes serão solicitados pela equipe.</p></div>`;
@@ -754,6 +884,7 @@ const saveButton = document.querySelector('#save-button');
 
 function render(focus=false) {
   const visible=visibleSteps();
+  currentStep=m5StepId(currentStep);state.furthestStep=m5StepId(state.furthestStep);
   if(!visible.some(s=>s.id===currentStep))currentStep='model';
   const step=visible.find(s=>s.id===currentStep);
   const title=m5Audiovisual()&&step.id==='business'?'Conte um pouco sobre sua atuação':step.title;
@@ -775,7 +906,7 @@ function render(focus=false) {
 }
 const progressLabels={
   model:'Modelo',business:'Seu negócio',goals:'Objetivo',audience:'Público',offer:'Oferta',trust:'Confiança',
-  'm5-project':'Seu projeto','m5-reformulation':'Site atual','m5-scope':'Páginas e recursos','m5-videos':'Trabalhos e vídeos','m5-bio':'Bio e links',operation:'Atendimento',structure:'Estrutura',
+  'm5-project':'Seu projeto','m5-reformulation':'Site atual','m5-scope':'Páginas e recursos','m5-videos':'Trabalhos e vídeos','m5-bio':'Bio e foto',operation:'Atendimento',structure:'Estrutura',
   contact:'Contato',style:'Estilo',materials:'Materiais',finish:'Cuidados finais',review:'Revisão',
 };
 function renderSummary() {
@@ -829,7 +960,7 @@ function clearValidationMessage(control) {
     stepContainer.querySelector('.submit-status.error')?.remove();
   }
 }
-function goTo(id) {currentStep=id;submitStatus=null;showSavePanel=false;render(true);}
+function goTo(id) {currentStep=m5StepId(id);submitStatus=null;showSavePanel=false;render(true);}
 async function next() {
   if(isSubmitting||state.submitted)return;
   updateStateFromForm();const error=stepError(currentStep);
@@ -871,10 +1002,10 @@ form.addEventListener('change',async event=>{
   const openDetails=Array.from(stepContainer.querySelectorAll('details[open]')).map(d=>d.querySelector('summary')?.textContent);
   updateStateFromForm();
   if(key==='model')state.furthestStep='model';
-  if(['m5ProjectType','m5Profile'].includes(key))state.furthestStep='m5-project';
+  if(['m5ProjectType','m5Profile'].includes(key))state.furthestStep='model';
   clearValidationMessage(event.target);
-  if(['m5Awards','businessNature','showAddress','contactUse','materialsStatus','wantsGallery','wantsTeam','wantsBooking','blogMode','hasTestimonials','domainStatus','pricingDisplay','primaryCTA'].includes(key)){
-    refreshConditionalFields();
+  if(['model','m5ProjectType','m5Profile','m5Awards','businessNature','showAddress','contactUse','materialsStatus','wantsGallery','wantsTeam','wantsBooking','blogMode','hasTestimonials','domainStatus','pricingDisplay','primaryCTA'].includes(key)){
+    if(state.model==='M5'||key==='model')render();else refreshConditionalFields();
     for(const detail of stepContainer.querySelectorAll('details'))if(openDetails.includes(detail.querySelector('summary')?.textContent))detail.open=true;
   }
   renderSummary();

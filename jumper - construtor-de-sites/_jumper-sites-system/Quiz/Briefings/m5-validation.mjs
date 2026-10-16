@@ -4,6 +4,7 @@ const object=v=>v&&typeof v==='object'&&!Array.isArray(v);
 export function validateM5Intake(payload) {
   if(payload?.project_scope?.model!=='M5')return [];
   const scope=payload.project_scope,errors=[];
+  const compact=payload.intake_variant==='m5-compact-v1'&&scope.custom_version==='m5-v2';
   const modern=scope.custom_version==='m5-v2'||scope.project_type==='creation'||scope.custom!=null;
   const type=modern?scope.project_type:'reformulation';
   if(!['creation','reformulation'].includes(type))errors.push('Escolha criação ou reformulação para o M5.');
@@ -21,7 +22,7 @@ export function validateM5Intake(payload) {
     if(!object(c))errors.push('Informe o escopo personalizado M5.');
     else {
       if(!['institutional','audiovisual','other'].includes(c.profile))errors.push('Escolha o perfil do site personalizado.');
-      for(const [key,label]of [['requested_pages','as páginas pretendidas'],['page_details','o conteúdo de cada página'],['requested_features','os recursos solicitados']])if(!text(c[key]))errors.push(`Informe ${label} ou sinalize o que precisa de orientação.`);
+      for(const [key,label]of [['requested_pages','as páginas pretendidas'],['page_details','o conteúdo de cada página'],...(!compact?[['requested_features','os recursos solicitados']]:[])])if(!text(c[key]))errors.push(`Informe ${label} ou sinalize o que precisa de orientação.`);
       if(c.profile==='audiovisual'){
         const a=c.audiovisual;
         if(!object(a))errors.push('Informe os detalhes do portfólio audiovisual.');
