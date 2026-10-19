@@ -70,7 +70,7 @@ const restaurant = currentUnit ? {
  <div class="footer-top footer-details">
   <div class="footer-signoff">
    <a class="brand footer-brand" href={internal('/')}><img src={internal('/logos/logo-sem-simbolo-branca-compacta.webp')} alt="Rodeio — desde 1958" width="420" height="117"/></a>
-   <p class="footer-signature">O tempo passa.<br/><em>A essência fica.</em></p>
+   <p class="footer-signature">Um clássico<br/><em>que se renova.</em></p>
   </div>
   {content.units.map(unit=><div class:list={["footer-unit",`footer-unit-${unit.slug}`]}><h3><a href={internal('/restaurantes/'+unit.slug+'/')}>Rodeio {unit.name}</a></h3><p>{unit.address}<br/>{unit.district}</p><a class="footer-unit-reserve" href={internal('/reservas/?unidade='+unit.slug)}>Reservar no {unit.name}<Arrow/></a></div>)}
   <div class="footer-contact"><h3>Vamos conversar</h3>
