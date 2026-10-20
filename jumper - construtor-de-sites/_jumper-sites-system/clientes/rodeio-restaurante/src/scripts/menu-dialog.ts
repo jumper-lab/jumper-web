@@ -17,12 +17,12 @@ if(dialog&&closeButton&&slot&&status&&menuUrl&&typeof dialog.showModal==='functi
  const slowMessage=`O conteúdo está demorando a carregar. Tente a opção de tela cheia abaixo.`;
  // Keep the original href working without JavaScript and for modified clicks.
  document.querySelectorAll<HTMLAnchorElement>('a[href]').forEach(link=>{
-  if(link.href!==menuUrl||dialog.contains(link))return;
+  if(link.href!==menuUrl||dialog.contains(link)||link.hasAttribute('download'))return;
   link.setAttribute('aria-haspopup','dialog');link.setAttribute('aria-controls',dialog.id);
  });
  document.addEventListener('click',event=>{
    const link=(event.target as Element).closest<HTMLAnchorElement>('a[href]');
-   if(!link||link.href!==menuUrl||dialog.contains(link))return;
+   if(!link||link.href!==menuUrl||dialog.contains(link)||link.hasAttribute('download'))return;
    if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
    event.preventDefault();
    if(dialog.open)return;

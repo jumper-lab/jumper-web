@@ -1,0 +1,3 @@
+.pdf-page-zoom { position: relative; overflow: hidden; aspect-ratio: 1555 / 2200; background: #ffecdc; box-shadow: 0 2px 16px rgb(48 35 28 / .1); touch-action: pan-y; }
+.pdf-page-zoom[data-zoomed="true"] { touch-action: none; }
+.pdf-page-zoom img { display: block; width: 100%; height: 100%; user-select: none; -webkit-user-select: none; -webkit-user-drag: none; transform-origin: center; }
