@@ -16,6 +16,9 @@ test('four forms share the persisted submit handler; ZIP tracking retained',asyn
  assert.ok(html.includes('assets/lead-form.js'));assert.ok(!script.includes('localStorage'));
  assert.ok(html.includes('GTM-M3GVTFV4'));assert.ok(html.includes('1874149183549598'));assert.ok(script.includes('CADASTRO-LP-CATIVE'));
  assert.ok(script.indexOf("fetch('/api/lead'")<script.indexOf("fbq('track', 'Lead')"));
+ assert.ok(script.includes("https://nilton.jumper.studio/webhook/izi-gym-franquias-lead"));
+ assert.ok(script.indexOf('fetch(sultsWebhookUrl')<script.indexOf("fbq('track', 'Lead')"));
+ assert.ok(!script.includes('Authorization'));
 });
 
 
