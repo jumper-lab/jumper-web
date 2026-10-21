@@ -10,11 +10,11 @@ LP entregue por Bruno em `LP_IZI_GYM_PRONTO.zip`, extraída com caminhos Windows
 - Studio: https://dash.cloudflare.com/e23efa36a1e09015eebb2b36bdfcf201/workers/d1/databases/4553bc65-eeb8-4404-aa57-e44692bcc9a3/studio
 - Tabela `leads`: identificação, criado_em UTC, dados de contato, preferência WhatsApp, cidade, capital, cinco UTMs, página e user agent. `payload_hash` permite retries idempotentes sem expor PII nos logs.
 
-Este Worker é independente do Jumper Hoster: nenhum deploy daqui envia Cerro Corá, o site institucional, hub, briefing ou bases existentes. Não há envio para CRM, email ou WhatsApp, nem API pública de leitura. A checkbox registra apenas a preferência já presente no formulário.
+Este Worker é independente do Jumper Hoster: nenhum deploy daqui envia Cerro Corá, o site institucional, hub, briefing ou bases existentes. Após a gravação no D1, o formulário envia o mesmo lead ao webhook publicado `IZI GYM — LP Franquias → Sults`, que cria o negócio na Sults. O token da Sults fica somente no workflow, nunca no JavaScript público. Não há API pública de leitura. A checkbox registra apenas a preferência já presente no formulário.
 
 ## Fluxo
 
-As UTMs da URL de chegada são persistidas em sessionStorage. Os quatro formulários chamam a mesma função; validação de campos acontece no navegador e no servidor. O botão é bloqueado durante o envio. O banco confirma a gravação antes dos eventos de conversão e da navegação para `proximos-passos.html`. Falhas mantêm o visitante na LP com mensagem e possibilidade de tentar novamente. Um UUID por envio evita duplicação caso a resposta se perca. O endpoint limita tamanho de payload, permite somente mesma origem e tem rate limit de 20 tentativas/minuto/IP. Não aceita gravação arbitrária de um site externo.
+As UTMs da URL de chegada são persistidas em sessionStorage. Os quatro formulários chamam a mesma função; validação de campos acontece no navegador e no servidor. O botão é bloqueado durante o envio. O banco e o workflow da Sults precisam confirmar o recebimento antes dos eventos de conversão e da navegação para `proximos-passos.html`. Falhas mantêm o visitante na LP com mensagem e possibilidade de tentar novamente. Um UUID por envio evita duplicação no D1 caso a resposta se perca. O endpoint limita tamanho de payload, permite somente mesma origem e tem rate limit de 20 tentativas/minuto/IP. Não aceita gravação arbitrária de um site externo.
 
 ## Desenvolvimento e publicação
 
