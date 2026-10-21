@@ -47,11 +47,6 @@
       "name": "Eventos"
     }
   ],
-  "hours": [
-    "Segunda a quinta: 12h às 15h30 · 18h às 23h",
-    "Sexta e sábado: 12h às 22h",
-    "Domingos e feriados: 12h às 20h"
-  ],
   "units": [
     {
       "slug": "jardins",
@@ -59,6 +54,11 @@
       "address": "Rua Haddock Lobo, 1448",
       "district": "Jardins, São Paulo — SP",
       "zip": "01414-002",
+      "hours": [
+        { "days": "Segunda a quinta", "time": "12h às 15h30 / 18h30 às 23h" },
+        { "days": "Sexta e sábado", "time": "12h às 23h" },
+        { "days": "Domingo e feriados", "time": "12h às 20h" }
+      ],
       "image": "jardins",
       "reservation": "https://rodeiosp.com.br/reservas/jardins/",
       "widget": "https://reservation-widget.tagme.com.br/reservation/schedule/56c778030896b3cd13c609e5/reservationWidget",
@@ -73,6 +73,10 @@
       "address": "Av. Brig. Faria Lima, 2232",
       "district": "Jardim Paulistano, São Paulo — SP",
       "zip": "01451-000",
+      "hours": [
+        { "days": "Segunda a quinta", "time": "11h30 às 15h30 / 18h30 às 22h" },
+        { "days": "Sexta, sábado, domingo e feriados", "time": "11h30 às 22h" }
+      ],
       "image": "iguatemi",
       "reservation": "https://rodeiosp.com.br/reservas/iguatemi/",
       "widget": "https://reservation-widget.tagme.com.br/reservation/schedule/56c778010896b3cd13c609d2/reservationWidget",

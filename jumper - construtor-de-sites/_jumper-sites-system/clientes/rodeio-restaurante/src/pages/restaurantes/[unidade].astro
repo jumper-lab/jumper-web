@@ -22,7 +22,7 @@ const galleryPhotos=restaurantGallerySelections[unit.slug];
   <div class="visit-heading"><h1 id="unit-title" class="restaurant-name"><span>Rodeio</span><em>{unit.name}</em></h1></div>
   <div class="visit-information">
    <div class="visit-address"><h3>Endereço</h3><address>{isJardins&&<span class="house-new-address">Novo endereço</span>}{unit.address}<br/>{unit.district}<br/><span>CEP {unit.zip}</span></address><Link href={unit.map}>Ver como chegar</Link></div>
-   <div class="visit-hours"><h3>Horários de funcionamento</h3><ul>{content.hours.map(hour=><li><span>{hour.split(': ')[0]}</span><strong>{hour.split(': ').slice(1).join(': ')}</strong></li>)}</ul></div>
+   <div class="visit-hours"><h3>Horários de funcionamento</h3><ul>{unit.hours.map(hour=><li><span>{hour.days}</span><strong>{hour.time}</strong></li>)}</ul></div>
    <div class="visit-reservation">
     <div><h3>Reservas</h3><p>Escolha a data e consulte os horários disponíveis no sistema de reservas.</p></div>
     <div class="visit-reservation-actions"><Link href={unit.widget}>Reservar no {unit.name}</Link><Link href={content.menu_url}>{content.pages.menu.cta}</Link></div>
