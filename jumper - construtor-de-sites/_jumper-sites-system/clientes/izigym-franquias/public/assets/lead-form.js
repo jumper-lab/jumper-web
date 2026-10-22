@@ -2,7 +2,6 @@
   'use strict';
   const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
   const storageKey = 'izi:franquias:utm:v1';
-  const sultsWebhookUrl = 'https://nilton.jumper.studio/webhook/izi-gym-franquias-lead';
   const params = new URLSearchParams(window.location.search);
   let attribution = {};
   try { const stored = JSON.parse(sessionStorage.getItem(storageKey) || '{}'); if (stored && typeof stored === 'object') attribution = stored; } catch (_) {}
@@ -45,15 +44,10 @@
     button.disabled = true;
     button.textContent = 'ENVIANDO…';
     try {
-      const response = await fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), signal: AbortSignal.timeout(20000) });
+      const response = await fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), signal: AbortSignal.timeout(30000) });
       const result = await response.json();
       if (!response.ok || result.ok !== true) throw Error(result.error || 'Não foi possível salvar seu cadastro. Tente novamente.');
-      const sultsResponse = await fetch(sultsWebhookUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), signal: AbortSignal.timeout(20000) });
-      const sultsResult = await sultsResponse.json().catch(() => ({}));
-      if (!sultsResponse.ok || sultsResult.status === 'error') {
-        throw Error(sultsResult.error || 'Seu cadastro foi salvo, mas não foi possível enviá-lo ao atendimento. Tente novamente.');
-      }
-      // Original ZIP conversion events: only fire after D1 and Sults acknowledge the write.
+      // The Worker confirms both D1 persistence and the server-side n8n delivery.
       if (typeof fbq === 'function') {
         try { fbq('track', 'Lead'); fbq('track', 'CompleteRegistration'); fbq('trackCustom', 'CADASTRO-LP-CATIVE'); } catch (_) {}
       }

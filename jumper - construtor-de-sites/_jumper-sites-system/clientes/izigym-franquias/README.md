@@ -8,17 +8,17 @@ LP entregue por Bruno em `LP_IZI_GYM_PRONTO.zip`, extraída com caminhos Windows
 - Worker com assets: `izi-lp-franquias`, conta Jumper `e23efa36a1e09015eebb2b36bdfcf201`.
 - D1: `izi-lp-franquias-leads`, ID `4553bc65-eeb8-4404-aa57-e44692bcc9a3`.
 - Studio: https://dash.cloudflare.com/e23efa36a1e09015eebb2b36bdfcf201/workers/d1/databases/4553bc65-eeb8-4404-aa57-e44692bcc9a3/studio
-- Tabela `leads`: identificação, criado_em UTC, dados de contato, preferência WhatsApp, cidade, capital, cinco UTMs, página e user agent. `payload_hash` permite retries idempotentes sem expor PII nos logs.
+- Tabela `leads`: identificação, criado_em UTC, dados de contato, preferência WhatsApp, cidade, capital, cinco UTMs, página, user agent e estado da entrega ao n8n. `payload_hash` permite retries idempotentes sem expor PII nos logs.
 
-Este Worker é independente do Jumper Hoster: nenhum deploy daqui envia Cerro Corá, o site institucional, hub, briefing ou bases existentes. Após a gravação no D1, o formulário envia o mesmo lead ao webhook publicado `IZI GYM — LP Franquias → Sults`, que cria o negócio na Sults. O token da Sults fica somente no workflow, nunca no JavaScript público. Não há API pública de leitura. A checkbox registra apenas a preferência já presente no formulário.
+Este Worker é independente do Jumper Hoster: nenhum deploy daqui envia Cerro Corá, o site institucional, hub, briefing ou bases existentes. Após gravar o lead no D1, o próprio Worker chama o webhook publicado `IZI GYM — LP Franquias → Sults`, que cria o negócio na Sults. O navegador faz somente o POST `/api/lead`; o token da Sults fica somente no workflow, nunca no JavaScript público. Não há API pública de leitura. A checkbox registra apenas a preferência já presente no formulário.
 
 ## Fluxo
 
-As UTMs da URL de chegada são persistidas em sessionStorage. Os quatro formulários chamam a mesma função; validação de campos acontece no navegador e no servidor. O botão é bloqueado durante o envio. O banco e o workflow da Sults precisam confirmar o recebimento antes dos eventos de conversão e da navegação para `proximos-passos.html`. Falhas mantêm o visitante na LP com mensagem e possibilidade de tentar novamente. Um UUID por envio evita duplicação no D1 caso a resposta se perca. O endpoint limita tamanho de payload, permite somente mesma origem e tem rate limit de 20 tentativas/minuto/IP. Não aceita gravação arbitrária de um site externo.
+As UTMs da URL de chegada são persistidas em sessionStorage. Os quatro formulários chamam a mesma função; validação de campos acontece no navegador e no servidor. O botão é bloqueado durante o envio. O Worker só chama o n8n depois da confirmação do D1 e só confirma sucesso ao navegador depois da resposta do workflow. Falhas de entrega ficam registradas no D1 e uma nova tentativa com o mesmo UUID repete apenas a etapa pendente. Os eventos de conversão e a navegação para `proximos-passos.html` acontecem somente após o fluxo completo. O endpoint limita tamanho de payload, permite somente mesma origem e tem rate limit de 20 tentativas/minuto/IP. Não aceita gravação arbitrária de um site externo.
 
 ## Desenvolvimento e publicação
 
-`npm ci`, `npm run db:local`, `npm run dev` (porta 8787) usam D1 local isolado. `npm test` cobre validação, gravação, repetição, erro do banco, acesso, assets e integração dos quatro formulários.
+`npm ci`, `npm run db:local`, `npm run dev` (porta 8787) usam D1 local isolado. `npm test` cobre validação, gravação, entrega servidor→n8n, repetição, recuperação de falha, erro do banco, acesso, assets e integração dos quatro formulários.
 
 Somente após confirmação do evento em `data/release.json`: PR → merge em main → checkout limpo atualizado → `npm run db:migrate` → `npm run deploy:cloudflare`. O comando verifica o escopo exato, o main remoto, os testes e o registro de confirmação antes de enviar. Não publicar com configuração local.
 
