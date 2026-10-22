@@ -30,7 +30,7 @@ const organization = {
   sameAs: ['https://www.instagram.com/rodeiorestaurante/'],
 };
 const currentUnit = content.units.find(unit => routePath.replace(/\/$/, '') === `/restaurantes/${unit.slug}`);
-// Keep the visible briefing address; unit hours and phone remain commercially unconfirmed.
+// Keep the visible briefing address; the individual unit phone remains commercially unconfirmed.
 const restaurant = currentUnit ? {
   id: new URL(internal(`/restaurantes/${currentUnit.slug}/#restaurant`), site).href,
   name: `Rodeio ${currentUnit.name}`,

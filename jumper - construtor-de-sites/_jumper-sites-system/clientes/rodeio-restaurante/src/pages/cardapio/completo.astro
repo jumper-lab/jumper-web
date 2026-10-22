@@ -3,7 +3,7 @@ import FullPageWorkspace from '../../components/FullPageWorkspace.astro';
 import content from '../../../data/content.json';
 import '../../styles/pdf-page-zoom.css';
 const base=import.meta.env.BASE_URL.replace(/\/$/,'');
-const pages=[1,2,3,4];
+const pages=[1,2,3,4,5];
 ---
 <FullPageWorkspace title="Cardápio Rodeio" back="/cardapio/" download={`${base}${content.menu_url}`}>
   <div class="workspace-pdf-pages" aria-label="Páginas do cardápio Rodeio">
