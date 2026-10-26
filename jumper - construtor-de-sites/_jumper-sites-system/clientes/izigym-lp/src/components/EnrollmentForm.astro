@@ -1,0 +1,46 @@
+<dialog id="inscricao" class="enrollment-dialog" aria-labelledby="inscricao-title">
+  <div class="enrollment-heading">
+    <h2 id="inscricao-title">Faça sua inscrição</h2>
+    <button type="button" class="enrollment-close" aria-label="Fechar formulário">×</button>
+  </div>
+  <form class="clx2-form" id="clx2Form">
+    <input type="hidden" name="empresa_id" value="205" />
+    <input type="hidden" name="origem" value="embed" />
+    <div class="clx2-group">
+      <label for="clx2_nome">Nome Completo</label>
+      <input type="text" id="clx2_nome" name="nome" required minlength="2" autocomplete="name" placeholder="Digite seu nome" autofocus />
+    </div>
+    <div class="clx2-group">
+      <label for="clx2_celular">Celular com DDD</label>
+      <input type="tel" id="clx2_celular" name="celular" required autocomplete="tel-national" inputmode="tel" placeholder="(11) 99999-9999" />
+    </div>
+    <label class="clx2-check">
+      <input type="checkbox" id="clx2_lgpd" name="lgpd_consentimento" value="1" checked />
+      <span>Aceito receber informações e lembretes pelo WhatsApp.</span>
+    </label>
+    <button type="submit">Fazer Inscrição</button>
+    <div class="clx2-msg" id="clx2Msg" role="status" aria-live="polite"></div>
+  </form>
+</dialog>
+
+<style is:global>
+  body.enrollment-open { overflow: hidden; }
+  .enrollment-dialog { width: min(420px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); margin: auto; padding: 0; border: 0; border-radius: 20px; background: #fff; color: #333; overflow: auto; }
+  .enrollment-dialog::backdrop { background: #0009; backdrop-filter: blur(5px); }
+  .enrollment-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 24px 24px 0; }
+  .enrollment-heading h2 { margin: 0; font-weight: 500; font-size: 26px; line-height: 1.15; letter-spacing: -.035em; }
+  .enrollment-close { display: grid; place-items: center; flex: 0 0 36px; width: 36px; height: 36px; padding: 0; border: 1px solid #ddd; border-radius: 50%; background: #fff; color: #333; font-size: 26px; cursor: pointer; }
+  .clx2-form { width: 100%; max-width: 400px; margin: 0 auto; padding: 24px; background: #fff; font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; box-sizing: border-box; }
+  .clx2-form .clx2-group { margin-bottom: 16px; }
+  .clx2-form label { display: block; margin-bottom: 6px; font-weight: 500; color: #333; font-size: 14px; }
+  .clx2-form input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; box-sizing: border-box; font-family: inherit; background: #fff; color: #333; }
+  .clx2-form input:focus { outline: none; border-color: #000; box-shadow: 0 0 0 3px #0003; }
+  .clx2-form .clx2-check { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 16px; cursor: pointer; font-weight: 400; font-size: 13px; line-height: 1.4; color: #333; }
+  .clx2-form .clx2-check input[type="checkbox"] { width: 16px; height: 16px; flex: 0 0 16px; margin: 1px 0 0; padding: 0; accent-color: #000; }
+  .clx2-form button { width: 100%; padding: 14px; background: #000; color: #fff; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; font-family: inherit; transition: background .15s; }
+  .clx2-form button:hover { background: #e07c1f; }
+  .clx2-form button:disabled { opacity: .7; cursor: wait; }
+  .clx2-form .clx2-msg { padding: 12px; border-radius: 8px; margin-top: 16px; display: none; font-size: 14px; }
+  .clx2-form .clx2-msg.success { background: #d4edda; color: #155724; display: block; }
+  .clx2-form .clx2-msg.error { background: #f8d7da; color: #721c24; display: block; }
+</style>

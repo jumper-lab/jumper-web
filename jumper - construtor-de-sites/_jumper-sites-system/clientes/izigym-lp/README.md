@@ -57,3 +57,13 @@ Teste de atribuição: `node --test tests/checkout-attribution.test.mjs` (Node 2
 ## Kits de rastreamento Cerro Corá — 12/10/2026
 
 O Hoster aplica `data/cerrocora-tracking.json` somente ao HTML do domínio oficial. Os dois GTMs usam uma fila comum; os legados Cative permanecem controlados. Izi não recebe instalação direta de ferramentas. Esta entrega cobre os carregadores, controles e eventos da página; configuração e publicação dos GTMs ficam fora do escopo. [Entrega e validação local](data/tracking/CERROCORA-2026-10-12.md) e [contrato dataLayer](data/tracking/datalayer-contract.json). Depois do build, `npm test` executa a suíte de atribuição e separação dos kits.
+
+## Formulário Clixx — Cerro Corá (26/10/2026)
+
+Os oito CTAs de matrícula da versão `simple` abrem o formulário Clixx em um diálogo na própria página. Destino fornecido pelo cliente: `POST https://app.clixx.com.br/api/webhook/inscricao/d63641`, empresa 205; acompanhamento de início, preenchimento, abandono e conclusão em `https://app.clixx.com.br/api/tracking/form`, anúncio 151. Nome, celular e opção de WhatsApp são enviados à Clixx; este fluxo não escreve no D1 nem usa YayForms.
+
+As seis UTMs do embed são recuperadas da chegada ou da sessão. O redirecionamento só acontece quando a Clixx confirma `success` ou `ja_inscrito` e retorna `redirect_url`; as UTMs são repassadas sem trocar cupom, plano ou conta presentes nesse destino. Erros mantêm a pessoa no formulário, e o envio bloqueia novos cliques enquanto aguarda. Sem URL de redirecionamento, aparece a confirmação na própria LP.
+
+Os containers GTM/GA4 existentes são preservados. Abrir o formulário não emite `InitiateCheckout`; a emissão de checkout ocorre somente ao seguir para o destino confirmado pela Clixx. O evento `form_submit` não inclui nome ou telefone. Nenhuma configuração de GTM é publicada por este ajuste.
+
+Validação: testes automatizados de contrato, UTMs e oito CTAs; navegação local desktop/mobile com respostas simuladas de sucesso, erro e cadastro existente. Nenhum lead fictício foi enviado ao CRM real. A API real respondeu ao preflight CORS com suporte a POST e Content-Type.

@@ -67,7 +67,35 @@ export function checkoutUrl(campaign: Campaign): string {
   return destination.href;
 }
 
-export function setupCheckoutLinks(): void {
+export function trackCheckout(placement: string, campaign: Campaign, href: string): void {
+  const tracking = window as TrackingWindow;
+  tracking.dataLayer ||= [];
+  const kits = tracking.cerroCoraTracking;
+  tracking.dataLayer.push({
+    event: 'checkout_click',
+    placement,
+    checkout_url: kits ? trackingCheckoutUrl(href) : href,
+    ...(kits ? trackingCampaign(campaign) : campaign),
+    ...(kits ? {
+      site_id: kits.siteId,
+      izi_enabled: kits.izi.enabled,
+      cative_enabled: kits.cative.enabled,
+      cative_checkout_source: kits.cative.legacy.metaCheckout.source,
+    } : {}),
+  });
+  if (kits) {
+    // Transitional Cative emitter. GTM must explicitly require source=gtm
+    // before this mode can change, including while older pages remain open.
+    if (kits.cative.enabled && kits.cative.legacy.metaCheckout.source === 'legacy') {
+      tracking.fbq?.('trackSingle', kits.cative.legacy.metaCheckout.pixelId, 'InitiateCheckout');
+    }
+  } else {
+    // Existing previews keep their behavior; only the official HTML opts in.
+    tracking.fbq?.('track', 'InitiateCheckout');
+  }
+}
+
+export function setupCheckoutLinks(openEnrollment?: (campaign: Campaign, placement: string, opener: HTMLAnchorElement) => void): void {
   // Storage can be disabled by browser privacy settings; direct checkout still works.
   let storage: Pick<Storage, 'getItem' | 'setItem'>;
   try { storage = window.sessionStorage; } catch { storage = { getItem: () => null, setItem: () => {} }; }
@@ -75,7 +103,7 @@ export function setupCheckoutLinks(): void {
   const links = [...document.querySelectorAll<HTMLAnchorElement>('a[data-checkout]')];
   const refresh = () => {
     campaign = readCampaign(location.search, storage);
-    links.forEach(link => { link.href = checkoutUrl(campaign); });
+    links.forEach(link => { link.href = openEnrollment ? '#inscricao' : checkoutUrl(campaign); });
   };
   refresh();
   const unboundLinks = links.filter(link => !boundLinks.has(link));
@@ -83,33 +111,14 @@ export function setupCheckoutLinks(): void {
   window.addEventListener('pageshow', refresh);
   unboundLinks.forEach(link => {
     boundLinks.add(link);
-    link.addEventListener('click', () => {
+    link.addEventListener('click', event => {
       refresh();
-      const tracking = window as TrackingWindow;
-      tracking.dataLayer ||= [];
-      const kits = tracking.cerroCoraTracking;
-      tracking.dataLayer.push({
-        event: 'checkout_click',
-        placement: link.dataset.checkout,
-        checkout_url: kits ? trackingCheckoutUrl(link.href) : link.href,
-        ...(kits ? trackingCampaign(campaign) : campaign),
-        ...(kits ? {
-          site_id: kits.siteId,
-          izi_enabled: kits.izi.enabled,
-          cative_enabled: kits.cative.enabled,
-          cative_checkout_source: kits.cative.legacy.metaCheckout.source,
-        } : {}),
-      });
-      if (kits) {
-        // Transitional Cative emitter. GTM must explicitly require source=gtm
-        // before this mode can change, including while older pages remain open.
-        if (kits.cative.enabled && kits.cative.legacy.metaCheckout.source === 'legacy') {
-          tracking.fbq?.('trackSingle', kits.cative.legacy.metaCheckout.pixelId, 'InitiateCheckout');
-        }
-      } else {
-        // Existing previews keep their behavior; only the official HTML opts in.
-        tracking.fbq?.('track', 'InitiateCheckout');
+      if (openEnrollment) {
+        event.preventDefault();
+        openEnrollment(campaign, link.dataset.checkout || '', link);
+        return;
       }
+      trackCheckout(link.dataset.checkout || '', campaign, link.href);
     });
   });
 }

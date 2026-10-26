@@ -191,6 +191,7 @@ export async function readPromotion(args = []) {
     '--promote=cerrocora-direct-checkout-2026-10-08': 'cerrocora-direct-checkout-2026-10-08',
     '--promote=izi-franquias-admin-2026-10-08': 'izi-franquias-admin-2026-10-08',
     '--promote=cerrocora-tracking-2026-10-12': 'cerrocora-tracking-2026-10-12',
+    '--promote=cerrocora-clixx-form-2026-10-26': 'cerrocora-clixx-form-2026-10-26',
     '--promote=principal-tracking-2026-10-13': 'principal-tracking-2026-10-13',
   };
   if (flags.length !== 1 || !releases[flags[0]]) {

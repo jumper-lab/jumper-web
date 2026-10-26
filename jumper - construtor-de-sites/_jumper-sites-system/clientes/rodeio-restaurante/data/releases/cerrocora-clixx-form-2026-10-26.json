@@ -1,0 +1,25 @@
+{
+  "scope": "cerrocora",
+  "approvedRequest": "Solicitação de Leandro neste chat em 26/10/2026: trocar os botões da LP Cerro Corá pelo formulário Clixx fornecido. Publicação restrita à LP; os demais sites seguem na comparação estrita.",
+  "baselineMain": "aecf3610",
+  "baselineWorkerVersion": "f7c310c5-cc1b-4b72-adb3-f4423847a1ca",
+  "workerSha256": "d4fe9cea516e49658e624cb79061b2cc68fb43dd9b3adf284301b7024689c060",
+  "pages": [
+    {
+      "asset": "cerrocora/index.html",
+      "candidateSha256": "67290cd37fb377d16c3a35d9954cb097b9c7bd6d00a31e67d0e0efc990fe1289",
+      "publishedSha256": [
+        "dbc1e000a29b1571602de4ea9b5945b3bbd7af045e946d77233c8ec624ce0775",
+        "67290cd37fb377d16c3a35d9954cb097b9c7bd6d00a31e67d0e0efc990fe1289"
+      ]
+    },
+    {
+      "asset": "izigym-lp-vilaromana/index.html",
+      "candidateSha256": "cbd0973ca20b3c309e2c90c8f43dd4d7a6bb9e3ae909fd2b97c6e0abb7bf91c5",
+      "publishedSha256": [
+        "f4fd8685e2b899c49b44d13f4cd738215c6b6d506dc5c2031400c2c6ddbfc3ea",
+        "cbd0973ca20b3c309e2c90c8f43dd4d7a6bb9e3ae909fd2b97c6e0abb7bf91c5"
+      ]
+    }
+  ]
+}
