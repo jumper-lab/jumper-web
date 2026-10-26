@@ -139,3 +139,17 @@ O hub oferece `Cadastros da LP Franquias - Painel ADM` em `https://site.jumper.d
 O painel reutiliza o calendário de Cerro Corá, filtra por período, capital e cidade, atualiza mantendo os filtros e exporta todos os campos de cadastro/UTMs/origem/user agent. O CSV respeita os filtros, tem limite explícito de 20.000 linhas e protege contra fórmulas de planilha. Os dados e os CSVs não recebem cache público. Os painéis de Cerro Corá continuam separados. A LP e seu envio permanecem no Worker independente `izi-lp-franquias`; o Hoster oferece apenas a consulta administrativa.
 
 A publicação inicial do painel usa `npm run deploy:cloudflare -- --promote=izi-franquias-admin-2026-10-08`, após PR/merge em main limpo. Esse registro fixa o hash do Worker revisado e o UUID do D1 de franquias; herda apenas os dois hashes de páginas da promoção Cerro Corá existente para preservar a diferença já revisada entre pacote live e prévia dev. Os demais sites, domínios, bindings e autenticação permanecem na auditoria estrita.
+
+### Correção de horários do principal IZI — 26/10/2026
+
+A PR #128 corrige rodapé/FAQ da prévia `/izigym/` e rodapé/FAQ/JSON-LD do
+principal: segunda a sexta 05:00–23:00, sábado 08:00–18:00 e domingos/feriados
+08:00–16:00. O usuário autorizou integração e publicação nos dois ambientes.
+Após o deploy dev exclusivamente de `izigym` e o merge, a publicação live usa
+`npm run deploy:cloudflare -- --promote=principal-horarios-2026-10-26`.
+O registro fixa os hashes anterior/candidato do principal e conserva somente a
+diferença Vila Romana previamente revisada. Outros clientes continuam na
+comparação estrita. Na auditoria de preparo, o Rodeio dev já exibia o cardápio de
+cinco páginas da PR #126, ainda não integrada ao main; essa divergência bloqueou
+os preflights dev e live. Reconciliar a PR do Rodeio antes de reconstruir e auditar
+novamente. O registro da promoção não autoriza aceitar diferenças do Rodeio.

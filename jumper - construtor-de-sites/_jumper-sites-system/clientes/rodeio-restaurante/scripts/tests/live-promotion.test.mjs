@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { compareProtectedPages, protectedPages, readPromotion } from '../preflight-hoster.mjs';
+import { compareProtectedPages, protectedPages, readPromotion, validatePromotionScope } from '../preflight-hoster.mjs';
 const digest = value => createHash('sha256').update(value).digest('hex');
 const asset = 'cerrocora/index.html';
 const candidate = name => Buffer.from(`${name}:candidate`);
@@ -46,4 +46,18 @@ test('tracking release uses its own reviewed hashes without widening the page sc
  assert.ok(release.pages[0].publishedSha256.includes(previous.pages[0].candidateSha256));
  assert.deepEqual(release.pages[1].publishedSha256, ['f4fd8685e2b899c49b44d13f4cd738215c6b6d506dc5c2031400c2c6ddbfc3ea']);
  await assert.rejects(readPromotion(['--promote=cerrocora-tracking-2026-10-12', '--promote=any-other-client']), /desconhecida/);
+});
+
+
+test('hours promotion is restricted to the principal and the previously reviewed Vila Romana asset', async () => {
+ const release = await readPromotion(['--promote=principal-horarios-2026-10-26']);
+ const previous = await readPromotion(['--promote=principal-tracking-2026-10-13']);
+ assert.equal(release.scope, 'principal');
+ assert.deepEqual(release.pages.map(page=>page.asset).sort(), ['_official/izigym/index.shell','izigym-lp-vilaromana/index.html']);
+ assert.deepEqual(release.pages[1], previous.pages[1]);
+ assert.ok(release.pages[0].publishedSha256.includes(previous.pages[0].candidateSha256));
+ assert.ok(release.pages[0].publishedSha256.includes(release.pages[0].candidateSha256));
+ for (const asset of ['rodeio/index.html', 'cerrocora/index.html', 'izigym/index.html']) {
+  assert.throws(()=>validatePromotionScope({...release,pages:[...release.pages,{...release.pages[0],asset}]}, 'principal-horarios-2026-10-26'), /escopo revisado/);
+ }
 });
