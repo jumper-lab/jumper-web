@@ -159,3 +159,5 @@ comparação estrita. Na auditoria de preparo, o Rodeio dev já exibia o cardáp
 cinco páginas da PR #126, ainda não integrada ao main; essa divergência bloqueou
 os preflights dev e live. Reconciliar a PR do Rodeio antes de reconstruir e auditar
 novamente. O registro da promoção não autoriza aceitar diferenças do Rodeio.
+
+**Publicação conjunta revisada de 26/10/2026.** Durante a reconciliação, a PR #128 entrou no main com a correção de horários do institucional, já autorizada pelo usuário no chat `Identificar site dev e live`. Para conservar essa atualização, a conclusão conjunta usa `--promote=izi-clixx-horarios-2026-10-26`. O registro dessa promoção contém exatamente três páginas: principal oficial com os horários corrigidos, Cerro Corá com formulário Clixx e seu pacote Vila Romana. Todos os hashes anterior/candidato são herdados das duas revisões específicas. Antes do live, publicar somente `izigym` no dev com os horários aprovados. Os demais sete sites dev, o Rodeio e todas as outras páginas live permanecem sob comparação estrita. Não se trata de liberação genérica de diferenças nem de publicação do formulário nas prévias antigas da LP.

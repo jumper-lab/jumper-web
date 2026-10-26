@@ -61,3 +61,17 @@ test('hours promotion is restricted to the principal and the previously reviewed
   assert.throws(()=>validatePromotionScope({...release,pages:[...release.pages,{...release.pages[0],asset}]}, 'principal-horarios-2026-10-26'), /escopo revisado/);
  }
 });
+
+test('combined IZI publication pins only the approved form and hours and cannot exempt another client', async () => {
+ const release = await readPromotion(['--promote=izi-clixx-horarios-2026-10-26']);
+ assert.equal(release.scope, 'izi-clixx-horarios');
+ assert.deepEqual(release.pages.map(page => page.asset).sort(), ['_official/izigym/index.shell', 'cerrocora/index.html', 'izigym-lp-vilaromana/index.html']);
+ const hours = await readPromotion(['--promote=principal-horarios-2026-10-26']);
+ const form = await readPromotion(['--promote=cerrocora-clixx-form-2026-10-26']);
+ assert.deepEqual(release.pages, [hours.pages[0], ...form.pages]);
+ for (const asset of ['rodeio/index.html', 'casabelie/index.html', 'izigym/index.html']) {
+  assert.throws(() => validatePromotionScope({...release, pages:[...release.pages, {...release.pages[0],asset}]}, 'izi-clixx-horarios-2026-10-26'), /escopo revisado/);
+ }
+ assert.throws(() => validatePromotionScope({...release, pages:release.pages.slice(1)}, 'izi-clixx-horarios-2026-10-26'), /escopo revisado/);
+ assert.throws(() => validatePromotionScope({...release, pages:[release.pages[0],release.pages[0],release.pages[2]]}, 'izi-clixx-horarios-2026-10-26'), /escopo revisado/);
+});
