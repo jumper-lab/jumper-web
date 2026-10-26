@@ -195,6 +195,7 @@ export async function readPromotion(args = []) {
     '--promote=izi-franquias-admin-2026-10-08': 'izi-franquias-admin-2026-10-08',
     '--promote=cerrocora-tracking-2026-10-12': 'cerrocora-tracking-2026-10-12',
     '--promote=cerrocora-clixx-form-2026-10-26': 'cerrocora-clixx-form-2026-10-26',
+    '--promote=cerrocora-form-close-2026-10-26': 'cerrocora-form-close-2026-10-26',
     '--promote=izi-clixx-horarios-2026-10-26': 'izi-clixx-horarios-2026-10-26',
     '--promote=principal-tracking-2026-10-13': 'principal-tracking-2026-10-13',
     '--promote=principal-horarios-2026-10-26': 'principal-horarios-2026-10-26',

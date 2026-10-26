@@ -1,7 +1,9 @@
 <dialog id="inscricao" class="enrollment-dialog" aria-labelledby="inscricao-title">
   <div class="enrollment-heading">
     <h2 id="inscricao-title">Faça sua inscrição</h2>
-    <button type="button" class="enrollment-close" aria-label="Fechar formulário">×</button>
+    <button type="button" class="enrollment-close" aria-label="Fechar formulário">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="m5 5 14 14M19 5 5 19" /></svg>
+    </button>
   </div>
   <form class="clx2-form" id="clx2Form">
     <input type="hidden" name="empresa_id" value="205" />
@@ -29,7 +31,10 @@
   .enrollment-dialog::backdrop { background: #0009; backdrop-filter: blur(5px); }
   .enrollment-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 24px 24px 0; }
   .enrollment-heading h2 { margin: 0; font-weight: 500; font-size: 26px; line-height: 1.15; letter-spacing: -.035em; }
-  .enrollment-close { display: grid; place-items: center; flex: 0 0 36px; width: 36px; height: 36px; padding: 0; border: 1px solid #ddd; border-radius: 50%; background: #fff; color: #333; font-size: 26px; cursor: pointer; }
+  .enrollment-close { display: grid; place-items: center; flex: 0 0 44px; width: 44px; height: 44px; padding: 0; border: 1px solid #ddd; border-radius: 50%; background: #fff; color: #333; line-height: 1; cursor: pointer; appearance: none; transition: background .15s, border-color .15s; }
+  .enrollment-close svg { display: block; width: 22px; height: 22px; }
+  .enrollment-close:hover { background: #f5f3ed; border-color: #bbb; }
+  .enrollment-close:focus-visible { outline: 2px solid #e52c12; outline-offset: 3px; }
   .clx2-form { width: 100%; max-width: 400px; margin: 0 auto; padding: 24px; background: #fff; font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; box-sizing: border-box; }
   .clx2-form .clx2-group { margin-bottom: 16px; }
   .clx2-form label { display: block; margin-bottom: 6px; font-weight: 500; color: #333; font-size: 14px; }

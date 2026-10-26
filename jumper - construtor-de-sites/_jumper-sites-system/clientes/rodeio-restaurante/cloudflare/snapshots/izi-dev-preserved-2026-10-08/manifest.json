@@ -8,7 +8,7 @@
       "path": "izigym-lp/simple/index.html",
       "snapshot": "izigym-lp/simple/index.html",
       "snapshotSha256": "cf641c8494aa8b4c17a108404678bdb9022be90ec70531170ec2cd368e410f16",
-      "generatedSha256": "a6ecc8061eb6c6ccf15cd6311735c574721a825f6accdd5ab509a28805274c53",
+      "generatedSha256": "9fbefc7fb61da4b49be5e4040c480e637dcee42430a7aef5b522563f1820dc6d",
       "sourceUrl": "https://site.jumper.dev.br/izigym-lp/simple/"
     },
     {
@@ -24,7 +24,7 @@
       "path": "izigym-lp-vilaromana/index.html",
       "snapshot": "izigym-lp-vilaromana/index.html",
       "snapshotSha256": "f4fd8685e2b899c49b44d13f4cd738215c6b6d506dc5c2031400c2c6ddbfc3ea",
-      "generatedSha256": "cbd0973ca20b3c309e2c90c8f43dd4d7a6bb9e3ae909fd2b97c6e0abb7bf91c5",
+      "generatedSha256": "aa383288e24e44a454083432a7fccd365c16b872d3317efd21cbf66203eab1d6",
       "sourceUrl": "https://site.jumper.dev.br/izigym-lp-vilaromana/"
     },
     {
@@ -32,7 +32,7 @@
       "path": "izigym-lp-vilaromana/simple/index.html",
       "snapshot": "izigym-lp-vilaromana/simple/index.html",
       "snapshotSha256": "f4fd8685e2b899c49b44d13f4cd738215c6b6d506dc5c2031400c2c6ddbfc3ea",
-      "generatedSha256": "cbd0973ca20b3c309e2c90c8f43dd4d7a6bb9e3ae909fd2b97c6e0abb7bf91c5",
+      "generatedSha256": "aa383288e24e44a454083432a7fccd365c16b872d3317efd21cbf66203eab1d6",
       "sourceUrl": "https://site.jumper.dev.br/izigym-lp-vilaromana/simple/"
     },
     {
@@ -90,6 +90,16 @@
       "slug": "izigym-lp-vilaromana",
       "path": "izigym-lp-vilaromana/_astro/simple.8lnXp0oO.css",
       "generatedSha256": "b46e0fe98afa32370563b289f1dc020c5c24bc091c8110744f38a7be0b732c83"
+    },
+    {
+      "slug": "izigym-lp",
+      "path": "izigym-lp/_astro/simple.ConiH_ZM.css",
+      "generatedSha256": "fa1ff0284f4d9decc9a7dab91f25feca1f67ede760512cee3451cad38344daac"
+    },
+    {
+      "slug": "izigym-lp-vilaromana",
+      "path": "izigym-lp-vilaromana/_astro/simple.ConiH_ZM.css",
+      "generatedSha256": "73f75bdd343fcc765c15406215036e6d7bb7988a7f46e8a2a3fd3c36f3d6840f"
     }
   ]
 }
