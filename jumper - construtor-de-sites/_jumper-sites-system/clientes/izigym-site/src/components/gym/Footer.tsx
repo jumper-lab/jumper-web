@@ -74,8 +74,12 @@ export const Footer = () => {
                     <span className="font-medium text-zinc-800">05:00 - 23:00</span>
                   </div>
                   <div>
-                    <span className="block">Sábado e Domingo</span>
-                    <span className="font-medium text-zinc-800">08:00 - 20:00</span>
+                    <span className="block">Sábado</span>
+                    <span className="font-medium text-zinc-800">08:00 - 18:00</span>
+                  </div>
+                  <div>
+                    <span className="block">Domingos e feriados</span>
+                    <span className="font-medium text-zinc-800">08:00 - 16:00</span>
                   </div>
                 </div>
               </div>
