@@ -168,7 +168,7 @@ async function liveWorkerFeatures() {
 }
 
 export function validatePromotionScope(promotion, release) {
-  const principal = release === 'principal-tracking-2026-10-13';
+  const principal = ['principal-tracking-2026-10-13', 'principal-horarios-2026-10-26'].includes(release);
   const expectedScope = principal ? 'principal' : release === 'izi-franquias-admin-2026-10-08' ? 'izi-franquias-admin' : 'cerrocora';
   const expectedAssets = principal
     ? ['_official/izigym/index.shell', 'izigym-lp-vilaromana/index.html']
@@ -193,6 +193,7 @@ export async function readPromotion(args = []) {
     '--promote=cerrocora-tracking-2026-10-12': 'cerrocora-tracking-2026-10-12',
     '--promote=cerrocora-clixx-form-2026-10-26': 'cerrocora-clixx-form-2026-10-26',
     '--promote=principal-tracking-2026-10-13': 'principal-tracking-2026-10-13',
+    '--promote=principal-horarios-2026-10-26': 'principal-horarios-2026-10-26',
   };
   if (flags.length !== 1 || !releases[flags[0]]) {
     throw new Error('Promoção live desconhecida. Use uma revisão de escopo versionada.');

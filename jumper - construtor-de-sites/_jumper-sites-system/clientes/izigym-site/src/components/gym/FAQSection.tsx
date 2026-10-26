@@ -47,7 +47,7 @@ const faqItems = [
   },
   {
     question: "Quais são os horários de funcionamento?",
-    answer: "Segunda a sexta: 05:00 às 23:00. Sábados e domingos: 08:00 às 20:00. Consulte o horário de feriados em nossas redes sociais.",
+    answer: "Segunda a sexta: 05:00 às 23:00. Sábado: 08:00 às 18:00. Domingos e feriados: 08:00 às 16:00.",
   },
   {
     question: "Quais são os preços dos planos?",

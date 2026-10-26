@@ -145,3 +145,17 @@ A publicação inicial do painel usa `npm run deploy:cloudflare -- --promote=izi
 A publicação solicitada da LP usa `npm run deploy:cloudflare -- --promote=cerrocora-clixx-form-2026-10-26`, após PR/merge em main limpo. O registro `data/releases/cerrocora-clixx-form-2026-10-26.json` fixa os hashes anterior/candidato da Cerro Corá e do pacote Vila Romana e conserva o hash do Worker. O novo formulário usa a Clixx, não o D1/YayForms. As prévias IZI existentes são conservadas pelos snapshots do build dev; esta operação não publica o Worker dev.
 
 A auditoria encontrou o Rodeio dev ativo no commit `1cd4f044` (cardápio de cinco páginas e horários por unidade), ainda fora do main. Leandro autorizou a reconciliação: o mesmo commit foi integrado sem editar a versão publicada e sem adicionar exceções ao preflight. O pacote reconstruído passou na comparação estrita da página Rodeio com a prévia ativa. Os demais sites, domínios, bindings e recursos críticos continuam na comparação obrigatória.
+
+### Correção de horários do principal IZI — 26/10/2026
+
+A PR #128 corrige rodapé/FAQ da prévia `/izigym/` e rodapé/FAQ/JSON-LD do
+principal: segunda a sexta 05:00–23:00, sábado 08:00–18:00 e domingos/feriados
+08:00–16:00. O usuário autorizou integração e publicação nos dois ambientes.
+Após o deploy dev exclusivamente de `izigym` e o merge, a publicação live usa
+`npm run deploy:cloudflare -- --promote=principal-horarios-2026-10-26`.
+O registro fixa os hashes anterior/candidato do principal e conserva somente a
+diferença Vila Romana previamente revisada. Outros clientes continuam na
+comparação estrita. Na auditoria de preparo, o Rodeio dev já exibia o cardápio de
+cinco páginas da PR #126, ainda não integrada ao main; essa divergência bloqueou
+os preflights dev e live. Reconciliar a PR do Rodeio antes de reconstruir e auditar
+novamente. O registro da promoção não autoriza aceitar diferenças do Rodeio.
