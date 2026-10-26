@@ -1,5 +1,6 @@
 import { setupCheckoutLinks } from './checkout-attribution';
-setupCheckoutLinks();
+import { setupEnrollmentForm } from './enrollment-form';
+setupCheckoutLinks(setupEnrollmentForm());
 const reducedMotion=matchMedia('(prefers-reduced-motion:reduce)');
 const mobile=matchMedia('(max-width:767px)');
 const nav=document.querySelector<HTMLElement>('#navigation')!;

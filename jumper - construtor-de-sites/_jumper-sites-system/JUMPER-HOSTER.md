@@ -140,6 +140,12 @@ O painel reutiliza o calendário de Cerro Corá, filtra por período, capital e 
 
 A publicação inicial do painel usa `npm run deploy:cloudflare -- --promote=izi-franquias-admin-2026-10-08`, após PR/merge em main limpo. Esse registro fixa o hash do Worker revisado e o UUID do D1 de franquias; herda apenas os dois hashes de páginas da promoção Cerro Corá existente para preservar a diferença já revisada entre pacote live e prévia dev. Os demais sites, domínios, bindings e autenticação permanecem na auditoria estrita.
 
+### Cerro Corá: formulário Clixx e reconciliação Rodeio — 26/10/2026
+
+A publicação solicitada da LP usa `npm run deploy:cloudflare -- --promote=cerrocora-clixx-form-2026-10-26`, após PR/merge em main limpo. O registro `data/releases/cerrocora-clixx-form-2026-10-26.json` fixa os hashes anterior/candidato da Cerro Corá e do pacote Vila Romana e conserva o hash do Worker. O novo formulário usa a Clixx, não o D1/YayForms. As prévias IZI existentes são conservadas pelos snapshots do build dev; esta operação não publica o Worker dev.
+
+A auditoria encontrou o Rodeio dev ativo no commit `1cd4f044` (cardápio de cinco páginas e horários por unidade), ainda fora do main. Leandro autorizou a reconciliação: o mesmo commit foi integrado sem editar a versão publicada e sem adicionar exceções ao preflight. O pacote reconstruído passou na comparação estrita da página Rodeio com a prévia ativa. Os demais sites, domínios, bindings e recursos críticos continuam na comparação obrigatória.
+
 ### Correção de horários do principal IZI — 26/10/2026
 
 A PR #128 corrige rodapé/FAQ da prévia `/izigym/` e rodapé/FAQ/JSON-LD do
@@ -153,3 +159,5 @@ comparação estrita. Na auditoria de preparo, o Rodeio dev já exibia o cardáp
 cinco páginas da PR #126, ainda não integrada ao main; essa divergência bloqueou
 os preflights dev e live. Reconciliar a PR do Rodeio antes de reconstruir e auditar
 novamente. O registro da promoção não autoriza aceitar diferenças do Rodeio.
+
+**Publicação conjunta revisada de 26/10/2026.** Durante a reconciliação, a PR #128 entrou no main com a correção de horários do institucional, já autorizada pelo usuário no chat `Identificar site dev e live`. Para conservar essa atualização, a conclusão conjunta usa `--promote=izi-clixx-horarios-2026-10-26`. O registro dessa promoção contém exatamente três páginas: principal oficial com os horários corrigidos, Cerro Corá com formulário Clixx e seu pacote Vila Romana. Todos os hashes anterior/candidato são herdados das duas revisões específicas. Antes do live, publicar somente `izigym` no dev com os horários aprovados. Os demais sete sites dev, o Rodeio e todas as outras páginas live permanecem sob comparação estrita. Não se trata de liberação genérica de diferenças nem de publicação do formulário nas prévias antigas da LP.

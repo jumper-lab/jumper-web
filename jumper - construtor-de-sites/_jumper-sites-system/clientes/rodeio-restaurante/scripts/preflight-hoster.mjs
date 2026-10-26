@@ -168,9 +168,12 @@ async function liveWorkerFeatures() {
 }
 
 export function validatePromotionScope(promotion, release) {
+  const combinedIzi = release === 'izi-clixx-horarios-2026-10-26';
   const principal = ['principal-tracking-2026-10-13', 'principal-horarios-2026-10-26'].includes(release);
-  const expectedScope = principal ? 'principal' : release === 'izi-franquias-admin-2026-10-08' ? 'izi-franquias-admin' : 'cerrocora';
-  const expectedAssets = principal
+  const expectedScope = combinedIzi ? 'izi-clixx-horarios' : principal ? 'principal' : release === 'izi-franquias-admin-2026-10-08' ? 'izi-franquias-admin' : 'cerrocora';
+  const expectedAssets = combinedIzi
+    ? ['_official/izigym/index.shell', 'cerrocora/index.html', 'izigym-lp-vilaromana/index.html']
+    : principal
     ? ['_official/izigym/index.shell', 'izigym-lp-vilaromana/index.html']
     : ['cerrocora/index.html', 'izigym-lp-vilaromana/index.html'];
   const assets = promotion.pages?.map(page => page.asset).sort();
@@ -191,6 +194,8 @@ export async function readPromotion(args = []) {
     '--promote=cerrocora-direct-checkout-2026-10-08': 'cerrocora-direct-checkout-2026-10-08',
     '--promote=izi-franquias-admin-2026-10-08': 'izi-franquias-admin-2026-10-08',
     '--promote=cerrocora-tracking-2026-10-12': 'cerrocora-tracking-2026-10-12',
+    '--promote=cerrocora-clixx-form-2026-10-26': 'cerrocora-clixx-form-2026-10-26',
+    '--promote=izi-clixx-horarios-2026-10-26': 'izi-clixx-horarios-2026-10-26',
     '--promote=principal-tracking-2026-10-13': 'principal-tracking-2026-10-13',
     '--promote=principal-horarios-2026-10-26': 'principal-horarios-2026-10-26',
   };

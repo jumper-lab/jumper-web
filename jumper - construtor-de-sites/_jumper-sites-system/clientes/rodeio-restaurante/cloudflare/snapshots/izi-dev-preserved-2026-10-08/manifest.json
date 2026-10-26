@@ -8,7 +8,7 @@
       "path": "izigym-lp/simple/index.html",
       "snapshot": "izigym-lp/simple/index.html",
       "snapshotSha256": "cf641c8494aa8b4c17a108404678bdb9022be90ec70531170ec2cd368e410f16",
-      "generatedSha256": "9ca2c6e7e5961c91dc53be9ddadd8f9e7046a7cf8aad51b3f43c7a2e3743344b",
+      "generatedSha256": "a6ecc8061eb6c6ccf15cd6311735c574721a825f6accdd5ab509a28805274c53",
       "sourceUrl": "https://site.jumper.dev.br/izigym-lp/simple/"
     },
     {
@@ -24,7 +24,7 @@
       "path": "izigym-lp-vilaromana/index.html",
       "snapshot": "izigym-lp-vilaromana/index.html",
       "snapshotSha256": "f4fd8685e2b899c49b44d13f4cd738215c6b6d506dc5c2031400c2c6ddbfc3ea",
-      "generatedSha256": "9914459f5d754c42838c52dd8a6006465ca41e0f5baee12d36ce53061e1359de",
+      "generatedSha256": "cbd0973ca20b3c309e2c90c8f43dd4d7a6bb9e3ae909fd2b97c6e0abb7bf91c5",
       "sourceUrl": "https://site.jumper.dev.br/izigym-lp-vilaromana/"
     },
     {
@@ -32,7 +32,7 @@
       "path": "izigym-lp-vilaromana/simple/index.html",
       "snapshot": "izigym-lp-vilaromana/simple/index.html",
       "snapshotSha256": "f4fd8685e2b899c49b44d13f4cd738215c6b6d506dc5c2031400c2c6ddbfc3ea",
-      "generatedSha256": "9914459f5d754c42838c52dd8a6006465ca41e0f5baee12d36ce53061e1359de",
+      "generatedSha256": "cbd0973ca20b3c309e2c90c8f43dd4d7a6bb9e3ae909fd2b97c6e0abb7bf91c5",
       "sourceUrl": "https://site.jumper.dev.br/izigym-lp-vilaromana/simple/"
     },
     {
@@ -42,6 +42,22 @@
       "snapshotSha256": "9a7b2477fcc41f2231998831dd3067deee9bbde5b3d83e5d20cb8ce9a8f707e6",
       "generatedSha256": null,
       "sourceUrl": "https://site.jumper.dev.br/izigym-lp-vilaromana/_astro/simple.astro_astro_type_script_index_0_lang.BA7KMD1M.js"
+    },
+    {
+      "slug": "izigym-lp",
+      "path": "izigym-lp/_astro/simple.CisJLubu.css",
+      "snapshot": "izigym-lp/_astro/simple.CisJLubu.css",
+      "snapshotSha256": "2783f0f340ca0756d4017c9fd2647b1750f4254b5174bb34364cc6814fd6b136",
+      "generatedSha256": null,
+      "sourceUrl": "https://site.jumper.dev.br/izigym-lp/_astro/simple.CisJLubu.css"
+    },
+    {
+      "slug": "izigym-lp-vilaromana",
+      "path": "izigym-lp-vilaromana/_astro/simple.CisJLubu.css",
+      "snapshot": "izigym-lp-vilaromana/_astro/simple.CisJLubu.css",
+      "snapshotSha256": "6dcd582d31f75de66ab78599782d0c844333c597c835f811f28e298875e4ea63",
+      "generatedSha256": null,
+      "sourceUrl": "https://site.jumper.dev.br/izigym-lp-vilaromana/_astro/simple.CisJLubu.css"
     }
   ],
   "remove": [
@@ -54,6 +70,26 @@
       "slug": "izigym-lp-vilaromana",
       "path": "izigym-lp-vilaromana/_astro/simple.astro_astro_type_script_index_0_lang.BvCC3l22.js",
       "generatedSha256": "478de44a2f43cc67eb69e196e442d53114deb43ed52775ad263be3cf291954d0"
+    },
+    {
+      "slug": "izigym-lp",
+      "path": "izigym-lp/_astro/simple.astro_astro_type_script_index_0_lang.DxTKZI4T.js",
+      "generatedSha256": "111d31969f74d7488da0b3e08616975e9b2cf501c4894f5df8723b58a84b3991"
+    },
+    {
+      "slug": "izigym-lp-vilaromana",
+      "path": "izigym-lp-vilaromana/_astro/simple.astro_astro_type_script_index_0_lang.DxTKZI4T.js",
+      "generatedSha256": "111d31969f74d7488da0b3e08616975e9b2cf501c4894f5df8723b58a84b3991"
+    },
+    {
+      "slug": "izigym-lp",
+      "path": "izigym-lp/_astro/simple.8lnXp0oO.css",
+      "generatedSha256": "565812b133b143b7d3a6b764c5998b999ff5863eec2dfe64623fdd049e2895c7"
+    },
+    {
+      "slug": "izigym-lp-vilaromana",
+      "path": "izigym-lp-vilaromana/_astro/simple.8lnXp0oO.css",
+      "generatedSha256": "b46e0fe98afa32370563b289f1dc020c5c24bc091c8110744f38a7be0b732c83"
     }
   ]
 }

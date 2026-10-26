@@ -19,7 +19,7 @@ function bootstrapFixture(config = structuredClone(defaults), existing = []) {
   return { config, scripts, context, window, fbq };
 }
 
-function clickFixture(t, config = structuredClone(defaults)) {
+function clickFixture(t, config = structuredClone(defaults), openEnrollment) {
   const store = new Map();
   const storage = { getItem: key => store.get(key) ?? null, setItem: (key, value) => store.set(key, value) };
   const links = positions.map(placement => {
@@ -40,7 +40,7 @@ function clickFixture(t, config = structuredClone(defaults)) {
       else delete globalThis[key];
     }
   });
-  setupCheckoutLinks();
+  setupCheckoutLinks(openEnrollment);
   return { config, window, links, calls, location: globalThis.location };
 }
 
@@ -233,4 +233,20 @@ test('official packaging replaces only reviewed snippets and respects noscript c
   assert.ok(!prepareCerroCoraTracking(source, off).includes('ns.html?id=GTM-N52MH72F'));
   assert.throws(() => prepareCerroCoraTracking(html, defaults), /esperado uma vez/);
   assert.throws(() => prepareCerroCoraTracking(source.replaceAll('GTM-N52MH72F', 'GTM-UNREVIEWED'), defaults), /esperado uma vez/);
+});
+
+
+test('all eight CTAs open enrollment without firing a premature checkout conversion', t => {
+  const openings = [];
+  const f = clickFixture(t, structuredClone(defaults), (campaign, placement, link) => openings.push({ campaign, placement, link }));
+  for (const link of f.links) {
+    const event = new Event('click', { cancelable: true });
+    link.dispatchEvent(event);
+    assert.equal(event.defaultPrevented, true);
+    assert.equal(link.href, '#inscricao');
+  }
+  assert.deepEqual(openings.map(entry => entry.placement), positions);
+  assert.ok(openings.every(entry => entry.campaign.utm_source === 'teste'));
+  assert.equal(f.window.dataLayer.length, 0);
+  assert.equal(f.calls.length, 0);
 });
