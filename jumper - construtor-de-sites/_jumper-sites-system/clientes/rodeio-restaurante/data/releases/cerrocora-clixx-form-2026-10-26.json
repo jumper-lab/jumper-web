@@ -1,6 +1,6 @@
 {
   "scope": "cerrocora",
-  "approvedRequest": "Solicitação de Leandro neste chat em 26/10/2026: trocar os botões da LP Cerro Corá pelo formulário Clixx fornecido. Publicação restrita à LP; os demais sites seguem na comparação estrita.",
+  "approvedRequest": "Solicitação de Leandro neste chat em 26/10/2026: trocar os botões da LP Cerro Corá pelo formulário Clixx fornecido. Publicação restrita à LP; os demais sites seguem na comparação estrita. Leandro autorizou em seguida reconciliar a divergência do Rodeio sem quebrar os sites.",
   "baselineMain": "aecf3610",
   "baselineWorkerVersion": "f7c310c5-cc1b-4b72-adb3-f4423847a1ca",
   "workerSha256": "d4fe9cea516e49658e624cb79061b2cc68fb43dd9b3adf284301b7024689c060",
@@ -21,5 +21,10 @@
         "cbd0973ca20b3c309e2c90c8f43dd4d7a6bb9e3ae909fd2b97c6e0abb7bf91c5"
       ]
     }
-  ]
+  ],
+  "reconciliation": {
+    "sourceCommit": "1cd4f044e61582b9de49da02ac6dfd9b67f145b9",
+    "developmentWorkerVersion": "f043209b-b09a-467e-8e89-556a83e9e6da",
+    "description": "Integra o cardápio de cinco páginas, horários e inventário já publicados no Rodeio dev; não publica o Worker dev nem libera exceções para Rodeio no preflight."
+  }
 }
