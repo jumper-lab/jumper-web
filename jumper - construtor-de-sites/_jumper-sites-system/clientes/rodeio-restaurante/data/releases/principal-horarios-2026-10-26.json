@@ -1,0 +1,27 @@
+{
+  "scope": "principal",
+  "approvedRequest": "Usuário autorizou integrar a PR #128 e publicar no dev e no live em 26/10/2026, após confirmar os horários: segunda a sexta 05:00–23:00; sábado 08:00–18:00; domingos e feriados 08:00–16:00.",
+  "implementationPullRequest": "https://github.com/jumper-lab/jumper-web/pull/128",
+  "baselineMain": "aecf36106dfb6f65f03ba5cefe1d51a0f5f5b066",
+  "baselineWorkerVersion": "f7c310c5-cc1b-4b72-adb3-f4423847a1ca",
+  "workerSha256": "d4fe9cea516e49658e624cb79061b2cc68fb43dd9b3adf284301b7024689c060",
+  "pages": [
+    {
+      "asset": "_official/izigym/index.shell",
+      "candidateSha256": "2cba0c192267c9d9f31127feb542bd5488bc3b5436a92a2c5be388ee84a97f68",
+      "publishedSha256": [
+        "6f44183715adbc6f17497aa2742a3b9293977af3333f9444b1e3a50cd78d22e9",
+        "2cba0c192267c9d9f31127feb542bd5488bc3b5436a92a2c5be388ee84a97f68"
+      ]
+    },
+    {
+      "asset": "izigym-lp-vilaromana/index.html",
+      "candidateSha256": "9914459f5d754c42838c52dd8a6006465ca41e0f5baee12d36ce53061e1359de",
+      "publishedSha256": [
+        "f4fd8685e2b899c49b44d13f4cd738215c6b6d506dc5c2031400c2c6ddbfc3ea"
+      ],
+      "reason": "Diferença do pacote live já revisada e publicada na promoção Cerro Corá de 12/10/2026: o live usa esse módulo sob Vila Romana; a prévia pública permanece no Worker dev com os bytes anteriores. Esta publicação conserva ambos os estados."
+    }
+  ],
+  "requiredDevPublication": "Publicar somente o slug izigym antes do live, para que a página dev protegida corresponda ao snapshot corrigido. Qualquer divergência nos outros sites continua bloqueando a publicação."
+}
