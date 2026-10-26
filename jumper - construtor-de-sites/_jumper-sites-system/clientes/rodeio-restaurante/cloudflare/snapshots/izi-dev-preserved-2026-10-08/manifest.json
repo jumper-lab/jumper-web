@@ -42,6 +42,22 @@
       "snapshotSha256": "9a7b2477fcc41f2231998831dd3067deee9bbde5b3d83e5d20cb8ce9a8f707e6",
       "generatedSha256": null,
       "sourceUrl": "https://site.jumper.dev.br/izigym-lp-vilaromana/_astro/simple.astro_astro_type_script_index_0_lang.BA7KMD1M.js"
+    },
+    {
+      "slug": "izigym-lp",
+      "path": "izigym-lp/_astro/simple.CisJLubu.css",
+      "snapshot": "izigym-lp/_astro/simple.CisJLubu.css",
+      "snapshotSha256": "2783f0f340ca0756d4017c9fd2647b1750f4254b5174bb34364cc6814fd6b136",
+      "generatedSha256": null,
+      "sourceUrl": "https://site.jumper.dev.br/izigym-lp/_astro/simple.CisJLubu.css"
+    },
+    {
+      "slug": "izigym-lp-vilaromana",
+      "path": "izigym-lp-vilaromana/_astro/simple.CisJLubu.css",
+      "snapshot": "izigym-lp-vilaromana/_astro/simple.CisJLubu.css",
+      "snapshotSha256": "2783f0f340ca0756d4017c9fd2647b1750f4254b5174bb34364cc6814fd6b136",
+      "generatedSha256": null,
+      "sourceUrl": "https://site.jumper.dev.br/izigym-lp-vilaromana/_astro/simple.CisJLubu.css"
     }
   ],
   "remove": [
@@ -64,6 +80,16 @@
       "slug": "izigym-lp-vilaromana",
       "path": "izigym-lp-vilaromana/_astro/simple.astro_astro_type_script_index_0_lang.DxTKZI4T.js",
       "generatedSha256": "111d31969f74d7488da0b3e08616975e9b2cf501c4894f5df8723b58a84b3991"
+    },
+    {
+      "slug": "izigym-lp",
+      "path": "izigym-lp/_astro/simple.8lnXp0oO.css",
+      "generatedSha256": "565812b133b143b7d3a6b764c5998b999ff5863eec2dfe64623fdd049e2895c7"
+    },
+    {
+      "slug": "izigym-lp-vilaromana",
+      "path": "izigym-lp-vilaromana/_astro/simple.8lnXp0oO.css",
+      "generatedSha256": "b46e0fe98afa32370563b289f1dc020c5c24bc091c8110744f38a7be0b732c83"
     }
   ]
 }
