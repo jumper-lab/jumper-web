@@ -1,5 +1,7 @@
 ---
 import SeoHead from '../components/SeoHead.astro';
+import {seoPages,routeKey,breadcrumbs,openingHours} from '../lib/seo';
+import {responsivePhoto,photoVariant} from '../lib/responsive-photos';
 import MenuDialog from '../components/MenuDialog.astro';
 import EventsDialog from '../components/EventsDialog.astro';
 import ServiceDialogs from '../components/ServiceDialogs.astro';
@@ -23,6 +25,9 @@ const desktopRightNav=[['Restaurantes','/restaurantes/'],['Eventos','/eventos/']
 const activeNav=(href:string)=>href===content.menu_url?routePath.startsWith('/cardapio'):routePath.startsWith(href);
 const site=Astro.site??new URL('http://localhost:4321');
 const isPreview=import.meta.env.PUBLIC_LIVE_SITE!=='true';
+const pageSeo=seoPages[routeKey(routePath)];
+const pageCanonical=new URL(internal(routeKey(routePath)),site);
+const pageBreadcrumbs=breadcrumbs(routePath,site,base);
 const organization = {
   id: new URL(internal('/#organization'), site).href,
   name: content.client.name,
@@ -30,8 +35,10 @@ const organization = {
   logo: new URL(internal('/logos/logo-sem-simbolo.png'), site).href,
   telephone: '+55' + content.client.contact.phone.replace(/\D/g, ''),
   sameAs: ['https://www.instagram.com/rodeiorestaurante/'],
+  foundingDate: content.client.founded_year,
 };
 const currentUnit = content.units.find(unit => routePath.replace(/\/$/, '') === `/restaurantes/${unit.slug}`);
+const unitPhoto=currentUnit ? photoVariant([responsivePhoto(currentUnit.slug==='jardins'?'jardinsAcervoBmm17':'iguatemiAcervoDsc9454').variants.filter(v=>v.width<=1600).at(-1)!],import.meta.env.BASE_URL) : undefined;
 // Keep the visible briefing address; the individual unit phone remains commercially unconfirmed.
 const restaurant = currentUnit ? {
   id: new URL(internal(`/restaurantes/${currentUnit.slug}/#restaurant`), site).href,
@@ -43,10 +50,15 @@ const restaurant = currentUnit ? {
   postalCode: currentUnit.zip,
   country: 'BR',
   reservationUrl: new URL(internal(`/reservas/?unidade=${currentUnit.slug}`), site).href,
+  image: new URL(unitPhoto!.src,site).href,
+  menu: new URL(internal('/cardapio/'),site).href,
+  map: currentUnit.map,
+  description: currentUnit.intro,
+  hours: openingHours(currentUnit.hours),
 } : undefined;
 ---
 <!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="theme-color" content="#FAF7F0"/>
-<SeoHead title={title+' | Rodeio Restaurante'} description={description} canonical={new URL(path,site)} ogImage={new URL(internal('/og.jpg'),site)} favicon="/logos/logo-sem-simbolo.svg" siteName="Rodeio Restaurante" noindex={isPreview} organization={organization} restaurant={restaurant}/>
+<SeoHead title={pageSeo?.title || title+' | Rodeio Restaurante'} description={pageSeo?.description || description} canonical={pageCanonical} ogImage={unitPhoto ? new URL(unitPhoto.src,site) : new URL(internal('/og.jpg'),site)} favicon="/logos/logo-sem-simbolo.svg" siteName="Rodeio Restaurante" noindex={isPreview || pageSeo?.index===false} nofollow={isPreview} breadcrumbs={pageBreadcrumbs} organization={organization} restaurant={restaurant}/>
 <link rel="preload" href={bodoniNormal} as="font" type="font/woff2" crossorigin/>
 <link rel="preload" href={bodoniItalic} as="font" type="font/woff2" crossorigin/><link rel="preload" href={dmSans} as="font" type="font/woff2" crossorigin/><slot name="head"/></head><body>
 <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>

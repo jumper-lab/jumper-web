@@ -7,6 +7,7 @@ import content from '../../data/content.json';
 import '../styles/interiors.css';
 import '../styles/cardapio.css';
 const copy=content.pages.menu;
+const base=import.meta.env.BASE_URL.replace(/\/$/,'');
 ---
 <Layout title="Cardápio — os clássicos do Rodeio" description={copy.description}>
 
@@ -18,14 +19,14 @@ const copy=content.pages.menu;
           <p class="menu-classics-intro">{copy.intro}</p>
         </div>
         <div class="menu-classics-access">
-          <p>{copy.description}</p>
+          <p>{copy.description} Entre os clássicos da casa estão a picanha fatiada e o Arroz Rodeio, o tradicional Biro-Biro.</p>
           <Link href={content.menu_url}>{copy.cta}</Link>
         </div>
       </div>
       <p class="eyebrow menu-classics-label">Clássicos que nasceram aqui</p>
       <div class="menu-classics-layout">
         <figure class="menu-cuts-photo" aria-labelledby="menu-picanha-title">
-          <Photo name="menuPicanhaFatiada" quality={68} maxWidth={1920} sizes="(max-width:999px) 90vw, (min-width:1680px) 1008px, 61vw" alt="Picanha fatiada servida com acompanhamentos em um prato branco do Rodeio"/>
+          <Photo name="menuPicanhaFatiada" eager quality={68} maxWidth={1920} sizes="(max-width:999px) 90vw, (min-width:1680px) 1008px, 61vw" alt="Picanha fatiada servida com acompanhamentos em um prato branco do Rodeio"/>
           <figcaption class="menu-classic-name"><h2 id="menu-picanha-title">Picanha fatiada</h2><span>Carnes</span></figcaption>
         </figure>
         <figure class="menu-rice-photo" aria-labelledby="menu-arroz-title">
@@ -38,7 +39,7 @@ const copy=content.pages.menu;
   <section class="menu-invitation" aria-labelledby="menu-invitation-title">
     <div class="wrap menu-invitation-layout">
       <div><p class="eyebrow">Do primeiro corte ao último sabor</p><h2 id="menu-invitation-title">Conheça o<br/><em>cardápio completo.</em></h2></div>
-      <div class="menu-invitation-access"><p>Rodeio Jardins.<br/>Rodeio Shopping Iguatemi.</p><div class="menu-invitation-actions"><Link href={content.menu_url}>{copy.cta}</Link><Link href="/reservas/" light>Reservar uma mesa</Link></div></div>
+      <div class="menu-invitation-access"><p><a href={`${base}/restaurantes/jardins/`}>Rodeio Jardins.</a><br/><a href={`${base}/restaurantes/iguatemi/`}>Rodeio Shopping Iguatemi.</a></p><div class="menu-invitation-actions"><Link href={content.menu_url}>{copy.cta}</Link><Link href="/reservas/" light>Reservar uma mesa</Link></div></div>
     </div>
   </section>
 </Layout>

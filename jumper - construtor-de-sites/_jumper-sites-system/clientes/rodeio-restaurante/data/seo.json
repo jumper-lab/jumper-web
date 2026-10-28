@@ -1,0 +1,102 @@
+{
+  "siteName": "Rodeio Restaurante",
+  "siteDescription": "Carnes, tradição e acolhimento em São Paulo desde 1958.",
+  "pages": {
+    "/": {
+      "title": "Rodeio Restaurante em São Paulo | Jardins e Iguatemi",
+      "description": "Desde 1958, o Rodeio reúne carnes, tradição e acolhimento em São Paulo. Conheça Jardins e Shopping Iguatemi, consulte o cardápio e reserve sua mesa.",
+      "label": "Início",
+      "index": true
+    },
+    "/historia/": {
+      "title": "História do Rodeio | Tradição em São Paulo desde 1958",
+      "description": "Conheça a história do Rodeio na Haddock Lobo, a trajetória da família Macedo e a chegada ao Shopping Iguatemi. Uma tradição à mesa desde 1958.",
+      "label": "Nossa história",
+      "index": true
+    },
+    "/cardapio/": {
+      "title": "Cardápio Rodeio | Picanha fatiada e Arroz Biro-Biro",
+      "description": "Conheça os clássicos do Rodeio, como a picanha fatiada e o Arroz Rodeio, o tradicional Biro-Biro. Consulte o cardápio completo em PDF e planeje sua visita.",
+      "label": "Cardápio",
+      "index": true
+    },
+    "/cardapio/completo/": {
+      "title": "Cardápio completo em PDF | Rodeio Restaurante",
+      "description": "Visualize o cardápio completo do Rodeio, amplie as páginas e baixe o PDF para consultar os pratos e acompanhamentos da casa.",
+      "label": "Cardápio completo",
+      "index": false
+    },
+    "/restaurantes/": {
+      "title": "Restaurantes Rodeio em São Paulo | Jardins e Iguatemi",
+      "description": "Encontre o Rodeio nos Jardins e no Shopping Iguatemi, em São Paulo. Consulte endereços, horários e fotos das duas casas e escolha onde reservar.",
+      "label": "Restaurantes",
+      "index": true
+    },
+    "/restaurantes/jardins/": {
+      "title": "Rodeio Jardins | Haddock Lobo, 1448 — São Paulo",
+      "description": "Conheça o Rodeio Jardins na Rua Haddock Lobo, 1448, em São Paulo. Veja os ambientes, consulte os horários e o cardápio e reserve sua mesa.",
+      "label": "Rodeio Jardins",
+      "index": true
+    },
+    "/restaurantes/iguatemi/": {
+      "title": "Rodeio Shopping Iguatemi | Faria Lima, 2232 — São Paulo",
+      "description": "Visite o Rodeio no Shopping Iguatemi, na Av. Brigadeiro Faria Lima, 2232, São Paulo. Consulte horários, fotos, cardápio e disponibilidade de reservas.",
+      "label": "Rodeio Iguatemi",
+      "index": true
+    },
+    "/reservas/": {
+      "title": "Reservas Rodeio | Escolha Jardins ou Shopping Iguatemi",
+      "description": "Agende sua visita ao Rodeio Jardins ou Shopping Iguatemi pelo sistema oficial Tagme. Escolha a unidade e consulte datas e horários disponíveis.",
+      "label": "Reservas",
+      "index": true
+    },
+    "/reservas/jardins/": {
+      "title": "Reservar no Rodeio Jardins | Sistema oficial Tagme",
+      "description": "Consulte datas e horários para reservar sua mesa no Rodeio Jardins, na Rua Haddock Lobo, 1448, pelo sistema oficial de agendamento Tagme.",
+      "label": "Reservar no Jardins",
+      "index": false
+    },
+    "/reservas/iguatemi/": {
+      "title": "Reservar no Rodeio Iguatemi | Sistema oficial Tagme",
+      "description": "Consulte datas e horários para reservar sua mesa no Rodeio Shopping Iguatemi, na Av. Brigadeiro Faria Lima, 2232, pelo sistema oficial Tagme.",
+      "label": "Reservar no Iguatemi",
+      "index": false
+    },
+    "/eventos/": {
+      "title": "Eventos no Rodeio | Encontros e celebrações em São Paulo",
+      "description": "Planeje encontros em família, celebrações ou reuniões de negócios no Rodeio. Consulte a equipe sobre Jardins, Iguatemi e as possibilidades para seu evento.",
+      "label": "Eventos",
+      "index": true
+    },
+    "/eventos/orcamento/": {
+      "title": "Orçamento de eventos | Fale com a equipe Rodeio",
+      "description": "Solicite informações para realizar seu evento no Rodeio. Informe a unidade, seus dados de contato e o que está planejando para receber atendimento.",
+      "label": "Orçamento de eventos",
+      "index": false
+    },
+    "/rodeio-em-casa/": {
+      "title": "Rodeio em casa | Pedidos pelo WhatsApp",
+      "description": "Fale com a equipe pelo WhatsApp para consultar itens, disponibilidade e condições de entrega dos clássicos do Rodeio para saborear em casa.",
+      "label": "Rodeio em casa",
+      "index": true
+    },
+    "/sac/": {
+      "title": "SAC Rodeio | Atendimento Jardins e Iguatemi",
+      "description": "Fale com o SAC do Rodeio Jardins ou Iguatemi. Escolha a unidade e envie sua mensagem ao atendimento pelo formulário oficial do restaurante.",
+      "label": "SAC",
+      "index": true
+    },
+    "/compliance/": {
+      "title": "Compliance Rodeio | Canal oficial de mensagens",
+      "description": "Acesse o canal de compliance do Rodeio para clientes, colaboradores e fornecedores. Envie sua mensagem pelo formulário oficial do restaurante.",
+      "label": "Compliance",
+      "index": true
+    },
+    "/privacidade/": {
+      "title": "Privacidade | Navegação, reservas e mensagens — Rodeio",
+      "description": "Saiba como funcionam os formulários, o cardápio em PDF, as reservas Tagme e os links do Google Maps no site do Rodeio Restaurante.",
+      "label": "Privacidade",
+      "index": true
+    }
+  }
+}

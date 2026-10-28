@@ -7,6 +7,7 @@ export interface Organization {
   logo: string;
   telephone?: string;
   sameAs?: string[];
+  foundingDate?: string;
 }
 
 export interface Restaurant {
@@ -19,6 +20,11 @@ export interface Restaurant {
   postalCode: string;
   country: string;
   reservationUrl: string;
+  image: string;
+  menu: string;
+  map: string;
+  description: string;
+  hours: Record<string,unknown>[];
 }
 
 export interface Props {
@@ -33,6 +39,8 @@ export interface Props {
   organization: Organization;
   restaurant?: Restaurant;
   noindex?: boolean;
+  nofollow?: boolean;
+  breadcrumbs?: {name:string;url:string}[];
 }
 
 const {
@@ -47,6 +55,8 @@ const {
   organization,
   restaurant,
   noindex = false,
+  nofollow = false,
+  breadcrumbs = [],
 } = Astro.props;
 
 const canonicalStr = canonical.toString();
@@ -65,7 +75,12 @@ const jsonLd = {
       logo: organization.logo,
       ...(organization.telephone && { telephone: organization.telephone }),
       ...(organization.sameAs && { sameAs: organization.sameAs }),
+      ...(organization.foundingDate && { foundingDate: organization.foundingDate }),
+      ...(organization.telephone && { contactPoint: { '@type':'ContactPoint', telephone:organization.telephone, contactType:'reservas e atendimento', availableLanguage:'pt-BR' } }),
     },
+    { '@type':'WebSite','@id':new URL('#website',organization.url).href,name:siteName||organization.name,url:organization.url,publisher:{'@id':organization.id},inLanguage:'pt-BR' },
+    { '@type':'WebPage','@id':canonicalStr,url:canonicalStr,name:title,description,inLanguage:'pt-BR',isPartOf:{'@id':new URL('#website',organization.url).href},breadcrumb:{'@id':canonicalStr+'#breadcrumb'},...(restaurant ? {mainEntity:{'@id':restaurant.id}} : {}) },
+    { '@type':'BreadcrumbList','@id':canonicalStr+'#breadcrumb',itemListElement:breadcrumbs.map((item,index)=>({'@type':'ListItem',position:index+1,name:item.name,item:item.url})) },
     ...(restaurant ? [{
       "@type": "Restaurant",
       "@id": restaurant.id,
@@ -81,6 +96,13 @@ const jsonLd = {
         addressCountry: restaurant.country,
       },
       acceptsReservations: restaurant.reservationUrl,
+      image: restaurant.image,
+      hasMenu: restaurant.menu,
+      hasMap: restaurant.map,
+      description: restaurant.description,
+      servesCuisine: 'Carnes',
+      openingHoursSpecification: restaurant.hours,
+      mainEntityOfPage: { '@id':canonicalStr },
     }] : []),
   ],
 };
@@ -90,7 +112,7 @@ const jsonLdText = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
 <title>{title}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalStr} />
-{noindex && <meta name="robots" content="noindex, nofollow" />}
+<meta name="robots" content={`${noindex ? 'noindex' : 'index'}, ${nofollow ? 'nofollow' : 'follow'}, max-image-preview:large`}/>
 
 <meta property="og:type" content={ogType} />
 <meta property="og:title" content={title} />
@@ -108,4 +130,4 @@ const jsonLdText = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
 <link rel="icon" href={resolvedFavicon} />
 <link rel="apple-touch-icon" href={`${base}/apple-touch-icon.png`} />
 
-<script is:inline type="application/ld+json" set:html={jsonLdText} />
+<script is:inline data-rodeio-schema type="application/ld+json" set:html={jsonLdText} />

@@ -19,12 +19,12 @@ const galleryPhotos=restaurantGallerySelections[unit.slug];
    <Link href="/restaurantes/" class="unit-back">Restaurantes</Link>
    <Link href={`/restaurantes/${otherUnit.slug}/`} class="unit-other">Conhecer {otherUnit.name}</Link>
   </nav>
-  <div class="visit-heading"><h1 id="unit-title" class="restaurant-name"><span>Rodeio</span><em>{unit.name}</em></h1></div>
+  <div class="visit-heading"><h1 id="unit-title" class="restaurant-name"><span>Rodeio</span><em>{unit.name}</em></h1><p>{isJardins ? unit.intro : `No Shopping Iguatemi, na ${unit.address}, em São Paulo, ${unit.intro.charAt(0).toLowerCase()+unit.intro.slice(1)}`}</p></div>
   <div class="visit-information">
-   <div class="visit-address"><h3>Endereço</h3><address>{isJardins&&<span class="house-new-address">Novo endereço</span>}{unit.address}<br/>{unit.district}<br/><span>CEP {unit.zip}</span></address><Link href={unit.map}>Ver como chegar</Link></div>
-   <div class="visit-hours"><h3>Horários de funcionamento</h3><ul>{unit.hours.map(hour=><li><span>{hour.days}</span><strong>{hour.time}</strong></li>)}</ul></div>
+   <div class="visit-address"><h2>Endereço</h2><address>{isJardins&&<span class="house-new-address">Novo endereço</span>}{unit.address}<br/>{unit.district}<br/><span>CEP {unit.zip}</span></address><Link href={unit.map}>Ver como chegar</Link></div>
+   <div class="visit-hours"><h2>Horários de funcionamento</h2><ul>{unit.hours.map(hour=><li><span>{hour.days}</span><strong>{hour.time}</strong></li>)}</ul></div>
    <div class="visit-reservation">
-    <div><h3>Reservas</h3><p>Escolha a data e consulte os horários disponíveis no sistema de reservas.</p></div>
+    <div><h2>Reservas</h2><p>Escolha a data e consulte os horários disponíveis no sistema de reservas.</p></div>
     <div class="visit-reservation-actions"><Link href={unit.widget}>Reservar no {unit.name}</Link><Link href={content.menu_url}>{content.pages.menu.cta}</Link></div>
    </div>
   </div>
