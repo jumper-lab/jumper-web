@@ -1,5 +1,6 @@
 import { createNotionBriefingPage } from "../../../Quiz/Briefings/notion-client.mjs";
 import { rodeioEvents } from './rodeio-events.mjs';
+import { rodeioContact } from './rodeio-contact.mjs';
 import { hubStatus } from './hub-status.mjs';
 import { cloudflareProcesses, githubWebhook } from './process-status.mjs';
 
@@ -448,6 +449,7 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     if (url.pathname === '/rodeio/api/eventos' || url.pathname === '/rodeio/api/eventos/') return rodeioEvents(request);
+    if (url.pathname === '/rodeio/api/contato' || url.pathname === '/rodeio/api/contato/') return rodeioContact(request);
     const password = env.JUMPER_HOSTER_PASSWORD;
     const hubPassword = env.JUMPER_HUB_PASSWORD || password;
     const hubCookieName = env.JUMPER_HUB_PASSWORD ? HUB_COOKIE_NAME : COOKIE_NAME;

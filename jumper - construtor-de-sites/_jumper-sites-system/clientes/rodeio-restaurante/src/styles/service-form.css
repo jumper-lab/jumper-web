@@ -1,0 +1,32 @@
+.digital-menu-dialog.service-form-dialog { width: min(760px, calc(100vw - 24px)); height: min(760px, calc(100dvh - 24px)); }
+.digital-menu-dialog.service-form-dialog-compliance { height: min(500px, calc(100dvh - 24px)); }
+.service-form-dialog .digital-menu-header { padding: 18px clamp(20px, 5vw, 42px); }
+.service-form-dialog .digital-menu-header .eyebrow { margin: 0 0 8px; color: var(--brand-text); }
+.service-form-dialog .digital-menu-header h2 { font-size: clamp(27px, 3vw, 38px); }
+.service-form-dialog .service-form-content { overflow: auto; padding: clamp(22px, 4vw, 42px); }
+.service-form-intro { margin: 0 0 30px; color: var(--muted); font-size: 15px; }
+.service-form { max-width: 620px; }
+.service-form-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 24px; }
+.service-form label { display: flex; flex-direction: column; gap: 8px; font-size: 12px; color: var(--brown); }
+.service-form label > span { display: block; }
+.service-form label b { color: var(--brand-text); font-weight: 500; }
+.service-form :is(input:not([type="hidden"]), textarea) { width: 100%; min-height: 46px; padding: 12px; border: 1px solid var(--line); border-radius: 0; background: var(--paper); color: var(--brown); font: 16px/1.5 var(--sans); }
+.service-form textarea { resize: vertical; }
+.service-form :is(input, textarea):focus-visible { outline: 2px solid var(--brown); outline-offset: 2px; }
+.service-form-message { margin-top: 22px; }
+.service-form small { color: var(--muted); font-size: 11px; }
+.service-form-status { min-height: 20px; margin: 20px 0 0; max-width: 48ch; font-size: 13px; }
+.service-form-trap { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.service-form-dialog .digital-menu-footer { justify-content: space-between; padding-inline: clamp(20px, 5vw, 42px); }
+.service-form-dialog .digital-menu-footer button { position: relative; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0; border: 0; background: transparent; color: var(--brown); font: 500 11px/1.4 var(--sans); cursor: pointer; }
+.service-form-dialog .digital-menu-footer button::after { content: ""; position: absolute; left: 0; right: 0; bottom: calc(50% - 9px); height: 1px; background: currentColor; }
+.service-form-dialog .digital-menu-footer button:is(:hover, :focus-visible) { color: var(--brand-text); }
+.service-form-dialog .digital-menu-footer button:disabled { opacity: .6; cursor: wait; }
+@media (max-width: 599px) {
+  .digital-menu-dialog.service-form-dialog { width: calc(100vw - 12px); height: calc(100dvh - 12px); }
+  .digital-menu-dialog.service-form-dialog-compliance { height: min(500px, calc(100dvh - 12px)); }
+  .service-form-dialog .digital-menu-header { padding: max(10px, env(safe-area-inset-top)) 16px 10px; }
+  .service-form-dialog .service-form-content { padding: 24px 16px; }
+  .service-form-fields { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .service-form-dialog .digital-menu-footer { padding-inline: 16px; padding-bottom: env(safe-area-inset-bottom); }
+}

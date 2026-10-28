@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Arrow from '../components/Arrow.astro';
+import ServiceFormDialog from '../components/ServiceFormDialog.astro';
 import '../styles/services.css';
 
 // The current form still lives at this URL in WordPress. A production build must
@@ -21,9 +22,10 @@ if (import.meta.env.PUBLIC_LIVE_SITE === 'true' && formUrl === currentForm) {
   <section class="service-options" aria-labelledby="compliance-channel-title">
     <div class="wrap service-channel-grid">
       <div><p class="eyebrow">Canal de mensagem</p><h2 id="compliance-channel-title">Sua mensagem<br/><em>tem lugar aqui.</em></h2></div>
-      <div class="service-channel-copy"><p>Se você deseja compartilhar uma opinião ou relatar uma situação, utilize o formulário atual do Rodeio. Ele abre em uma nova aba no site oficial.</p>
-        <a class="action text-link" href={formUrl} target="_blank" rel="noopener noreferrer" aria-label="Abrir formulário de Compliance no site oficial, em outra aba">Abrir formulário de Compliance<Arrow/></a>
+      <div class="service-channel-copy"><p>Se você deseja compartilhar uma opinião ou relatar uma situação, envie sua mensagem pelo canal de compliance do Rodeio.</p>
+        <a class="action text-link" href={formUrl} target="_blank" rel="noopener noreferrer" aria-label="Abrir formulário de Compliance">Abrir formulário de Compliance<Arrow/></a>
       </div>
     </div>
   </section>
+  <ServiceFormDialog kind="compliance" title="Compliance Rodeio" originalUrl={formUrl}/>
 </Layout>

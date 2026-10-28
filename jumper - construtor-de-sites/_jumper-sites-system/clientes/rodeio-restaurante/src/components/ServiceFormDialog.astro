@@ -1,0 +1,39 @@
+---
+import '../styles/menu-dialog.css';
+import '../styles/service-form.css';
+interface Props {
+  kind: 'sac-jardins' | 'sac-iguatemi' | 'compliance';
+  title: string;
+  originalUrl: string;
+}
+const { kind, title, originalUrl } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const id = `${kind}-dialog`;
+const titleId = `${kind}-dialog-title`;
+const formId = `${kind}-form`;
+const compliance = kind === 'compliance';
+---
+<dialog id={id} class:list={['digital-menu-dialog', 'service-form-dialog', { 'service-form-dialog-compliance': compliance }]} aria-labelledby={titleId} data-menu-url={originalUrl} data-local-content data-page-label={`o formulário de ${title}`}>
+  <div class="digital-menu-header">
+    <div><p class="eyebrow">{compliance ? 'Canal de compliance' : 'Atendimento Rodeio'}</p><h2 id={titleId}>{title}</h2></div>
+    <button type="button" class="digital-menu-close" data-close-digital-menu autofocus>Fechar <span aria-hidden="true">×</span></button>
+  </div>
+  <div class="digital-menu-content service-form-content" data-menu-frame-slot>
+    <p class="digital-menu-status" data-menu-status role="status" hidden></p>
+    <p class="service-form-intro">{compliance ? 'Compartilhe sua mensagem com o canal de compliance do Rodeio.' : 'Conte à equipe como podemos ajudar.'}</p>
+    <form id={formId} class="service-form" data-service-form action={`${base}/api/contato`} method="post">
+      <input type="hidden" name="kind" value={kind}/>
+      {!compliance && <div class="service-form-fields">
+        <label><span>Nome completo <b aria-hidden="true">*</b></span><input name="name" autocomplete="name" required maxlength="120"/></label>
+        <label><span>E-mail <b aria-hidden="true">*</b></span><input name="email" type="email" autocomplete="email" required maxlength="180"/></label>
+        <label>Telefone<input name="phone" type="tel" autocomplete="tel" maxlength="40"/></label>
+        <label>Assunto<input name="subject" maxlength="120"/></label>
+      </div>}
+      <label class="service-form-message"><span>Mensagem <b aria-hidden="true">*</b></span><textarea name="message" rows="5" required maxlength="180"></textarea><small>Até 180 caracteres.</small></label>
+      <div class="service-form-trap" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"/></label></div>
+      <p class="service-form-status" role="status" aria-live="polite" data-service-status></p>
+    </form>
+  </div>
+  <div class="digital-menu-footer"><button type="submit" form={formId}>Enviar mensagem <span aria-hidden="true">→</span></button><a href={originalUrl} target="_blank" rel="noopener noreferrer">Abrir formulário original <span aria-hidden="true">↗</span></a></div>
+</dialog>
+<script src="../scripts/service-form.ts"></script>
