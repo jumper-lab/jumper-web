@@ -62,10 +62,10 @@ export async function rodeioContact(request, upstreamFetch = fetch) {
     const response = await upstreamFetch(endpoint, { method: 'POST', body: payload, signal: AbortSignal.timeout(12000) });
     const result = await response.json();
     if (!response.ok || result.success !== true || result.data?.success !== true) {
-      return reply(false, 'Não foi possível confirmar o envio. Abra o formulário original e tente por lá.', 502);
+      return reply(false, 'Não foi possível confirmar o envio. Entre em contato pelo telefone (11) 3474-1333.', 502);
     }
     return reply(true, 'Mensagem enviada.');
   } catch {
-    return reply(false, 'Não foi possível confirmar o envio. Antes de tentar novamente, use o formulário original.', 502);
+    return reply(false, 'Não foi possível confirmar o envio. Entre em contato pelo telefone (11) 3474-1333.', 502);
   }
 }

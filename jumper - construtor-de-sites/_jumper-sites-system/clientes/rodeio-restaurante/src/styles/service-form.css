@@ -17,10 +17,10 @@
 .service-form small { color: var(--muted); font-size: 11px; }
 .service-form-status { min-height: 20px; margin: 20px 0 0; max-width: 48ch; font-size: 13px; }
 .service-form-trap { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
-.service-form-dialog .digital-menu-footer { justify-content: space-between; padding-inline: clamp(20px, 5vw, 42px); }
-.service-form-dialog .digital-menu-footer button { position: relative; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0; border: 0; background: transparent; color: var(--brown); font: 500 11px/1.4 var(--sans); cursor: pointer; }
-.service-form-dialog .digital-menu-footer button::after { content: ""; position: absolute; left: 0; right: 0; bottom: calc(50% - 9px); height: 1px; background: currentColor; }
-.service-form-dialog .digital-menu-footer button:is(:hover, :focus-visible) { color: var(--brand-text); }
+.service-form-dialog .digital-menu-footer { justify-content: flex-end; padding: 12px clamp(20px, 5vw, 42px); }
+.service-form-dialog .digital-menu-footer button { display: inline-flex; align-items: center; justify-content: center; gap: 16px; min-height: 48px; padding: 12px 24px; border: 1px solid var(--brown); border-radius: 2px; background: var(--brown); color: var(--paper); font: 500 14px/1.4 var(--sans); cursor: pointer; }
+.service-form-dialog .digital-menu-footer button:is(:hover, :focus-visible) { background: var(--brand-text); border-color: var(--brand-text); }
+.service-form-dialog .digital-menu-footer button:focus-visible { outline: 2px solid var(--brown); outline-offset: 3px; }
 .service-form-dialog .digital-menu-footer button:disabled { opacity: .6; cursor: wait; }
 @media (max-width: 599px) {
   .digital-menu-dialog.service-form-dialog { width: calc(100vw - 12px); height: calc(100dvh - 12px); }
@@ -28,5 +28,6 @@
   .service-form-dialog .digital-menu-header { padding: max(10px, env(safe-area-inset-top)) 16px 10px; }
   .service-form-dialog .service-form-content { padding: 24px 16px; }
   .service-form-fields { grid-template-columns: minmax(0, 1fr); gap: 18px; }
-  .service-form-dialog .digital-menu-footer { padding-inline: 16px; padding-bottom: env(safe-area-inset-bottom); }
+  .service-form-dialog .digital-menu-footer { padding-inline: 16px; padding-bottom: max(12px, env(safe-area-inset-bottom)); }
+  .service-form-dialog .digital-menu-footer button { width: 100%; }
 }
