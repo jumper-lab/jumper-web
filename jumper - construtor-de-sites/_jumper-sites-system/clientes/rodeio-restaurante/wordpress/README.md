@@ -27,11 +27,11 @@ Cada página guarda o HTML aprovado do interior de `<main>` em um bloco HTML no 
 
 ## Formulários
 
-| Canal | ID Forminator | Página legada |
+| Canal | ID Forminator | Página nativa |
 |---|---:|---:|
-| Eventos | 364 | 257 |
-| SAC Jardins | 363 | 310 |
-| SAC Iguatemi | 318 | 322 |
-| Compliance | 393 | 388 |
+| Eventos | 364 | 805 |
+| SAC Jardins | 363 | 826 |
+| SAC Iguatemi | 318 | 826 |
+| Compliance | 393 | 827 |
 
 Os destinatários e registros de mensagens continuam administrados pelo Forminator. A conexão Novamira e suas credenciais não fazem parte do pacote. O acesso ao servidor usa a configuração MCP local, sem credenciais em argumentos, código versionado ou logs.

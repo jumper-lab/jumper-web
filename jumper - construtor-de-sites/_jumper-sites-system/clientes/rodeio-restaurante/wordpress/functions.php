@@ -143,7 +143,7 @@ function rodeio_2026_eventos($request) {
             'name-1' => $name, 'email-1' => $email, 'phone-1' => $phone,
             'text-1' => $company, 'select-1' => $unit === 'jardins' ? 'one' : 'two',
             'textarea-1' => $message, 'forminator_nonce' => $nonce,
-            'form_id' => '364', 'page_id' => '257', 'form_type' => 'default',
+            'form_id' => '364', 'page_id' => '805', 'form_type' => 'default',
             'render_id' => '0', 'action' => 'forminator_submit_form_custom-forms',
             '_wp_http_referer' => '/eventos/',
             'current_url' => home_url('/eventos/'),
@@ -179,9 +179,9 @@ function rodeio_2026_contato($request) {
     $fields = $request->get_body_params();
     if (!empty($fields['website'])) return $reply(false, 'Não foi possível enviar.', 400);
     $forms = [
-        'sac-jardins' => ['id' => '363', 'page' => '310', 'path' => '/sac/jardins/'],
-        'sac-iguatemi' => ['id' => '318', 'page' => '322', 'path' => '/sac/iguatemi/'],
-        'compliance' => ['id' => '393', 'page' => '388', 'path' => '/compliance/'],
+        'sac-jardins' => ['id' => '363', 'page' => '826', 'path' => '/sac/'],
+        'sac-iguatemi' => ['id' => '318', 'page' => '826', 'path' => '/sac/'],
+        'compliance' => ['id' => '393', 'page' => '827', 'path' => '/compliance/'],
     ];
     $kind = isset($fields['kind']) && is_string($fields['kind']) ? $fields['kind'] : '';
     if (!isset($forms[$kind])) return $reply(false, 'Formulário inválido.', 400);
