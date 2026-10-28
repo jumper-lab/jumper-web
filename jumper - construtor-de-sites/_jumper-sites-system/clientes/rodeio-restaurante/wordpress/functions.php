@@ -5,6 +5,30 @@
  */
 add_action('template_redirect', function () {
     if (is_admin()) return;
+    // Preserve links from the retired WordPress menus and older messages.
+    if (isset($_GET['page_id']) && is_scalar($_GET['page_id'])) {
+        $id = absint($_GET['page_id']);
+        $legacy_pages = [
+            3 => '/privacidade/', 6 => '/',
+            171 => '/restaurantes/jardins/', 241 => '/restaurantes/iguatemi/',
+            257 => '/eventos/', 274 => '/reservas/',
+            276 => '/reservas/jardins/', 285 => '/reservas/iguatemi/',
+            308 => '/sac/', 310 => '/sac/', 322 => '/sac/',
+            370 => '/eventos/', 372 => '/eventos/',
+            388 => '/compliance/', 541 => '/rodeio-em-casa/', 578 => '/historia/',
+        ];
+        $target = $legacy_pages[$id] ?? null;
+        if ($target === null && get_post_status($id) === 'publish') {
+            $managed = get_post_meta($id, '_rodeio_managed_route', true);
+            if ($managed !== '') $target = $managed === '/' ? '/' : trailingslashit($managed);
+        }
+        if ($target !== null) {
+            wp_safe_redirect(home_url($target), 301);
+            exit;
+        }
+        // Let WordPress return 404 for retired temporary pages and unknown IDs.
+        return;
+    }
     $path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
     $route = trim(rawurldecode($path ?: '/'), '/');
     if ($route === 'rodeio-sitemap.xml') {
