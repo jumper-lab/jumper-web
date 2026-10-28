@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';import Hero from '../components/Hero.astro';import Link from '../components/Link.astro';import content from '../../data/content.json';
-const copy=content.pages.events;
+const copy=content.pages.events; const base=import.meta.env.BASE_URL.replace(/\/$/,'');
 import '../styles/interiors.css';
 ---
 <Layout title="Eventos — encontros para guardar" description="Planeje seu encontro, celebração ou evento de negócios no Rodeio. Conheça as casas dos Jardins e Iguatemi e fale com a equipe pelo canal oficial."><Hero eyebrow="" title={copy.title} accent={copy.accent} description={copy.intro} photo="mesa" alt="Mesa posta no Rodeio Jardins, com taças e iluminação intimista" caption="" cta={copy.cta} href="/eventos/orcamento/"/>
@@ -11,6 +11,6 @@ import '../styles/interiors.css';
     <article class="event-detail occasion"><h3>Negócios<br/><em>à mesa</em></h3><p>O restaurante como ponto de encontro para uma conversa que pede tempo e atenção.</p></article>
     <article class="event-detail occasion"><h3>Ocasiões<br/><em>especiais</em></h3><p>Aniversários e outras celebrações merecem ser pensados com cuidado. Consulte a equipe sobre as possibilidades para a sua ocasião.</p></article>
   </div>
-  <div class="occasion-action"><Link href="/eventos/orcamento/">Solicitar orçamento</Link></div>
+  <div class="occasion-action"><p>Consulte a equipe sobre as possibilidades nas casas dos <a href={`${base}/restaurantes/jardins/`}>Jardins</a> e do <a href={`${base}/restaurantes/iguatemi/`}>Shopping Iguatemi</a>.</p><Link href="/eventos/orcamento/">Solicitar orçamento</Link></div>
 </div></section>
 </Layout>

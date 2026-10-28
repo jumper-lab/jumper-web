@@ -2,6 +2,7 @@ import { spawnSync } from 'node:child_process';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { gzipSync } from 'node:zlib';
+import seo from '../data/seo.json' with { type: 'json' };
 import { createHash } from 'node:crypto';
 
 const option = name => process.argv.find(value => value.startsWith(`--${name}=`))?.slice(name.length + 3);
@@ -43,7 +44,8 @@ async function visit(directory) {
       const route = relative === 'index.html' ? '' : relative.replace(/\/index\.html$/, '');
       const filename = route ? route.replaceAll('/', '--') + '.html.gz' : 'home.html.gz';
       const html = rewrite(await fs.readFile(source, 'utf8'));
-      if ((route !== 'em-breve' && /noindex/.test(html)) || /http:\/\/localhost|site\.jumper\.dev\.br|action="\/api\//.test(html)) throw new Error(`Preview reference in ${relative}`);
+      const expectedNoindex = route === 'em-breve' || seo.pages[route ? `/${route}/` : '/']?.index === false;
+      if ((/<meta[^>]*name="robots"[^>]*content="[^"]*noindex/.test(html) !== expectedNoindex) || /http:\/\/localhost|site\.jumper\.dev\.br|action="\/api\//.test(html)) throw new Error(`Preview reference in ${relative}`);
       await write(path.join(pagesRoot, filename), gzipSync(html, { level: 9 }));
       manifest.routes[route] = filename;
     } else if (!['robots.txt', 'sitemap-index.xml', 'sitemap-0.xml'].includes(relative)) {
@@ -54,7 +56,20 @@ async function visit(directory) {
   }
 }
 await visit('dist');
-for (const name of ['functions.php', 'index.php', 'style.css']) {
+const business = { ...seo, organization: null, restaurants: {} };
+for (const [route, filename] of Object.entries(manifest.routes)) {
+  const { gunzipSync } = await import('node:zlib');
+  const html = gunzipSync(await fs.readFile(path.join(pagesRoot, filename))).toString();
+  const match = html.match(/<script[^>]*type="application\/ld\+json"[^>]*>(.*?)<\/script>/s);
+  if (!match) continue;
+  const graph = JSON.parse(match[1])['@graph'] || [];
+  if (route === '') business.organization = graph.find(node => node['@type'] === 'Organization');
+  const restaurant = graph.find(node => node['@type'] === 'Restaurant');
+  if (restaurant) business.restaurants[`/${route}/`] = restaurant;
+}
+if (!business.organization || Object.keys(business.restaurants).length !== 2) throw new Error('Missing business schema');
+await write(path.join(releaseRoot, 'seo.json'), Buffer.from(JSON.stringify(business, null, 2)));
+for (const name of ['functions.php', 'seo.php', 'index.php', 'style.css']) {
   let source = await fs.readFile(path.join('wordpress', name), 'utf8');
   source = source.replaceAll('__RELEASE__', release);
   await write(path.join(root, name), Buffer.from(source));
