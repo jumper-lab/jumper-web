@@ -751,7 +751,11 @@ class Rodeio_Editor
                         },
                         $html,
                         1,
+                        $replaced,
                     );
+                    if (!$replaced && $kind === "dialogs") {
+                        $html = str_replace("</body>", $replacement . "</body>", $html);
+                    }
                 }
             }
         }
