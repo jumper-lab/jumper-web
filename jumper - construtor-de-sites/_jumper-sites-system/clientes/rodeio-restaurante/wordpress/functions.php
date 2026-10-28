@@ -1,43 +1,25 @@
 <?php
 /**
  * Rodeio's approved Astro output is the source of truth for the public pages.
- * The existing WordPress installation, plugins and database are left intact.
+ * Native WordPress pages own the main content; releases preserve the approved shell.
  */
 add_action('template_redirect', function () {
     if (is_admin()) return;
     $path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
     $route = trim(rawurldecode($path ?: '/'), '/');
     if ($route === 'rodeio-sitemap.xml') {
-        $pages = [
-        '',
-        'historia',
-        'cardapio',
-        'cardapio/completo',
-        'eventos',
-        'eventos/orcamento',
-        'reservas',
-        'reservas/jardins',
-        'reservas/iguatemi',
-        'restaurantes',
-        'restaurantes/jardins',
-        'restaurantes/iguatemi',
-        'privacidade',
-        'sac',
-        'compliance',
-        'rodeio-em-casa',
-        ];
-        status_header(200);
-        header('Content-Type: application/xml; charset=UTF-8');
-        echo '<?xml version="1.0" encoding="UTF-8"?>';
-        echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
-        foreach ($pages as $page) {
-            echo '<url><loc>' . esc_xml(home_url($page === '' ? '/' : '/' . $page . '/')) . '</loc></url>';
-        }
-        echo '</urlset>';
+        wp_safe_redirect(home_url('/page-sitemap.xml'), 301);
         exit;
     }
-    if ($route === 'jardins' || $route === 'iguatemi') {
-        wp_safe_redirect(home_url('/restaurantes/' . $route . '/'), 301);
+    $redirects = [
+        'jardins' => '/restaurantes/jardins/', 'iguatemi' => '/restaurantes/iguatemi/',
+        'pagina-inicial' => '/', 'inicio' => '/',
+        'politica-de-privacidade' => '/privacidade/',
+        'sac/jardins' => '/sac/', 'sac/iguatemi' => '/sac/',
+        'eventos/jardins' => '/eventos/', 'eventos/iguatemi' => '/eventos/',
+    ];
+    if (isset($redirects[$route])) {
+        wp_safe_redirect(home_url($redirects[$route]), 301);
         exit;
     }
     $routes = [
@@ -64,6 +46,13 @@ add_action('template_redirect', function () {
     if (!is_file($file)) return;
     $html = gzdecode(file_get_contents($file));
     if ($html === false) return;
+    $page = $route === '' ? get_post((int) get_option('page_on_front')) : get_page_by_path($route);
+    if ($page && $page->post_status === 'publish' &&
+        get_post_meta($page->ID, '_rodeio_managed_route', true) === '/' . $route) {
+        $content = do_blocks($page->post_content);
+        $html = preg_replace_callback('/(<main\b[^>]*>)(.*?)(<\/main>)/s',
+            static function ($match) use ($content) { return $match[1] . $content . $match[3]; }, $html, 1);
+    }
     status_header(200);
     header('Content-Type: text/html; charset=UTF-8');
     header('Cache-Control: public, max-age=300');
@@ -71,9 +60,43 @@ add_action('template_redirect', function () {
     exit;
 }, 0);
 
-add_filter('wpseo_sitemap_index', function ($sitemap) {
-    return $sitemap . '<sitemap><loc>' . esc_xml(home_url('/rodeio-sitemap.xml')) . '</loc></sitemap>';
+// Publish only the native page sitemap; temporary/archived pages remain drafts.
+add_filter('wpseo_sitemap_exclude_post_type', static function ($excluded, $type) {
+    return $type === 'page' ? false : true;
+}, 10, 2);
+add_action('save_post_page', static function ($id) {
+    if (get_post_meta($id, '_rodeio_managed_route', true) !== '' && function_exists('w3tc_flush_all')) w3tc_flush_all();
 });
+
+function rodeio_2026_form_guard($request) {
+    if ($request->get_header('origin') !== untrailingslashit(home_url())) {
+        return new WP_REST_Response(['success' => false, 'message' => 'Origem não permitida.'], 403);
+    }
+    if (strpos(strtolower($request->get_header('content-type')), 'application/x-www-form-urlencoded') !== 0) {
+        return new WP_REST_Response(['success' => false, 'message' => 'Formato inválido.'], 415);
+    }
+    if (strlen($request->get_body()) > 8192) {
+        return new WP_REST_Response(['success' => false, 'message' => 'Solicitação muito longa.'], 413);
+    }
+    foreach ($request->get_body_params() as $value) {
+        if (!is_string($value)) return new WP_REST_Response(['success' => false, 'message' => 'Formato inválido.'], 400);
+    }
+    return null;
+}
+
+function rodeio_2026_form_rate_limit() {
+    // Only the web server's client address is trusted; forwarded headers are spoofable.
+    $ip = $_SERVER['REMOTE_ADDR'] ?? '';
+    if (!filter_var($ip, FILTER_VALIDATE_IP)) return false;
+    $key = 'rodeio_form_' . substr(hash_hmac('sha256', $ip, wp_salt('nonce')), 0, 32);
+    $now = time();
+    $state = get_transient($key);
+    if (!is_array($state) || ($state['until'] ?? 0) <= $now) $state = ['count' => 0, 'until' => $now + 300];
+    if ($state['count'] >= 6) return true;
+    $state['count']++;
+    set_transient($key, $state, max(1, $state['until'] - $now));
+    return false;
+}
 
 add_action('rest_api_init', function () {
     register_rest_route('rodeio/v1', '/eventos', [
@@ -84,10 +107,7 @@ add_action('rest_api_init', function () {
 });
 
 function rodeio_2026_eventos($request) {
-    $origin = $request->get_header('origin');
-    if ($origin && $origin !== untrailingslashit(home_url())) {
-        return new WP_REST_Response(['success' => false, 'message' => 'Origem não permitida.'], 403);
-    }
+    if ($failure = rodeio_2026_form_guard($request)) return $failure;
     $fields = $request->get_body_params();
     if (!empty($fields['website'])) {
         return new WP_REST_Response(['success' => false, 'message' => 'Não foi possível enviar.'], 400);
@@ -103,6 +123,7 @@ function rodeio_2026_eventos($request) {
         mb_strlen($company) > 120 || mb_strlen($message) > 180) {
         return new WP_REST_Response(['success' => false, 'message' => 'Confira os campos antes de enviar.'], 400);
     }
+    if (rodeio_2026_form_rate_limit()) return new WP_REST_Response(['success' => false, 'message' => 'Aguarde alguns minutos antes de tentar novamente.'], 429);
     $ajax = admin_url('admin-ajax.php');
     $nonce_response = wp_remote_post($ajax, [
         'timeout' => 8,
@@ -154,15 +175,7 @@ function rodeio_2026_contato($request) {
         $response->header('Cache-Control', 'no-store');
         return $response;
     };
-    if ($request->get_header('origin') !== untrailingslashit(home_url())) {
-        return $reply(false, 'Origem não permitida.', 403);
-    }
-    if (strpos(strtolower($request->get_header('content-type')), 'application/x-www-form-urlencoded') !== 0) {
-        return $reply(false, 'Formato inválido.', 415);
-    }
-    if (strlen($request->get_body()) > 8192) {
-        return $reply(false, 'Solicitação muito longa.', 413);
-    }
+    if ($failure = rodeio_2026_form_guard($request)) return $failure;
     $fields = $request->get_body_params();
     if (!empty($fields['website'])) return $reply(false, 'Não foi possível enviar.', 400);
     $forms = [
@@ -194,6 +207,7 @@ function rodeio_2026_contato($request) {
         }
         $payload += ['name-1' => $name, 'email-1' => $email, 'phone-1' => $phone, 'text-1' => $subject];
     }
+    if (rodeio_2026_form_rate_limit()) return $reply(false, 'Aguarde alguns minutos antes de tentar novamente.', 429);
     $failure = 'Não foi possível confirmar o envio. Entre em contato pelo telefone (11) 3474-1333.';
     $nonce_response = wp_remote_post(admin_url('admin-ajax.php'), [
         'timeout' => 8, 'body' => ['action' => 'forminator_get_nonce', 'form_id' => $form['id']],

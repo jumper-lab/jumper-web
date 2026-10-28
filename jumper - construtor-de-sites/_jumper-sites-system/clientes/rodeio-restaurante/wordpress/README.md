@@ -1,6 +1,6 @@
 # Publicação do Rodeio no WordPress
 
-O site oficial usa o tema ativo `rodeio-2026`. O pacote reproduz o HTML aprovado no dev e mantém os formulários Forminator existentes. Não ativa outro tema nem publica os rascunhos da migração.
+O site oficial usa o tema ativo `rodeio-2026`. O pacote reproduz o HTML aprovado no dev e mantém os formulários Forminator existentes. O conteúdo principal passa a pertencer às páginas nativas identificadas por `_rodeio_managed_route`; o tema mantém cabeçalho, rodapé, estilos, scripts e lightboxes da release aprovada.
 
 ## Build
 
@@ -20,6 +20,10 @@ O comando faz o build de produção, substitui referências dos assets pelo cami
 - Instalar os arquivos em `releases/<identificador>/`. Os assets dessa release são imutáveis e têm URLs próprias. Validar todos os hashes antes de ativar.
 - Promover por substituição atômica de `functions.php`, que aponta para a pasta de páginas da release. Preservar os arquivos e endpoints existentes. Atualizar a versão do tema e limpar o cache de páginas do mesmo site.
 - Conferir as páginas e lightboxes públicos, os assets e os endpoints com requisições que não criem mensagens. Em falha, restaurar atomicamente os arquivos do tema guardados no backup e limpar o cache.
+
+## Páginas nativas
+
+Cada página guarda o HTML aprovado do interior de `<main>` em um bloco HTML no editor WordPress. A chave `_rodeio_managed_route` relaciona a página à rota; a inicial usa `/`. O tema insere esse conteúdo na estrutura aprovada. As páginas antigas ficam em rascunho, com slugs de arquivo e backup. O sitemap é gerado pelo Yoast a partir das páginas publicadas; o sitemap antigo redireciona para o de páginas. Uma nova release deve sincronizar os blocos das páginas gerenciadas após revisão para evitar que conteúdo antigo sobreponha a release.
 
 ## Formulários
 
