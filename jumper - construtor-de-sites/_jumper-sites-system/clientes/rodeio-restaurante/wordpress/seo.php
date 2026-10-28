@@ -17,7 +17,13 @@ function rodeio_2026_live_seo($html, $page) {
         if (!is_object($meta)) return $html;
         $result = $meta->get_head();
         $generated = is_object($result) ? ($result->html ?? '') : $result;
-        if (!is_string($generated) || !preg_match('~<title\b[^>]*>.+?</title>~s', $generated)) return $html;
+        if (!is_string($generated) || trim($generated) === '') return $html;
+        // Yoast can omit its title presenter on the public template when the
+        // theme renders its own head. Use the same API's title in that case.
+        if (!preg_match('~<title\b[^>]*>.+?</title>~s', $generated)) {
+            if (!is_string($meta->title) || $meta->title === '') return $html;
+            $generated = '<title>' . esc_html($meta->title) . "</title>\n" . $generated;
+        }
         // Yoast may omit canonical on noindex pages. Keep a self-canonical there.
         if (!preg_match('~<link\b[^>]*rel=["\x27]canonical["\x27]~i', $generated)) {
             $canonical = get_post_meta($page->ID, '_yoast_wpseo_canonical', true) ?: get_permalink($page);
