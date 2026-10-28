@@ -77,3 +77,13 @@
  #digital-menu-dialog .menu-document-actions {margin:0;justify-content:space-between;gap:12px}
  #digital-menu-dialog .menu-document-actions a {font-size:11px;min-height:44px}
 }
+/* Unit pages: a separate ordering row beside the visit information. */
+.visit-information .visit-orders {grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:24px;border-top:1px solid var(--line)}
+.visit-information .visit-orders h2 {margin:0}
+.unit-order-actions {display:flex;align-items:center;flex-wrap:wrap;gap:12px}
+.unit-order-actions .unit-order-action {display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:46px;padding:12px 20px;border:1px solid var(--brown);border-radius:3px;color:var(--brown);font:500 13px/1.4 var(--sans);text-decoration:none}
+.unit-order-actions .unit-order-action::after {content:none}
+.unit-order-actions .unit-order-action svg {width:21px;height:21px;flex:0 0 auto}
+.unit-order-actions .unit-order-action:hover {background:var(--brown);color:var(--paper)}
+.unit-order-actions .unit-order-action:focus-visible {outline:2px solid var(--brown);outline-offset:3px}
+@media(max-width:599px){.visit-information .visit-orders{flex-direction:column;align-items:flex-start;gap:16px}.unit-order-actions{width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.unit-order-actions .unit-order-action{padding:12px 14px;min-height:48px}}
