@@ -179,7 +179,7 @@ function serve(element:Element,delay=0,duration=700,distance=24){
 const entrance=document.querySelectorAll('.hero:not(.hero-home) .hero-copy > :not(.hero-note), .not-found > *');
 entrance.forEach((element,index)=>serve(element,Math.min(index*45,135)));
 // Frames remain anchored; each photograph reveals within its own bounds.
-const chapters=document.querySelectorAll('main :is(h1,h2,h3,p,address,figcaption,.action,.archive-date,.timeline-date,.events-form label,.reservation-house,.reservation-assistance,.workspace-help,.workspace-back), .site-footer :is(.footer-navigation,.footer-signoff,.footer-unit,.footer-contact,.footer-bottom)');
+const chapters=document.querySelectorAll('main :is(h1,h2,h3,p,address,figcaption,.action,.archive-date,.timeline-date,.events-form label,.reservation-house,.reservation-assistance,.workspace-help,.workspace-back), .site-footer :is(.footer-signoff,.footer-unit,.footer-contact,.footer-bottom)');
 const media=Array.from(document.querySelectorAll<HTMLImageElement>('main [data-photo-entrance]')).filter(element=>!element.closest('.hero'));
 type PhotoMotionState={armed:boolean;prepared:boolean;request:number;animation?:Animation};
 const photoMotion=new WeakMap<HTMLImageElement,PhotoMotionState>();

@@ -725,7 +725,7 @@ main:focus {
 }
 
 /* Consistent service gestures across local pages and lightboxes. */
-:where(button, .workspace-back, .workspace-help, .footer-navigation a, .footer-unit-reserve, .digital-menu-footer a, .close-dialog, .digital-menu-close) {
+:where(button, .workspace-back, .workspace-help, .footer-unit-reserve, .digital-menu-footer a, .close-dialog, .digital-menu-close) {
   transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
 }
 .events-form :is(input,select,textarea) { transition: border-color 180ms ease, box-shadow 180ms ease; }

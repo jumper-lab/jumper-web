@@ -5,6 +5,7 @@ const closeButton=dialog?.querySelector<HTMLButtonElement>('[data-close-digital-
 const slot=dialog?.querySelector<HTMLElement>('[data-menu-frame-slot]');
 const status=dialog?.querySelector<HTMLElement>('[data-menu-status]');
 const menuUrl=dialog.dataset.menuUrl ? new URL(dialog.dataset.menuUrl, document.baseURI).href : undefined;
+const menuUrls=new Set([menuUrl, dialog.dataset.menuAliasUrl ? new URL(dialog.dataset.menuAliasUrl, document.baseURI).href : undefined].filter(Boolean));
 const pageLabel=dialog.dataset.pageLabel||'o cardápio';
 const frameTitle=dialog.dataset.frameTitle||'Cardápio digital do Rodeio';
 let opener:HTMLElement|null=null;
@@ -17,12 +18,12 @@ if(dialog&&closeButton&&slot&&status&&menuUrl&&typeof dialog.showModal==='functi
  const slowMessage=`O conteúdo está demorando a carregar. Tente a opção de tela cheia abaixo.`;
  // Keep the original href working without JavaScript and for modified clicks.
  document.querySelectorAll<HTMLAnchorElement>('a[href]').forEach(link=>{
-  if(link.href!==menuUrl||dialog.contains(link)||link.hasAttribute('download'))return;
+  if(!menuUrls.has(link.href)||dialog.contains(link)||link.hasAttribute('download'))return;
   link.setAttribute('aria-haspopup','dialog');link.setAttribute('aria-controls',dialog.id);
  });
  document.addEventListener('click',event=>{
    const link=(event.target as Element).closest<HTMLAnchorElement>('a[href]');
-   if(!link||link.href!==menuUrl||dialog.contains(link)||link.hasAttribute('download'))return;
+   if(!link||!menuUrls.has(link.href)||dialog.contains(link)||link.hasAttribute('download'))return;
    if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
    event.preventDefault();
    if(dialog.open)return;
@@ -46,12 +47,13 @@ if(dialog&&closeButton&&slot&&status&&menuUrl&&typeof dialog.showModal==='functi
   if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)dialog.close();
  });
  dialog.addEventListener('close',()=>{clearLoadingTimer();frame?.remove();frame=null;status.hidden=true;window.scrollTo({left:pageScroll.x,top:pageScroll.y,behavior:'instant'});opener?.focus({preventScroll:true});});
- // Include the frame in the tab sequence; the close control stays outside it.
+ // Keep keyboard focus within the active lightbox, including local form fields.
  dialog.addEventListener('keydown',event=>{
   if(event.key!=='Tab')return;
-  const last=Array.from(dialog.querySelectorAll<HTMLAnchorElement>('.digital-menu-footer a')).at(-1);
-  if(event.shiftKey&&document.activeElement===closeButton){event.preventDefault();last?.focus();}
-  else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();closeButton.focus();}
+  const controls=Array.from(dialog.querySelectorAll<HTMLElement>('a[href],button,input:not([type="hidden"]),select,textarea,iframe,[tabindex]')).filter(element=>!element.hasAttribute('disabled')&&element.tabIndex>=0&&element.getClientRects().length>0);
+  const first=controls[0],last=controls.at(-1);
+  if(event.shiftKey&&document.activeElement===first){event.preventDefault();last?.focus();}
+  else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first?.focus();}
  });
 }
 }

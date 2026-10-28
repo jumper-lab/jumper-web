@@ -24,7 +24,8 @@
     "postbuild": "node scripts/prune-unused-photo-masters.mjs",
     "build:cloudflare:dev": "npm run build:cloudflare && node scripts/preserve-dev-izi-snapshots.mjs",
     "test:dev-build": "node --test scripts/tests/dev-preserved-build.test.mjs",
-    "preview:local": "node scripts/preview-local.mjs"
+    "preview:local": "node scripts/preview-local.mjs",
+    "build:wordpress": "node scripts/build-wordpress.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
