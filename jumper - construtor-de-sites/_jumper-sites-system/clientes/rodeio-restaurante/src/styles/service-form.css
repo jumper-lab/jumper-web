@@ -10,18 +10,18 @@
 .service-form label { display: flex; flex-direction: column; gap: 8px; font-size: 12px; color: var(--brown); }
 .service-form label > span { display: block; }
 .service-form label b { color: var(--brand-text); font-weight: 500; }
-.service-form :is(input:not([type="hidden"]), textarea) { width: 100%; min-height: 46px; padding: 12px; border: 1px solid var(--line); border-radius: 0; background: var(--paper); color: var(--brown); font: 16px/1.5 var(--sans); }
+.service-form :is(input:not([type="hidden"]), select, textarea) { width: 100%; min-height: 46px; padding: 12px; border: 1px solid var(--line); border-radius: 0; background: var(--paper); color: var(--brown); font: 16px/1.5 var(--sans); }
 .service-form textarea { resize: vertical; }
-.service-form :is(input, textarea):focus-visible { outline: 2px solid var(--brown); outline-offset: 2px; }
+.service-form :is(input, select, textarea):focus-visible { outline: 2px solid var(--brown); outline-offset: 2px; }
 .service-form-message { margin-top: 22px; }
 .service-form small { color: var(--muted); font-size: 11px; }
 .service-form-status { min-height: 20px; margin: 20px 0 0; max-width: 48ch; font-size: 13px; }
 .service-form-trap { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 .service-form-dialog .digital-menu-footer { justify-content: flex-end; padding: 12px clamp(20px, 5vw, 42px); }
-.service-form-dialog .digital-menu-footer button { display: inline-flex; align-items: center; justify-content: center; gap: 16px; min-height: 48px; padding: 12px 24px; border: 1px solid var(--brown); border-radius: 2px; background: var(--brown); color: var(--paper); font: 500 14px/1.4 var(--sans); cursor: pointer; }
-.service-form-dialog .digital-menu-footer button:is(:hover, :focus-visible) { background: var(--brand-text); border-color: var(--brand-text); }
-.service-form-dialog .digital-menu-footer button:focus-visible { outline: 2px solid var(--brown); outline-offset: 3px; }
-.service-form-dialog .digital-menu-footer button:disabled { opacity: .6; cursor: wait; }
+.service-form-dialog .digital-menu-footer :is(button, .service-primary-action) { display: inline-flex; align-items: center; justify-content: center; gap: 16px; min-height: 48px; padding: 12px 24px; border: 1px solid var(--brown); border-radius: 2px; background: var(--brown); color: var(--paper); font: 500 14px/1.4 var(--sans); text-decoration: none; cursor: pointer; }
+.service-form-dialog .digital-menu-footer :is(button, .service-primary-action):is(:hover, :focus-visible) { background: var(--brand-text); border-color: var(--brand-text); }
+.service-form-dialog .digital-menu-footer :is(button, .service-primary-action):focus-visible { outline: 2px solid var(--brown); outline-offset: 3px; }
+.service-form-dialog .digital-menu-footer :is(button, .service-primary-action):disabled { opacity: .6; cursor: wait; }
 @media (max-width: 599px) {
   .digital-menu-dialog.service-form-dialog { width: calc(100vw - 12px); height: calc(100dvh - 12px); }
   .digital-menu-dialog.service-form-dialog-compliance { height: min(500px, calc(100dvh - 12px)); }
@@ -29,5 +29,10 @@
   .service-form-dialog .service-form-content { padding: 24px 16px; }
   .service-form-fields { grid-template-columns: minmax(0, 1fr); gap: 18px; }
   .service-form-dialog .digital-menu-footer { padding-inline: 16px; padding-bottom: max(12px, env(safe-area-inset-bottom)); }
-  .service-form-dialog .digital-menu-footer button { width: 100%; }
+  .service-form-dialog .digital-menu-footer :is(button, .service-primary-action) { width: 100%; }
 }
+
+.service-form-unit { margin-bottom: 24px; }
+.service-form-dialog .digital-menu-footer .service-primary-action::after { content: none; }
+.service-delivery-copy { font: 500 clamp(32px, 5vw, 48px)/1.2 var(--serif); letter-spacing: -.02em; margin-bottom: 24px; }
+.service-delivery-description { max-width: 48ch; font-size: 15px; line-height: 1.8; color: var(--muted); }

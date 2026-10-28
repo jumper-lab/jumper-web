@@ -2,7 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import Arrow from '../components/Arrow.astro';
 import content from '../../data/content.json';
-import ServiceFormDialog from '../components/ServiceFormDialog.astro';
 import '../styles/services.css';
 
 const units = content.units.map((unit) => ({
@@ -28,5 +27,4 @@ const units = content.units.map((unit) => ({
     </div>
   </section>
   <section class="service-note" aria-label="Informações de atendimento"><div class="wrap service-note-grid"><p class="eyebrow">Atendimento atual</p><p>Escolha uma unidade para abrir o formulário. Se preferir falar por telefone, ligue para <a href="tel:+551134741333">(11) 3474-1333</a>.</p></div></section>
-  {units.map(unit => <ServiceFormDialog kind={`sac-${unit.slug}` as 'sac-jardins' | 'sac-iguatemi'} title={`SAC · Rodeio ${unit.name}`} originalUrl={unit.form}/>)}
 </Layout>

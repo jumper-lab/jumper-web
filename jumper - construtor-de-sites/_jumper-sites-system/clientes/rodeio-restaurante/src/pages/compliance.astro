@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Arrow from '../components/Arrow.astro';
-import ServiceFormDialog from '../components/ServiceFormDialog.astro';
 import '../styles/services.css';
 
 // The current form still lives at this URL in WordPress. A production build must
@@ -27,5 +26,4 @@ if (import.meta.env.PUBLIC_LIVE_SITE === 'true' && formUrl === currentForm) {
       </div>
     </div>
   </section>
-  <ServiceFormDialog kind="compliance" title="Compliance Rodeio" originalUrl={formUrl}/>
 </Layout>
