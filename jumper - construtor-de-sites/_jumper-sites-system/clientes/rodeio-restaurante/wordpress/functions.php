@@ -85,6 +85,10 @@ add_action('template_redirect', function () {
         catch (Throwable $error) { error_log('Rodeio editor: approved shell fallback retained.'); }
         $html = rodeio_2026_live_seo($html, $page);
     }
+    if (strpos($html, 'service-form-dialog') !== false) {
+        $service_css = get_template_directory_uri() . '/services.css?ver=' . filemtime(__DIR__ . '/services.css');
+        $html = str_replace('</head>', '<link rel="stylesheet" href="' . esc_url($service_css) . '">' . '</head>', $html);
+    }
     status_header(200);
     header('Content-Type: text/html; charset=UTF-8');
     header('Cache-Control: public, max-age=300');
