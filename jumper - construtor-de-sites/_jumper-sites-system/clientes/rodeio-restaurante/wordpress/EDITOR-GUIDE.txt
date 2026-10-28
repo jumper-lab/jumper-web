@@ -33,3 +33,6 @@ O botão Fale com a gente no rodapé abre uma escolha entre SAC e Compliance. O 
 
 PEDIDOS NO RODAPÉ — 1.3.6
 Na coluna da marca, Peça da sua casa reúne ícones de iFood e delivery pelo WhatsApp. Os destinos e nomes acessíveis dos ícones ficam no menu correspondente da área Rodapé e contatos. SAC e Compliance continuam em Fale com a gente. Os atalhos de pedido abrem uma nova aba.
+
+RODAPÉ — 1.3.7
+A coluna da marca contém somente a logo, Peça da sua casa e os ícones de pedido. A assinatura Um clássico que se renova foi retirada desta coluna. O título principal da home e outras ocorrências no site foram preservados.
