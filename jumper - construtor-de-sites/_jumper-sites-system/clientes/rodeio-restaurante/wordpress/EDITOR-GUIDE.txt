@@ -8,7 +8,7 @@ Em Rodeio · Ajustes ficam as áreas compartilhadas: Menu e cabeçalho, Rodapé 
 
 Links úteis concentra telefone, Instagram, WhatsApp, links de reserva, mapas e endereços. Alterar um contato ou endereço compartilhado atualiza as referências correspondentes no HTML das páginas e das áreas globais. O telefone visível e os links tel: são atualizados juntos. Horários são editados na página da unidade; o schema acompanha os horários reconhecidos e o endereço visível, sem inventar exceções de feriados.
 
-O HTML continua editável: no bloco HTML da página ou na aba Texto/Código da área compartilhada. Ao salvar, os campos são relidos. Conteúdo novo inserido no HTML passa a ser mapeado. Textos, imagens e links existentes são editáveis nos campos; alterações de estrutura continuam no HTML. Uma versão do conteúdo é associada aos campos para detectar edições concorrentes. Se o mesmo item mudar nos dois lugares, recarregue e revise o aviso; não há sobrescrita silenciosa.
+O HTML continua editável: na área HTML abaixo dos campos da página ou da área compartilhada. Ao salvar, os campos são relidos. Conteúdo novo inserido no HTML passa a ser mapeado. Textos, imagens e links existentes são editáveis nos campos; alterações de estrutura continuam no HTML. Uma versão do conteúdo é associada aos campos para detectar edições concorrentes. Se o mesmo item mudar nos dois lugares, recarregue e revise o aviso; não há sobrescrita silenciosa.
 
 As áreas globais são privadas e não criam páginas públicas. Os grupos ACF são definidos no tema para serem versionados; edite os valores nas páginas/áreas, não os grupos no painel ACF. O grupo antigo “Página” foi preservado. Yoast continua responsável por títulos SEO e descrições, em seu painel próprio.
 
