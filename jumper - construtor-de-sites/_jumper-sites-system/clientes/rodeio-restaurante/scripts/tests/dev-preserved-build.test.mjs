@@ -18,3 +18,15 @@ test('unknown generated asset cannot be removed',t=>run(t,async f=>{await writeF
 test('paths escaping the recorded preview are rejected',t=>run(t,async f=>{f.manifest.replacements[0].path='izigym-lp/../rodeio/index.html';await assert.rejects(preserveDevIziSnapshots({...f,allowedSlug:'rodeio'}),/Caminho inválido/);assert.equal(await readFile(join(f.root,'rodeio/index.html'),'utf8'),'authorized Rodeio');}));
 test('global allow cannot select any preview',t=>run(t,async f=>{await assert.rejects(preserveDevIziSnapshots({...f,allowedSlug:'all'}),/Slug dev não autorizado/);}));
 test('missing expected generated HTML is not silently restored',t=>run(t,async f=>{await rm(join(f.root,f.manifest.replacements[1].path));await assert.rejects(preserveDevIziSnapshots({...f,allowedSlug:'rodeio'}),{code:'ENOENT'});const first=f.manifest.replacements[0];assert.equal(hash(await readFile(join(f.root,first.path))),first.generatedSha256);}));
+
+test('an independent dev source preserves its form/assets even when that preview is selected',t=>run(t,async f=>{
+ f.manifest.developmentSources=['izigym-lp-vilaromana'];
+ await preserveDevIziSnapshots({...f,allowedSlug:'izigym-lp-vilaromana'});
+ for(const r of f.manifest.replacements)assert.equal(hash(await readFile(join(f.root,r.path))),r.snapshotSha256);
+ for(const r of f.manifest.remove)await assert.rejects(readFile(join(f.root,r.path)),{code:'ENOENT'});
+ assert.equal(await readFile(join(f.root,'rodeio/index.html'),'utf8'),'authorized Rodeio');
+}));
+test('an independent source cannot override an unrelated client',t=>run(t,async f=>{
+ f.manifest.developmentSources=['rodeio'];
+ await assert.rejects(preserveDevIziSnapshots({...f,allowedSlug:'rodeio'}),/Fonte dev fora/);
+}));
