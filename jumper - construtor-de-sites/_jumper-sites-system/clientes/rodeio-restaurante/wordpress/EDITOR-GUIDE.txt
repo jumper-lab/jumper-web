@@ -36,3 +36,6 @@ Na coluna da marca, Peça da sua casa reúne ícones de iFood e delivery pelo Wh
 
 RODAPÉ — 1.3.7
 A coluna da marca contém somente a logo, Peça da sua casa e os ícones de pedido. A assinatura Um clássico que se renova foi retirada desta coluna. O título principal da home e outras ocorrências no site foram preservados.
+
+PEDIDOS NO LIGHTBOX DO CARDÁPIO — 1.3.8
+A barra inferior do cardápio contém iFood e Delivery pelo WhatsApp, além de Baixar cardápio e Abrir em tela cheia. No celular, os pedidos ficam na primeira linha e os controles do documento na segunda. Os links de pedido podem ser editados em Lightboxes e serviços; a substituição do PDF e das prévias continua no fluxo próprio.
