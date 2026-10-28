@@ -696,11 +696,26 @@ class Rodeio_Editor
             }
             $doc = new Rodeio_Editor_Document($source);
             if ($kind === "header") {
+                $current = wp_parse_url(home_url($_SERVER["REQUEST_URI"] ?? "/"), PHP_URL_PATH);
+                $site_header = $doc->xpath->query(".//header", $doc->root)->item(0);
+                if ($site_header) {
+                    $classes = array_values(
+                        array_filter(
+                            explode(" ", $site_header->getAttribute("class")),
+                            static function ($class) {
+                                return $class !== "header-home" && $class !== "";
+                            },
+                        ),
+                    );
+                    if ($current === "/") {
+                        $classes[] = "header-home";
+                    }
+                    $site_header->setAttribute("class", implode(" ", $classes));
+                }
                 foreach ($doc->xpath->query(".//nav//a", $doc->root) as $a) {
                     $a->removeAttribute("aria-current");
                     $href = $a->getAttribute("href");
                     $path = parse_url($href, PHP_URL_PATH);
-                    $current = wp_parse_url(home_url($_SERVER["REQUEST_URI"] ?? "/"), PHP_URL_PATH);
                     if (
                         $path &&
                         ($path === "/"
@@ -823,14 +838,20 @@ add_filter(
                 if (in_array("Organization", $types, true) && $logo) {
                     $url = $logo->getAttribute("src");
                     $url = strpos($url, "/") === 0 ? home_url($url) : $url;
+                    $logo_id = is_array($node["logo"] ?? null)
+                        ? $node["logo"]["@id"] ?? home_url("/#logo")
+                        : home_url("/#logo");
                     $node["logo"] = [
                         "@type" => "ImageObject",
-                        "@id" => home_url("/#logo"),
+                        "@id" => $logo_id,
                         "url" => $url,
                         "contentUrl" => $url,
                         "width" => (int) $logo->getAttribute("width"),
                         "height" => (int) $logo->getAttribute("height"),
                     ];
+                    if (isset($node["image"])) {
+                        $node["image"] = ["@id" => $logo_id];
+                    }
                 }
                 if (!$unit || !in_array("Restaurant", $types, true)) {
                     continue;
