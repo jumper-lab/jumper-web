@@ -430,7 +430,7 @@ class Rodeio_Editor
         if (!self::supported($id)) {
             return $field;
         }
-        $kind = substr($field["name"], 4);
+        $kind = substr($field["key"], strlen("field_rde_"));
         $s = get_post_meta($id, "_rde_snapshot", true);
         $count = count($s["data"][$kind] ?? []);
         if (!$count) {
@@ -453,7 +453,7 @@ class Rodeio_Editor
     }
     public static function preview_image($field)
     {
-        if (($field["name"] ?? "") !== "rde_images_url" || empty($field["value"])) {
+        if (($field["key"] ?? "") !== "field_rde_images_url" || empty($field["value"])) {
             return;
         }
         echo '<img class="rde-image-preview" src="' .
