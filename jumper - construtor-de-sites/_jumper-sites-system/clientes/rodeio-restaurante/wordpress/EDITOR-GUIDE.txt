@@ -27,3 +27,6 @@ Use Atualizar para salvar. O HTML fica em Área técnica, recolhida por padrão,
 
 LIGHTBOXES DE ATENDIMENTO — 1.3.4
 Delivery, SAC e Compliance são editados em Rodeio · Ajustes → Lightboxes e serviços. Delivery tem dois cartões de pedido, WhatsApp e iFood. Os canais de e-mail ficam em cartões próprios, acima dos formulários. Use os campos de texto e link para alterar os contatos; preserve a estrutura dos cartões no HTML. Os formulários, destinos de envio e limites de mensagem continuam os mesmos. A apresentação dos cartões fica em services.css no tema, carregada pelo renderizador WordPress.
+
+FALE COM A GENTE — 1.3.5
+O botão Fale com a gente no rodapé abre uma escolha entre SAC e Compliance. O texto e destino do botão ficam na área Rodapé e contatos. O título, os textos e os links da escolha ficam em Lightboxes e serviços. Os formulários continuam nas áreas anteriores; somente uma janela abre por vez. Fechar ou pressionar Esc devolve o foco ao botão do rodapé. Sem JavaScript, o botão aponta para a página de SAC.

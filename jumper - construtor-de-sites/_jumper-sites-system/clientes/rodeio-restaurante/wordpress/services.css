@@ -44,3 +44,9 @@
  #rodeio-em-casa-dialog .service-contact-card {min-height:84px;padding:16px;align-items:center;flex-wrap:nowrap}
  #rodeio-em-casa-dialog .service-contact-copy {flex:1 1 auto}
 }
+#contact-dialog {height:fit-content;max-height:calc(100dvh - 24px)}
+#contact-dialog .service-form-content {flex:0 1 auto}
+#contact-dialog .service-contact-list {margin:0}
+#contact-dialog .service-form-intro {margin-bottom:24px}
+#contact-dialog .service-contact-copy small {font-size:13px;max-width:45ch;line-height:1.6}
+@media(max-width:599px){#contact-dialog .service-contact-card{padding:18px 14px;min-height:96px}#contact-dialog .service-contact-copy small{font-size:12px}}

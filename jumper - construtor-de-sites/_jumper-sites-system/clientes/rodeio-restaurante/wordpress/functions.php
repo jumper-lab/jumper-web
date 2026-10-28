@@ -87,7 +87,8 @@ add_action('template_redirect', function () {
     }
     if (strpos($html, 'service-form-dialog') !== false) {
         $service_css = get_template_directory_uri() . '/services.css?ver=' . filemtime(__DIR__ . '/services.css');
-        $html = str_replace('</head>', '<link rel="stylesheet" href="' . esc_url($service_css) . '">' . '</head>', $html);
+        $contact_js = get_template_directory_uri() . '/contact-dialog.js?ver=' . filemtime(__DIR__ . '/contact-dialog.js');
+        $html = str_replace('</head>', '<link rel="stylesheet" href="' . esc_url($service_css) . '"><script defer src="' . esc_url($contact_js) . '"></script></head>', $html);
     }
     status_header(200);
     header('Content-Type: text/html; charset=UTF-8');
