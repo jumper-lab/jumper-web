@@ -1,6 +1,6 @@
 RODEIO — EDIÇÃO RÁPIDA COM ACF
 
-Para editar uma página: entre em Páginas, escolha a página do Rodeio e procure “Rodeio · Edição rápida sincronizada”. As abas são Textos, Imagens, Links e botões e Menus. Expanda o item identificado pelo seu conteúdo, altere e clique em Atualizar. Os valores atuais vêm do HTML existente.
+Para editar uma página: entre em Páginas, escolha a página do Rodeio e procure “Rodeio · Edição rápida sincronizada”. As páginas gerenciadas usam a tela direta de campos, com o HTML logo abaixo, para evitar a gaveta de metadados do editor de blocos. As abas são Textos, Imagens, Links e botões e Menus. Expanda o item identificado pelo seu conteúdo, altere e clique em Atualizar. Os valores atuais vêm do HTML existente.
 
 Textos mantêm as tags, destaques, classes e controles do layout. Os links têm destino separado do texto; o texto do botão está em Textos. Imagens podem ser escolhidas/enviadas na Biblioteca de mídia ou substituídas por um endereço de imagem. Ao trocar uma imagem, atualize a descrição acessível. Nos banners há imagem mobile opcional. As versões responsivas e o endereço da foto ampliada são atualizados juntos.
 
