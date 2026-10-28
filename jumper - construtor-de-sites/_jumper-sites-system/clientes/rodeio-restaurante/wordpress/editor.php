@@ -295,7 +295,7 @@ class Rodeio_Editor
         if ($write_fields && function_exists("update_field")) {
             foreach (self::encode($snapshot["data"], $snapshot["token"]) as $key => $value) {
                 update_field($key, wp_slash($value), $id);
-            };
+            }
         }
     }
     private static function prepare($id, $raw)
@@ -489,9 +489,12 @@ class Rodeio_Editor
             ),
         );
     }
-    public static function settings()
+    public static function settings($settings_id = null)
     {
         $ids = get_option("_rde_fragment_ids", []);
+        if ($settings_id !== null) {
+            $ids["settings"] = (int) $settings_id;
+        }
         if (empty($ids["settings"])) {
             return [];
         }
@@ -509,9 +512,12 @@ class Rodeio_Editor
         }
         return $out;
     }
-    public static function propagate($id, $before, $after)
+    public static function propagate($id, $before, $after, $scope = null, $settings_id = null)
     {
         $ids = get_option("_rde_fragment_ids", []);
+        if ($settings_id !== null) {
+            $ids["settings"] = (int) $settings_id;
+        }
         if (empty($ids["settings"])) {
             return;
         }
@@ -550,7 +556,7 @@ class Rodeio_Editor
                 }
             }
         } else {
-            $facts = self::settings();
+            $facts = self::settings($settings_id);
             foreach (["texts" => "value", "links" => "url"] as $kind => $prop) {
                 $old = [];
                 foreach ($before["data"][$kind] as $row) {
@@ -575,7 +581,7 @@ class Rodeio_Editor
         if (!$changes) {
             return;
         }
-        $facts = $is_settings ? $settings_before : self::settings();
+        $facts = $is_settings ? $settings_before : self::settings($settings_id);
         foreach ($changes as [$old, $new, $kind]) {
             if (
                 $kind === "text" &&
@@ -612,7 +618,7 @@ class Rodeio_Editor
                 }
             }
         }
-        foreach (self::all_ids() as $other) {
+        foreach ($scope === null ? self::all_ids() : $scope as $other) {
             $content = get_post_field("post_content", $other, "raw");
             $doc = new Rodeio_Editor_Document(self::fragment($content));
             $dirty = false;
@@ -633,8 +639,8 @@ class Rodeio_Editor
                                 );
                                 $dirty = true;
                             }
-                        };
-                    };
+                        }
+                    }
                 }
                 if ($kind === "text") {
                     foreach ($doc->xpath->query(".//text()", $doc->root) as $node) {
@@ -649,7 +655,7 @@ class Rodeio_Editor
                             $node->nodeValue = str_replace($old, $new, $node->nodeValue);
                             $dirty = true;
                         }
-                    };
+                    }
                 }
             }
             if (!$dirty) {
@@ -703,7 +709,7 @@ class Rodeio_Editor
                     ) {
                         $a->setAttribute("aria-current", "page");
                     }
-                };
+                }
             }
             foreach ($doc->root->childNodes as $node) {
                 if (!($node instanceof DOMElement)) {
