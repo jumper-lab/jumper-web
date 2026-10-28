@@ -24,3 +24,6 @@ Imagens: use Trocar foto para escolher ou enviar pela biblioteca. A descrição 
 Links: escolha se o clique abre uma página, e-mail, telefone ou seção. Nos links com um único texto, o nome e o destino ficam juntos. Os menus continuam com itens reordenáveis e controle de nova aba.
 Menu, rodapé, contatos e lightboxes: o atalho no topo abre a área compartilhada correspondente. As alterações nessas áreas aparecem em todo o site.
 Use Atualizar para salvar. O HTML fica em Área técnica, recolhida por padrão, e mantém a sincronização. Os filtros não removem conteúdos.
+
+LIGHTBOXES DE ATENDIMENTO — 1.3.4
+Delivery, SAC e Compliance são editados em Rodeio · Ajustes → Lightboxes e serviços. Delivery tem dois cartões de pedido, WhatsApp e iFood. Os canais de e-mail ficam em cartões próprios, acima dos formulários. Use os campos de texto e link para alterar os contatos; preserve a estrutura dos cartões no HTML. Os formulários, destinos de envio e limites de mensagem continuam os mesmos. A apresentação dos cartões fica em services.css no tema, carregada pelo renderizador WordPress.

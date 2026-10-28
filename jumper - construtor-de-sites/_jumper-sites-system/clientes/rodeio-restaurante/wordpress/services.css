@@ -1,0 +1,46 @@
+/* Service lightboxes: shared with ACF-authored content, independent from form delivery. */
+.service-form-dialog .service-form-intro {max-width:60ch;margin:0 0 22px;font-size:15px;line-height:1.8;color:var(--muted)}
+.service-contact-list {display:grid;gap:10px;margin:0 0 28px}
+.service-contact-card {display:flex;align-items:center;gap:14px;min-width:0;min-height:68px;padding:16px 18px;border:1px solid var(--line);border-radius:3px;background:rgb(255 255 255 / .22);color:var(--brown);text-decoration:none!important;transition:background .18s,border-color .18s}
+.service-contact-card::after {content:none!important}
+.service-contact-card:hover {background:rgb(255 255 255 / .5);border-color:var(--brown)}
+.service-contact-card:focus-visible {outline:2px solid var(--brown);outline-offset:3px}
+.service-contact-icon {display:grid;place-items:center;flex:0 0 38px;width:38px;height:38px;border:1px solid var(--line);border-radius:50%}
+.service-contact-icon svg {width:19px;height:19px}
+.service-contact-copy {display:grid;gap:4px;min-width:0;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.service-contact-copy strong {font-weight:500;font-size:15px;color:var(--brown)}
+.service-contact-copy small {font-size:12px;color:var(--muted)}
+.service-contact-arrow {flex:0 0 auto;margin-left:auto;font-size:19px;line-height:1}
+.service-form-section-title {margin:26px 0 20px;padding-top:24px;border-top:1px solid var(--line);font:500 23px/1.2 var(--serif);letter-spacing:-.01em}
+.service-form-dialog .service-form-unit {max-width:100%;margin-bottom:24px}
+.service-form-dialog .service-form select {appearance:none;-webkit-appearance:none;border:1px solid var(--line);border-radius:3px;min-height:50px;padding:12px 48px 12px 14px;background-color:rgb(255 255 255 / .25);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='m7 10 5 5 5-5' stroke='%23302219' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;color:var(--brown);font-size:15px;box-shadow:none}
+.service-form-dialog .service-form select:focus-visible {outline:2px solid var(--brown);outline-offset:2px}
+#compliance-dialog {height:min(700px,calc(100dvh - 32px))}
+#compliance-dialog .service-form-message {margin-top:0}
+#rodeio-em-casa-dialog {height:fit-content;max-height:calc(100dvh - 32px)}
+#rodeio-em-casa-dialog .service-form-content {flex:0 1 auto}
+#rodeio-em-casa-dialog .service-delivery-copy {font-size:clamp(30px,4vw,40px);line-height:1.2;margin:0 0 20px;max-width:22ch}
+#rodeio-em-casa-dialog .service-delivery-description {margin:0 0 24px;font-size:15px;line-height:1.8;max-width:53ch}
+#rodeio-em-casa-dialog .service-contact-list {margin:0;grid-template-columns:1fr 1fr;gap:14px}
+#rodeio-em-casa-dialog .service-contact-card {align-items:center;flex-wrap:nowrap;gap:12px;padding:20px;min-height:112px}
+#rodeio-em-casa-dialog .service-contact-copy {flex:1 1 130px}
+#rodeio-em-casa-dialog .service-contact-arrow {align-self:center}
+#rodeio-em-casa-dialog .service-contact-card-whatsapp {background:var(--brown);border-color:var(--brown);color:var(--paper)}
+#rodeio-em-casa-dialog .service-contact-card-whatsapp .service-contact-icon {border-color:rgb(255 255 255 / .3)}
+#rodeio-em-casa-dialog .service-contact-card-whatsapp strong {color:var(--paper)}
+#rodeio-em-casa-dialog .service-contact-card-whatsapp small {color:rgb(255 255 255 / .78)}
+#rodeio-em-casa-dialog .service-contact-card-whatsapp:hover {background:var(--brand-text)}
+@media(max-width:599px){
+ .service-form-dialog .service-form-content {padding:24px 20px}
+ .service-form-dialog .service-form-intro {font-size:14px;margin-bottom:18px}
+ .service-contact-card {padding:14px 12px;gap:11px;min-height:64px}
+ .service-contact-copy {font-size:13px}
+ .service-contact-icon {flex-basis:32px;width:32px;height:32px}
+ .service-form-section-title {font-size:22px;margin-top:22px;padding-top:22px}
+ #compliance-dialog {height:calc(100dvh - 20px)}
+ #rodeio-em-casa-dialog {max-height:calc(100dvh - 20px)}
+ #rodeio-em-casa-dialog .service-delivery-copy {font-size:31px}
+ #rodeio-em-casa-dialog .service-contact-list {grid-template-columns:1fr;gap:12px}
+ #rodeio-em-casa-dialog .service-contact-card {min-height:84px;padding:16px;align-items:center;flex-wrap:nowrap}
+ #rodeio-em-casa-dialog .service-contact-copy {flex:1 1 auto}
+}
