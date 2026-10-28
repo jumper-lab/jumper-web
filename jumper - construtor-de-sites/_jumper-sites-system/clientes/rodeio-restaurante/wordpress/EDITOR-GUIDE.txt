@@ -1,6 +1,6 @@
 RODEIO — EDIÇÃO RÁPIDA COM ACF
 
-Para editar uma página: entre em Páginas, escolha a página do Rodeio e procure “Rodeio · Edição rápida sincronizada”. As abas são Textos, Imagens, Links e botões e Menus. Expanda o item identificado pelo seu conteúdo, altere e clique em Atualizar. Os valores atuais vêm do HTML existente.
+Para editar uma página: entre em Páginas, escolha a página do Rodeio e procure “Rodeio · Edição rápida sincronizada”. As páginas gerenciadas usam a tela direta de campos, com o HTML logo abaixo, para evitar a gaveta de metadados do editor de blocos. As abas são Textos, Imagens, Links e botões e Menus. Expanda o item identificado pelo seu conteúdo, altere e clique em Atualizar. Os valores atuais vêm do HTML existente.
 
 Textos mantêm as tags, destaques, classes e controles do layout. Os links têm destino separado do texto; o texto do botão está em Textos. Imagens podem ser escolhidas/enviadas na Biblioteca de mídia ou substituídas por um endereço de imagem. Ao trocar uma imagem, atualize a descrição acessível. Nos banners há imagem mobile opcional. As versões responsivas e o endereço da foto ampliada são atualizados juntos.
 
@@ -8,7 +8,7 @@ Em Rodeio · Ajustes ficam as áreas compartilhadas: Menu e cabeçalho, Rodapé 
 
 Links úteis concentra telefone, Instagram, WhatsApp, links de reserva, mapas e endereços. Alterar um contato ou endereço compartilhado atualiza as referências correspondentes no HTML das páginas e das áreas globais. O telefone visível e os links tel: são atualizados juntos. Horários são editados na página da unidade; o schema acompanha os horários reconhecidos e o endereço visível, sem inventar exceções de feriados.
 
-O HTML continua editável: no bloco HTML da página ou na aba Texto/Código da área compartilhada. Ao salvar, os campos são relidos. Conteúdo novo inserido no HTML passa a ser mapeado. Textos, imagens e links existentes são editáveis nos campos; alterações de estrutura continuam no HTML. Uma versão do conteúdo é associada aos campos para detectar edições concorrentes. Se o mesmo item mudar nos dois lugares, recarregue e revise o aviso; não há sobrescrita silenciosa.
+O HTML continua editável: na área HTML abaixo dos campos da página ou da área compartilhada. Ao salvar, os campos são relidos. Conteúdo novo inserido no HTML passa a ser mapeado. Textos, imagens e links existentes são editáveis nos campos; alterações de estrutura continuam no HTML. Uma versão do conteúdo é associada aos campos para detectar edições concorrentes. Se o mesmo item mudar nos dois lugares, recarregue e revise o aviso; não há sobrescrita silenciosa.
 
 As áreas globais são privadas e não criam páginas públicas. Os grupos ACF são definidos no tema para serem versionados; edite os valores nas páginas/áreas, não os grupos no painel ACF. O grupo antigo “Página” foi preservado. Yoast continua responsável por títulos SEO e descrições, em seu painel próprio.
 

@@ -188,7 +188,7 @@ class Rodeio_Editor
             "title" => "Rodeio · Edição rápida sincronizada",
             "fields" => $fields,
             "location" => $location,
-            "position" => "normal",
+            "position" => "acf_after_title",
             "style" => "default",
             "active" => true,
             "show_in_rest" => false,
@@ -788,8 +788,21 @@ add_action("acf/render_field/type=text", ["Rodeio_Editor", "preview_image"]);
 add_action("admin_notices", ["Rodeio_Editor", "notices"]);
 add_filter("user_can_richedit", static function ($can) {
     $screen = function_exists("get_current_screen") ? get_current_screen() : null;
-    return $screen && $screen->post_type === "rodeio_layout" ? false : $can;
+    if ($screen && $screen->post_type === "rodeio_layout") {
+        return false;
+    }
+    $id = (int) ($_GET["post"] ?? ($_POST["post_ID"] ?? 0));
+    return Rodeio_Editor::supported($id) ? false : $can;
 });
+
+add_filter(
+    "use_block_editor_for_post",
+    static function ($use, $post) {
+        return Rodeio_Editor::supported($post->ID) ? false : $use;
+    },
+    20,
+    2,
+);
 
 // Keep local business metadata aligned with the visible, edited native page.
 add_filter(
