@@ -140,21 +140,31 @@
   max-width: none;
   height: 100vh;
   height: 100dvh;
-  max-height: 100dvh;
-  padding: 0 max(28px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(28px, env(safe-area-inset-left));
+  max-height: none;
+  padding: 0 max(28px, env(safe-area-inset-right)) 0 max(28px, env(safe-area-inset-left));
   border: 0;
   background: var(--brown);
   color: var(--paper);
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: hidden;
   overscroll-behavior: contain;
   scrollbar-width: thin;
   scrollbar-color: rgb(250 247 240 / .25) var(--brown);
 }
 .navigation-dialog[open] { display: flex; flex-direction: column; }
+.navigation-dialog .menu-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-bottom: max(24px, env(safe-area-inset-bottom));
+  scrollbar-width: thin;
+  scrollbar-color: rgb(250 247 240 / .25) var(--brown);
+}
 .navigation-dialog .dialog-top {
-  position: sticky;
-  top: 0;
+  position: relative;
   z-index: 2;
   display: flex;
   align-items: center;
@@ -200,8 +210,8 @@
 .navigation-dialog .menu-service-nav { display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 0 20px; flex: 0 0 auto; margin-top: 20px; padding: 10px 0; border-block: 1px solid rgb(250 247 240 / .2); }
 .navigation-dialog .menu-service-nav a { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; font: 400 12px/1.4 var(--sans); }
 .navigation-dialog .menu-service-nav svg { width: 13px; height: 13px; opacity: .55; }
-.navigation-dialog .menu-contact { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex: 0 0 auto; margin-top: auto; padding-top: 24px; }
-.navigation-dialog .menu-signature { font: 500 25px/1.15 var(--serif); letter-spacing: -.02em; }
+.navigation-dialog .menu-contact { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex: 0 0 auto; margin-top: auto; padding-top: 24px; }
+.navigation-dialog .menu-signature { margin: 0; font: 500 25px/1.15 var(--serif); letter-spacing: -.02em; }
 .navigation-dialog .menu-signature em { color: inherit; }
 .navigation-dialog .menu-signoff > a { display: inline-flex; align-items: center; min-height: 44px; margin-top: 6px; font: 400 12px/1.5 var(--sans); color: rgb(250 247 240 / .75); }
 .navigation-dialog .menu-instagram { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px solid rgb(250 247 240 / .3); border-radius: 50%; flex-shrink: 0; }
@@ -244,6 +254,15 @@
   .navigation-dialog .menu-primary-nav a { font-size: 30px; }
   .navigation-dialog .menu-service-nav { gap: 0 16px; }
   .navigation-dialog .menu-service-nav a { gap: 5px; font-size: 11px; }
+}
+@media (max-height: 740px) {
+  .navigation-dialog .dialog-top { min-height: calc(72px + env(safe-area-inset-top)); }
+  .navigation-dialog .menu-primary-nav { padding: 12px 0; }
+  .navigation-dialog .menu-primary-nav a { min-height: 46px; font-size: 30px; }
+  .navigation-dialog .menu-houses { padding-top: 14px; }
+  .navigation-dialog .menu-service-nav { margin-top: 12px; padding-block: 6px; }
+  .navigation-dialog .menu-contact { padding-top: 18px; }
+  .navigation-dialog .menu-signature { font-size: 23px; }
 }
 @media (max-height: 550px) {
   :root { --header-height: 64px; }
