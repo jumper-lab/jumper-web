@@ -17,3 +17,10 @@ O PDF e suas cinco imagens de visualização continuam no fluxo próprio do card
 A sincronização é entre os campos ACF e o HTML salvo no WordPress. Ela não edita os arquivos Astro no GitHub nem a prévia estática do Hoster em tempo real. Antes de outra publicação do código, exporte/reconcilie o conteúdo atual e compare hashes para não sobrescrever edições feitas no painel.
 
 Validação: testes de mapeamento das 16 páginas; teste do fluxo real acf/save_post em registro privado; HTML → ACF com formulário antigo aberto; conflito concorrente; menus; fotos responsivas e galeria; verificação visual do painel; regressão pública. Backups privados precedem a ativação.
+
+ESTÚDIO DE CONTEÚDO — INTERFACE 1.3.3
+Use a busca para encontrar uma frase e o filtro “Seção do site” para reduzir a lista. As abas mostram os tipos de conteúdo disponíveis. Os cartões exibem a frase ou uma miniatura da imagem; clique em Editar para abrir apenas o que quer alterar.
+Imagens: use Trocar foto para escolher ou enviar pela biblioteca. A descrição explica o conteúdo da foto para quem usa leitor de tela; a versão para celular aparece somente nos banners compatíveis. A URL da imagem fica nas opções avançadas.
+Links: escolha se o clique abre uma página, e-mail, telefone ou seção. Nos links com um único texto, o nome e o destino ficam juntos. Os menus continuam com itens reordenáveis e controle de nova aba.
+Menu, rodapé, contatos e lightboxes: o atalho no topo abre a área compartilhada correspondente. As alterações nessas áreas aparecem em todo o site.
+Use Atualizar para salvar. O HTML fica em Área técnica, recolhida por padrão, e mantém a sincronização. Os filtros não removem conteúdos.

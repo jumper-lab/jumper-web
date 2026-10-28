@@ -1,0 +1,58 @@
+/* Scoped to the supported Rodeio edit screen. No public styles or global ACF overrides. */
+.rodeio-studio-screen #acf-group_rodeio_editor_v1 {border:1px solid #ddd3c7;border-radius:12px;overflow:hidden;background:#fcfaf6;box-shadow:0 4px 20px #30221708}
+.rodeio-studio-screen #acf-group_rodeio_editor_v1 > .postbox-header {display:none}
+#acf-group_rodeio_editor_v1 .rde-studio-top {padding:32px 36px;background:#302219;color:#f2e9db;position:relative}
+#acf-group_rodeio_editor_v1 .rde-kicker {font:600 10px/1.5 system-ui;letter-spacing:.18em;color:#d8ba91;margin:0 0 14px}
+#acf-group_rodeio_editor_v1 .rde-studio-top h2 {font:400 32px/1.15 Georgia,serif;margin:0 0 12px;padding:0;color:#fff5e7}
+#acf-group_rodeio_editor_v1 .rde-studio-top p:not(.rde-kicker) {max-width:55ch;color:#dacdbd;font-size:13px;line-height:1.7;margin:0 0 16px}
+#acf-group_rodeio_editor_v1 .rde-preview-link {display:inline-block;color:#fff5e7;text-decoration:none;border-bottom:1px solid #ad9579;padding:4px 0}
+#acf-group_rodeio_editor_v1 .rde-shortcuts {border-top:1px solid #ffffff24;margin-top:22px;padding-top:16px;color:#e7d8c5}
+#acf-group_rodeio_editor_v1 summary {cursor:pointer;font-size:12px}
+#acf-group_rodeio_editor_v1 .rde-shortcut-list {display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+#acf-group_rodeio_editor_v1 .rde-shortcut-list a {padding:8px 12px;border:1px solid #ffffff45;color:#fff4e6;border-radius:5px;text-decoration:none;font-size:12px}
+#acf-group_rodeio_editor_v1 .rde-studio-tools {display:grid;grid-template-columns:1.4fr 1fr;gap:16px;padding:24px 28px 12px}
+#acf-group_rodeio_editor_v1 .rde-studio-tools label {display:grid;gap:7px;font-weight:600;font-size:12px;color:#4e3a2e}
+#acf-group_rodeio_editor_v1 .rde-studio-tools input,#acf-group_rodeio_editor_v1 .rde-studio-tools select {max-width:none;width:100%;min-height:42px;background:#fff;border-color:#d9cdbd;border-radius:6px;font-size:13px}
+#acf-group_rodeio_editor_v1 .rde-filter-result {margin:0;padding:0 28px 22px;color:#796757;font-size:11px;line-height:1.7}
+#acf-group_rodeio_editor_v1 .acf-field[data-name="rde_intro"],#acf-group_rodeio_editor_v1 .rde-binding,#acf-group_rodeio_editor_v1 .rde-context {display:none!important}
+#acf-group_rodeio_editor_v1 .acf-tab-wrap {background:#f1eadf;border:0;padding:0 20px}
+#acf-group_rodeio_editor_v1 .acf-tab-group {border:0}
+#acf-group_rodeio_editor_v1 .acf-tab-group li a {background:transparent;border:0;border-radius:0;color:#715c4c;padding:16px 14px;font-size:13px}
+#acf-group_rodeio_editor_v1 .acf-tab-group li.active a {background:#fcfaf6;color:#302219;box-shadow:inset 0 3px #a87945}
+#acf-group_rodeio_editor_v1 .rde-count {margin-left:6px;font-size:10px;background:#e5dbce;padding:2px 6px;border-radius:20px}
+#acf-group_rodeio_editor_v1 .acf-field[data-type="repeater"] {border:0}
+#acf-group_rodeio_editor_v1 > .inside > .acf-fields > .acf-field[data-type="repeater"] {padding:22px 28px}
+#acf-group_rodeio_editor_v1 .acf-repeater > table {border:0;background:transparent;border-collapse:separate;border-spacing:0 12px}
+#acf-group_rodeio_editor_v1 .rde-content-card > .acf-row-handle {display:none}
+#acf-group_rodeio_editor_v1 .rde-content-card > td.acf-fields {border:1px solid #dfd4c5!important;border-radius:8px;overflow:hidden;background:white;display:block;width:auto}
+#acf-group_rodeio_editor_v1 .rde-content-card .acf-field {border-color:#eee7dd;padding:18px 22px}
+#acf-group_rodeio_editor_v1 .rde-content-card .acf-label label {font-size:12px;color:#4e3a2e}
+#acf-group_rodeio_editor_v1 .rde-content-card .acf-label .description {font-size:11px;color:#8a7a6c;line-height:1.6}
+#acf-group_rodeio_editor_v1 .rde-content-card :is(input[type=text],textarea) {border:1px solid #d5c8b7;border-radius:5px;padding:10px 12px;font-size:14px;line-height:1.6;color:#302219;background:#fffefa}
+#acf-group_rodeio_editor_v1 .rde-content-card textarea {min-height:90px}
+#acf-group_rodeio_editor_v1 .rde-card-summary {display:flex;justify-content:space-between;align-items:center;width:100%;border:0;text-align:left;background:white;padding:18px 22px;cursor:pointer;color:#302219;gap:16px}
+#acf-group_rodeio_editor_v1 .rde-card-summary:hover {background:#faf6ee}
+#acf-group_rodeio_editor_v1 .rde-card-summary:focus-visible {outline:2px solid #8a623e;outline-offset:-3px}
+#acf-group_rodeio_editor_v1 .rde-card-heading {display:grid;gap:6px;min-width:0}
+#acf-group_rodeio_editor_v1 .rde-card-section {font-size:10px;color:#927351;text-transform:uppercase;letter-spacing:.07em}
+#acf-group_rodeio_editor_v1 .rde-card-heading strong {font-size:14px;font-weight:600}
+#acf-group_rodeio_editor_v1 .rde-card-caption {font-size:12px;color:#796b5f;max-width:65ch;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
+#acf-group_rodeio_editor_v1 .rde-card-toggle {font-size:11px;white-space:nowrap;color:#84613e}
+#acf-group_rodeio_editor_v1 .rde-card-closed > td.acf-fields > :not(.rde-card-summary) {display:none!important}
+#acf-group_rodeio_editor_v1 .rde-filter-hidden {display:none!important}
+#acf-group_rodeio_editor_v1 .rde-photo-frame {margin:0 22px 16px;padding:14px;background:#f3eee7;border-radius:6px}
+#acf-group_rodeio_editor_v1 .rde-image-preview {max-width:100%;height:180px;object-fit:contain;display:block;margin:auto}
+#acf-group_rodeio_editor_v1 .rde-image-address {margin:12px 22px;border:1px dashed #d7c8b4;border-radius:5px;padding:12px;color:#816e5b}
+#acf-group_rodeio_editor_v1 .rde-image-address .acf-field {padding:12px 0 0;border:0}
+.rodeio-studio-screen .rde-advanced {margin:22px 0;background:#fff;border:1px dashed #c4b8a9;border-radius:8px;padding:18px;color:#786b5d}
+.rodeio-studio-screen .rde-advanced summary {cursor:pointer;font-size:12px;font-weight:600}
+.rodeio-studio-screen .rde-advanced > p {font-size:12px}
+@media(max-width:782px){#acf-group_rodeio_editor_v1 .rde-studio-top {padding:24px}#acf-group_rodeio_editor_v1 .rde-studio-tools {grid-template-columns:1fr;padding:20px}#acf-group_rodeio_editor_v1 .rde-filter-result {padding:0 20px 20px}#acf-group_rodeio_editor_v1 .rde-card-caption {max-width:32ch}#acf-group_rodeio_editor_v1 .acf-tab-wrap{padding:0}#acf-group_rodeio_editor_v1 .acf-tab-group li a {padding:14px 9px}}
+
+#acf-group_rodeio_editor_v1 .rde-destination-type{display:grid;gap:8px;font-size:12px;margin:0 0 12px;color:#6a5543}#acf-group_rodeio_editor_v1 .rde-destination-type select{min-height:40px;width:100%;max-width:100%;border-color:#d5c8b7;border-radius:5px;background:#faf6ee;font-size:13px}
+
+#acf-group_rodeio_editor_v1 .rde-card-thumb{width:82px;height:58px;object-fit:cover;border-radius:4px;background:#f1e9dd;flex-shrink:0}#acf-group_rodeio_editor_v1 .rde-card-heading{flex:1}#acf-group_rodeio_editor_v1 .rde-content-card:not(.rde-card-closed) .rde-card-thumb{display:none}
+
+#acf-group_rodeio_editor_v1 .rde-link-label{display:grid;gap:8px;padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid #eee7dd;font-size:12px;font-weight:600;color:#4e3a2e}
+
+#acf-group_rodeio_editor_v1 .acf-tab-group li[hidden]{display:none!important}

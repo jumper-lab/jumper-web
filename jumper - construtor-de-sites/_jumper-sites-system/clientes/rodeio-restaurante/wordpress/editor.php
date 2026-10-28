@@ -1,6 +1,7 @@
 <?php
 /** ACF is a view over native HTML; saves use a three-way merge, not two competing copies. */
 require_once __DIR__ . "/editor-dom.php";
+require_once __DIR__ . "/editor-ui.php";
 class Rodeio_Editor
 {
     const VERSION = "1.0.0";
@@ -72,7 +73,7 @@ class Rodeio_Editor
         $fields = [
             self::field("intro", "Como editar", "message", [
                 "message" =>
-                    "Altere os campos e clique em Atualizar. O HTML será atualizado junto. Se editar o HTML, os campos serão relidos ao salvar. Não altere o mesmo item nos dois lugares simultaneamente. Textos, imagens e links existentes mantêm a estrutura; os itens dos menus podem ser adicionados e reordenados. O PDF e suas páginas são mantidos pelo fluxo próprio do cardápio.",
+                    "Escolha uma seção, encontre o conteúdo e faça sua alteração. Para publicar, clique em Atualizar. As mudanças mantêm o desenho do site.",
                 "esc_html" => 1,
             ]),
             self::field("base", "Versão de edição", "text", $hidden),
@@ -88,7 +89,7 @@ class Rodeio_Editor
         ) {
             $prefix = $kind . "_";
             $sub = [
-                self::field($prefix . "context", "Local do conteúdo", "text", ["readonly" => 1]),
+                self::field($prefix . "context", "Identificação", "text", ["readonly" => 1, "wrapper" => ["class" => "rde-context"]]),
                 self::field($prefix . "key", "Referência", "text", $hidden),
             ];
             if ($kind === "texts") {
@@ -97,26 +98,26 @@ class Rodeio_Editor
                     "new_lines" => "",
                     "required" => 1,
                     "instructions" =>
-                        "Texto simples. A tipografia, os destaques e as quebras já existentes no HTML são preservados.",
+                        "Edite a frase. As fontes, os destaques e a posição no site são mantidos.",
                 ]);
             }
             if ($kind === "images") {
-                $sub[] = self::field($prefix . "url", "Endereço da imagem atual", "text", [
+                $sub[] = self::field($prefix . "url", "Usar uma imagem por endereço", "text", [
                     "instructions" =>
                         "Use a seleção abaixo para escolher/enviar uma imagem ou substitua o endereço por uma imagem HTTP(S).",
                 ]);
-                $sub[] = self::field($prefix . "pick", "Selecionar imagem na Biblioteca", "image", [
+                $sub[] = self::field($prefix . "pick", "Trocar foto", "image", [
                     "return_format" => "id",
                     "preview_size" => "medium",
                     "library" => "all",
                     "mime_types" => "jpg,jpeg,png,webp,avif",
                 ]);
-                $sub[] = self::field($prefix . "alt", "Descrição acessível", "text", [
+                $sub[] = self::field($prefix . "alt", "O que aparece nesta foto?", "text", [
                     "instructions" =>
                         "Atualize a descrição ao trocar a foto. Imagens decorativas podem ficar sem descrição.",
                 ]);
                 $sub[] = self::field($prefix . "kind", "Tipo", "text", $hidden);
-                $sub[] = self::field($prefix . "mobile", "Imagem mobile opcional", "image", [
+                $sub[] = self::field($prefix . "mobile", "Versão para celular (opcional)", "image", [
                     "return_format" => "id",
                     "preview_size" => "medium",
                     "mime_types" => "jpg,jpeg,png,webp,avif",
@@ -136,7 +137,7 @@ class Rodeio_Editor
             if ($kind === "links") {
                 $sub[] = self::field($prefix . "url", "Endereço de destino", "text", [
                     "instructions" =>
-                        "Aceita https://, caminho interno /pagina/, #seção, tel: ou mailto:. O texto do botão está na aba Textos.",
+                        "Escolha a ação e informe o destino. Você também pode editar o nome aqui quando o link tiver um único texto.",
                 ]);
             }
             if ($kind === "menus") {
@@ -165,7 +166,7 @@ class Rodeio_Editor
                 "instructions" =>
                     $kind === "menus"
                         ? "Edite rótulos e destinos; arraste os itens para reordenar. Os menus desktop e mobile são identificados separadamente."
-                        : "Os itens são identificados a partir do HTML da página. Expanda o item que deseja alterar.",
+                        : "Encontre o item pela prévia e clique em Editar. Depois de alterar, use Atualizar para publicar.",
             ]);
         }
         $location = [[["param" => "post_type", "operator" => "==", "value" => "rodeio_layout"]]];
@@ -185,7 +186,7 @@ class Rodeio_Editor
         }
         acf_add_local_field_group([
             "key" => "group_rodeio_editor_v1",
-            "title" => "Rodeio · Edição rápida sincronizada",
+            "title" => "Rodeio · Estúdio de conteúdo",
             "fields" => $fields,
             "location" => $location,
             "position" => "acf_after_title",
@@ -442,14 +443,7 @@ class Rodeio_Editor
     }
     public static function admin_assets()
     {
-        $screen = get_current_screen();
-        if (!$screen || !in_array($screen->post_type, ["page", "rodeio_layout"], true)) {
-            return;
-        }
-        wp_add_inline_style(
-            "acf-input",
-            '.acf-field.rde-binding{display:none!important}.acf-field[data-name$="_context"] input{border:0;background:transparent}.rde-image-preview{max-width:260px;max-height:160px;object-fit:contain;display:block;margin:8px 0}',
-        );
+        Rodeio_Editor_UI::enqueue();
     }
     public static function preview_image($field)
     {
