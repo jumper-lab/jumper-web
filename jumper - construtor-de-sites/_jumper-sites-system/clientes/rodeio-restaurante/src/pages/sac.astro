@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Arrow from '../components/Arrow.astro';
+import content from '../../data/content.json';
+import '../styles/services.css';
+
+const units = content.units.map((unit) => ({
+  ...unit,
+  form: `https://rodeiosp.com.br/sac/${unit.slug}/`,
+}));
+---
+<Layout title="SAC — fale com o Rodeio" description="Entre em contato com o atendimento do Rodeio Jardins ou Iguatemi. Escolha a unidade e envie sua mensagem pelo formulário oficial.">
+  <section class="service-intro" aria-labelledby="sac-title">
+    <div class="wrap service-intro-grid">
+      <div><p class="eyebrow"><span class="marker"></span>Atendimento Rodeio</p><h1 id="sac-title">Estamos aqui<br/>para <em>ouvir você.</em></h1></div>
+      <p>Dúvidas, sugestões ou uma conversa sobre sua visita: escolha a unidade para falar com a equipe.</p>
+    </div>
+  </section>
+  <section class="service-options" aria-label="Escolha a unidade para atendimento">
+    <div class="wrap service-card-grid">
+      {units.map((unit) => <article class="service-card">
+        <p class="eyebrow">SAC · Rodeio {unit.name}</p>
+        <h2>{unit.name}</h2>
+        <p>{unit.address}<br/>{unit.district}</p>
+        <a class="action text-link" href={unit.form} target="_blank" rel="noopener noreferrer" aria-label={`Abrir formulário do SAC ${unit.name} no site oficial, em outra aba`}>Enviar mensagem<Arrow/></a>
+      </article>)}
+    </div>
+  </section>
+  <section class="service-note" aria-label="Informações de atendimento"><div class="wrap service-note-grid"><p class="eyebrow">Atendimento atual</p><p>Os formulários abrem no site oficial do Rodeio. Para falar por telefone, ligue para <a href="tel:+551134741333">(11) 3474-1333</a>.</p></div></section>
+</Layout>

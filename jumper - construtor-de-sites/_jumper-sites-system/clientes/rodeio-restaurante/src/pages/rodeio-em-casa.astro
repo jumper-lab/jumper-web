@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Arrow from '../components/Arrow.astro';
+import '../styles/services.css';
+
+const orderUrl = 'https://wa.me/5511975924615';
+---
+<Layout title="Rodeio em casa — peça pelo WhatsApp" description="Peça os clássicos do Rodeio para saborear em casa pelo canal de WhatsApp divulgado pelo restaurante.">
+  <Hero eyebrow="Rodeio em casa" title="O Rodeio" accent="até você." description="Os clássicos da casa para saborear no conforto do seu lar." photo="mesa" alt="Mesa posta no Rodeio" caption="" cta="Pedir pelo WhatsApp" href={orderUrl}/>
+  <section id="proxima-secao" class="service-options" aria-labelledby="delivery-title">
+    <div class="wrap service-channel-grid">
+      <div><p class="eyebrow">Rodeio em casa</p><h2 id="delivery-title">O sabor da casa,<br/><em>onde você estiver.</em></h2></div>
+      <div class="service-channel-copy"><p>Os pedidos são preparados e embalados com cuidado para preservar a qualidade dos pratos. Consulte o atendimento sobre disponibilidade, itens e condições de entrega.</p>
+        <a class="action text-link" href={orderUrl} target="_blank" rel="noopener noreferrer" aria-label="Pedir Rodeio em casa pelo WhatsApp, em outra aba">Peça agora pelo WhatsApp<Arrow/></a>
+      </div>
+    </div>
+  </section>
+</Layout>

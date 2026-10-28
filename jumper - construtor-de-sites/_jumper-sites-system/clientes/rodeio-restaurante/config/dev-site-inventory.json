@@ -22,6 +22,7 @@
     "rodeio/cardapio-rodeio.pdf",
     "rodeio/cardapio/completo/index.html",
     "rodeio/cardapio/index.html",
+    "rodeio/compliance/index.html",
     "rodeio/em-breve/index.html",
     "rodeio/eventos/index.html",
     "rodeio/eventos/orcamento/index.html",
@@ -658,6 +659,8 @@
     "rodeio/restaurantes/index.html",
     "rodeio/restaurantes/jardins/index.html",
     "rodeio/robots.txt",
+    "rodeio/rodeio-em-casa/index.html",
+    "rodeio/sac/index.html",
     "rodeio/sitemap-0.xml",
     "rodeio/sitemap-index.xml"
   ],
