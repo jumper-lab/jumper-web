@@ -28,6 +28,17 @@
   min-height: 44px;
   font-size: 12px;
 }
+.site-footer .footer-service-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+}
+.site-footer .footer-service-navigation a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 12px;
+}
 .site-footer .footer-reserve {
   display: inline-flex;
   align-items: center;

@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Arrow from '../components/Arrow.astro';
+import '../styles/services.css';
+
+// The current form still lives at this URL in WordPress. A production build must
+// provide a distinct destination before this new page replaces that route.
+const currentForm = 'https://rodeiosp.com.br/compliance/';
+const formUrl = import.meta.env.PUBLIC_COMPLIANCE_FORM_URL || currentForm;
+if (import.meta.env.PUBLIC_LIVE_SITE === 'true' && formUrl === currentForm) {
+  throw new Error('Defina PUBLIC_COMPLIANCE_FORM_URL antes de publicar a nova página de Compliance.');
+}
+---
+<Layout title="Compliance — canal de mensagens" description="Canal de compliance do Rodeio para mensagens de clientes, colaboradores e fornecedores.">
+  <section class="service-intro" aria-labelledby="compliance-title">
+    <div class="wrap service-intro-grid">
+      <div><p class="eyebrow"><span class="marker"></span>Compliance Rodeio</p><h1 id="compliance-title">Um espaço<br/>para <em>ser ouvido.</em></h1></div>
+      <p>O Rodeio recebe mensagens de clientes, colaboradores e fornecedores por seu canal de compliance.</p>
+    </div>
+  </section>
+  <section class="service-options" aria-labelledby="compliance-channel-title">
+    <div class="wrap service-channel-grid">
+      <div><p class="eyebrow">Canal de mensagem</p><h2 id="compliance-channel-title">Sua mensagem<br/><em>tem lugar aqui.</em></h2></div>
+      <div class="service-channel-copy"><p>Se você deseja compartilhar uma opinião ou relatar uma situação, utilize o formulário atual do Rodeio. Ele abre em uma nova aba no site oficial.</p>
+        <a class="action text-link" href={formUrl} target="_blank" rel="noopener noreferrer" aria-label="Abrir formulário de Compliance no site oficial, em outra aba">Abrir formulário de Compliance<Arrow/></a>
+      </div>
+    </div>
+  </section>
+</Layout>

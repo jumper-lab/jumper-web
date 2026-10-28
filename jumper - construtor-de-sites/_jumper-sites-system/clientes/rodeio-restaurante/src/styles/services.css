@@ -1,0 +1,60 @@
+.service-intro {
+  padding: calc(var(--header-height) + clamp(72px, 8vw, 130px)) 0 clamp(64px, 7vw, 112px);
+  background: var(--paper);
+}
+.service-intro-grid,
+.service-channel-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+  gap: clamp(32px, 8vw, 144px);
+  align-items: end;
+}
+.service-intro .eyebrow { margin-bottom: 24px; }
+.service-intro h1 { max-width: 12ch; }
+.service-intro-grid > p,
+.service-channel-copy > p {
+  max-width: 37ch;
+  color: var(--muted);
+  font-size: clamp(15px, 1.4vw, 18px);
+}
+.service-intro-grid > p { padding-bottom: 10px; }
+.service-options {
+  padding-block: clamp(64px, 7vw, 112px);
+  background: var(--cream);
+}
+.service-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(24px, 5vw, 80px);
+}
+.service-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 300px;
+  padding-top: 22px;
+  border-top: 1px solid var(--brown);
+}
+.service-card h2 { margin: 26px 0 18px; }
+.service-card > p:not(.eyebrow) { color: var(--muted); font-size: 14px; }
+.service-card .action { margin-top: auto; padding-top: 30px; }
+.service-channel-grid { align-items: start; }
+.service-channel-grid .eyebrow { margin-bottom: 24px; }
+.service-channel-grid h2 { max-width: 14ch; }
+.service-channel-copy { padding-top: 26px; border-top: 1px solid var(--brown); }
+.service-channel-copy .action { margin-top: 34px; }
+.service-note { padding-block: 30px; }
+.service-note-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 24px; align-items: start; }
+.service-note p:last-child { max-width: 72ch; font-size: 13px; color: var(--muted); }
+.service-note a { text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 759px) {
+  .service-intro { padding-top: calc(var(--header-height) + 72px); }
+  .service-intro-grid,
+  .service-channel-grid,
+  .service-card-grid,
+  .service-note-grid { grid-template-columns: minmax(0, 1fr); }
+  .service-intro-grid { gap: 28px; }
+  .service-intro h1 { font-size: clamp(50px, 11vw, 76px); }
+  .service-card { min-height: 260px; }
+  .service-channel-grid { gap: 42px; }
+}
