@@ -4,6 +4,7 @@
  * Native WordPress pages own the main content; releases preserve the approved shell.
  */
 require_once __DIR__ . '/seo.php';
+require_once __DIR__ . '/editor.php';
 
 add_action('template_redirect', function () {
     if (is_admin()) return;
@@ -79,7 +80,11 @@ add_action('template_redirect', function () {
         $html = preg_replace_callback('/(<main\b[^>]*>)(.*?)(<\/main>)/s',
             static function ($match) use ($content) { return $match[1] . $content . $match[3]; }, $html, 1);
     }
-    if ($page && $page->post_status === 'publish' && get_post_meta($page->ID, '_rodeio_managed_route', true) !== '') $html = rodeio_2026_live_seo($html, $page);
+    if ($page && $page->post_status === 'publish' && get_post_meta($page->ID, '_rodeio_managed_route', true) !== '') {
+        try { $html = Rodeio_Editor::render($html, $page); }
+        catch (Throwable $error) { error_log('Rodeio editor: approved shell fallback retained.'); }
+        $html = rodeio_2026_live_seo($html, $page);
+    }
     status_header(200);
     header('Content-Type: text/html; charset=UTF-8');
     header('Cache-Control: public, max-age=300');
