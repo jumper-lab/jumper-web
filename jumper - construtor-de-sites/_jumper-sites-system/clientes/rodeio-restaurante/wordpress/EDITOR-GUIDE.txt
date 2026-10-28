@@ -42,3 +42,6 @@ A barra inferior do cardápio contém iFood e Delivery pelo WhatsApp, além de B
 
 PEDIDOS NAS UNIDADES — 1.3.9
 Jardins e Iguatemi têm uma faixa Peça da sua casa com iFood e Delivery pelo WhatsApp na área de informações de visita, depois das reservas. Os textos e destinos estão nos campos ACF de cada página de restaurante. Ambos utilizam os canais de pedido já aprovados do site.
+
+SAC E COMPLIANCE - 1.3.10
+Os e-mails sao destinatarios internos do Forminator. O envio do visitante ocorre pelo formulario do lightbox, sem cartoes de e-mail nem links mailto nesses canais. SAC 363/318: sac@rodeiosp.com.br. Compliance 393: silvia@rodeiosp.com.br e joseantonio@rodeiosp.com.br.
