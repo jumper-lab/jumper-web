@@ -24,6 +24,12 @@ function rodeio_2026_live_seo($html, $page) {
             if (!is_string($meta->title) || $meta->title === '') return $html;
             $generated = '<title>' . esc_html($meta->title) . "</title>\n" . $generated;
         }
+        // WordPress can own the robots presenter on public requests as well.
+        if (!preg_match('~<meta\b(?=[^>]*\bname=["\x27]robots["\x27])~i', $generated)) {
+            $robots = $meta->robots;
+            if (!is_array($robots) || empty($robots)) return $html;
+            $generated .= "\n" . '<meta name="robots" content="' . esc_attr(implode(', ', array_filter($robots, 'is_string'))) . '" />';
+        }
         // Yoast may omit canonical on noindex pages. Keep a self-canonical there.
         if (!preg_match('~<link\b[^>]*rel=["\x27]canonical["\x27]~i', $generated)) {
             $canonical = get_post_meta($page->ID, '_yoast_wpseo_canonical', true) ?: get_permalink($page);
