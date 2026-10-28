@@ -12,7 +12,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 4px 16px;
-  margin-top: 18px;
+  margin-top: 12px;
 }
 .site-footer .footer-service-navigation a {
   display: inline-flex;
@@ -47,10 +47,10 @@
 }
 .site-footer .footer-signoff .footer-brand img { transform: translateY(4px); }
 .site-footer .footer-signoff .footer-signature {
-  margin-top: 8px;
-  margin-bottom: 9px;
+  margin: 16px 0 0;
+  min-height: 48px;
   font-size: 20px;
-  line-height: 1.5;
+  line-height: 1.2;
 }
 .site-footer .footer-unit-jardins { grid-area: jardins; }
 .site-footer .footer-unit-iguatemi { grid-area: iguatemi; }
