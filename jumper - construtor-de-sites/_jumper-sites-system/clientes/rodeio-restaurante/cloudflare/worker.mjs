@@ -6,7 +6,7 @@ import { cloudflareProcesses, githubWebhook } from './process-status.mjs';
 
 const SITE_PREFIX = '/rodeio';
 const LEGACY_PREFIX = '/site';
-const PUBLIC_SITES = ['/rodeio', '/izigym', '/izigym-lp', '/izigym-lp-vilaromana', '/casabelie', '/casabelie-2', '/casabelie-3', '/pao-de-queijo-haddock-lobo'];
+const PUBLIC_SITES = ['/rodeio', '/izigym', '/izigym2', '/izigym-lp', '/izigym-lp-vilaromana', '/casabelie', '/casabelie-2', '/casabelie-3', '/pao-de-queijo-haddock-lobo'];
 const IZI_OFFICIAL_HOST = 'www.izigym.com.br';
 const IZI_OFFICIAL_APEX = 'izigym.com.br';
 const IZI_OFFICIAL_ROOT = '/_official/izigym';
@@ -620,10 +620,10 @@ export default {
       return Response.redirect(url, 308);
     }
 
-    if (url.pathname.startsWith('/izigym/cdn-cgi/image/')) {
+    if (/^\/izigym2?\/cdn-cgi\/image\//.test(url.pathname)) {
       const imagePath = url.pathname.match(/\/images\/[^?]+$/)?.[0];
       if (imagePath) {
-        const imageUrl = new URL(`/izigym${imagePath}`, url);
+        const imageUrl = new URL(`/${url.pathname.split('/')[1]}${imagePath}`, url);
         return env.ASSETS.fetch(new Request(imageUrl, request));
       }
     }
@@ -641,8 +641,8 @@ export default {
       const notFound = await env.ASSETS.fetch(new Request(new URL('/rodeio/404.html', url), request));
       if (notFound.ok) response = new Response(notFound.body, {status: 404, headers: notFound.headers});
     }
-    if (response.status === 404 && url.pathname.startsWith('/izigym/') && request.headers.get('Accept')?.includes('text/html')) {
-      response = await env.ASSETS.fetch(new Request(new URL('/izigym/index.html', url), request));
+    if (response.status === 404 && /^\/izigym2?\//.test(url.pathname) && request.headers.get('Accept')?.includes('text/html')) {
+      response = await env.ASSETS.fetch(new Request(new URL(`/${url.pathname.split('/')[1]}/index.html`, url), request));
     }
     const headers = new Headers(response.headers);
     if (['/izigym-lp/', '/izigym-lp/index.html', '/izigym-lp-vilaromana/', '/izigym-lp-vilaromana/index.html'].includes(url.pathname)) {

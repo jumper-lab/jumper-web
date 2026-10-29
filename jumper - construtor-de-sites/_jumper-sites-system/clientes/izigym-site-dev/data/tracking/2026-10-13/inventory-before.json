@@ -1,0 +1,666 @@
+{
+  "date": "2026-10-13",
+  "environment": "Read-only published principal, all external collectors blocked",
+  "hosts": [
+    {
+      "url": "https://izigym.com.br/",
+      "status": 308,
+      "location": "https://www.izigym.com.br/",
+      "bodySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "url": "https://www.izigym.com.br/",
+      "status": 200,
+      "location": null,
+      "bodySha256": "b258d820541a921e8113427ef1e2178c84d817bf4584a84d6bfc87c6f9dcf76b"
+    }
+  ],
+  "pages": [
+    {
+      "viewport": "desktop",
+      "title": "IZI ONE | Academia em Alto de Pinheiros, São Paulo",
+      "forms": 0,
+      "links": [
+        {
+          "text": "Pular para o conteúdo",
+          "visible": true,
+          "hrefSha256": "37abcc913417ac98566ae30622b17bc4dca41416283846f92fe294b45411d4ab",
+          "origin": "https://www.izigym.com.br",
+          "path": "/",
+          "hash": "#conteudo",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "HOME",
+          "visible": true,
+          "hrefSha256": "94c8b9957a83b8305396a20b441f897ee00bd66d19a4aacd6b59dd05f815aebf",
+          "origin": "https://www.izigym.com.br",
+          "path": "/",
+          "hash": "#unidade",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "PLANOS",
+          "visible": true,
+          "hrefSha256": "391607b6e8d538fa209462c18e4606f11c00bd68f71ef0385ff4567d148171c1",
+          "origin": "https://www.izigym.com.br",
+          "path": "/",
+          "hash": "#planos",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "UNIDADE",
+          "visible": true,
+          "hrefSha256": "0b38c5151114b1d1652ba5124181ae28c5a5657a4b93e0d970440c600cadb588",
+          "origin": "https://www.izigym.com.br",
+          "path": "/",
+          "hash": "#pass",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "INTERIOR",
+          "visible": true,
+          "hrefSha256": "7fe956cb90dd5ce4b7e8acefecf1bf48e1c44aa92dbd330267242089bef56c1f",
+          "origin": "https://www.izigym.com.br",
+          "path": "/",
+          "hash": "#galeria",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "FAQ",
+          "visible": true,
+          "hrefSha256": "d87cdd5cc9dbc0191ae65fa38352d728858a2f08299e7e2d05984f974fbc6155",
+          "origin": "https://www.izigym.com.br",
+          "path": "/",
+          "hash": "#faq",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "CONTATO",
+          "visible": true,
+          "hrefSha256": "daef42f9eddb3b211182f445f442b7b279f47a1a79ad4903b040785fa8fde87f",
+          "origin": "https://www.izigym.com.br",
+          "path": "/",
+          "hash": "#contato",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "Matricule-se",
+          "visible": true,
+          "hrefSha256": "391607b6e8d538fa209462c18e4606f11c00bd68f71ef0385ff4567d148171c1",
+          "origin": "https://www.izigym.com.br",
+          "path": "/",
+          "hash": "#planos",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "Conheça os planos",
+          "visible": true,
+          "hrefSha256": "391607b6e8d538fa209462c18e4606f11c00bd68f71ef0385ff4567d148171c1",
+          "origin": "https://www.izigym.com.br",
+          "path": "/",
+          "hash": "#planos",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "Unidade Alto Pinheiros",
+          "visible": true,
+          "hrefSha256": "0b38c5151114b1d1652ba5124181ae28c5a5657a4b93e0d970440c600cadb588",
+          "origin": "https://www.izigym.com.br",
+          "path": "/",
+          "hash": "#pass",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "Ir para os planos",
+          "visible": true,
+          "hrefSha256": "391607b6e8d538fa209462c18e4606f11c00bd68f71ef0385ff4567d148171c1",
+          "origin": "https://www.izigym.com.br",
+          "path": "/",
+          "hash": "#planos",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "Matricule-se Agora",
+          "visible": true,
+          "hrefSha256": "e8391334566e005df5f3429db8f468cbfbeba2b6515f13da3839fe76c22a3a43",
+          "origin": "https://vendas.online.sistemapacto.com.br",
+          "path": "/planos",
+          "hash": "",
+          "queryKeys": [
+            "un",
+            "k"
+          ],
+          "unit": "1",
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "Matricule-se Agora",
+          "visible": true,
+          "hrefSha256": "e8391334566e005df5f3429db8f468cbfbeba2b6515f13da3839fe76c22a3a43",
+          "origin": "https://vendas.online.sistemapacto.com.br",
+          "path": "/planos",
+          "hash": "",
+          "queryKeys": [
+            "un",
+            "k"
+          ],
+          "unit": "1",
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "R. Cerro Corá, 2235 - Alto de Pinheiros",
+          "visible": true,
+          "hrefSha256": "3a30bb46d7a4b6a66efa9cbbdffef26fe0fddee270ec11e1959cb3b6116cf021",
+          "origin": "https://www.google.com",
+          "path": "/maps/search/",
+          "hash": "",
+          "queryKeys": [
+            "api",
+            "query"
+          ],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "Ver no Mapa",
+          "visible": true,
+          "hrefSha256": "3a30bb46d7a4b6a66efa9cbbdffef26fe0fddee270ec11e1959cb3b6116cf021",
+          "origin": "https://www.google.com",
+          "path": "/maps/search/",
+          "hash": "",
+          "queryKeys": [
+            "api",
+            "query"
+          ],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "Falar com a equipe",
+          "visible": true,
+          "hrefSha256": "3d1fc6596dc75189229357ed71c743efa160d28f9236bdbe628e4e08a579ad6f",
+          "origin": "https://wa.me",
+          "path": "/5511952137022",
+          "hash": "",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "11 95213-7022",
+          "visible": true,
+          "hrefSha256": "a7a718038a95e1c9d3361afa941a8e5ae6b2447e9eafd5b0cbf68881b45ae228",
+          "origin": "null",
+          "path": "+5511952137022",
+          "hash": "",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "@izigym.brasil",
+          "visible": true,
+          "hrefSha256": "4d2dd6f187e10bf4407384176efb256c8608fae7b05dd538e9d83036eaca053b",
+          "origin": "https://www.instagram.com",
+          "path": "/izigym.brasil/",
+          "hash": "",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "R. Cerro Corá, 2235Alto de Pinheiros - São Paulo - SP02675-031",
+          "visible": true,
+          "hrefSha256": "3a30bb46d7a4b6a66efa9cbbdffef26fe0fddee270ec11e1959cb3b6116cf021",
+          "origin": "https://www.google.com",
+          "path": "/maps/search/",
+          "hash": "",
+          "queryKeys": [
+            "api",
+            "query"
+          ],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "Instagram",
+          "visible": true,
+          "hrefSha256": "4d2dd6f187e10bf4407384176efb256c8608fae7b05dd538e9d83036eaca053b",
+          "origin": "https://www.instagram.com",
+          "path": "/izigym.brasil/",
+          "hash": "",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "Voltar ao topo",
+          "visible": true,
+          "hrefSha256": "7a523d89afa918486c62e5841f468f08e01bde0030828c81f9aaed1f432d84bd",
+          "origin": "https://www.izigym.com.br",
+          "path": "/",
+          "hash": "",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "Conversar com a IZI Gym pelo WhatsApp",
+          "visible": true,
+          "hrefSha256": "af69aaebefd88d1c9b0574dbc09fa95d37614ae3689bc5951cb8664058e9544a",
+          "origin": "https://wa.me",
+          "path": "/5511952137022",
+          "hash": "",
+          "queryKeys": [
+            "text"
+          ],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "Conversar pelo WhatsApp",
+          "visible": false,
+          "hrefSha256": "af69aaebefd88d1c9b0574dbc09fa95d37614ae3689bc5951cb8664058e9544a",
+          "origin": "https://wa.me",
+          "path": "/5511952137022",
+          "hash": "",
+          "queryKeys": [
+            "text"
+          ],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "Matricule-se agora",
+          "visible": false,
+          "hrefSha256": "391607b6e8d538fa209462c18e4606f11c00bd68f71ef0385ff4567d148171c1",
+          "origin": "https://www.izigym.com.br",
+          "path": "/",
+          "hash": "#planos",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        }
+      ],
+      "trackingGlobals": {
+        "dataLayer": false,
+        "gtag": "undefined",
+        "fbq": "undefined",
+        "clarity": "undefined"
+      },
+      "platformRequests": [],
+      "pageErrors": []
+    },
+    {
+      "viewport": "mobile",
+      "title": "IZI ONE | Academia em Alto de Pinheiros, São Paulo",
+      "forms": 0,
+      "links": [
+        {
+          "text": "Pular para o conteúdo",
+          "visible": true,
+          "hrefSha256": "37abcc913417ac98566ae30622b17bc4dca41416283846f92fe294b45411d4ab",
+          "origin": "https://www.izigym.com.br",
+          "path": "/",
+          "hash": "#conteudo",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "HOME",
+          "visible": false,
+          "hrefSha256": "94c8b9957a83b8305396a20b441f897ee00bd66d19a4aacd6b59dd05f815aebf",
+          "origin": "https://www.izigym.com.br",
+          "path": "/",
+          "hash": "#unidade",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "PLANOS",
+          "visible": false,
+          "hrefSha256": "391607b6e8d538fa209462c18e4606f11c00bd68f71ef0385ff4567d148171c1",
+          "origin": "https://www.izigym.com.br",
+          "path": "/",
+          "hash": "#planos",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "UNIDADE",
+          "visible": false,
+          "hrefSha256": "0b38c5151114b1d1652ba5124181ae28c5a5657a4b93e0d970440c600cadb588",
+          "origin": "https://www.izigym.com.br",
+          "path": "/",
+          "hash": "#pass",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "INTERIOR",
+          "visible": false,
+          "hrefSha256": "7fe956cb90dd5ce4b7e8acefecf1bf48e1c44aa92dbd330267242089bef56c1f",
+          "origin": "https://www.izigym.com.br",
+          "path": "/",
+          "hash": "#galeria",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "FAQ",
+          "visible": false,
+          "hrefSha256": "d87cdd5cc9dbc0191ae65fa38352d728858a2f08299e7e2d05984f974fbc6155",
+          "origin": "https://www.izigym.com.br",
+          "path": "/",
+          "hash": "#faq",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "CONTATO",
+          "visible": false,
+          "hrefSha256": "daef42f9eddb3b211182f445f442b7b279f47a1a79ad4903b040785fa8fde87f",
+          "origin": "https://www.izigym.com.br",
+          "path": "/",
+          "hash": "#contato",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "Matricule-se",
+          "visible": false,
+          "hrefSha256": "391607b6e8d538fa209462c18e4606f11c00bd68f71ef0385ff4567d148171c1",
+          "origin": "https://www.izigym.com.br",
+          "path": "/",
+          "hash": "#planos",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "Conheça os planos",
+          "visible": true,
+          "hrefSha256": "391607b6e8d538fa209462c18e4606f11c00bd68f71ef0385ff4567d148171c1",
+          "origin": "https://www.izigym.com.br",
+          "path": "/",
+          "hash": "#planos",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "Unidade Alto Pinheiros",
+          "visible": true,
+          "hrefSha256": "0b38c5151114b1d1652ba5124181ae28c5a5657a4b93e0d970440c600cadb588",
+          "origin": "https://www.izigym.com.br",
+          "path": "/",
+          "hash": "#pass",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "Ir para os planos",
+          "visible": false,
+          "hrefSha256": "391607b6e8d538fa209462c18e4606f11c00bd68f71ef0385ff4567d148171c1",
+          "origin": "https://www.izigym.com.br",
+          "path": "/",
+          "hash": "#planos",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "Matricule-se Agora",
+          "visible": true,
+          "hrefSha256": "e8391334566e005df5f3429db8f468cbfbeba2b6515f13da3839fe76c22a3a43",
+          "origin": "https://vendas.online.sistemapacto.com.br",
+          "path": "/planos",
+          "hash": "",
+          "queryKeys": [
+            "un",
+            "k"
+          ],
+          "unit": "1",
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "Matricule-se Agora",
+          "visible": true,
+          "hrefSha256": "e8391334566e005df5f3429db8f468cbfbeba2b6515f13da3839fe76c22a3a43",
+          "origin": "https://vendas.online.sistemapacto.com.br",
+          "path": "/planos",
+          "hash": "",
+          "queryKeys": [
+            "un",
+            "k"
+          ],
+          "unit": "1",
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "R. Cerro Corá, 2235 - Alto de Pinheiros",
+          "visible": true,
+          "hrefSha256": "3a30bb46d7a4b6a66efa9cbbdffef26fe0fddee270ec11e1959cb3b6116cf021",
+          "origin": "https://www.google.com",
+          "path": "/maps/search/",
+          "hash": "",
+          "queryKeys": [
+            "api",
+            "query"
+          ],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "Ver no Mapa",
+          "visible": true,
+          "hrefSha256": "3a30bb46d7a4b6a66efa9cbbdffef26fe0fddee270ec11e1959cb3b6116cf021",
+          "origin": "https://www.google.com",
+          "path": "/maps/search/",
+          "hash": "",
+          "queryKeys": [
+            "api",
+            "query"
+          ],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "Falar com a equipe",
+          "visible": true,
+          "hrefSha256": "3d1fc6596dc75189229357ed71c743efa160d28f9236bdbe628e4e08a579ad6f",
+          "origin": "https://wa.me",
+          "path": "/5511952137022",
+          "hash": "",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "11 95213-7022",
+          "visible": true,
+          "hrefSha256": "a7a718038a95e1c9d3361afa941a8e5ae6b2447e9eafd5b0cbf68881b45ae228",
+          "origin": "null",
+          "path": "+5511952137022",
+          "hash": "",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "@izigym.brasil",
+          "visible": true,
+          "hrefSha256": "4d2dd6f187e10bf4407384176efb256c8608fae7b05dd538e9d83036eaca053b",
+          "origin": "https://www.instagram.com",
+          "path": "/izigym.brasil/",
+          "hash": "",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "R. Cerro Corá, 2235Alto de Pinheiros - São Paulo - SP02675-031",
+          "visible": true,
+          "hrefSha256": "3a30bb46d7a4b6a66efa9cbbdffef26fe0fddee270ec11e1959cb3b6116cf021",
+          "origin": "https://www.google.com",
+          "path": "/maps/search/",
+          "hash": "",
+          "queryKeys": [
+            "api",
+            "query"
+          ],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "Instagram",
+          "visible": true,
+          "hrefSha256": "4d2dd6f187e10bf4407384176efb256c8608fae7b05dd538e9d83036eaca053b",
+          "origin": "https://www.instagram.com",
+          "path": "/izigym.brasil/",
+          "hash": "",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "Voltar ao topo",
+          "visible": true,
+          "hrefSha256": "7a523d89afa918486c62e5841f468f08e01bde0030828c81f9aaed1f432d84bd",
+          "origin": "https://www.izigym.com.br",
+          "path": "/",
+          "hash": "",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "Conversar com a IZI Gym pelo WhatsApp",
+          "visible": false,
+          "hrefSha256": "af69aaebefd88d1c9b0574dbc09fa95d37614ae3689bc5951cb8664058e9544a",
+          "origin": "https://wa.me",
+          "path": "/5511952137022",
+          "hash": "",
+          "queryKeys": [
+            "text"
+          ],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "Conversar pelo WhatsApp",
+          "visible": true,
+          "hrefSha256": "af69aaebefd88d1c9b0574dbc09fa95d37614ae3689bc5951cb8664058e9544a",
+          "origin": "https://wa.me",
+          "path": "/5511952137022",
+          "hash": "",
+          "queryKeys": [
+            "text"
+          ],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        },
+        {
+          "text": "Matricule-se agora",
+          "visible": true,
+          "hrefSha256": "391607b6e8d538fa209462c18e4606f11c00bd68f71ef0385ff4567d148171c1",
+          "origin": "https://www.izigym.com.br",
+          "path": "/",
+          "hash": "#planos",
+          "queryKeys": [],
+          "unit": null,
+          "plan": null,
+          "coupon": null
+        }
+      ],
+      "trackingGlobals": {
+        "dataLayer": false,
+        "gtag": "undefined",
+        "fbq": "undefined",
+        "clarity": "undefined"
+      },
+      "platformRequests": [],
+      "pageErrors": []
+    }
+  ],
+  "recordedAt": "2026-10-13T07:51:31.635Z",
+  "requestDate": "2026-10-12"
+}

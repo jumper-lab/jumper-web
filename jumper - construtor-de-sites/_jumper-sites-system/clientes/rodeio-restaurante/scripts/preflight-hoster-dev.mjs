@@ -111,7 +111,8 @@ export async function compareUntouchedSites({ allowedSlug, root = assetsRoot, fe
               'Cache-Control': 'no-cache',
               ...(process.env.HOSTER_DEV_AUDIT_TOKEN ? { 'X-Jumper-Dev-Audit-Token': process.env.HOSTER_DEV_AUDIT_TOKEN } : {}),
             },
-            signal: AbortSignal.timeout(30000),
+            // Large client videos need time for a complete byte-for-byte audit.
+            signal: AbortSignal.timeout(Math.min(120000, Math.max(30000, Math.ceil(candidate.byteLength / (256 * 1024)) * 1000))),
           });
           if (![301, 302, 303, 307, 308].includes(response.status)) break;
           const location = response.headers.get('Location');

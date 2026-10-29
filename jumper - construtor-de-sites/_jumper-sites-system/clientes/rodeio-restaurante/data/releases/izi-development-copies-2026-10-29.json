@@ -1,0 +1,19 @@
+{
+  "scope": "izi-development-copies",
+  "workerSha256": "d1aca73437b9602952471c62991c99f287ceb015c2eecf5bfeb82193dd25d7c5",
+  "pages": [
+    {
+      "asset": "izigym-lp-vilaromana/index.html",
+      "candidateSha256": "aa383288e24e44a454083432a7fccd365c16b872d3317efd21cbf66203eab1d6",
+      "publishedSha256": [
+        "f4fd8685e2b899c49b44d13f4cd738215c6b6d506dc5c2031400c2c6ddbfc3ea",
+        "aa383288e24e44a454083432a7fccd365c16b872d3317efd21cbf66203eab1d6"
+      ]
+    }
+  ],
+  "description": "Updates the hub links after both institutional previews have been published and verified independently. All institutional pages and official domains remain subject to exact comparison. The only inherited live/dev difference is the previously reviewed Vila Romana landing from 26 October.",
+  "institutionalCopies": {
+    "izigym": "b8b415d35cbb3583c5e4e85ad6a1083d6386708ff8d451ced65f9af34b58a03e",
+    "izigym2": "a941e41c8fbc5575914ca6f49f309125128899d243e8d2c05ee03b6c7270ba0f"
+  }
+}

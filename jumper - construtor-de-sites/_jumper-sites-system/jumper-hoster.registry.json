@@ -105,6 +105,11 @@
           "slug": "izigym",
           "label": "Site Institucional - Desenvolvimento",
           "url": "https://site.jumper.dev.br/izigym/"
+        },
+        {
+          "slug": "izigym2",
+          "label": "Site Institucional - Desenvolvimento2",
+          "url": "https://site.jumper.dev.br/izigym2/"
         }
       ],
       "officialSite": {
@@ -140,6 +145,10 @@
         {
           "label": "Site Institucional - Desenvolvimento",
           "slug": "izigym"
+        },
+        {
+          "label": "Site Institucional - Desenvolvimento2",
+          "slug": "izigym2"
         },
         {
           "label": "Site Institucional - Oficial",

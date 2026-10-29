@@ -1,0 +1,457 @@
+{
+  "date": "2026-10-13",
+  "environment": "Chromium with real Hoster Worker and local production assets, www hostname and apex redirect; GTM library/collectors simulated; outgoing destinations mocked.",
+  "gtmChangesApplied": false,
+  "platformReceiptConfirmed": false,
+  "cases": [
+    {
+      "viewport": "desktop",
+      "dimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "mode": "on",
+      "apexRedirectVerified": true,
+      "commercialContentUnchanged": true,
+      "commercialLinksPreserved": true,
+      "checks": [
+        {
+          "placement": "plan_card_izi_one",
+          "interaction": "native click",
+          "pushes": 1
+        },
+        {
+          "placement": "plan_card_izi_prime",
+          "interaction": "native click",
+          "pushes": 1
+        },
+        {
+          "placement": "whatsapp_faq_contact",
+          "interaction": "native click",
+          "pushes": 1
+        },
+        {
+          "placement": "whatsapp_floating_desktop",
+          "interaction": "native click",
+          "pushes": 1
+        },
+        {
+          "placement": "whatsapp_mobile_sticky",
+          "interaction": "programmatic: hidden desktop/mobile variant",
+          "pushes": 1
+        }
+      ],
+      "keyboardPushes": 1,
+      "rapidClickPushes": 2,
+      "pushAfterActualRouteRemount": 1,
+      "totalInteractions": 9,
+      "totalLogicalEvents": 9,
+      "checkoutEvents": 6,
+      "whatsappEvents": 3,
+      "internalNavigationPushes": 0,
+      "documentClickListenerCountUnchanged": true,
+      "queuedConsentPreserved": true,
+      "gtmStartupCount": 1,
+      "gtmRequests": [
+        {
+          "path": "/gtm.js",
+          "id": "GTM-TGQTFXTN"
+        }
+      ],
+      "sampleCheckout": {
+        "event": "checkout_click",
+        "site_id": "principal",
+        "izi_enabled": true,
+        "placement": "plan_card_izi_one",
+        "checkout_url": "https://vendas.online.sistemapacto.com.br/planos?un=1&utm_source=qa&utm_medium=verification&utm_campaign=principal&utm_content=cta&utm_term=fitness&utm_id=42&utm_variant=blue&gclid=gc&fbclid=fb&gbraid=gb&wbraid=wb&dclid=dc&msclkid=ms",
+        "utm_source": "qa",
+        "utm_medium": "verification",
+        "utm_campaign": "principal",
+        "utm_content": "cta",
+        "utm_term": "fitness",
+        "utm_id": "42",
+        "utm_variant": "blue",
+        "gclid": "gc",
+        "fbclid": "fb",
+        "gbraid": "gb",
+        "wbraid": "wb",
+        "dclid": "dc",
+        "msclkid": "ms"
+      },
+      "sampleWhatsApp": {
+        "event": "whatsapp_click",
+        "site_id": "principal",
+        "izi_enabled": true,
+        "placement": "whatsapp_faq_contact",
+        "channel_id": "principal_sales"
+      },
+      "pageErrors": []
+    },
+    {
+      "viewport": "desktop",
+      "dimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "mode": "off",
+      "apexRedirectVerified": true,
+      "commercialContentUnchanged": true,
+      "commercialLinksPreserved": true,
+      "checks": [
+        {
+          "placement": "plan_card_izi_one",
+          "interaction": "native click",
+          "pushes": 1
+        },
+        {
+          "placement": "plan_card_izi_prime",
+          "interaction": "native click",
+          "pushes": 1
+        },
+        {
+          "placement": "whatsapp_faq_contact",
+          "interaction": "native click",
+          "pushes": 1
+        },
+        {
+          "placement": "whatsapp_floating_desktop",
+          "interaction": "native click",
+          "pushes": 1
+        },
+        {
+          "placement": "whatsapp_mobile_sticky",
+          "interaction": "programmatic: hidden desktop/mobile variant",
+          "pushes": 1
+        }
+      ],
+      "keyboardPushes": 1,
+      "rapidClickPushes": 2,
+      "pushAfterActualRouteRemount": 1,
+      "totalInteractions": 9,
+      "totalLogicalEvents": 9,
+      "checkoutEvents": 6,
+      "whatsappEvents": 3,
+      "internalNavigationPushes": 0,
+      "documentClickListenerCountUnchanged": true,
+      "queuedConsentPreserved": true,
+      "gtmStartupCount": 0,
+      "gtmRequests": [],
+      "sampleCheckout": {
+        "event": "checkout_click",
+        "site_id": "principal",
+        "izi_enabled": false,
+        "placement": "plan_card_izi_one",
+        "checkout_url": "https://vendas.online.sistemapacto.com.br/planos?un=1&utm_source=qa&utm_medium=verification&utm_campaign=principal&utm_content=cta&utm_term=fitness&utm_id=42&utm_variant=blue&gclid=gc&fbclid=fb&gbraid=gb&wbraid=wb&dclid=dc&msclkid=ms",
+        "utm_source": "qa",
+        "utm_medium": "verification",
+        "utm_campaign": "principal",
+        "utm_content": "cta",
+        "utm_term": "fitness",
+        "utm_id": "42",
+        "utm_variant": "blue",
+        "gclid": "gc",
+        "fbclid": "fb",
+        "gbraid": "gb",
+        "wbraid": "wb",
+        "dclid": "dc",
+        "msclkid": "ms"
+      },
+      "sampleWhatsApp": {
+        "event": "whatsapp_click",
+        "site_id": "principal",
+        "izi_enabled": false,
+        "placement": "whatsapp_faq_contact",
+        "channel_id": "principal_sales"
+      },
+      "pageErrors": []
+    },
+    {
+      "viewport": "mobile",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mode": "on",
+      "apexRedirectVerified": true,
+      "commercialContentUnchanged": true,
+      "commercialLinksPreserved": true,
+      "checks": [
+        {
+          "placement": "plan_card_izi_one",
+          "interaction": "native click",
+          "pushes": 1
+        },
+        {
+          "placement": "plan_card_izi_prime",
+          "interaction": "native click",
+          "pushes": 1
+        },
+        {
+          "placement": "whatsapp_faq_contact",
+          "interaction": "native click",
+          "pushes": 1
+        },
+        {
+          "placement": "whatsapp_floating_desktop",
+          "interaction": "programmatic: hidden desktop/mobile variant",
+          "pushes": 1
+        },
+        {
+          "placement": "whatsapp_mobile_sticky",
+          "interaction": "native click",
+          "pushes": 1
+        }
+      ],
+      "keyboardPushes": 1,
+      "rapidClickPushes": 2,
+      "pushAfterActualRouteRemount": 1,
+      "totalInteractions": 9,
+      "totalLogicalEvents": 9,
+      "checkoutEvents": 6,
+      "whatsappEvents": 3,
+      "internalNavigationPushes": 0,
+      "documentClickListenerCountUnchanged": true,
+      "queuedConsentPreserved": true,
+      "gtmStartupCount": 1,
+      "gtmRequests": [
+        {
+          "path": "/gtm.js",
+          "id": "GTM-TGQTFXTN"
+        }
+      ],
+      "sampleCheckout": {
+        "event": "checkout_click",
+        "site_id": "principal",
+        "izi_enabled": true,
+        "placement": "plan_card_izi_one",
+        "checkout_url": "https://vendas.online.sistemapacto.com.br/planos?un=1&utm_source=qa&utm_medium=verification&utm_campaign=principal&utm_content=cta&utm_term=fitness&utm_id=42&utm_variant=blue&gclid=gc&fbclid=fb&gbraid=gb&wbraid=wb&dclid=dc&msclkid=ms",
+        "utm_source": "qa",
+        "utm_medium": "verification",
+        "utm_campaign": "principal",
+        "utm_content": "cta",
+        "utm_term": "fitness",
+        "utm_id": "42",
+        "utm_variant": "blue",
+        "gclid": "gc",
+        "fbclid": "fb",
+        "gbraid": "gb",
+        "wbraid": "wb",
+        "dclid": "dc",
+        "msclkid": "ms"
+      },
+      "sampleWhatsApp": {
+        "event": "whatsapp_click",
+        "site_id": "principal",
+        "izi_enabled": true,
+        "placement": "whatsapp_faq_contact",
+        "channel_id": "principal_sales"
+      },
+      "pageErrors": []
+    },
+    {
+      "viewport": "mobile",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mode": "off",
+      "apexRedirectVerified": true,
+      "commercialContentUnchanged": true,
+      "commercialLinksPreserved": true,
+      "checks": [
+        {
+          "placement": "plan_card_izi_one",
+          "interaction": "native click",
+          "pushes": 1
+        },
+        {
+          "placement": "plan_card_izi_prime",
+          "interaction": "native click",
+          "pushes": 1
+        },
+        {
+          "placement": "whatsapp_faq_contact",
+          "interaction": "native click",
+          "pushes": 1
+        },
+        {
+          "placement": "whatsapp_floating_desktop",
+          "interaction": "programmatic: hidden desktop/mobile variant",
+          "pushes": 1
+        },
+        {
+          "placement": "whatsapp_mobile_sticky",
+          "interaction": "native click",
+          "pushes": 1
+        }
+      ],
+      "keyboardPushes": 1,
+      "rapidClickPushes": 2,
+      "pushAfterActualRouteRemount": 1,
+      "totalInteractions": 9,
+      "totalLogicalEvents": 9,
+      "checkoutEvents": 6,
+      "whatsappEvents": 3,
+      "internalNavigationPushes": 0,
+      "documentClickListenerCountUnchanged": true,
+      "queuedConsentPreserved": true,
+      "gtmStartupCount": 0,
+      "gtmRequests": [],
+      "sampleCheckout": {
+        "event": "checkout_click",
+        "site_id": "principal",
+        "izi_enabled": false,
+        "placement": "plan_card_izi_one",
+        "checkout_url": "https://vendas.online.sistemapacto.com.br/planos?un=1&utm_source=qa&utm_medium=verification&utm_campaign=principal&utm_content=cta&utm_term=fitness&utm_id=42&utm_variant=blue&gclid=gc&fbclid=fb&gbraid=gb&wbraid=wb&dclid=dc&msclkid=ms",
+        "utm_source": "qa",
+        "utm_medium": "verification",
+        "utm_campaign": "principal",
+        "utm_content": "cta",
+        "utm_term": "fitness",
+        "utm_id": "42",
+        "utm_variant": "blue",
+        "gclid": "gc",
+        "fbclid": "fb",
+        "gbraid": "gb",
+        "wbraid": "wb",
+        "dclid": "dc",
+        "msclkid": "ms"
+      },
+      "sampleWhatsApp": {
+        "event": "whatsapp_click",
+        "site_id": "principal",
+        "izi_enabled": false,
+        "placement": "whatsapp_faq_contact",
+        "channel_id": "principal_sales"
+      },
+      "pageErrors": []
+    }
+  ],
+  "navigations": [
+    {
+      "viewport": "desktop",
+      "placement": "plan_card_izi_one",
+      "interaction": "click",
+      "kind": "pacto",
+      "pushCountBeforeNavigation": 1,
+      "unit": "1",
+      "plan": null,
+      "coupon": null,
+      "accountKeyPreserved": true,
+      "googleLinkerPreserved": true,
+      "campaignPreserved": true,
+      "commercialHrefSha256": "5cd7ddf9f3f055e4b5545ebddf579f110227c4c57670037d3c283955de712a09",
+      "destinationMocked": true
+    },
+    {
+      "viewport": "desktop",
+      "placement": "plan_card_izi_prime",
+      "interaction": "keyboard",
+      "kind": "pacto",
+      "pushCountBeforeNavigation": 1,
+      "unit": "1",
+      "plan": null,
+      "coupon": null,
+      "accountKeyPreserved": true,
+      "googleLinkerPreserved": true,
+      "campaignPreserved": true,
+      "commercialHrefSha256": "5cd7ddf9f3f055e4b5545ebddf579f110227c4c57670037d3c283955de712a09",
+      "destinationMocked": true
+    },
+    {
+      "viewport": "desktop",
+      "placement": "whatsapp_floating_desktop",
+      "interaction": "click",
+      "kind": "whatsapp",
+      "pushCountBeforeNavigation": 1,
+      "unit": null,
+      "plan": null,
+      "coupon": null,
+      "commercialHrefSha256": "af69aaebefd88d1c9b0574dbc09fa95d37614ae3689bc5951cb8664058e9544a",
+      "destinationMocked": true
+    },
+    {
+      "viewport": "mobile",
+      "placement": "plan_card_izi_one",
+      "interaction": "click",
+      "kind": "pacto",
+      "pushCountBeforeNavigation": 1,
+      "unit": "1",
+      "plan": null,
+      "coupon": null,
+      "accountKeyPreserved": true,
+      "googleLinkerPreserved": true,
+      "campaignPreserved": true,
+      "commercialHrefSha256": "5cd7ddf9f3f055e4b5545ebddf579f110227c4c57670037d3c283955de712a09",
+      "destinationMocked": true
+    },
+    {
+      "viewport": "mobile",
+      "placement": "plan_card_izi_prime",
+      "interaction": "keyboard",
+      "kind": "pacto",
+      "pushCountBeforeNavigation": 1,
+      "unit": "1",
+      "plan": null,
+      "coupon": null,
+      "accountKeyPreserved": true,
+      "googleLinkerPreserved": true,
+      "campaignPreserved": true,
+      "commercialHrefSha256": "5cd7ddf9f3f055e4b5545ebddf579f110227c4c57670037d3c283955de712a09",
+      "destinationMocked": true
+    },
+    {
+      "viewport": "mobile",
+      "placement": "whatsapp_mobile_sticky",
+      "interaction": "click",
+      "kind": "whatsapp",
+      "pushCountBeforeNavigation": 1,
+      "unit": null,
+      "plan": null,
+      "coupon": null,
+      "commercialHrefSha256": "af69aaebefd88d1c9b0574dbc09fa95d37614ae3689bc5951cb8664058e9544a",
+      "destinationMocked": true
+    }
+  ],
+  "privacy": {
+    "fieldsExcluded": [
+      "utm_email",
+      "utm_term",
+      "utm_content",
+      "msclkid"
+    ],
+    "sample": {
+      "event": "checkout_click",
+      "site_id": "principal",
+      "izi_enabled": true,
+      "placement": "plan_card_izi_one",
+      "checkout_url": "https://vendas.online.sistemapacto.com.br/planos?un=1&utm_source=normal&utm_id=123456789012",
+      "utm_source": "normal",
+      "utm_id": "123456789012"
+    }
+  },
+  "noscript": {
+    "javaScriptDisabled": true,
+    "requests": [
+      {
+        "path": "/ns.html",
+        "id": "GTM-TGQTFXTN"
+      }
+    ]
+  },
+  "hostRouting": {
+    "apexStatus": 308,
+    "apexLocation": "https://www.izigym.com.br/?utm_source=qa&utm_medium=verification&utm_campaign=principal&utm_content=cta&utm_term=fitness&utm_id=42&utm_variant=blue&gclid=gc&fbclid=fb&gbraid=gb&wbraid=wb&dclid=dc&msclkid=ms",
+    "pathAndQueryPreserved": true,
+    "reactMatrixHost": "https://www.izigym.com.br"
+  },
+  "lateTools": {
+    "loaderDelayMs": 4000,
+    "eventEmittedBeforeLibraryReady": true,
+    "navigationBeforeLibraryReady": true,
+    "logicalPushes": 1,
+    "destinationMocked": true
+  },
+  "recordedAt": "2026-10-13T07:51:31.636Z",
+  "requestDate": "2026-10-12"
+}

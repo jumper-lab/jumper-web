@@ -2,6 +2,10 @@
 /** ACF is a view over native HTML; saves use a three-way merge, not two competing copies. */
 require_once __DIR__ . "/editor-dom.php";
 require_once __DIR__ . "/editor-ui.php";
+require_once __DIR__ . "/editor-preview.php";
+require_once __DIR__ . "/menu-pdf.php";
+require_once __DIR__ . "/editor-data.php";
+require_once __DIR__ . "/editor-dashboard.php";
 class Rodeio_Editor
 {
     const VERSION = "1.0.0";
@@ -34,6 +38,7 @@ class Rodeio_Editor
             "public" => false,
             "publicly_queryable" => false,
             "show_ui" => true,
+            "show_in_menu" => false,
             "show_in_rest" => false,
             "exclude_from_search" => true,
             "rewrite" => false,
@@ -169,7 +174,7 @@ class Rodeio_Editor
                         : "Encontre o item pela prévia e clique em Editar. Depois de alterar, use Atualizar para publicar.",
             ]);
         }
-        $location = [[["param" => "post_type", "operator" => "==", "value" => "rodeio_layout"]]];
+        $location = [[["param" => "post_type", "operator" => "==", "value" => "rodeio_layout"], ["param" => "post", "operator" => "!=", "value" => (string) Rodeio_Editor_Data::id()]]];
         foreach (
             get_posts([
                 "post_type" => "page",
@@ -572,6 +577,15 @@ class Rodeio_Editor
                 }
             }
         }
+        if (!$is_settings) {
+            $old_menu_urls = [];
+            foreach ($before["data"]["menus"] ?? [] as $menu) foreach ($menu["items"] as $item) $old_menu_urls[$item["key"]] = $item["url"];
+            foreach ($after["data"]["menus"] ?? [] as $menu) foreach ($menu["items"] as $item) {
+                $old_url = $old_menu_urls[$item["key"]] ?? null;
+                if ($old_url === null || $old_url === $item["url"]) continue;
+                foreach (self::settings($settings_id) as $fact) if ($fact["kind"] === "url" && $fact["value"] === $old_url) $changes[] = [$old_url, $item["url"], "url"];
+            }
+        }
         if (!$changes) {
             return;
         }
@@ -633,6 +647,14 @@ class Rodeio_Editor
                                 );
                                 $dirty = true;
                             }
+                        }
+                    }
+                }
+                if ($kind === "url" && isset($facts["whatsapp"]) && $old === $facts["whatsapp"]["value"] && preg_match('~^https://wa\.me/(55)(\d{2})(\d{4,5})(\d{4})$~', $new, $phone_parts)) {
+                    $old_digits=preg_replace('/\D/','',$old);
+                    foreach($doc->xpath->query('.//a[@href]',$doc->root) as $anchor) if($anchor->getAttribute('href')===$new) {
+                        foreach($doc->xpath->query('.//text()',$anchor) as $text) if(preg_replace('/\D/','',$text->nodeValue)===$old_digits) {
+                            $text->nodeValue='+55 ('.$phone_parts[2].') '.$phone_parts[3].'-'.$phone_parts[4];$dirty=true;
                         }
                     }
                 }
@@ -769,7 +791,7 @@ class Rodeio_Editor
                 $html = preg_replace('~<link\b(?=[^>]*\bas="image")[^>]*>~i', "", $html);
             }
         }
-        return $html;
+        return Rodeio_Menu_Pdf::apply($html);
     }
 }
 add_action("init", ["Rodeio_Editor", "register_type"], 5);
