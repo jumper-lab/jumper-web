@@ -18,8 +18,9 @@
     config.areas.forEach(a => { const link = el('a', '', a.label); link.href = a.url; list.append(link); }); shortcuts.append(list); top.append(shortcuts);
     const bar = el('div', 'rde-studio-tools');
     const searchLabel = el('label', '', 'Encontrar conteúdo'); const search = el('input'); search.type = 'search'; search.placeholder = 'Busque uma frase, foto ou destino…'; searchLabel.append(search);
-    const sectionLabel = el('label', '', 'Seção do site'); const select = el('select'); const all = el('option', '', 'Todas as seções'); all.value = ''; select.append(all); sectionLabel.append(select);
+    const sectionLabel = el('label', '', config.defaultSection ? 'Janela para editar' : 'Parte da página'); const select = el('select'); const all = el('option', '', 'Todas as seções'); all.value = ''; select.append(all); sectionLabel.append(select);
     bar.append(searchLabel, sectionLabel); top.after(bar);
+    const advancedLabel=el('label','rde-technical-toggle');const advanced=el('input');advanced.type='checkbox';advancedLabel.append(advanced,document.createTextNode('Mostrar controles técnicos'));bar.append(advancedLabel);
     const result = el('p', 'rde-filter-result'); result.setAttribute('role', 'status'); bar.after(result);
     const records = []; const sections = new Set();
     for (const [kind, meta] of Object.entries(config.rows)) {
@@ -38,13 +39,17 @@
         const update = () => { caption.textContent = (kind === 'texts' ? input?.value : m.context) || 'Editar conteúdo'; }; update();
         if(input) input.addEventListener('input', update);
         copy.append(caption); summary.append(copy, el('span', 'rde-card-toggle', 'Editar +')); content.prepend(summary);
-        const setOpen = open => {row.classList.toggle('rde-card-closed', !open); row.classList.remove('-collapsed'); summary.setAttribute('aria-expanded', String(open)); summary.lastChild.textContent = open ? 'Recolher −' : 'Editar +';};
+        const setOpen = open => {row.classList.toggle('rde-card-closed', !open); row.classList.remove('-collapsed'); summary.setAttribute('aria-expanded', String(open)); summary.lastChild.textContent = open ? 'Recolher −' : (m.shared ? 'Ver origem ↗' : 'Editar +');};
         setOpen(false); summary.addEventListener('click', () => setOpen(row.classList.contains('rde-card-closed')));
         records.push({row, m, input, kind, setOpen});
+        if(m.shared && input) {
+          input.readOnly=true;row.classList.add('rde-shared-value');
+          const note=el('p','rde-shared-reference','Informação compartilhada. Para alterar em todo o site, use ');const link=el('a','','Dados e contatos');link.href=m.settingsUrl;note.append(link,document.createTextNode('.'));summary.after(note);
+        }
         if(kind === 'texts') {
           const label = row.querySelector('[data-name="rde_texts_value"] .acf-label label'); if(label) label.textContent = m.label;
         }
-        if(kind === 'links' && input && !m.key.includes('@data-menu')) {
+        if(kind === 'links' && input && !m.key.includes('@data-menu') && !m.shared) {
           const path=m.key.split('@')[0];
           const labels=(config.rows.texts || []).map((t,i)=>({t,i})).filter(({t})=>t.key.startsWith(path+'/'));
           if(labels.length===1) {
@@ -68,18 +73,23 @@
           }
         }
       });
-      const tab = root.querySelector(`.acf-tab-button[data-key="field_rde_tab_${kind}"]`);
+      const tab = root.querySelector(`.acf-tab-group .acf-tab-button[data-key="field_rde_tab_${kind}"]`);
       if(tab && !rows.length && tab.closest('li')) tab.closest('li').hidden = true;
       if(tab && rows.length) {const badge = el('span', 'rde-count', String(rows.length));tab.append(badge);}
     }
     root.querySelectorAll('.acf-tab-button[data-key^="field_rde_tab_"]').forEach(tab => {const kind=tab.dataset.key.replace('field_rde_tab_','');if(!config.rows[kind]?.length && tab.closest('li')) tab.closest('li').hidden=true;});
     sections.forEach(s => {const option = el('option', '', s); option.value = s; select.append(option);});
+    if(config.defaultSection && sections.has(config.defaultSection)) select.value=config.defaultSection;
     const filter = () => {
-      const q = search.value.trim().toLocaleLowerCase('pt-BR');let found=0;
-      records.forEach(r => {const hay = [r.m.section, r.m.label, r.m.context, r.input?.value].join(' ').toLocaleLowerCase('pt-BR');const show = (!select.value || select.value === r.m.section) && (!q || hay.includes(q));r.row.classList.toggle('rde-filter-hidden', !show);if(show)found++;});
-      result.textContent = q || select.value ? `${found} itens encontrados nas abas abaixo. Limpe os filtros para ver tudo.` : '01 Escolha uma seção  ·  02 Abra o conteúdo  ·  03 Clique em Atualizar';
+      const q = search.value.trim().toLocaleLowerCase('pt-BR');let found=0;const counts={};
+      records.forEach(r => {const hay = [r.m.section, r.m.label, r.m.context, r.input?.value].join(' ').toLocaleLowerCase('pt-BR');const show = (!select.value || select.value === r.m.section) && (!q || hay.includes(q)) && (!r.m.technical || advanced.checked);r.row.classList.toggle('rde-filter-hidden', !show);if(show){found++;counts[r.kind]=(counts[r.kind]||0)+1;}});
+      const tabs=Array.from(root.querySelectorAll('.acf-tab-group .acf-tab-button[data-key^="field_rde_tab_"]'));
+      tabs.forEach(tab=>{const kind=tab.dataset.key.replace('field_rde_tab_','');const li=tab.closest('li');if(!li)return;li.hidden=!counts[kind];const badge=tab.querySelector('.rde-count');if(badge)badge.textContent=String(counts[kind]||0);});
+      const active=tabs.find(t=>t.closest('li')?.classList.contains('active'));
+      if(!active || active.closest('li').hidden) tabs.find(t=>!t.closest('li')?.hidden)?.click();
+      result.textContent = found ? `${found} conteúdos nesta seleção. Abra um cartão para editar.` : 'Nenhum conteúdo nesta seleção. Tente outra parte ou limpe a busca.';
     };
-    search.addEventListener('input', filter); select.addEventListener('change', filter); filter();
+    search.addEventListener('input', filter); select.addEventListener('change', filter);advanced.addEventListener('change',filter);filter();
     // ACF's original fields and names stay in the form, including every hidden row.
     document.addEventListener('invalid', e => {const record = records.find(r => r.row.contains(e.target));if(record) {search.value='';select.value='';filter();record.setOpen(true);}}, true);
     const html = document.getElementById('postdivrich');

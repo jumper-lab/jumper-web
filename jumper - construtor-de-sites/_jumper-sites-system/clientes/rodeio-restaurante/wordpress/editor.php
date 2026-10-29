@@ -2,6 +2,8 @@
 /** ACF is a view over native HTML; saves use a three-way merge, not two competing copies. */
 require_once __DIR__ . "/editor-dom.php";
 require_once __DIR__ . "/editor-ui.php";
+require_once __DIR__ . "/editor-data.php";
+require_once __DIR__ . "/editor-dashboard.php";
 class Rodeio_Editor
 {
     const VERSION = "1.0.0";
@@ -34,6 +36,7 @@ class Rodeio_Editor
             "public" => false,
             "publicly_queryable" => false,
             "show_ui" => true,
+            "show_in_menu" => false,
             "show_in_rest" => false,
             "exclude_from_search" => true,
             "rewrite" => false,
@@ -169,7 +172,7 @@ class Rodeio_Editor
                         : "Encontre o item pela prévia e clique em Editar. Depois de alterar, use Atualizar para publicar.",
             ]);
         }
-        $location = [[["param" => "post_type", "operator" => "==", "value" => "rodeio_layout"]]];
+        $location = [[["param" => "post_type", "operator" => "==", "value" => "rodeio_layout"], ["param" => "post", "operator" => "!=", "value" => (string) Rodeio_Editor_Data::id()]]];
         foreach (
             get_posts([
                 "post_type" => "page",
@@ -570,6 +573,15 @@ class Rodeio_Editor
                         }
                     }
                 }
+            }
+        }
+        if (!$is_settings) {
+            $old_menu_urls = [];
+            foreach ($before["data"]["menus"] ?? [] as $menu) foreach ($menu["items"] as $item) $old_menu_urls[$item["key"]] = $item["url"];
+            foreach ($after["data"]["menus"] ?? [] as $menu) foreach ($menu["items"] as $item) {
+                $old_url = $old_menu_urls[$item["key"]] ?? null;
+                if ($old_url === null || $old_url === $item["url"]) continue;
+                foreach (self::settings($settings_id) as $fact) if ($fact["kind"] === "url" && $fact["value"] === $old_url) $changes[] = [$old_url, $item["url"], "url"];
             }
         }
         if (!$changes) {

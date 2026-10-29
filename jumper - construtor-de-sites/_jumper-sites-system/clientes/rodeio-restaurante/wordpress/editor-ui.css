@@ -56,3 +56,57 @@
 #acf-group_rodeio_editor_v1 .rde-link-label{display:grid;gap:8px;padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid #eee7dd;font-size:12px;font-weight:600;color:#4e3a2e}
 
 #acf-group_rodeio_editor_v1 .acf-tab-group li[hidden]{display:none!important}
+/* Task-based settings entry and native named ACF fields. */
+.rde-dashboard {max-width:1280px;margin-right:28px;color:#302219}
+.rde-dashboard-head {position:relative;padding:32px 36px;background:#302219;border-radius:10px;color:#f5ecdf;margin:20px 0 28px}
+.rde-dashboard .rde-eyebrow {font-size:10px;letter-spacing:.18em;color:#d8ba91;margin:0 0 14px}
+.rde-dashboard .rde-dashboard-head h1 {color:#fff3e3;font:400 34px/1.2 Georgia,serif;padding:0;margin:0 0 12px}
+.rde-dashboard-head p {max-width:64ch;color:#dfd1be;line-height:1.7}
+.rde-dashboard-head .button {background:transparent;border-color:#9d8467;color:#fff3e3;margin-top:8px}
+.rde-dashboard-section {margin-bottom:30px;padding:28px;background:#fffdf9;border:1px solid #dfd5c7;border-radius:9px}
+.rde-dashboard-section > h2 {font-size:20px;margin:0 0 10px;color:#302219}
+.rde-dashboard-section > p {font-size:13px;color:#7d6d5e;line-height:1.7;margin:0 0 22px}
+.rde-dashboard-cards {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.rde-dashboard-card {display:flex;flex-direction:column;align-items:flex-start;gap:10px;background:#f7f1e8;border:1px solid #e4d8c7;border-radius:7px;padding:24px;text-decoration:none;color:#302219;transition:border-color .15s,background .15s}
+.rde-dashboard-card:hover {border-color:#98764f;background:#f3e9da;color:#302219}
+.rde-dashboard-card .dashicons {color:#896337;font-size:25px;width:28px;height:28px}
+.rde-dashboard-card h3 {font-size:18px;margin:0}
+.rde-dashboard-card p {color:#756556;line-height:1.65;margin:0;font-size:13px}
+.rde-dashboard-card .rde-card-scope {font-size:11px;color:#8a755d;margin-top:auto;padding-top:6px}
+.rde-dashboard-card strong {font-size:12px;color:#724c2b;margin-top:4px}
+.rde-page-links {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.rde-page-links a {display:flex;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid #e3d9ca;border-radius:4px;color:#594534;text-decoration:none;font-size:13px}
+.rde-page-links a:hover {background:#f5eddf}
+.rde-page-support {margin-top:20px;color:#7a6855}
+.rde-page-support summary {cursor:pointer;font-size:12px}
+.rde-form-recipients dl {margin:0;display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
+.rde-form-recipients dl > div {padding:14px 0;border-top:1px solid #e8ded1}
+.rde-form-recipients dt {font-size:12px;font-weight:600;margin-bottom:7px}
+.rde-form-recipients dd {font-size:12px;margin:0;color:#766351;overflow-wrap:anywhere}
+.rde-dashboard-section .rde-form-note {font-size:12px;background:#f4ebdf;padding:14px;margin:18px 0 0;border-radius:4px}
+.rde-shared-heading {padding:24px 28px;margin:8px 0 20px;background:#302219;border-radius:9px;color:#f2e6d6}
+.rde-shared-heading > a {font-size:12px;color:#d9bc96;text-decoration:none}
+.rde-shared-heading h2 {font:400 30px/1.2 Georgia,serif;color:#fff4e4;margin:18px 0 10px}
+.rde-shared-heading p {font-size:13px;line-height:1.7;max-width:75ch;margin:0}
+.rde-shared-heading .rde-shared-scope {font-size:11px;color:#cfbca5;margin-top:12px}
+.rde-managed-shared #titlediv,.rde-managed-shared #titlewrap,.rde-managed-shared #minor-publishing,.rde-managed-shared #delete-action {display:none}
+.rde-managed-shared #acf-group_rodeio_editor_v1 .rde-studio-top {display:none}
+#acf-group_rodeio_editor_v1 .rde-technical-toggle {grid-column:1/-1;display:flex;align-items:center;gap:7px;color:#897866;font-size:11px;font-weight:400}
+#acf-group_rodeio_editor_v1 .rde-technical-toggle input {width:16px;min-height:16px;height:16px;margin:0}
+#acf-group_rodeio_editor_v1 .rde-shared-reference {margin:0;padding:16px 22px;background:#f7f0e5;font-size:12px;line-height:1.7;color:#7f674c}
+#acf-group_rodeio_editor_v1 .rde-shared-reference a {color:#76502c;font-weight:600}
+#acf-group_rodeio_editor_v1 .rde-shared-value input[readonly],#acf-group_rodeio_editor_v1 .rde-shared-value textarea[readonly] {background:#f7f3ed;color:#7b6b5c}
+#acf-group_rodeio_settings_v2 {border:1px solid #dfd4c5;border-radius:9px;overflow:hidden;background:#fffdf8}
+#acf-group_rodeio_settings_v2 .postbox-header {display:none}
+#acf-group_rodeio_settings_v2 .rde-binding {display:none!important}
+#acf-group_rodeio_settings_v2 .acf-tab-wrap {padding:0 20px;background:#f1e8db}
+#acf-group_rodeio_settings_v2 .acf-tab-group {border:0}
+#acf-group_rodeio_settings_v2 .acf-tab-group li a {border:0;background:transparent;padding:18px 16px;color:#7f674e}
+#acf-group_rodeio_settings_v2 .acf-tab-group li.active a {background:#fffdf8;box-shadow:inset 0 3px #a87944;color:#302219}
+#acf-group_rodeio_settings_v2 .acf-field {padding:24px;border-color:#eee4d7}
+#acf-group_rodeio_settings_v2 .acf-label label {font-size:13px;color:#4e3826}
+#acf-group_rodeio_settings_v2 .acf-label .description {font-size:12px;color:#8c7760;line-height:1.6;min-height:38px}
+#acf-group_rodeio_settings_v2 input:not([type=hidden]) {font-size:15px;padding:12px;min-height:46px;border:1px solid #d7c7b3;border-radius:5px;background:#fff}
+#acf-group_rodeio_settings_v2 .acf-accordion-title {background:#f7f1e8}
+@media(max-width:960px){.rde-page-links{grid-template-columns:1fr 1fr}}
+@media(max-width:782px){.rde-dashboard{margin-right:12px}.rde-dashboard-cards,.rde-form-recipients dl{grid-template-columns:1fr}.rde-dashboard-head{padding:24px}.rde-dashboard-section{padding:20px}.rde-page-links{grid-template-columns:1fr}#acf-group_rodeio_settings_v2 .acf-field[data-width]{width:100%!important}.rde-shared-heading{padding:24px}}
