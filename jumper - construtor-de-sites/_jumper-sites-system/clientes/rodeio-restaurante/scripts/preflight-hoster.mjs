@@ -15,6 +15,7 @@ export const protectedPages = [
   ['Pão de Queijo dev', 'https://site.jumper.dev.br/pao-de-queijo-haddock-lobo/', 'pao-de-queijo-haddock-lobo/index.html'],
   ['Rodeio dev', 'https://site.jumper.dev.br/rodeio/', 'rodeio/index.html'],
   ['IZI Gym dev', 'https://site.jumper.dev.br/izigym/', 'izigym/index.html'],
+  ['IZI Gym dev 2', 'https://site.jumper.dev.br/izigym2/', 'izigym2/index.html'],
   ['IZI Gym LP v1', 'https://site.jumper.dev.br/izigym-lp/', 'izigym-lp/index.html'],
   ['IZI Gym LP v2', 'https://site.jumper.dev.br/izigym-lp-vilaromana/', 'izigym-lp-vilaromana/index.html'],
   ['Casa Beliê v1', 'https://site.jumper.dev.br/casabelie/', 'casabelie/index.html'],
@@ -168,10 +169,11 @@ async function liveWorkerFeatures() {
 }
 
 export function validatePromotionScope(promotion, release) {
+  const developmentCopies = release === 'izi-development-copies-2026-10-29';
   const combinedIzi = release === 'izi-clixx-horarios-2026-10-26';
   const principal = ['principal-tracking-2026-10-13', 'principal-horarios-2026-10-26'].includes(release);
-  const expectedScope = combinedIzi ? 'izi-clixx-horarios' : principal ? 'principal' : release === 'izi-franquias-admin-2026-10-08' ? 'izi-franquias-admin' : 'cerrocora';
-  const expectedAssets = combinedIzi
+  const expectedScope = developmentCopies ? 'izi-development-copies' : combinedIzi ? 'izi-clixx-horarios' : principal ? 'principal' : release === 'izi-franquias-admin-2026-10-08' ? 'izi-franquias-admin' : 'cerrocora';
+  const expectedAssets = developmentCopies ? ['izigym-lp-vilaromana/index.html'] : combinedIzi
     ? ['_official/izigym/index.shell', 'cerrocora/index.html', 'izigym-lp-vilaromana/index.html']
     : principal
     ? ['_official/izigym/index.shell', 'izigym-lp-vilaromana/index.html']
@@ -191,6 +193,7 @@ export async function readPromotion(args = []) {
   const flags = args.filter(arg => arg !== '--audit');
   if (!flags.length) return null;
   const releases = {
+    '--promote=izi-development-copies-2026-10-29': 'izi-development-copies-2026-10-29',
     '--promote=cerrocora-direct-checkout-2026-10-08': 'cerrocora-direct-checkout-2026-10-08',
     '--promote=izi-franquias-admin-2026-10-08': 'izi-franquias-admin-2026-10-08',
     '--promote=cerrocora-tracking-2026-10-12': 'cerrocora-tracking-2026-10-12',

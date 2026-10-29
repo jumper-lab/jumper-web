@@ -3,6 +3,7 @@ import { dirname, extname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { prepareCerroCoraTracking } from './prepare-cerrocora-tracking.mjs';
 import { validatePrincipalBuild } from './prepare-principal.mjs';
+import { prepareInstitutionalPreview } from './prepare-institutional-preview.mjs';
 
 const projectRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
 const source = join(projectRoot, 'dist');
@@ -11,6 +12,7 @@ const clientTarget = join(target, 'rodeio');
 const fontsTarget = join(target, 'fonts');
 const iziSource = join(projectRoot, 'cloudflare', 'snapshots', 'izigym');
 const iziTarget = join(target, 'izigym');
+const iziPreviewSource = resolve(projectRoot, '../izigym-site-dev/dist');
 const iziOfficialSource = resolve(projectRoot, '../izigym-site/dist');
 const iziOfficialTarget = join(target, '_official', 'izigym');
 const belieSource = resolve(projectRoot, '../casa-belie/public');
@@ -33,15 +35,15 @@ const paoDeQueijoTarget = join(target, 'pao-de-queijo-haddock-lobo');
 
 const textExtensions = new Set(['.html', '.css', '.js', '.mjs', '.xml', '.txt', '.webmanifest']);
 
-async function rewriteTree(root, replacements) {
+async function rewriteTree(root, replacements, transform = value => value) {
   for (const entry of await readdir(root, { withFileTypes: true })) {
     const path = join(root, entry.name);
     if (entry.isDirectory()) {
-      await rewriteTree(path, replacements);
+      await rewriteTree(path, replacements, transform);
     } else if (textExtensions.has(extname(entry.name))) {
       let contents = await readFile(path, 'utf8');
       for (const [from, to] of replacements) contents = contents.replaceAll(from, to);
-      await writeFile(path, contents);
+      await writeFile(path, transform(contents));
     }
   }
 }
@@ -54,7 +56,7 @@ await cp(join(projectRoot, 'cloudflare', 'fonts'), fontsTarget, { recursive: tru
 await cp(join(projectRoot, 'cloudflare', 'favicon-jumper.png'), join(target, 'favicon-jumper.png'));
 await cp(join(projectRoot, 'cloudflare', 'design-system', '3.15.0'), join(target, 'hub-design-system', '3.15.0'), { recursive: true });
 await cp(join(projectRoot, 'cloudflare', 'hub-redesign.css'), join(target, 'hub-redesign.css'));
-await cp(iziSource, iziTarget, { recursive: true });
+await cp(iziPreviewSource, iziTarget, { recursive: true });
 // Preserve the current institutional preview before replacing development 1.
 await cp(iziSource, join(target, 'izigym2'), { recursive: true });
 await rewriteTree(join(target, 'izigym2'), [
@@ -73,14 +75,8 @@ await writeFile(
   join(iziOfficialTarget, 'index.shell'),
   await readFile(join(iziOfficialTarget, 'index.html')),
 );
-await rewriteTree(iziTarget, [
-  ['/cdn-cgi/', '/izigym/cdn-cgi/'],
-  ['/assets/', '/izigym/assets/'],
-  ['/images/', '/izigym/images/'],
-  ['/brand/', '/izigym/brand/'],
-  ['/favicon.png', '/izigym/favicon.png'],
-  ['/placeholder.svg', '/izigym/placeholder.svg'],
-]);
+await rewriteTree(iziTarget, [], text => prepareInstitutionalPreview(text, 'izigym'));
+await writeFile(join(iziTarget, 'robots.txt'), 'User-agent: *\nDisallow: /\n');
 await cp(belieSource, belieTarget, { recursive: true });
 await cp(beliePages, belieTarget, { recursive: true });
 await cp(

@@ -75,3 +75,15 @@ test('combined IZI publication pins only the approved form and hours and cannot 
  assert.throws(() => validatePromotionScope({...release, pages:release.pages.slice(1)}, 'izi-clixx-horarios-2026-10-26'), /escopo revisado/);
  assert.throws(() => validatePromotionScope({...release, pages:[release.pages[0],release.pages[0],release.pages[2]]}, 'izi-clixx-horarios-2026-10-26'), /escopo revisado/);
 });
+
+
+test('institutional copies keep strict comparison for both previews and the official', async () => {
+ const release = await readPromotion(['--promote=izi-development-copies-2026-10-29']);
+ assert.equal(release.scope, 'izi-development-copies');
+ assert.deepEqual(release.pages.map(page => page.asset), ['izigym-lp-vilaromana/index.html']);
+ for (const asset of ['izigym/index.html', 'izigym2/index.html', '_official/izigym/index.shell']) {
+  assert.ok(protectedPages.some(page => page[2] === asset));
+  assert.ok(!release.pages.some(page => page.asset === asset));
+ }
+ assert.throws(() => validatePromotionScope({...release, pages:[...release.pages, {...release.pages[0], asset:'rodeio/index.html'}]}, 'izi-development-copies-2026-10-29'));
+});
