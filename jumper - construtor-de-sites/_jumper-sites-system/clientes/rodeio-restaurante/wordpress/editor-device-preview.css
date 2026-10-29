@@ -1,0 +1,30 @@
+.rde-device-launcher{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;padding:18px 30px;background:#fffdf8;border-bottom:1px solid #ded2c1;color:#302219;font-family:RodeioEditorSans,Arial,sans-serif}
+.rde-device-launcher>div:first-child{display:grid;gap:5px}.rde-device-launcher strong{font-size:12px;font-weight:600}.rde-device-launcher small{font-size:11px;color:#796551}
+.rde-device-launch-modes,.rde-device-modes{display:flex;gap:7px}
+.rde-device-launcher button,.rde-device-dialog button{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid #c8b294;border-radius:4px;padding:9px 13px;background:#fffaf2;color:#624326;font:500 12px/1.5 RodeioEditorSans,Arial,sans-serif;cursor:pointer}
+.rde-device-launcher .dashicons,.rde-device-dialog .dashicons{font-size:17px;width:17px;height:17px}
+.rde-device-launcher button:hover{background:#f0e5d4;border-color:#a37c4d}
+.rde-device-selection{flex-basis:100%;margin:0!important;padding:10px 13px;background:#f3eadc;color:#754721;font:500 11px/1.6 RodeioEditorSans,Arial,sans-serif;border-left:2px solid #a47945}
+.rde-device-selection[hidden],.rde-device-loading[hidden],.rde-device-dialog [hidden]{display:none!important}
+.rde-data-screen .rde-device-launcher{border:1px solid #ded2c1;border-radius:7px;margin:0 0 18px;padding:18px 24px}
+.rde-device-preview-open{overflow:hidden}
+.rde-device-dialog{padding:0;border:1px solid #bfa37f;border-radius:9px;background:#f4ede2;color:#302219;width:min(1380px,calc(100vw - 48px));max-width:none;max-height:calc(100dvh - 48px);box-shadow:0 20px 80px #0005;font-family:RodeioEditorSans,Arial,sans-serif;overflow:hidden}
+.rde-device-dialog::backdrop{background:#17120fd6;backdrop-filter:blur(3px)}
+.rde-device-head{display:flex;align-items:center;justify-content:space-between;gap:18px;background:#302219;color:#f8efdf;padding:18px 24px}
+.rde-device-eyebrow{font:600 9px/1.6 RodeioEditorSans,Arial,sans-serif;letter-spacing:.14em;margin:0 0 6px;color:#d3b68d}
+.rde-device-head h2{font:400 25px/1.25 RodeioEditorSerif,Georgia,serif;margin:0;color:#fcf4e8}
+.rde-device-dialog .rde-device-close{color:#eedcc3;background:transparent;border-color:#bca07d60;white-space:nowrap}
+.rde-device-toolbar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:13px 24px;background:#fffaf2;border-bottom:1px solid #ddcfbb}
+.rde-device-modes button[aria-pressed=true]{background:#302219;color:#fff3e0;border-color:#302219}
+.rde-device-area{display:flex;align-items:center;gap:12px;font-size:11px;color:#78624a;min-width:0}
+.rde-device-area select{font:400 12px/1.6 RodeioEditorSans,Arial,sans-serif;color:#4b3320;max-width:320px;min-height:36px;border-color:#ccb89b;background-color:#fffdf8}
+.rde-device-stage{position:relative;display:flex;justify-content:center;align-items:stretch;height:clamp(260px,calc(100dvh - 272px),800px);background:#e4dacb;padding:14px 0;box-sizing:border-box;overflow:hidden}
+.rde-device-viewport{position:relative;height:100%;background:#fbf7ee;overflow:hidden;box-shadow:0 3px 18px #3022191f;border:1px solid #cdbda5;box-sizing:border-box}
+.rde-device-frame{display:block;border:0;max-width:none;transform-origin:top left;background:#faf7ef}
+.rde-device-dialog[data-device=mobile] .rde-device-viewport{border:4px solid #302219;border-radius:16px;box-shadow:0 8px 28px #30221930}
+.rde-device-loading{position:absolute;inset:0;display:grid;place-items:center;padding:30px;background:#f4ede2;color:#7b6347;font-size:13px;text-align:center}
+.rde-device-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;background:#fffaf3;padding:12px 24px;border-top:1px solid #ddcfbb}
+.rde-device-foot p{font:400 11px/1.6 RodeioEditorSans,Arial,sans-serif;color:#7a6248;margin:0}
+.rde-device-dialog :is(button,select):focus-visible,.rde-device-launcher button:focus-visible{outline:2px solid #b4874e;outline-offset:3px}
+.rde-preview-field-selected{outline:3px solid #b78a4c!important;outline-offset:5px;box-shadow:0 0 0 8px #b78a4c14!important}
+@media(max-width:782px){.rde-device-launcher{padding:18px}.rde-device-dialog{width:calc(100vw - 16px);max-height:calc(100dvh - 16px)}.rde-device-head{padding:15px}.rde-device-head h2{font-size:22px}.rde-device-toolbar{padding:12px;gap:12px;flex-wrap:wrap}.rde-device-area{width:100%;justify-content:space-between}.rde-device-area select{max-width:70%}.rde-device-stage{height:calc(100dvh - 312px);min-height:220px}.rde-device-foot{padding:12px 16px}.rde-device-launch-modes{flex-wrap:wrap}}

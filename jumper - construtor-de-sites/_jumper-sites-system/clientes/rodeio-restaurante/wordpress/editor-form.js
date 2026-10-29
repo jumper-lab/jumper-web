@@ -108,8 +108,8 @@
         const frame = wp.media({title:isMobile ? 'Imagem para celular' : 'Escolher ou enviar imagem',button:{text:'Usar esta imagem'},library:{type:'image'},multiple:false});
         frame.on('select', () => {
           const attachment = frame.state().get('selection').first().toJSON(); write(target, String(attachment.id));
-          if (!isMobile) image.src = attachment.sizes?.large?.url || attachment.url;
-          else mobileState.textContent = 'Imagem para celular selecionada.';
+          if (!isMobile) {image.src = attachment.sizes?.large?.url || attachment.url;host.dataset.rdePreviewDesktop=attachment.url;}
+          else {mobileState.textContent = 'Imagem para celular selecionada.';host.dataset.rdePreviewMobile=attachment.url;}
         }); frame.open();
       };
       const replace = el('button', 'button', 'Trocar imagem'); replace.type = 'button'; replace.addEventListener('click', () => choose(pick)); host.append(replace);
@@ -119,11 +119,11 @@
       if (part.imageKind === 'picture' && mobile) {
         const details = el('details', 'rde-form-extra'); details.append(el('summary', '', 'Imagem específica para celular (opcional)'));
         const button = el('button', 'button', 'Escolher imagem para celular'); button.type = 'button'; button.addEventListener('click', () => choose(mobile, true));
-        const clear = el('button', 'button-link', 'Usar a principal no celular'); clear.type = 'button'; clear.addEventListener('click', () => {write(mobile, '0'); mobileState.textContent = 'O celular usa a imagem principal.';});
+        const clear = el('button', 'button-link', 'Usar a principal no celular'); clear.type = 'button'; clear.addEventListener('click', () => {write(mobile, '0');host.dataset.rdePreviewMobile='';mobileState.textContent = 'O celular usa a imagem principal.';});
         details.append(mobileState, button, clear); host.append(details);
       }
       const advanced = el('details', 'rde-form-extra'); advanced.append(el('summary', '', 'Usar uma imagem por endereço (avançado)'));
-      const direct = el('input'); direct.type = 'text'; direct.value = url.value; direct.setAttribute('aria-label', 'Endereço da imagem'); direct.addEventListener('input', () => {write(url, direct.value); write(pick, '0'); if (/^(https?:\/\/|\/)/.test(direct.value)) image.src = direct.value;}); advanced.append(direct); host.append(advanced);
+      const direct = el('input'); direct.type = 'text'; direct.value = url.value; direct.setAttribute('aria-label', 'Endereço da imagem'); direct.addEventListener('input', () => {delete host.dataset.rdePreviewDesktop;write(url, direct.value); write(pick, '0'); if (/^(https?:\/\/|\/)/.test(direct.value)) image.src = direct.value;}); advanced.append(direct); host.append(advanced);
     };
     const blocks = config.blocks.filter(block => block.groups.some(group => group.parts.some(part => !part.technical)));
     const panels = [];
@@ -142,6 +142,7 @@
       for (const group of groups) {
         const parts = group.parts.filter(part => !part.technical);
         const card = el('fieldset', `rde-form-card rde-form-card-${group.type}`); card.append(el('legend', '', group.label));
+        card.dataset.rdeParts=parts.map(part=>`${part.kind}:${part.index}`).join(' ');
         if (group.type === 'menu') {
           card.classList.add('rde-form-menu-host'); card.dataset.menuIndexes = parts.filter(part => part.kind === 'menus').map(part => part.index).join(','); panel.append(card); continue;
         }
@@ -190,6 +191,17 @@
     }
     const defaultBlock = blocks.find(block => block.title === config.defaultSection) || blocks[0];
     if (defaultBlock) selectBlock(defaultBlock.key);
+    root.addEventListener('rde:preview-pick',event=>{
+      const [kind,rawIndex]=event.detail.key.split(':');const index=Number(rawIndex);
+      const entry=panels.find(item=>item.block.groups.some(group=>group.parts.some(part=>part.kind===kind&&part.index===index&&!part.technical)));
+      if(!entry)return;
+      selectBlock(entry.block.key);
+      root.querySelectorAll('.rde-preview-field-selected').forEach(node=>node.classList.remove('rde-preview-field-selected'));
+      const card=entry.panel.querySelector(`[data-rde-parts~="${kind}:${index}"]`);if(!card)return;
+      card.classList.add('rde-preview-field-selected');
+      const target=kind==='menus'?sourceRows.menus[index]?.querySelectorAll('[data-name="rde_menuitem_label"] input')[event.detail.item||0]:card.querySelector(`[data-rde-proxy="${kind}:${index}"]`)||card.querySelector('button,input,a');
+      requestAnimationFrame(()=>{card.scrollIntoView({block:'center',behavior:'instant'});target?.focus({preventScroll:true});});
+    });
     const technical = document.getElementById('postdivrich');
     if (technical) {
       const details = el('details', 'rde-form-technical'); details.append(el('summary', '', 'Área técnica · HTML (não é necessário para editar o conteúdo)'));
