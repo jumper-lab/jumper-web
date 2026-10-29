@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/editor-form.php";
 /** Administration-only presentation. The field names and save pipeline stay native ACF. */
 class Rodeio_Editor_UI
 {
@@ -58,7 +59,7 @@ class Rodeio_Editor_UI
             $title=Rodeio_Editor_Dashboard::areas()[$key]['title']??get_the_title($area);
             $areas[] = ['label'=>$title, 'url'=>get_edit_post_link($area, 'raw')];
         }
-        return ['menuPdfUrl'=>Rodeio_Menu_Pdf::page_url(), 'id'=>(int)$id, 'sections'=>array_values($sections), 'previewEndpoint'=>add_query_arg(['action'=>'rodeio_editor_preview','post_id'=>(int)$id,'_wpnonce'=>wp_create_nonce('rodeio-preview-'.$id)],admin_url('admin-ajax.php')), 'title'=>get_the_title($id), 'shared'=>get_post_type($id)==='rodeio_layout', 'rows'=>$rows, 'areas'=>$areas, 'defaultSection'=>get_post_meta($id,'_rde_fragment_type',true)==='dialogs' ? 'Fale com a gente' : '', 'preview'=>get_post_type($id)==='page' ? get_permalink($id) : home_url('/')];
+        return ['blocks'=>Rodeio_Editor_Form::describe($doc,$snapshot,$rows), 'menuPdfUrl'=>Rodeio_Menu_Pdf::page_url(), 'id'=>(int)$id, 'sections'=>array_values($sections), 'previewEndpoint'=>add_query_arg(['action'=>'rodeio_editor_preview','post_id'=>(int)$id,'_wpnonce'=>wp_create_nonce('rodeio-preview-'.$id)],admin_url('admin-ajax.php')), 'title'=>get_the_title($id), 'shared'=>get_post_type($id)==='rodeio_layout', 'rows'=>$rows, 'areas'=>$areas, 'defaultSection'=>get_post_meta($id,'_rde_fragment_type',true)==='dialogs' ? 'Fale com a gente' : '', 'preview'=>get_post_type($id)==='page' ? get_permalink($id) : home_url('/')];
     }
     public static function enqueue()
     {
@@ -68,9 +69,12 @@ class Rodeio_Editor_UI
         try {
             $config = self::describe($id);
         } catch (Throwable $e) { return; }
-        wp_enqueue_style('rodeio-editor-studio', get_template_directory_uri().'/editor-ui.css', ['acf-input'], filemtime(__DIR__.'/editor-ui.css'));
-        if ($id === Rodeio_Editor_Data::id()) return;
-        wp_enqueue_script('rodeio-editor-studio', get_template_directory_uri().'/editor-ui.js', ['acf-input'], filemtime(__DIR__.'/editor-ui.js'), true);
+        if ($id === Rodeio_Editor_Data::id()) {
+            wp_enqueue_style('rodeio-editor-studio',get_template_directory_uri().'/editor-ui.css',['acf-input'],filemtime(__DIR__.'/editor-ui.css'));return;
+        }
+        wp_enqueue_media();
+        wp_enqueue_style('rodeio-editor-form',get_template_directory_uri().'/editor-form.css',['acf-input'],filemtime(__DIR__.'/editor-form.css'));
+        wp_enqueue_script('rodeio-editor-studio',get_template_directory_uri().'/editor-form.js',['acf-input','media-editor'],filemtime(__DIR__.'/editor-form.js'),true);
         wp_add_inline_script('rodeio-editor-studio', 'window.rodeioEditorStudio='.wp_json_encode($config, JSON_HEX_TAG|JSON_HEX_AMP|JSON_HEX_APOS|JSON_HEX_QUOT).';', 'before');
     }
 }
