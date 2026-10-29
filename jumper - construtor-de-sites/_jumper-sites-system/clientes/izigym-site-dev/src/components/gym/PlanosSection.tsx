@@ -7,7 +7,7 @@ import { Reveal } from "@/components/Reveal";
 
 /**
  * Formata valor em BRL.
- * - Inteiro: "R$ 167" (sem centavos, mais limpo visualmente)
+ * - Inteiro: "R$ 187" (sem centavos, mais limpo visualmente)
  * - Com centavos: "R$ 0,99" / "R$ 89,90" (sempre 2 casas)
  *
  * O comportamento antigo usava Math.trunc, que descartava centavos e
