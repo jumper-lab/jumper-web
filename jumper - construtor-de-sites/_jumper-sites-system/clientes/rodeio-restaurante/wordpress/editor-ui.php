@@ -46,10 +46,11 @@ class Rodeio_Editor_UI
                     $shared = Rodeio_Editor_Data::schema()[$fact_key][0]; $label = $shared; break;
                 }
                 if($kind==='texts' && isset($facts['whatsapp']) && preg_match('/^[+()0-9\s.-]+$/u',(string)$value) && preg_replace('/\D/','',(string)$value)===preg_replace('/\D/','',$facts['whatsapp']['value'])) {$shared='WhatsApp do delivery';$label=$shared;}
+                if($kind==='links' && preg_match('~/cardapio-rodeio\.pdf(?:[?#]|$)~',(string)$value)){$shared='PDF do cardápio';$label=$shared;}
                 $control = $node instanceof DOMElement ? $node : ($node ? $node->parentNode : null);
                 $technical = strpos($item['key'], '@data-menu-') !== false;
                 for ($p=$control;$p && $p!==$doc->root;$p=$p->parentNode) if ($p instanceof DOMElement && ($p->hasAttribute('data-close-digital-menu') || $p->hasAttribute('data-close-gallery') || $p->hasAttribute('data-close-service') || $p->hasAttribute('data-close-contact') || $p->getAttribute('id')==='gallery-dialog')) $technical=true;
-                $rows[$kind][] = ['section'=>$name, 'sectionKey'=>$section_path, 'label'=>$label, 'context'=>$item['context'] ?? '', 'key'=>$item['key'], 'shared'=>$shared, 'settingsUrl'=>$settings_url, 'technical'=>$technical];
+                $rows[$kind][] = ['section'=>$name, 'sectionKey'=>$section_path, 'label'=>$label, 'context'=>$item['context'] ?? '', 'key'=>$item['key'], 'shared'=>$shared, 'settingsUrl'=>$shared==='PDF do cardápio' ? Rodeio_Menu_Pdf::page_url() : $settings_url, 'settingsLabel'=>$shared==='PDF do cardápio' ? 'PDF do cardápio' : 'Dados e contatos', 'technical'=>$technical];
             }
         }
         $areas = [];
@@ -57,7 +58,7 @@ class Rodeio_Editor_UI
             $title=Rodeio_Editor_Dashboard::areas()[$key]['title']??get_the_title($area);
             $areas[] = ['label'=>$title, 'url'=>get_edit_post_link($area, 'raw')];
         }
-        return ['id'=>(int)$id, 'sections'=>array_values($sections), 'previewEndpoint'=>add_query_arg(['action'=>'rodeio_editor_preview','post_id'=>(int)$id,'_wpnonce'=>wp_create_nonce('rodeio-preview-'.$id)],admin_url('admin-ajax.php')), 'title'=>get_the_title($id), 'shared'=>get_post_type($id)==='rodeio_layout', 'rows'=>$rows, 'areas'=>$areas, 'defaultSection'=>get_post_meta($id,'_rde_fragment_type',true)==='dialogs' ? 'Fale com a gente' : '', 'preview'=>get_post_type($id)==='page' ? get_permalink($id) : home_url('/')];
+        return ['menuPdfUrl'=>Rodeio_Menu_Pdf::page_url(), 'id'=>(int)$id, 'sections'=>array_values($sections), 'previewEndpoint'=>add_query_arg(['action'=>'rodeio_editor_preview','post_id'=>(int)$id,'_wpnonce'=>wp_create_nonce('rodeio-preview-'.$id)],admin_url('admin-ajax.php')), 'title'=>get_the_title($id), 'shared'=>get_post_type($id)==='rodeio_layout', 'rows'=>$rows, 'areas'=>$areas, 'defaultSection'=>get_post_meta($id,'_rde_fragment_type',true)==='dialogs' ? 'Fale com a gente' : '', 'preview'=>get_post_type($id)==='page' ? get_permalink($id) : home_url('/')];
     }
     public static function enqueue()
     {

@@ -3,6 +3,7 @@
 require_once __DIR__ . "/editor-dom.php";
 require_once __DIR__ . "/editor-ui.php";
 require_once __DIR__ . "/editor-preview.php";
+require_once __DIR__ . "/menu-pdf.php";
 require_once __DIR__ . "/editor-data.php";
 require_once __DIR__ . "/editor-dashboard.php";
 class Rodeio_Editor
@@ -790,7 +791,7 @@ class Rodeio_Editor
                 $html = preg_replace('~<link\b(?=[^>]*\bas="image")[^>]*>~i', "", $html);
             }
         }
-        return $html;
+        return Rodeio_Menu_Pdf::apply($html);
     }
 }
 add_action("init", ["Rodeio_Editor", "register_type"], 5);

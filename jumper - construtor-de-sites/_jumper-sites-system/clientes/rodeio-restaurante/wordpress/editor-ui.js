@@ -44,8 +44,9 @@
         records.push({row, m, input, kind, setOpen});
         if(m.shared && input) {
           input.readOnly=true;row.classList.add('rde-shared-value');
-          const note=el('p','rde-shared-reference','Informação compartilhada. Para alterar em todo o site, use ');const link=el('a','','Dados e contatos');link.href=m.settingsUrl;note.append(link,document.createTextNode('.'));summary.after(note);
+          const note=el('p','rde-shared-reference','Informação compartilhada. Para alterar em todo o site, use ');const link=el('a','',m.settingsLabel||'Dados e contatos');link.href=m.settingsUrl;note.append(link,document.createTextNode('.'));summary.after(note);
         }
+        if(kind==='menus') row.querySelectorAll('[data-name="rde_menuitem_url"] input').forEach(destination=>{if(/\/cardapio-rodeio\.pdf(?:[?#]|$)/.test(destination.value)){destination.readOnly=true;const note=el('p','rde-shared-reference','O arquivo e as imagens são atualizados juntos em ');const link=el('a','','PDF do cardápio');link.href=config.menuPdfUrl;note.append(link);destination.after(note);}});
         if(kind === 'texts') {
           const label = row.querySelector('[data-name="rde_texts_value"] .acf-label label'); if(label) label.textContent = m.label;
         }

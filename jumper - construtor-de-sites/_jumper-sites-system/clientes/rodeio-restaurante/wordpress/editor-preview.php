@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/menu-pdf.php";
 /** Read-only, script-free preview of the current WordPress content, for the ACF editor. */
 class Rodeio_Editor_Preview
 {
@@ -49,7 +50,8 @@ class Rodeio_Editor_Preview
         $main='';if(get_post_type($id)==='page'){$main='<main id="conteudo">';if(preg_match('~<main\b[^>]*>~',$shell,$match))$main=$match[0];}
         $policy="default-src 'none'; script-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' https: data:; font-src 'self' data:; connect-src 'none'; form-action 'none'; base-uri 'none'";
         $overrides='html{scroll-behavior:auto!important}body{margin:0!important;min-height:100vh!important}*{animation:none!important;transition:none!important;scroll-behavior:auto!important}[data-rde-preview]{cursor:pointer!important}[data-rde-preview]:hover{outline:2px dashed #b6803e!important;outline-offset:3px}.rde-preview-selected{outline:3px solid #c89348!important;outline-offset:4px;background-color:#c8934822!important}dialog[open]{position:relative!important;inset:auto!important;display:block!important;margin:24px auto!important;max-height:none!important;transform:none!important;opacity:1!important;width:calc(100% - 48px)!important}dialog[hidden]{display:none!important}[data-reveal],.reveal{opacity:1!important;transform:none!important}header{position:relative!important}footer{margin:0!important}form[inert]{opacity:.65}[data-hero-slide]{animation:none!important}';
-        return '<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="'.esc_attr($policy).'">'.$head.'<style>'.$overrides.'</style></head><body>'.$main.$doc->html().($main?'</main>':'').'</body></html>';
+        $html='<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="'.esc_attr($policy).'">'.$head.'<style>'.$overrides.'</style></head><body>'.$main.$doc->html().($main?'</main>':'').'</body></html>';
+        return Rodeio_Menu_Pdf::apply($html);
     }
     public static function ajax()
     {
