@@ -2,6 +2,7 @@
 /** ACF is a view over native HTML; saves use a three-way merge, not two competing copies. */
 require_once __DIR__ . "/editor-dom.php";
 require_once __DIR__ . "/editor-ui.php";
+require_once __DIR__ . "/editor-preview.php";
 require_once __DIR__ . "/editor-data.php";
 require_once __DIR__ . "/editor-dashboard.php";
 class Rodeio_Editor
@@ -645,6 +646,14 @@ class Rodeio_Editor
                                 );
                                 $dirty = true;
                             }
+                        }
+                    }
+                }
+                if ($kind === "url" && isset($facts["whatsapp"]) && $old === $facts["whatsapp"]["value"] && preg_match('~^https://wa\.me/(55)(\d{2})(\d{4,5})(\d{4})$~', $new, $phone_parts)) {
+                    $old_digits=preg_replace('/\D/','',$old);
+                    foreach($doc->xpath->query('.//a[@href]',$doc->root) as $anchor) if($anchor->getAttribute('href')===$new) {
+                        foreach($doc->xpath->query('.//text()',$anchor) as $text) if(preg_replace('/\D/','',$text->nodeValue)===$old_digits) {
+                            $text->nodeValue='+55 ('.$phone_parts[2].') '.$phone_parts[3].'-'.$phone_parts[4];$dirty=true;
                         }
                     }
                 }

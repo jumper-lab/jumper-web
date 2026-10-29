@@ -110,3 +110,47 @@
 #acf-group_rodeio_settings_v2 .acf-accordion-title {background:#f7f1e8}
 @media(max-width:960px){.rde-page-links{grid-template-columns:1fr 1fr}}
 @media(max-width:782px){.rde-dashboard{margin-right:12px}.rde-dashboard-cards,.rde-form-recipients dl{grid-template-columns:1fr}.rde-dashboard-head{padding:24px}.rde-dashboard-section{padding:20px}.rde-page-links{grid-template-columns:1fr}#acf-group_rodeio_settings_v2 .acf-field[data-width]{width:100%!important}.rde-shared-heading{padding:24px}}
+/* Visual section map and native ACF editor alongside the actual design. */
+#acf-group_rodeio_editor_v1 .rde-section-map{display:flex;gap:10px;padding:22px 24px 8px;overflow-x:auto}
+#acf-group_rodeio_editor_v1 .rde-section-choice{display:flex;align-items:center;text-align:left;gap:12px;min-width:225px;max-width:280px;flex:0 0 245px;background:#fff;border:1px solid #ddd1bf;border-radius:7px;padding:10px;color:#493325;cursor:pointer}
+#acf-group_rodeio_editor_v1 .rde-section-choice[aria-pressed=true]{border:2px solid #9f7548;background:#f6eddf;padding:9px}
+#acf-group_rodeio_editor_v1 .rde-section-choice img{width:65px;height:65px;object-fit:cover;border-radius:4px;background:#342319}
+#acf-group_rodeio_editor_v1 .rde-section-choice>span:not(.rde-section-number){display:grid;gap:7px;min-width:0}
+#acf-group_rodeio_editor_v1 .rde-section-choice strong{font-size:12px;line-height:1.4;max-height:3em;overflow:hidden}
+#acf-group_rodeio_editor_v1 .rde-section-choice small{font-size:10px;color:#82715e;line-height:1.6}
+#acf-group_rodeio_editor_v1 .rde-section-number{display:grid;place-items:center;width:46px;height:58px;flex-shrink:0;background:#eee3d3;color:#90704c;font:24px Georgia,serif;border-radius:4px}
+#acf-group_rodeio_editor_v1 .rde-workbench{display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,1fr);align-items:start;border-top:1px solid #ded3c3}
+#acf-group_rodeio_editor_v1 .rde-fields-panel{min-width:0}
+#acf-group_rodeio_editor_v1 .rde-fields-panel>.inside{margin:0!important;padding:0!important}
+#acf-group_rodeio_editor_v1 .rde-visual-panel{position:sticky;top:45px;align-self:start;background:#ede5d9;border-left:1px solid #d9cdbb;padding:14px;min-width:0}
+#acf-group_rodeio_editor_v1 .rde-visual-head{padding:8px 4px 14px}
+#acf-group_rodeio_editor_v1 .rde-visual-head>strong{font-size:14px;color:#402c1e}
+#acf-group_rodeio_editor_v1 .rde-visual-head p{font-size:11px;line-height:1.6;color:#7d6855;margin:7px 0 12px}
+#acf-group_rodeio_editor_v1 .rde-preview-modes{display:flex;gap:6px}
+#acf-group_rodeio_editor_v1 .rde-preview-modes button{background:#faf6ed;border:1px solid #d3c2ac;padding:7px 10px;border-radius:4px;color:#6f5841;font-size:11px;cursor:pointer}
+#acf-group_rodeio_editor_v1 .rde-preview-modes button[aria-pressed=true]{background:#3c291c;color:#fff5e7;border-color:#3c291c}
+#acf-group_rodeio_editor_v1 .rde-preview-viewport{height:590px;position:relative;overflow:hidden;background:#faf7f0;border:1px solid #d9cdbb;border-radius:5px}
+#acf-group_rodeio_editor_v1 .rde-visual-frame{border:0;display:block;transform-origin:top left;max-width:none}
+#acf-group_rodeio_editor_v1 .rde-preview-status{font-size:11px;line-height:1.5;color:#5b4029;background:#f9f2e5;padding:10px;border-radius:4px;min-height:32px}
+#acf-group_rodeio_editor_v1 .rde-preview-note{font-size:10px;line-height:1.7;color:#897461;margin:10px 2px 0}
+#acf-group_rodeio_editor_v1 .rde-fields-panel .acf-field[data-name^=rde_]{max-width:100%}
+#acf-group_rodeio_editor_v1 .rde-fields-panel .acf-field[data-type=repeater]{padding:12px}
+#acf-group_rodeio_editor_v1 .rde-fields-panel .rde-card-summary{padding:16px;gap:10px}
+#acf-group_rodeio_editor_v1 .rde-fields-panel .rde-card-caption{white-space:normal;line-height:1.6}
+#acf-group_rodeio_editor_v1 .rde-fields-panel .rde-card-thumb{width:90px;height:75px}
+#acf-group_rodeio_editor_v1 .rde-fields-panel .acf-tab-wrap{padding:0 6px}
+#acf-group_rodeio_editor_v1 .rde-fields-panel .acf-tab-group li a{padding:14px 9px;font-size:12px}
+.rodeio-studio-screen #poststuff #post-body.columns-2{margin-right:0}
+.rodeio-studio-screen #post-body.columns-2 #postbox-container-1{float:none;margin:0;width:auto}
+.rodeio-studio-screen #submitdiv{margin:0 0 16px;border:1px solid #d8c9b4;background:#fcf9f2}
+.rodeio-studio-screen #submitdiv .postbox-header{display:none}
+.rodeio-studio-screen #major-publishing-actions{display:flex;align-items:center;justify-content:flex-end;gap:14px;padding:10px 16px}
+.rodeio-studio-screen #minor-publishing,.rodeio-studio-screen #delete-action{display:none}
+@media(max-width:1200px){#acf-group_rodeio_editor_v1 .rde-workbench{grid-template-columns:minmax(0,1fr)}#acf-group_rodeio_editor_v1 .rde-visual-panel{position:relative;top:auto;grid-row:1;border-left:0;border-bottom:1px solid #d9cdbb}#acf-group_rodeio_editor_v1 .rde-preview-viewport{height:420px}#acf-group_rodeio_editor_v1 .rde-fields-panel{grid-row:2}}
+
+.rodeio-studio-screen #post-body-content{float:none;width:auto}
+.rodeio-studio-screen #poststuff #post-body.columns-2 #side-sortables{width:auto;min-height:0}
+.rodeio-studio-screen .rde-savebar{position:sticky!important;top:32px;z-index:25}
+.rodeio-studio-screen #acf-group_6478889cef574{display:none}
+
+#acf-group_rodeio_editor_v1 .rde-studio-tools label.rde-technical-toggle{display:flex;align-items:center;font-weight:400}#acf-group_rodeio_editor_v1 .rde-studio-tools .rde-technical-toggle input{padding:0;flex:0 0 16px}
