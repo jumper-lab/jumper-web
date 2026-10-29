@@ -62,3 +62,6 @@ tmp/
 .vercel
 
 .github/workflows/
+
+# Isolated institutional preview output
+dist-preview/
