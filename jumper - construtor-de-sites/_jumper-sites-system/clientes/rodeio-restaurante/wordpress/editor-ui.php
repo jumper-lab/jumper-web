@@ -72,7 +72,9 @@ class Rodeio_Editor_UI
         if($config['shared'])$config['title']=Rodeio_Editor_Dashboard::areas()[get_post_meta($id,'_rde_fragment_type',true)]['title']??$config['title'];
         if ($id === Rodeio_Editor_Data::id()) {
             wp_enqueue_style('rodeio-editor-studio',get_template_directory_uri().'/editor-ui.css',['acf-input'],filemtime(__DIR__.'/editor-ui.css'));
-            wp_enqueue_style('rodeio-editor-brand',get_template_directory_uri().'/editor-brand.css',['rodeio-editor-studio'],filemtime(__DIR__.'/editor-brand.css'));return;
+            wp_enqueue_style('rodeio-editor-brand',get_template_directory_uri().'/editor-brand.css',['rodeio-editor-studio'],filemtime(__DIR__.'/editor-brand.css'));
+            $config['dataFields']=[];foreach(Rodeio_Editor_Data::schema() as $key=>$field)$config['dataFields'][]=['key'=>$key,'label'=>$field[0],'tab'=>in_array($field[2],['general','orders'],true)?'general':$field[2]];
+            self::preview_assets($config,['acf-input']);return;
         }
         $header=(int)(get_option('_rde_fragment_ids',[])['header']??0);
         $config['brandLogo']=$header?(Rodeio_Editor::snapshot($header)['data']['images'][0]['url']??''):'';
@@ -81,6 +83,13 @@ class Rodeio_Editor_UI
         wp_enqueue_style('rodeio-editor-brand',get_template_directory_uri().'/editor-brand.css',['rodeio-editor-form'],filemtime(__DIR__.'/editor-brand.css'));
         wp_enqueue_script('rodeio-editor-studio',get_template_directory_uri().'/editor-form.js',['acf-input','media-editor'],filemtime(__DIR__.'/editor-form.js'),true);
         wp_add_inline_script('rodeio-editor-studio', 'window.rodeioEditorStudio='.wp_json_encode($config, JSON_HEX_TAG|JSON_HEX_AMP|JSON_HEX_APOS|JSON_HEX_QUOT).';', 'before');
+        self::preview_assets($config,['rodeio-editor-studio']);
+    }
+    private static function preview_assets($config,$dependencies)
+    {
+        wp_enqueue_style('rodeio-editor-devices',get_template_directory_uri().'/editor-device-preview.css',['rodeio-editor-brand'],filemtime(__DIR__.'/editor-device-preview.css'));
+        wp_enqueue_script('rodeio-editor-devices',get_template_directory_uri().'/editor-device-preview.js',$dependencies,filemtime(__DIR__.'/editor-device-preview.js'),true);
+        wp_add_inline_script('rodeio-editor-devices','window.rodeioDevicePreview='.wp_json_encode($config,JSON_HEX_TAG|JSON_HEX_AMP|JSON_HEX_APOS|JSON_HEX_QUOT).';','before');
     }
 }
 
