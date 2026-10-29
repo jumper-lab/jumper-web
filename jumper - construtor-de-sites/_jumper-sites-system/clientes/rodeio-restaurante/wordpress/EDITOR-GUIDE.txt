@@ -50,3 +50,9 @@ Os e-mails sao destinatarios internos do Forminator. O envio do visitante ocorre
 
 AJUSTES POR TAREFA — 1.4.0
 12 campos ACF nomeados, validação e proteção contra telas desatualizadas. O HTML continua sendo a fonte de verdade. A atualização de URLs compartilhadas reconhece os itens dos menus. PDF e configuração do Forminator mantêm seus fluxos próprios.
+
+EDIÇÃO COM CONTEXTO VISUAL — 1.5.0
+Abra uma página ou área de apresentação e escolha um cartão de seção. Os campos ficam à esquerda e a referência do layout à direita. Clicar em um título, foto ou botão da prévia abre o campo correspondente. Textos digitados aparecem na prévia antes de salvar; use Atualizar para publicar no WordPress. Computador e Celular mudam o tamanho de referência e mantêm o trecho selecionado.
+Para fotos, abra a imagem na prévia e use Adicionar imagem em Trocar foto: escolha ou envie pela Biblioteca de mídia. A foto atual também aparece no cartão. Atualize a descrição da foto; versões mobile opcionais ficam nos banners compatíveis. Os links têm destino separado; contatos compartilhados apontam para Dados e contatos.
+A prévia usa o HTML atual do WordPress e os estilos da versão publicada, dentro de uma área isolada sem scripts, navegação, reservas ou envio de formulários. Não é um ambiente para realizar pedidos ou testar envios. O PDF e suas páginas renderizadas mantêm seu fluxo conjunto. Alterações de estrutura não são feitas por estes campos.
+Validação: 570 campos testados individualmente em documentos em memória; gravação real ACF de texto, imagem, link e menu em registro privado; salvamento pelo navegador com conteúdo preservado; seleção visual e Biblioteca de mídia. Forminator e destinatários preservados.
