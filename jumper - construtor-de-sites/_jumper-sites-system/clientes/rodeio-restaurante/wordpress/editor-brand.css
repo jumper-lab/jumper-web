@@ -1,0 +1,75 @@
+/* Rodeio identity, scoped to content editing. Native page lists remain unchanged. */
+@font-face{font-family:RodeioEditorSerif;src:url('admin-fonts/bodoni-normal.woff2') format('woff2');font-style:normal;font-weight:100 900;font-display:swap}
+@font-face{font-family:RodeioEditorSerif;src:url('admin-fonts/bodoni-italic.woff2') format('woff2');font-style:italic;font-weight:100 900;font-display:swap}
+@font-face{font-family:RodeioEditorSans;src:url('admin-fonts/dm-sans.woff2') format('woff2');font-style:normal;font-weight:100 900;font-display:swap}
+:is(.rde-simple-screen,.rde-data-screen){--rde-ink:#302219;--rde-cream:#f1e8da;--rde-paper:#fcfaf6;--rde-line:#ded2c1;--rde-muted:#766555;--rde-accent:#8a321c;--rde-serif:RodeioEditorSerif,Georgia,serif;--rde-sans:RodeioEditorSans,Arial,sans-serif}
+.rde-simple-screen #acf-group_rodeio_editor_v1{background:var(--rde-paper);border:1px solid var(--rde-line);border-radius:10px;box-shadow:0 8px 32px #30221909;overflow:clip;color:var(--rde-ink);font-family:var(--rde-sans)}
+.rde-simple-screen .rde-form-header{position:relative;padding:28px 34px 26px;background:var(--rde-ink);border:0;color:var(--rde-cream)}
+.rde-form-identity{display:flex;align-items:center;gap:24px;margin-bottom:24px}
+.rde-form-logo{display:block;width:128px;height:40px;object-fit:contain;object-position:left;filter:brightness(0) invert(1)}
+.rde-form-eyebrow{font:600 10px/1.5 var(--rde-sans);letter-spacing:.14em;text-transform:uppercase;margin:0;color:var(--rde-muted)}
+.rde-form-identity .rde-form-eyebrow{border-left:1px solid #ffffff30;padding-left:24px;color:#d7bda0}
+.rde-simple-screen .rde-form-header h2{font:400 36px/1.2 var(--rde-serif)!important;letter-spacing:-.015em;color:#fbf5eb;margin:0 0 10px!important;max-width:80%}
+.rde-simple-screen .rde-form-header>p{font:400 13px/1.7 var(--rde-sans);max-width:64ch;color:#d6c5b0;margin:0}
+.rde-simple-screen .rde-form-header>.button{position:absolute;right:30px;top:30px;background:transparent;border:1px solid #d3bda365;color:#f6eddf;padding:5px 13px;border-radius:4px;font:500 12px/2 var(--rde-sans);box-shadow:none}
+.rde-simple-screen .rde-form-header>.button:hover{background:#ffffff12;border-color:#e5d1b8}
+.rde-form-steps{display:flex;gap:26px;padding:16px 32px;border-bottom:1px solid var(--rde-line);background:#f3ecdf;color:var(--rde-muted);font-size:11px;line-height:1.5}
+.rde-form-steps>span{display:flex;align-items:center;gap:9px}
+.rde-form-steps b{font:500 16px/1 var(--rde-serif);color:var(--rde-accent)}
+.rde-simple-screen .rde-form-layout{grid-template-columns:220px minmax(0,1fr)}
+.rde-simple-screen .rde-form-nav{padding:24px 14px;background:#f4eee4;border-color:var(--rde-line);gap:7px;align-self:start}
+.rde-form-nav-caption{font:600 9px/1.5 var(--rde-sans);letter-spacing:.14em;color:#85705b;padding:0 12px;margin:0 0 12px}
+.rde-simple-screen .rde-form-block-button{display:flex;align-items:flex-start;gap:12px;padding:13px 11px;font-family:var(--rde-sans);color:#66513f;border-radius:5px;border-color:transparent;background:transparent;box-shadow:none;transition:background .15s,border-color .15s}
+.rde-form-nav-number{font:400 18px/1.4 var(--rde-serif);color:#a68e75;min-width:22px;text-align:center}
+.rde-form-nav-label{display:grid;gap:5px}
+.rde-form-nav-label strong{font-size:12px;font-weight:500;line-height:1.5}
+.rde-form-nav-label small{font-size:10px;line-height:1.4;color:#897663;font-weight:400}
+.rde-simple-screen .rde-form-block-button:hover{background:#fffcf6;border-color:#dfd2be}
+.rde-simple-screen .rde-form-block-button[aria-pressed=true]{background:var(--rde-ink);color:#fff4e6;border-color:var(--rde-ink);box-shadow:0 3px 10px #3022190d}
+.rde-form-block-button[aria-pressed=true] .rde-form-nav-number{color:#e0be91}
+.rde-form-block-button[aria-pressed=true] .rde-form-nav-label small{color:#cdb69b}
+.rde-simple-screen .rde-form-content{padding:30px;min-width:0}
+.rde-form-block-head{padding-bottom:22px;border-bottom:1px solid var(--rde-line);margin-bottom:28px}
+.rde-form-block-head .rde-form-eyebrow{font-size:9px;color:#947252;margin:0 0 9px}
+.rde-simple-screen .rde-form-block-title{font:400 30px/1.25 var(--rde-serif);color:var(--rde-ink);margin:0 0 10px}
+.rde-form-block-help{font:400 12px/1.7 var(--rde-sans);color:var(--rde-muted);max-width:66ch;margin:0}
+.rde-simple-screen .rde-form-card{background:#fffdf9;padding:22px 24px;margin-bottom:28px;border:1px solid var(--rde-line);border-radius:7px;box-shadow:0 2px 8px #30221903}
+.rde-simple-screen .rde-form-card legend{font:600 13px/1.6 var(--rde-sans);color:#513828;padding:0 9px;margin-left:-9px}
+.rde-simple-screen .rde-form-field{margin-bottom:20px;gap:9px}
+.rde-simple-screen .rde-form-label{font:500 11px/1.6 var(--rde-sans);color:#69523d}
+.rde-simple-screen :is(.rde-form-field input,.rde-form-field textarea,.rde-form-field select,.rde-form-extra>input){font:400 14px/1.7 var(--rde-sans);color:var(--rde-ink);background:#fff;border:1px solid #cdbda7;border-radius:5px;padding:10px 13px;min-height:44px;box-shadow:none}
+.rde-simple-screen :is(.rde-form-field input,.rde-form-field textarea,.rde-form-field select,.rde-form-extra>input):focus{border-color:#8e5f36;box-shadow:0 0 0 3px #aa805326;outline:0}
+.rde-simple-screen .rde-form-example{font:400 25px/1.55 var(--rde-serif);padding:18px 20px;background:#f1e8da;border-left:2px solid #a47a4e;border-radius:0 4px 4px 0;color:#4e3322;margin:0 0 14px}
+.rde-simple-screen .rde-form-help{color:var(--rde-muted);font:400 11px/1.8 var(--rde-sans);margin-bottom:16px}
+.rde-simple-screen .rde-form-readonly{background:#f6f1e8;color:#705d48;border-color:#e4d9c9;border-radius:4px;padding:12px 14px;font-size:12px}
+.rde-simple-screen .rde-form-origin{background:#f2eadc;border-left:2px solid #ab8153;color:#786149;border-radius:0 4px 4px 0;font:400 11px/1.8 var(--rde-sans);padding:12px 15px}
+.rde-simple-screen :is(.rde-form-origin a,.rde-form-extra summary,.rde-form-extra .button-link){color:#853820}
+.rde-simple-screen .rde-form-photo{width:100%;max-width:100%;height:250px;box-sizing:border-box;object-fit:contain;background:#f1ece3;border:1px solid #e8dece;border-radius:5px;margin:0 0 16px;padding:12px}
+.rde-simple-screen .rde-form-card>.button{font:500 12px/2.2 var(--rde-sans);color:#fff5e8;background:var(--rde-ink);border:1px solid var(--rde-ink);padding:5px 18px;border-radius:4px;margin-bottom:22px}
+.rde-simple-screen .rde-form-card>.button:hover{background:#543a28;border-color:#543a28}
+.rde-simple-screen .rde-form-extra{border-color:#e9dfd1;padding-top:15px;margin-top:14px}
+.rde-simple-screen .rde-form-extra summary{font:400 11px/1.7 var(--rde-sans)}
+.rde-simple-screen .rde-form-technical{border-color:#d7c8b5;background:#f4eee5;color:var(--rde-muted);border-radius:6px}
+.rde-simple-screen .rde-form-technical summary{color:var(--rde-muted);font-family:var(--rde-sans)}
+.rde-simple-screen .rde-shared-heading{background:transparent;color:var(--rde-ink);padding:0;margin-bottom:18px}
+.rde-simple-screen .rde-shared-heading>a{color:#835b36;font-size:12px;text-decoration:none}
+.rde-simple-screen .rde-shared-heading>h2,.rde-simple-screen .rde-shared-heading>p{display:none}
+.rde-simple-screen #submitdiv #publish,.rde-data-screen #submitdiv #publish{background:#302219;border-color:#302219;color:#fff3e1;box-shadow:none;text-shadow:none;padding:2px 20px;min-height:38px;font:500 13px/2 var(--rde-sans)}
+.rde-simple-screen #submitdiv #publish:hover,.rde-data-screen #submitdiv #publish:hover{background:#63442d;border-color:#63442d}
+.rde-simple-screen :is(button,a):focus-visible{outline:2px solid #a56f39;outline-offset:3px}
+.rde-simple-screen .rde-form-menu-host>.acf-field{font-family:var(--rde-sans)}
+.rde-simple-screen .rde-form-menu-host .acf-label label{font-size:11px;color:#6b513b}
+.rde-simple-screen .rde-form-menu-host .acf-row>td.acf-fields{background:#fffdf9;border-color:#e4d8c7}
+.rde-simple-screen .rde-form-menu-host :is(input[type=text],input[type=url]){font:400 13px/1.7 var(--rde-sans);min-height:42px;border-color:#cdbda7;border-radius:4px;padding:8px 12px;box-shadow:none}
+.rde-simple-screen .rde-form-menu-host .acf-row-handle{background:#f1e8da;color:#9a7753}
+.rde-simple-screen .rde-form-menu-host .acf-button{background:#302219;border-color:#302219;color:#fff3e1}
+.rde-data-screen :is(.rde-shared-heading,#acf-group_rodeio_settings_v2){font-family:var(--rde-sans)}
+.rde-data-screen .rde-shared-heading{border-radius:8px;padding:28px 32px;background:#302219}
+.rde-data-screen .rde-shared-heading h2{font:400 34px/1.2 var(--rde-serif)!important;padding:0!important;margin:18px 0 12px}
+.rde-data-screen #acf-group_rodeio_settings_v2 .acf-tab-group li a{font-size:12px;font-weight:500;padding:19px 22px}
+.rde-data-screen #acf-group_rodeio_settings_v2 .acf-field:not([data-type=tab])>.acf-label label{font-size:12px;font-weight:600}
+.rde-data-screen #acf-group_rodeio_settings_v2 input:not([type=hidden]){font-family:var(--rde-sans);box-shadow:none}
+.rde-data-screen #acf-group_rodeio_settings_v2 input:focus{border-color:#8e5f36;box-shadow:0 0 0 3px #aa805326}
+@media(max-width:1150px){.rde-simple-screen .rde-form-layout{grid-template-columns:minmax(0,1fr)}.rde-simple-screen .rde-form-nav{align-self:auto;padding:14px;gap:7px}.rde-form-nav-caption{width:100%;margin:0 0 3px;padding:0 8px}.rde-simple-screen .rde-form-block-button{padding:10px;flex:1 0 145px;max-width:260px}.rde-form-nav-label small{display:none}.rde-form-nav-number{font-size:16px}.rde-simple-screen .rde-form-content{padding:24px}}
+@media(max-width:782px){.rde-simple-screen .rde-form-header{padding:24px}.rde-form-identity{gap:14px;flex-wrap:wrap}.rde-form-logo{width:105px;height:34px}.rde-form-identity .rde-form-eyebrow{font-size:8px;padding-left:14px}.rde-simple-screen .rde-form-header h2{font-size:30px!important;max-width:100%}.rde-simple-screen .rde-form-header>.button{position:static;margin-top:18px}.rde-form-steps{gap:12px;padding:15px 22px;flex-wrap:wrap;font-size:10px}.rde-simple-screen .rde-form-content{padding:22px 16px}.rde-simple-screen .rde-form-card{padding:18px 15px}.rde-simple-screen .rde-form-photo{height:200px}.rde-simple-screen .rde-form-example{font-size:22px;padding:15px}.rde-simple-screen .rde-form-block-title{font-size:28px}.rde-data-screen .rde-shared-heading{padding:24px}}
+@media(prefers-reduced-motion:reduce){.rde-simple-screen .rde-form-block-button{transition:none}}

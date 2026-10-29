@@ -1,8 +1,8 @@
-RODEIO — EDIÇÃO DO CONTEÚDO · 1.7.0
+RODEIO — EDIÇÃO DO CONTEÚDO · 1.7.1
 
 Páginas mantém a lista padrão do WordPress. Clique em Editar na página desejada. O título administrativo, o endereço permanente e o botão Atualizar continuam nos lugares habituais.
 
-Em Conteúdo da página, escolha o bloco na navegação lateral. Os campos seguem o conteúdo do site: Apresentação, Endereço, Horários, Reservas, Pedidos em casa e Fotos, por exemplo. Não é necessário abrir o HTML.
+No painel com a identidade Rodeio, escolha uma seção na navegação numerada. Os campos seguem o conteúdo do site: Apresentação, Endereço, Horários, Reservas, Pedidos em casa e Fotos, por exemplo. Não é necessário abrir o HTML.
 
 Textos: cada título ou parágrafo tem seu próprio cartão. Quando uma frase contém destaque, os trechos ficam juntos, com uma amostra da frase inteira. Nos restaurantes, Marca e Nome da unidade ficam no mesmo cartão; cada período reúne Dia ou período e Horário de funcionamento.
 
