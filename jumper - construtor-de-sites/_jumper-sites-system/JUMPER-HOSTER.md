@@ -130,7 +130,7 @@ A primeira auditoria encontrou recursos de Cerro Corá, leads IZI e briefing que
 ### Build dev com prévias IZI preservadas — 08/10/2026
 A promoção oficial Cerro Corá da PR #100 alterou o fonte usado também pelas prévias IZI, sem publicar essas prévias. Para um deploy dev, monte o pacote com `npm run build:cloudflare:dev -- --allow=<slug>` (ou `--worker-only` no fluxo próprio). `deploy:dev` e `deploy:dev:worker` já selecionam esse build. Ele conserva os cinco arquivos públicos das prévias IZI anteriores em snapshots versionados com SHA-256; remove das prévias somente os dois assets novos reconhecidos por hash. Não restaura o Worker live nem os domínios oficiais. O build/promoção live continua em `build:cloudflare`.
 
-O slug explicitamente autorizado não recebe a restauração de snapshot; uma edição futura de uma LP IZI deve atualizar somente seu inventário e passar no preflight correspondente. Snapshot alterado, build novo não reconhecido ou diferença contra a prévia publicada bloqueiam. Os outros sete sites e as fronteiras live continuam na comparação estrita; nenhuma diferença foi liberada. Após uma nova publicação dev da IZI, reconciliar seus snapshots por PR antes de outro deploy compartilhado.
+O slug explicitamente autorizado não recebe a restauração de snapshot, exceto quando declarado como fonte dev independente em `developmentSources`; uma edição futura de uma LP IZI deve atualizar somente seu inventário e passar no preflight correspondente. Snapshot alterado, build novo não reconhecido ou diferença contra a prévia publicada bloqueiam. Os outros sete sites e as fronteiras live continuam na comparação estrita; nenhuma diferença foi liberada. Após uma nova publicação dev da IZI, reconciliar seus snapshots por PR antes de outro deploy compartilhado.
 
 ### Cadastros da LP IZI Franquias — 08/10/2026
 
@@ -161,6 +161,10 @@ os preflights dev e live. Reconciliar a PR do Rodeio antes de reconstruir e audi
 novamente. O registro da promoção não autoriza aceitar diferenças do Rodeio.
 
 **Publicação conjunta revisada de 26/10/2026.** Durante a reconciliação, a PR #128 entrou no main com a correção de horários do institucional, já autorizada pelo usuário no chat `Identificar site dev e live`. Para conservar essa atualização, a conclusão conjunta usa `--promote=izi-clixx-horarios-2026-10-26`. O registro dessa promoção contém exatamente três páginas: principal oficial com os horários corrigidos, Cerro Corá com formulário Clixx e seu pacote Vila Romana. Todos os hashes anterior/candidato são herdados das duas revisões específicas. Antes do live, publicar somente `izigym` no dev com os horários aprovados. Os demais sete sites dev, o Rodeio e todas as outras páginas live permanecem sob comparação estrita. Não se trata de liberação genérica de diferenças nem de publicação do formulário nas prévias antigas da LP.
+
+### LP Vila Romana: mensalidade de R$ 187 somente no dev — 28/10/2026
+
+O slug autorizado é `izigym-lp-vilaromana`. A prévia usa agora sua fonte HTML separada em `cloudflare/snapshots/izi-dev-preserved-2026-10-08/izigym-lp-vilaromana/`, declarada em `developmentSources` do manifesto. O build dev conserva essa fonte e seus assets mesmo quando o próprio slug é selecionado, evitando trocar o formulário/layout da prévia por alterações exclusivas da LP oficial. As quatro menções à mensalidade foram de R$ 167 para R$ 187, mantendo a campanha de R$ 0,99 no primeiro mês. O fonte oficial em `clientes/izigym-lp/src/pages/simple.astro` continua inalterado. Não há deploy live nesta alteração.
 
 ### Cópias institucionais IZI — 29/10/2026
 

@@ -19,8 +19,13 @@ function scopedPath(root, name, slug) {
 
 export async function preserveDevIziSnapshots({ root, snapshots, manifest, allowedSlug }) {
   if (allowedSlug !== null && !developmentSlugs.includes(allowedSlug)) throw new Error('Slug dev não autorizado.');
-  const replacements = manifest.replacements.filter(record => record.slug !== allowedSlug);
-  const removals = manifest.remove.filter(record => record.slug !== allowedSlug);
+  const developmentSources = manifest.developmentSources ?? [];
+  if (!Array.isArray(developmentSources) || developmentSources.some(slug => !preservedSlugs.includes(slug))) throw new Error('Fonte dev fora das prévias IZI preservadas.');
+  // A separately maintained dev page must not pick up unapproved changes from
+  // the official LP source, even when this preview is the authorized target.
+  const useSnapshot = record => record.slug !== allowedSlug || developmentSources.includes(record.slug);
+  const replacements = manifest.replacements.filter(useSnapshot);
+  const removals = manifest.remove.filter(useSnapshot);
   const prepared = [];
   // Validate every source and generated candidate before modifying the build.
   for (const record of replacements) {
