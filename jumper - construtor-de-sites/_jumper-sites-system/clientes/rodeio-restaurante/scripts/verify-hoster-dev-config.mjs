@@ -17,12 +17,12 @@ assert.equal(dev.main, 'cloudflare/dev-worker.mjs');
 assert.equal(dev.workers_dev, false);
 assert.equal(dev.preview_urls, false);
 assert.deepEqual(dev.routes, [
-  'rodeio', 'izigym', 'izigym-lp', 'izigym-lp-vilaromana',
+  'rodeio', 'izigym', 'izigym2', 'izigym-lp', 'izigym-lp-vilaromana',
   'casabelie', 'casabelie-2', 'casabelie-3',
   'pao-de-queijo-haddock-lobo',
 ].map((slug) => ({ pattern: `site.jumper.dev.br/${slug}/*`, zone_name: 'jumper.dev.br' })),
-'somente os oito caminhos dev registrados podem ser roteados');
+'somente os nove caminhos dev registrados podem ser roteados');
 for (const key of ['d1_databases', 'kv_namespaces', 'ratelimits', 'services', 'vars', 'triggers']) {
   assert.equal(dev[key], undefined, `o Worker dev não pode herdar ${key} de produção`);
 }
-console.log('Config do jumper-hoster-dev validada: mesmos assets, apenas oito rotas dev, sem dados de produção.');
+console.log('Config do jumper-hoster-dev validada: mesmos assets, apenas nove rotas dev, sem dados de produção.');

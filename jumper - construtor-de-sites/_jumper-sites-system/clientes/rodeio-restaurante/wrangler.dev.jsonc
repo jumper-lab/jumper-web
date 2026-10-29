@@ -18,6 +18,7 @@
   "routes": [
     { "pattern": "site.jumper.dev.br/rodeio/*", "zone_name": "jumper.dev.br" },
     { "pattern": "site.jumper.dev.br/izigym/*", "zone_name": "jumper.dev.br" },
+    { "pattern": "site.jumper.dev.br/izigym2/*", "zone_name": "jumper.dev.br" },
     { "pattern": "site.jumper.dev.br/izigym-lp/*", "zone_name": "jumper.dev.br" },
     { "pattern": "site.jumper.dev.br/izigym-lp-vilaromana/*", "zone_name": "jumper.dev.br" },
     { "pattern": "site.jumper.dev.br/casabelie/*", "zone_name": "jumper.dev.br" },

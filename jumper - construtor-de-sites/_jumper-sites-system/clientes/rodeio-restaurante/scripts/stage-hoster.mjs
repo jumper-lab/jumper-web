@@ -55,6 +55,17 @@ await cp(join(projectRoot, 'cloudflare', 'favicon-jumper.png'), join(target, 'fa
 await cp(join(projectRoot, 'cloudflare', 'design-system', '3.15.0'), join(target, 'hub-design-system', '3.15.0'), { recursive: true });
 await cp(join(projectRoot, 'cloudflare', 'hub-redesign.css'), join(target, 'hub-redesign.css'));
 await cp(iziSource, iziTarget, { recursive: true });
+// Preserve the current institutional preview before replacing development 1.
+await cp(iziSource, join(target, 'izigym2'), { recursive: true });
+await rewriteTree(join(target, 'izigym2'), [
+  ['/izigym/', '/izigym2/'],
+  ['/cdn-cgi/', '/izigym2/cdn-cgi/'],
+  ['/assets/', '/izigym2/assets/'],
+  ['/images/', '/izigym2/images/'],
+  ['/brand/', '/izigym2/brand/'],
+  ['/favicon.png', '/izigym2/favicon.png'],
+  ['/placeholder.svg', '/izigym2/placeholder.svg'],
+]);
 const principalTracking = JSON.parse(await readFile(resolve(projectRoot, '../izigym-site/src/data/tracking.json'), 'utf8'));
 validatePrincipalBuild(await readFile(join(iziOfficialSource, 'index.html'), 'utf8'), principalTracking);
 await cp(iziOfficialSource, iziOfficialTarget, { recursive: true });

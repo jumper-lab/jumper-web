@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import devWorker, { developmentSlugs, isDevelopmentRequest, isPreviewAsset } from '../../cloudflare/dev-worker.mjs';
 
-test('somente os oito caminhos de desenvolvimento registrados são permitidos', () => {
-  assert.equal(developmentSlugs.length, 8);
+test('somente os nove caminhos de desenvolvimento registrados são permitidos', () => {
+  assert.equal(developmentSlugs.length, 9);
   for (const slug of developmentSlugs) {
     assert.equal(isDevelopmentRequest(new URL(`https://site.jumper.dev.br/${slug}/`)), true);
     assert.equal(isDevelopmentRequest(new URL(`https://site.jumper.dev.br/${slug}/assets/file.js`)), true);
@@ -74,4 +74,25 @@ test('marca uma resposta dev sem mudar seu corpo', async () => {
   assert.equal(response.status, 200);
   assert.equal(response.headers.get('X-Jumper-Worker'), 'jumper-hoster-dev');
   assert.equal(await response.text(), 'cópia publicada');
+});
+
+test('IZI desenvolvimento2 mantém assets, imagens e fallback dentro do próprio slug', async () => {
+  for (const [path, expected] of [
+    ['/izigym2/assets/izigym-layout.js', '/izigym2/assets/izigym-layout.js'],
+    ['/izigym2/cdn-cgi/image/width=640/images/hero-izigym.jpg', '/izigym2/images/hero-izigym.jpg'],
+    ['/izigym2/rota-interna', '/izigym2/index.html'],
+  ]) {
+    const fetched = [];
+    const response = await devWorker.fetch(new Request(`https://site.jumper.dev.br${path}`, { headers: { Accept: 'text/html' } }), {
+      ASSETS: { fetch: async request => {
+        const pathname = new URL(request.url).pathname;
+        fetched.push(pathname);
+        return new Response('preservado', { status: pathname.endsWith('rota-interna') ? 404 : 200 });
+      } },
+    });
+    assert.equal(fetched.at(-1), expected);
+    assert.equal(response.status, 200);
+    assert.equal(response.headers.get('X-Jumper-Worker'), 'jumper-hoster-dev');
+  }
+  assert.equal(isDevelopmentRequest(new URL('https://site.jumper.dev.br/izigym20/')), false);
 });
