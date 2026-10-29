@@ -2,6 +2,7 @@
 /** ACF is a view over native HTML; saves use a three-way merge, not two competing copies. */
 require_once __DIR__ . "/editor-dom.php";
 require_once __DIR__ . "/editor-ui.php";
+require_once __DIR__ . "/editor-form.php";
 require_once __DIR__ . "/editor-preview.php";
 require_once __DIR__ . "/menu-pdf.php";
 require_once __DIR__ . "/editor-data.php";

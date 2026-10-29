@@ -1,0 +1,45 @@
+/* Keep the native WordPress title, permalink, page list and publish sidebar. */
+.rde-simple-screen #acf-group_rodeio_editor_v1{border:1px solid #c3c4c7;background:#fff;box-shadow:0 1px 1px #0000000a}
+.rde-simple-screen #acf-group_rodeio_editor_v1>.postbox-header{display:none}
+.rde-simple-screen .rde-acf-storage{display:none!important}
+.rde-form-header{padding:20px 24px;border-bottom:1px solid #dcdcde;background:#f9f9f9}
+.rde-form-header h2{padding:0!important;margin:0 0 8px!important;font-size:18px!important}
+.rde-form-header p{font-size:13px;line-height:1.6;margin:0 0 14px;color:#646970}
+.rde-form-layout{display:grid;grid-template-columns:190px minmax(0,1fr);align-items:start;min-height:350px}
+.rde-form-nav{padding:12px;background:#f6f7f7;border-right:1px solid #dcdcde;display:flex;flex-direction:column;gap:5px;position:sticky;top:45px}
+.rde-form-block-button{font:500 13px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;border:1px solid transparent;border-radius:3px;padding:11px 12px;text-align:left;color:#50575e;background:transparent;cursor:pointer;overflow-wrap:anywhere}
+.rde-form-block-button:hover{background:#fff;border-color:#c3c4c7}
+.rde-form-block-button[aria-pressed=true]{background:#fff;border-color:#2271b1;color:#135e96;box-shadow:inset 3px 0 #2271b1;font-weight:600}
+.rde-form-content{padding:22px;min-width:0}
+.rde-form-block[hidden]{display:none!important}
+.rde-form-block-title{font-size:19px;margin:0 0 22px;padding:0;color:#1d2327}
+.rde-form-card{min-width:0;margin:0 0 24px;padding:18px 20px;border:1px solid #dcdcde;border-radius:4px;background:#fff}
+.rde-form-card legend{font-weight:600;font-size:14px;padding:0 7px;margin-left:-7px;color:#1d2327;max-width:100%;overflow-wrap:anywhere}
+.rde-form-field{display:grid;gap:7px;margin:0 0 18px;font-size:13px}
+.rde-form-field:last-child{margin-bottom:0}
+.rde-form-label{font-size:12px;color:#50575e;font-weight:600}
+.rde-form-field input,.rde-form-field textarea,.rde-form-field select,.rde-form-extra>input{width:100%;max-width:none;box-sizing:border-box;min-height:38px;font-size:14px;line-height:1.6;border-color:#8c8f94;background:#fff}
+.rde-form-field textarea{padding:10px 12px;resize:vertical}
+.rde-form-example{margin:0 0 16px;padding:13px 16px;background:#f6f7f7;border-left:3px solid #a7aaad;color:#3c434a;font:20px/1.45 Georgia,serif;overflow-wrap:anywhere}
+.rde-form-help{font-size:12px;line-height:1.6;color:#646970;font-weight:400;margin:0 0 12px}
+.rde-form-readonly{background:#f6f7f7;border:1px solid #dcdcde;padding:10px 12px;border-radius:3px;overflow-wrap:anywhere;font-weight:400;line-height:1.6;color:#50575e}
+.rde-form-origin{font-size:12px;line-height:1.65;background:#f0f6fc;padding:12px;margin:0 0 18px;border-left:3px solid #72aee6}
+.rde-form-photo{display:block;width:auto;max-width:100%;height:200px;object-fit:contain;background:#f0f0f1;margin:0 0 16px;border:1px solid #dcdcde}
+.rde-form-photo+.button{margin-bottom:20px}
+.rde-form-extra{padding:12px 0;border-top:1px solid #eee;margin-top:10px}
+.rde-form-extra summary{font-size:12px;color:#646970;cursor:pointer;margin-bottom:12px}
+.rde-form-extra .button-link{margin-left:12px;font-size:12px}
+.rde-form-technical{margin-top:24px;padding:16px;border:1px dashed #c3c4c7;background:#f6f7f7}
+.rde-form-technical summary{cursor:pointer;font-size:12px;color:#646970}
+.rde-simple-screen #acf-group_6478889cef574{display:none}
+.rde-simple-screen .rde-shared-heading{padding:0;margin:8px 0 20px;color:#1d2327}
+.rde-simple-screen .rde-shared-heading h2{font-size:20px!important;padding:0!important;margin:12px 0 8px!important}
+.rde-simple-screen .rde-shared-heading p{font-size:13px;line-height:1.6;margin:5px 0}
+.rde-simple-screen .rde-shared-heading .rde-shared-scope{font-size:12px;color:#646970}
+.rde-simple-screen.rde-managed-shared #titlediv,.rde-simple-screen.rde-managed-shared #minor-publishing,.rde-simple-screen.rde-managed-shared #delete-action{display:none}
+.rde-form-menu-host>.acf-field{display:block!important;padding:0;border:0}
+.rde-form-menu-host .rde-binding,.rde-form-menu-host .rde-context{display:none!important}
+.rde-form-menu-host .acf-row[hidden]{display:none!important}
+.rde-form-menu-host .rde-form-menu-name{font-size:14px;margin:15px;padding:0}
+.rde-form-menu-host .acf-row:not(.acf-clone)>.acf-fields{min-width:0}
+@media(max-width:1150px){.rde-form-layout{grid-template-columns:minmax(0,1fr)}.rde-form-nav{position:static;flex-direction:row;flex-wrap:wrap;border-right:0;border-bottom:1px solid #dcdcde}.rde-form-block-button{font-size:12px;padding:8px 10px}.rde-form-content{padding:18px}.rde-form-header{padding:18px}}

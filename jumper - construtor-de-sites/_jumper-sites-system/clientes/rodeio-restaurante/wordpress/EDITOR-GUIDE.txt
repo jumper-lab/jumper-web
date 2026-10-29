@@ -1,31 +1,26 @@
-RODEIO — EDIÇÃO RÁPIDA COM ACF
+RODEIO — EDIÇÃO DO CONTEÚDO · 1.7.0
 
-Para editar uma página: entre em Páginas, escolha a página do Rodeio e procure “Rodeio · Edição rápida sincronizada”. As páginas gerenciadas usam a tela direta de campos, com o HTML logo abaixo, para evitar a gaveta de metadados do editor de blocos. As abas são Textos, Imagens, Links e botões e Menus. Expanda o item identificado pelo seu conteúdo, altere e clique em Atualizar. Os valores atuais vêm do HTML existente.
+Páginas mantém a lista padrão do WordPress. Clique em Editar na página desejada. O título administrativo, o endereço permanente e o botão Atualizar continuam nos lugares habituais.
 
-Textos mantêm as tags, destaques, classes e controles do layout. Os links têm destino separado do texto; o texto do botão está em Textos. Imagens podem ser escolhidas/enviadas na Biblioteca de mídia ou substituídas por um endereço de imagem. Ao trocar uma imagem, atualize a descrição acessível. Nos banners há imagem mobile opcional. As versões responsivas e o endereço da foto ampliada são atualizados juntos.
+Em Conteúdo da página, escolha o bloco na navegação lateral. Os campos seguem o conteúdo do site: Apresentação, Endereço, Horários, Reservas, Pedidos em casa e Fotos, por exemplo. Não é necessário abrir o HTML.
 
-Em Rodeio · Ajustes, comece pela Visão geral: Dados e contatos, Logo e navegação, Rodapé e pedidos e Janelas e formulários. Cada cartão explica seu alcance. Abaixo ficam atalhos para as páginas e um quadro somente de consulta com os destinatários do Forminator.
+Textos: cada título ou parágrafo tem seu próprio cartão. Quando uma frase contém destaque, os trechos ficam juntos, com uma amostra da frase inteira. Nos restaurantes, Marca e Nome da unidade ficam no mesmo cartão; cada período reúne Dia ou período e Horário de funcionamento.
 
-Dados e contatos usa campos ACF próprios nas abas Contatos e pedidos, Rodeio Jardins e Rodeio Iguatemi. Edite telefone, WhatsApp, Instagram, iFood e endereços uma única vez. WhatsApp aceita o número com DDD e monta o link automaticamente. Mapas e reservas ficam no acordeão Links de mapa e reservas. Horários, fotos e textos da unidade ficam na página do restaurante, com atalho nesta tela. Os mesmos dados aparecem como consulta nos outros editores, com indicação da origem.
+Botões e links: o nome visível e o destino ficam no mesmo cartão. Escolha o que o clique deve fazer e preencha o destino: página, e-mail, telefone ou seção. Dados compartilhados mostram a origem e um atalho para editar uma única vez em Dados e contatos.
 
-As áreas de apresentação mantêm os cartões de edição. Use o filtro Parte da página ou Janela para editar; contagens e abas acompanham a seleção. Controles técnicos ficam recolhidos. Nos menus, arraste itens para reordenar e edite rótulos e destinos (até 12 por menu).
+Imagens: a foto atual aparece no cartão. Clique em Trocar imagem para selecionar ou enviar pela Biblioteca de mídia. Atualize a descrição acessível. Banners compatíveis também aceitam uma imagem específica para celular; a URL direta fica nas opções avançadas.
 
-O HTML continua editável nas páginas e áreas de apresentação, na Área técnica recolhida. Dados e contatos oferece somente os campos próprios. Ao salvar, os campos são relidos. Conteúdo novo inserido no HTML passa a ser mapeado. Textos, imagens e links existentes são editáveis nos campos; alterações de estrutura continuam no HTML. Uma versão do conteúdo é associada aos campos para detectar edições concorrentes. Se o mesmo item mudar nos dois lugares, recarregue e revise o aviso; não há sobrescrita silenciosa.
+Menus: escolha o bloco de navegação, edite o nome visível e o destino de cada item. Arraste os itens para reordenar ou use Adicionar link. Desktop e celular são menus identificados separadamente.
 
-As áreas globais são privadas e não criam páginas públicas. Os grupos ACF são definidos no tema para serem versionados; edite os valores nas páginas/áreas, não os grupos no painel ACF. O grupo antigo “Página” foi preservado. Yoast continua responsável por títulos SEO e descrições, em seu painel próprio.
+Rodeio · Ajustes mantém as tarefas globais: Dados e contatos, Logo e navegação, Rodapé e pedidos, Janelas e formulários e PDF do cardápio. As áreas de apresentação usam a mesma organização por blocos. Dados e contatos mantém campos próprios para telefone, WhatsApp, Instagram, iFood, endereços, mapas e reservas, organizados por unidade. Horários e fotos ficam na página de cada restaurante.
 
-O PDF e suas cinco imagens de visualização continuam no fluxo próprio do cardápio: não exponha uma substituição isolada do PDF que deixaria o lightbox desatualizado. Os formulários e seus destinatários não são alterados por estes campos.
+Salve em Atualizar. O HTML fica recolhido em Área técnica e continua sincronizado com os campos no WordPress. Alterações de estrutura exigem revisão técnica. Se o mesmo conteúdo tiver sido alterado em outra tela, a proteção contra edições concorrentes impede sobrescrita silenciosa.
 
-A sincronização é entre os campos ACF e o HTML salvo no WordPress. Ela não edita os arquivos Astro no GitHub nem a prévia estática do Hoster em tempo real. Antes de outra publicação do código, exporte/reconcilie o conteúdo atual e compare hashes para não sobrescrever edições feitas no painel.
+A sincronização é entre ACF e HTML salvo no WordPress. Não altera automaticamente os arquivos Astro/GitHub nem a prévia estática do Hoster. Yoast mantém seus próprios campos de SEO. Os campos de apresentação não modificam destinatários nem registros dos formulários.
 
-Validação: testes de mapeamento das 16 páginas; teste do fluxo real acf/save_post em registro privado; HTML → ACF com formulário antigo aberto; conflito concorrente; menus; fotos responsivas e galeria; verificação visual do painel; regressão pública. Backups privados precedem a ativação.
+A interface por blocos substitui as antigas abas Textos/Imagens/Links e o painel com iframe da versão 1.5. A listagem de Páginas permanece padrão.
 
-ESTÚDIO DE CONTEÚDO — INTERFACE 1.3.3
-Use a busca para encontrar uma frase e o filtro “Parte da página” para reduzir a lista. As abas mostram os tipos de conteúdo disponíveis. Os cartões exibem a frase ou uma miniatura da imagem; clique em Editar para abrir apenas o que quer alterar.
-Imagens: use Trocar foto para escolher ou enviar pela biblioteca. A descrição explica o conteúdo da foto para quem usa leitor de tela; a versão para celular aparece somente nos banners compatíveis. A URL da imagem fica nas opções avançadas.
-Links: escolha se o clique abre uma página, e-mail, telefone ou seção. Nos links com um único texto, o nome e o destino ficam juntos. Os menus continuam com itens reordenáveis e controle de nova aba.
-Menu, rodapé, contatos e lightboxes: o atalho no topo abre a área compartilhada correspondente. As alterações nessas áreas aparecem em todo o site.
-Use Atualizar para salvar. O HTML fica em Área técnica, recolhida por padrão, e mantém a sincronização. Os filtros não removem conteúdos.
+NOTAS DAS FUNCIONALIDADES PÚBLICAS
 
 LIGHTBOXES DE ATENDIMENTO — 1.3.4
 Delivery, SAC e Compliance são editados em Rodeio · Ajustes → Janelas e formulários. Delivery tem dois cartões de pedido, WhatsApp e iFood. SAC e Compliance recebem mensagens pelo formulário; os e-mails são destinatários internos, consultáveis na Visão geral. Não são cartões públicos. Os formulários, destinos de envio e limites de mensagem continuam os mesmos. A apresentação dos cartões fica em services.css no tema, carregada pelo renderizador WordPress.
@@ -50,12 +45,6 @@ Os e-mails sao destinatarios internos do Forminator. O envio do visitante ocorre
 
 AJUSTES POR TAREFA — 1.4.0
 12 campos ACF nomeados, validação e proteção contra telas desatualizadas. O HTML continua sendo a fonte de verdade. A atualização de URLs compartilhadas reconhece os itens dos menus. PDF e configuração do Forminator mantêm seus fluxos próprios.
-
-EDIÇÃO COM CONTEXTO VISUAL — 1.5.0
-Abra uma página ou área de apresentação e escolha um cartão de seção. Os campos ficam à esquerda e a referência do layout à direita. Clicar em um título, foto ou botão da prévia abre o campo correspondente. Textos digitados aparecem na prévia antes de salvar; use Atualizar para publicar no WordPress. Computador e Celular mudam o tamanho de referência e mantêm o trecho selecionado.
-Para fotos, abra a imagem na prévia e use Adicionar imagem em Trocar foto: escolha ou envie pela Biblioteca de mídia. A foto atual também aparece no cartão. Atualize a descrição da foto; versões mobile opcionais ficam nos banners compatíveis. Os links têm destino separado; contatos compartilhados apontam para Dados e contatos.
-A prévia usa o HTML atual do WordPress e os estilos da versão publicada, dentro de uma área isolada sem scripts, navegação, reservas ou envio de formulários. Não é um ambiente para realizar pedidos ou testar envios. O PDF e suas páginas renderizadas mantêm seu fluxo conjunto. Alterações de estrutura não são feitas por estes campos.
-Validação: 570 campos testados individualmente em documentos em memória; gravação real ACF de texto, imagem, link e menu em registro privado; salvamento pelo navegador com conteúdo preservado; seleção visual e Biblioteca de mídia. Forminator e destinatários preservados.
 
 PDF DO CARDÁPIO — 1.6.0
 Em Rodeio · Ajustes → PDF do cardápio, escolha ou envie um PDF e clique em Preparar e publicar novo cardápio. O processamento gera uma página por etapa, mostra o progresso e só troca a versão pública quando o conjunto estiver validado. O mesmo PDF alimenta os downloads e suas imagens alimentam o lightbox e a tela completa, mantendo o zoom existente. Limites: 20 MB e 30 páginas; arquivo sem senha.
