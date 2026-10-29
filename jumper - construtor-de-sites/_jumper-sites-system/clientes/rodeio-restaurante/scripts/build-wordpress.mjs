@@ -69,10 +69,13 @@ for (const [route, filename] of Object.entries(manifest.routes)) {
 }
 if (!business.organization || Object.keys(business.restaurants).length !== 2) throw new Error('Missing business schema');
 await write(path.join(releaseRoot, 'seo.json'), Buffer.from(JSON.stringify(business, null, 2)));
-for (const name of ['functions.php', 'seo.php', 'editor.php', 'editor-dom.php', 'editor-ui.php', 'editor-form.php', 'editor-form.js', 'editor-form.css', 'editor-preview.php', 'menu-pdf.php', 'menu-pdf.js', 'menu-pdf.css', 'editor-data.php', 'editor-dashboard.php', 'editor-ui.css', 'editor-ui.js', 'services.css', 'contact-dialog.js', 'index.php', 'style.css']) {
+for (const name of ['functions.php', 'seo.php', 'editor.php', 'editor-dom.php', 'editor-ui.php', 'editor-form.php', 'editor-form.js', 'editor-form.css', 'editor-brand.css', 'editor-preview.php', 'menu-pdf.php', 'menu-pdf.js', 'menu-pdf.css', 'editor-data.php', 'editor-dashboard.php', 'editor-ui.css', 'editor-ui.js', 'services.css', 'contact-dialog.js', 'index.php', 'style.css']) {
   let source = await fs.readFile(path.join('wordpress', name), 'utf8');
   source = source.replaceAll('__RELEASE__', release);
   await write(path.join(root, name), Buffer.from(source));
+}
+for (const font of ['bodoni-normal.woff2', 'bodoni-italic.woff2', 'dm-sans.woff2']) {
+  await write(path.join(root, 'admin-fonts', font), await fs.readFile(path.join('src/assets/fonts', font)));
 }
 const functions = await fs.readFile(path.join(root, 'functions.php'), 'utf8');
 for (const route of Object.keys(manifest.routes)) if (!functions.includes(`'${route}' =>`)) throw new Error(`Missing WordPress route: ${route}`);

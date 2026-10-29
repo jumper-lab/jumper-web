@@ -32,13 +32,19 @@
       if (window.jQuery) window.jQuery(input).trigger('change');
     };
     const header = el('div', 'rde-form-header');
-    header.append(el('h2', '', config.shared ? 'Editar conteúdo desta área' : 'Conteúdo da página'));
-    header.append(el('p', '', 'Escolha o bloco ao lado. Altere os campos e use o botão Atualizar do WordPress para salvar.'));
+    const identity = el('div', 'rde-form-identity');
+    if (config.brandLogo) {const logo=el('img','rde-form-logo');logo.src=config.brandLogo;logo.alt='Rodeio — desde 1958';identity.append(logo);}
+    identity.append(el('span', 'rde-form-eyebrow', 'ESTÚDIO DE CONTEÚDO')); header.append(identity);
+    header.append(el('h2', '', config.title));
+    header.append(el('p', '', 'Seu conteúdo, do seu jeito. Escolha uma seção, edite os campos e clique em Atualizar.'));
     const view = el('a', 'button', config.shared ? 'Ver site ↗' : 'Ver esta página no site ↗');
     view.href = config.preview; view.target = '_blank'; view.rel = 'noopener noreferrer'; header.append(view);
     root.append(header);
+    const steps=el('div','rde-form-steps');
+    ['Escolha uma seção','Edite textos, fotos e links','Salve em Atualizar'].forEach((text,index)=>{const step=el('span');step.append(el('b','',String(index+1).padStart(2,'0')),document.createTextNode(text));steps.append(step);});root.append(steps);
     const layout = el('div', 'rde-form-layout');
     const navigation = el('nav', 'rde-form-nav'); navigation.setAttribute('aria-label', 'Blocos de conteúdo');
+    navigation.append(el('p','rde-form-nav-caption',config.shared?'NESTA ÁREA':'NESTA PÁGINA'));
     const content = el('div', 'rde-form-content'); layout.append(navigation, content); root.append(layout);
     const menuField = storage.querySelector('.acf-field[data-name="rde_menus"]');
     const controls = [];
@@ -122,14 +128,20 @@
     const blocks = config.blocks.filter(block => block.groups.some(group => group.parts.some(part => !part.technical)));
     const panels = [];
     for (const block of blocks) {
-      const button = el('button', 'rde-form-block-button', block.title); button.type = 'button'; button.setAttribute('aria-pressed', 'false');
+      const position=panels.length+1;
+      const button = el('button', 'rde-form-block-button'); button.type = 'button'; button.setAttribute('aria-pressed', 'false');button.setAttribute('aria-label',block.title);
+      button.append(el('span','rde-form-nav-number',String(position).padStart(2,'0')));
+      const count=block.groups.filter(group=>group.parts.some(part=>!part.technical)).length;
+      const navLabel=el('span','rde-form-nav-label');navLabel.append(el('strong','',block.title),el('small','',`${count} ${count===1?'conteúdo':'conteúdos'}`));button.append(navLabel);
       navigation.append(button);
       const panel = el('section', 'rde-form-block'); panel.hidden = true;
-      panel.append(el('h3', 'rde-form-block-title', block.title));
+      const blockHead=el('div','rde-form-block-head');blockHead.append(el('p','rde-form-eyebrow',`SEÇÃO ${String(position).padStart(2,'0')} · ${config.shared?'ÁREA COMPARTILHADA':'CONTEÚDO DA PÁGINA'}`),el('h3', 'rde-form-block-title', block.title));
+      const blockHelp=block.groups.some(group=>group.type==='image')?'As fotos atuais aparecem abaixo. Use Trocar imagem para escolher outra pela biblioteca.':block.groups.some(group=>group.type==='menu')?'Organize os itens e escolha para onde cada link leva.':block.title==='Horários'?'Cada período reúne os dias e seus horários de atendimento.':'Edite o conteúdo nos cartões abaixo. O layout do site é preservado.';
+      blockHead.append(el('p','rde-form-block-help',blockHelp));panel.append(blockHead);
       const groups = block.groups.filter(group => group.parts.some(part => !part.technical));
       for (const group of groups) {
         const parts = group.parts.filter(part => !part.technical);
-        const card = el('fieldset', 'rde-form-card'); card.append(el('legend', '', group.label));
+        const card = el('fieldset', `rde-form-card rde-form-card-${group.type}`); card.append(el('legend', '', group.label));
         if (group.type === 'menu') {
           card.classList.add('rde-form-menu-host'); card.dataset.menuIndexes = parts.filter(part => part.kind === 'menus').map(part => part.index).join(','); panel.append(card); continue;
         }
@@ -137,7 +149,7 @@
           const example = el('p', 'rde-form-example');
           parts.filter(part => part.kind === 'texts').forEach(part => {const text=el(part.emphasis ? 'em' : 'span', '', part.value);example.append(text,document.createTextNode(' '));const source=inputFor(part,'value');source?.addEventListener('input',()=>text.textContent=source.value);});
           card.append(example);
-          if (group.type === 'text') card.append(el('p', 'rde-form-help', 'Estes trechos aparecem juntos. Edite cada parte mantendo o destaque indicado.'));
+          if (group.type === 'text') card.append(el('p', 'rde-form-help', block.title==='Horários'?'Edite o período e os horários nos campos abaixo.':'Assim estes trechos aparecem juntos. Edite cada parte nos campos abaixo.'));
         }
         for (const part of parts) {
           if (part.kind === 'texts') textControl(part, card, parts.length);
