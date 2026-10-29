@@ -7,6 +7,7 @@ export const previewHost = 'site-dev.jumper.dev.br';
 export const developmentSlugs = Object.freeze([
   'rodeio',
   'izigym',
+  'izigym2',
   'izigym-lp',
   'izigym-lp-vilaromana',
   'casabelie',
