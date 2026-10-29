@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-13",
+  "implementationTarget": "principal",
+  "publicationPerformed": false,
+  "gtmChangesApplied": false,
+  "platformReceiptConfirmed": false,
+  "automated": {
+    "principal": {"runner": "Vitest 3.2.7 / Testing Library React", "passed": 21, "failed": 0, "coverage": ["shared queue and consent", "single GTM", "disabled kit with no URL override", "five CTAs", "React StrictMode and actual component remount", "route lifecycle", "rapid and middle clicks", "canceled/internal links", "private attribution", "session persistence and replacement", "commercial URL and _gl", "blocked/corrupt storage", "throwing dataLayer consumer"]},
+    "hoster": {"runner": "node --test", "passed": 29, "failed": 0, "coverage": ["three principal packaging guards", "existing dev boundaries", "preserved snapshots", "existing live promotion restrictions"]},
+    "cerrocoraRegression": {"runner": "node --test", "passed": 21, "failed": 0, "sourceChanged": false},
+    "totalPassed": 71
+  },
+  "staticChecks": {"appTypes": "passed", "buildConfigTypes": "passed", "eslint": "passed", "diffWhitespace": "passed"},
+  "builds": {"principal": "passed", "fullHoster": "passed", "finalPrincipalAndHosterStage": "passed"},
+  "browser": {
+    "engine": "Chromium",
+    "mobile": "emulated 390x844, not a physical device",
+    "desktop": "1440x900",
+    "matrix": "4 cases: desktop/mobile x enabled/disabled, 9 logical events for 9 qualified interactions each",
+    "hiddenVariants": "programmatic dispatch, marked in evidence",
+    "nativeOutgoingNavigations": 6,
+    "lateLoader": "4000ms; event and navigation before readiness",
+    "noscript": "one Izi fallback request with JavaScript disabled",
+    "externalTransport": "GTM libraries/collectors simulated or blocked; checkout and WhatsApp destinations mocked"
+  },
+  "preexistingTypeDeclarationFixed": "GallerySection items are now as const to preserve video/image discrimination; no runtime or commercial change",
+  "receiptOwner": "jumper-tracker"
+}
