@@ -12,7 +12,6 @@ function rodeio_delivery_emphasis_header($html, $whatsapp)
     $nav->setAttribute('aria-label','Restaurantes, eventos e serviços');
     if(!$doc->xpath->query('.//a[@href="/rodeio-em-casa/"]',$nav)->length)$nav->appendChild($link('/rodeio-em-casa/','Delivery','header-delivery-link'));
     if(!$doc->xpath->query('.//a[contains(@href,"#fale-com-a-gente")]',$nav)->length)$nav->appendChild($link('/sac/#fale-com-a-gente','Contato'));
-    if(!$doc->xpath->query('.//a[contains(concat(" ",@class," ")," header-delivery-shortcut ")]',$right)->length)$right->insertBefore($link('/rodeio-em-casa/','Delivery','header-delivery-shortcut'),$right->firstChild);
     $primary=$one('.//nav[contains(concat(" ",@class," ")," menu-primary-nav ")]');
     foreach([['/rodeio-em-casa/','Delivery'],['/sac/#fale-com-a-gente','Contato']] as [$href,$label]){
         if($doc->xpath->query('.//a[@href="'.$href.'"]',$primary)->length)continue;
