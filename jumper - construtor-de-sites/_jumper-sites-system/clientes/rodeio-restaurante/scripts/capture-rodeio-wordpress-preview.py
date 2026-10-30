@@ -35,7 +35,8 @@ def write(name,body,source_hash=None):
     if source_hash:records[name]['sourceSha256']=source_hash
 
 def capture_route(route):
-    raw=read(ORIGIN+route);s=raw.decode();
+    raw=read(ORIGIN+route);s=raw.decode().replace("\r\n","\n");
+    s=re.sub(r"<!--\s*Performance optimized by W3 Total Cache\..*?-->","",s,flags=re.S)
     if 'wp-admin-bar' in s:raise ValueError('Authenticated HTML cannot enter the preview')
     if route=='/' and re.search(r'class=["\']home-slideshow-controls["\']',s):raise ValueError('Home controls still present')
     contact=re.search(r'<dialog\b[^>]*id="contact-dialog"[^>]*>.*?</dialog>',s,re.S)
