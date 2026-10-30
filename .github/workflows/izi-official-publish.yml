@@ -1,4 +1,4 @@
-name: Publicar IZI Gym no oficial
+name: Publicar IZI Gym no oficial (janela aprovada)
 
 on:
   # GitHub Actions usa UTC. 03:01 UTC = 00:01 em America/Sao_Paulo.
