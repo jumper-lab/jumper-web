@@ -45,3 +45,9 @@ Computador e Celular abrem uma prévia lateral que acompanha os campos ainda nã
 Na auditoria de 29/10/2026 passaram 1.118 verificações de integração em 20 editores e 40 aberturas/seleções representativas no Chrome (16 páginas e quatro áreas, nos dois modos). Também foram conferidos o clique no título inicial, um item secundário do menu móvel e a abertura dos campos compartilhados na aba correta. Conteúdos publicados, configurações dos formulários e PDF foram preservados.
 
 Na versão 1.9.0 (30/10/2026), passaram 1.306 verificações nos 20 editores, incluindo amostras de edição não salva de texto, link e imagem em cada editor aplicável, os 12 campos compartilhados e renomeação, inclusão, remoção e reordenação de menus. No Chrome, um título foi editado e restaurado com a prévia aberta em computador e celular. Nenhum conteúdo foi publicado nesses testes. O debounce de 100 ms é acelerado apenas no teste de integração.
+
+## Destaque de Delivery — 1.9.1
+
+Delivery aparece ao lado de Eventos no computador, como atalho no cabeçalho compacto e no menu mobile. Contato abre a escolha entre SAC e Compliance. O botão fixo de WhatsApp usa o número de delivery de Dados e contatos; o HTML fica na área Logo e navegação e participa da mesma sincronização dos demais links compartilhados. Os atalhos existentes no rodapé foram preservados.
+
+`updates/delivery-emphasis.php` prepara o fragmento do cabeçalho atual sem gravá-lo e evita duplicar a atualização. A aplicação exige backup privado do post 897 e dos arquivos envolvidos, verificação dos hashes e revisão do resultado antes de salvar. Não faz parte de uma inicialização automática do tema. Esta atualização foi aplicada somente ao WordPress oficial; o build Astro foi validado localmente, sem publicar o Worker dev ou live do Hoster.

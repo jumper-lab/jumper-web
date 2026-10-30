@@ -17,7 +17,7 @@
       if (!dialog.open) dialog.showModal();close?.focus();return;
     }
     if (dialog.contains(link)) {
-      const target = link.pathname.replace(/\/$/, '') === '/sac' ? document.getElementById('sac-dialog') : link.pathname.replace(/\/$/, '') === '/compliance' ? document.getElementById('compliance-dialog') : null;
+      const target = link.pathname.replace(/\/$/, '').endsWith('/sac') ? document.getElementById('sac-dialog') : link.pathname.replace(/\/$/, '').endsWith('/compliance') ? document.getElementById('compliance-dialog') : null;
       if (!target) return;
       // Close this chooser before the existing delegated controller opens the selected form.
       restoreFocus = false;dialog.close();

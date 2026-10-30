@@ -1,0 +1,11 @@
+---
+const base=import.meta.env.BASE_URL.replace(/\/$/,'');
+---
+<dialog id="contact-dialog" class="digital-menu-dialog service-form-dialog" aria-labelledby="contact-dialog-title">
+ <div class="digital-menu-header"><div><p class="eyebrow">Atendimento Rodeio</p><h2 id="contact-dialog-title">Fale com a gente</h2></div><button type="button" class="digital-menu-close" data-close-contact>Fechar <span aria-hidden="true">×</span></button></div>
+ <div class="digital-menu-content service-form-content"><p class="service-form-intro">Como podemos ajudar? Escolha o canal para falar com a nossa equipe.</p><div class="service-contact-list">
+ <a class="service-contact-card" href={`${base}/sac/`}><span class="service-contact-copy"><strong>Atendimento ao Cliente · SAC</strong><small>Dúvidas, sugestões e experiências com o Rodeio.</small></span><span class="service-contact-arrow" aria-hidden="true">→</span></a>
+ <a class="service-contact-card" href={`${base}/compliance/`}><span class="service-contact-copy"><strong>Compliance</strong><small>Assuntos relacionados a compliance.</small></span><span class="service-contact-arrow" aria-hidden="true">→</span></a>
+ </div></div>
+</dialog>
+<script>import '../../wordpress/contact-dialog.js';</script>
