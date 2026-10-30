@@ -49,4 +49,35 @@ jobs:
       - name: Publicar IZI dev no oficial
         if: steps.window.outputs.run == 'true'
         working-directory: jumper - construtor-de-sites/_jumper-sites-system/clientes/rodeio-restaurante
-        run: npm run deploy:cloudflare
+        run: |
+          set -u
+          for attempt in 1 2; do
+            echo "Tentativa ${attempt}/2"
+            if npm run deploy:cloudflare; then
+              echo "Publicação concluída na tentativa ${attempt}."
+              exit 0
+            fi
+            if [ "$attempt" -eq 1 ]; then
+              echo "A primeira tentativa falhou; aguardando 30 segundos antes da segunda."
+              sleep 30
+            fi
+          done
+          echo 'As duas tentativas falharam; a versão anterior permanece ativa.' >&2
+          exit 1
+
+      - name: Registrar resultado no resumo da execução
+        if: always() && steps.window.outputs.run == 'true'
+        run: |
+          {
+            echo '## Publicação IZI Gym'
+            echo
+            echo "- Janela: 01/11/2026 00:01 (America/Sao_Paulo)"
+            echo "- Destinos: cerrocora.izigym.com.br e www.izigym.com.br"
+            echo "- Resultado do job: ${{ job.status }}"
+            if [ "${{ job.status }}" = 'success' ]; then
+              echo '- A build, o preflight, a publicação e a auditoria foram concluídos.'
+            else
+              echo '- A publicação foi interrompida após duas tentativas; a versão anterior deve permanecer ativa.'
+              echo '- Consultar os logs desta execução antes de qualquer nova tentativa manual.'
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
