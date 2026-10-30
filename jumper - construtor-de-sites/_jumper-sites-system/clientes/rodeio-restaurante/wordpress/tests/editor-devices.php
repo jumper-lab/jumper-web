@@ -11,7 +11,7 @@ function rodeio_editor_devices_contract($renderer='Rodeio_Editor_Preview')
             foreach($doc->xpath->query('//*') as $node)foreach($node->attributes as $attribute)if(stripos($attribute->name,'on')===0)throw new Exception('Executable attribute '.$id);
             if(strpos(html_entity_decode($html,ENT_QUOTES,'UTF-8'),"script-src 'none'")===false)throw new Exception('Missing preview policy '.$id);
             if($id===Rodeio_Editor_Data::id())foreach($doc->xpath->query('//*[@data-rde-setting-preview]') as $node)$data_keys[$node->getAttribute('data-rde-setting-preview')]=true;
-            else foreach(Rodeio_Editor::snapshot($id)['data'] as $kind=>$items)foreach($items as $index=>$item){$key=$kind.':'.$index;if(!$doc->xpath->query('//*[contains(concat(" ",@data-rde-preview," ")," '.$key.' ")]')->length)throw new Exception('Missing preview target '.$id.' '.$key);$bindings++;}
+            else {$description=Rodeio_Editor_UI::describe($id);foreach(Rodeio_Editor::snapshot($id)['data'] as $kind=>$items)foreach($items as $index=>$item){if($description['rows'][$kind][$index]['technical'])continue;$key=$kind.':'.$index;if(!$doc->xpath->query('//*[contains(concat(" ",@data-rde-preview," ")," '.$key.' ")]')->length)throw new Exception('Missing preview target '.$id.' '.$key);$bindings++;}}
             $documents++;
         }
         if(hash('sha256',get_post_field('post_content',$id,'raw'))!==$before)throw new Exception('Preview changed content '.$id);

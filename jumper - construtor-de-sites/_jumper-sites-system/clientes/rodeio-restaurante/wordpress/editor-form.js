@@ -198,9 +198,11 @@
       selectBlock(entry.block.key);
       root.querySelectorAll('.rde-preview-field-selected').forEach(node=>node.classList.remove('rde-preview-field-selected'));
       const card=entry.panel.querySelector(`[data-rde-parts~="${kind}:${index}"]`);if(!card)return;
-      card.classList.add('rde-preview-field-selected');
-      const target=kind==='menus'?sourceRows.menus[index]?.querySelectorAll('[data-name="rde_menuitem_label"] input')[event.detail.item||0]:card.querySelector(`[data-rde-proxy="${kind}:${index}"]`)||card.querySelector('button,input,a');
-      requestAnimationFrame(()=>{card.scrollIntoView({block:'center',behavior:'instant'});target?.focus({preventScroll:true});});
+      const menuTarget=kind==='menus'&&event.detail.itemKey?Array.from(sourceRows.menus[index]?.querySelectorAll('[data-name="rde_menuitem_key"] input')||[]).find(input=>input.value===event.detail.itemKey)?.closest('.acf-row')?.querySelector('[data-name="rde_menuitem_label"] input'):null;
+      const target=kind==='menus'?menuTarget||sourceRows.menus[index]?.querySelectorAll('[data-name="rde_menuitem_label"] input')[event.detail.item||0]:card.querySelector(`[data-rde-proxy="${kind}:${index}"]`)||card.querySelector('button,input,a');
+      const region=kind==='menus'?(target?.closest('.acf-row')||card):card;
+      region.classList.remove('-collapsed');region.dataset.rdeSelectedKey=event.detail.key;region.classList.add('rde-preview-field-selected');
+      requestAnimationFrame(()=>{region.scrollIntoView({block:'center',behavior:'instant'});target?.focus({preventScroll:true});});
     });
     const technical = document.getElementById('postdivrich');
     if (technical) {

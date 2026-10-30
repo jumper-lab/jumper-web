@@ -29,7 +29,7 @@ class Rodeio_Editor_Preview
         foreach($bindings as [$node,$key]){
             if($node instanceof DOMText){$span=$doc->dom->createElement('span');$span->setAttribute('data-rde-preview',$key);$node->parentNode->replaceChild($span,$node);$span->appendChild($node);}
             elseif($node instanceof DOMElement){$existing=$node->getAttribute('data-rde-preview');$node->setAttribute('data-rde-preview',trim($existing.' '.$key));
-                if(strpos($key,'menus:')===0)foreach($doc->xpath->query('.//a',$node) as $i=>$anchor)$anchor->setAttribute('data-rde-menu-item',(string)$i);
+                if(strpos($key,'menus:')===0)foreach($doc->xpath->query('.//a',$node) as $i=>$anchor){$anchor->setAttribute('data-rde-menu-item',(string)$i);$anchor->setAttribute('data-rde-menu-key',$snapshot['data']['menus'][(int)substr($key,6)]['items'][$i]['key']??'');}
             }
         }
         if($data){
@@ -49,7 +49,7 @@ class Rodeio_Editor_Preview
             $placeholder->appendChild($doc->dom->createTextNode('Sistema de reservas · clique aqui para editar o endereço de destino.'));
             $iframe->parentNode->replaceChild($placeholder,$iframe);
         }
-        foreach(iterator_to_array($doc->xpath->query('.//script | .//iframe | .//object | .//embed | .//base | .//meta | .//link | .//style',$doc->root)) as $node)$node->parentNode->removeChild($node);
+        foreach(iterator_to_array($doc->xpath->query('.//script | .//noscript | .//iframe | .//object | .//embed | .//base | .//meta | .//link | .//style',$doc->root)) as $node)$node->parentNode->removeChild($node);
         foreach($doc->xpath->query('.//*',$doc->root) as $node){
             foreach(iterator_to_array($node->attributes) as $attr)if(stripos($attr->name,'on')===0 || in_array($attr->name,['action','formaction','srcdoc'],true))$node->removeAttribute($attr->name);
             if($node->tagName==='a'){$node->setAttribute('data-rde-destination',$node->getAttribute('href'));$node->removeAttribute('href');$node->removeAttribute('target');}
@@ -77,7 +77,7 @@ class Rodeio_Editor_Preview
         $head.='<link rel="stylesheet" href="'.esc_url(get_template_directory_uri().'/services.css').'">';
         $main='';if(get_post_type($source_id)==='page'){$main='<main id="conteudo">';if(preg_match('~<main\b[^>]*>~',$shell,$match))$main=$match[0];}
         $policy="default-src 'none'; script-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' https: data:; font-src 'self' data:; connect-src 'none'; form-action 'none'; base-uri 'none'";
-        $overrides='html{scroll-behavior:auto!important}body{margin:0!important;min-height:100vh!important}*{animation:none!important;transition:none!important;scroll-behavior:auto!important}[data-rde-preview],[data-rde-setting-preview]{cursor:pointer!important}[data-rde-preview]:hover,[data-rde-setting-preview]:hover{outline:2px dashed #b6803e!important;outline-offset:3px}.rde-preview-selected{outline:3px solid #c89348!important;outline-offset:4px;background-color:#c8934822!important}dialog[open]{position:relative!important;inset:auto!important;display:block!important;margin:24px auto!important;max-height:none!important;transform:none!important;opacity:1!important;width:calc(100% - 48px)!important}dialog[hidden]{display:none!important}[data-reveal],.reveal{opacity:1!important;transform:none!important}header{position:relative!important}footer{margin:0!important}[data-hero-slide]{animation:none!important}input,select,textarea{pointer-events:none!important}';
+        $overrides='html{scroll-behavior:auto!important}body{margin:0!important;min-height:100vh!important}*{animation:none!important;transition:none!important;scroll-behavior:auto!important}[data-rde-preview],[data-rde-setting-preview]{cursor:pointer!important;pointer-events:auto!important}[data-rde-preview]:hover,[data-rde-setting-preview]:hover{outline:2px dashed #b6803e!important;outline-offset:3px}.rde-preview-selected{outline:3px solid #c89348!important;outline-offset:4px;background-color:#c8934822!important}dialog[open]{position:relative!important;inset:auto!important;display:block!important;margin:24px auto!important;max-height:none!important;transform:none!important;opacity:1!important;width:calc(100% - 48px)!important}dialog[hidden]{display:none!important}[data-reveal],.reveal{opacity:1!important;transform:none!important}header{position:relative!important}footer{margin:0!important}[data-hero-slide]{animation:none!important}input,select,textarea{pointer-events:none!important}';
         $overrides.='.rde-embedded-preview{display:grid;place-items:center;min-height:240px;padding:28px;text-align:center;background:#f1e8da;border:1px dashed #aa8053;color:#63442d;font:16px/1.7 Arial,sans-serif}';
         $html='<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="'.esc_attr($policy).'">'.$head.'<style>'.$overrides.'</style></head><body>'.$main.$doc->html().($main?'</main>':'').'</body></html>';
         return Rodeio_Menu_Pdf::apply($html);

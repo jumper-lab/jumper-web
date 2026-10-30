@@ -70,7 +70,12 @@
       const keys=(target.dataset.rdePreview||'').split(' ');const key=keys.find(key=>blocks.some(block=>block.groups.some(group=>group.parts.some(part=>`${part.kind}:${part.index}`===key&&!part.technical))));
       if(!key){status.textContent='Este controle é técnico. Escolha um texto, imagem ou botão do conteúdo.';return;}
       const part=blocks.flatMap(block=>block.groups.flatMap(group=>group.parts)).find(part=>`${part.kind}:${part.index}`===key);
-      modal.close();root.dispatchEvent(new CustomEvent('rde:preview-pick',{detail:{key,item:Number(event.target.closest('[data-rde-menu-item]')?.dataset.rdeMenuItem||0)}}));
+      if(part.shared&&part.sharedField&&part.settingsUrl){
+        const origin=new URL(part.settingsUrl,location.href);if(part.sharedField!=='menu_pdf')origin.searchParams.set('rde_field',part.sharedField);
+        modal.close();selection.replaceChildren(document.createTextNode('Informação compartilhada · '));const link=make('a','',`Editar ${part.shared} em ${part.settingsLabel} ↗`);link.href=origin.href;link.target='_blank';link.rel='noopener noreferrer';selection.append(link);selection.hidden=false;
+        window.open(origin.href,'_blank','noopener');return;
+      }
+      const menuItem=event.target.closest('[data-rde-menu-item]');modal.close();root.dispatchEvent(new CustomEvent('rde:preview-pick',{detail:{key,item:Number(menuItem?.dataset.rdeMenuItem||0),itemKey:menuItem?.dataset.rdeMenuKey||''}}));
       selection.textContent='Selecionado na prévia: '+(part.fieldLabel||part.label);selection.hidden=false;
     };
     const load=async()=>{
@@ -94,6 +99,13 @@
     launchDesktop.addEventListener('click',()=>open('desktop'));launchMobile.addEventListener('click',()=>open('mobile'));
     desktop.addEventListener('click',()=>{device='desktop';resize();requestAnimationFrame(showArea);});mobile.addEventListener('click',()=>{device='mobile';resize();requestAnimationFrame(showArea);});
     areaSelect.addEventListener('change',()=>config.dataFields?load():showArea());retry.addEventListener('click',load);
+    if(config.dataFields){
+      const requested=new URL(location.href).searchParams.get('rde_field');const field=config.dataFields.find(field=>field.key===requested);
+      if(field){
+        const reveal=()=>{if(!root.querySelector(`.acf-tab-button[data-key="field_rde_site_tab_${field.tab}"]`))return false;pickData(requested);return true;};
+        if(!reveal()){const observer=new MutationObserver(()=>{if(reveal())observer.disconnect();});observer.observe(root,{subtree:true,childList:true});setTimeout(()=>observer.disconnect(),10000);}
+      }
+    }
   };
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();
