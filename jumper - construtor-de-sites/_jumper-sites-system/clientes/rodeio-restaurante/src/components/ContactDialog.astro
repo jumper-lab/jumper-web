@@ -20,7 +20,7 @@ const cards=[
 <dialog id="contact-dialog" class="digital-menu-dialog service-form-dialog" aria-labelledby="contact-dialog-title">
  <div class="digital-menu-header"><div><p class="eyebrow">Atendimento Rodeio</p><h2 id="contact-dialog-title">Fale com a gente</h2></div><button type="button" class="digital-menu-close" data-close-contact>Fechar <span aria-hidden="true">×</span></button></div>
  <div class="digital-menu-content service-form-content"><p class="service-form-intro">Como podemos ajudar? Escolha o canal para falar com a nossa equipe.</p><div class="service-contact-list">
- {cards.map(card=><a class="service-contact-card" href={card.href} target={card.external?'_blank':undefined} rel={card.external?'noopener noreferrer':undefined}><span class="service-contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icons[card.icon]}/></span><span class="service-contact-copy"><strong>{card.label}</strong><small>{card.description}</small></span><span class="service-contact-arrow" aria-hidden="true">{card.external?'↗':'→'}</span></a>)}
+ {cards.map(card=><a class="service-contact-card" href={card.href} target={card.external?'_blank':undefined} rel={card.external?'noopener noreferrer':undefined}><span class="service-contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icons[card.icon]}/></span><span class="service-contact-copy"><strong>{card.label}</strong><small>{card.description}</small></span></a>)}
  </div></div>
 </dialog>
 <script>import '../../wordpress/contact-dialog.js';</script>
