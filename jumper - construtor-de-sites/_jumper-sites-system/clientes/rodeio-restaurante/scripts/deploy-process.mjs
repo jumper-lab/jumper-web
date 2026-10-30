@@ -3,6 +3,8 @@ import { randomUUID } from 'node:crypto';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { readPromotion } from './preflight-hoster.mjs';
+import { activeVersion } from './preflight-hoster.mjs';
+import { writeFile } from 'node:fs/promises';
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const repositoryRoot = resolve(projectRoot, '../../../..');
@@ -17,6 +19,12 @@ const flags = mode === 'dev-worker' ? ['--worker-only'] : suppliedFlags;
 const key = `deploy/${worker}/${randomUUID()}`;
 const commitSha = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repositoryRoot, encoding: 'utf8' }).trim();
 const startedAt = new Date().toISOString();
+const scheduledIzi = mode === 'live' && suppliedFlags.length === 1 && suppliedFlags[0] === '--promote=izi-official-2026-11-01';
+const report = {commitSha, startedAt, phase:'initializing', result:'running'};
+async function checkpoint(values) {
+  Object.assign(report, values);
+  if (scheduledIzi && process.env.IZI_RELEASE_REPORT) await writeFile(process.env.IZI_RELEASE_REPORT, JSON.stringify(report,null,2));
+}
 let phase = 'Preparando o pacote';
 let writes = Promise.resolve();
 let reportedHeartbeatFailure = false;
@@ -40,11 +48,13 @@ function updateMarker() {
 
 async function stage(label, binary, args) {
   phase = label;
+  await checkpoint({phase:label});
   await updateMarker();
   await command(binary, args);
 }
 
 async function main() {
+  await checkpoint({phase:'preparing'});
   await updateMarker();
   const heartbeat = setInterval(() => {
     updateMarker().catch(() => {
@@ -56,15 +66,27 @@ async function main() {
     await stage('Gerando o pacote', 'npm', mode === 'live'
       ? ['run', 'build:cloudflare']
       : ['run', 'build:cloudflare:dev', '--', ...flags]);
+    if (scheduledIzi) await stage('Preservando prévias e preparando somente os oficiais IZI', 'node', ['scripts/stage-izi-release.mjs']);
     await stage('Conferindo páginas e versões antes da publicação', 'node', [
       mode === 'live' ? 'scripts/preflight-hoster.mjs' : 'scripts/preflight-hoster-dev.mjs', ...flags,
     ]);
+    if (scheduledIzi) await checkpoint({before:await activeVersion()});
+    await checkpoint({publicationAttempted:true});
     await stage('Publicando na Cloudflare', 'node', [
       mode === 'live' ? 'scripts/deploy-hoster.mjs' : 'scripts/deploy-hoster-dev.mjs', ...flags,
     ]);
     await stage('Verificando a publicação', 'node', [
       mode === 'live' ? 'scripts/preflight-hoster.mjs' : 'scripts/preflight-hoster-dev.mjs', '--audit', ...flags,
     ]);
+    await checkpoint({result:'success', after:scheduledIzi ? await activeVersion() : undefined, finishedAt:new Date().toISOString()});
+  } catch (error) {
+    let current;
+    if (scheduledIzi && report.publicationAttempted) {
+      try { current = await activeVersion(); } catch { current = {unknown:true}; }
+    }
+    await checkpoint({result:'failure', current, finishedAt:new Date().toISOString()});
+    if (scheduledIzi) console.error('Falha na fase: ' + report.phase + '. Não repetir o deploy sem conferir a versão ativa. Nenhum rollback foi executado.');
+    throw error;
   } finally {
     clearInterval(heartbeat);
     await writes.catch(() => {});
