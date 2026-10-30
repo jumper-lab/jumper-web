@@ -34,24 +34,19 @@ jobs:
         with:
           ref: main
 
-      - uses: pnpm/action-setup@v4
-        if: steps.window.outputs.run == 'true'
-        with:
-          version: 10
-
       - uses: actions/setup-node@v4
         if: steps.window.outputs.run == 'true'
         with:
           node-version: 22
-          cache: pnpm
-          cache-dependency-path: 'jumper - construtor-de-sites/_jumper-sites-system/clientes/rodeio-restaurante/pnpm-lock.yaml'
+          cache: npm
+          cache-dependency-path: 'jumper - construtor-de-sites/_jumper-sites-system/clientes/rodeio-restaurante/package-lock.json'
 
       - name: Instalar dependências do hoster
         if: steps.window.outputs.run == 'true'
         working-directory: jumper - construtor-de-sites/_jumper-sites-system/clientes/rodeio-restaurante
-        run: pnpm install --frozen-lockfile
+        run: npm ci
 
       - name: Publicar IZI dev no oficial
         if: steps.window.outputs.run == 'true'
         working-directory: jumper - construtor-de-sites/_jumper-sites-system/clientes/rodeio-restaurante
-        run: pnpm run deploy:cloudflare
+        run: npm run deploy:cloudflare
