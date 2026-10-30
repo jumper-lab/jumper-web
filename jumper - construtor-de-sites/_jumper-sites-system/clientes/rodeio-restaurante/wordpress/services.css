@@ -108,3 +108,9 @@
  .site-header .header-left{justify-content:flex-end}.site-header .header-right{justify-content:flex-start}
  .site-header .desktop-nav{width:auto;max-width:none;justify-content:flex-start;gap:26px}
 }
+
+/* Contact channels: paired cards on desktop, one clear column on phones. */
+#contact-dialog .service-contact-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#contact-dialog .service-contact-card{min-height:92px;padding:16px;gap:12px}
+#contact-dialog .service-contact-copy strong{font-size:14px}#contact-dialog .service-contact-copy small{font-size:12px}
+@media(max-width:599px){#contact-dialog .service-contact-list{grid-template-columns:1fr;gap:8px}#contact-dialog .service-contact-card{min-height:74px;padding:12px 14px}#contact-dialog .service-contact-icon{flex-basis:34px;width:34px;height:34px}#contact-dialog .service-form-intro{margin-bottom:18px}}

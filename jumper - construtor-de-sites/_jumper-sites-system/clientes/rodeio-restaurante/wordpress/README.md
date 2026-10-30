@@ -55,3 +55,5 @@ Delivery aparece ao lado de Eventos no computador, no menu mobile. Contato abre 
 Na versão 1.9.2, o cabeçalho de computador tem três links de cada lado da marca: Nossa história, Cardápio e Restaurantes à esquerda; Eventos, Delivery e Contato à direita. Colunas de mesma largura mantêm a logo centralizada. A navegação mobile mantém a organização anterior.
 
 O botão flutuante usa o ícone de entrega e o texto “Peça na sua casa”, com destino `/rodeio-em-casa/` para acionar o lightbox. A mudança de papel de um link compartilhado deve ser aplicada com `Rodeio_Editor::$busy` durante a gravação e seguida de `remember`, preservando os destinos globais; editar esse endereço como troca de contato propagaria a mudança aos canais de WhatsApp.
+
+O lightbox Fale com a gente reúne Reservas, Eventos, Telefone, Instagram, SAC e Compliance em duas colunas no computador e uma no celular. Telefone e Instagram usam os dados compartilhados do painel. Reservas e Eventos abrem suas páginas; SAC e Compliance continuam nos formulários existentes, sem alterações de destinatários.
