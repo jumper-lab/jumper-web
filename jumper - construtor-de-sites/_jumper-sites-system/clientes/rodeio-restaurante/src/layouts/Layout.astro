@@ -5,10 +5,12 @@ import {responsivePhoto,photoVariant} from '../lib/responsive-photos';
 import MenuDialog from '../components/MenuDialog.astro';
 import EventsDialog from '../components/EventsDialog.astro';
 import ServiceDialogs from '../components/ServiceDialogs.astro';
+import ContactDialog from '../components/ContactDialog.astro';
 import Arrow from '../components/Arrow.astro';
 import content from '../../data/content.json';
 import '../styles/global.css';
 import '../styles/footer.css';
+import '../../wordpress/services.css';
 import '../styles/gallery-dialog.css';
 import bodoniNormal from '../assets/fonts/bodoni-normal.woff2?url';
 import bodoniItalic from '../assets/fonts/bodoni-italic.woff2?url';
@@ -21,7 +23,7 @@ const internal=(href:string)=>href.startsWith('/')?`${base}${href}`:href;
 const routePath=base&&path.startsWith(base)?path.slice(base.length)||'/':path;
 const nav=[['Nossa história','/historia/'],['Cardápio',content.menu_url],['Eventos','/eventos/'],['Reservas','/reservas/'],['Rodeio Jardins','/restaurantes/jardins/'],['Rodeio Iguatemi','/restaurantes/iguatemi/']];
 const serviceNav=[['Rodeio em casa','/rodeio-em-casa/'],['SAC','/sac/'],['Compliance','/compliance/']];
-const desktopRightNav=[['Restaurantes','/restaurantes/'],['Eventos','/eventos/']];
+const desktopRightNav=[['Restaurantes','/restaurantes/'],['Eventos','/eventos/'],['Delivery','/rodeio-em-casa/'],['Contato','/sac/#fale-com-a-gente']];
 const activeNav=(href:string)=>href===content.menu_url?routePath.startsWith('/cardapio'):routePath.startsWith(href);
 const site=Astro.site??new URL('http://localhost:4321');
 const isPreview=import.meta.env.PUBLIC_LIVE_SITE!=='true';
@@ -65,7 +67,8 @@ const restaurant = currentUnit ? {
 <header class:list={['site-header', {'header-home': routePath === '/'}]}>
  <div class="header-left"><nav class="desktop-nav" aria-label="História e gastronomia">{nav.slice(0,2).map(([name,href])=><a href={internal(href)} aria-current={activeNav(href)?'page':undefined}>{name}</a>)}</nav></div>
  <a class="brand header-brand" href={internal('/')}><img src={internal('/logos/logo-sem-simbolo-compacta.webp')} alt="Rodeio — desde 1958" width="420" height="117"/></a>
- <div class="header-right"><nav class="desktop-nav" aria-label="Restaurantes e eventos">{desktopRightNav.map(([name,href])=><a href={internal(href)} aria-current={activeNav(href)?'page':undefined}>{name}</a>)}</nav><button class="menu-toggle" data-open-menu aria-haspopup="dialog" aria-controls="navigation-dialog" aria-expanded="false"><span>Menu</span><span class="menu-lines" aria-hidden="true"></span></button><noscript><a class="no-script-menu" href="#rodape">Menu</a></noscript></div>
+ <div class="header-right"><a class="header-delivery-shortcut" href={internal('/rodeio-em-casa/')}>Delivery</a><nav class="desktop-nav" aria-label="Restaurantes, eventos e serviços">{desktopRightNav.map(([name,href])=><a class:list={{"header-delivery-link":name==='Delivery'}} href={internal(href)} aria-current={activeNav(href)?'page':undefined}>{name}</a>)}</nav><button class="menu-toggle" data-open-menu aria-haspopup="dialog" aria-controls="navigation-dialog" aria-expanded="false"><span>Menu</span><span class="menu-lines" aria-hidden="true"></span></button><noscript><a class="no-script-menu" href="#rodape">Menu</a></noscript></div>
+<a class="delivery-whatsapp-float" href="https://wa.me/5511975924615" target="_blank" rel="noopener noreferrer" aria-label="Pedir delivery pelo WhatsApp (abre em outra aba)"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.75 11.5a8.75 8.75 0 0 1-13.1 7.58L3 20.5l1.37-4.48A8.75 8.75 0 1 1 20.75 11.5Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.3 6.9c.2-.1.6-.1.8.3l1 2.1c.1.3.1.5-.1.7l-.7.8c.7 1.3 1.7 2.3 3 3l.8-.9c.2-.2.4-.3.7-.1l2.1 1c.3.2.4.4.3.8-.2 1-1 1.7-2.1 1.7-2.7-.2-7.1-4-7.5-7.1-.1-1 .5-2 1.7-2.3Z" fill="currentColor"/></svg><span><strong>Delivery</strong><small>Peça pelo WhatsApp</small></span></a>
 </header>
 <dialog id="navigation-dialog" class="navigation-dialog" aria-label="Menu do Rodeio">
  <div class="dialog-top">
@@ -75,15 +78,14 @@ const restaurant = currentUnit ? {
  <div class="menu-content">
  <nav class="menu-primary-nav" aria-label="Navegação principal">
   <a href={internal('/')} aria-current={routePath==='/'?'page':undefined}><span class="menu-label">Home</span><Arrow/></a>
-  {nav.slice(0,4).map(([name,href])=><a href={internal(href)} aria-current={activeNav(href)?'page':undefined}><span class="menu-label">{name}</span><Arrow/></a>)}
+  {[...nav.slice(0,3),['Delivery','/rodeio-em-casa/'],nav[3],['Contato','/sac/#fale-com-a-gente']].map(([name,href])=><a href={internal(href)} aria-current={activeNav(href)?'page':undefined}><span class="menu-label">{name}</span><Arrow/></a>)}
  </nav>
  <div class="menu-houses">
   <p class="menu-section-label" id="menu-houses-title">Nossas casas</p>
   <nav class="menu-houses-nav" aria-labelledby="menu-houses-title">{content.units.map(unit=><a href={internal(`/restaurantes/${unit.slug}/`)} aria-current={activeNav(`/restaurantes/${unit.slug}/`)?'page':undefined}><span>{unit.name}</span><Arrow/></a>)}</nav>
  </div>
- <nav class="menu-service-nav" aria-label="Atendimento e serviços">{serviceNav.map(([name,href])=><a href={internal(href)} aria-current={activeNav(href)?'page':undefined}>{name}<Arrow/></a>)}</nav>
  <div class="menu-contact">
-  <div class="menu-signoff"><p class="menu-signature">Um clássico<br/><em>que se renova.</em></p><a href="tel:+551134741333">(11) 3474-1333</a></div>
+  <div class="menu-signoff"><a href="tel:+551134741333">(11) 3474-1333</a></div>
   <a class="menu-instagram" href="https://www.instagram.com/rodeiorestaurante/" target="_blank" rel="noopener noreferrer" aria-label="Instagram do Rodeio (abre em outra aba)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg></a>
  </div>
  </div>
@@ -113,6 +115,7 @@ const restaurant = currentUnit ? {
 <MenuDialog/>
 <EventsDialog/>
 <ServiceDialogs/>
+<ContactDialog/>
 <noscript><style>.menu-toggle,[data-map],#load-reservation,.unit-options{display:none!important}body:has(.full-page-workspace) .site-footer{display:block}</style></noscript>
 <script src="../scripts/interactions.ts"></script>
 </body></html>
