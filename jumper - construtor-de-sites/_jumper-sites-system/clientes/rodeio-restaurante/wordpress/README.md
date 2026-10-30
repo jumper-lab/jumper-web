@@ -57,3 +57,9 @@ Na versão 1.9.2, o cabeçalho de computador tem três links de cada lado da mar
 O botão flutuante usa o ícone de entrega e somente o título “Delivery”, sem subtítulo, com destino `/rodeio-em-casa/` para acionar o lightbox. A mudança de papel de um link compartilhado deve ser aplicada com `Rodeio_Editor::$busy` durante a gravação e seguida de `remember`, preservando os destinos globais; editar esse endereço como troca de contato propagaria a mudança aos canais de WhatsApp.
 
 O lightbox Fale com a gente reúne Reservas, Eventos, Telefone, Instagram, SAC e Compliance em duas colunas no computador e uma no celular. Telefone e Instagram usam os dados compartilhados do painel. Reservas e Eventos abrem suas páginas; SAC e Compliance continuam nos formulários existentes, sem alterações de destinatários.
+
+## Cache do HTML publicado
+
+O W3 Total Cache deve manter `browsercache.html.lifetime=0` e `browsercache.html.cache.policy=cache_maxage`. A resposta HTML deve trazer `Cache-Control: max-age=0, public, must-revalidate, proxy-revalidate`, permitindo validar a versão antes de reutilizá-la. O cache de páginas no servidor e os prazos longos dos assets continuam ativos. O antigo prazo de 3.600 segundos mantinha cabeçalhos e lightboxes anteriores no navegador mesmo depois de publicar novos conteúdos.
+
+A alteração foi feita pela API de configuração do plugin, com regeneração das regras por `BrowserCache_Environment::fix_on_wpadmin_request`, backup privado da configuração e do `.htaccess` e conferência HTTP da home e do SAC. Abas que já guardaram a política anterior podem precisar de uma atualização forçada uma vez. O ambiente Hoster dev tem publicação separada e não recebe as alterações do WordPress automaticamente.
