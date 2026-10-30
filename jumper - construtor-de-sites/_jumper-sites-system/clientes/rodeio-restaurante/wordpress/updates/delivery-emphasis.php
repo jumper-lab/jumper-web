@@ -24,9 +24,9 @@ function rodeio_delivery_emphasis_header($html, $whatsapp)
     foreach(iterator_to_array($doc->xpath->query('.//nav[contains(concat(" ",@class," ")," menu-service-nav ")] | .//p[contains(concat(" ",@class," ")," menu-signature ")]',$doc->root)) as $node)$node->parentNode->removeChild($node);
     $header=$one('.//header');$header->setAttribute('data-delivery-emphasis','1');
     if(!$doc->xpath->query('.//a[contains(concat(" ",@class," ")," delivery-whatsapp-float ")]',$header)->length){
-        $a=$link($whatsapp,'','delivery-whatsapp-float');$a->setAttribute('target','_blank');$a->setAttribute('rel','noopener noreferrer');$a->setAttribute('aria-label','Pedir delivery pelo WhatsApp (abre em outra aba)');
-        $fragment=$doc->dom->createDocumentFragment();$fragment->appendXML('<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.75 11.5a8.75 8.75 0 0 1-13.1 7.58L3 20.5l1.37-4.48A8.75 8.75 0 1 1 20.75 11.5Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.3 6.9c.2-.1.6-.1.8.3l1 2.1c.1.3.1.5-.1.7l-.7.8c.7 1.3 1.7 2.3 3 3l.8-.9c.2-.2.4-.3.7-.1l2.1 1c.3.2.4.4.3.8-.2 1-1 1.7-2.1 1.7-2.7-.2-7.1-4-7.5-7.1-.1-1 .5-2 1.7-2.3Z" fill="currentColor"/></svg>');$a->appendChild($fragment);
-        $copy=$doc->dom->createElement('span');$copy->appendChild($doc->dom->createElement('strong','Delivery'));$copy->appendChild($doc->dom->createElement('small','Peça pelo WhatsApp'));$a->appendChild($copy);$header->appendChild($a);
+        $a=$link('/rodeio-em-casa/','','delivery-whatsapp-float');$a->setAttribute('aria-haspopup','dialog');$a->setAttribute('aria-controls','rodeio-em-casa-dialog');
+        $fragment=$doc->dom->createDocumentFragment();$fragment->appendXML('<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="5" cy="18" r="3" stroke="currentColor" stroke-width="1.5"/><circle cx="19" cy="18" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M5 18h8l-4-8H5m7 0h4l3 8M13 6h4l2 4M3 7h5v4H3V7Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');$a->appendChild($fragment);
+        $copy=$doc->dom->createElement('span');$copy->appendChild($doc->dom->createElement('strong','Peça na sua casa'));$a->appendChild($copy);$header->appendChild($a);
     }
     return $doc->html();
 }
