@@ -90,20 +90,7 @@ const preparedSlides = await Promise.all(slides.map(async (slide,index) => {
     ))}
   </div>
 
-  <div class="home-slideshow-controls" aria-label="Fotografias em destaque">
-    <button type="button" class="home-slideshow-pause" data-slide-pause aria-label="Pausar apresentação de fotos" aria-pressed="false"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path class="slideshow-pause-symbol" d="M4 2v10M10 2v10" fill="none" stroke="currentColor" stroke-width="2"/><path class="slideshow-play-symbol" d="M4 2l8 5-8 5z" fill="currentColor"/></svg></button>
-    <div class="home-slideshow-dots">
-      {preparedSlides.map((slide, index) => (
-        <button
-          type="button"
-          class:list={['home-slideshow-dot', { 'is-active': index === 0 }]}
-          data-slide-control={index}
-          aria-label={`Exibir fotografia ${index + 1}: ${slide.caption}`}
-          aria-current={index === 0 ? 'true' : undefined}
-        ><span></span></button>
-      ))}
-    </div>
-  </div>
+
 </div>
 
 <script>
