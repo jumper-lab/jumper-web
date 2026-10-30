@@ -1,0 +1,14 @@
+[Unit]
+Description=00Tasks IZI GitHub Actions WhatsApp monitor
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=ops
+Environment=HERMES_HOME=/home/ops/.hermes/profiles/beto
+ExecStart=/usr/bin/python3 /home/ops/workspace/beto-agents/agents/00Tasks-notion-calendar/scripts/publish-watch.py
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+TimeoutStartSec=5min

@@ -51,7 +51,7 @@ const faqItems = [
   },
   {
     question: "Quais são os preços dos planos?",
-    answer: "Izi One: R$ 157,00 por mês. Izi Prime: R$ 27,00 no primeiro mês e R$ 167,00 por mês a partir do segundo mês.",
+    answer: "Izi One: R$ 157,00 por mês. Izi Prime: R$ 27,00 no primeiro mês e R$ 187,00 por mês a partir do segundo mês.",
   },
 ];
 
