@@ -28,3 +28,29 @@
 .rde-device-dialog :is(button,select):focus-visible,.rde-device-launcher button:focus-visible{outline:2px solid #b4874e;outline-offset:3px}
 .rde-preview-field-selected{outline:3px solid #b78a4c!important;outline-offset:5px;box-shadow:0 0 0 8px #b78a4c14!important}
 @media(max-width:782px){.rde-device-launcher{padding:18px}.rde-device-dialog{width:calc(100vw - 16px);max-height:calc(100dvh - 16px)}.rde-device-head{padding:15px}.rde-device-head h2{font-size:22px}.rde-device-toolbar{padding:12px;gap:12px;flex-wrap:wrap}.rde-device-area{width:100%;justify-content:space-between}.rde-device-area select{max-width:70%}.rde-device-stage{height:calc(100dvh - 312px);min-height:220px}.rde-device-foot{padding:12px 16px}.rde-device-launch-modes{flex-wrap:wrap}}
+
+/* Live companion: non-modal, so fields and media library stay usable. */
+body.rde-device-preview-open{overflow:auto}
+.rde-device-dialog[open]{position:fixed;inset:44px 12px 12px auto;margin:0;width:46vw;max-height:none;height:calc(100dvh - 56px);display:flex;flex-direction:column;z-index:1000;box-sizing:border-box}
+.rde-device-dialog[open] .rde-device-stage{flex:1;min-height:150px;height:auto}
+.rde-device-dialog[open] .rde-device-head{padding:12px 16px}.rde-device-dialog[open] .rde-device-head h2{font-size:21px}
+.rde-device-dialog[open] .rde-device-toolbar{padding:10px 12px;flex-wrap:wrap;gap:8px}
+.rde-device-dialog[open] .rde-device-area{flex:1;justify-content:flex-end}.rde-device-dialog[open] .rde-device-area select{max-width:200px}
+body.rde-device-preview-open #wpcontent{margin-right:calc(46vw + 24px)}
+body.rde-device-preview-open .rde-form-layout{grid-template-columns:minmax(0,1fr)}
+body.rde-device-preview-open .rde-form-nav{position:static;flex-direction:row;flex-wrap:wrap;border-right:0;border-bottom:1px solid #ded2c1}
+body.rde-device-preview-open #poststuff #post-body{margin-right:0}body.rde-device-preview-open #post-body.columns-2 #postbox-container-1{float:none;margin-right:0;width:100%}
+@media(max-width:1000px){
+ .rde-device-dialog[open]{inset:auto 8px 8px;width:calc(100vw - 16px);height:43dvh;min-height:260px}
+ body.rde-device-preview-open #wpcontent{margin-right:0;padding-bottom:max(45dvh,280px)}
+ .rde-device-dialog[open] .rde-device-eyebrow,.rde-device-dialog[open] .rde-device-foot{display:none}
+ .rde-device-dialog[open] .rde-device-head{padding:8px 12px}.rde-device-dialog[open] .rde-device-head h2{font-size:17px}
+ .rde-device-dialog[open] .rde-device-area{width:auto}.rde-device-dialog[open] .rde-device-area>span{display:none}
+}
+body.rde-device-preview-open #poststuff{min-width:0}
+body.rde-device-preview-open #poststuff #post-body{display:flex;flex-direction:column;min-width:0}
+body.rde-device-preview-open #post-body-content{float:none;width:100%;min-width:0;order:0}
+body.rde-device-preview-open #post-body .postbox-container{float:none;width:100%;margin:0;min-width:0}
+body.rde-device-preview-open #postbox-container-2{order:1}
+body.rde-device-preview-open #postbox-container-1{order:2}
+body.rde-device-preview-open #poststuff #side-sortables{width:auto;min-height:0}

@@ -110,6 +110,7 @@
           const attachment = frame.state().get('selection').first().toJSON(); write(target, String(attachment.id));
           if (!isMobile) {image.src = attachment.sizes?.large?.url || attachment.url;host.dataset.rdePreviewDesktop=attachment.url;}
           else {mobileState.textContent = 'Imagem para celular selecionada.';host.dataset.rdePreviewMobile=attachment.url;}
+          root.dispatchEvent(new Event('rde:preview-change'));
         }); frame.open();
       };
       const replace = el('button', 'button', 'Trocar imagem'); replace.type = 'button'; replace.addEventListener('click', () => choose(pick)); host.append(replace);

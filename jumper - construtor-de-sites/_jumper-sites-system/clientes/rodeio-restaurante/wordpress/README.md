@@ -36,10 +36,12 @@ Cada página guarda o HTML aprovado do interior de `<main>` em um bloco HTML no 
 
 Os destinatários e registros de mensagens continuam administrados pelo Forminator. A conexão Novamira e suas credenciais não fazem parte do pacote. O acesso ao servidor usa a configuração MCP local, sem credenciais em argumentos, código versionado ou logs.
 
-## Prévias de edição — 1.8.1
+## Prévias de edição — 1.9.0
 
-Computador e Celular abrem uma prévia de leitura do HTML salvo. Clique em um texto, imagem ou item de menu para abrir e destacar seu campo. Dados compartilhados abrem a área de origem em outra aba, já no campo correspondente; o PDF usa seu painel próprio. Alterações ainda não salvas aparecem no site e na prévia depois de Atualizar.
+Computador e Celular abrem uma prévia lateral que acompanha os campos ainda não salvos, com atualização local após a digitação ou seleção de imagem. É possível continuar editando com a prévia aberta. Clique em um texto, imagem ou item de menu para destacar seu campo. Dados compartilhados abrem a área de origem em outra aba, já no campo correspondente; o PDF usa seu painel próprio. As alterações locais aparecem nos dois modos sem salvar nem reabrir. Apenas Atualizar publica no site. A prévia usa os rascunhos da aba atual; outras abas e ambientes não recebem edições não salvas. Em telas estreitas, o painel fica na parte inferior.
 
 `tests/editor-devices.php` verifica a cobertura dos alvos e a ausência de conteúdo executável nas prévias, sem salvar dados. `tests/editor-devices-routing.cjs` testa os scripts reais com fixtures privadas do ACF e `jsdom@26`: defina `RODEIO_AUDIT_RUNTIME` como a pasta da instalação do jsdom e passe a pasta das fixtures como argumento. Esse teste verifica roteamento de eventos; tamanho, visibilidade e clique físico exigem conferência adicional no navegador.
 
 Na auditoria de 29/10/2026 passaram 1.118 verificações de integração em 20 editores e 40 aberturas/seleções representativas no Chrome (16 páginas e quatro áreas, nos dois modos). Também foram conferidos o clique no título inicial, um item secundário do menu móvel e a abertura dos campos compartilhados na aba correta. Conteúdos publicados, configurações dos formulários e PDF foram preservados.
+
+Na versão 1.9.0 (30/10/2026), passaram 1.306 verificações nos 20 editores, incluindo amostras de edição não salva de texto, link e imagem em cada editor aplicável, os 12 campos compartilhados e renomeação, inclusão, remoção e reordenação de menus. No Chrome, um título foi editado e restaurado com a prévia aberta em computador e celular. Nenhum conteúdo foi publicado nesses testes. O debounce de 100 ms é acelerado apenas no teste de integração.
