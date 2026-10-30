@@ -23,7 +23,7 @@ const internal=(href:string)=>href.startsWith('/')?`${base}${href}`:href;
 const routePath=base&&path.startsWith(base)?path.slice(base.length)||'/':path;
 const nav=[['Nossa história','/historia/'],['Cardápio',content.menu_url],['Eventos','/eventos/'],['Reservas','/reservas/'],['Rodeio Jardins','/restaurantes/jardins/'],['Rodeio Iguatemi','/restaurantes/iguatemi/']];
 const serviceNav=[['Rodeio em casa','/rodeio-em-casa/'],['SAC','/sac/'],['Compliance','/compliance/']];
-const desktopRightNav=[['Eventos','/eventos/'],['Delivery','/rodeio-em-casa/'],['Contato','/sac/#fale-com-a-gente']];
+const desktopRightNav=[['Restaurantes','/restaurantes/'],['Delivery','/rodeio-em-casa/'],['Contato','/sac/#fale-com-a-gente']];
 const activeNav=(href:string)=>href===content.menu_url?routePath.startsWith('/cardapio'):routePath.startsWith(href);
 const site=Astro.site??new URL('http://localhost:4321');
 const isPreview=import.meta.env.PUBLIC_LIVE_SITE!=='true';
@@ -65,9 +65,9 @@ const restaurant = currentUnit ? {
 <link rel="preload" href={bodoniItalic} as="font" type="font/woff2" crossorigin/><link rel="preload" href={dmSans} as="font" type="font/woff2" crossorigin/><slot name="head"/></head><body>
 <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
 <header class:list={['site-header', {'header-home': routePath === '/'}]}>
- <div class="header-left"><nav class="desktop-nav" aria-label="História, cardápio e restaurantes">{[...nav.slice(0,2),['Restaurantes','/restaurantes/']].map(([name,href])=><a href={internal(href)} aria-current={activeNav(href)?'page':undefined}>{name}</a>)}</nav></div>
+ <div class="header-left"><nav class="desktop-nav" aria-label="História, cardápio e eventos">{[...nav.slice(0,2),['Eventos','/eventos/']].map(([name,href])=><a href={internal(href)} aria-current={activeNav(href)?'page':undefined}>{name}</a>)}</nav></div>
  <a class="brand header-brand" href={internal('/')}><img src={internal('/logos/logo-sem-simbolo-compacta.webp')} alt="Rodeio — desde 1958" width="420" height="117"/></a>
- <div class="header-right"><nav class="desktop-nav" aria-label="Eventos, delivery e contato">{desktopRightNav.map(([name,href])=><a class:list={{"header-delivery-link":name==='Delivery'}} href={internal(href)} aria-current={activeNav(href)?'page':undefined}>{name}</a>)}</nav><button class="menu-toggle" data-open-menu aria-haspopup="dialog" aria-controls="navigation-dialog" aria-expanded="false"><span>Menu</span><span class="menu-lines" aria-hidden="true"></span></button><noscript><a class="no-script-menu" href="#rodape">Menu</a></noscript></div>
+ <div class="header-right"><nav class="desktop-nav" aria-label="Restaurantes, delivery e contato">{desktopRightNav.map(([name,href])=><a class:list={{"header-delivery-link":name==='Delivery'}} href={internal(href)} aria-current={activeNav(href)?'page':undefined}>{name}</a>)}</nav><button class="menu-toggle" data-open-menu aria-haspopup="dialog" aria-controls="navigation-dialog" aria-expanded="false"><span>Menu</span><span class="menu-lines" aria-hidden="true"></span></button><noscript><a class="no-script-menu" href="#rodape">Menu</a></noscript></div>
 <a class="delivery-whatsapp-float" href={internal('/rodeio-em-casa/')} aria-haspopup="dialog" aria-controls="rodeio-em-casa-dialog"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="5" cy="18" r="3" stroke="currentColor" stroke-width="1.5"/><circle cx="19" cy="18" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M5 18h8l-4-8H5m7 0h4l3 8M13 6h4l2 4M3 7h5v4H3V7Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Delivery</strong></span></a>
 </header>
 <dialog id="navigation-dialog" class="navigation-dialog" aria-label="Menu do Rodeio">
