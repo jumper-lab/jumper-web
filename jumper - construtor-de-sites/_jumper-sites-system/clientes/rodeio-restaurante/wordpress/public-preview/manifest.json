@@ -87,89 +87,89 @@
       "sourceSha256": "a176b7050541bc7cb0ce33afc48d37f4d989cf0703867617237de10c4716ed29"
     },
     "_wordpress/services.css": {
-      "sha256": "ff66cb7a18288149eced3450c0fbbca8b64a4102c91a3a804cbb1eda2b0a630d",
+      "sha256": "edf65142cb08b418c89d94df86174fb78f53931c682fb1d1c0fe42f7e695cd90",
       "bytes": 12606,
-      "sourceSha256": "ff66cb7a18288149eced3450c0fbbca8b64a4102c91a3a804cbb1eda2b0a630d"
+      "sourceSha256": "edf65142cb08b418c89d94df86174fb78f53931c682fb1d1c0fe42f7e695cd90"
     },
     "cardapio/completo/index.html": {
       "sha256": "43d4b97bb1ba48468be9cf89ad9e0d631fa64d6398c3c0ead4847c66a9c50533",
       "bytes": 89923,
-      "sourceSha256": "2f53a201d4f9d79ea7ed1effc3b3260b3372b9513033bc37d9de8b3de666e392"
+      "sourceSha256": "8a64996a5fcc2cb37ac32030a718e7363af5d42473c45d79368095554f8e8452"
     },
     "cardapio/index.html": {
       "sha256": "3227f2461f6817d1896a30e2c47a5c738cf9f85d75478f39acb8d8cf88774faa",
       "bytes": 113248,
-      "sourceSha256": "6139b706bf9e567f55ccac083d836ca16be947d694b0070d46aa71bf5a99237b"
+      "sourceSha256": "491d070fb1d1f68b1f05548d8a44bae81225f026620a4541c68fc5deca171fc7"
     },
     "compliance/index.html": {
       "sha256": "70433cc92de2147c24e754cb378a93b5cd7c54f505b7838556f2adbcbd98ffa2",
       "bytes": 88736,
-      "sourceSha256": "6e771aa85a9900d0b8a1f9fff234bf544129883d1964635c77cbc17dde13fbe4"
+      "sourceSha256": "63a8a464e0e4d6781af7dc5fbcdac0a5a73fbfb09b57681fe332c77a5935d777"
     },
     "eventos/index.html": {
       "sha256": "a0af09fc74a5bfb36e8931272efb30ceaf6b9e7287e889aacb6c85083d40f99b",
       "bytes": 109215,
-      "sourceSha256": "a0bc3ff7b6f45c67ea177a167f1773248367c2110c8ae431db59cae1e706e52e"
+      "sourceSha256": "e09f6b31bedc7e9a777475f00445aae36d7a514ea0be246a274c9aaea6339152"
     },
     "eventos/orcamento/index.html": {
       "sha256": "8d73ae34d55fd2f269e75013dea82def2ae73e7ae33fb61152ac0af0127a9983",
       "bytes": 90867,
-      "sourceSha256": "010fc1a8d1796eda3a169a0c2ac6e7e4a3e8494b37ee60a8331bd11ccfb3f00c"
+      "sourceSha256": "6531960a84e4fc6d795ef320c0838fd636c36e7e94aa1154abbb9bb7631e7444"
     },
     "historia/index.html": {
       "sha256": "49ebb1aca462cf9d5f6f3ed7c0f630df6aa460609e40f7500fffae7e8723b093",
       "bytes": 113911,
-      "sourceSha256": "51e415d79e7e090c8f4a964076e62f8d08b644d4627cf97e199a6b3c942886e6"
+      "sourceSha256": "18cd4508c8b02bc7f751dd8f521a6c6e4a4db2f014a32838c69c6e55811ec35a"
     },
     "index.html": {
       "sha256": "75fdf3b0ff5d862dab5709ce25420ed8d153c03e736aeb86612d54702187c8d9",
       "bytes": 124253,
-      "sourceSha256": "1523019f1902904c36f29d2bbacd73c686c64a96028874c3ed750954627217a9"
+      "sourceSha256": "8827157fd0ac1320ee0dbe9520b667bae68674f9390890e8cd9b4a75bd76c80a"
     },
     "privacidade/index.html": {
       "sha256": "803a01c4d33aacf8409024c04e1388332f97b5fdcdd80760740dd383646e8370",
       "bytes": 107251,
-      "sourceSha256": "caa7207ce2f186bd98a2309252a9bd1737283559dc263def31af4e2c6f592de1"
+      "sourceSha256": "7795918e9bbe148f684a0ae2409daf901159a33051f87795d9bd98f667dcf45d"
     },
     "reservas/iguatemi/index.html": {
       "sha256": "6d5011f9808180b558f31145f62e02de8ba8e322badbff18022da3ef10624edb",
       "bytes": 89028,
-      "sourceSha256": "4c3ea5986b655fdb4c544cc603a2e932dcb5333f17ba27202eadc6789f4cde40"
+      "sourceSha256": "233d3ea0beac4b0b533695e36e06579e3f3ebfa8152a06a761a0421999f94a04"
     },
     "reservas/index.html": {
       "sha256": "aee221cea200de8346873caa8aefed6978d5e67a871d2f2b476bfbd40dc636d2",
       "bytes": 98440,
-      "sourceSha256": "7ae67a0a52e09448d8d5776cb8df984e3a0eaec2aafe01b0ad9e66f6454a3444"
+      "sourceSha256": "d4e3487156b69b918c5ab1292258f3df2393ea94bdabebbc194246844b04c0db"
     },
     "reservas/jardins/index.html": {
       "sha256": "89d63ebd0beabef65ef663df8ecbdb19917e11516c0abd0524b8cf83f7347ef2",
       "bytes": 88996,
-      "sourceSha256": "7962fb2289dde80e64e5412855571f56a0e1530076f90945e4c4abd7e126485d"
+      "sourceSha256": "7913fadb838fee5c06e4c0ca6db5fc2476962d8e3a126a59085001eb8cf7af69"
     },
     "restaurantes/iguatemi/index.html": {
       "sha256": "16d81e7a13b41dd83dfb3979998fdf12914baabb1954a8a6a693cad5f4c2a4d0",
       "bytes": 124522,
-      "sourceSha256": "523fc6a27591f172802686b865d15c20f35ffd4eccc0187fc016f3417218724f"
+      "sourceSha256": "11fd22f3ad8f03bc1f4ea3c71e70bc63726c3633d9426a182d15807b4745816c"
     },
     "restaurantes/index.html": {
       "sha256": "3956389872f70a2957b23481155910895732041428cf5669bb5c352ac37a6129",
       "bytes": 115228,
-      "sourceSha256": "8d09aed462c8465cc7f9177a6154a3d02913d941baafae5199ce4ba6a40f3950"
+      "sourceSha256": "a66044543d432802009b4bac54fa1a9bbe3ff459ace5f109f51fcef8eff273d4"
     },
     "restaurantes/jardins/index.html": {
       "sha256": "a8d1584494db66e12d036c9fc6bb46c294baabc5230335f41109ea07187d7e97",
       "bytes": 124320,
-      "sourceSha256": "a94c08fd3de9b06a53561ddc1c3d80ce71ba816402d357badecb80e869bffdc1"
+      "sourceSha256": "d423f92dff9d045b048faaa759e5962c536797c55a157200ca86f6804995e2fc"
     },
     "rodeio-em-casa/index.html": {
       "sha256": "02f31ca23b68f339fb930a094dd8ea741a58949897d254488d0b4bcd4660e67f",
       "bytes": 90621,
-      "sourceSha256": "e68c4e42491a508656aa6658b0ddfd2022ddc737da683e7e6701fb6db6afc5eb"
+      "sourceSha256": "eff03315f0de0e39832df765af3bc75ddf9cf6e55f112d829ed9d57035b7e887"
     },
     "sac/index.html": {
       "sha256": "36c81413d0a707feec50dde1d4859c9e6977eefc89f67bd2bdec41c469a2c25e",
       "bytes": 89365,
-      "sourceSha256": "eff19dadd439c0276d4a1fea1406712769bea1053482fa60f9b6816597656c2e"
+      "sourceSha256": "25a33c0f8480ca113fc20eed45dfc231975fde76b6a4444b2758de4d12c769ea"
     }
   },
   "publicAssets": {

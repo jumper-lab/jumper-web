@@ -55,8 +55,9 @@ for name,meta in source_assets.items():
     write('_wordpress/'+name,body,digest(raw))
 
 for name in ['services.css','contact-dialog.js']:
-    raw=read(ORIGIN+'/wp-content/themes/rodeio-2026/'+name)
-    if raw!=(ROOT/'wordpress'/name).read_bytes():raise ValueError('Local WordPress runtime differs '+name)
+    expected=(ROOT/'wordpress'/name).read_bytes()
+    raw=read(ORIGIN+'/wp-content/themes/rodeio-2026/'+name+'?preview_sha='+digest(expected))
+    if raw!=expected:raise ValueError('Local WordPress runtime differs '+name)
     write('_wordpress/'+name,rebase(raw.decode()).encode(),digest(raw))
 
 # Record only public images/documents referenced by the exported HTML and runtime.
