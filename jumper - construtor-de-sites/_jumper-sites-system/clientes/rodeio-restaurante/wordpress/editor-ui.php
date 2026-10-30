@@ -41,17 +41,18 @@ class Rodeio_Editor_UI
                 while ($semantic && $semantic !== $section && !in_array($tag, ['h1','h2','h3','p','a','button','figcaption'], true)) {$semantic=$semantic->parentNode;$tag=$semantic ? $semantic->nodeName : '';}
                 $type = ['h1'=>'Título principal', 'h2'=>'Título da seção', 'h3'=>'Subtítulo', 'p'=>'Parágrafo', 'a'=>'Texto do link', 'button'=>'Texto do botão', 'figcaption'=>'Legenda'];
                 $label = $kind === 'texts' ? ($type[$tag] ?? 'Texto') : ['images'=>'Imagem', 'links'=>'Destino do link', 'menus'=>'Menu'][$kind];
-                $shared = null;
+                $shared = null;$shared_field=null;
                 $value = $kind === 'texts' ? ($item['value'] ?? null) : ($kind === 'links' ? ($item['url'] ?? null) : null);
-                foreach ($facts as $fact_key=>$fact) if ($value !== null && ($value === $fact['value'] || ($kind==='texts' && $fact_key==='phone_display' && mb_strlen($value)<=100 && strpos($value,$fact['value'])!==false)) && isset(Rodeio_Editor_Data::schema()[$fact_key])) {
-                    $shared = Rodeio_Editor_Data::schema()[$fact_key][0]; $label = $shared; break;
+                foreach ($facts as $fact_key=>$fact) if ($value !== null && ($value === $fact['value'] || ($kind==='texts' && $fact_key==='phone_display' && mb_strlen($value)<=100 && strpos($value,$fact['value'])!==false)) && isset(Rodeio_Editor_Data::schema()[$fact_key==='phone'?'phone_display':$fact_key])) {
+                    $shared_field=$fact_key==='phone'?'phone_display':$fact_key;
+                    $shared = Rodeio_Editor_Data::schema()[$shared_field][0]; $label = $shared; break;
                 }
-                if($kind==='texts' && isset($facts['whatsapp']) && preg_match('/^[+()0-9\s.-]+$/u',(string)$value) && preg_replace('/\D/','',(string)$value)===preg_replace('/\D/','',$facts['whatsapp']['value'])) {$shared='WhatsApp do delivery';$label=$shared;}
-                if($kind==='links' && preg_match('~/cardapio-rodeio\.pdf(?:[?#]|$)~',(string)$value)){$shared='PDF do cardápio';$label=$shared;}
+                if($kind==='texts' && isset($facts['whatsapp']) && preg_match('/^[+()0-9\s.-]+$/u',(string)$value) && preg_replace('/\D/','',(string)$value)===preg_replace('/\D/','',$facts['whatsapp']['value'])) {$shared='WhatsApp do delivery';$label=$shared;$shared_field='whatsapp';}
+                if($kind==='links' && preg_match('~/cardapio-rodeio\.pdf(?:[?#]|$)~',(string)$value)){$shared='PDF do cardápio';$label=$shared;$shared_field='menu_pdf';}
                 $control = $node instanceof DOMElement ? $node : ($node ? $node->parentNode : null);
                 $technical = strpos($item['key'], '@data-menu-') !== false;
-                for ($p=$control;$p && $p!==$doc->root;$p=$p->parentNode) if ($p instanceof DOMElement && ($p->hasAttribute('data-close-digital-menu') || $p->hasAttribute('data-close-gallery') || $p->hasAttribute('data-close-service') || $p->hasAttribute('data-close-contact') || $p->getAttribute('id')==='gallery-dialog')) $technical=true;
-                $rows[$kind][] = ['section'=>$name, 'sectionKey'=>$section_path, 'label'=>$label, 'context'=>$item['context'] ?? '', 'key'=>$item['key'], 'shared'=>$shared, 'settingsUrl'=>$shared==='PDF do cardápio' ? Rodeio_Menu_Pdf::page_url() : $settings_url, 'settingsLabel'=>$shared==='PDF do cardápio' ? 'PDF do cardápio' : 'Dados e contatos', 'technical'=>$technical];
+                for ($p=$control;$p && $p!==$doc->root;$p=$p->parentNode) if ($p instanceof DOMElement && ($p->tagName==='noscript'||$p->hasAttribute('data-close-digital-menu') || $p->hasAttribute('data-close-gallery') || $p->hasAttribute('data-close-service') || $p->hasAttribute('data-close-contact') || $p->getAttribute('id')==='gallery-dialog')) $technical=true;
+                $rows[$kind][] = ['section'=>$name, 'sectionKey'=>$section_path, 'label'=>$label, 'context'=>$item['context'] ?? '', 'key'=>$item['key'], 'shared'=>$shared,'sharedField'=>$shared_field, 'settingsUrl'=>$shared==='PDF do cardápio' ? Rodeio_Menu_Pdf::page_url() : $settings_url, 'settingsLabel'=>$shared==='PDF do cardápio' ? 'PDF do cardápio' : 'Dados e contatos', 'technical'=>$technical];
             }
         }
         $areas = [];

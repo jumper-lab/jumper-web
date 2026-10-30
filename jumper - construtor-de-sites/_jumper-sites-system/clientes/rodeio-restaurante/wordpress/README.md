@@ -35,3 +35,11 @@ Cada página guarda o HTML aprovado do interior de `<main>` em um bloco HTML no 
 | Compliance | 393 | 827 |
 
 Os destinatários e registros de mensagens continuam administrados pelo Forminator. A conexão Novamira e suas credenciais não fazem parte do pacote. O acesso ao servidor usa a configuração MCP local, sem credenciais em argumentos, código versionado ou logs.
+
+## Prévias de edição — 1.8.1
+
+Computador e Celular abrem uma prévia de leitura do HTML salvo. Clique em um texto, imagem ou item de menu para abrir e destacar seu campo. Dados compartilhados abrem a área de origem em outra aba, já no campo correspondente; o PDF usa seu painel próprio. Alterações ainda não salvas aparecem no site e na prévia depois de Atualizar.
+
+`tests/editor-devices.php` verifica a cobertura dos alvos e a ausência de conteúdo executável nas prévias, sem salvar dados. `tests/editor-devices-routing.cjs` testa os scripts reais com fixtures privadas do ACF e `jsdom@26`: defina `RODEIO_AUDIT_RUNTIME` como a pasta da instalação do jsdom e passe a pasta das fixtures como argumento. Esse teste verifica roteamento de eventos; tamanho, visibilidade e clique físico exigem conferência adicional no navegador.
+
+Na auditoria de 29/10/2026 passaram 1.118 verificações de integração em 20 editores e 40 aberturas/seleções representativas no Chrome (16 páginas e quatro áreas, nos dois modos). Também foram conferidos o clique no título inicial, um item secundário do menu móvel e a abertura dos campos compartilhados na aba correta. Conteúdos publicados, configurações dos formulários e PDF foram preservados.
