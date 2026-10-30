@@ -101,3 +101,10 @@
 @media(max-width:599px){.site-header .delivery-whatsapp-float{right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));min-height:52px;padding:10px 16px 10px 12px;gap:8px}.site-header .delivery-whatsapp-float small{display:none}.site-header .delivery-whatsapp-float svg{width:26px;height:26px}.site-header .header-delivery-shortcut{padding:8px 10px;min-height:40px;font-size:12px}.navigation-dialog .menu-primary-nav{padding-block:12px}.navigation-dialog .menu-primary-nav a{min-height:46px}.navigation-dialog .menu-contact{padding-top:16px}}
 @media(prefers-reduced-motion:reduce){.site-header .delivery-whatsapp-float{transition:none}}
 @media print{.site-header .delivery-whatsapp-float{display:none}}
+
+/* Equal navigation wings keep the brand at the true centre of the header. */
+@media(min-width:1200px){
+ .site-header{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);column-gap:clamp(32px,3vw,56px)}
+ .site-header .header-left{justify-content:flex-end}.site-header .header-right{justify-content:flex-start}
+ .site-header .desktop-nav{width:100%;max-width:360px;justify-content:space-between;gap:clamp(20px,2vw,36px)}
+}
