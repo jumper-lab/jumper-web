@@ -48,8 +48,10 @@ Na versão 1.9.0 (30/10/2026), passaram 1.306 verificações nos 20 editores, in
 
 ## Destaque de Delivery — 1.9.1
 
-Delivery aparece ao lado de Eventos no computador, como atalho no cabeçalho compacto e no menu mobile. Contato abre a escolha entre SAC e Compliance. O botão fixo de WhatsApp usa o número de delivery de Dados e contatos; o HTML fica na área Logo e navegação e participa da mesma sincronização dos demais links compartilhados. Os atalhos existentes no rodapé foram preservados.
+Delivery aparece ao lado de Eventos no computador, como atalho no cabeçalho compacto e no menu mobile. Contato abre a escolha entre SAC e Compliance. O botão fixo “Peça na sua casa” abre o lightbox de Delivery; os canais dentro dele usam os destinos de Dados e contatos; o HTML fica na área Logo e navegação e participa da mesma sincronização dos demais links compartilhados. Os atalhos existentes no rodapé foram preservados.
 
 `updates/delivery-emphasis.php` prepara o fragmento do cabeçalho atual sem gravá-lo e evita duplicar a atualização. A aplicação exige backup privado do post 897 e dos arquivos envolvidos, verificação dos hashes e revisão do resultado antes de salvar. Não faz parte de uma inicialização automática do tema. Esta atualização foi aplicada somente ao WordPress oficial; o build Astro foi validado localmente, sem publicar o Worker dev ou live do Hoster.
 
 Na versão 1.9.2, o cabeçalho de computador tem três links de cada lado da marca: Nossa história, Cardápio e Restaurantes à esquerda; Eventos, Delivery e Contato à direita. Colunas de mesma largura mantêm a logo centralizada. A navegação mobile mantém a organização anterior.
+
+O botão flutuante usa o ícone de entrega e o texto “Peça na sua casa”, com destino `/rodeio-em-casa/` para acionar o lightbox. A mudança de papel de um link compartilhado deve ser aplicada com `Rodeio_Editor::$busy` durante a gravação e seguida de `remember`, preservando os destinos globais; editar esse endereço como troca de contato propagaria a mudança aos canais de WhatsApp.
