@@ -106,5 +106,5 @@
 @media(min-width:1200px){
  .site-header{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);column-gap:clamp(32px,3vw,56px)}
  .site-header .header-left{justify-content:flex-end}.site-header .header-right{justify-content:flex-start}
- .site-header .desktop-nav{width:100%;max-width:360px;justify-content:space-between;gap:clamp(20px,2vw,36px)}
+ .site-header .desktop-nav{width:auto;max-width:none;justify-content:flex-start;gap:26px}
 }
