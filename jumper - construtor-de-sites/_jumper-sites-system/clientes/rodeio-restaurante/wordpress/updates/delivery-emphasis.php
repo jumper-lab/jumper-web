@@ -25,7 +25,7 @@ function rodeio_delivery_emphasis_header($html, $whatsapp)
     if(!$doc->xpath->query('.//a[contains(concat(" ",@class," ")," delivery-whatsapp-float ")]',$header)->length){
         $a=$link('/rodeio-em-casa/','','delivery-whatsapp-float');$a->setAttribute('aria-haspopup','dialog');$a->setAttribute('aria-controls','rodeio-em-casa-dialog');
         $fragment=$doc->dom->createDocumentFragment();$fragment->appendXML('<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="5" cy="18" r="3" stroke="currentColor" stroke-width="1.5"/><circle cx="19" cy="18" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M5 18h8l-4-8H5m7 0h4l3 8M13 6h4l2 4M3 7h5v4H3V7Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');$a->appendChild($fragment);
-        $copy=$doc->dom->createElement('span');$copy->appendChild($doc->dom->createElement('strong','Peça na sua casa'));$a->appendChild($copy);$header->appendChild($a);
+        $copy=$doc->dom->createElement('span');$copy->appendChild($doc->dom->createElement('strong','Delivery'));$a->appendChild($copy);$header->appendChild($a);
     }
     return $doc->html();
 }
