@@ -113,3 +113,6 @@
 #contact-dialog .service-contact-card{min-height:92px;padding:16px;gap:12px}
 #contact-dialog .service-contact-copy strong{font-size:14px}#contact-dialog .service-contact-copy small{font-size:12px}
 @media(max-width:599px){#contact-dialog .service-contact-list{grid-template-columns:1fr;gap:8px}#contact-dialog .service-contact-card{min-height:74px;padding:12px 14px}#contact-dialog .service-contact-icon{flex-basis:34px;width:34px;height:34px}#contact-dialog .service-form-intro{margin-bottom:18px}}
+
+/* Keep the mobile home heading and reservation action near the banner centre. */
+@media(max-width:599px){.hero.hero-home .hero-copy{justify-content:safe center}}
