@@ -2,22 +2,22 @@
   "scope": "izi-official",
   "date": "2026-11-01",
   "workerSha256": "d1aca73437b9602952471c62991c99f287ceb015c2eecf5bfeb82193dd25d7c5",
-  "lpSourceSha256": "dacdbe1714da30b0f3e61764fee52961a3603e724db2b4bcec5ee436ddfbc6f5",
+  "lpSourceSha256": "5acba77ec5ffdc2caa11a4583ed791c9ad5a729c5d160febd77fdc855d14ac31",
   "pages": [
     {
       "asset": "_official/izigym/index.shell",
-      "candidateSha256": "ea16f4e8fbc799807312077509eddcf90d374ccffc42a5f30dc4dd710fe8e2f5",
+      "candidateSha256": "5c407f4edb059a1c34f2b0264a6596a827b95973be01391b545a8327db35cd7c",
       "publishedSha256": [
         "2cba0c192267c9d9f31127feb542bd5488bc3b5436a92a2c5be388ee84a97f68",
-        "ea16f4e8fbc799807312077509eddcf90d374ccffc42a5f30dc4dd710fe8e2f5"
+        "5c407f4edb059a1c34f2b0264a6596a827b95973be01391b545a8327db35cd7c"
       ]
     },
     {
       "asset": "cerrocora/index.html",
-      "candidateSha256": "e357f2475ab8c4b191ab3b9684595844cd1e3d6ae122e915259615b032e8a379",
+      "candidateSha256": "eb4b426b99cc903130e701de30f1e71c0a38b16da8bce33bdf58c41e02950c12",
       "publishedSha256": [
         "e2994c15f791ada348b7b30e4fbeb5165c4d1452ae78fb9be2f8ee627491448f",
-        "e357f2475ab8c4b191ab3b9684595844cd1e3d6ae122e915259615b032e8a379"
+        "eb4b426b99cc903130e701de30f1e71c0a38b16da8bce33bdf58c41e02950c12"
       ]
     }
   ],
@@ -51,11 +51,13 @@
     "_official/izigym/images/hero-izigym.jpg": "f9cb0c2c5c913df269753e40f6872a61893799f0b3578ccf3a2ada4544f0e091",
     "_official/izigym/images/unidade-alto-de-pinheiros.jpg": "c3dd6e343de79c8d64ba8cafcc389b43d81dd213829a45bdb4d32d7e663c67f0",
     "_official/izigym/images/unidade-izigym-segunda.jpg": "54c772da6072dd5d8e0e0cf6acfe580b9967e79e3b2d71153aa29f337cdd3468",
-    "_official/izigym/index.html": "ea16f4e8fbc799807312077509eddcf90d374ccffc42a5f30dc4dd710fe8e2f5",
-    "_official/izigym/index.shell": "ea16f4e8fbc799807312077509eddcf90d374ccffc42a5f30dc4dd710fe8e2f5",
+    "_official/izigym/index.html": "5c407f4edb059a1c34f2b0264a6596a827b95973be01391b545a8327db35cd7c",
+    "_official/izigym/index.shell": "5c407f4edb059a1c34f2b0264a6596a827b95973be01391b545a8327db35cd7c",
     "_official/izigym/placeholder.svg": "64badf7aabda0b9630b87020ffb6095cb858ccbcf66b355c2aa08b1063954d3b",
     "_official/izigym/robots.txt": "2b35a43b50ab49f4bdd35406dc54df857b4a45b8e8d542066522669a7fd42f34",
     "_official/izigym/sitemap.xml": "bf3f5c23c7b43e3cc4bdcb8100e309a269695e1110dad7e7ea45feff39d3a968",
-    "cerrocora/index.html": "e357f2475ab8c4b191ab3b9684595844cd1e3d6ae122e915259615b032e8a379"
+    "cerrocora/_astro/simple.ConiH_ZM.css": "73f75bdd343fcc765c15406215036e6d7bb7988a7f46e8a2a3fd3c36f3d6840f",
+    "cerrocora/_astro/simple.astro_astro_type_script_index_0_lang.DxTKZI4T.js": "111d31969f74d7488da0b3e08616975e9b2cf501c4894f5df8723b58a84b3991",
+    "cerrocora/index.html": "eb4b426b99cc903130e701de30f1e71c0a38b16da8bce33bdf58c41e02950c12"
   }
 }

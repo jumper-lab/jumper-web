@@ -25,8 +25,8 @@ export async function validateIziRelease(root=resolve(project,'hoster-dist')) {
     const b=await readFile(resolve(project,'../izigym-site-dev',relative),'utf8');
     if(a.replaceAll('\r\n','\n')!==b.replaceAll('\r\n','\n')) throw new Error('Ajuste dev não promovido: '+relative);
   }
-  const bytes=await readFile(resolve(project,'cloudflare/snapshots/izi-dev-preserved-2026-10-08/izigym-lp-vilaromana/index.html'));
-  if(hash(bytes)!==release.lpSourceSha256) throw new Error('Prévia da LP difere da revisão.');
+  const bytes=await readFile(resolve(project,'../izigym-lp/src/pages/simple.astro'));
+  if(hash(bytes)!==release.lpSourceSha256) throw new Error('Fonte oficial da LP difere da revisão.');
   console.log('Pacote IZI corresponde ao manifesto revisado.');
 }
 if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url)) await validateIziRelease();

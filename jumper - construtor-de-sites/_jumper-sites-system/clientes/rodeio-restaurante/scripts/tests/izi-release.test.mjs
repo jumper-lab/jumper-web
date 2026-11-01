@@ -37,3 +37,15 @@ test('prepared package allows only reviewed official differences', async()=>{
   const drift=async url=>url.includes('/rodeio/')?new Response('other client drift'):fake(url);
   assert.ok((await compareProtectedPages(candidate,drift,r)).some(x=>x.includes('Rodeio')));
 });
+
+test('official Cerro Cora keeps the Clixx form and its complete asset bundle', async()=>{
+  const root=new URL('../../hoster-dist/',import.meta.url);
+  const html=await readFile(new URL('cerrocora/index.html',root),'utf8');
+  assert.ok(html.includes('<form class="clx2-form" id="clx2Form">'));
+  assert.ok(!html.includes('id="lead-form"'));
+  assert.equal((html.match(/R\$ 187/g)||[]).length,4);
+  const assets=[...html.matchAll(/(?:src|href)="(\/cerrocora\/_astro\/[\w.-]+)"/g)].map(match=>match[1]);
+  assert.equal(assets.length,2);
+  assert.doesNotMatch(html, /(?:src|href)="\/izigym-lp-vilaromana\/_astro\//);
+  for(const asset of assets) assert.ok((await readFile(new URL(asset.slice(1),root))).length>0);
+});

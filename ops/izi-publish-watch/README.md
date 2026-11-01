@@ -2,13 +2,13 @@
 
 O GitHub Actions publica exclusivamente na janela de 01/11/2026, a partir de 00h01 America/Sao_Paulo. Esse é o início previsto do job; fila e build adiam a disponibilidade dos sites. O GitHub pode atrasar ou perder um disparo. O cron anual fica inofensivo após 2026 pela guarda explícita de data.
 
-Esta PR deve permanecer aberta para revisão. Somente depois do merge seu workflow substituirá o atual. Não acione `publish` como teste: a execução manual padrão é `validate`, sem segredo Cloudflare nem chamadas de escrita. A validação de PR também não faz deploy. O workflow antigo continua no main enquanto esta PR estiver aberta; estas correções ainda não o protegem.
+Revisão e publicação imediata autorizadas pelo usuário em 01/11/2026. O workflow revisado substitui o anterior após o merge. Não acione `publish` como teste: a execução manual padrão é `validate`, sem segredo Cloudflare nem chamadas de escrita. A validação de PR também não faz deploy. A publicação deve usar o main integrado e o manifesto revisado.
 
 ## Conteúdo e preservação
 
-Planos e FAQ oficiais são sincronizados com os fontes dev (Prime R$ 187). A LP oficial é preparada a partir do snapshot versionado que corresponde à prévia atual de Vila Romana, mantendo o kit de tracking oficial. Mudanças futuras na prévia exigem nova revisão; o job não captura conteúdo mutável da internet para publicá-lo.
+Planos e FAQ oficiais são sincronizados com os fontes dev (Prime R$ 187). A LP oficial é compilada do seu próprio fonte, com quatro trocas de R$ 167 para R$ 187. O formulário Clixx e o kit de tracking oficial são preservados. JS e CSS são copiados para `/cerrocora/_astro/` antes de restaurar as prévias independentes; o oficial não depende dos módulos antigos das prévias.
 
-O manifesto `izi-official-2026-11-01.json` fixa hashes de todos os assets dos dois oficiais, HTMLs anterior/novo, código do Worker e fonte da LP. As demais páginas continuam sob comparação estrita. O overlay WordPress versionado preserva o Rodeio; as cópias dev IZI são preservadas pelo manifesto existente. Um drift de cliente/Worker/rotas/bindings bloqueia a execução. Não há upload no Worker dev nem migração de banco.
+O manifesto `izi-official-2026-11-01.json` fixa hashes de todos os assets dos dois oficiais, HTMLs anterior/novo, código do Worker e fonte oficial da LP. As demais páginas continuam sob comparação estrita. O overlay WordPress versionado preserva o Rodeio; as cópias dev IZI são preservadas pelo manifesto existente. Um drift de cliente/Worker/rotas/bindings bloqueia a execução. Não há upload no Worker dev nem migração de banco.
 
 O comando autorizado permanece `npm run deploy:cloudflare -- --promote=izi-official-2026-11-01`. Compila e prepara o pacote, faz preflight, revalida versão imediatamente antes de publicar e audita depois. O relatório JSON registra fase, commit, tentativa de publicação, versão anterior e versão encontrada depois. Não há promessa de atomicidade com outro deploy concorrente.
 
