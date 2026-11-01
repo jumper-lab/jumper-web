@@ -1,0 +1,11 @@
+[Unit]
+Description=Check approved IZI publication every two minutes
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=2min
+AccuracySec=10s
+Unit=00tasks-publish-watch.service
+
+[Install]
+WantedBy=timers.target
