@@ -180,3 +180,7 @@ O usuário autorizou revisão, correção, merge da PR #186 e publicação imedi
 Usar `npm run deploy:cloudflare -- --promote=izi-official-2026-11-01`, em main limpo após o merge, ou a execução manual `mode=publish` do workflow `.github/workflows/izi-official-publish.yml`. O workflow usa o mesmo comando, segredo Cloudflare da CI, preflight anterior e auditoria posterior. PRs executam validação sem deploy; o despacho manual padrão também é `validate`.
 
 O manifesto fixa as duas páginas oficiais, seus 37 assets e o Worker. O pacote preserva as prévias IZI e o snapshot WordPress já publicado do Rodeio. A revisão comparou 1.274 arquivos dos nove sites dev, onze páginas protegidas e as fronteiras live, sem divergências fora dos oficiais. Repetir a auditoria após a publicação. Não publicar no Worker dev nem instalar o monitor WhatsApp como parte dessa troca de preço.
+
+### Bioimpedância fora dos benefícios da LP — 03/11/2026
+
+A alteração autorizada é somente no dev `izigym-lp-vilaromana`: remover bioimpedância mensal/trimestral dos cards e a menção de inclusão na FAQ, pois o serviço é cobrado à parte. A fonte dev independente e seus hashes foram atualizados. Valores, campanha, formulário e assets permanecem iguais. O oficial Cerro Corá aguarda aprovação explícita antes de qualquer alteração ou publicação live.
