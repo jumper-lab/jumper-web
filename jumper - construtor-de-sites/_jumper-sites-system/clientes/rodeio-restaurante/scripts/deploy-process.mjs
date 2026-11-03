@@ -19,7 +19,7 @@ const flags = mode === 'dev-worker' ? ['--worker-only'] : suppliedFlags;
 const key = `deploy/${worker}/${randomUUID()}`;
 const commitSha = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repositoryRoot, encoding: 'utf8' }).trim();
 const startedAt = new Date().toISOString();
-const scheduledIzi = mode === 'live' && suppliedFlags.length === 1 && ['--promote=izi-official-2026-11-01', '--promote=principal-bioimpedance-2026-11-03'].includes(suppliedFlags[0]);
+const scheduledIzi = mode === 'live' && suppliedFlags.length === 1 && ['--promote=izi-official-2026-11-01', '--promote=principal-bioimpedance-2026-11-03', '--promote=cerrocora-bioimpedancia-2026-11-03'].includes(suppliedFlags[0]);
 const report = {commitSha, startedAt, phase:'initializing', result:'running'};
 async function checkpoint(values) {
   Object.assign(report, values);

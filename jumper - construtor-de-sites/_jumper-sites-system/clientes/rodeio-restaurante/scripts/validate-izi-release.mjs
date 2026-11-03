@@ -20,7 +20,8 @@ export async function inventory(root, prefixes=['_official/izigym','cerrocora'])
 export async function validateIziRelease(root=resolve(project,'hoster-dist'), reviewedRelease=null) {
   const release=reviewedRelease ?? JSON.parse(await readFile(resolve(project,'data/releases/principal-bioimpedance-2026-11-03.json')));
   if(JSON.stringify(await inventory(root))!==JSON.stringify(release.assets)) throw new Error('Pacote oficial difere da revisão: assets adicionados, removidos ou alterados.');
-  for(const relative of ['src/data/plans.ts','src/components/gym/FAQSection.tsx']) {
+  // Cerro-only promotion preserves the institutional official bundle even when its dev differs.
+  if (release.scope !== 'cerrocora-benefits') for(const relative of ['src/data/plans.ts','src/components/gym/FAQSection.tsx']) {
     const a=await readFile(resolve(project,'../izigym-site',relative),'utf8');
     const b=await readFile(resolve(project,'../izigym-site-dev',relative),'utf8');
     if(a.replaceAll('\r\n','\n')!==b.replaceAll('\r\n','\n')) throw new Error('Ajuste dev não promovido: '+relative);
@@ -29,4 +30,9 @@ export async function validateIziRelease(root=resolve(project,'hoster-dist'), re
   if(hash(bytes)!==release.lpSourceSha256) throw new Error('Fonte oficial da LP difere da revisão.');
   console.log('Pacote IZI corresponde ao manifesto revisado.');
 }
-if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url)) await validateIziRelease();
+if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url)) {
+  const flags=process.argv.slice(2);
+  if (flags.length>1 || flags.some(flag=>flag!=='--release=cerrocora-bioimpedancia-2026-11-03')) throw new Error('Argumento de revisão inválido.');
+  const release=flags.length ? JSON.parse(await readFile(resolve(project,'data/releases/cerrocora-bioimpedancia-2026-11-03.json'))) : null;
+  await validateIziRelease(undefined, release);
+}

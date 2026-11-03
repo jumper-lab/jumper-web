@@ -88,6 +88,21 @@ test('institutional copies keep strict comparison for both previews and the offi
  assert.throws(() => validatePromotionScope({...release, pages:[...release.pages, {...release.pages[0], asset:'rodeio/index.html'}]}, 'izi-development-copies-2026-10-29'));
 });
 
+test('approved bioimpedance release permits only Cerro Cora, preserving previews and institutional', async () => {
+ const release = await readPromotion(['--promote=cerrocora-bioimpedancia-2026-11-03']);
+ assert.equal(release.scope, 'cerrocora-benefits');
+ assert.equal(release.release, 'cerrocora-bioimpedancia-2026-11-03');
+ assert.deepEqual(release.pages.map(page => page.asset), ['cerrocora/index.html']);
+ for (const asset of ['_official/izigym/index.shell', 'izigym/index.html', 'izigym-lp-vilaromana/index.html', 'rodeio/index.html']) {
+  assert.throws(() => validatePromotionScope({...release, pages:[...release.pages, {...release.pages[0], asset}]}, release.release), /escopo revisado/);
+ }
+ const before = fixture('reviewed baseline');
+ const own = {pages:[{asset,candidateSha256:digest(candidate(asset)),publishedSha256:[digest('reviewed baseline')]}]};
+ assert.deepEqual(await compareProtectedPages(candidate,before,own),[]);
+ const institutionalDrift = async url => url === 'https://www.izigym.com.br/' ? new Response('unapproved institutional change') : before(url);
+ assert.ok((await compareProtectedPages(candidate,institutionalDrift,own)).some(message=>message.includes('IZI Gym oficial')));
+});
+
 test('bioimpedance promotion permits only the institutional official page', async () => {
  const release = await readPromotion(['--promote=principal-bioimpedance-2026-11-03']);
  assert.deepEqual(release.pages.map(page => page.asset), ['_official/izigym/index.shell']);
