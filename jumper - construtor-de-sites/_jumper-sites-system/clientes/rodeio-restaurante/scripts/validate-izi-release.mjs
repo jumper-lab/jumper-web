@@ -18,7 +18,7 @@ export async function inventory(root, prefixes=['_official/izigym','cerrocora'])
   return Object.fromEntries(Object.entries(result).sort());
 }
 export async function validateIziRelease(root=resolve(project,'hoster-dist'), reviewedRelease=null) {
-  const release=reviewedRelease ?? JSON.parse(await readFile(resolve(project,'data/releases/izi-official-2026-11-01.json')));
+  const release=reviewedRelease ?? JSON.parse(await readFile(resolve(project,'data/releases/principal-bioimpedance-2026-11-03.json')));
   if(JSON.stringify(await inventory(root))!==JSON.stringify(release.assets)) throw new Error('Pacote oficial difere da revisão: assets adicionados, removidos ou alterados.');
   // Cerro-only promotion preserves the institutional official bundle even when its dev differs.
   if (release.scope !== 'cerrocora-benefits') for(const relative of ['src/data/plans.ts','src/components/gym/FAQSection.tsx']) {
