@@ -26,7 +26,7 @@ test('asset inventory detects added, changed and removed files',async()=>{
 });
 
 test('prepared package allows only reviewed official differences', async()=>{
-  const r=await readPromotion(['--promote=izi-official-2026-11-01']);
+  const r=await readPromotion(['--promote=principal-bioimpedance-2026-11-03']);
   const root=new URL('../../hoster-dist/',import.meta.url);
   const candidate=asset=>readFile(new URL(asset,root));
   const fake=async url=>{
