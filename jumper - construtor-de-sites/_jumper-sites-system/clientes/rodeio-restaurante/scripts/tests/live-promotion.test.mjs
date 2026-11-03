@@ -87,3 +87,11 @@ test('institutional copies keep strict comparison for both previews and the offi
  }
  assert.throws(() => validatePromotionScope({...release, pages:[...release.pages, {...release.pages[0], asset:'rodeio/index.html'}]}, 'izi-development-copies-2026-10-29'));
 });
+
+test('bioimpedance promotion permits only the institutional official page', async () => {
+ const release = await readPromotion(['--promote=principal-bioimpedance-2026-11-03']);
+ assert.deepEqual(release.pages.map(page => page.asset), ['_official/izigym/index.shell']);
+ for (const asset of ['cerrocora/index.html', 'izigym/index.html', 'rodeio/index.html']) {
+  assert.throws(() => validatePromotionScope({...release, pages:[...release.pages, {...release.pages[0], asset}]}, 'principal-bioimpedance-2026-11-03'), /escopo revisado/);
+ }
+});

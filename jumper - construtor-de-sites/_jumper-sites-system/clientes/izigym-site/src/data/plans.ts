@@ -39,7 +39,6 @@ export const plans: GymPlan[] = [
     features: [
       "Acesso a qualquer unidade",
       "Izi Cycle",
-      "Bioimpedância",
       "Izi Relax",
       "5 convidados por mês",
     ],
