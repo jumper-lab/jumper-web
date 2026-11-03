@@ -102,3 +102,11 @@ test('approved bioimpedance release permits only Cerro Cora, preserving previews
  const institutionalDrift = async url => url === 'https://www.izigym.com.br/' ? new Response('unapproved institutional change') : before(url);
  assert.ok((await compareProtectedPages(candidate,institutionalDrift,own)).some(message=>message.includes('IZI Gym oficial')));
 });
+
+test('bioimpedance promotion permits only the institutional official page', async () => {
+ const release = await readPromotion(['--promote=principal-bioimpedance-2026-11-03']);
+ assert.deepEqual(release.pages.map(page => page.asset), ['_official/izigym/index.shell']);
+ for (const asset of ['cerrocora/index.html', 'izigym/index.html', 'rodeio/index.html']) {
+  assert.throws(() => validatePromotionScope({...release, pages:[...release.pages, {...release.pages[0], asset}]}, 'principal-bioimpedance-2026-11-03'), /escopo revisado/);
+ }
+});
