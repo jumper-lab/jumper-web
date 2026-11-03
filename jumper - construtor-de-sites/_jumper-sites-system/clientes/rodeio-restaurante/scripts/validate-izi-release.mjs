@@ -17,8 +17,8 @@ export async function inventory(root, prefixes=['_official/izigym','cerrocora'])
   for(const prefix of prefixes) await visit(prefix);
   return Object.fromEntries(Object.entries(result).sort());
 }
-export async function validateIziRelease(root=resolve(project,'hoster-dist')) {
-  const release=JSON.parse(await readFile(resolve(project,'data/releases/izi-official-2026-11-01.json')));
+export async function validateIziRelease(root=resolve(project,'hoster-dist'), reviewedRelease=null) {
+  const release=reviewedRelease ?? JSON.parse(await readFile(resolve(project,'data/releases/izi-official-2026-11-01.json')));
   if(JSON.stringify(await inventory(root))!==JSON.stringify(release.assets)) throw new Error('Pacote oficial difere da revisão: assets adicionados, removidos ou alterados.');
   for(const relative of ['src/data/plans.ts','src/components/gym/FAQSection.tsx']) {
     const a=await readFile(resolve(project,'../izigym-site',relative),'utf8');

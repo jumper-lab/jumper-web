@@ -184,3 +184,6 @@ O manifesto fixa as duas páginas oficiais, seus 37 assets e o Worker. O pacote 
 ### Bioimpedância fora dos benefícios da LP — 03/11/2026
 
 A alteração autorizada é somente no dev `izigym-lp-vilaromana`: remover bioimpedância mensal/trimestral dos cards e a menção de inclusão na FAQ, pois o serviço é cobrado à parte. A fonte dev independente e seus hashes foram atualizados. Valores, campanha, formulário e assets permanecem iguais. O oficial Cerro Corá aguarda aprovação explícita antes de qualquer alteração ou publicação live.
+### Retirada da bioimpedância do institucional — 03/11/2026
+
+A prévia `/izigym/` foi aprovada pelo usuário, que autorizou a publicação oficial. A promoção `principal-bioimpedance-2026-11-03` altera somente `_official/izigym/index.shell` e seus assets compilados: retira a bioimpedância dos benefícios do Izi Prime e da FAQ. O manifesto fixa os hashes anterior/candidato, o Worker, o inventário dos oficiais e o fonte da LP; Cerro Corá e todas as prévias continuam na comparação estrita. O wrapper usa o mesmo preparo de assets da publicação IZI de novembro, conservando as fontes dev independentes e o formulário oficial Clixx. Publicar após PR/merge em main limpo com `npm run deploy:cloudflare -- --promote=principal-bioimpedance-2026-11-03`.

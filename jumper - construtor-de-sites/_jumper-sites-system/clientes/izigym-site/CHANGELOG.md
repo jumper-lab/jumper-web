@@ -7,6 +7,9 @@ e este projeto adere a [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ## [Unreleased]
 
+### Fixed
+- Retirada da bioimpedância dos benefícios incluídos no Izi Prime e da FAQ.
+
 ### Added
 - Estrutura inicial do projeto a partir do template Fluxo Digital Tech.
 

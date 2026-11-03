@@ -15,7 +15,7 @@ const faqItems = [
   },
   {
     question: "Qual a diferença entre os planos Izi One e Izi Prime?",
-    answer: "O Izi One é focado na unidade de matrícula (musculação e estúdio) e não possui permanência mínima. O Izi Prime permite treinar em qualquer unidade, inclui Izi Cycle, Bioimpedância, cadeira de massagem, 5 convidados por mês e possui fidelidade de 12 meses.",
+    answer: "O Izi One é focado na unidade de matrícula (musculação e estúdio) e não possui permanência mínima. O Izi Prime permite treinar em qualquer unidade, inclui Izi Cycle, cadeira de massagem, 5 convidados por mês e possui fidelidade de 12 meses.",
   },
   {
     question: "Como funciona o processo de cancelamento?",
