@@ -170,12 +170,13 @@ async function liveWorkerFeatures() {
 }
 
 export function validatePromotionScope(promotion, release) {
+  const cerroBenefits = release === 'cerrocora-bioimpedancia-2026-11-03';
   const scheduledIzi = release === 'izi-official-2026-11-01';
   const developmentCopies = release === 'izi-development-copies-2026-10-29';
   const combinedIzi = release === 'izi-clixx-horarios-2026-10-26';
   const principal = ['principal-tracking-2026-10-13', 'principal-horarios-2026-10-26'].includes(release);
-  const expectedScope = scheduledIzi ? 'izi-official' : developmentCopies ? 'izi-development-copies' : combinedIzi ? 'izi-clixx-horarios' : principal ? 'principal' : release === 'izi-franquias-admin-2026-10-08' ? 'izi-franquias-admin' : 'cerrocora';
-  const expectedAssets = scheduledIzi ? ['_official/izigym/index.shell','cerrocora/index.html'] : developmentCopies ? ['izigym-lp-vilaromana/index.html'] : combinedIzi
+  const expectedScope = cerroBenefits ? 'cerrocora-benefits' : scheduledIzi ? 'izi-official' : developmentCopies ? 'izi-development-copies' : combinedIzi ? 'izi-clixx-horarios' : principal ? 'principal' : release === 'izi-franquias-admin-2026-10-08' ? 'izi-franquias-admin' : 'cerrocora';
+  const expectedAssets = cerroBenefits ? ['cerrocora/index.html'] : scheduledIzi ? ['_official/izigym/index.shell','cerrocora/index.html'] : developmentCopies ? ['izigym-lp-vilaromana/index.html'] : combinedIzi
     ? ['_official/izigym/index.shell', 'cerrocora/index.html', 'izigym-lp-vilaromana/index.html']
     : principal
     ? ['_official/izigym/index.shell', 'izigym-lp-vilaromana/index.html']
@@ -195,6 +196,7 @@ export async function readPromotion(args = []) {
   const flags = args.filter(arg => arg !== '--audit');
   if (!flags.length) return null;
   const releases = {
+    '--promote=cerrocora-bioimpedancia-2026-11-03': 'cerrocora-bioimpedancia-2026-11-03',
     '--promote=izi-official-2026-11-01': 'izi-official-2026-11-01',
     '--promote=izi-development-copies-2026-10-29': 'izi-development-copies-2026-10-29',
     '--promote=cerrocora-direct-checkout-2026-10-08': 'cerrocora-direct-checkout-2026-10-08',
@@ -210,6 +212,7 @@ export async function readPromotion(args = []) {
     throw new Error('Promoção live desconhecida. Use uma revisão de escopo versionada.');
   }
   const promotion = JSON.parse(await readFile(join(projectRoot, `data/releases/${releases[flags[0]]}.json`), 'utf8'));
+  if (promotion.scope === 'cerrocora-benefits' && promotion.release !== releases[flags[0]]) throw new Error('Identificador da promoção Cerro Corá difere da revisão.');
   if (promotion.scope === 'izi-franquias-admin') {
     const expected = { binding: 'IZI_FRANCHISE_DB', database_id: '4553bc65-eeb8-4404-aa57-e44692bcc9a3' };
     if (JSON.stringify(promotion.franchiseDatabase) !== JSON.stringify(expected)) throw new Error('Banco de franquias difere do vínculo revisado.');
@@ -223,6 +226,7 @@ export async function readPromotion(args = []) {
 export async function runPreflight({ enforceGit = true, candidateAssets = assetsRoot, promotion = null } = {}) {
   if (enforceGit) assertGitHubFirst();
   if (promotion?.scope === 'izi-official') await validateIziRelease(candidateAssets);
+  if (promotion?.scope === 'cerrocora-benefits') await validateIziRelease(candidateAssets, promotion.release);
   const before = await activeVersion();
   const candidateWorker = await readFile(join(projectRoot, 'cloudflare/worker.mjs'), 'utf8');
   if (promotion && digest(Buffer.from(candidateWorker)) !== promotion.workerSha256) {
