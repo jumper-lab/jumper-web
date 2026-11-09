@@ -57,7 +57,7 @@ export const Footer = () => {
                   <br />
                   Alto de Pinheiros - São Paulo - SP
                   <br />
-                  02675-031
+                  05061-450
                 </span>
               </a>
             </div>
