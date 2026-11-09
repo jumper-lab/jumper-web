@@ -8,6 +8,7 @@ e este projeto adere a [Semantic Versioning](https://semver.org/lang/pt-BR/).
 ## [Unreleased]
 
 ### Fixed
+- CEP do endereco do site oficial atualizado para 05061-450.
 - Retirada da bioimpedância dos benefícios incluídos no Izi Prime e da FAQ.
 
 ### Added
