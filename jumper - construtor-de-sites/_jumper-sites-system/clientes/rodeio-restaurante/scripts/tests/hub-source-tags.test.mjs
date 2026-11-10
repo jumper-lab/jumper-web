@@ -13,10 +13,10 @@ test('origem exclusivamente Kinsta mantém uma única pill laranja', () => {
   assert.equal(renderSourceTags('Kinsta'), '<span class="card-tags"><span class="tag tag-kinsta">Kinsta</span></span>');
 });
 
-test('origens sem Kinsta preservam a pill de origem e incluem Webmaster uma vez', () => {
+test('jumper-web e jumper-hoster aparecem em pills diferentes com Webmaster uma vez', () => {
   assert.equal(
     renderSourceTags('jumper-web · jumper-hoster'),
-    '<span class="card-tags"><span class="tag">jumper-web · jumper-hoster</span><span class="tag tag-webmaster">Webmaster</span></span>',
+    '<span class="card-tags"><span class="tag">jumper-web</span><span class="tag">jumper-hoster</span><span class="tag tag-webmaster">Webmaster</span></span>',
   );
 });
 
@@ -30,7 +30,7 @@ test('jumper-web sozinho também inclui Webmaster', () => {
 test('jumper-hoster-dev é exibido como jumper-hoster, sem alterar a origem Webmaster', () => {
   assert.equal(
     renderSourceTags('jumper-web · jumper-hoster-dev'),
-    '<span class="card-tags"><span class="tag">jumper-web · jumper-hoster</span><span class="tag tag-webmaster">Webmaster</span></span>',
+    '<span class="card-tags"><span class="tag">jumper-web</span><span class="tag">jumper-hoster</span><span class="tag tag-webmaster">Webmaster</span></span>',
   );
 });
 
