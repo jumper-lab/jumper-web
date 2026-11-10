@@ -27,6 +27,13 @@ test('jumper-web sozinho também inclui Webmaster', () => {
   );
 });
 
+test('jumper-hoster-dev é exibido como jumper-hoster, sem alterar a origem Webmaster', () => {
+  assert.equal(
+    renderSourceTags('jumper-web · jumper-hoster-dev'),
+    '<span class="card-tags"><span class="tag">jumper-web · jumper-hoster</span><span class="tag tag-webmaster">Webmaster</span></span>',
+  );
+});
+
 test('outras origens não recebem Webmaster', () => {
   assert.equal(
     renderSourceTags('jumper-site'),
