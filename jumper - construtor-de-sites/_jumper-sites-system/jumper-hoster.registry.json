@@ -366,6 +366,21 @@
         "label": "Site oficial",
         "url": "https://paodequeijohaddocklobo.com.br/"
       }
+    },
+    {
+      "id": "muriel-alves",
+      "name": "Muriel Alves",
+      "category": "Portfólio audiovisual",
+      "sourceLabel": "Hostinger",
+      "description": "Portfólio de documentarista e roteirista de não-ficção, em WordPress.",
+      "accent": "#59644f",
+      "developmentSites": [],
+      "hubLinks": [
+        {
+          "label": "Site em produção",
+          "url": "https://murielalves.com/"
+        }
+      ]
     }
   ]
 }
