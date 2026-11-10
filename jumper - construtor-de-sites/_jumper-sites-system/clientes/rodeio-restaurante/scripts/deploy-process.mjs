@@ -20,6 +20,7 @@ const key = `deploy/${worker}/${randomUUID()}`;
 const commitSha = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repositoryRoot, encoding: 'utf8' }).trim();
 const startedAt = new Date().toISOString();
 const scheduledIzi = mode === 'live' && suppliedFlags.length === 1 && ['--promote=izi-official-2026-11-01', '--promote=principal-bioimpedance-2026-11-03', '--promote=cerrocora-bioimpedancia-2026-11-03', '--promote=principal-cep-2026-11-09'].includes(suppliedFlags[0]);
+const hubOnly = mode === 'live' && suppliedFlags.length === 0;
 const report = {commitSha, startedAt, phase:'initializing', result:'running'};
 async function checkpoint(values) {
   Object.assign(report, values);
@@ -66,7 +67,7 @@ async function main() {
     await stage('Gerando o pacote', 'npm', mode === 'live'
       ? ['run', 'build:cloudflare']
       : ['run', 'build:cloudflare:dev', '--', ...flags]);
-    if (scheduledIzi) await stage('Preservando prévias e preparando somente os oficiais IZI', 'node', ['scripts/stage-izi-release.mjs']);
+    if (scheduledIzi || hubOnly) await stage('Preservando as páginas de clientes fora do escopo', 'node', ['scripts/stage-izi-release.mjs']);
     await stage('Conferindo páginas e versões antes da publicação', 'node', [
       mode === 'live' ? 'scripts/preflight-hoster.mjs' : 'scripts/preflight-hoster-dev.mjs', ...flags,
     ]);
