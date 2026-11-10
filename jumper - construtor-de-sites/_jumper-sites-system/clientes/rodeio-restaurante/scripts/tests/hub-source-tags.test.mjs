@@ -41,6 +41,14 @@ test('outras origens não recebem Webmaster', () => {
   );
 });
 
+test('Hostinger tem cor própria e pode aparecer com Webmaster', () => {
+  assert.equal(
+    renderSourceTags('Hostinger · Webmaster'),
+    '<span class="card-tags"><span class="tag tag-hostinger">Hostinger</span><span class="tag tag-webmaster">Webmaster</span></span>',
+  );
+  assert.equal(renderSourceTags('Hostinger'), '<span class="card-tags"><span class="tag tag-hostinger">Hostinger</span></span>');
+});
+
 test('texto de origem é escapado no HTML gerado', () => {
   assert.match(renderSourceTags('jumper-hoster · Kinsta<script>'), /Kinsta&lt;script&gt;/);
 });
