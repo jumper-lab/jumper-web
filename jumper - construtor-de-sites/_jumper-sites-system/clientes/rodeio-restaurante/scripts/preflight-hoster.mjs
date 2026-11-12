@@ -170,6 +170,7 @@ async function liveWorkerFeatures() {
 }
 
 export function validatePromotionScope(promotion, release) {
+  const primeOffer = release === 'principal-prime-099-2026-11-12';
   const principalCep = release === 'principal-cep-2026-11-09';
   const cerroBenefits = release === 'cerrocora-bioimpedancia-2026-11-03';
   const bioimpedance = release === 'principal-bioimpedance-2026-11-03';
@@ -177,8 +178,8 @@ export function validatePromotionScope(promotion, release) {
   const developmentCopies = release === 'izi-development-copies-2026-10-29';
   const combinedIzi = release === 'izi-clixx-horarios-2026-10-26';
   const principal = ['principal-tracking-2026-10-13', 'principal-horarios-2026-10-26'].includes(release);
-  const expectedScope = principalCep ? 'principal-cep' : cerroBenefits ? 'cerrocora-benefits' : bioimpedance ? 'principal-bioimpedance' : scheduledIzi ? 'izi-official' : developmentCopies ? 'izi-development-copies' : combinedIzi ? 'izi-clixx-horarios' : principal ? 'principal' : release === 'izi-franquias-admin-2026-10-08' ? 'izi-franquias-admin' : 'cerrocora';
-  const expectedAssets = cerroBenefits ? ['cerrocora/index.html'] : (bioimpedance || principalCep) ? ['_official/izigym/index.shell'] : scheduledIzi ? ['_official/izigym/index.shell','cerrocora/index.html'] : developmentCopies ? ['izigym-lp-vilaromana/index.html'] : combinedIzi
+  const expectedScope = primeOffer ? 'principal-prime-offer' : principalCep ? 'principal-cep' : cerroBenefits ? 'cerrocora-benefits' : bioimpedance ? 'principal-bioimpedance' : scheduledIzi ? 'izi-official' : developmentCopies ? 'izi-development-copies' : combinedIzi ? 'izi-clixx-horarios' : principal ? 'principal' : release === 'izi-franquias-admin-2026-10-08' ? 'izi-franquias-admin' : 'cerrocora';
+  const expectedAssets = cerroBenefits ? ['cerrocora/index.html'] : (bioimpedance || principalCep || primeOffer) ? ['_official/izigym/index.shell'] : scheduledIzi ? ['_official/izigym/index.shell','cerrocora/index.html'] : developmentCopies ? ['izigym-lp-vilaromana/index.html'] : combinedIzi
     ? ['_official/izigym/index.shell', 'cerrocora/index.html', 'izigym-lp-vilaromana/index.html']
     : principal
     ? ['_official/izigym/index.shell', 'izigym-lp-vilaromana/index.html']
@@ -198,6 +199,7 @@ export async function readPromotion(args = []) {
   const flags = args.filter(arg => arg !== '--audit');
   if (!flags.length) return null;
   const releases = {
+    '--promote=principal-prime-099-2026-11-12': 'principal-prime-099-2026-11-12',
     '--promote=principal-cep-2026-11-09': 'principal-cep-2026-11-09',
     '--promote=cerrocora-bioimpedancia-2026-11-03': 'cerrocora-bioimpedancia-2026-11-03',
     '--promote=principal-bioimpedance-2026-11-03': 'principal-bioimpedance-2026-11-03',
@@ -229,7 +231,7 @@ export async function readPromotion(args = []) {
 
 export async function runPreflight({ enforceGit = true, candidateAssets = assetsRoot, promotion = null } = {}) {
   if (enforceGit) assertGitHubFirst();
-  if (['izi-official', 'principal-bioimpedance', 'cerrocora-benefits', 'principal-cep'].includes(promotion?.scope)) await validateIziRelease(candidateAssets, promotion);
+  if (['izi-official', 'principal-bioimpedance', 'cerrocora-benefits', 'principal-cep', 'principal-prime-offer'].includes(promotion?.scope)) await validateIziRelease(candidateAssets, promotion);
   const before = await activeVersion();
   const candidateWorker = await readFile(join(projectRoot, 'cloudflare/worker.mjs'), 'utf8');
   if (promotion && digest(Buffer.from(candidateWorker)) !== promotion.workerSha256) {

@@ -45,7 +45,7 @@ jobs:
       - run: node --test scripts/tests/live-promotion.test.mjs scripts/tests/izi-release.test.mjs scripts/tests/rodeio-wordpress-preview.test.mjs
       - run: python3 -B -m unittest discover -s ops/izi-publish-watch -p 'test_*.py' -v
         working-directory: .
-      - run: node scripts/validate-izi-release.mjs --release=principal-cep-2026-11-09
+      - run: node scripts/validate-izi-release.mjs --release=principal-prime-099-2026-11-12
   publish:
     if: github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.mode == 'publish'))
     runs-on: ubuntu-latest

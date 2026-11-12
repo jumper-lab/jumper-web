@@ -1,0 +1,55 @@
+{
+  "scope": "principal-prime-offer",
+  "date": "2026-11-12",
+  "workerSha256": "d1aca73437b9602952471c62991c99f287ceb015c2eecf5bfeb82193dd25d7c5",
+  "lpSourceSha256": "dcca3f21d7ff459933368ae84d1a998695af2e401a45f83302c4a0e01dbdbadb",
+  "pages": [
+    {
+      "asset": "_official/izigym/index.shell",
+      "candidateSha256": "77992df8944ab8f0df1fd200449c5940a401400235055a0d4e6dae6de31139b2",
+      "publishedSha256": [
+        "1e5bc1cb320f74e1448436668155071f72e0072a47278266b5a896b13be8ee54",
+        "77992df8944ab8f0df1fd200449c5940a401400235055a0d4e6dae6de31139b2"
+      ]
+    }
+  ],
+  "assets": {
+    "_official/izigym/assets/FAQSection-CXltPmKi.js": "190bbc9b1b2379ed052182f6ccdda59397abc6ed02bd6ad8e0115ab78bee1a8a",
+    "_official/izigym/assets/Footer-VRzeEgm7.js": "0f6ede977e402a874e4301db748fdf3c1b64c405b78af098bd11a57e2e3aff0d",
+    "_official/izigym/assets/GallerySection-Dor-0W37.js": "88d556eef2f24c81ddf992e9e07b4339652ac0500bcaf1d5b2d084ab61e05ecf",
+    "_official/izigym/assets/LocationsSection-DiR5t-OD.js": "009fce6ef658eeaf4e7e812379da910a1b962cf7b9d2bdf851e0eb7e2140fa0e",
+    "_official/izigym/assets/StickyMobileCTA-U0gXgwU0.js": "f2687e6f6501780fd9023eae72224d45fc5187f80a53cd65f5e6ae98d5af0439",
+    "_official/izigym/assets/WhatsAppButton-ByaQ4uDq.js": "dbf160677a5ca6fa5356112fd6c88d65bb3834ebb03e049a5667c7abf29291ee",
+    "_official/izigym/assets/arrow-up-right-BfxGXBa4.js": "96ac634dc4d8e71c1a4ae5951e05bc7235becd1a9920c5e9532f35399af79c09",
+    "_official/izigym/assets/index-CFyiNROe.css": "0a0c0ea89c182f803a2ddbf468ef1cc6008c25ff84312578accdc2c2d4b8775b",
+    "_official/izigym/assets/index-DLnXkh4d.js": "96409554a0b0dc8b460457d90aded738f115a3cc5235b54fba4d26810c8a4f28",
+    "_official/izigym/assets/map-pin-X7NF5HQy.js": "6da6f80dba46d38c8d42277ff6b71b0afa399c8fa76552262055127890baf441",
+    "_official/izigym/assets/outfit-latin-300-normal-AWLfuCom.woff": "bcc41559359a3cb79105f71979b7e70f9bba8ee39460db790057d3f3c0cc77eb",
+    "_official/izigym/assets/outfit-latin-300-normal-CRYTwY6m.woff2": "ef88e74f63ce75b54cce4d5a4087c6f180750b9ebae6ab6e5bf2a9939bf6958f",
+    "_official/izigym/assets/outfit-latin-500-normal-ClnHRwRh.woff": "40083be5d9c1935c562bfe9be662d5a2798910deee9e8049509142549a995626",
+    "_official/izigym/assets/outfit-latin-500-normal-DKnIMDSk.woff2": "fc9bff941def6d924a71632bd8a93190528872eae6414844f3c367ff948d92fd",
+    "_official/izigym/assets/outfit-latin-700-normal-Cu9v6i1X.woff2": "5d5e3734089a74707292ce8a3e186def34cd63e33879f9ac3689a8d8da9d0706",
+    "_official/izigym/assets/outfit-latin-700-normal-D4itBLBr.woff": "fb730df77799be655b0028de3ff2952a6ebcd3ca85d32cbf188c6f3ea66f82b7",
+    "_official/izigym/brand/izi-gym-footer.webp": "1993ece271e0f41637311bc97f02b03607c096ba1d3c46469f6d4ccabb36a63d",
+    "_official/izigym/brand/izi-logo-tight.png": "400e858e90757da5ac434ec6ab3094e7ee895dfe638453a3c60edea2d79e6dff",
+    "_official/izigym/brand/izi-logo.png": "6fce6a8417eca37fb1dcb3d4b73e668727fde61cc4ad65dc81ee5d63ccb5942f",
+    "_official/izigym/favicon.png": "c6ac49e2b3cd95b31685a762d0417f67a5afb111fe38accab0f2b4bec094aae5",
+    "_official/izigym/images/gallery-01.jpg": "9d560ed04a80f3c8b68fa9d732849244296f9e395818de63543eac4e36d63489",
+    "_official/izigym/images/gallery-02.jpg": "675005a11a447d63659346e33529170f217ea733aa1121d0360242172e47d378",
+    "_official/izigym/images/gallery-03.jpg": "2f29ea8020074428e64aaa5f9d664629d631f15260f5da6b6287a9bb6d1b1df0",
+    "_official/izigym/images/gallery-04.jpg": "69c97ae16272341514b2111a9ee7ab70a0678ed600024d364227d17a4c5c5e8b",
+    "_official/izigym/images/gallery-05.jpg": "f938fc7db0c4bb38a5d121d02785cb086e456618da9adda0c785ed22c435010c",
+    "_official/izigym/images/gallery-06.jpg": "4e8d4d46dea10aca6067e0ca525a54f447d1fd287274fe21ab71c4ec14b49eec",
+    "_official/izigym/images/hero-izigym.jpg": "f9cb0c2c5c913df269753e40f6872a61893799f0b3578ccf3a2ada4544f0e091",
+    "_official/izigym/images/unidade-alto-de-pinheiros.jpg": "c3dd6e343de79c8d64ba8cafcc389b43d81dd213829a45bdb4d32d7e663c67f0",
+    "_official/izigym/images/unidade-izigym-segunda.jpg": "54c772da6072dd5d8e0e0cf6acfe580b9967e79e3b2d71153aa29f337cdd3468",
+    "_official/izigym/index.html": "77992df8944ab8f0df1fd200449c5940a401400235055a0d4e6dae6de31139b2",
+    "_official/izigym/index.shell": "77992df8944ab8f0df1fd200449c5940a401400235055a0d4e6dae6de31139b2",
+    "_official/izigym/placeholder.svg": "64badf7aabda0b9630b87020ffb6095cb858ccbcf66b355c2aa08b1063954d3b",
+    "_official/izigym/robots.txt": "2b35a43b50ab49f4bdd35406dc54df857b4a45b8e8d542066522669a7fd42f34",
+    "_official/izigym/sitemap.xml": "bf3f5c23c7b43e3cc4bdcb8100e309a269695e1110dad7e7ea45feff39d3a968",
+    "cerrocora/_astro/simple.ConiH_ZM.css": "73f75bdd343fcc765c15406215036e6d7bb7988a7f46e8a2a3fd3c36f3d6840f",
+    "cerrocora/_astro/simple.astro_astro_type_script_index_0_lang.DxTKZI4T.js": "111d31969f74d7488da0b3e08616975e9b2cf501c4894f5df8723b58a84b3991",
+    "cerrocora/index.html": "013c13b9ec90bfeca623a25458f2da27b9084ca7e4ac6267028dbd384881eea3"
+  }
+}
