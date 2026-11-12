@@ -32,7 +32,7 @@ export async function validateIziRelease(root=resolve(project,'hoster-dist'), re
 }
 if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url)) {
   const flags=process.argv.slice(2);
-  const releases = ['cerrocora-bioimpedancia-2026-11-03', 'principal-cep-2026-11-09'];
+  const releases = ['cerrocora-bioimpedancia-2026-11-03', 'principal-cep-2026-11-09', 'principal-prime-099-2026-11-12'];
   const name = flags[0]?.slice('--release='.length);
   if (flags.length > 1 || (flags.length && (!flags[0].startsWith('--release=') || !releases.includes(name)))) throw new Error('Argumento de revisão inválido.');
   const release = name ? JSON.parse(await readFile(resolve(project, `data/releases/${name}.json`))) : null;

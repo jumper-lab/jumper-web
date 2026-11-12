@@ -110,3 +110,13 @@ test('bioimpedance promotion permits only the institutional official page', asyn
   assert.throws(() => validatePromotionScope({...release, pages:[...release.pages, {...release.pages[0], asset}]}, 'principal-bioimpedance-2026-11-03'), /escopo revisado/);
  }
 });
+
+test('Prime offer promotion permits only the institutional official page', async () => {
+  const releaseName = 'principal-prime-099-2026-11-12';
+  const release = await readPromotion([`--promote=${releaseName}`]);
+  assert.deepEqual(release.pages.map(page => page.asset), ['_official/izigym/index.shell']);
+  for (const asset of ['cerrocora/index.html', 'izigym/index.html', 'rodeio/index.html']) {
+    const pages = [...release.pages, {...release.pages[0], asset}];
+    assert.throws(() => validatePromotionScope({...release, pages}, releaseName), /escopo revisado/);
+  }
+});
