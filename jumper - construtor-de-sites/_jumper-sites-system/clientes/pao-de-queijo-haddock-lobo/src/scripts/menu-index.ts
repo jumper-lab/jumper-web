@@ -8,11 +8,18 @@ export function initMenuIndex(categories: HTMLElement[], links: HTMLAnchorElemen
   let intent: {id: string; started: number; previousY: number; still: number} | null = null;
   const initialHash = location.hash.slice(1);
   let mayAlignInitialHash = Boolean(initialHash);
-  const select = (id: string) => links.forEach(link => {
+  let reportedId = '';
+  const select = (id: string) => {
+    if (id !== reportedId && document.documentElement.classList.contains('menu-embedded')) {
+      reportedId = id;
+      window.parent.postMessage({type: 'pdq-menu-current', id}, location.origin);
+    }
+    links.forEach(link => {
     if (link.dataset.categoryLink === id) {
       if (!link.hasAttribute('aria-current')) link.setAttribute('aria-current', 'location');
     } else if (link.hasAttribute('aria-current')) link.removeAttribute('aria-current');
-  });
+    });
+  };
   const sync = () => {
     const visible = categories.filter(category => !category.hidden);
     if (!visible.length) { select(''); return; }

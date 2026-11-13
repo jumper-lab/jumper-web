@@ -174,3 +174,15 @@ a:hover .nav-print-impression .nav-glyph,a:focus-visible .nav-print-impression .
 @media(max-height:540px){.immersive-copy{bottom:84px}.immersive-title{font-size:50px;margin-bottom:4px}.immersive-kicker{margin-bottom:18px;font-size:8px}.immersive-support{display:none}.immersive-actions .button{min-height:44px;padding-block:10px}.hero-bottom{bottom:8px;display:flex;gap:16px;padding-top:6px}.scene-caption{font-size:8px}.scene-caption-line{display:none}.hero-edition{display:none}.hero-controls{gap:0}.hero-detail{margin-left:4px!important}.hero-controls .scene-selectors{gap:0}}
 @media(max-height:540px) and (max-width:700px){.scene-caption{display:none}.hero-controls{width:100%}.hero-detail{margin-left:auto!important}}
 @media(prefers-reduced-motion:reduce){.hero-gallery{transform:none}.hero-slide .photo{transform:none}.type-reveal .type-line{transform:none!important}.photo-reveal-strip{display:none}.nav-print-original .nav-glyph{transform:none!important}.nav-print-impression{display:none}.photo-button:hover .photo{transform:none}.site-header{view-transition-name:none}}
+
+/* Keep the remaining hero content balanced after removing the lower controls. */
+.home-hero .immersive-copy{bottom:clamp(48px,10vh,112px)}
+.photo.photo-enter{opacity:0;transform:translateY(14px) scale(1.025);transition:opacity 800ms ease,transform 1000ms cubic-bezier(.22,1,.36,1)}
+.photo.photo-enter.is-revealed{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.photo.photo-enter{opacity:1;transform:none;transition:none}}
+.home-hero .immersive-support{margin-bottom:24px}
+@media(max-width:700px){.home-hero .immersive-copy{bottom:clamp(32px,8svh,64px)}.home-hero .immersive-actions{gap:16px 24px}}
+@media(max-height:540px){.home-hero .immersive-copy{bottom:24px}.home-hero .immersive-support{margin-bottom:12px}}
+/* Section and navigation labels do not use decorative numbering. */
+.print-link::before,.mobile-navigation nav a::before{content:none}
+.mobile-navigation nav a::after{left:0}

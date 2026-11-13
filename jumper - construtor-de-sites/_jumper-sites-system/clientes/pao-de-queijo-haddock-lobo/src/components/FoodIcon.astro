@@ -12,6 +12,6 @@ const drawings:Record<string,{main:string;detail:string}>={
   smoothies:{main:'M12 15h25l-5 26H17l-5-26Zm0 0c0-6 25-6 25 0M26 12l5-8h9',detail:'M15 23c5-4 10 4 19 0M22 30a3 3 0 1 0 0 6 3 3 0 0 0 0-6m0 0c1-2 3-3 5-2'},
   'em-casa':{main:'M12 16h24l4 25H8l4-25Zm6 0v-5a6 6 0 0 1 12 0v5',detail:'M18 30c-1-4 2-7 6-6 5-1 8 4 5 8-4 4-10 2-11-2ZM12 37h24'}
 };
-const icon=drawings[name]||drawings.carta;
+const icon=drawings[name==='cafe-da-manha'?'cafes':name]||drawings.carta;
 ---
 <svg class="food-icon" data-food-icon={name} width={size} height={size} viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path class="food-icon-main" d={icon.main}/><path class="food-icon-detail" d={icon.detail}/></svg>

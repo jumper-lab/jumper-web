@@ -48,9 +48,10 @@ export function initContactForm(){
       const response=await fetch(destination.href,{method:'POST',body:payload,headers:{Accept:'application/json'},credentials:'omit',redirect:'error',referrerPolicy:'no-referrer',signal:controller.signal});
       if(!response.ok||!response.headers.get('content-type')?.includes('application/json'))throw new Error();
       const result=await response.json();
-      if(result?.errors?.length||(result?.ok!==true&&result?.success!==true))throw new Error();
+      const accepted=result?.ok===true||result?.success===true||(destination.hostname==='formsubmit.co'&&result?.success==='true');
+      if(result?.errors?.length||!accepted)throw new Error();
       if(fields.every((field,index)=>field.value===submitted[index]))form.reset();
-      announce('Mensagem recebida pelo serviço de contato. Obrigado por falar com a gente.','success');
+      announce(destination.hostname==='formsubmit.co'?'Mensagem recebida pelo serviço. A entrega depende da confirmação do endereço de contato.':'Mensagem recebida pelo serviço de contato. Obrigado por falar com a gente.','success');
     }catch{
       announce('Não foi possível confirmar o envio. Seu texto foi mantido; você pode tentar novamente.','error');
     }finally{

@@ -15,9 +15,9 @@ if(candidate){
   <div class="container">
     <div class="contact-grid">
       <div class="contact-intro">
-        <div class="contact-kicker"><Icon name="mail" size={38}/><p class="eyebrow">06 / Contato</p></div>
+        <div class="contact-kicker"><Icon name="mail" size={38}/><p class="eyebrow">Contato</p></div>
         <h2 id="contact-heading">VAMOS<br/>CONVERSAR.</h2>
-        <p class="contact-lead">Uma dúvida, uma sugestão ou um recado?<br/>A gente se encontra por aqui também.</p>
+        <p class="contact-lead">Para dúvidas, sugestões ou informações, entre em contato conosco. Será um prazer atender você.</p>
         <div class="contact-general">
           <p class="contact-label" id="contact-form-title">Seu recado para a Haddock Lobo</p>
           <form class="contact-form" data-contact-form data-endpoint={endpoint} action={endpoint||undefined} method="post" aria-labelledby="contact-form-title" aria-describedby="contact-form-note">
@@ -40,12 +40,11 @@ if(candidate){
               </div>
             </div>
             <div class="contact-honeypot" aria-hidden="true"><label for="contact-company">Deixe este campo vazio</label><input id="contact-company" name="_gotcha" type="text" tabindex="-1" autocomplete="off"/></div>
-            <div class="contact-form-action"><button class="button" type="submit" data-contact-submit disabled={!endpoint}>Enviar mensagem</button><span class="contact-form-note" id="contact-form-note">{endpoint?'Sua mensagem será encaminhada à equipe.':'O envio será ativado após a configuração do serviço de contato.'}</span></div>
+            <div class="contact-form-action"><button class="button" type="submit" data-contact-submit disabled={!endpoint}>Enviar mensagem</button><span class="contact-form-note" id="contact-form-note">{endpoint?(endpoint.startsWith('https://formsubmit.co/')?'A entrega depende da confirmação do endereço de contato.':'Sua mensagem será encaminhada à equipe.'):'O envio será ativado após a configuração do serviço de contato.'}</span></div>
             <p class="contact-form-status" data-contact-status role="status" aria-live="polite" aria-atomic="true" hidden></p>
           </form>
           <p class="contact-address">{content.conversion.public_email}</p>
         </div>
-        <span class="handwritten contact-signature">pode chamar.</span>
       </div>
       <div class="contact-local">
         <div class="contact-local-heading"><Icon name="phone" size={28}/><div><h3>Fale com a sua loja.</h3><p>Horários e disponibilidade, diretamente com a unidade.</p></div></div>

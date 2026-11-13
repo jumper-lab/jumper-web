@@ -23,7 +23,7 @@ export function initMotion() {
   window.addEventListener('pageshow',followScroll);
   preference.addEventListener('change',()=>{
     followScroll();
-    if(preference.matches) document.querySelectorAll('.type-reveal,.photo-unfold').forEach(element=>element.classList.add('is-revealed'));
+    if(preference.matches) document.querySelectorAll('.type-reveal,.photo-enter').forEach(element=>element.classList.add('is-revealed'));
   });
   followScroll();
   document.querySelectorAll<HTMLElement>('.button').forEach(button=>{
@@ -81,20 +81,11 @@ export function initMotion() {
     if(visible) heading.classList.add('is-revealed');
     heading.classList.add('type-reveal');reveal.observe(heading);
   });
-  document.querySelectorAll<HTMLElement>('.photo-button,.story-intro-photo,.events-photo,.take-home-photo,.location-image,.page-hero-photo').forEach(container=>{
-    const visible=container.getBoundingClientRect().top<innerHeight;
-    // In a captioned figure, wrap the photograph alone, not the caption.
-    let frame=container;
-    if(container.classList.contains('story-intro-photo')) {
-      const image=container.querySelector('img')!;
-      frame=document.createElement('div');image.before(frame);frame.append(image);
-    }
-    frame.classList.add('photo-unfold');
-    if(visible) {frame.classList.add('is-revealed');return;}
-    for(let i=0;i<5;i++) {
-      const strip=document.createElement('span');strip.className='photo-reveal-strip';strip.style.setProperty('--fold',String(i));strip.setAttribute('aria-hidden','true');frame.append(strip);
-    }
-    reveal.observe(frame);
-    frame.addEventListener('focusin',()=>frame.classList.add('is-revealed'));
+  document.querySelectorAll<HTMLImageElement>('main img.photo:not(.hero-gallery .photo)').forEach(image=>{
+    const rect=image.getBoundingClientRect();
+    if(rect.width && rect.height && rect.top<innerHeight && rect.bottom>0) return;
+    image.classList.add('photo-enter');
+    reveal.observe(image);
+    image.closest('button,a')?.addEventListener('focusin',()=>image.classList.add('is-revealed'));
   });
 }

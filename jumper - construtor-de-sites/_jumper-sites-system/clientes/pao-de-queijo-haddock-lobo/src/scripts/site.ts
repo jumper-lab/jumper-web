@@ -2,6 +2,9 @@ import { initSlideshow } from './slideshow';
 import { initMotion } from './motion';
 import { initStoreSwipe } from './store-swipe';
 import { initMenuIndex } from './menu-index';
+import { initScrollHint } from './scroll-hint';
+
+initScrollHint(document.querySelector('.menu-index'));
 
 const menu = document.querySelector<HTMLDialogElement>('#mobile-navigation');
 const toggle = document.querySelector<HTMLButtonElement>('#menu-toggle');
@@ -151,6 +154,9 @@ function filterMenu() {
     const link = categoryLinks.find(link => link.dataset.categoryLink === category.dataset.menuCategory);
     if (link) link.hidden = category.hidden;
   });
+  if (document.documentElement.classList.contains('menu-embedded')) {
+    window.parent.postMessage({type:'pdq-menu-visible', ids:categories.filter(category=>!category.hidden).map(category=>category.id)}, location.origin);
+  }
   const status = document.querySelector('[data-menu-status]');
   const empty = document.querySelector<HTMLElement>('[data-menu-empty]');
   if (status) status.textContent = query ? `${count} ${count===1?'item encontrado':'itens encontrados'}` : `${count} itens no cardápio`;

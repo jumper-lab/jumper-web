@@ -121,29 +121,29 @@
             "description": ""
           },
           {
-            "name": "Pão de queijo vegano",
-            "price": 48,
-            "description": "Mini · 12 unidades"
-          },
-          {
             "name": "Pão de queijo na chapa",
             "price": 20,
             "description": ""
           },
           {
             "name": "Pão francês na chapa",
-            "price": 20,
+            "price": 15,
             "description": ""
           },
           {
             "name": "Manteiga ou requeijão",
             "price": 5,
-            "description": "Adicional"
+            "description": "Adicional para pão francês"
           },
           {
             "name": "Geleia",
             "price": 8,
-            "description": "Adicional"
+            "description": "Adicional para pão francês"
+          },
+          {
+            "name": "Pão de queijo com Parma",
+            "price": 28,
+            "description": ""
           },
           {
             "name": "Broa",
@@ -152,11 +152,6 @@
           },
           {
             "name": "Coxinha",
-            "price": 20,
-            "description": ""
-          },
-          {
-            "name": "Risoles",
             "price": 20,
             "description": ""
           },
@@ -182,18 +177,8 @@
           },
           {
             "name": "Empada de camarão",
-            "price": 26,
+            "price": 28,
             "description": ""
-          },
-          {
-            "name": "Empadas mini",
-            "price": 32,
-            "description": "9 unidades"
-          },
-          {
-            "name": "Coxinhas mini",
-            "price": 32,
-            "description": "9 unidades"
           },
           {
             "name": "Placa de pão de queijo com mix de sementes",
@@ -204,7 +189,7 @@
       },
       {
         "id": "tortas",
-        "name": "Tortas & saladas",
+        "name": "Pratos leves",
         "image": "torta",
         "intro": "Para esticar a pausa e sentar à mesa.",
         "items": [
@@ -219,19 +204,24 @@
             "description": ""
           },
           {
-            "name": "Fatia de torta de espinafre com queijo de cabra",
-            "price": 45,
-            "description": ""
-          },
-          {
             "name": "Fatia de torta de cebola",
             "price": 45,
             "description": ""
           },
           {
-            "name": "Fatia de torta + salada mix",
-            "price": 58,
+            "name": "Fatia de torta de queijo",
+            "price": 45,
             "description": ""
+          },
+          {
+            "name": "Nhoque artesanal de espinafre e ricota ao molho de tomate",
+            "price": 42,
+            "description": ""
+          },
+          {
+            "name": "Rigatoni à bolonhesa",
+            "price": 48,
+            "description": "Massa rigatoni ao molho de tomate à bolonhesa, com mussarela e parmesão"
           },
           {
             "name": "Salada mix",
@@ -242,6 +232,21 @@
             "name": "Salada mediterrânea com burrata",
             "price": 50,
             "description": "Mix de folhas, burrata, tomate cereja fresco, figo, noz pecan, molho mostarda e mel"
+          },
+          {
+            "name": "Salada de salmão",
+            "price": 56,
+            "description": "Mix de alfaces, avocado, manga e salmão, com molho cítrico de laranja e mel"
+          },
+          {
+            "name": "Caesar com frango",
+            "price": 50,
+            "description": "Mini alface romana, frango desfiado, croutons e molho Caesar"
+          },
+          {
+            "name": "Salada Capri",
+            "price": 78,
+            "description": "Rúcula fresca, tomates orgânicos, burrata cremosa e presunto cru especial, finalizados com azeite extravirgem"
           }
         ]
       },
@@ -297,9 +302,42 @@
             "description": "Pão integral sem maionese, salmão defumado com cream cheese e dill"
           },
           {
+            "name": "Focaccia Parma",
+            "price": 58,
+            "description": "Pão focaccia com presunto cru selecionado, burrata e rúcula fresca"
+          }
+        ]
+      },
+      {
+        "id": "cafe-da-manha",
+        "name": "Café da manhã",
+        "intro": "Para começar o dia com uma boa pausa.",
+        "image": "cafe",
+        "items": [
+          {
             "name": "Misto quente",
-            "price": 29.5,
+            "price": 30,
+            "description": "Pão brioche, presunto royale, queijo prato e requeijão"
+          },
+          {
+            "name": "Queijo quente",
+            "price": 28,
+            "description": "Pão brioche, queijo prato e requeijão"
+          },
+          {
+            "name": "Ovos mexidos com toast de pão integral",
+            "price": 28,
             "description": ""
+          },
+          {
+            "name": "Salada de fruta",
+            "price": 34,
+            "description": ""
+          },
+          {
+            "name": "Bowl de iogurte e granola",
+            "price": 34,
+            "description": "Iogurte grego zero lactose, granola crocante, morangos frescos, blueberries e um toque de mel"
           }
         ]
       },
@@ -376,12 +414,12 @@
           },
           {
             "name": "Fatia de bolo de chocolate",
-            "price": 28,
+            "price": 32,
             "description": "Com calda de chocolate"
           },
           {
-            "name": "Salada de fruta",
-            "price": 34,
+            "name": "Banoffee",
+            "price": 24,
             "description": ""
           }
         ]
@@ -395,6 +433,11 @@
           {
             "name": "Café espresso Illy",
             "price": 13,
+            "description": ""
+          },
+          {
+            "name": "Café coado",
+            "price": 18,
             "description": ""
           },
           {
@@ -438,7 +481,7 @@
             "description": ""
           },
           {
-            "name": "Leite vegano",
+            "name": "Leite vegetal",
             "price": 4,
             "description": "Adicional"
           }
@@ -463,12 +506,12 @@
           {
             "name": "Água São Lourenço",
             "price": 10,
-            "description": "330 ml"
+            "description": "300 ml"
           },
           {
             "name": "Água com gás São Lourenço",
             "price": 10,
-            "description": "330 ml"
+            "description": "300 ml"
           },
           {
             "name": "Acqua Panna",
@@ -483,7 +526,7 @@
           {
             "name": "Água de coco Vero",
             "price": 21,
-            "description": ""
+            "description": "330 ml"
           },
           {
             "name": "Suco Villa Piva",
@@ -506,7 +549,7 @@
           {
             "name": "Cacau Energy vegano",
             "price": 24,
-            "description": "Leite vegetal com cacau e ultracoffee"
+            "description": "Leite vegetal com cacau, banana e ultracoffee"
           },
           {
             "name": "Baunilha Power vegano",
@@ -592,7 +635,7 @@
     "source_url": "https://paodequeijohaddocklobo.com.br/menu/",
     "captured_at": "2026-10-01",
     "note": "Preços e disponibilidade podem variar entre unidades. Consulte a loja.",
-    "item_count": 83,
+    "item_count": 88,
     "editorial_actions": [
       "Duplicações literais de atum e peru com rúcula unificadas, preservando descrição e preço.",
       "Grafias padronizadas para cappuccino e wafer.",
