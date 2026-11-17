@@ -2,24 +2,18 @@ import React from "react";
 import { MobileNav } from "./MobileNav";
 
 export const Header = () => {
-  const [isPastHero, setIsPastHero] = React.useState(false);
+  const [isScrolled, setIsScrolled] = React.useState(false);
 
   React.useEffect(() => {
     const updateHeaderState = () => {
-      const hero = document.getElementById("unidade");
-      const headerHeight = window.innerWidth >= 768 ? 80 : 64;
-      setIsPastHero(
-        !hero || hero.getBoundingClientRect().bottom <= headerHeight,
-      );
+      setIsScrolled(window.scrollY > 8);
     };
 
     updateHeaderState();
     window.addEventListener("scroll", updateHeaderState, { passive: true });
-    window.addEventListener("resize", updateHeaderState);
 
     return () => {
       window.removeEventListener("scroll", updateHeaderState);
-      window.removeEventListener("resize", updateHeaderState);
     };
   }, []);
 
@@ -38,20 +32,20 @@ export const Header = () => {
   };
 
   const navClassName = `fixed top-0 w-full z-50 transition-[background-color,color,box-shadow] duration-300 ease-soft ${
-    isPastHero
+    isScrolled
       ? "bg-white text-zinc-900 shadow-lg"
       : "bg-transparent text-white"
   }`;
 
   const linkClassName = `relative inline-flex h-10 items-center transition-all duration-300 ease-soft hover:-translate-y-0.5 after:absolute after:bottom-0 after:left-1/2 after:h-px after:w-5 after:-translate-x-1/2 after:translate-y-1 after:opacity-0 after:transition-all after:duration-300 after:ease-soft hover:after:translate-y-0 hover:after:opacity-100 ${
-    isPastHero
+    isScrolled
       ? "text-zinc-900 hover:text-primary after:bg-zinc-900"
       : "text-white drop-shadow-sm hover:text-white/75 after:bg-white"
   }`;
 
   return (
     <nav className={navClassName}>
-      <div className="relative w-full px-6 sm:px-10 lg:px-[5.2%] h-16 md:h-20 flex items-center justify-between gap-5 lg:gap-8">
+      <div className="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-6 h-16 md:h-20 flex items-center justify-between gap-5 lg:gap-8">
         <div className="nav-logo-intro h-full shrink-0 flex items-center">
           <img
             src="/brand/izi-logo-tight.png"
@@ -114,7 +108,7 @@ export const Header = () => {
         <div className="lg:hidden">
           <MobileNav
             handleSmoothScroll={handleSmoothScroll}
-            isHeaderScrolled={isPastHero}
+            isHeaderScrolled={isScrolled}
           />
         </div>
 

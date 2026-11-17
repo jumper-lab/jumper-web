@@ -17,7 +17,7 @@ export const UnidadeSection = () => {
           height={750}
           fetchPriority="high"
         />
-        <div className="px-6 py-10 text-white sm:px-10 lg:px-[5.2%] lg:py-[4%]">
+        <div className="max-w-7xl mx-auto px-6 py-10 text-white sm:px-10 lg:px-6 lg:py-[4%]">
           <p className="hero-copy-intro hero-delay-1 text-2xl font-light leading-[1.2] lg:text-[2.15vw]">
             Comece agora!
           </p>
