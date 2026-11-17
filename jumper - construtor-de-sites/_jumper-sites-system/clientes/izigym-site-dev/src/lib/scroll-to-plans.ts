@@ -7,7 +7,7 @@ export const scrollToPlans = (event: MouseEvent<HTMLAnchorElement>) => {
   event.preventDefault();
   section.scrollIntoView({
     behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-      ? "auto"
+      ? "instant"
       : "smooth",
     block: "start",
   });
