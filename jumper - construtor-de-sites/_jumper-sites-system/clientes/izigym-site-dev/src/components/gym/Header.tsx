@@ -117,9 +117,9 @@ export const Header = () => {
             href="#planos"
             data-navigation="header_plans"
             onClick={(e) => handleSmoothScroll(e, "planos")}
-            className="nav-cta-intro inline-flex h-11 items-center justify-center rounded-full border border-primary bg-primary px-7 text-sm font-bold uppercase tracking-wide text-white shadow-[0_8px_22px_rgba(229,44,18,0.16)] transition-all duration-500 ease-soft hover:-translate-y-px hover:bg-primary/90 hover:shadow-none"
+            className="nav-cta-intro inline-flex h-11 items-center justify-center rounded-full border border-primary bg-primary px-7 text-sm font-medium leading-none uppercase tracking-wide text-white shadow-[0_8px_22px_rgba(229,44,18,0.16)] transition-all duration-500 ease-soft hover:-translate-y-px hover:bg-primary/90 hover:shadow-none"
           >
-            Matricule-se
+            <span className="-translate-y-[2px]">Matricule-se</span>
           </a>
         </div>
       </div>
