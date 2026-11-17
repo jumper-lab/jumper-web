@@ -23,7 +23,7 @@ export const UnidadeSection = () => {
           </p>
           <h1
             id="home-campaign-title"
-            className="mt-6 text-[2.5rem] font-bold leading-[1.05] tracking-[-0.045em] sm:text-6xl lg:mt-[1.1vw] lg:text-[5.83vw] lg:leading-none"
+            className="mt-6 text-[2.5rem] font-bold leading-[1.05] tracking-[-0.025em] sm:text-6xl lg:mt-[1.1vw] lg:text-[5.83vw] lg:leading-none"
           >
             <span className="block">1ª Mensalidade só</span>
             <span className="block text-[#ff5000]">em janeiro de 2027.</span>
