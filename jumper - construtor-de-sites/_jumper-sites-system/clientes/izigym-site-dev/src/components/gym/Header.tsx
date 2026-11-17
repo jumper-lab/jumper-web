@@ -51,8 +51,8 @@ export const Header = () => {
 
   return (
     <nav className={navClassName}>
-      <div className="relative max-w-7xl mx-auto px-5 sm:px-6 h-16 md:h-20 flex items-center justify-between md:justify-start md:gap-16 lg:gap-20">
-        <div className="nav-logo-intro h-full flex items-center">
+      <div className="relative w-full px-6 sm:px-10 lg:px-[5.2%] h-16 md:h-20 flex items-center justify-between gap-5 lg:gap-8">
+        <div className="nav-logo-intro h-full shrink-0 flex items-center">
           <img
             src="/brand/izi-logo-tight.png"
             alt="IZI ONE Logo"
@@ -60,7 +60,7 @@ export const Header = () => {
           />
         </div>
 
-        <div className="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-light uppercase tracking-[0.18em] leading-none">
+        <div className="hidden lg:flex items-center gap-4 xl:gap-8 text-xs xl:text-sm font-light uppercase tracking-[0.18em] leading-none">
           <a
             className={`${linkClassName} nav-item-intro`}
             style={{ animationDelay: "260ms" }}
@@ -111,23 +111,23 @@ export const Header = () => {
           </a>
         </div>
 
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <MobileNav
             handleSmoothScroll={handleSmoothScroll}
             isHeaderScrolled={isPastHero}
           />
         </div>
-      </div>
 
-      <div className="hidden md:flex absolute right-8 top-1/2 -translate-y-1/2">
-        <a
-          href="#planos"
-          data-navigation="header_plans"
-          onClick={(e) => handleSmoothScroll(e, "planos")}
-          className="nav-cta-intro inline-flex h-11 items-center justify-center rounded-full border border-primary bg-primary px-7 text-sm font-bold uppercase tracking-wide text-white shadow-[0_8px_22px_rgba(229,44,18,0.16)] transition-all duration-500 ease-soft hover:-translate-y-px hover:bg-primary/90 hover:shadow-none"
-        >
-          Matricule-se
-        </a>
+        <div className="hidden lg:flex shrink-0">
+          <a
+            href="#planos"
+            data-navigation="header_plans"
+            onClick={(e) => handleSmoothScroll(e, "planos")}
+            className="nav-cta-intro inline-flex h-11 items-center justify-center rounded-full border border-primary bg-primary px-7 text-sm font-bold uppercase tracking-wide text-white shadow-[0_8px_22px_rgba(229,44,18,0.16)] transition-all duration-500 ease-soft hover:-translate-y-px hover:bg-primary/90 hover:shadow-none"
+          >
+            Matricule-se
+          </a>
+        </div>
       </div>
     </nav>
   );
