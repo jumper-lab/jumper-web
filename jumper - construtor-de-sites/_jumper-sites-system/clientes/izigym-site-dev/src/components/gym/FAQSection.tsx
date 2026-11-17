@@ -61,23 +61,23 @@ const FaqList = ({ items }: { items: typeof faqItems }) => (
       <AccordionItem
         key={index}
         value={`item-${index}`}
-        className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] px-4 sm:px-5 transition-all duration-500 ease-soft hover:border-white/20 hover:bg-white/[0.055]"
+        className="group overflow-hidden rounded-2xl border border-black/10 bg-white/30 px-4 sm:px-5 transition-all duration-500 ease-soft hover:border-black/20 hover:bg-white/50"
       >
         <AccordionTrigger className="group/trigger py-4 sm:py-5 text-left hover:no-underline [&>svg:last-child]:hidden">
           <span className="flex items-center gap-3 sm:gap-4">
             <span className="hidden text-xs font-bold tabular-nums tracking-[0.18em] text-primary/80 sm:block">
               {String(index + 1).padStart(2, "0")}
             </span>
-            <span className="text-sm sm:text-base font-semibold leading-snug text-white transition-colors duration-500 ease-soft group-hover:text-zinc-100">
+            <span className="text-sm sm:text-base font-semibold leading-snug text-zinc-900 transition-colors duration-500 ease-soft group-hover:text-black">
               {item.question}
             </span>
           </span>
-          <span className="ml-3 sm:ml-5 flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full border border-white/10 bg-black/20 text-primary transition-all duration-500 ease-soft group-hover:border-primary/30 group-hover:bg-primary/10">
+          <span className="ml-3 sm:ml-5 flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full border border-black/10 bg-white/30 text-primary transition-all duration-500 ease-soft group-hover:border-primary/30 group-hover:bg-primary/10">
             <Plus className="h-3.5 w-3.5 sm:h-4 sm:w-4 transition-transform duration-500 ease-soft group-data-[state=open]/trigger:rotate-45 group-data-[state=open]/trigger:opacity-0" />
             <Minus className="absolute h-3.5 w-3.5 sm:h-4 sm:w-4 opacity-0 transition-all duration-500 ease-soft group-data-[state=open]/trigger:opacity-100" />
           </span>
         </AccordionTrigger>
-        <AccordionContent className="pb-5 pl-0 text-sm sm:text-base leading-relaxed text-zinc-400 sm:pl-12 sm:pr-12">
+        <AccordionContent className="pb-5 pl-0 text-sm sm:text-base leading-relaxed text-zinc-600 sm:pl-12 sm:pr-12">
           {item.answer}
         </AccordionContent>
       </AccordionItem>
@@ -87,16 +87,16 @@ const FaqList = ({ items }: { items: typeof faqItems }) => (
 
 export const FAQSection = () => {
   return (
-    <section className="bg-section-gray px-5 sm:px-6 py-16 lg:py-24">
+    <section className="bg-[#e6ddc9] text-zinc-900 px-5 sm:px-6 py-16 lg:py-24">
       <div className="mx-auto grid max-w-7xl gap-8 lg:gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
         <Reveal className="lg:sticky lg:top-28">
           <span className="mb-4 sm:mb-5 block text-[11px] sm:text-xs uppercase tracking-[0.28em] sm:tracking-[0.3em] text-zinc-500">
             Perguntas frequentes
           </span>
-          <h2 className="max-w-xl text-4xl font-bold leading-tight text-white md:text-6xl">
+          <h2 className="max-w-xl text-4xl font-bold leading-tight text-zinc-900 md:text-6xl">
             Antes de começar, resolva o essencial.
           </h2>
-          <p className="mt-5 sm:mt-6 max-w-md text-base sm:text-lg leading-relaxed text-zinc-400">
+          <p className="mt-5 sm:mt-6 max-w-md text-base sm:text-lg leading-relaxed text-zinc-600">
             Reunimos as respostas que costumam decidir matrícula, rotina e uso da estrutura.
           </p>
 
@@ -104,7 +104,7 @@ export const FAQSection = () => {
             {["Planos", "Estrutura", "Rotina"].map((label) => (
               <span
                 key={label}
-                className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-zinc-400"
+                className="rounded-full border border-black/10 bg-white/30 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-zinc-600"
               >
                 {label}
               </span>
