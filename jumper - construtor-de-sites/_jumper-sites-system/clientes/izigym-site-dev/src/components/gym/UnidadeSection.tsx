@@ -23,7 +23,7 @@ export const UnidadeSection = () => {
           </p>
           <h1
             id="home-campaign-title"
-            className="mt-6 text-[2.5rem] font-bold leading-[1.05] tracking-[-0.025em] sm:text-6xl lg:mt-[1.1vw] lg:text-[5.83vw] lg:leading-none"
+            className="mt-6 text-[2.5rem] font-semibold leading-[1.05] tracking-[-0.025em] sm:text-6xl lg:mt-[1.1vw] lg:text-[5.83vw] lg:leading-none"
           >
             <span className="hero-copy-intro hero-delay-2 block">
               1ª Mensalidade só
@@ -39,7 +39,7 @@ export const UnidadeSection = () => {
           <a
             href="#planos"
             style={{ animationDelay: "820ms" }}
-            className="hero-copy-intro mt-8 inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-primary px-6 py-3 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:text-base lg:mt-[2vw] lg:min-h-[3.35vw] lg:gap-[0.6vw] lg:px-[1.05vw] lg:py-[0.7vw] lg:text-[1.1vw]"
+            className="hero-copy-intro mt-8 inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-primary px-6 py-3 text-sm font-medium uppercase tracking-wide text-white transition-colors hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:text-base lg:mt-[2vw] lg:min-h-[3.35vw] lg:gap-[0.6vw] lg:px-[1.05vw] lg:py-[0.7vw] lg:text-[1.1vw]"
           >
             Matricule-se agora
             <ArrowRight
