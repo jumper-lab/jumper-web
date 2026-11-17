@@ -39,8 +39,8 @@ export const Header = () => {
 
   const linkClassName = `relative inline-flex h-10 items-center transition-all duration-300 ease-soft hover:-translate-y-0.5 after:absolute after:bottom-0 after:left-1/2 after:h-px after:w-5 after:-translate-x-1/2 after:translate-y-1 after:opacity-0 after:transition-all after:duration-300 after:ease-soft hover:after:translate-y-0 hover:after:opacity-100 ${
     isScrolled
-      ? "text-zinc-900 hover:text-[#ff5000] after:bg-[#ff5000]"
-      : "text-white drop-shadow-sm hover:text-[#ff5000] after:bg-[#ff5000]"
+      ? "text-zinc-900 hover:text-primary after:bg-primary"
+      : "text-white drop-shadow-sm hover:text-primary after:bg-primary"
   }`;
 
   return (

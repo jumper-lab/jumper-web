@@ -28,7 +28,7 @@ export const UnidadeSection = () => {
             <span className="hero-copy-intro hero-delay-2 block">
               1ª Mensalidade só
             </span>
-            <span className="hero-copy-intro hero-delay-3 block text-[#ff5000]">
+            <span className="hero-copy-intro hero-delay-3 block text-primary">
               em janeiro de 2027.
             </span>
           </h1>
@@ -39,7 +39,7 @@ export const UnidadeSection = () => {
           <a
             href="#planos"
             style={{ animationDelay: "820ms" }}
-            className="hero-copy-intro mt-8 inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-[#ff5000] px-6 py-3 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-[#d94300] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:text-base lg:mt-[2vw] lg:min-h-[3.35vw] lg:gap-[0.6vw] lg:px-[1.05vw] lg:py-[0.7vw] lg:text-[1.1vw]"
+            className="hero-copy-intro mt-8 inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-primary px-6 py-3 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:text-base lg:mt-[2vw] lg:min-h-[3.35vw] lg:gap-[0.6vw] lg:px-[1.05vw] lg:py-[0.7vw] lg:text-[1.1vw]"
           >
             Matricule-se agora
             <ArrowRight
