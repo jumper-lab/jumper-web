@@ -41,15 +41,9 @@
     <meta name="twitter:image" content="https://raw.githubusercontent.com/cleitonSam/img/refs/heads/main/IZI%20(2)%20(1).png" />
     <meta name="twitter:image:alt" content="Logo IZI ONE" />
 
-    <!-- Carrega a imagem principal antes da inicialização do React. -->
-    <link
-      rel="preload"
-      as="image"
-      href="/cdn-cgi/image/width=960,format=auto,quality=70,metadata=none/images/hero-izigym.jpg"
-      imagesrcset="/cdn-cgi/image/width=640,format=auto,quality=70,metadata=none/images/hero-izigym.jpg 640w, /cdn-cgi/image/width=960,format=auto,quality=70,metadata=none/images/hero-izigym.jpg 960w, /cdn-cgi/image/width=1280,format=auto,quality=70,metadata=none/images/hero-izigym.jpg 1280w"
-      imagesizes="100vw"
-      fetchpriority="high"
-    />
+    <!-- Pré-carrega somente a arte usada pelo tamanho da tela. -->
+    <link rel="preload" as="image" href="/images/home-campanha-janeiro-2027.jpg" media="(min-width: 1024px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/images/home-campanha-janeiro-2027.webp" media="(max-width: 1023px)" fetchpriority="high" />
 
     <!-- Favicon / PWA -->
     <link rel="icon" type="image/png" href="/favicon.png?v=5" />
