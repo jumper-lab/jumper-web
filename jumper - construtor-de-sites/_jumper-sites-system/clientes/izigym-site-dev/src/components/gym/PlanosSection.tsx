@@ -66,7 +66,7 @@ function getPlanPricing(plan: GymPlan) {
 
 export const PlanosSection = () => {
   return (
-    <section className="scroll-mt-16 py-14 px-5 sm:px-6 lg:py-20 bg-section-gray lg:min-h-screen lg:flex lg:items-center" id="planos">
+    <section className="scroll-mt-16 md:scroll-mt-20 py-14 px-5 sm:px-6 lg:py-20 bg-section-gray lg:min-h-screen lg:flex lg:items-center" id="planos">
       <div className="max-w-7xl mx-auto w-full space-y-8 lg:space-y-10">
         <Reveal className="max-w-3xl text-center mx-auto">
           <span className="text-[11px] sm:text-xs uppercase tracking-[0.28em] sm:tracking-[0.3em] text-zinc-400 mb-4 block">

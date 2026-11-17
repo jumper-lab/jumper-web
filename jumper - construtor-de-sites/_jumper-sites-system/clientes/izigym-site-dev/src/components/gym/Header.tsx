@@ -1,5 +1,6 @@
 import React from "react";
 import { MobileNav } from "./MobileNav";
+import { scrollToPlans } from "@/lib/scroll-to-plans";
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = React.useState(false);
@@ -21,6 +22,10 @@ export const Header = () => {
     event: React.MouseEvent<HTMLAnchorElement>,
     targetId: string,
   ) => {
+    if (targetId === "planos") {
+      scrollToPlans(event);
+      return;
+    }
     event.preventDefault();
     const targetElement = document.getElementById(targetId);
     if (targetElement) {

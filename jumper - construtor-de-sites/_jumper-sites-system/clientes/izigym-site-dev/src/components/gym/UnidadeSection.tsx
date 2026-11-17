@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
+import { scrollToPlans } from "@/lib/scroll-to-plans";
 
 export const UnidadeSection = () => {
   return (
@@ -38,10 +39,11 @@ export const UnidadeSection = () => {
           </p>
           <a
             href="#planos"
+            onClick={scrollToPlans}
             style={{ animationDelay: "820ms" }}
-            className="hero-copy-intro mt-8 inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-primary px-6 py-3 text-sm font-medium uppercase tracking-wide text-white transition-colors hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:text-base lg:mt-[2vw] lg:min-h-[3.35vw] lg:gap-[0.6vw] lg:px-[1.05vw] lg:py-[0.7vw] lg:text-[1.1vw]"
+            className="hero-copy-intro mt-8 inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-primary px-6 py-3 text-sm font-medium leading-none sm:leading-none uppercase tracking-wide text-white transition-colors hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:text-base lg:mt-[2vw] lg:min-h-[3.35vw] lg:gap-[0.6vw] lg:px-[1.05vw] lg:py-[0.7vw] lg:text-[1.1vw]"
           >
-            Matricule-se agora
+            <span className="-translate-y-[2px]">Matricule-se agora</span>
             <ArrowRight
               aria-hidden="true"
               className="h-6 w-6 lg:h-[1.6vw] lg:w-[1.6vw]"

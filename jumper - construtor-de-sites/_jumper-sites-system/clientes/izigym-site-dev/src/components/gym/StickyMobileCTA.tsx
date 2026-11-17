@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
+import { scrollToPlans } from "@/lib/scroll-to-plans";
 
 /**
  * CTA fixo no rodapé, visível apenas em mobile (<md / 768px).
@@ -12,14 +13,6 @@ export const StickyMobileCTA: React.FC = () => {
   const whatsappHref = `https://wa.me/5511952137022?text=${encodeURIComponent(
     "Olá! Gostaria de saber mais sobre os planos da IZI Gym.",
   )}`;
-
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    document.getElementById("planos")?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
 
   return (
     <div
@@ -49,7 +42,7 @@ export const StickyMobileCTA: React.FC = () => {
         <a
           href="#planos"
           data-navigation="mobile_sticky_plans"
-          onClick={handleClick}
+          onClick={scrollToPlans}
           className="flex min-w-0 flex-1 items-center justify-center gap-2 rounded-full border border-primary bg-primary px-4 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white shadow-[0_8px_22px_rgba(229,44,18,0.18)] transition-all duration-500 ease-soft hover:-translate-y-px hover:bg-primary/30 hover:shadow-none focus:outline-none focus:ring-4 focus:ring-primary/35 xs:text-sm xs:tracking-wide"
         >
           <span className="truncate">Matricule-se agora</span>
