@@ -86,10 +86,10 @@ export const LocationsSection = () => {
                 href={locationData.mapLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-primary bg-primary px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-[0.16em] sm:tracking-widest text-white shadow-[0_8px_22px_rgba(229,44,18,0.18)] transition-all duration-500 ease-soft hover:-translate-y-px hover:bg-primary/30 hover:shadow-none focus:ring-4 focus:ring-primary/35 md:w-auto"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-primary bg-primary px-7 py-3 text-xs sm:text-sm font-medium uppercase tracking-[0.16em] sm:tracking-widest text-white shadow-[0_8px_22px_rgba(229,44,18,0.18)] transition-all duration-500 ease-soft hover:-translate-y-px hover:bg-primary/30 hover:shadow-none focus:ring-4 focus:ring-primary/35 md:w-auto"
               >
                 <ExternalLink className="w-4 h-4" />
-                Ver no Mapa
+                <span className="-translate-y-[2px]">Ver no Mapa</span>
               </a>
             </div>
           </div>
