@@ -6,9 +6,9 @@ export const UnidadeSection = () => {
     <section
       id="unidade"
       aria-labelledby="home-campaign-title"
-      className="w-full bg-[#201a17] pt-16 md:pt-20"
+      className="w-full bg-[#201a17]"
     >
-      <div className="relative isolate overflow-hidden lg:min-h-[39.0625vw]">
+      <div className="relative isolate overflow-hidden pt-16 md:pt-20 lg:min-h-[calc(39.0625vw+5rem)]">
         <img
           src="/images/home-campanha-janeiro-2027.webp"
           alt=""
