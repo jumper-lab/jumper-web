@@ -1,75 +1,73 @@
 import React from "react";
-import { ArrowDown, ArrowRight } from "lucide-react";
-import { cloudflareImage, cloudflareImageSrcSet } from "@/lib/cloudflare-image";
+import { ArrowRight } from "lucide-react";
 
 export const UnidadeSection = () => {
-  const imgSrc = "/images/hero-izigym.jpg";
-
   return (
     <section
       id="unidade"
-      className="relative w-full max-w-full h-[100svh] bg-section-gray overflow-hidden"
+      aria-labelledby="home-campaign-title"
+      className="w-full bg-[#201a17] pt-16 md:pt-20"
     >
-      <div className="relative w-full h-full">
-        <img
-          alt="Espaço amplo e bem iluminado da IZI ONE"
-          className="hero-bg-intro w-full h-full block object-cover object-center"
-          src={cloudflareImage(imgSrc, 1280)}
-          srcSet={cloudflareImageSrcSet(imgSrc, [640, 960, 1280, 1600, 1920])}
-          sizes="100vw"
-          width={2400}
-          height={1800}
-          fetchPriority="high"
+      <div className="relative isolate overflow-hidden">
+        <picture className="absolute inset-0 -z-10 lg:relative lg:z-auto lg:block">
+          <source
+            media="(min-width: 1024px)"
+            srcSet="/images/home-campanha-janeiro-2027.jpg"
+          />
+          <img
+            src="/images/home-campanha-janeiro-2027.webp"
+            alt=""
+            className="block h-full w-full object-cover object-[38%_center] lg:h-auto lg:object-center"
+            width={1920}
+            height={750}
+            fetchPriority="high"
+          />
+        </picture>
+        <a
+          href="#planos"
+          aria-label="Matricule-se agora"
+          className="absolute hidden lg:block left-[5.26%] top-[65.6%] h-[8.6%] w-[18%] rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
         />
-        {/* Overlay com opacidade de 60% */}
-        <div className="hero-scrim-intro absolute inset-0 bg-black/60 pointer-events-none" />
-        <div className="hero-scrim-intro absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-black/65 to-transparent pointer-events-none" />
-        <div className="hero-scrim-intro pointer-events-none absolute bottom-0 left-0 h-[58%] w-[72%] bg-[radial-gradient(ellipse_at_bottom_left,rgba(0,0,0,0.78)_0%,rgba(0,0,0,0.5)_34%,rgba(0,0,0,0.18)_62%,transparent_78%)]" />
-
-        <div className="absolute inset-0 z-10 overflow-visible">
-          <div className="max-w-7xl mx-auto px-6 flex h-full items-end pb-36 pt-20 sm:items-center sm:pb-0">
-            <div className="w-full sm:translate-y-16 md:translate-y-20">
-              <div className="w-full max-w-3xl text-left text-white">
-                <span className="hero-copy-intro hero-delay-1 block text-[11px] sm:text-sm font-bold uppercase tracking-[0.22em] text-primary mb-3 sm:mb-4">
-                  Um novo conceito
-                  <br />
-                  de academia
-                </span>
-                <h1 className="hero-copy-intro hero-delay-2 text-[3.35rem] xs:text-6xl md:text-7xl lg:text-8xl font-bold leading-none tracking-tight">
-                  IZI GYM
-                </h1>
-                <p className="hero-copy-intro hero-delay-3 mt-5 max-w-2xl text-base xs:text-lg sm:text-xl md:text-2xl text-zinc-100 leading-relaxed">
-                  Treine com liberdade, conforto e energia em um espaço completo para transformar constância em resultado.
-                </p>
-                <div className="hero-copy-intro hero-delay-4 mt-7 flex flex-col xs:flex-row items-stretch xs:items-center gap-3 overflow-visible py-1">
-                  <a
-                    href="#planos"
-                    className="group/primary relative inline-flex h-11 w-full xs:w-auto items-center justify-center gap-2 rounded-full border border-primary bg-primary px-6 text-[12px] font-bold uppercase tracking-[0.16em] text-white shadow-[0_8px_22px_rgba(229,44,18,0.18)] transition-all duration-500 ease-soft hover:-translate-y-px hover:bg-primary/30 hover:shadow-none focus:outline-none focus:ring-4 focus:ring-primary/30"
-                  >
-                    <span className="relative">Conheça os planos</span>
-                    <ArrowRight className="relative h-3.5 w-3.5 transition-transform duration-500 ease-soft group-hover/primary:translate-x-0.5" />
-                  </a>
-                  <a
-                    href="#pass"
-                    className="group/secondary relative inline-flex h-11 w-full xs:w-auto items-center justify-center gap-2 rounded-full border border-white/25 bg-white/[0.045] px-6 text-[12px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md transition-all duration-500 ease-soft hover:-translate-y-px hover:border-white/55 hover:bg-white/[0.10] hover:shadow-[0_14px_38px_rgba(255,255,255,0.12)] focus:outline-none focus:ring-4 focus:ring-white/25"
-                  >
-                    <span className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-r from-white/0 via-white/16 to-white/0 opacity-0 transition-all duration-700 ease-soft group-hover/secondary:opacity-100" />
-                    <span className="pointer-events-none absolute inset-px rounded-full ring-1 ring-inset ring-white/0 transition-all duration-500 ease-soft group-hover/secondary:ring-white/15" />
-                    <span className="relative">Unidade Alto Pinheiros</span>
-                    <ArrowRight className="relative h-3.5 w-3.5 transition-transform duration-500 ease-soft group-hover/secondary:translate-x-0.5" />
-                  </a>
-                </div>
-              </div>
+        <a
+          href="#contato"
+          aria-label="Consultar o regulamento na unidade"
+          className="absolute hidden lg:block left-[5.26%] top-[79.7%] h-[3.4%] w-[26%] rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+        />
+        <div className="relative lg:sr-only">
+          <div className="px-6 py-10 text-white sm:px-10">
+            <p className="text-2xl font-light leading-tight">Comece agora!</p>
+            <h1
+              id="home-campaign-title"
+              className="mt-6 text-[2.5rem] font-bold leading-[1.05] tracking-[-0.045em] sm:text-6xl"
+            >
+              <span className="block">1ª Mensalidade só</span>
+              <span className="block text-[#eb5000]">em janeiro de 2027.</span>
+            </h1>
+            <p className="mt-7 max-w-xl text-base font-light leading-[1.2] sm:text-xl">
+              Matricule-se durante o período promocional
+              <br className="hidden sm:block" /> e comece a treinar ainda em
+              2026.
+            </p>
+            <a
+              href="#planos"
+              className="mt-8 inline-flex lg:hidden min-h-12 items-center justify-center gap-3 rounded-full bg-[#eb5000] px-6 py-3 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-[#c94300] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:text-base"
+            >
+              Matricule-se agora
+              <ArrowRight aria-hidden="true" className="h-6 w-6" />
+            </a>
+            <div className="mt-8 max-w-lg text-xs font-light leading-snug">
+              <p>
+                Oferta válida até 30/11/2026, conforme condições e planos
+                participantes da campanha.
+                <br />
+                Consulte o regulamento na unidade.
+              </p>
+              <p className="mt-4">
+                As mensalidades de novembro e dezembro serão de apenas{" "}
+                <span className="whitespace-nowrap">R$ 0,27.</span>
+              </p>
             </div>
           </div>
-
-          <a
-            href="#planos"
-            aria-label="Ir para os planos"
-            className="hero-copy-intro hero-delay-4 absolute bottom-5 left-1/2 hidden -translate-x-1/2 items-center justify-center text-white/75 transition-colors duration-500 ease-soft hover:text-white motion-safe:animate-[hero-arrow-float_1.8s_ease-in-out_infinite] sm:flex"
-          >
-            <ArrowDown className="h-4 w-4" />
-          </a>
         </div>
       </div>
     </section>
