@@ -162,7 +162,7 @@ export const GallerySection = () => {
                 )}
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-80 transition-opacity duration-700 ease-soft group-hover:opacity-95" />
                 <figcaption className="pointer-events-none absolute bottom-0 left-0 right-0 p-3 sm:p-5">
-                  <span className="inline-flex rounded-full border border-white/20 bg-white/10 px-2.5 py-1 text-[9px] sm:px-3 sm:text-[11px] font-bold uppercase tracking-[0.16em] sm:tracking-[0.18em] text-white backdrop-blur-md">
+                  <span className="inline-flex rounded-full border border-white/20 bg-white/10 px-2.5 py-1 text-[9px] sm:px-3 sm:text-[11px] font-medium uppercase tracking-[0.16em] sm:tracking-[0.18em] text-white backdrop-blur-md">
                     {item.label}
                   </span>
                 </figcaption>
