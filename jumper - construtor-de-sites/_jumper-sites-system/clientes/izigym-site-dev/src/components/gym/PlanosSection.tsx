@@ -77,7 +77,7 @@ export const PlanosSection = () => {
             <br />
             estar bem.
           </h2>
-          <p className="text-base sm:text-lg text-zinc-300 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-zinc-300 max-w-3xl mx-auto leading-relaxed">
             Sua jornada de bem-estar, mais simples do que você imagina: um plano
             completo, duas opções de pagamento e uma rotina de treinos com tudo
             o que você precisa para alcançar seus objetivos.
