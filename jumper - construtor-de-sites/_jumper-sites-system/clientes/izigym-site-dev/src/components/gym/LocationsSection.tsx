@@ -1,7 +1,6 @@
 import React from "react";
 import { MapPin, Check, ExternalLink } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
-import { cloudflareImage, cloudflareImageSrcSet } from "@/lib/cloudflare-image";
 
 const locationData = {
   name: "IZI - Alto de Pinheiros",
@@ -36,8 +35,8 @@ export const LocationsSection = () => {
         className="group relative mx-auto max-w-6xl overflow-hidden rounded-[26px] border border-black/5 shadow-[0_22px_60px_rgba(0,0,0,0.14)] transition-shadow duration-700 ease-soft hover:shadow-[0_30px_90px_rgba(0,0,0,0.22)] sm:rounded-[32px]"
       >
         <img
-          src={cloudflareImage(locationData.imageSrc, 1280)}
-          srcSet={cloudflareImageSrcSet(locationData.imageSrc, [640, 960, 1280, 1600])}
+          src={locationData.imageSrc.replace(".jpg", "-1280.jpg")}
+          srcSet={`${locationData.imageSrc.replace(".jpg", "-640.jpg")} 640w, ${locationData.imageSrc.replace(".jpg", "-1280.jpg")} 1280w`}
           sizes="(max-width: 640px) 100vw, 1200px"
           width={2200}
           height={1650}
