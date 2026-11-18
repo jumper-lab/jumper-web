@@ -279,3 +279,13 @@ Publicar izigym no dev e conferir antes do merge; publicar o oficial por
 `npm run deploy:cloudflare -- --promote=principal-close-round-2026-11-18`.
 Manifesto restrito ao institucional e seus assets; Worker, Cerro Corá, prévias
 e demais clientes permanecem na comparação estrita.
+
+### Altura da imagem de fundo do hero mobile — 18/11/2026
+
+O usuário autorizou no dev e live altura de 100vh APENAS para a imagem do hero.
+A classe da imagem passa de h-full a h-screen md:h-full. Contêiner, recorte,
+textos, botões e fluxo das seções não mudam. Publicar somente izigym no dev,
+conferir e integrar. Em main limpo publicar o oficial por
+`npm run deploy:cloudflare -- --promote=principal-hero-bg-vh-2026-11-18`.
+Manifesto restrito ao institucional e assets oficiais; Worker, Cerro Corá,
+prévias e demais clientes seguem na comparação estrita.
