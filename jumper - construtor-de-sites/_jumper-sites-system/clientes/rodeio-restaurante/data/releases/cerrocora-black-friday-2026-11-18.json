@@ -5,14 +5,14 @@
   "approvedRequest": "Usuário solicitou anunciar R$ 0,27 na promoção Black Friday e retirar R$ 0,99; confirmou somente LP Cerro Corá, dev e live. Sem novo cupom informado, os textos deixam de divulgar o cupom antigo e o fluxo de formulário/checkout é preservado.",
   "baselineMain": "605486240e772decc796fa4df641f14fdf0eab20",
   "workerSha256": "d1aca73437b9602952471c62991c99f287ceb015c2eecf5bfeb82193dd25d7c5",
-  "lpSourceSha256": "03e90d30c2558753cac293355c1e19600ea029c29e40be6ae0064f9ff32d647f",
+  "lpSourceSha256": "5a99750dd71ef8e8a62e9dff23ab4aa86e4d8d7818b2a26d73e939f5f865885a",
   "pages": [
     {
       "asset": "cerrocora/index.html",
-      "candidateSha256": "35c578d3334b5c6983cc73b1589d773bdabaddbbd8f39f94161523f776f2879a",
+      "candidateSha256": "8980d1443084e8091329a88e34c001f06535d3590ca091a7aa50fc239905aebc",
       "publishedSha256": [
         "013c13b9ec90bfeca623a25458f2da27b9084ca7e4ac6267028dbd384881eea3",
-        "35c578d3334b5c6983cc73b1589d773bdabaddbbd8f39f94161523f776f2879a"
+        "8980d1443084e8091329a88e34c001f06535d3590ca091a7aa50fc239905aebc"
       ]
     }
   ],
@@ -74,6 +74,6 @@
     "_official/izigym/sitemap.xml": "bf3f5c23c7b43e3cc4bdcb8100e309a269695e1110dad7e7ea45feff39d3a968",
     "cerrocora/_astro/simple.ConiH_ZM.css": "73f75bdd343fcc765c15406215036e6d7bb7988a7f46e8a2a3fd3c36f3d6840f",
     "cerrocora/_astro/simple.astro_astro_type_script_index_0_lang.DxTKZI4T.js": "111d31969f74d7488da0b3e08616975e9b2cf501c4894f5df8723b58a84b3991",
-    "cerrocora/index.html": "35c578d3334b5c6983cc73b1589d773bdabaddbbd8f39f94161523f776f2879a"
+    "cerrocora/index.html": "8980d1443084e8091329a88e34c001f06535d3590ca091a7aa50fc239905aebc"
   }
 }
