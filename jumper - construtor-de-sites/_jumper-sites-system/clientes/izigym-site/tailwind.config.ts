@@ -57,8 +57,8 @@ export default {
         },
       },
       fontFamily: {
-        display: ["Outfit", "sans-serif"],
-        sans: ["Outfit", "sans-serif"],
+        display: ["GC North Sans", "Outfit", "sans-serif"],
+        sans: ["Obviously", "Obviously Support", "Outfit", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",

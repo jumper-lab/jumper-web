@@ -1,0 +1,63 @@
+{
+  "scope": "principal-design-mobile",
+  "date": "2026-11-18",
+  "workerSha256": "d1aca73437b9602952471c62991c99f287ceb015c2eecf5bfeb82193dd25d7c5",
+  "lpSourceSha256": "dcca3f21d7ff459933368ae84d1a998695af2e401a45f83302c4a0e01dbdbadb",
+  "pages": [
+    {
+      "asset": "_official/izigym/index.shell",
+      "candidateSha256": "275992144d0b3a9b78bf4f2827a437299bf9ce29c1fcff2a26cbd43ac7db53ae",
+      "publishedSha256": [
+        "77992df8944ab8f0df1fd200449c5940a401400235055a0d4e6dae6de31139b2",
+        "275992144d0b3a9b78bf4f2827a437299bf9ce29c1fcff2a26cbd43ac7db53ae"
+      ]
+    }
+  ],
+  "assets": {
+    "_official/izigym/assets/FAQSection-Dn5RYBck.js": "b3d15ea58f830ddac61039951199111e9b65db50653095b825cc50ff4805d3d5",
+    "_official/izigym/assets/Footer-YzoMCMUb.js": "ce641d2068e71ab849676cfea76554781e6d84d537ae271e22513d158c87610b",
+    "_official/izigym/assets/GallerySection-DoSoaVF4.js": "1f6693eb0c572c7bd1068d0cb8262f7b43809b40ea758f4e078b2e5262a4f27f",
+    "_official/izigym/assets/LocationsSection-BFWaonWE.js": "4fa01e441abf8456f08a17cc386d5e2314b935dcd8770b401386e04e89944921",
+    "_official/izigym/assets/StickyMobileCTA-7JuILMgb.js": "4bc0bd2d007da7cf123b746c19f4f275690286af19d4d12b59194675d4bbc7cc",
+    "_official/izigym/assets/WhatsAppButton-DBxt7yKD.js": "a2c9658943b566c27a750ae3d9501b28e9f427dff85e05bf119992ccfda2640e",
+    "_official/izigym/assets/arrow-up-right-3AU43kDs.js": "3cf99c64d1e48de50e9f2e5455f52611d2ae78c54a94175b3f1f7be5c26bd64b",
+    "_official/izigym/assets/cloudflare-image-CL3IXFaf.js": "d5abf0fd41c592bcbea11ee27cd718b359f4900c2eb36b8e05ec30814c48f930",
+    "_official/izigym/assets/gc-north-sans-600-Bp7u8Gul.woff2": "2f37984caa045ecc697fbd959f11e358340475630a1d205186c7caf4f4346757",
+    "_official/izigym/assets/gc-north-sans-700-Bc31Y0R0.woff2": "74868bfe78004893f301246bd3ba4c93f99ea5d6dacb50d742f0eff6440a85e9",
+    "_official/izigym/assets/index-Ly50MaxP.js": "59cc9d725f13d967390e962a934ecdd7d3e55e4eec592cdebce6cae942ee4d16",
+    "_official/izigym/assets/index-yfXK_cD5.css": "874d4d0f284f7d9695803bab5e9da0edfa6365c9ec45bac3ab6d6422b273ddda",
+    "_official/izigym/assets/map-pin-DfIcpcVj.js": "1ec3af84228e7c763f46c58b7550092c52f621a91adb5955e1a6f54392585fc3",
+    "_official/izigym/assets/obviously-300-D7gMV1wx.woff2": "1d196f421038ce86430992b577eeb3d20c44e88af075665e4c4113e03f5fdb74",
+    "_official/izigym/assets/obviously-400-DSekZrbs.woff2": "923f059112f386a75bebee781bd88e9bd5f474bf7986629ef0508f1c335b1bad",
+    "_official/izigym/assets/obviously-500-C_dHghkF.woff2": "93127acfa6131f3dfbe8a02702680f8ed2e0a6c0cc08573199ed7e20e5e63df4",
+    "_official/izigym/assets/obviously-700-DqBktFRF.woff2": "f2d82ce0bab508c8d996af59b1e49f0d51e872a21e87d7b42b7e93937972b5c7",
+    "_official/izigym/assets/obviously-support-400-BUB4ZMT_.woff2": "a9a6a03154d1575fab33cbfc8a5e66eab81328b5072597092534a2964c527026",
+    "_official/izigym/assets/obviously-support-700-BMM6iaP3.woff2": "4ce3483ca8897d1e4882670f272a9c45de006132b2613d816a32ec41036ebc4f",
+    "_official/izigym/assets/outfit-latin-500-normal-ClnHRwRh.woff": "40083be5d9c1935c562bfe9be662d5a2798910deee9e8049509142549a995626",
+    "_official/izigym/assets/outfit-latin-500-normal-DKnIMDSk.woff2": "fc9bff941def6d924a71632bd8a93190528872eae6414844f3c367ff948d92fd",
+    "_official/izigym/assets/outfit-latin-700-normal-Cu9v6i1X.woff2": "5d5e3734089a74707292ce8a3e186def34cd63e33879f9ac3689a8d8da9d0706",
+    "_official/izigym/assets/outfit-latin-700-normal-D4itBLBr.woff": "fb730df77799be655b0028de3ff2952a6ebcd3ca85d32cbf188c6f3ea66f82b7",
+    "_official/izigym/brand/izi-gym-footer.webp": "1993ece271e0f41637311bc97f02b03607c096ba1d3c46469f6d4ccabb36a63d",
+    "_official/izigym/brand/izi-logo-tight.png": "400e858e90757da5ac434ec6ab3094e7ee895dfe638453a3c60edea2d79e6dff",
+    "_official/izigym/brand/izi-logo.png": "6fce6a8417eca37fb1dcb3d4b73e668727fde61cc4ad65dc81ee5d63ccb5942f",
+    "_official/izigym/favicon.png": "c6ac49e2b3cd95b31685a762d0417f67a5afb111fe38accab0f2b4bec094aae5",
+    "_official/izigym/images/gallery-01.jpg": "9d560ed04a80f3c8b68fa9d732849244296f9e395818de63543eac4e36d63489",
+    "_official/izigym/images/gallery-02.jpg": "675005a11a447d63659346e33529170f217ea733aa1121d0360242172e47d378",
+    "_official/izigym/images/gallery-03.jpg": "2f29ea8020074428e64aaa5f9d664629d631f15260f5da6b6287a9bb6d1b1df0",
+    "_official/izigym/images/gallery-04.jpg": "69c97ae16272341514b2111a9ee7ab70a0678ed600024d364227d17a4c5c5e8b",
+    "_official/izigym/images/gallery-05.jpg": "f938fc7db0c4bb38a5d121d02785cb086e456618da9adda0c785ed22c435010c",
+    "_official/izigym/images/gallery-06.jpg": "4e8d4d46dea10aca6067e0ca525a54f447d1fd287274fe21ab71c4ec14b49eec",
+    "_official/izigym/images/hero-izigym.jpg": "f9cb0c2c5c913df269753e40f6872a61893799f0b3578ccf3a2ada4544f0e091",
+    "_official/izigym/images/home-campanha-janeiro-2027.webp": "0339bd55f30b51561a89a58d4250e437590a09572f972b92128d8b7fc61a2ad9",
+    "_official/izigym/images/unidade-alto-de-pinheiros.jpg": "c3dd6e343de79c8d64ba8cafcc389b43d81dd213829a45bdb4d32d7e663c67f0",
+    "_official/izigym/images/unidade-izigym-segunda.jpg": "54c772da6072dd5d8e0e0cf6acfe580b9967e79e3b2d71153aa29f337cdd3468",
+    "_official/izigym/index.html": "275992144d0b3a9b78bf4f2827a437299bf9ce29c1fcff2a26cbd43ac7db53ae",
+    "_official/izigym/index.shell": "275992144d0b3a9b78bf4f2827a437299bf9ce29c1fcff2a26cbd43ac7db53ae",
+    "_official/izigym/placeholder.svg": "64badf7aabda0b9630b87020ffb6095cb858ccbcf66b355c2aa08b1063954d3b",
+    "_official/izigym/robots.txt": "2b35a43b50ab49f4bdd35406dc54df857b4a45b8e8d542066522669a7fd42f34",
+    "_official/izigym/sitemap.xml": "bf3f5c23c7b43e3cc4bdcb8100e309a269695e1110dad7e7ea45feff39d3a968",
+    "cerrocora/_astro/simple.ConiH_ZM.css": "73f75bdd343fcc765c15406215036e6d7bb7988a7f46e8a2a3fd3c36f3d6840f",
+    "cerrocora/_astro/simple.astro_astro_type_script_index_0_lang.DxTKZI4T.js": "111d31969f74d7488da0b3e08616975e9b2cf501c4894f5df8723b58a84b3991",
+    "cerrocora/index.html": "013c13b9ec90bfeca623a25458f2da27b9084ca7e4ac6267028dbd384881eea3"
+  }
+}

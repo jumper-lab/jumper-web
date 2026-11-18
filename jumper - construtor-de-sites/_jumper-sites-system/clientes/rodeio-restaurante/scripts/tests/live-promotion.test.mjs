@@ -120,3 +120,14 @@ test('Prime offer promotion permits only the institutional official page', async
     assert.throws(() => validatePromotionScope({...release, pages}, releaseName), /escopo revisado/);
   }
 });
+
+
+test('approved design and mobile release permits only the principal official', async () => {
+  const name = 'principal-design-mobile-2026-11-18';
+  const release = await readPromotion([`--promote=${name}`]);
+  assert.equal(release.scope, 'principal-design-mobile');
+  assert.deepEqual(release.pages.map(page => page.asset), ['_official/izigym/index.shell']);
+  for (const asset of ['cerrocora/index.html', 'izigym/index.html', 'izigym2/index.html', 'rodeio/index.html']) {
+    assert.throws(() => validatePromotionScope({...release, pages:[...release.pages, {...release.pages[0],asset}]}, name), /escopo revisado/);
+  }
+});

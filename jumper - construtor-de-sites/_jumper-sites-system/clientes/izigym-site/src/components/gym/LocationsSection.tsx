@@ -30,7 +30,7 @@ export const LocationsSection = () => {
           Descubra a IZI ONE Alto de Pinheiros. Oferecemos uma infraestrutura moderna e diversas modalidades para você alcançar seus objetivos.
         </p>
       </Reveal>
-      
+
       <Reveal
         delay={120}
         className="group relative mx-auto max-w-6xl overflow-hidden rounded-[26px] border border-black/5 shadow-[0_22px_60px_rgba(0,0,0,0.14)] transition-shadow duration-700 ease-soft hover:shadow-[0_30px_90px_rgba(0,0,0,0.22)] sm:rounded-[32px]"
@@ -48,7 +48,7 @@ export const LocationsSection = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/18 via-black/28 to-black/86 sm:bg-gradient-to-r sm:from-black/80 sm:via-black/36 sm:to-black/18" />
         <div className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-black/90 via-black/42 to-transparent" />
-        
+
         <div className="absolute inset-0 flex items-end p-5 text-white sm:p-8 md:p-10">
           <div className="grid w-full gap-5 sm:gap-7 lg:grid-cols-[1.05fr_1fr_auto] lg:items-end">
             <div className="max-w-xl">
@@ -86,10 +86,10 @@ export const LocationsSection = () => {
                 href={locationData.mapLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-primary bg-primary px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-[0.16em] sm:tracking-widest text-white shadow-[0_8px_22px_rgba(229,44,18,0.18)] transition-all duration-500 ease-soft hover:-translate-y-px hover:bg-primary/30 hover:shadow-none focus:ring-4 focus:ring-primary/35 md:w-auto"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-primary bg-primary px-7 py-3 text-xs sm:text-sm font-medium uppercase tracking-[0.16em] sm:tracking-widest text-white shadow-[0_8px_22px_rgba(229,44,18,0.18)] transition-all duration-500 ease-soft hover:-translate-y-px hover:bg-primary/30 hover:shadow-none focus:ring-4 focus:ring-primary/35 md:w-auto"
               >
                 <ExternalLink className="w-4 h-4" />
-                Ver no Mapa
+                <span className="-translate-y-[2px]">Ver no Mapa</span>
               </a>
             </div>
           </div>
