@@ -338,3 +338,15 @@ conferir e integrar, depois publicar o oficial pelo wrapper
 `npm run deploy:cloudflare -- --promote=principal-sticky-after-hero-2026-11-18`.
 Manifesto restrito ao institucional e assets oficiais; demais sites, Worker e
 dados seguem sob comparação estrita.
+
+### Fade lento da barra mobile nas duas direções — 18/11/2026
+
+O usuário pediu entrada e saída perceptíveis, pois a saída estava instantânea.
+No dev e oficial, a transição de opacidade passa a 1 segundo ease-in-out nos dois
+estados. O observador usa margem superior de 64 px para iniciar o fade-out antes
+de o botão do hero reaparecer. A barra continua sem slide, com reduced motion,
+foco e acessibilidade preservados. Publicar izigym no dev, conferir e integrar;
+publicar o oficial pelo wrapper
+`npm run deploy:cloudflare -- --promote=principal-sticky-slow-fade-2026-11-18`.
+Manifesto restrito ao institucional e assets oficiais; outros sites, Worker e
+dados seguem sob comparação estrita.
