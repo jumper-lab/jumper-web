@@ -173,7 +173,7 @@ export function validatePromotionScope(promotion, release) {
   const approvedDesign = ['principal-design-mobile-2026-11-18', 'principal-restore-2026-11-18', 'principal-approved-2026-11-18', 'principal-mobile-close-2026-11-18', 'principal-menu-right-2026-11-18', 'principal-mobile-cta-order-2026-11-18', 'principal-faq-pills-2026-11-18', 'principal-close-round-2026-11-18', 'principal-hero-bg-vh-2026-11-18', 'principal-hero-visible-vh-2026-11-18', 'principal-sticky-scroll-2026-11-18', 'principal-hero-center-2026-11-18', 'principal-sticky-after-hero-2026-11-18', 'principal-sticky-slow-fade-2026-11-18', 'principal-gallery-gap-2026-11-18', 'principal-mobile-plan-order-2026-11-18', 'principal-prime-cta-target-2026-11-18', 'principal-sticky-prime-2026-11-18', 'principal-prime-027-2026-11-18', 'principal-prime-period-2026-11-18'].includes(release);
   const primeOffer = release === 'principal-prime-099-2026-11-12';
   const principalCep = release === 'principal-cep-2026-11-09';
-  const cerroBlackFriday = release === 'cerrocora-black-friday-2026-11-18';
+  const cerroBlackFriday = ['cerrocora-black-friday-2026-11-18', 'cerrocora-periodo-2026-11-18'].includes(release);
   const cerroBenefits = release === 'cerrocora-bioimpedancia-2026-11-03';
   const bioimpedance = release === 'principal-bioimpedance-2026-11-03';
   const scheduledIzi = release === 'izi-official-2026-11-01';
@@ -201,6 +201,7 @@ export async function readPromotion(args = []) {
   const flags = args.filter(arg => arg !== '--audit');
   if (!flags.length) return null;
   const releases = {
+    '--promote=cerrocora-periodo-2026-11-18': 'cerrocora-periodo-2026-11-18',
     '--promote=cerrocora-black-friday-2026-11-18': 'cerrocora-black-friday-2026-11-18',
     '--promote=principal-prime-period-2026-11-18': 'principal-prime-period-2026-11-18',
     '--promote=principal-prime-027-2026-11-18': 'principal-prime-027-2026-11-18',

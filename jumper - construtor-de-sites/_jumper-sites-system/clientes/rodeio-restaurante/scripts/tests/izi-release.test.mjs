@@ -26,7 +26,7 @@ test('asset inventory detects added, changed and removed files',async()=>{
 });
 
 test('prepared package allows only reviewed official differences', async()=>{
-  const r=await readPromotion(['--promote=principal-prime-period-2026-11-18']);
+  const r=await readPromotion(['--promote=cerrocora-periodo-2026-11-18']);
   const root=new URL('../../hoster-dist/',import.meta.url);
   const candidate=asset=>readFile(new URL(asset,root));
   const fake=async url=>{
@@ -43,7 +43,10 @@ test('official Cerro Cora keeps the Clixx form and its complete asset bundle', a
   const html=await readFile(new URL('cerrocora/index.html',root),'utf8');
   assert.ok(html.includes('<form class="clx2-form" id="clx2Form">'));
   assert.ok(!html.includes('id="lead-form"'));
-  assert.equal((html.match(/R\$ 187/g)||[]).length,4);
+  assert.ok(html.includes('R$ 0,27/mês em novembro e dezembro de 2026'));
+  assert.ok(html.includes('A partir de janeiro de 2027, R$ 187/mês.'));
+  assert.ok(!html.includes('Depois, R$ 187/mês.'));
+  assert.ok(!html.includes('R$ 0,99'));
   const assets=[...html.matchAll(/(?:src|href)="(\/cerrocora\/_astro\/[\w.-]+)"/g)].map(match=>match[1]);
   assert.equal(assets.length,2);
   assert.doesNotMatch(html, /(?:src|href)="\/izigym-lp-vilaromana\/_astro\//);
