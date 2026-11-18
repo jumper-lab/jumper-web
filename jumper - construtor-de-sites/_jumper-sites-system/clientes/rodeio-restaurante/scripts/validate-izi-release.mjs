@@ -21,7 +21,7 @@ export async function validateIziRelease(root=resolve(project,'hoster-dist'), re
   const release=reviewedRelease ?? JSON.parse(await readFile(resolve(project,'data/releases/principal-bioimpedance-2026-11-03.json')));
   if(JSON.stringify(await inventory(root))!==JSON.stringify(release.assets)) throw new Error('Pacote oficial difere da revisão: assets adicionados, removidos ou alterados.');
   // Cerro-only promotion preserves the institutional official bundle even when its dev differs.
-  if (release.scope !== 'cerrocora-benefits') for(const relative of ['src/data/plans.ts','src/components/gym/FAQSection.tsx']) {
+  if (!['cerrocora-benefits', 'cerrocora-offer'].includes(release.scope)) for(const relative of ['src/data/plans.ts','src/components/gym/FAQSection.tsx']) {
     const a=await readFile(resolve(project,'../izigym-site',relative),'utf8');
     const b=await readFile(resolve(project,'../izigym-site-dev',relative),'utf8');
     if(a.replaceAll('\r\n','\n')!==b.replaceAll('\r\n','\n')) throw new Error('Ajuste dev não promovido: '+relative);
@@ -32,7 +32,7 @@ export async function validateIziRelease(root=resolve(project,'hoster-dist'), re
 }
 if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url)) {
   const flags=process.argv.slice(2);
-  const releases = ['principal-design-mobile-2026-11-18', 'principal-prime-027-2026-11-18', 'principal-sticky-prime-2026-11-18', 'principal-prime-cta-target-2026-11-18', 'principal-mobile-plan-order-2026-11-18', 'principal-gallery-gap-2026-11-18', 'principal-sticky-slow-fade-2026-11-18', 'principal-sticky-after-hero-2026-11-18', 'principal-hero-center-2026-11-18', 'principal-sticky-scroll-2026-11-18', 'principal-hero-visible-vh-2026-11-18', 'principal-hero-bg-vh-2026-11-18', 'principal-close-round-2026-11-18', 'principal-faq-pills-2026-11-18', 'principal-mobile-cta-order-2026-11-18', 'principal-menu-right-2026-11-18', 'principal-mobile-close-2026-11-18', 'principal-approved-2026-11-18', 'principal-restore-2026-11-18', 'cerrocora-bioimpedancia-2026-11-03', 'principal-cep-2026-11-09', 'principal-prime-099-2026-11-12'];
+  const releases = ['cerrocora-black-friday-2026-11-18', 'principal-design-mobile-2026-11-18', 'principal-prime-027-2026-11-18', 'principal-sticky-prime-2026-11-18', 'principal-prime-cta-target-2026-11-18', 'principal-mobile-plan-order-2026-11-18', 'principal-gallery-gap-2026-11-18', 'principal-sticky-slow-fade-2026-11-18', 'principal-sticky-after-hero-2026-11-18', 'principal-hero-center-2026-11-18', 'principal-sticky-scroll-2026-11-18', 'principal-hero-visible-vh-2026-11-18', 'principal-hero-bg-vh-2026-11-18', 'principal-close-round-2026-11-18', 'principal-faq-pills-2026-11-18', 'principal-mobile-cta-order-2026-11-18', 'principal-menu-right-2026-11-18', 'principal-mobile-close-2026-11-18', 'principal-approved-2026-11-18', 'principal-restore-2026-11-18', 'cerrocora-bioimpedancia-2026-11-03', 'principal-cep-2026-11-09', 'principal-prime-099-2026-11-12'];
   const name = flags[0]?.slice('--release='.length);
   if (flags.length > 1 || (flags.length && (!flags[0].startsWith('--release=') || !releases.includes(name)))) throw new Error('Argumento de revisão inválido.');
   const release = name ? JSON.parse(await readFile(resolve(project, `data/releases/${name}.json`))) : null;

@@ -294,3 +294,13 @@ test('Prime Black Friday price promotion permits only the institutional official
     assert.throws(() => validatePromotionScope({...release, pages:[...release.pages, {...release.pages[0],asset}]}, name), /escopo revisado/);
   }
 });
+
+
+test('Black Friday promotion is restricted to Cerro Cora, preserving institutional and other previews', async () => {
+ const release = await readPromotion(['--promote=cerrocora-black-friday-2026-11-18']);
+ assert.equal(release.scope, 'cerrocora-offer');
+ assert.deepEqual(release.pages.map(page => page.asset), ['cerrocora/index.html']);
+ for (const asset of ['_official/izigym/index.shell', 'izigym/index.html', 'izigym-lp-vilaromana/index.html', 'rodeio/index.html']) {
+  assert.throws(() => validatePromotionScope({...release, pages:[...release.pages, {...release.pages[0], asset}]}, 'cerrocora-black-friday-2026-11-18'), /escopo revisado/);
+ }
+});

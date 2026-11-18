@@ -173,14 +173,15 @@ export function validatePromotionScope(promotion, release) {
   const approvedDesign = ['principal-design-mobile-2026-11-18', 'principal-restore-2026-11-18', 'principal-approved-2026-11-18', 'principal-mobile-close-2026-11-18', 'principal-menu-right-2026-11-18', 'principal-mobile-cta-order-2026-11-18', 'principal-faq-pills-2026-11-18', 'principal-close-round-2026-11-18', 'principal-hero-bg-vh-2026-11-18', 'principal-hero-visible-vh-2026-11-18', 'principal-sticky-scroll-2026-11-18', 'principal-hero-center-2026-11-18', 'principal-sticky-after-hero-2026-11-18', 'principal-sticky-slow-fade-2026-11-18', 'principal-gallery-gap-2026-11-18', 'principal-mobile-plan-order-2026-11-18', 'principal-prime-cta-target-2026-11-18', 'principal-sticky-prime-2026-11-18', 'principal-prime-027-2026-11-18'].includes(release);
   const primeOffer = release === 'principal-prime-099-2026-11-12';
   const principalCep = release === 'principal-cep-2026-11-09';
+  const cerroBlackFriday = release === 'cerrocora-black-friday-2026-11-18';
   const cerroBenefits = release === 'cerrocora-bioimpedancia-2026-11-03';
   const bioimpedance = release === 'principal-bioimpedance-2026-11-03';
   const scheduledIzi = release === 'izi-official-2026-11-01';
   const developmentCopies = release === 'izi-development-copies-2026-10-29';
   const combinedIzi = release === 'izi-clixx-horarios-2026-10-26';
   const principal = ['principal-tracking-2026-10-13', 'principal-horarios-2026-10-26'].includes(release);
-  const expectedScope = approvedDesign ? 'principal-design-mobile' : primeOffer ? 'principal-prime-offer' : principalCep ? 'principal-cep' : cerroBenefits ? 'cerrocora-benefits' : bioimpedance ? 'principal-bioimpedance' : scheduledIzi ? 'izi-official' : developmentCopies ? 'izi-development-copies' : combinedIzi ? 'izi-clixx-horarios' : principal ? 'principal' : release === 'izi-franquias-admin-2026-10-08' ? 'izi-franquias-admin' : 'cerrocora';
-  const expectedAssets = cerroBenefits ? ['cerrocora/index.html'] : (bioimpedance || principalCep || primeOffer || approvedDesign) ? ['_official/izigym/index.shell'] : scheduledIzi ? ['_official/izigym/index.shell','cerrocora/index.html'] : developmentCopies ? ['izigym-lp-vilaromana/index.html'] : combinedIzi
+  const expectedScope = cerroBlackFriday ? 'cerrocora-offer' : approvedDesign ? 'principal-design-mobile' : primeOffer ? 'principal-prime-offer' : principalCep ? 'principal-cep' : cerroBenefits ? 'cerrocora-benefits' : bioimpedance ? 'principal-bioimpedance' : scheduledIzi ? 'izi-official' : developmentCopies ? 'izi-development-copies' : combinedIzi ? 'izi-clixx-horarios' : principal ? 'principal' : release === 'izi-franquias-admin-2026-10-08' ? 'izi-franquias-admin' : 'cerrocora';
+  const expectedAssets = (cerroBenefits || cerroBlackFriday) ? ['cerrocora/index.html'] : (bioimpedance || principalCep || primeOffer || approvedDesign) ? ['_official/izigym/index.shell'] : scheduledIzi ? ['_official/izigym/index.shell','cerrocora/index.html'] : developmentCopies ? ['izigym-lp-vilaromana/index.html'] : combinedIzi
     ? ['_official/izigym/index.shell', 'cerrocora/index.html', 'izigym-lp-vilaromana/index.html']
     : principal
     ? ['_official/izigym/index.shell', 'izigym-lp-vilaromana/index.html']
@@ -200,6 +201,7 @@ export async function readPromotion(args = []) {
   const flags = args.filter(arg => arg !== '--audit');
   if (!flags.length) return null;
   const releases = {
+    '--promote=cerrocora-black-friday-2026-11-18': 'cerrocora-black-friday-2026-11-18',
     '--promote=principal-prime-027-2026-11-18': 'principal-prime-027-2026-11-18',
     '--promote=principal-sticky-prime-2026-11-18': 'principal-sticky-prime-2026-11-18',
     '--promote=principal-prime-cta-target-2026-11-18': 'principal-prime-cta-target-2026-11-18',
@@ -238,7 +240,7 @@ export async function readPromotion(args = []) {
     throw new Error('Promoção live desconhecida. Use uma revisão de escopo versionada.');
   }
   const promotion = JSON.parse(await readFile(join(projectRoot, `data/releases/${releases[flags[0]]}.json`), 'utf8'));
-  if (promotion.scope === 'cerrocora-benefits' && promotion.release !== releases[flags[0]]) throw new Error('Identificador da promoção Cerro Corá difere da revisão.');
+  if (['cerrocora-benefits', 'cerrocora-offer'].includes(promotion.scope) && promotion.release !== releases[flags[0]]) throw new Error('Identificador da promoção Cerro Corá difere da revisão.');
   if (promotion.scope === 'izi-franquias-admin') {
     const expected = { binding: 'IZI_FRANCHISE_DB', database_id: '4553bc65-eeb8-4404-aa57-e44692bcc9a3' };
     if (JSON.stringify(promotion.franchiseDatabase) !== JSON.stringify(expected)) throw new Error('Banco de franquias difere do vínculo revisado.');
@@ -251,7 +253,7 @@ export async function readPromotion(args = []) {
 
 export async function runPreflight({ enforceGit = true, candidateAssets = assetsRoot, promotion = null } = {}) {
   if (enforceGit) assertGitHubFirst();
-  if (['izi-official', 'principal-bioimpedance', 'cerrocora-benefits', 'principal-cep', 'principal-prime-offer', 'principal-design-mobile'].includes(promotion?.scope)) await validateIziRelease(candidateAssets, promotion);
+  if (['izi-official', 'principal-bioimpedance', 'cerrocora-benefits', 'cerrocora-offer', 'principal-cep', 'principal-prime-offer', 'principal-design-mobile'].includes(promotion?.scope)) await validateIziRelease(candidateAssets, promotion);
   const before = await activeVersion();
   const candidateWorker = await readFile(join(projectRoot, 'cloudflare/worker.mjs'), 'utf8');
   if (promotion && digest(Buffer.from(candidateWorker)) !== promotion.workerSha256) {
