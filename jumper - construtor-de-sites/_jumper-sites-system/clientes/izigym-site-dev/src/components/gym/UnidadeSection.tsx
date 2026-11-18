@@ -13,7 +13,7 @@ export const UnidadeSection = () => {
         <img
           src="/images/home-campanha-janeiro-2027.webp"
           alt=""
-          className="absolute inset-0 -z-10 h-full w-full object-cover object-[38%_center] lg:object-center"
+          className="absolute inset-0 -z-10 h-screen w-full object-cover md:h-full object-[38%_center] lg:object-center"
           width={1920}
           height={750}
           fetchPriority="high"
