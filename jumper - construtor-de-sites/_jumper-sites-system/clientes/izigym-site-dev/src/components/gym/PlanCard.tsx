@@ -93,7 +93,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
           </span>
         </div>
         {isPromo && promoLabel && (
-          <span className="mt-3 inline-flex rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-primary">
+          <span className="mt-3 inline-flex rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-primary">
             {promoLabel}
           </span>
         )}
