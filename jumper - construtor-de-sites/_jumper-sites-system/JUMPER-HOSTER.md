@@ -190,3 +190,17 @@ A alteração autorizada é somente no dev `izigym-lp-vilaromana`: remover bioim
 ### Retirada da bioimpedância do institucional — 03/11/2026
 
 A prévia `/izigym/` foi aprovada pelo usuário, que autorizou a publicação oficial. A promoção `principal-bioimpedance-2026-11-03` altera somente `_official/izigym/index.shell` e seus assets compilados: retira a bioimpedância dos benefícios do Izi Prime e da FAQ. O manifesto fixa os hashes anterior/candidato, o Worker, o inventário dos oficiais e o fonte da LP; Cerro Corá e todas as prévias continuam na comparação estrita. O wrapper usa o mesmo preparo de assets da publicação IZI de novembro, conservando as fontes dev independentes e o formulário oficial Clixx. Publicar após PR/merge em main limpo com `npm run deploy:cloudflare -- --promote=principal-bioimpedance-2026-11-03`.
+
+### Promoção do Desenvolvimento 1 para o institucional oficial — 18/11/2026
+
+O usuário aprovou publicar a versão atual do Desenvolvimento 1 no oficial. O
+fonte `clientes/izigym-site` recebe o banner HTML da campanha de janeiro de 2027,
+fundo, fontes da marca com fallback, cores, menu, FAQ bege e melhorias mobile
+já revisados no dev. Rastreamento de produção, checkout, CEP e planos permanecem
+os oficiais. A promoção `principal-design-mobile-2026-11-18` fixa somente a página
+`_official/izigym/index.shell` e o inventário completo dos oficiais; Cerro Corá,
+prévias e outros clientes seguem na comparação estrita. O Worker não muda.
+Após PR e merge, usar `npm run deploy:cloudflare -- --promote=principal-design-mobile-2026-11-18`
+em main limpo. O wrapper conserva as prévias independentes e o Rodeio, confere o
+pacote antes do upload e audita novamente após a publicação. A janela histórica
+do workflow de novembro não é ampliada: a publicação atual é manual e autorizada.
