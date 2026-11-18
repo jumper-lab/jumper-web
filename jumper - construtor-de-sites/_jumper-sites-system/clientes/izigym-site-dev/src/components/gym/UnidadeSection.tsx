@@ -57,13 +57,17 @@ export const UnidadeSection = () => {
               Oferta válida até 30/11/2026, conforme condições e planos
               participantes da campanha.
               <br />
-              Consulte o regulamento na unidade ou{" "}
+              Consulte o regulamento na unidade
+              <br />
+              <span className="whitespace-nowrap">
+                ou{" "}
               <a
                 href="#contato"
                 className="underline underline-offset-2 hover:text-white/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
                 clique aqui.
               </a>
+              </span>
             </p>
             <p className="mt-4 lg:mt-[0.9vw]">
               As mensalidades de novembro e dezembro serão de apenas{" "}
