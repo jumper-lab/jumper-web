@@ -9,7 +9,7 @@ export const UnidadeSection = () => {
       aria-labelledby="home-campaign-title"
       className="w-full bg-[#201a17]"
     >
-      <div className="relative isolate overflow-hidden pt-16 md:pt-20 lg:min-h-[calc(39.0625vw+5rem)]">
+      <div className="relative isolate min-h-screen overflow-hidden pt-16 md:min-h-0 md:pt-20 lg:min-h-[calc(39.0625vw+5rem)]">
         <img
           src="/images/home-campanha-janeiro-2027.webp"
           alt=""
