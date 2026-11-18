@@ -238,3 +238,14 @@ Publicar primeiro somente izigym no dev; após revisão/merge, publicar no ofici
 por `npm run deploy:cloudflare -- --promote=principal-mobile-close-2026-11-18`.
 O manifesto fixa apenas a página institucional e os assets oficiais. As prévias
 já publicadas, Cerro Corá, outros clientes e Worker seguem sob comparação estrita.
+
+### Menu mobile pela direita no oficial — 18/11/2026
+
+Após confirmar explicitamente desenvolvimento e oficial, o usuário autorizou
+mudar a abertura do drawer mobile para a direita. O Desenvolvimento 1 foi
+publicado e conferido na PR #232. A promoção `principal-menu-right-2026-11-18`
+aplica somente `side="right"` ao MobileNav oficial, conservando logo, fechar,
+conteúdo e área de toque. Manifesto com hashes anterior/candidato do institucional
+e inventário completo dos oficiais. Worker, Cerro Corá, prévias e outros clientes
+seguem sob comparação estrita. Após PR/merge, publicar em main limpo pelo wrapper
+`npm run deploy:cloudflare -- --promote=principal-menu-right-2026-11-18`.

@@ -159,3 +159,12 @@ test('mobile close alignment release permits only the institutional official', a
     assert.throws(() => validatePromotionScope({...release, pages:[...release.pages, {...release.pages[0],asset}]}, name), /escopo revisado/);
   }
 });
+
+test('menu-right promotion permits only the institutional official', async () => {
+  const name = 'principal-menu-right-2026-11-18';
+  const release = await readPromotion([`--promote=${name}`]);
+  assert.deepEqual(release.pages.map(page => page.asset), ['_official/izigym/index.shell']);
+  for (const asset of ['cerrocora/index.html', 'izigym/index.html', 'rodeio/index.html']) {
+    assert.throws(() => validatePromotionScope({...release, pages:[...release.pages, {...release.pages[0],asset}]}, name), /escopo revisado/);
+  }
+});
