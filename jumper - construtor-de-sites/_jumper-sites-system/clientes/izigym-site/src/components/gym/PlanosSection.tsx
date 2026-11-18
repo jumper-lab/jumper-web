@@ -88,7 +88,12 @@ export const PlanosSection = () => {
           {plans.map((plan, index) => {
             const pricing = getPlanPricing(plan);
             return (
-              <Reveal key={plan.id} delay={index * 120} className={`h-full ${plan.name === "Izi Prime" ? "order-first lg:order-none" : ""}`}>
+              <div
+                key={plan.id}
+                id={plan.name === "Izi Prime" ? "plano-izi-prime" : undefined}
+                className={`h-full scroll-mt-20 md:scroll-mt-24 ${plan.name === "Izi Prime" ? "order-first lg:order-none" : ""}`}
+              >
+                <Reveal delay={index * 120} className="h-full">
                 <PlanCard
                   title={plan.name}
                   description={plan.description}
@@ -103,7 +108,8 @@ export const PlanosSection = () => {
                   originalPrice={pricing.originalPrice}
                   promoLabel={pricing.promoLabel}
                 />
-              </Reveal>
+                </Reveal>
+              </div>
             );
           })}
         </div>
