@@ -1,6 +1,6 @@
 import React from "react";
 import { MobileNav } from "./MobileNav";
-import { scrollToPlans } from "@/lib/scroll-to-plans";
+import { scrollToSection } from "@/lib/scroll-to-section";
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = React.useState(false);
@@ -22,18 +22,7 @@ export const Header = () => {
     event: React.MouseEvent<HTMLAnchorElement>,
     targetId: string,
   ) => {
-    if (targetId === "planos") {
-      scrollToPlans(event);
-      return;
-    }
-    event.preventDefault();
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      targetElement.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
+    void scrollToSection(event, targetId);
   };
 
   const navClassName = `fixed top-0 w-full z-50 transition-[background-color,color,box-shadow] duration-300 ease-soft ${

@@ -132,7 +132,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
         data-checkout={trackingPlacement}
         target="_blank"
         rel="noopener noreferrer"
-        className={`group/cta relative inline-flex w-full items-center justify-center gap-2 rounded-full border px-4 py-3 text-center text-[11px] sm:text-[12px] font-bold uppercase tracking-[0.14em] sm:tracking-[0.17em] transition-all duration-500 ease-soft
+        className={`group/cta relative inline-flex min-h-12 md:min-h-0 w-full items-center justify-center gap-2 rounded-full border px-4 py-3 text-center text-[11px] sm:text-[12px] font-medium md:font-bold uppercase tracking-[0.14em] sm:tracking-[0.17em] transition-all duration-500 ease-soft
           ${
             isFeatured
               ? "border-primary bg-primary text-white shadow-[0_8px_22px_rgba(229,44,18,0.16)] hover:-translate-y-px hover:bg-primary/30 hover:shadow-none"
@@ -145,7 +145,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
             <span className="pointer-events-none absolute inset-px rounded-full ring-1 ring-inset ring-white/0 transition-all duration-500 ease-soft group-hover/cta:ring-white/10" />
           </>
         )}
-        <span className="relative">{buttonText}</span>
+        <span className="relative -translate-y-[2px] md:translate-y-0">{buttonText}</span>
         <ArrowRight className="relative h-3.5 w-3.5 transition-transform duration-500 ease-soft group-hover/cta:translate-x-0.5" />
       </a>
     </div>

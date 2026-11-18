@@ -1,14 +1,6 @@
 import type { MouseEvent } from "react";
+import { scrollToSection } from "./scroll-to-section";
 
 export const scrollToPlans = (event: MouseEvent<HTMLAnchorElement>) => {
-  const section = document.getElementById("planos");
-  if (!section) return;
-
-  event.preventDefault();
-  section.scrollIntoView({
-    behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-      ? "instant"
-      : "smooth",
-    block: "start",
-  });
+  void scrollToSection(event, "planos");
 };

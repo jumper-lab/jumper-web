@@ -23,7 +23,7 @@ export const Footer = () => {
             <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href="tel:+5511952137022"
-                className="inline-flex items-center gap-2 rounded-full border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-700 transition-colors duration-500 ease-soft hover:border-zinc-900 hover:text-zinc-900"
+                className="inline-flex min-h-11 md:min-h-0 items-center gap-2 rounded-full border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-700 transition-colors duration-500 ease-soft hover:border-zinc-900 hover:text-zinc-900"
               >
                 <Phone className="h-4 w-4" />
                 11 95213-7022
@@ -32,7 +32,7 @@ export const Footer = () => {
                 href="https://www.instagram.com/izigym.brasil/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-700 transition-colors duration-500 ease-soft hover:border-zinc-900 hover:text-zinc-900"
+                className="inline-flex min-h-11 md:min-h-0 items-center gap-2 rounded-full border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-700 transition-colors duration-500 ease-soft hover:border-zinc-900 hover:text-zinc-900"
               >
                 <Instagram className="h-4 w-4" />
                 @izigym.brasil
@@ -91,12 +91,12 @@ export const Footer = () => {
                   href="https://www.instagram.com/izigym.brasil/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm text-zinc-500 transition-colors duration-500 ease-soft hover:text-zinc-900"
+                  className="inline-flex min-h-11 md:min-h-0 items-center gap-2 text-sm text-zinc-500 transition-colors duration-500 ease-soft hover:text-zinc-900"
                 >
                   Instagram
                   <ArrowUpRight className="h-3.5 w-3.5" />
                 </a>
-                <ScrollToTopLink className="inline-flex items-center gap-2 text-sm text-zinc-500 transition-opacity duration-500 ease-soft hover:opacity-60">
+                <ScrollToTopLink className="inline-flex min-h-11 md:min-h-0 items-center gap-2 text-sm text-zinc-500 transition-opacity duration-500 ease-soft hover:opacity-60">
                   Voltar ao topo
                   <ArrowUpRight className="h-3.5 w-3.5" />
                 </ScrollToTopLink>
