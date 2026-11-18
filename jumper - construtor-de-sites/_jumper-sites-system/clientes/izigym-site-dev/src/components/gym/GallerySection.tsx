@@ -68,6 +68,7 @@ const VideoGalleryItem = ({
         ref={iframeRef}
         src={item.src}
         title={item.title}
+        loading="lazy"
         className="h-full w-full"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerPolicy="strict-origin-when-cross-origin"
@@ -81,6 +82,17 @@ export const GallerySection = () => {
   const featuredGalleryItems = galleryItems.slice(0, 7);
   const videoIframeRef = React.useRef<HTMLIFrameElement>(null);
   const [isVideoMuted, setIsVideoMuted] = React.useState(true);
+  const [isTourVisible, setIsTourVisible] = React.useState(false);
+
+  React.useEffect(() => {
+    const iframe = videoIframeRef.current;
+    if (!iframe) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsTourVisible(entry.isIntersecting);
+    }, { threshold: 0.15 });
+    observer.observe(iframe);
+    return () => observer.disconnect();
+  }, []);
 
   const sendVideoCommand = (func: string, args: unknown[] = []) => {
     videoIframeRef.current?.contentWindow?.postMessage(
@@ -175,7 +187,7 @@ export const GallerySection = () => {
       <button
         type="button"
         onClick={toggleVideoSound}
-        className="fixed bottom-24 left-5 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-[#080808]/60 text-white shadow-[0_14px_36px_rgba(0,0,0,0.22)] backdrop-blur-2xl backdrop-saturate-150 transition-all duration-500 ease-soft hover:-translate-y-px hover:border-primary/45 hover:bg-primary/30 focus:outline-none focus:ring-4 focus:ring-primary/30 md:bottom-16 md:left-8"
+        className={`${isTourVisible ? "flex" : "hidden md:flex"} fixed bottom-24 left-5 z-50 h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-[#080808]/60 text-white shadow-[0_14px_36px_rgba(0,0,0,0.22)] backdrop-blur-2xl backdrop-saturate-150 transition-all duration-500 ease-soft hover:-translate-y-px hover:border-primary/45 hover:bg-primary/30 focus:outline-none focus:ring-4 focus:ring-primary/30 md:bottom-16 md:left-8`}
         aria-label={isVideoMuted ? "Ativar som do vídeo" : "Silenciar vídeo"}
         title={isVideoMuted ? "Ativar som" : "Silenciar"}
       >

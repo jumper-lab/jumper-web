@@ -81,9 +81,9 @@ export const MobileNav: React.FC<MobileNavProps> = ({ handleSmoothScroll, isHead
             href="#planos"
             data-navigation="mobile_menu_plans"
             onClick={(e) => handleNavigationClick(e, "planos")}
-            className="block w-full rounded-full border border-primary bg-primary px-6 py-3 text-center text-sm font-bold uppercase tracking-wide text-white shadow-[0_8px_22px_rgba(229,44,18,0.18)] transition-all duration-500 ease-soft hover:-translate-y-px hover:bg-primary/30 hover:shadow-none"
+            className="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-primary bg-primary px-6 py-3 text-center text-sm font-medium uppercase tracking-wide text-white shadow-[0_8px_22px_rgba(229,44,18,0.18)] transition-all duration-500 ease-soft hover:-translate-y-px hover:bg-primary/30 hover:shadow-none"
           >
-            Matricule-se
+            <span className="-translate-y-[2px]">Matricule-se</span>
           </a>
           <div className="flex items-center justify-center space-x-4">
             <a href="https://www.instagram.com/izigym.brasil" target="_blank" rel="noopener noreferrer" className="text-zinc-500 transition-colors duration-500 ease-soft hover:text-primary">
