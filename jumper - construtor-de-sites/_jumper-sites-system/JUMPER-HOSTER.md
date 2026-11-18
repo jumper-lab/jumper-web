@@ -378,3 +378,13 @@ box do cabeçalho fixo. Rolagem suave e reduced motion mantidos; botões de
 checkout dos planos conservam o Sistema Pacto. Publicação oficial após revisão
 dev e merge pelo wrapper `npm run deploy:cloudflare -- --promote=principal-prime-cta-target-2026-11-18`.
 Manifesto restrito ao institucional; outros sites, Worker e dados preservados.
+
+### Barra inferior oculta no bloco Prime — 18/11/2026
+
+A barra mobile fica oculta enquanto qualquer parte do box Prime estiver visível
+abaixo do cabeçalho; reaparece ao sair do bloco, desde que o botão do hero já
+tenha saído acima da tela. Dois IntersectionObservers preservam o comportamento
+do hero e o fade de 1 segundo nas duas direções, reduced motion e foco. Dev e
+oficial autorizados. Após revisão dev e merge, publicar pelo wrapper
+`npm run deploy:cloudflare -- --promote=principal-sticky-prime-2026-11-18`. Manifesto restrito
+ao institucional; outros sites, Worker e dados preservados.
