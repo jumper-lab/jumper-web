@@ -14,16 +14,30 @@ export const StickyMobileCTA: React.FC = () => {
 
   React.useEffect(() => {
     const heroButton = document.querySelector<HTMLAnchorElement>('#unidade a[href="#plano-izi-prime"]');
-    if (!heroButton) return;
+    const primeCard = document.getElementById("plano-izi-prime");
+    if (!heroButton || !primeCard) return;
 
-    // Keep a header-sized buffer so the fade-out starts before the hero CTA returns.
-    const updateVisibility = () => setIsVisible(heroButton.getBoundingClientRect().bottom <= -64);
+    let heroPassed = heroButton.getBoundingClientRect().bottom <= -64;
+    const primeBounds = primeCard.getBoundingClientRect();
+    let primeVisible = primeBounds.bottom > 64 && primeBounds.top < window.innerHeight;
+    const updateVisibility = () => setIsVisible(heroPassed && !primeVisible);
     updateVisibility();
-    const observer = new IntersectionObserver(([entry]) => {
-      setIsVisible(!entry.isIntersecting && entry.boundingClientRect.bottom <= 0);
+
+    // Start fading before the hero CTA returns; hide throughout the Prime card.
+    const heroObserver = new IntersectionObserver(([entry]) => {
+      heroPassed = !entry.isIntersecting && entry.boundingClientRect.bottom <= 0;
+      updateVisibility();
     }, { threshold: 0, rootMargin: "64px 0px 0px 0px" });
-    observer.observe(heroButton);
-    return () => observer.disconnect();
+    const primeObserver = new IntersectionObserver(([entry]) => {
+      primeVisible = entry.isIntersecting;
+      updateVisibility();
+    }, { threshold: 0, rootMargin: "-64px 0px 0px 0px" });
+    heroObserver.observe(heroButton);
+    primeObserver.observe(primeCard);
+    return () => {
+      heroObserver.disconnect();
+      primeObserver.disconnect();
+    };
   }, []);
 
   const whatsappHref = `https://wa.me/5511952137022?text=${encodeURIComponent(

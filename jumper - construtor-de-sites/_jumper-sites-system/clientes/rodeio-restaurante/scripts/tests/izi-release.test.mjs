@@ -26,7 +26,7 @@ test('asset inventory detects added, changed and removed files',async()=>{
 });
 
 test('prepared package allows only reviewed official differences', async()=>{
-  const r=await readPromotion(['--promote=principal-prime-cta-target-2026-11-18']);
+  const r=await readPromotion(['--promote=principal-sticky-prime-2026-11-18']);
   const root=new URL('../../hoster-dist/',import.meta.url);
   const candidate=asset=>readFile(new URL(asset,root));
   const fake=async url=>{
