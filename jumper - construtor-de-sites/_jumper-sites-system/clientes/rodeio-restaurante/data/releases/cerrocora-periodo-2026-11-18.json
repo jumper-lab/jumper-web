@@ -5,14 +5,14 @@
   "approvedRequest": "Usuário confirmou: R$ 0,27/mês em novembro e dezembro de 2026. A partir de janeiro de 2027, R$ 187/mês. Somente LP Cerro Corá, dev e live; formulário e checkout preservados.",
   "baselineMain": "a52804d337d41e428e25bfa1a5f700480a560fcb",
   "workerSha256": "d1aca73437b9602952471c62991c99f287ceb015c2eecf5bfeb82193dd25d7c5",
-  "lpSourceSha256": "803c72202b2c2b32e142edbdded0272c154e7af7f62c2af9e9ab74eab458c110",
+  "lpSourceSha256": "c71bee70dded285d107e65582e195c0625b7e3d64b8d18d25a62ea3895c6aa10",
   "pages": [
     {
       "asset": "cerrocora/index.html",
-      "candidateSha256": "810abf16c54348c2ad6fcc5e6ac59fd9114eae22562241b0740e3bd9f784f087",
+      "candidateSha256": "cdb3f8b32c75c3c2fad48c837492d9f535426d0e3769659f027ce0ff4b07bfdf",
       "publishedSha256": [
         "8980d1443084e8091329a88e34c001f06535d3590ca091a7aa50fc239905aebc",
-        "810abf16c54348c2ad6fcc5e6ac59fd9114eae22562241b0740e3bd9f784f087"
+        "cdb3f8b32c75c3c2fad48c837492d9f535426d0e3769659f027ce0ff4b07bfdf"
       ]
     }
   ],
@@ -74,6 +74,6 @@
     "_official/izigym/sitemap.xml": "bf3f5c23c7b43e3cc4bdcb8100e309a269695e1110dad7e7ea45feff39d3a968",
     "cerrocora/_astro/simple.ConiH_ZM.css": "73f75bdd343fcc765c15406215036e6d7bb7988a7f46e8a2a3fd3c36f3d6840f",
     "cerrocora/_astro/simple.astro_astro_type_script_index_0_lang.DxTKZI4T.js": "111d31969f74d7488da0b3e08616975e9b2cf501c4894f5df8723b58a84b3991",
-    "cerrocora/index.html": "810abf16c54348c2ad6fcc5e6ac59fd9114eae22562241b0740e3bd9f784f087"
+    "cerrocora/index.html": "cdb3f8b32c75c3c2fad48c837492d9f535426d0e3769659f027ce0ff4b07bfdf"
   }
 }
