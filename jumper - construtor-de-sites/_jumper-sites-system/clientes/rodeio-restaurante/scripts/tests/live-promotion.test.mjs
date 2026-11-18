@@ -267,3 +267,12 @@ test('mobile plan order promotion permits only the institutional official', asyn
     assert.throws(() => validatePromotionScope({...release, pages:[...release.pages, {...release.pages[0],asset}]}, name), /escopo revisado/);
   }
 });
+
+test('Prime CTA target promotion permits only the institutional official', async () => {
+  const name = 'principal-prime-cta-target-2026-11-18';
+  const release = await readPromotion([`--promote=${name}`]);
+  assert.deepEqual(release.pages.map(page => page.asset), ['_official/izigym/index.shell']);
+  for (const asset of ['cerrocora/index.html', 'izigym/index.html', 'rodeio/index.html']) {
+    assert.throws(() => validatePromotionScope({...release, pages:[...release.pages, {...release.pages[0],asset}]}, name), /escopo revisado/);
+  }
+});

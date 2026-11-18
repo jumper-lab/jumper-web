@@ -368,3 +368,13 @@ desktop. Ajuste no Desenvolvimento 1 e oficial, sem alterar preços ou checkout.
 Publicação oficial pelo wrapper `npm run deploy:cloudflare -- --promote=principal-mobile-plan-order-2026-11-18`
 após PR, revisão no dev e merge. Manifesto restrito ao institucional; demais
 sites, Worker e dados preservados.
+
+### CTAs para o box Izi Prime — 18/11/2026
+
+Os links internos de planos e matrícula do hero, cabeçalho, menu mobile e barra
+fixa apontam para #plano-izi-prime, no dev e oficial. A âncora está fora do
+Reveal para não medir o deslocamento da animação; scroll-margin protege o
+box do cabeçalho fixo. Rolagem suave e reduced motion mantidos; botões de
+checkout dos planos conservam o Sistema Pacto. Publicação oficial após revisão
+dev e merge pelo wrapper `npm run deploy:cloudflare -- --promote=principal-prime-cta-target-2026-11-18`.
+Manifesto restrito ao institucional; outros sites, Worker e dados preservados.

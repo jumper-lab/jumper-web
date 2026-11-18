@@ -13,7 +13,7 @@ export const StickyMobileCTA: React.FC = () => {
   const [isVisible, setIsVisible] = React.useState(false);
 
   React.useEffect(() => {
-    const heroButton = document.querySelector<HTMLAnchorElement>('#unidade a[href="#planos"]');
+    const heroButton = document.querySelector<HTMLAnchorElement>('#unidade a[href="#plano-izi-prime"]');
     if (!heroButton) return;
 
     // Keep a header-sized buffer so the fade-out starts before the hero CTA returns.
@@ -40,7 +40,7 @@ export const StickyMobileCTA: React.FC = () => {
     >
       <div className="mx-auto flex max-w-xl items-center gap-3">
         <a
-          href="#planos"
+          href="#plano-izi-prime"
           tabIndex={isVisible ? undefined : -1}
           data-navigation="mobile_sticky_plans"
           onClick={scrollToPlans}

@@ -38,7 +38,7 @@ export const UnidadeSection = () => {
             <br className="hidden sm:block" /> e comece a treinar ainda em 2026.
           </p>
           <a
-            href="#planos"
+            href="#plano-izi-prime"
             onClick={scrollToPlans}
             style={{ animationDelay: "820ms" }}
             className="hero-copy-intro mt-8 inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-primary px-6 py-3 whitespace-nowrap text-xs min-[360px]:text-sm font-medium leading-none sm:leading-none uppercase tracking-wide text-white transition-colors hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:text-base lg:mt-[2vw] lg:min-h-[3.35vw] lg:gap-[0.6vw] lg:px-[1.05vw] lg:py-[0.7vw] lg:text-[1.1vw]"
