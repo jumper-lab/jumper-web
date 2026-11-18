@@ -360,3 +360,11 @@ oficial. Publicar izigym no dev, conferir e integrar; publicar oficial por
 `npm run deploy:cloudflare -- --promote=principal-gallery-gap-2026-11-18`.
 Manifesto restrito ao institucional e assets oficiais; Worker, Cerro Corá,
 prévias e demais clientes seguem sob comparação estrita.
+
+### Ordem dos planos no mobile — 18/11/2026
+
+Izi Prime aparece antes do Izi One na grade de uma coluna; lg mantém a ordem
+desktop. Ajuste no Desenvolvimento 1 e oficial, sem alterar preços ou checkout.
+Publicação oficial pelo wrapper `npm run deploy:cloudflare -- --promote=principal-mobile-plan-order-2026-11-18`
+após PR, revisão no dev e merge. Manifesto restrito ao institucional; demais
+sites, Worker e dados preservados.

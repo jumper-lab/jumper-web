@@ -88,7 +88,7 @@ export const PlanosSection = () => {
           {plans.map((plan, index) => {
             const pricing = getPlanPricing(plan);
             return (
-              <Reveal key={plan.id} delay={index * 120} className="h-full">
+              <Reveal key={plan.id} delay={index * 120} className={`h-full ${plan.name === "Izi Prime" ? "order-first lg:order-none" : ""}`}>
                 <PlanCard
                   title={plan.name}
                   description={plan.description}
