@@ -325,3 +325,16 @@ o oficial em main limpo pelo wrapper
 `npm run deploy:cloudflare -- --promote=principal-hero-center-2026-11-18`.
 Manifesto restrito ao institucional e seus assets; demais sites, Worker e dados
 seguem na comparação estrita.
+
+### Barra mobile somente após sair o CTA do hero — 18/11/2026
+
+O usuário esclareceu que a barra deve entrar em fade somente depois que o botão
+do hero sair acima da tela, para evitar dois CTAs simultâneos. No dev e oficial,
+IntersectionObserver acompanha o botão do hero: não libera a barra enquanto ele
+estiver visível nem se estiver abaixo da tela. Ao retornar à área visível, a
+barra se oculta imediatamente; a entrada usa apenas fade de 300 ms, sem slide,
+com reduced motion, foco e acessibilidade preservados. Publicar izigym no dev,
+conferir e integrar, depois publicar o oficial pelo wrapper
+`npm run deploy:cloudflare -- --promote=principal-sticky-after-hero-2026-11-18`.
+Manifesto restrito ao institucional e assets oficiais; demais sites, Worker e
+dados seguem sob comparação estrita.
