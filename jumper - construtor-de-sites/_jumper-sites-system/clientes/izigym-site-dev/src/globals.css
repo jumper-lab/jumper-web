@@ -282,3 +282,7 @@
 /* Lighter FAQ questions, topic pills and contact CTA in the development theme. */
 #faq .font-semibold,
 #faq .rounded-full.font-bold { font-weight: 500; }
+
+@media (max-width: 767px) {
+  #faq .font-semibold { font-weight: 400; }
+}
