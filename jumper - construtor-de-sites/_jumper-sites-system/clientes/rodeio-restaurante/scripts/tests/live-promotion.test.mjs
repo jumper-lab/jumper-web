@@ -186,3 +186,12 @@ test('FAQ pill typography promotion permits only the institutional official', as
     assert.throws(() => validatePromotionScope({...release, pages:[...release.pages, {...release.pages[0],asset}]}, name), /escopo revisado/);
   }
 });
+
+test('round close promotion permits only the institutional official', async () => {
+  const name = 'principal-close-round-2026-11-18';
+  const release = await readPromotion([`--promote=${name}`]);
+  assert.deepEqual(release.pages.map(page => page.asset), ['_official/izigym/index.shell']);
+  for (const asset of ['cerrocora/index.html', 'izigym/index.html', 'rodeio/index.html']) {
+    assert.throws(() => validatePromotionScope({...release, pages:[...release.pages, {...release.pages[0],asset}]}, name), /escopo revisado/);
+  }
+});

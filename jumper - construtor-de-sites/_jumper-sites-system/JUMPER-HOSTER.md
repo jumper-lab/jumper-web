@@ -270,3 +270,12 @@ Publicar somente izigym no dev, conferir e integrar. Publicar o oficial pelo
 wrapper `npm run deploy:cloudflare -- --promote=principal-faq-pills-2026-11-18`
 em main limpo. O manifesto fixa institucional e seus assets; Worker, Cerro Corá,
 prévias e outros clientes seguem sob comparação estrita.
+
+### Botão de fechar mobile circular — 18/11/2026
+
+O usuário pediu raio máximo no botão de fechar. O MobileNav dev e oficial
+recebe `rounded-full` no botão, conservando 44 × 44 px, alinhamento e foco visível.
+Publicar izigym no dev e conferir antes do merge; publicar o oficial por
+`npm run deploy:cloudflare -- --promote=principal-close-round-2026-11-18`.
+Manifesto restrito ao institucional e seus assets; Worker, Cerro Corá, prévias
+e demais clientes permanecem na comparação estrita.
