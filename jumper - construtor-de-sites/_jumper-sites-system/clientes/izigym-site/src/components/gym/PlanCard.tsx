@@ -14,6 +14,7 @@ interface PlanCardProps {
   isPromo?: boolean;
   originalPrice?: string;
   promoLabel?: string;
+  regularPriceStarts?: string;
 }
 
 export const PlanCard: React.FC<PlanCardProps> = ({
@@ -29,6 +30,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
   isPromo = false,
   originalPrice,
   promoLabel,
+  regularPriceStarts,
 }) => {
   const normalizedTitle = title.trim().toLowerCase();
   const normalizedDescription = description.trim().toLowerCase();
@@ -99,7 +101,9 @@ export const PlanCard: React.FC<PlanCardProps> = ({
         )}
         {isPromo && originalPrice && (
           <p className="mt-2 text-sm font-medium text-zinc-400">
-            Depois, {originalPrice}/mês.
+            {regularPriceStarts
+              ? `${originalPrice}/mês a partir de ${regularPriceStarts}.`
+              : `Depois, ${originalPrice}/mês.`}
           </p>
         )}
       </div>

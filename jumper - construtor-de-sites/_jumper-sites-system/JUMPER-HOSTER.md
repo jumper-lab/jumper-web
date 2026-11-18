@@ -403,3 +403,12 @@ condições preservados. Após build, testes, revisão dev e merge, publicar
 pelo wrapper `npm run deploy:cloudflare -- --promote=principal-prime-027-2026-11-18`.
 Manifesto limitado ao institucional; LP Cerro Corá, outros sites e Worker
 permanecem na comparação estrita.
+
+### Período da promoção Prime — 18/11/2026
+
+O card informa R$ 0,27/mês em novembro e dezembro/2026, com R$ 187/mês a
+partir de janeiro de 2027. A FAQ acompanha as datas; saem os textos de primeiro
+mês e mês promocional. O valor confirmado de R$ 0,27 foi mantido. Dev e oficial.
+Após revisão dev e merge, publicar pelo wrapper
+`npm run deploy:cloudflare -- --promote=principal-prime-period-2026-11-18`. Manifesto restrito
+ao institucional; demais sites, LPs e Worker preservados.

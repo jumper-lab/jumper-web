@@ -5,6 +5,8 @@ export interface GymPlan {
   price: number;
   promotionalPrice?: number;
   promotionalMonths?: number;
+  promotionalPeriod?: string;
+  regularPriceStarts?: string;
   features: string[];
   checkoutUrl: string;
   trackingPlacement: string;
@@ -35,7 +37,8 @@ export const plans: GymPlan[] = [
     description: "Plano completo com benefícios exclusivos IZI Prime.",
     price: 187,
     promotionalPrice: 0.27,
-    promotionalMonths: 1,
+    promotionalPeriod: "Novembro e dezembro/2026",
+    regularPriceStarts: "janeiro de 2027",
     features: [
       "Acesso a qualquer unidade",
       "Izi Cycle",
