@@ -394,3 +394,12 @@ ao institucional; outros sites, Worker e dados preservados.
 O usuário autorizou atualizar somente a LP Cerro Corá, dev e live, para anunciar o primeiro mês do IZI Prime por R$ 0,27. Título, descrição, hero, card, botões, rodapé, FAQ e nota do formulário da prévia deixam de divulgar R$ 0,99 e o cupom antigo. A mensalidade base de R$ 187 e o Izi One de R$ 157 permanecem. Não há novo cupom fornecido: o envio e o encaminhamento atual dos formulários são preservados. A LP oficial usa Clixx; a prévia independente conserva seu formulário existente. O preço anunciado não altera a configuração comercial do checkout externo.
 
 Publicar somente `izigym-lp-vilaromana` no dev, conferir, integrar a PR e publicar o live pelo wrapper `npm run deploy:cloudflare -- --promote=cerrocora-black-friday-2026-11-18`. A promoção fixa o inventário dos dois pacotes oficiais, o fonte da LP e o Worker, e permite alterar somente o HTML da Cerro Corá. O institucional e os demais sites continuam sob comparação estrita.
+
+### Izi Prime por R$ 0,27 — Black Friday 18/11/2026
+
+O preço promocional do plano Prime muda de R$ 0,99 para R$ 0,27 no card e
+na FAQ institucional, no Desenvolvimento 1 e oficial. Demais valores e
+condições preservados. Após build, testes, revisão dev e merge, publicar
+pelo wrapper `npm run deploy:cloudflare -- --promote=principal-prime-027-2026-11-18`.
+Manifesto limitado ao institucional; LP Cerro Corá, outros sites e Worker
+permanecem na comparação estrita.
