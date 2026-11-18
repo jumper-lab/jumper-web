@@ -55,7 +55,7 @@ export const Header = () => {
           <img
             src="/brand/izi-logo-tight.png"
             alt="IZI ONE Logo"
-            className="h-5 md:h-9 w-auto transition-all duration-700 ease-soft"
+            className="h-8 md:h-9 w-auto transition-all duration-700 ease-soft"
           />
         </div>
 
