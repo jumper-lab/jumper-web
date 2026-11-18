@@ -7,7 +7,7 @@ import { Reveal } from "@/components/Reveal";
 
 /**
  * Formata valor em BRL.
- * - Inteiro: "R$ 187" (sem centavos, mais limpo visualmente)
+ * - Inteiro: "R$ 167" (sem centavos, mais limpo visualmente)
  * - Com centavos: "R$ 0,99" / "R$ 89,90" (sempre 2 casas)
  *
  * O comportamento antigo usava Math.trunc, que descartava centavos e
@@ -66,7 +66,7 @@ function getPlanPricing(plan: GymPlan) {
 
 export const PlanosSection = () => {
   return (
-    <section className="scroll-mt-16 md:scroll-mt-20 py-14 px-5 sm:px-6 lg:py-20 bg-section-gray lg:min-h-screen lg:flex lg:items-center" id="planos">
+    <section className="scroll-mt-16 py-14 px-5 sm:px-6 lg:py-20 bg-section-gray lg:min-h-screen lg:flex lg:items-center" id="planos">
       <div className="max-w-7xl mx-auto w-full space-y-8 lg:space-y-10">
         <Reveal className="max-w-3xl text-center mx-auto">
           <span className="text-[11px] sm:text-xs uppercase tracking-[0.28em] sm:tracking-[0.3em] text-zinc-400 mb-4 block">
@@ -77,7 +77,7 @@ export const PlanosSection = () => {
             <br />
             estar bem.
           </h2>
-          <p className="text-base sm:text-lg text-zinc-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-zinc-300 max-w-2xl mx-auto leading-relaxed">
             Sua jornada de bem-estar, mais simples do que você imagina: um plano
             completo, duas opções de pagamento e uma rotina de treinos com tudo
             o que você precisa para alcançar seus objetivos.

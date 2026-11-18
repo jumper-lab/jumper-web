@@ -204,3 +204,14 @@ Após PR e merge, usar `npm run deploy:cloudflare -- --promote=principal-design-
 em main limpo. O wrapper conserva as prévias independentes e o Rodeio, confere o
 pacote antes do upload e audita novamente após a publicação. A janela histórica
 do workflow de novembro não é ampliada: a publicação atual é manual e autorizada.
+
+### Restauração do institucional oficial — 18/11/2026
+
+O usuário solicitou desfazer a promoção e manter os ajustes somente no
+Desenvolvimento 1. O fonte oficial é restaurado ao estado anterior à PR #226,
+com hashes idênticos ao pacote de 12/11. O registro
+`principal-restore-2026-11-18` permite exclusivamente retornar o institucional
+oficial do hash recém-publicado ao hash anterior. Desenvolvimento 1, demais
+prévias, Cerro Corá e Worker permanecem inalterados e sob comparação estrita.
+Após PR/merge, publicar com `npm run deploy:cloudflare -- --promote=principal-restore-2026-11-18`
+em main limpo e conferir a auditoria posterior.
