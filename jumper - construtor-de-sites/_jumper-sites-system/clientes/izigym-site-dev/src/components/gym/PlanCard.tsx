@@ -62,7 +62,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
         <div className="absolute right-4 top-4 z-10 sm:right-5 sm:top-5">
           <span
             className="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/15
-                       px-2.5 py-1.5 text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.18em] sm:tracking-[0.2em]
+                       px-2.5 py-1.5 text-[9px] sm:text-[10px] font-medium uppercase tracking-[0.18em] sm:tracking-[0.2em]
                        text-primary shadow-[0_0_28px_rgba(229,44,18,0.18)] backdrop-blur-md"
           >
             <Sparkles className="w-3 h-3" />
@@ -93,7 +93,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
           </span>
         </div>
         {isPromo && promoLabel && (
-          <span className="mt-3 inline-flex rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-primary">
+          <span className="mt-3 inline-flex rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-primary">
             {promoLabel}
           </span>
         )}
