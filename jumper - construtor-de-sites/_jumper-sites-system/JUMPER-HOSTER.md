@@ -350,3 +350,13 @@ publicar o oficial pelo wrapper
 `npm run deploy:cloudflare -- --promote=principal-sticky-slow-fade-2026-11-18`.
 Manifesto restrito ao institucional e assets oficiais; outros sites, Worker e
 dados seguem sob comparação estrita.
+
+### Respiro inferior da galeria IZI — 18/11/2026
+
+O usuário autorizou corrigir a galeria encostada na FAQ bege. A grade recebe
+padding inferior igual às laterais: 8 px em mobile, 16 px a partir de sm e 0 em
+lg, preservando a composição desktop sem espaços. O ajuste vale para dev e
+oficial. Publicar izigym no dev, conferir e integrar; publicar oficial por
+`npm run deploy:cloudflare -- --promote=principal-gallery-gap-2026-11-18`.
+Manifesto restrito ao institucional e assets oficiais; Worker, Cerro Corá,
+prévias e demais clientes seguem sob comparação estrita.

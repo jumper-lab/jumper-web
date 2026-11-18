@@ -249,3 +249,12 @@ test('slow sticky fade promotion permits only the institutional official', async
     assert.throws(() => validatePromotionScope({...release, pages:[...release.pages, {...release.pages[0],asset}]}, name), /escopo revisado/);
   }
 });
+
+test('gallery spacing promotion permits only the institutional official', async () => {
+  const name = 'principal-gallery-gap-2026-11-18';
+  const release = await readPromotion([`--promote=${name}`]);
+  assert.deepEqual(release.pages.map(page => page.asset), ['_official/izigym/index.shell']);
+  for (const asset of ['cerrocora/index.html', 'izigym/index.html', 'rodeio/index.html']) {
+    assert.throws(() => validatePromotionScope({...release, pages:[...release.pages, {...release.pages[0],asset}]}, name), /escopo revisado/);
+  }
+});

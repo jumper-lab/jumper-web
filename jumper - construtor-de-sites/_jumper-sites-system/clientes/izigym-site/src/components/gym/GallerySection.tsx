@@ -141,7 +141,7 @@ export const GallerySection = () => {
           </Reveal>
         </div>
 
-        <div className="grid w-full grid-cols-2 lg:grid-cols-[56.25vh_repeat(3,minmax(0,1fr))] lg:grid-rows-2 gap-2 px-2 sm:gap-4 sm:px-4 lg:gap-0 lg:px-0 lg:h-screen lg:min-h-[680px]">
+        <div className="grid w-full grid-cols-2 lg:grid-cols-[56.25vh_repeat(3,minmax(0,1fr))] lg:grid-rows-2 gap-2 px-2 pb-2 sm:gap-4 sm:px-4 sm:pb-4 lg:gap-0 lg:px-0 lg:pb-0 lg:h-screen lg:min-h-[680px]">
           {featuredGalleryItems.map((item, index) => (
             <Reveal
               key={item.src}
