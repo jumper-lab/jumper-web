@@ -289,3 +289,15 @@ conferir e integrar. Em main limpo publicar o oficial por
 `npm run deploy:cloudflare -- --promote=principal-hero-bg-vh-2026-11-18`.
 Manifesto restrito ao institucional e assets oficiais; Worker, Cerro Corá,
 prévias e demais clientes seguem na comparação estrita.
+
+### Fundo do hero visível em 100vh no mobile — 18/11/2026
+
+O usuário confirmou que o fundo precisa aparecer até o fim da tela, mantendo
+textos e botões nas posições anteriores, no dev e live. A correção acrescenta
+min-height:100vh somente ao contêiner mobile para não recortar a imagem de 100vh;
+padding, fluxo e alinhamento do conteúdo permanecem iguais, sem centralização
+vertical. Tablet/desktop restauram o mínimo anterior. Publicar izigym no dev,
+conferir e integrar; depois publicar em main limpo por
+`npm run deploy:cloudflare -- --promote=principal-hero-visible-vh-2026-11-18`.
+Manifesto restrito ao institucional e assets oficiais. Worker, Cerro Corá,
+prévias e outros clientes permanecem sob comparação estrita.
