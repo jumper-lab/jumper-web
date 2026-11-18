@@ -313,3 +313,14 @@ test('Prime campaign period promotion permits only the institutional official', 
     assert.throws(() => validatePromotionScope({...release, pages:[...release.pages, {...release.pages[0],asset}]}, name), /escopo revisado/);
   }
 });
+
+
+test('Cerro Cora campaign dates promotion preserves institutional and other sites', async () => {
+  const name = 'cerrocora-periodo-2026-11-18';
+  const release = await readPromotion([`--promote=${name}`]);
+  assert.equal(release.scope, 'cerrocora-offer');
+  assert.deepEqual(release.pages.map(page => page.asset), ['cerrocora/index.html']);
+  for (const asset of ['_official/izigym/index.shell', 'izigym-lp-vilaromana/index.html', 'rodeio/index.html']) {
+    assert.throws(() => validatePromotionScope({...release, pages:[...release.pages, {...release.pages[0],asset}]}, name), /escopo revisado/);
+  }
+});
