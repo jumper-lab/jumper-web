@@ -13,10 +13,17 @@ export const StickyMobileCTA: React.FC = () => {
   const [isVisible, setIsVisible] = React.useState(false);
 
   React.useEffect(() => {
-    const updateVisibility = () => setIsVisible(window.scrollY > 8);
+    const heroButton = document.querySelector<HTMLAnchorElement>('#unidade a[href="#planos"]');
+    if (!heroButton) return;
+
+    // Reveal only after the hero CTA passes above the viewport, never below it.
+    const updateVisibility = () => setIsVisible(heroButton.getBoundingClientRect().bottom <= 0);
     updateVisibility();
-    window.addEventListener("scroll", updateVisibility, { passive: true });
-    return () => window.removeEventListener("scroll", updateVisibility);
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsVisible(!entry.isIntersecting && entry.boundingClientRect.bottom <= 0);
+    }, { threshold: 0 });
+    observer.observe(heroButton);
+    return () => observer.disconnect();
   }, []);
 
   const whatsappHref = `https://wa.me/5511952137022?text=${encodeURIComponent(
@@ -25,7 +32,7 @@ export const StickyMobileCTA: React.FC = () => {
 
   return (
     <div
-      className={`fixed bottom-0 left-0 right-0 z-40 bg-[#0b0b0c]/95 px-4 pt-3 shadow-[0_-8px_30px_rgba(0,0,0,0.18)] backdrop-blur-xl transition-[opacity,transform] duration-300 ease-soft motion-reduce:transition-none md:hidden ${isVisible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0"}`}
+      className={`fixed bottom-0 left-0 right-0 z-40 bg-[#0b0b0c]/95 px-4 pt-3 shadow-[0_-8px_30px_rgba(0,0,0,0.18)] backdrop-blur-xl transition-opacity ease-soft motion-reduce:transition-none md:hidden ${isVisible ? "duration-300 opacity-100" : "pointer-events-none duration-0 opacity-0"}`}
       style={{ paddingBottom: "calc(0.75rem + env(safe-area-inset-bottom))" }}
       role="region"
       aria-label="Chamada para matrícula"
