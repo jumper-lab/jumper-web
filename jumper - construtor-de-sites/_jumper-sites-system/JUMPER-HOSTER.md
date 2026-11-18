@@ -388,3 +388,12 @@ do hero e o fade de 1 segundo nas duas direções, reduced motion e foco. Dev e
 oficial autorizados. Após revisão dev e merge, publicar pelo wrapper
 `npm run deploy:cloudflare -- --promote=principal-sticky-prime-2026-11-18`. Manifesto restrito
 ao institucional; outros sites, Worker e dados preservados.
+
+### Izi Prime por R$ 0,27 — Black Friday 18/11/2026
+
+O preço promocional do plano Prime muda de R$ 0,99 para R$ 0,27 no card e
+na FAQ institucional, no Desenvolvimento 1 e oficial. Demais valores e
+condições preservados. Após build, testes, revisão dev e merge, publicar
+pelo wrapper `npm run deploy:cloudflare -- --promote=principal-prime-027-2026-11-18`.
+Manifesto limitado ao institucional; LP Cerro Corá, outros sites e Worker
+permanecem na comparação estrita.
