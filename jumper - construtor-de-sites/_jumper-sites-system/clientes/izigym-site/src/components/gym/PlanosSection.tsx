@@ -58,7 +58,7 @@ function getPlanPricing(plan: GymPlan) {
     isPromo: true as const,
     price: formatBRL(plan.promotionalPrice),
     originalPrice: formatBRL(plan.price),
-    promoLabel,
+    promoLabel: plan.promotionalPeriod ?? promoLabel,
   };
 }
 
@@ -98,7 +98,7 @@ export const PlanosSection = () => {
                   title={plan.name}
                   description={plan.description}
                   price={pricing.price}
-                  priceSuffix={pricing.isPromo ? "/1º mês" : "/mês"}
+                  priceSuffix="/mês"
                   buttonText="Matricule-se Agora"
                   isFeatured={plan.name.toLowerCase().includes("prime")}
                   features={plan.features.map((name) => ({ name }))}
@@ -107,6 +107,7 @@ export const PlanosSection = () => {
                   isPromo={pricing.isPromo}
                   originalPrice={pricing.originalPrice}
                   promoLabel={pricing.promoLabel}
+                  regularPriceStarts={plan.regularPriceStarts}
                 />
                 </Reveal>
               </div>
