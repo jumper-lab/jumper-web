@@ -50,7 +50,7 @@ export const Header = () => {
 
   return (
     <nav className={navClassName}>
-      <div className="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-6 h-16 md:h-20 flex items-center justify-between gap-5 lg:gap-8">
+      <div className="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-6 h-16 md:h-20 flex items-center justify-between lg:justify-start gap-5 lg:gap-8">
         <div className="nav-logo-intro h-full shrink-0 flex items-center">
           <img
             src="/brand/izi-logo-tight.png"
@@ -117,7 +117,7 @@ export const Header = () => {
           />
         </div>
 
-        <div className="hidden lg:flex shrink-0">
+        <div className="hidden lg:flex shrink-0 lg:ml-auto">
           <a
             href="#planos"
             data-navigation="header_plans"
