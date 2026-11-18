@@ -45,7 +45,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ handleSmoothScroll, isHead
           <span className="sr-only">Abrir menu de navegação</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="w-[min(86vw,360px)] bg-background-light dark:bg-zinc-900 flex flex-col p-0 [&>button]:top-[18px] [&>button]:right-[18px] [&>button]:flex [&>button]:h-11 [&>button]:w-11 [&>button]:items-center [&>button]:justify-center">
+      <SheetContent side="right" className="w-[min(86vw,360px)] bg-background-light dark:bg-zinc-900 flex flex-col p-0 [&>button]:top-[18px] [&>button]:right-[18px] [&>button]:flex [&>button]:h-11 [&>button]:w-11 [&>button]:items-center [&>button]:justify-center">
         <SheetHeader className="p-6 pb-4">
           <SheetTitle>
             <img
