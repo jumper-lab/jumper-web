@@ -170,7 +170,7 @@ async function liveWorkerFeatures() {
 }
 
 export function validatePromotionScope(promotion, release) {
-  const approvedDesign = ['principal-design-mobile-2026-11-18', 'principal-restore-2026-11-18'].includes(release);
+  const approvedDesign = ['principal-design-mobile-2026-11-18', 'principal-restore-2026-11-18', 'principal-approved-2026-11-18'].includes(release);
   const primeOffer = release === 'principal-prime-099-2026-11-12';
   const principalCep = release === 'principal-cep-2026-11-09';
   const cerroBenefits = release === 'cerrocora-bioimpedancia-2026-11-03';
@@ -200,6 +200,7 @@ export async function readPromotion(args = []) {
   const flags = args.filter(arg => arg !== '--audit');
   if (!flags.length) return null;
   const releases = {
+    '--promote=principal-approved-2026-11-18': 'principal-approved-2026-11-18',
     '--promote=principal-restore-2026-11-18': 'principal-restore-2026-11-18',
     '--promote=principal-design-mobile-2026-11-18': 'principal-design-mobile-2026-11-18',
     '--promote=principal-prime-099-2026-11-12': 'principal-prime-099-2026-11-12',
