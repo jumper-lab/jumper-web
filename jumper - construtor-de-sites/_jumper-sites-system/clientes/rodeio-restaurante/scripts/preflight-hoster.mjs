@@ -170,7 +170,7 @@ async function liveWorkerFeatures() {
 }
 
 export function validatePromotionScope(promotion, release) {
-  const approvedDesign = ['principal-design-mobile-2026-11-18', 'principal-restore-2026-11-18', 'principal-approved-2026-11-18', 'principal-mobile-close-2026-11-18', 'principal-menu-right-2026-11-18', 'principal-mobile-cta-order-2026-11-18', 'principal-faq-pills-2026-11-18', 'principal-close-round-2026-11-18', 'principal-hero-bg-vh-2026-11-18', 'principal-hero-visible-vh-2026-11-18', 'principal-sticky-scroll-2026-11-18', 'principal-hero-center-2026-11-18', 'principal-sticky-after-hero-2026-11-18'].includes(release);
+  const approvedDesign = ['principal-design-mobile-2026-11-18', 'principal-restore-2026-11-18', 'principal-approved-2026-11-18', 'principal-mobile-close-2026-11-18', 'principal-menu-right-2026-11-18', 'principal-mobile-cta-order-2026-11-18', 'principal-faq-pills-2026-11-18', 'principal-close-round-2026-11-18', 'principal-hero-bg-vh-2026-11-18', 'principal-hero-visible-vh-2026-11-18', 'principal-sticky-scroll-2026-11-18', 'principal-hero-center-2026-11-18', 'principal-sticky-after-hero-2026-11-18', 'principal-sticky-slow-fade-2026-11-18'].includes(release);
   const primeOffer = release === 'principal-prime-099-2026-11-12';
   const principalCep = release === 'principal-cep-2026-11-09';
   const cerroBenefits = release === 'cerrocora-bioimpedancia-2026-11-03';
@@ -200,6 +200,7 @@ export async function readPromotion(args = []) {
   const flags = args.filter(arg => arg !== '--audit');
   if (!flags.length) return null;
   const releases = {
+    '--promote=principal-sticky-slow-fade-2026-11-18': 'principal-sticky-slow-fade-2026-11-18',
     '--promote=principal-sticky-after-hero-2026-11-18': 'principal-sticky-after-hero-2026-11-18',
     '--promote=principal-hero-center-2026-11-18': 'principal-hero-center-2026-11-18',
     '--promote=principal-sticky-scroll-2026-11-18': 'principal-sticky-scroll-2026-11-18',
