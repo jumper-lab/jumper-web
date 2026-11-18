@@ -249,3 +249,13 @@ conteúdo e área de toque. Manifesto com hashes anterior/candidato do instituci
 e inventário completo dos oficiais. Worker, Cerro Corá, prévias e outros clientes
 seguem sob comparação estrita. Após PR/merge, publicar em main limpo pelo wrapper
 `npm run deploy:cloudflare -- --promote=principal-menu-right-2026-11-18`.
+
+### Ordem dos botões da barra fixa mobile — 18/11/2026
+
+O usuário autorizou inverter os botões no dev e no live: matrícula à esquerda
+e WhatsApp à direita. A ordem dos elementos também muda no DOM para manter
+leitura e foco consistentes. Destinos, rastreamento, tamanhos e safe area não mudam.
+Publicar izigym no dev e conferir antes do merge; em seguida publicar o oficial
+com `npm run deploy:cloudflare -- --promote=principal-mobile-cta-order-2026-11-18`.
+O manifesto fixa somente a página institucional e os assets oficiais, mantendo
+Worker, Cerro Corá, prévias e demais clientes sob comparação estrita.
