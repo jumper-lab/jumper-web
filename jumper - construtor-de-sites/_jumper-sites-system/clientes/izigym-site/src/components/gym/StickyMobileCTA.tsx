@@ -10,20 +10,31 @@ import { scrollToPlans } from "@/lib/scroll-to-plans";
  * Usa env(safe-area-inset-bottom) pra respeitar a home indicator do iPhone.
  */
 export const StickyMobileCTA: React.FC = () => {
+  const [isVisible, setIsVisible] = React.useState(false);
+
+  React.useEffect(() => {
+    const updateVisibility = () => setIsVisible(window.scrollY > 8);
+    updateVisibility();
+    window.addEventListener("scroll", updateVisibility, { passive: true });
+    return () => window.removeEventListener("scroll", updateVisibility);
+  }, []);
+
   const whatsappHref = `https://wa.me/5511952137022?text=${encodeURIComponent(
     "Olá! Gostaria de saber mais sobre os planos da IZI Gym.",
   )}`;
 
   return (
     <div
-      className="fixed bottom-0 left-0 right-0 z-40 bg-[#0b0b0c]/95 px-4 pt-3 shadow-[0_-8px_30px_rgba(0,0,0,0.18)] backdrop-blur-xl md:hidden"
+      className={`fixed bottom-0 left-0 right-0 z-40 bg-[#0b0b0c]/95 px-4 pt-3 shadow-[0_-8px_30px_rgba(0,0,0,0.18)] backdrop-blur-xl transition-[opacity,transform] duration-300 ease-soft motion-reduce:transition-none md:hidden ${isVisible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0"}`}
       style={{ paddingBottom: "calc(0.75rem + env(safe-area-inset-bottom))" }}
       role="region"
       aria-label="Chamada para matrícula"
+      aria-hidden={!isVisible}
     >
       <div className="mx-auto flex max-w-xl items-center gap-3">
         <a
           href="#planos"
+          tabIndex={isVisible ? undefined : -1}
           data-navigation="mobile_sticky_plans"
           onClick={scrollToPlans}
           className="flex h-12 min-w-0 flex-1 items-center justify-center gap-2 rounded-full border border-primary bg-primary px-4 text-xs font-medium uppercase tracking-[0.08em] text-white transition-colors duration-300 ease-soft hover:bg-primary/90 focus:outline-none focus:ring-4 focus:ring-primary/35 xs:text-sm xs:tracking-[0.1em]"
@@ -33,6 +44,7 @@ export const StickyMobileCTA: React.FC = () => {
         </a>
         <a
           href={whatsappHref}
+          tabIndex={isVisible ? undefined : -1}
           data-whatsapp="whatsapp_mobile_sticky"
           data-whatsapp-channel="principal_sales"
           target="_blank"

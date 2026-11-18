@@ -301,3 +301,15 @@ conferir e integrar; depois publicar em main limpo por
 `npm run deploy:cloudflare -- --promote=principal-hero-visible-vh-2026-11-18`.
 Manifesto restrito ao institucional e assets oficiais. Worker, Cerro Corá,
 prévias e outros clientes permanecem sob comparação estrita.
+
+### Barra fixa mobile após rolagem — 18/11/2026
+
+O usuário pediu que a barra de matrícula/WhatsApp apareça ao rolar. No dev e no
+oficial a barra começa oculta no topo, entra com fade/deslocamento após 8 px de
+rolagem e volta a ocultar ao retornar ao topo. Links ocultos ficam fora da
+navegação por teclado e da árvore acessível; reduced motion é respeitado.
+Destinos, ordem, tamanhos e safe area permanecem. Publicar izigym no dev,
+conferir e integrar, depois publicar oficial pelo wrapper
+`npm run deploy:cloudflare -- --promote=principal-sticky-scroll-2026-11-18`.
+Manifesto restrito ao institucional e seus assets; outros sites, Worker e dados
+seguem sob comparação estrita.
