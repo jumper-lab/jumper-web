@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import "./assets/fonts/brand-fonts.css";
+import "@fontsource/outfit/latin-300.css";
 import "@fontsource/outfit/latin-500.css";
 import "@fontsource/outfit/latin-700.css";
 import App from "./App.tsx";
