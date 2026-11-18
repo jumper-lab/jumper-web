@@ -313,3 +313,15 @@ conferir e integrar, depois publicar oficial pelo wrapper
 `npm run deploy:cloudflare -- --promote=principal-sticky-scroll-2026-11-18`.
 Manifesto restrito ao institucional e seus assets; outros sites, Worker e dados
 seguem sob comparação estrita.
+
+### Conteúdo do hero mobile centralizado verticalmente — 18/11/2026
+
+O usuário autorizou centralizar as informações do hero no mobile e manter
+alinhamento à esquerda, no dev e live. O contêiner mobile usa flex em coluna,
+justify-center e padding vertical simétrico; o bloco de conteúdo mantém largura
+completa e text-left. A imagem continua 100vh e desktop restaura display block
+e os paddings anteriores. Publicar izigym no dev, conferir e integrar; publicar
+o oficial em main limpo pelo wrapper
+`npm run deploy:cloudflare -- --promote=principal-hero-center-2026-11-18`.
+Manifesto restrito ao institucional e seus assets; demais sites, Worker e dados
+seguem na comparação estrita.

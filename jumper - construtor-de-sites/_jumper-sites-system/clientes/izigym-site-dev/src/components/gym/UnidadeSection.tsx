@@ -9,7 +9,7 @@ export const UnidadeSection = () => {
       aria-labelledby="home-campaign-title"
       className="w-full bg-[#201a17]"
     >
-      <div className="relative isolate min-h-screen overflow-hidden pt-16 md:min-h-0 md:pt-20 lg:min-h-[calc(39.0625vw+5rem)]">
+      <div className="relative isolate flex min-h-screen flex-col justify-center overflow-hidden py-16 md:block md:min-h-0 md:pb-0 md:pt-20 lg:min-h-[calc(39.0625vw+5rem)]">
         <img
           src="/images/home-campanha-janeiro-2027.webp"
           alt=""
@@ -18,7 +18,7 @@ export const UnidadeSection = () => {
           height={750}
           fetchPriority="high"
         />
-        <div className="max-w-7xl mx-auto px-6 py-10 text-white sm:px-10 lg:px-6 lg:py-[4%]">
+        <div className="w-full max-w-7xl mx-auto px-6 py-10 text-left text-white sm:px-10 lg:px-6 lg:py-[4%]">
           <p className="hero-copy-intro hero-delay-1 text-2xl font-light leading-[1.2] lg:text-[2.15vw]">
             Comece agora!
           </p>
