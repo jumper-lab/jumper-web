@@ -288,6 +288,12 @@
 
 @media (max-width: 767px) {
   #faq .font-semibold { font-weight: 400; }
+  #faq button[aria-expanded] .font-semibold {
+    font-size: 0.8125rem;
+    line-height: 1.35;
+    position: relative;
+    top: -1px;
+  }
   #faq .flex.flex-wrap.gap-2 { flex-wrap: nowrap; gap: 0.375rem; }
   #faq span.rounded-full.font-bold {
     padding-inline: 0.625rem;
