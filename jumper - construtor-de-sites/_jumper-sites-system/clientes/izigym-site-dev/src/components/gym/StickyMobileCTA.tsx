@@ -16,12 +16,12 @@ export const StickyMobileCTA: React.FC = () => {
 
   return (
     <div
-      className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-background-light/96 dark:bg-background-dark/95 backdrop-blur-md border-t border-zinc-200 dark:border-zinc-800 px-4 py-2.5"
+      className="fixed bottom-0 left-0 right-0 z-40 bg-[#0b0b0c]/95 px-4 pt-3 shadow-[0_-8px_30px_rgba(0,0,0,0.18)] backdrop-blur-xl md:hidden"
       style={{ paddingBottom: "calc(0.75rem + env(safe-area-inset-bottom))" }}
       role="region"
       aria-label="Chamada para matrícula"
     >
-      <div className="flex items-center gap-2">
+      <div className="mx-auto flex max-w-xl items-center gap-3">
         <a
           href={whatsappHref}
           data-whatsapp="whatsapp_mobile_sticky"
@@ -29,7 +29,7 @@ export const StickyMobileCTA: React.FC = () => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Conversar pelo WhatsApp"
-          className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-zinc-200 bg-white text-primary shadow-[0_8px_24px_rgba(0,0,0,0.08)] transition-all duration-500 ease-soft hover:border-primary/25 hover:bg-primary/5 focus:outline-none focus:ring-4 focus:ring-primary/20"
+          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/[0.08] text-white transition-colors duration-300 ease-soft hover:border-white/30 hover:bg-white/[0.14] focus:outline-none focus:ring-4 focus:ring-primary/35"
         >
           <svg
             viewBox="0 0 24 24"
@@ -43,9 +43,9 @@ export const StickyMobileCTA: React.FC = () => {
           href="#planos"
           data-navigation="mobile_sticky_plans"
           onClick={scrollToPlans}
-          className="flex min-w-0 flex-1 items-center justify-center gap-2 rounded-full border border-primary bg-primary px-4 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white shadow-[0_8px_22px_rgba(229,44,18,0.18)] transition-all duration-500 ease-soft hover:-translate-y-px hover:bg-primary/30 hover:shadow-none focus:outline-none focus:ring-4 focus:ring-primary/35 xs:text-sm xs:tracking-wide"
+          className="flex h-12 min-w-0 flex-1 items-center justify-center gap-2 rounded-full border border-primary bg-primary px-4 text-xs font-medium uppercase tracking-[0.08em] text-white transition-colors duration-300 ease-soft hover:bg-primary/90 focus:outline-none focus:ring-4 focus:ring-primary/35 xs:text-sm xs:tracking-[0.1em]"
         >
-          <span className="truncate">Matricule-se agora</span>
+          <span className="-translate-y-[2px] truncate">Matricule-se agora</span>
           <ArrowRight className="h-4 w-4 flex-shrink-0" />
         </a>
       </div>
