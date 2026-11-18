@@ -259,3 +259,14 @@ Publicar izigym no dev e conferir antes do merge; em seguida publicar o oficial
 com `npm run deploy:cloudflare -- --promote=principal-mobile-cta-order-2026-11-18`.
 O manifesto fixa somente a página institucional e os assets oficiais, mantendo
 Worker, Cerro Corá, prévias e demais clientes sob comparação estrita.
+
+### Tipografia das perguntas da FAQ mobile — 18/11/2026
+
+O usuário autorizou reduzir e centralizar visualmente as perguntas nos pills,
+no Desenvolvimento 1 e no oficial. CSS limitado à FAQ mobile reduz as perguntas
+de 14 para 13 px, usa entrelinha 1,35 e compensação óptica de 1 px para cima.
+Conteúdo, respostas, desktop, ícones e comportamento do acordeão não mudam.
+Publicar somente izigym no dev, conferir e integrar. Publicar o oficial pelo
+wrapper `npm run deploy:cloudflare -- --promote=principal-faq-pills-2026-11-18`
+em main limpo. O manifesto fixa institucional e seus assets; Worker, Cerro Corá,
+prévias e outros clientes seguem sob comparação estrita.
