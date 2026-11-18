@@ -215,3 +215,16 @@ oficial do hash recém-publicado ao hash anterior. Desenvolvimento 1, demais
 prévias, Cerro Corá e Worker permanecem inalterados e sob comparação estrita.
 Após PR/merge, publicar com `npm run deploy:cloudflare -- --promote=principal-restore-2026-11-18`
 em main limpo e conferir a auditoria posterior.
+
+### Aprovação final e publicação do institucional — 18/11/2026
+
+Após revisar os ajustes no Desenvolvimento 1, o usuário aprovou a publicação.
+A promoção `principal-approved-2026-11-18` inclui a versão atual completa:
+banner, fontes, cores, menu, FAQ, mobile, imagens JPEG responsivas com URLs
+diretas e “ou clique aqui” na última linha. O fonte oficial recebe os ajustes,
+preservando GTM de produção, indexação, planos e checkout. O manifesto fixa o
+HTML anterior/candidato e todos os assets oficiais, mantendo Cerro Corá,
+prévias, outros clientes e Worker na comparação estrita. Publicar após PR/merge
+em main limpo pelo wrapper `npm run deploy:cloudflare -- --promote=principal-approved-2026-11-18`.
+A autorização atual substitui a instrução anterior de manter os ajustes só no dev;
+a janela histórica de publicação automática continua sem alterações.
