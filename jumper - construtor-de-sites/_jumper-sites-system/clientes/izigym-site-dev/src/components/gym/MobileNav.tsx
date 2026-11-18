@@ -39,9 +39,9 @@ export const MobileNav: React.FC<MobileNavProps> = ({ handleSmoothScroll, isHead
         <Button
           variant="ghost"
           size="icon"
-          className={isHeaderScrolled ? "h-10 w-10 rounded-full text-zinc-900 transition-colors duration-500 ease-soft hover:bg-zinc-100" : "h-10 w-10 rounded-full text-white transition-colors duration-500 ease-soft hover:bg-white/10"}
+          className={isHeaderScrolled ? "h-11 w-11 rounded-full text-zinc-900 transition-colors duration-500 ease-soft hover:bg-zinc-100" : "h-11 w-11 rounded-full text-white transition-colors duration-500 ease-soft hover:bg-white/10"}
         >
-          <Menu className="h-5 w-5" />
+          <Menu className="!h-6 !w-6" />
           <span className="sr-only">Abrir menu de navegação</span>
         </Button>
       </SheetTrigger>
