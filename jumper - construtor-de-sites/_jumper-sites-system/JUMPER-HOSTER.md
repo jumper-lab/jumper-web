@@ -228,3 +228,13 @@ prévias, outros clientes e Worker na comparação estrita. Publicar após PR/me
 em main limpo pelo wrapper `npm run deploy:cloudflare -- --promote=principal-approved-2026-11-18`.
 A autorização atual substitui a instrução anterior de manter os ajustes só no dev;
 a janela histórica de publicação automática continua sem alterações.
+
+### Alinhamento do fechar do menu mobile IZI — 18/11/2026
+
+O usuário autorizou o ajuste no Desenvolvimento 1 e no oficial. O botão de
+fechar do drawer recebe área de toque de 44 px e fica centrado na mesma altura
+da logo, por estilos locais ao MobileNav, sem editar o componente UI compartilhado.
+Publicar primeiro somente izigym no dev; após revisão/merge, publicar no oficial
+por `npm run deploy:cloudflare -- --promote=principal-mobile-close-2026-11-18`.
+O manifesto fixa apenas a página institucional e os assets oficiais. As prévias
+já publicadas, Cerro Corá, outros clientes e Worker seguem sob comparação estrita.
